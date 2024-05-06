@@ -94,11 +94,18 @@
     "@nx/nest:application": {
       "projectNameAndRootFormat": "derived"
     },
-    "@nx/js:lib": {
+    "@nx/js:library": {
       "projectNameAndRootFormat": "derived",
       "publishable": true,
-      "compiler": "swc"
+      "compiler": "swc",
+      "unitTestRunner": "jest",
+      "bundler": "swc"
     }
   },
-  "defaultProject": "desktop"
+  "defaultProject": "desktop",
+  "release": {
+    "version": {
+      "preVersionCommand": "pnpm dlx nx run-many -t build"
+    }
+  }
 }
