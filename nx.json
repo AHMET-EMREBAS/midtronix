@@ -91,9 +91,7 @@
       "unitTestRunner": "jest",
       "projectNameAndRootFormat": "derived"
     },
-    "@nx/nest:application": {
-      "projectNameAndRootFormat": "derived"
-    },
+
     "@nx/js:library": {
       "projectNameAndRootFormat": "derived",
       "publishable": true,
