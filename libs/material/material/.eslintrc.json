@@ -16,7 +16,9 @@
               "@storybook/angular",
               "@storybook/testing-library",
               "@storybook/jest",
-              "@storybook/addon-docs/angular"
+              "@storybook/addon-docs/angular",
+              "@storybook/theming",
+              "@storybook/manager-api"
             ],
             "depConstraints": [
               {
