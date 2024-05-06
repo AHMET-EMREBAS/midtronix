@@ -17,6 +17,7 @@
     "paths": {
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
+      "@mdtx/material": ["libs/material/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },
