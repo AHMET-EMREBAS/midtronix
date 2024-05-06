@@ -1,1 +1,1 @@
-export const ___midtx_material__ = '@midtx/material';
+export * from './lib';
