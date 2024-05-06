@@ -9,6 +9,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideRouter(appRoutes, withHashLocation()),
+    provideStore([]),
+    provideEffects([]),
+    provideEntityData({}, withEffects()),
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
