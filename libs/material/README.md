@@ -1,3 +1,0 @@
-# material
-
-Angular Material Components
