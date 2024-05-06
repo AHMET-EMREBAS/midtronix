@@ -14,7 +14,7 @@ import { AppMessages } from './app.messages';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(protected readonly title: Title) {}
+  constructor(public readonly title: Title) {}
 
   ngOnInit(): void {
     this.title.setTitle(AppMessages.WELCOME);
