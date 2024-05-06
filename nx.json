@@ -101,6 +101,17 @@
       "publishable": true,
       "unitTestRunner": "jest",
       "bundler": "swc"
+    },
+    "@nx/angular:component": {
+      "style": "scss",
+      "nameAndDirectoryFormat": "derived",
+      "prefix": "mdtx",
+      "standalone": true
+    },
+    "@nx/angular:directive": {
+      "nameAndDirectoryFormat": "derived",
+      "prefix": "mdtx",
+      "standalone": true
     }
   },
   "defaultProject": "desktop",

@@ -9,7 +9,7 @@ import { AppMessages } from './app.messages';
 @Component({
   standalone: true,
   imports: [RouterModule, MatButtonModule, MatIconModule, MatDividerModule],
-  selector: 'app-root',
+  selector: 'mdtx-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
