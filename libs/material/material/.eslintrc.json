@@ -1,6 +1,6 @@
 {
   "extends": ["../../../.eslintrc.base.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "storybook-static"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -12,7 +12,11 @@
             "allow": [
               "@angular/core",
               "@angular/common",
-              "jest-preset-angular/setup-jest"
+              "jest-preset-angular/setup-jest",
+              "@storybook/angular",
+              "@storybook/testing-library",
+              "@storybook/jest",
+              "@storybook/addon-docs/angular"
             ],
             "depConstraints": [
               {
