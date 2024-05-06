@@ -61,6 +61,11 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "@nx/angular:package": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "plugins": [
@@ -112,6 +117,11 @@
       "nameAndDirectoryFormat": "derived",
       "prefix": "mdtx",
       "standalone": true
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "publishable": true
     }
   },
   "defaultProject": "desktop",

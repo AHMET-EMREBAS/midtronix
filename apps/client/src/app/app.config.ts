@@ -7,11 +7,13 @@ import { provideServiceWorker } from '@angular/service-worker';
 import { provideStore } from '@ngrx/store';
 import { provideEntityData, withEffects } from '@ngrx/data';
 import { provideEffects } from '@ngrx/effects';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(),
     provideRouter(appRoutes, withHashLocation()),
+    provideHttpClient(withInterceptors([])),
     provideStore([]),
     provideEffects([]),
     provideEntityData({}, withEffects()),

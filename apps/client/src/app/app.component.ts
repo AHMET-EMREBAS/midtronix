@@ -5,8 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { Title } from '@angular/platform-browser';
 import { AppMessages } from './app.messages';
-
-
 @Component({
   standalone: true,
   imports: [RouterModule, MatButtonModule, MatIconModule, MatDividerModule],
