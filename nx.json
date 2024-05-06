@@ -51,6 +51,11 @@
     },
     "server": {
       "cache": true
+    },
+    "@nx/js:swc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "plugins": [
@@ -68,6 +73,14 @@
       "options": {
         "targetName": "lint"
       }
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
+      }
     }
   ],
   "generators": {
@@ -77,6 +90,14 @@
       "style": "scss",
       "unitTestRunner": "jest",
       "projectNameAndRootFormat": "derived"
+    },
+    "@nx/nest:application": {
+      "projectNameAndRootFormat": "derived"
+    },
+    "@nx/js:lib": {
+      "projectNameAndRootFormat": "derived",
+      "publishable": true,
+      "compiler": "swc"
     }
   },
   "defaultProject": "desktop"
