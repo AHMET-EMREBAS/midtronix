@@ -1,8 +1,13 @@
 {
   "name": "@mdtx/core",
   "version": "0.0.1",
-  "dependencies": {
-    "@swc/helpers": "~0.5.2"
+  "author": {
+    "email": "aemrebas.dev@gmail.com",
+    "name": "Ahmet Emrebas",
+    "url": "https://ahmet-emrebas.github.io"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "type": "commonjs",
   "main": "./src/index.js",
