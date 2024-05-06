@@ -4,10 +4,16 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@nx/angular": "^18.3.4",
     "@nx/js": "18.3.4",
+    "@nx/nest": "^18.3.4",
+    "@nx/storybook": "^18.3.4",
     "@nx/workspace": "18.3.4",
-    "nx": "18.3.4"
+    "nx": "18.3.4",
+    "nx-electron": "^18.0.1"
+  },
+  "dependencies": {
+    "electron": "^30.0.2"
   }
 }
