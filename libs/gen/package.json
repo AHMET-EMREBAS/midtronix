@@ -12,5 +12,8 @@
   "dependencies": {},
   "type": "commonjs",
   "main": "./src/index.js",
-  "typings": "./src/index.d.ts"
+  "typings": "./src/index.d.ts",
+  "keywords": [
+    "mdtx"
+  ]
 }
