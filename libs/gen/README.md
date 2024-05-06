@@ -1,3 +1,3 @@
 # gen
 
-Code generators
+Generate frontend and backend resources

@@ -1,3 +1,3 @@
 # utils
 
-Utility functions used accross the applications
+Provides utilities for backend and frontend

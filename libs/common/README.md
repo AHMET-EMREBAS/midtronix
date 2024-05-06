@@ -1,8 +1,3 @@
 # common
 
-Commonly used interfaces accross the applications
-
-- Tokens
-- Types
-- Interfaces
-- Enums
+Provides types, interfaces for backend and frontend

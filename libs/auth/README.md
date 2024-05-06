@@ -1,3 +1,3 @@
 # auth
 
-Autentication and authorization logic goes here. 
+Provides authentication modules for backend.
