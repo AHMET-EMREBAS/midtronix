@@ -1,8 +1,13 @@
 {
   "name": "@mdtx/material",
   "version": "0.0.1",
-  "peerDependencies": {},
-  "dependencies": {
+  "author": {
+    "email": "aemrebas.dev@gmail.com",
+    "name": "Ahmet Emrebas",
+    "url": "https://ahmet-emrebas.github.io"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "sideEffects": false
 }
