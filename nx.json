@@ -97,7 +97,6 @@
     "@nx/js:library": {
       "projectNameAndRootFormat": "derived",
       "publishable": true,
-      "compiler": "swc",
       "unitTestRunner": "jest",
       "bundler": "swc"
     }
