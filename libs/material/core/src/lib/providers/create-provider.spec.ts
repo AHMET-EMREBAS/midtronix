@@ -1,4 +1,3 @@
-import { InjectionToken, Injector } from '@angular/core';
 import { createClassProvider, createValueProvider } from './create-provider';
 
 import { TestBed } from '@angular/core/testing';
@@ -10,7 +9,7 @@ const valueProvider = createValueProvider<string>('token-prefix-value');
 const classProvider = createClassProvider<TestClass>('token-prefix-class');
 
 describe('Create Provider', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [
         valueProvider.provideFn('value-test-value'),
