@@ -1,7 +1,14 @@
+/** eslint-disable @nx/dependency-checks */
+
+
 {
   "name": "@mdtx/material",
   "version": "0.0.1",
   "peerDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "@mdtx/material/core": "*",
+    "@mdtx/material/form": "*",
+    "@mdtx/material/table": "*"
+  },
   "sideEffects": false
 }
