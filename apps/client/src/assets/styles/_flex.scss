@@ -12,14 +12,14 @@
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 @for $value from 1 through 10 {
   .gap-#{$value}em {
     gap: #{$value}em;
   }
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 .space-between {
