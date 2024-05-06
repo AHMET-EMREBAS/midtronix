@@ -1,0 +1,36 @@
+{
+  "name": "material",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/material/material/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/material"],
+      "options": {
+        "project": "libs/material/material/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/material/material/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/material/material/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/material"],
+      "options": {
+        "jestConfig": "libs/material/material/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
