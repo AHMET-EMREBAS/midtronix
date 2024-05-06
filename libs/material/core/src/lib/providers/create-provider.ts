@@ -1,19 +1,20 @@
-import { Inject, InjectionToken, Provider, Type } from '@angular/core';
-
-export type CreateProviderResult<T> = {
-  provideFn: (value: T) => Provider;
-  injectFn: () => ParameterDecorator;
-  tokenFn: () => InjectionToken<T>;
-};
+import {
+  Inject,
+  InjectionToken,
+  InjectorType,
+  Provider,
+  Type,
+} from '@angular/core';
+import { CreateProviderResult } from '@mdtx/common';
 
 /**
- * Create class provider, injector, and getToken function for a resource
+ * Create a class provider, injector, and token function
  * @param tokenPrefix
  * @returns
  */
 export function createClassProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<Type<T>> {
+): CreateProviderResult<Type<T>, Provider, InjectionToken<T>> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
     provideFn(value: Type<T>) {
@@ -31,9 +32,14 @@ export function createClassProvider<T>(
   };
 }
 
+/**
+ * Create a value provider, injector, and token function
+ * @param tokenPrefix
+ * @returns
+ */
 export function createValueProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<T> {
+): CreateProviderResult<T, Provider, InjectionToken<T>> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
     provideFn(value: T) {

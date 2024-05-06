@@ -1,12 +1,6 @@
 import { Inject, Provider, Type } from '@nestjs/common';
+import { CreateProviderResult } from '@mdtx/common';
 import { v4 } from 'uuid';
-
-export type CreateProviderResult<T> = {
-  provideFn: (value: T) => Provider;
-  injectFn: () => ParameterDecorator;
-  tokenFn: () => string;
-};
-
 /**
  * Create class provider, injector, and getToken function for a resource
  * @param tokenPrefix
@@ -14,7 +8,7 @@ export type CreateProviderResult<T> = {
  */
 export function createClassProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<Type<T>> {
+): CreateProviderResult<Type<T>, Provider, string> {
   const token = tokenPrefix + v4();
   return {
     provideFn(value: Type<T>) {
@@ -34,7 +28,7 @@ export function createClassProvider<T>(
 
 export function createValueProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<T> {
+): CreateProviderResult<T, Provider, string> {
   const token = tokenPrefix + v4();
   return {
     provideFn(value: T) {
