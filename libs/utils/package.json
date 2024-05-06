@@ -6,6 +6,9 @@
     "name": "Ahmet Emrebas",
     "url": "https://ahmet-emrebas.github.io"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {},
   "type": "commonjs",
   "typings": "./src/index.d.ts",

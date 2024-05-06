@@ -48,6 +48,9 @@
     "nx-release-publish": {
       "options": {
         "packageRoot": "dist\\{projectRoot}"
+      },
+      "npmOptions": {
+        "access": "public"
       }
     },
     "test": {
