@@ -6,9 +6,7 @@
     "name": "Ahmet Emrebas",
     "url": "https://ahmet-emrebas.github.io"
   },
-  "dependencies": {
-    "@swc/helpers": "~0.5.2"
-  },
+  "dependencies": {},
   "type": "commonjs",
   "typings": "./src/index.d.ts",
   "keywords": ["mdtx"]

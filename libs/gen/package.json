@@ -1,5 +1,5 @@
 {
-  "name": "@mdtx/utils",
+  "name": "@mdtx/gen",
   "version": "0.0.1",
   "author": {
     "email": "aemrebas.dev@gmai.com",
@@ -8,8 +8,6 @@
   },
   "dependencies": {},
   "type": "commonjs",
-  "typings": "./src/index.d.ts",
-  "keywords": [
-    "mdtx"
-  ]
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
 }
