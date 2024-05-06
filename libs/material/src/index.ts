@@ -1,1 +1,1 @@
-export * from './lib/material/material.component';
+export const ___midtx_material__ = '@midtx/material';

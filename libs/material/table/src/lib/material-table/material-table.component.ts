@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-material-table',
+  selector: 'mdtx-material-table',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './material-table.component.html',

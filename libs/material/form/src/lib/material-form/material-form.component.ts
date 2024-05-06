@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-material-form',
+  selector: 'mdtx-material-form',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './material-form.component.html',
