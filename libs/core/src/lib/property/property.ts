@@ -1,6 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiPropertyOptions, ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose, Type } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import {
   IsBoolean,
   IsDate,
@@ -46,9 +46,7 @@ export function Property(
   }
 
   if (options) {
-    if (options.type === 'string' || options.type == undefined) {
-      decorators.push(IsString(vo));
-
+    if (options.type === 'string') {
       const { minLength, maxLength, format, enum: enums } = options;
 
       if (minLength != undefined) decorators.push(MinLength(minLength, vo));
@@ -66,13 +64,10 @@ export function Property(
         if (format === 'date') decorators.push(IsDate(vo));
       }
     } else if (options.type === 'number') {
-      decorators.push(IsNumber(undefined, vo));
       const { minimum, maximum } = options;
 
       if (minimum != undefined) decorators.push(Min(minimum, vo));
       if (maximum != undefined) decorators.push(Max(maximum, vo));
-    } else if (options.type === 'boolean') {
-      decorators.push(IsBoolean(vo));
     }
   }
 

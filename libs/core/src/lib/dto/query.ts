@@ -1,11 +1,12 @@
 import { Exclude, Transform } from 'class-transformer';
 import { Property } from '../property';
-import { isArray } from 'class-validator';
+import { IsIn, IsNotIn, isArray } from 'class-validator';
 import { ILike } from 'typeorm';
 
 @Exclude()
 export class QueryDto {
   @Property({ type: 'string', isArray: true })
+  @IsNotIn(['createdAt', 'updatedAt', 'deletedAt', 'id'])
   @Transform(({ value }) => {
     if (value) {
       if (typeof value === 'string') {
@@ -20,8 +21,18 @@ export class QueryDto {
 
   @Property({ type: 'string' })
   @Transform(({ value, obj }) => {
-    if (obj.searchBy) {
-      return obj.searchBy.map((e: any) => {
+    let { searchBy } = obj;
+    if (searchBy) {
+      if (isArray(searchBy)) {
+        //
+      } else if (typeof searchBy === 'string') {
+        searchBy = [searchBy];
+      } else {
+        searchBy = undefined;
+      }
+    }
+    if (searchBy) {
+      return searchBy.map((e: any) => {
         return { [e]: ILike(`%${value}%`) };
       });
     }
