@@ -16,7 +16,17 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([])),
     provideStore([]),
     provideEffects([]),
-    provideEntityData({}, withEffects()),
+    provideEntityData(
+      {
+        pluralNames: {
+          Product: 'Products',
+        },
+        entityMetadata: {
+          Product: {},
+        },
+      },
+      withEffects()
+    ),
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),

@@ -1,1 +1,1 @@
-export * from './lib/material-form/material-form.component';
+export * from './lib'

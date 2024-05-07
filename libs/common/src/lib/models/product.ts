@@ -9,9 +9,9 @@ export interface IProductCommon extends IDescription {
 }
 
 export interface IProduct<
-  TCategory extends IID,
-  TDepartment extends IID,
-  TManufacturer extends IID
+  TCategory extends IID = IID,
+  TDepartment extends IID = IID,
+  TManufacturer extends IID = IID
 > extends IProductCommon {
   category: TCategory;
   department: TDepartment;

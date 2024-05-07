@@ -1,0 +1,72 @@
+{{ formGroup.value | json }}
+<form [formGroup]="formGroup" novalidate>
+  <mat-form-field appearance="outline">
+    <mat-label i18n>Product Name</mat-label>
+    <input
+      #name
+      matInput
+      type="text"
+      formControlName="name"
+      required
+      minlength="3"
+      maxlength="30"
+    />
+    <mat-icon matPrefix>info</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label i18n>Product Description</mat-label>
+    <input matInput type="text" formControlName="description" />
+    <mat-icon matPrefix>info</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label i18n>Product UPC</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="upc"
+      required
+      minlength="10"
+      maxlength="13"
+    />
+    <mat-icon matPrefix>info</mat-icon>
+  </mat-form-field>
+
+  <!-- 
+
+
+   -->
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Select Category</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one"
+      aria-label="Number"
+      matInput
+      formControlName="category"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      [displayWith]="displayWith"
+    >
+      @for (option of categories$ | async; track option) {
+      <mat-option [value]="option">{{ option.name }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="formGroup.reset(); formGroup.enable()"
+    >
+      Reset
+    </button>
+  </div>
+</form>
