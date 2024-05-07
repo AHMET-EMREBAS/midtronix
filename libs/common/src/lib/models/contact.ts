@@ -1,16 +1,16 @@
 import { IOwner } from './__base';
 
-export interface IAddress<TUser> extends IOwner<TUser> {
+export interface IAddress<TOwner> extends IOwner<TOwner> {
   street: string;
   city: string;
   state: string;
   zip: string;
 }
 
-export interface IPhone<TUser> extends IOwner<TUser> {
+export interface IPhone<TOwner> extends IOwner<TOwner> {
   phone: string;
 }
 
-export interface IEmail<TUser> extends IOwner<TUser> {
+export interface IEmail<TOwner> extends IOwner<TOwner> {
   email: string;
 }

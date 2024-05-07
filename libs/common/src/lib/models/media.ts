@@ -6,3 +6,4 @@ export interface IMedia<TOwner> extends IUrl, IOwner<TOwner> {}
 export interface IImage<TOwner> extends IMedia<TOwner> {}
 
 export interface IVideo<TOwner> extends IMedia<TOwner> {}
+

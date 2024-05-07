@@ -1,7 +1,6 @@
-import { IBaseEntity } from './__base';
+import { IBaseEntity, IOwner } from './__base';
 
-export interface ICart<TCustomer, TUser> extends IBaseEntity {
-  customer: TCustomer;
+export interface ICart<TCustomer, TUser> extends IOwner<TCustomer> {
   user: TUser;
 }
 
