@@ -57,6 +57,7 @@ describe('Product Test', () => {
       Customer,
       CustomerRole,
       CustomerPermission,
+      Message,
     ]);
   });
   it.each`
