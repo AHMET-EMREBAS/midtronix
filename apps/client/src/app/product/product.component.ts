@@ -37,6 +37,7 @@ export class ProductComponent {
     { id: 2, name: 'Cat 2' },
     { id: 3, name: 'Cat 3' },
   ]);
+
   formGroup = this.builder.nonNullable.group({
     name: ['', Validators.required],
     description: [''],
@@ -47,11 +48,11 @@ export class ProductComponent {
 
   constructor(
     protected readonly builder: FormBuilder,
-    protected readonly service: ProductService
+    protected readonly productService: ProductService
   ) {}
 
   save() {
-    this.service.addOneToCache({ id: 1, ...this.formGroup.value });
+    this.productService.addOneToCache({ id: 1, ...this.formGroup.value });
   }
 
   displayWith(event: any) {
