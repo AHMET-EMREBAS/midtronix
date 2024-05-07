@@ -1,0 +1,39 @@
+import { Test, TestingModule } from '@nestjs/testing';
+import { <%- className %>Controller } from './<%- fileName %>.controller';
+import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
+import {
+  Category,
+  Department,
+  Manufacturer,
+  <%- className %>,
+  testDBOptions,
+} from '@mdtx/database';
+import { Repository } from 'typeorm';
+
+describe('<%- className %>ModuleTest', () => {
+  let app: TestingModule;
+  let controller: <%- className %>Controller;
+  let repo: Repository<<%- className %>>;
+  
+  beforeAll(async () => {
+    app = await Test.createTestingModule({
+      imports: [
+        TypeOrmModule.forRoot(testDBOptions()),
+        TypeOrmModule.forFeature([<%- className %>]),
+      ],
+      controllers: [<%- className %>Controller],
+    }).compile();
+    controller = app.get(<%- className %>Controller);
+    repo = app.get(getRepositoryToken(<%- className %>));
+  });
+
+  it('should initialize classes', () => {
+    expect(app).toBeDefined();
+    expect(controller).toBeDefined();
+    expect(repo).toBeDefined();
+  });
+
+  afterAll(() => {
+    repo.manager.connection.destroy();
+  });
+});
