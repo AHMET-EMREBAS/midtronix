@@ -20,7 +20,16 @@ export {
   JoinColumn,
   JoinTable,
   EntitySubscriberInterface,
+  DataSource,
+  Repository,
+  ObjectLiteral,
 } from 'typeorm';
+
+export {
+  TypeOrmModule,
+  InjectRepository,
+  InjectDataSource,
+} from '@nestjs/typeorm';
 
 export function OneRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
@@ -47,7 +56,7 @@ export function OwnerRelation<T extends IID>(target: Type<T>) {
     ManyToOne(
       () => target,
       (t) => t.id,
-      { onDelete: 'CASCADE' }
+      { onDelete: 'CASCADE', nullable: true }
     ),
     JoinColumn()
   );

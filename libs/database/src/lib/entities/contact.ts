@@ -22,10 +22,10 @@ export function UserDetailEntity<T extends IID>(owner: Type<T>) {
  */
 export function AddressEntity<T extends IID>(owner: Type<T>) {
   class Address extends OwnerEntity(owner) implements IAddress<T> {
-    @Column({ type: 'varchar' }) street!: string;
-    @Column({ type: 'varchar' }) city!: string;
-    @Column({ type: 'varchar' }) state!: string;
-    @Column({ type: 'varchar' }) zip!: string;
+    @Column({ type: 'varchar', nullable: true }) street!: string;
+    @Column({ type: 'varchar', nullable: true }) city!: string;
+    @Column({ type: 'varchar', nullable: true }) state!: string;
+    @Column({ type: 'varchar', nullable: true }) zip!: string;
   }
   return Address;
 }
@@ -35,7 +35,7 @@ export function AddressEntity<T extends IID>(owner: Type<T>) {
  */
 export function PhoneEntity<T extends IID>(owner: Type<T>) {
   class PhoneEntity extends OwnerEntity(owner) implements IPhone<T> {
-    @Column({ type: 'varchar' })
+    @Column({ type: 'varchar', nullable: true })
     phone!: string;
   }
   return PhoneEntity;
@@ -48,7 +48,7 @@ export function PhoneEntity<T extends IID>(owner: Type<T>) {
  */
 export function EmailEntity<T extends IID>(owner: Type<T>) {
   class EmailEntity extends OwnerEntity(owner) implements IEmail<T> {
-    @Column({ type: 'varchar' })
+    @Column({ type: 'varchar', nullable: true })
     email!: string;
   }
   return EmailEntity;

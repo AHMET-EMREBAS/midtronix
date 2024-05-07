@@ -261,6 +261,9 @@ importers:
       '@types/express':
         specifier: 4.17.14
         version: 4.17.14
+      '@types/faker':
+        specifier: 5.5.3
+        version: 5.5.3
       '@types/jest':
         specifier: ^29.4.0
         version: 29.5.12
@@ -294,6 +297,9 @@ importers:
       eslint-plugin-cypress:
         specifier: ^2.13.4
         version: 2.15.2(eslint@8.57.0)
+      faker:
+        specifier: 5.5.3
+        version: 5.5.3
       jest:
         specifier: ^29.4.1
         version: 29.7.0(@types/node@18.16.9)(ts-node@10.9.1(@swc/core@1.3.107(@swc/helpers@0.5.11))(@types/node@18.16.9)(typescript@5.4.5))
@@ -3782,6 +3788,9 @@ packages:
   '@types/express@4.17.14':
     resolution: {integrity: sha512-TEbt+vaPFQ+xpxFLFssxUDXj5cWCxZJjIcB7Yg0k0GMHGtgtQgpvx/MUQUeAkNbA9AAGrwkAsoeItdTgS7FMyg==}
 
+  '@types/faker@5.5.3':
+    resolution: {integrity: sha512-InxkM6sCFQTI6YQl29M/XGlO19ecv/EHH5X5zLEFdge2/qya8oIT0XkJUKTqheVYWJtGi+FBAfP7hbbunDiOmg==}
+
   '@types/find-cache-dir@3.2.1':
     resolution: {integrity: sha512-frsJrz2t/CeGifcu/6uRo4b+SzAwT4NYCVPu1GN8IB9XTzrpPkGuV0tmh9mN+/L0PklAlsC3u5Fxt0ju00LXIw==}
 
@@ -6412,6 +6421,9 @@ packages:
   extsprintf@1.4.1:
     resolution: {integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==}
     engines: {'0': node >=0.6.0}
+
+  faker@5.5.3:
+    resolution: {integrity: sha512-wLTv2a28wjUyWkbnX7u/ABZBkUkIF2fCd73V6P2oFqEGEktDfzWx4UxrSqtPRw0xPRAcjeAOIiJWqZm3pP4u3g==}
 
   fancy-log@2.0.0:
     resolution: {integrity: sha512-9CzxZbACXMUXW13tS0tI8XsGGmxWzO2DmYrGuBJOJ8k8q2K7hwfJA5qHjuPPe8wtsco33YR9wc+Rlr5wYFvhSA==}
@@ -17924,6 +17936,8 @@ snapshots:
       '@types/qs': 6.9.15
       '@types/serve-static': 1.15.7
 
+  '@types/faker@5.5.3': {}
+
   '@types/find-cache-dir@3.2.1': {}
 
   '@types/fs-extra@9.0.13':
@@ -21154,6 +21168,8 @@ snapshots:
   extsprintf@1.3.0: {}
 
   extsprintf@1.4.1: {}
+
+  faker@5.5.3: {}
 
   fancy-log@2.0.0:
     dependencies:

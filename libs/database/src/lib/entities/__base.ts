@@ -1,7 +1,6 @@
 import {
   IBaseEntity,
   IComment,
-  IUserDetail,
   IID,
   ILike,
   IOwner,
@@ -13,11 +12,11 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
-  JoinColumn,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   Type,
+  OwnerRelation,
+  OneRelation,
 } from '@mdtx/core';
 
 // export interface ILike<TUser> extends IOwner<TUser> {
@@ -49,7 +48,6 @@ export class UrlEntity extends NameEntity implements IUrl {
   url!: string;
 }
 
-
 export class CredentialEntity extends BaseEntity implements ICredential {
   @Column({ type: 'varchar', unique: true }) username!: string;
   @Column({ type: 'varchar' }) password!: string;
@@ -65,8 +63,7 @@ export class ProductCommonEntity
 
 export function OwnerEntity<T extends IID>(owner: Type<T>) {
   class Owner extends BaseEntity implements IOwner<T> {
-    @ManyToOne(() => owner, (t) => t.id, { onDelete: 'CASCADE' })
-    @JoinColumn()
+    @OwnerRelation(owner)
     owner!: T;
   }
   return Owner;
@@ -80,12 +77,10 @@ export function CommentEntity<TOwner extends IID, TTarget extends IID>(
     @Column({ type: 'varchar' })
     comment!: string;
 
-    @ManyToOne(() => target, (t) => t.id, { onDelete: 'CASCADE' })
-    @JoinColumn()
+    @OneRelation(target)
     target!: TTarget;
 
-    @ManyToOne(() => owner, (t) => t.id, { onDelete: 'CASCADE' })
-    @JoinColumn()
+    @OneRelation(owner)
     owner!: TOwner;
   }
 

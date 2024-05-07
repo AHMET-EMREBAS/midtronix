@@ -5,8 +5,8 @@ import { BaseEntity } from './__base';
 
 @Entity()
 export class Message extends BaseEntity implements IMessage<User, User> {
-  @Column({ type: 'varchar' }) message!: string;
-  @Column({ type: 'boolean' }) read?: boolean;
+  @Column({ type: 'varchar', nullable: true }) message!: string;
+  @Column({ type: 'boolean', nullable: true }) read?: boolean;
   @OwnerRelation(User) target!: User;
   @OwnerRelation(User) source!: User;
 }

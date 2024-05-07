@@ -8,7 +8,10 @@ export interface IProductCommon extends IDescription {
   upc: string;
 }
 
-export interface IProduct<TManufacturer extends IID> extends IProductCommon {
+export interface IProduct<TCategory, TDepartment, TManufacturer extends IID>
+  extends IProductCommon {
+  category: TCategory;
+  department: TDepartment;
   manufacturers?: TManufacturer[];
 }
 
