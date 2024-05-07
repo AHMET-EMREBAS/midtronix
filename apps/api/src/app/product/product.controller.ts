@@ -20,6 +20,7 @@ import {
   QueryDto,
 } from '@mdtx/core';
 import { Product } from '@mdtx/database';
+import { CreateProductDto, UpdateProductDto } from './create-product.dto';
 
 @ApiTags(ProductController.name)
 @Controller()
@@ -30,14 +31,14 @@ export class ProductController {
   ) {}
 
   @Post('product')
-  saveProduct(@Body(ValidationPipe) product: Product) {
+  saveProduct(@Body(ValidationPipe) product: CreateProductDto) {
     return this.repo.save(product);
   }
 
   @Get('products')
   findProducts(
     @Query(ValidationPipe) paginator: PaginatorDto,
-    @Query() query: QueryDto
+    @Query(ValidationPipe) query: QueryDto
   ) {
     return this.repo.find({ ...paginator, where: query.search });
   }
@@ -55,13 +56,13 @@ export class ProductController {
   @Put('product/:id')
   updateProductById(
     @Param('id', ParseIntPipe) id: number,
-    @Body() body: Product
+    @Body(ValidationPipe) body: UpdateProductDto
   ) {
     return this.repo.update(id, body);
   }
 
   @Put('product/:id/:relationName/:relationId')
-  addRelationToProduct(@Param() relationDto: AddRelationDto) {
+  addRelationToProduct(@Param(ValidationPipe) relationDto: AddRelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
@@ -71,7 +72,9 @@ export class ProductController {
   }
 
   @Delete('product/:id/:relationName/:relationId')
-  removeRelationToProduct(@Param() relationDto: RemoveRelationDto) {
+  removeRelationToProduct(
+    @Param(ValidationPipe) relationDto: RemoveRelationDto
+  ) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
@@ -81,7 +84,7 @@ export class ProductController {
   }
 
   @Post('product/:id/:relationName/:relationId')
-  setRelationToProduct(@Param() relationDto: SetRelationDto) {
+  setRelationToProduct(@Param(ValidationPipe) relationDto: SetRelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
@@ -91,7 +94,7 @@ export class ProductController {
   }
 
   @Delete('product/:id/:relationName')
-  unsetRelationToProduct(@Param() relationDto: UnsetRelationDto) {
+  unsetRelationToProduct(@Param(ValidationPipe) relationDto: UnsetRelationDto) {
     const { id, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()

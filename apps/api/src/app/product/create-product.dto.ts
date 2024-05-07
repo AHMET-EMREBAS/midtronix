@@ -1,5 +1,6 @@
 import { ICreateProductDto, IID } from '@mdtx/common';
 import { Exclude, ObjectIdProperty, Property } from '@mdtx/core';
+import { PartialType } from '@nestjs/swagger';
 
 @Exclude()
 export class CreateProductDto implements ICreateProductDto {
@@ -10,3 +11,6 @@ export class CreateProductDto implements ICreateProductDto {
   @ObjectIdProperty() department: IID;
   @ObjectIdProperty({ isArray: true }) manufacturers?: IID[];
 }
+
+@Exclude()
+export class UpdateProductDto extends PartialType(CreateProductDto) {}

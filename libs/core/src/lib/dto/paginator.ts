@@ -9,14 +9,12 @@ export class PaginatorDto<TOrder = Record<any, any>> {
 
   @Property({ type: 'string' })
   @Transform(({ value }) => {
-    const [prop, dir] = value.split(':');
+    if (value && typeof value === 'string' && value.includes(':')) {
+      const [prop, dir] = value.split(':');
 
-    if (prop && dir) return { [prop]: dir };
-
+      if (prop && dir) return { [prop]: dir };
+    }
     return undefined;
   })
   order?: TOrder;
 }
-
-
-

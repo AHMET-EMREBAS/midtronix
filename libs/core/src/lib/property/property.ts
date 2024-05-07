@@ -27,7 +27,14 @@ type StringFormat = 'date' | 'email' | 'password' | 'barcode';
 export function Property(
   options?: ApiPropertyOptions & { type?: PropertyType; format?: StringFormat }
 ) {
-  const decorators: PropertyDecorator[] = [Expose(), ApiProperty(options)];
+  const decorators: PropertyDecorator[] = [
+    Expose(),
+    ApiProperty({
+      ...options,
+      required: !!options?.required,
+      nullable: !options?.required,
+    }),
+  ];
 
   const isArray = !!options?.isArray;
   const vo: ValidationOptions = { each: isArray };
@@ -76,7 +83,7 @@ export function ObjectIdProperty(options?: ApiPropertyOptions) {
   const vo: ValidationOptions = { each: !options?.isArray };
   return applyDecorators(
     Expose(),
-    ApiProperty({ ...options, type: 'object', isArray: !options?.isArray }),
+    ApiProperty({ ...options, type: 'object', isArray: !!options?.isArray }),
     options?.required ? IsNotEmpty(vo) : IsOptional(vo),
     ValidateNested(vo),
     Type(() => IDDto)
