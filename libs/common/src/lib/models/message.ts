@@ -11,3 +11,9 @@ export interface IMessage<TTarget extends IID, TSource extends IID>
 
 export interface INotification<TTarget extends IID, TSource extends IID>
   extends IMessage<TTarget, TSource> {}
+
+export interface ICreateMessageDto
+  extends Omit<IMessage<IID, IID>, keyof IBaseEntity> {}
+
+export interface ICreateNotificationDto
+  extends Omit<INotification<IID, IID>, keyof IBaseEntity> {}

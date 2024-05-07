@@ -1,6 +1,7 @@
-import { IID, IOwner } from './__base';
+/* eslint-disable @typescript-eslint/no-empty-interface */
+import { IBaseEntity, IID, IOwner } from './__base';
 
-export interface IUserDetail {
+export interface IUserDetail<TOwner extends IID> extends IOwner<TOwner> {
   firstName?: string;
   lastName?: string;
   middleName?: string;
@@ -23,3 +24,6 @@ export interface IPhone<TOwner extends IID> extends IOwner<TOwner> {
 export interface IEmail<TOwner extends IID> extends IOwner<TOwner> {
   email: string;
 }
+
+export interface ICreateUserDetailDto
+  extends Omit<IUserDetail<IID>, keyof IBaseEntity> {}

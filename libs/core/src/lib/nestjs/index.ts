@@ -16,7 +16,7 @@ export {
   Put,
   Type,
 } from '@nestjs/common';
-
+export { Exclude } from 'class-transformer';
 export { ApiTags, SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 export { APP_GUARD } from '@nestjs/core';

@@ -8,8 +8,11 @@ export interface IProductCommon extends IDescription {
   upc: string;
 }
 
-export interface IProduct<TCategory, TDepartment, TManufacturer extends IID>
-  extends IProductCommon {
+export interface IProduct<
+  TCategory extends IID,
+  TDepartment extends IID,
+  TManufacturer extends IID
+> extends IProductCommon {
   category: TCategory;
   department: TDepartment;
   manufacturers?: TManufacturer[];
@@ -39,3 +42,6 @@ export interface IQuantity<TSku extends IID, TStore extends IID>
 export interface IProductImage<TOwner extends IID> extends IImage<TOwner> {}
 
 export interface IProductVideo<TOwner extends IID> extends IImage<TOwner> {}
+
+export interface ICreateProductDto
+  extends Omit<IProduct<IID, IID, IID>, keyof IBaseEntity> {}

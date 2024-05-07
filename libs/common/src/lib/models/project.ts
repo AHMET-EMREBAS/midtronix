@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IComment, IDescription, IID } from './__base';
+import { IBaseEntity, IComment, IDescription, IID } from './__base';
 
 export interface IProject extends IDescription {}
 
@@ -16,3 +16,5 @@ export interface ITask<TUser extends IID> extends IDescription {
 
 export interface ITaskComment<TUser extends IID, TTarget extends IID>
   extends IComment<TUser, TTarget> {}
+
+export interface ICreateProjectDto extends Omit<IProject, keyof IBaseEntity> {}
