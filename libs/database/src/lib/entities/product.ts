@@ -1,6 +1,6 @@
-import { Entity, ManyRelation } from '@mdtx/core';
+import { Entity, ManyRelation, OwnerRelation } from '@mdtx/core';
 import { NameEntity, ProductCommonEntity } from './__base';
-import { IProduct } from '@mdtx/common';
+import { IProduct, ISku } from '@mdtx/common';
 import { Manufacturer } from './manufacturer';
 
 @Entity()
@@ -13,4 +13,10 @@ export class Product
 {
   @ManyRelation(Manufacturer)
   manufacturers?: Manufacturer[];
+}
+
+@Entity()
+export class Sku extends ProductCommonEntity implements ISku<Product> {
+  @OwnerRelation(Product)
+  product!: Product;
 }

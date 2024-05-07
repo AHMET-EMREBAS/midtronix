@@ -1,19 +1,13 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IBaseEntity } from './__base';
+import { IBaseEntity, IID } from './__base';
 
-export interface IMessage<TTarget, TSource> extends IBaseEntity {
+export interface IMessage<TTarget extends IID, TSource extends IID>
+  extends IBaseEntity {
   message: string;
   read?: boolean;
-  /**
-   * to
-   */
   target: TTarget;
-
-  /**
-   * from
-   */
   source: TSource;
 }
 
-export interface INotification<TTarget, TSource>
+export interface INotification<TTarget extends IID, TSource extends IID>
   extends IMessage<TTarget, TSource> {}
