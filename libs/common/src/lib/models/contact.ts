@@ -27,3 +27,10 @@ export interface IEmail<TOwner extends IID> extends IOwner<TOwner> {
 
 export interface ICreateUserDetailDto
   extends Omit<IUserDetail<IID>, keyof IBaseEntity> {}
+
+export interface ICreateAddressDto
+  extends Omit<IAddress<IID>, keyof IBaseEntity> {}
+
+export interface ICreatePhoneDto extends Omit<IPhone<IID>, keyof IBaseEntity> {}
+
+export interface ICreateEmailDto extends Omit<IEmail<IID>, keyof IBaseEntity> {}

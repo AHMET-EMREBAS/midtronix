@@ -1,6 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiPropertyOptions, ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose } from 'class-transformer';
+import { Exclude, Expose, Type } from 'class-transformer';
 import {
   IsBoolean,
   IsDate,
@@ -16,8 +16,10 @@ import {
   MaxLength,
   Min,
   MinLength,
+  ValidateNested,
   ValidationOptions,
 } from 'class-validator';
+import { IDDto } from '../dto';
 
 type PropertyType = 'string' | 'number' | 'boolean';
 type StringFormat = 'date' | 'email' | 'password' | 'barcode';
@@ -68,4 +70,15 @@ export function Property(
   }
 
   return applyDecorators(...decorators);
+}
+
+export function ObjectIdProperty(options?: ApiPropertyOptions) {
+  const vo: ValidationOptions = { each: !options?.isArray };
+  return applyDecorators(
+    Expose(),
+    ApiProperty({ ...options, type: 'object', isArray: !options?.isArray }),
+    options?.required ? IsNotEmpty(vo) : IsOptional(vo),
+    ValidateNested(vo),
+    Type(() => IDDto)
+  );
 }

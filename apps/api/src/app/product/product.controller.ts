@@ -14,6 +14,10 @@ import {
   SetRelationDto,
   RemoveRelationDto,
   ApiTags,
+  ValidationPipe,
+  Query,
+  PaginatorDto,
+  QueryDto,
 } from '@mdtx/core';
 import { Product } from '@mdtx/database';
 
@@ -26,13 +30,16 @@ export class ProductController {
   ) {}
 
   @Post('product')
-  saveProduct(@Body() product: Product) {
+  saveProduct(@Body(ValidationPipe) product: Product) {
     return this.repo.save(product);
   }
 
   @Get('products')
-  findProducts() {
-    return this.repo.find();
+  findProducts(
+    @Query(ValidationPipe) paginator: PaginatorDto,
+    @Query() query: QueryDto
+  ) {
+    return this.repo.find({ ...paginator, where: query.search });
   }
 
   @Get('product/:id')
@@ -63,7 +70,6 @@ export class ProductController {
       .add(relationId);
   }
 
-  
   @Delete('product/:id/:relationName/:relationId')
   removeRelationToProduct(@Param() relationDto: RemoveRelationDto) {
     const { id, relationId, relationName } = relationDto;
