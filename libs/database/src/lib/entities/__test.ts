@@ -1,11 +1,12 @@
-import { DataSource, Type, ObjectLiteral } from '@mdtx/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { DataSource, Type } from '@mdtx/core';
 
 /**
  * Create a test database resource
  * @param entities
  * @returns
  */
-export async function testDB<T extends ObjectLiteral>(entities: Type<any>[]) {
+export async function testDB(entities: Type<any>[]) {
   return await new DataSource({
     type: 'postgres',
     database: 'testdb',

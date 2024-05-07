@@ -14,7 +14,7 @@ export interface IBaseEntity extends IID {
 /**
  * Owner and timestamp
  */
-export interface IOwner<TOwner> extends IBaseEntity {
+export interface IOwner<TOwner extends IID> extends IBaseEntity {
   owner: TOwner;
 }
 
@@ -42,11 +42,12 @@ export interface ICredential extends IBaseEntity {
   password: string;
 }
 
-export interface IComment<TUser, TTarget> extends IOwner<TUser> {
+export interface IComment<TUser extends IID, TTarget extends IID>
+  extends IOwner<TUser> {
   comment: string;
   target: TTarget;
 }
 
-export interface ILike<TUser> extends IOwner<TUser> {
+export interface ILike<TUser extends IID> extends IOwner<TUser> {
   like?: boolean;
 }

@@ -2,6 +2,18 @@ import { OwnerEntity } from './__base';
 import { IAddress, IEmail, IID, IPhone } from '@mdtx/common';
 import { Column, Type } from '@mdtx/core';
 
+/**
+ * Create user details entity for the owner
+ * @param owner Entity
+ * @returns
+ * @param firstName string
+ * @param lastName string
+ * @param middleName string
+ * @param dob Date
+ * @param ssn string
+ * @param dl string
+ * @param owner Entity
+ */
 export function UserDetailEntity<T extends IID>(owner: Type<T>) {
   class UserDetail extends OwnerEntity(owner) {
     @Column({ type: 'varchar', nullable: true }) firstName?: string;
@@ -16,9 +28,14 @@ export function UserDetailEntity<T extends IID>(owner: Type<T>) {
 }
 
 /**
- * Create address entity for
- * @param owner
+ * Create address entity for the owner
+ * @param owner Entity
  * @returns
+ * @param street string
+ * @param city string
+ * @param state string
+ * @param zip string
+ * @param owner Entity
  */
 export function AddressEntity<T extends IID>(owner: Type<T>) {
   class Address extends OwnerEntity(owner) implements IAddress<T> {
@@ -31,7 +48,11 @@ export function AddressEntity<T extends IID>(owner: Type<T>) {
 }
 
 /**
- * Create phone entity for
+ * Create phone entity for the owner
+ * @param owner
+ * @returns
+ * @param phone string
+ * @param owner Entity
  */
 export function PhoneEntity<T extends IID>(owner: Type<T>) {
   class PhoneEntity extends OwnerEntity(owner) implements IPhone<T> {
@@ -45,6 +66,8 @@ export function PhoneEntity<T extends IID>(owner: Type<T>) {
  * Create email entity for
  * @param owner
  * @returns
+ * @param email string
+ * @param owner string
  */
 export function EmailEntity<T extends IID>(owner: Type<T>) {
   class EmailEntity extends OwnerEntity(owner) implements IEmail<T> {

@@ -19,9 +19,20 @@ import { Store } from './store';
 import { ImageEntity, VideoEntity } from './media';
 import { Category, Department } from './meta';
 
+/**
+ * @param name
+ */
 @Entity()
 export class PriceLevel extends NameEntity {}
 
+/**
+ * @param name
+ * @param description
+ * @param upc
+ * @param category
+ * @param department
+ * @param manufacturers
+ */
 @Entity()
 export class Product
   extends ProductCommonEntity
@@ -32,12 +43,23 @@ export class Product
   @ManyRelation(Manufacturer) manufacturers?: Manufacturer[];
 }
 
+/**
+ * @param name
+ * @param description
+ * @param upc
+ * @param product
+ */
 @Entity()
 export class Sku extends ProductCommonEntity implements ISku<Product> {
   @OwnerRelation(Product)
   product!: Product;
 }
 
+/**
+ * @param price
+ * @param cost
+ * @param sku
+ */
 @Entity()
 export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
   @Column({ type: 'numeric', nullable: true }) price!: number;
@@ -45,6 +67,11 @@ export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
   @OwnerRelation(PriceLevel) priceLevel!: PriceLevel;
   @OwnerRelation(Sku) sku!: Sku;
 }
+/**
+ * @param quantity
+ * @param sku
+ * @param store
+ */
 @Entity()
 export class Quantity extends BaseEntity implements IQuantity<Sku, Store> {
   @Column({ type: 'numeric', nullable: true }) quantity!: number;
@@ -58,6 +85,6 @@ export class ProductImage
   implements IProductImage<Product> {}
 
 @Entity()
-export class ProductVido
+export class ProductVideo
   extends VideoEntity(Product)
   implements IProductVideo<Product> {}
