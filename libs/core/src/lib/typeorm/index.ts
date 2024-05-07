@@ -2,7 +2,6 @@
 import { IID } from '@mdtx/common';
 import { Type, applyDecorators } from '@nestjs/common';
 import { JoinColumn, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
-
 export {
   Entity,
   Column,
@@ -41,6 +40,7 @@ export function OneRelation<T extends IID>(target: Type<T>) {
     JoinColumn()
   );
 }
+
 export function ManyRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
     ManyToMany(
@@ -51,6 +51,7 @@ export function ManyRelation<T extends IID>(target: Type<T>) {
     JoinTable()
   );
 }
+
 export function OwnerRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
     ManyToOne(

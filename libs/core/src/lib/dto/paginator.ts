@@ -3,9 +3,14 @@ import { Property } from '../property';
 
 @Exclude()
 export class PaginatorDto<TOrder = Record<any, any>> {
-  @Property({ type: 'number' }) take?: number;
+  @Property({ type: 'number' })
+  @Transform(({ value }) => {
+    return value ?? 500;
+  })
+  take?: number;
 
-  @Property({ type: 'number' }) skip?: number;
+  @Property({ type: 'number' })
+  skip?: number;
 
   @Property({ type: 'string' })
   @Transform(({ value }) => {

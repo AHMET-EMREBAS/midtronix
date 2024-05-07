@@ -2,15 +2,12 @@ import { applyDecorators } from '@nestjs/common';
 import { ApiPropertyOptions, ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
 import {
-  IsBoolean,
   IsDate,
   IsEAN,
   IsEmail,
   IsIn,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
-  IsString,
   IsStrongPassword,
   Max,
   MaxLength,
