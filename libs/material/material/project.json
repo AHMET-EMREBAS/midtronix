@@ -31,6 +31,61 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/material/material/.storybook",
+        "browserTarget": "material:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/material/material/.storybook",
+          "-p",
+          "libs/material/material/tsconfig.json"
+        ],
+        "assets": [
+          "libs/material/material/src/assets",
+          "libs/material/material/src/favicon.svg"
+        ],
+        "styles": ["libs/material/material/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/material",
+        "configDir": "libs/material/material/.storybook",
+        "browserTarget": "material:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/material/material/.storybook",
+          "-p",
+          "libs/material/material/tsconfig.json"
+        ],
+        "assets": [
+          "libs/material/material/src/assets",
+          "libs/material/material/src/favicon.svg"
+        ],
+        "styles": ["libs/material/material/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }

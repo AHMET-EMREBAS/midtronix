@@ -16,6 +16,7 @@
     "@angular/cli": "~17.3.0",
     "@angular/compiler-cli": "^17.0.0",
     "@angular/language-service": "~17.3.0",
+    "@compodoc/compodoc": "^1.1.24",
     "@nativescript/types": "~8.6.0",
     "@nativescript/webpack": "~5.0.0",
     "@nestjs/schematics": "^10.0.1",
