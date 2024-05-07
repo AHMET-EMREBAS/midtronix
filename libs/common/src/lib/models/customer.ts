@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { ICredential, IName } from './__base';
+import { ICredential } from './__base';
 import { IAddress, IEmail, IPhone } from './contact';
 import { IImage } from './media';
+import { IPermission, IRole } from './role';
 
-export interface ICustomerPermission extends IName {}
+export interface ICustomerPermission extends IPermission {}
 
-export interface ICustomerRole<TPermission> extends IName {
-  permissions?: TPermission[];
-}
+export interface ICustomerRole<TPermission> extends IRole<TPermission> {}
 
 export interface ICustomer<TRole, TCustomer> extends ICredential {
   roles?: TRole[];

@@ -1,5 +1,14 @@
 import { IOwner } from './__base';
 
+export interface IUserDetail {
+  firstName?: string;
+  lastName?: string;
+  middleName?: string;
+  dob?: Date;
+  ssn?: string;
+  dl?: string;
+}
+
 export interface IAddress<TOwner> extends IOwner<TOwner> {
   street: string;
   city: string;

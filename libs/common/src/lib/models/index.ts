@@ -1,5 +1,6 @@
 export * from './__base';
 export * from './contact';
+export * from './customer';
 export * from './manufacturer';
 export * from './media';
 export * from './message';
@@ -7,5 +8,6 @@ export * from './meta';
 export * from './order';
 export * from './product';
 export * from './project';
+export * from './role';
 export * from './store';
 export * from './user';

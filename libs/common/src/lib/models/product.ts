@@ -9,7 +9,7 @@ export interface IProductCommon extends IDescription {
 }
 
 export interface IProduct<TManufacturer> extends IProductCommon {
-  manufacturers: TManufacturer[];
+  manufacturers?: TManufacturer[];
 }
 
 export interface IRecord extends IDescription {}
