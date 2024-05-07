@@ -8,3 +8,4 @@ export * from './product';
 export * from './project';
 export * from './store';
 export * from './user';
+export * from './__test';

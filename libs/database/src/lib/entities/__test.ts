@@ -1,5 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @nx/enforce-module-boundaries */
+
 import { DataSource, Type } from '@mdtx/core';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { DataSourceOptions } from 'typeorm';
 
 /**
  * Create a test database resource
@@ -16,4 +19,16 @@ export async function testDB(entities: Type<any>[]) {
     synchronize: true,
     dropSchema: true,
   }).initialize();
+}
+
+export function testDBOptions(): TypeOrmModuleOptions {
+  return {
+    type: 'postgres',
+    database: 'testdb',
+    username: 'postgres',
+    password: 'password',
+    autoLoadEntities: true,
+    synchronize: true,
+    dropSchema: true,
+  };
 }
