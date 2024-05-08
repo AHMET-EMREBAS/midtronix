@@ -1,9 +1,7 @@
-### Modules
+# modules
 
-- Auth (Authentication and authorzation management)
-- CMS (Customer management)
-- EMS (Employee management)
-- Inventory (Inventory management)
-- PMS (Project management)
-- POS (Point of sale)
-- Website
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test modules` to execute the unit tests.
