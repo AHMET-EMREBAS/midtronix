@@ -2,7 +2,7 @@
   "name": "modules-landing-page",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/landing-page/src",
-  "prefix": "lib",
+  "prefix": "mdtx",
   "projectType": "library",
   "tags": [],
   "targets": {

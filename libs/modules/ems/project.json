@@ -2,7 +2,7 @@
   "name": "modules-ems",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/modules/ems/src",
-  "prefix": "lib",
+  "prefix": "mdtx",
   "projectType": "library",
   "tags": [],
   "targets": {
