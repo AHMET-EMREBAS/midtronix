@@ -1,1 +1,1 @@
-export * from './form.component';
+export const ___form___ = 'form module';

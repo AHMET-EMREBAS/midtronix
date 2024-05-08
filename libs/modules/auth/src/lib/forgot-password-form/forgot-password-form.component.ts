@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonFormModule } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-forgot-password-form',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonFormModule],
   templateUrl: './forgot-password-form.component.html',
   styleUrl: './forgot-password-form.component.scss',
 })

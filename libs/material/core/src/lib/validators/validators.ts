@@ -46,10 +46,14 @@ export function __max(name: string, max: number): ValidatorFn<number> {
 }
 
 export function __email(name: string): ValidatorFn<number> {
-  return (value) =>
-    value && isEmail(value)
-      ? null
-      : $localize`${names(name).fileName} should be a valid email!`;
+  return (value) => {
+    const result =
+      value && isEmail(value)
+        ? null
+        : $localize`${names(name).fileName} should be a valid email!`;
+
+    return result;
+  };
 }
 
 export function __password(name: string): ValidatorFn<number> {

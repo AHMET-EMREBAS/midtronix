@@ -396,13 +396,17 @@
         },
         {
             "name": "LoginFormComponent",
-            "id": "component-LoginFormComponent-ef33bf8a2b31cb9453d3200d8ae03163de0e2e86374e498a989cc61be3f63a213b80435d1576bc5b9159b0a6fa680e05d6eb32ccc8add0fc10d981f14b881ae2",
+            "id": "component-LoginFormComponent-75b7882849c87eb201ae20c10027ffa7f7c5e1ddf7f07596a6c441e43c39f6e3e3c2eafad6cb3a33aa3086339b3bbb04b3ec5fe4c89ca9c2292165a6e748fe7d",
             "file": "libs/modules/auth/src/lib/login-form/login-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "provideMatFormFieldOptions()"
+                }
+            ],
             "selector": "mdtx-login-form",
             "styleUrls": [],
             "styles": [],
@@ -422,20 +426,20 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-login-form',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './login-form.component.html',\n  styleUrl: './login-form.component.scss',\n})\nexport class LoginFormComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport {\n  MAT_FORM_FIELD_DEFAULT_OPTIONS,\n  MatFormFieldAppearance,\n  MatFormFieldDefaultOptions,\n} from '@angular/material/form-field';\nimport {\n  CommonFormModule,\n  provideMatFormFieldOptions,\n} from '@mdtx/material/core';\n@Component({\n  selector: 'mdtx-login-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './login-form.component.html',\n  styleUrl: './login-form.component.scss',\n  providers: [provideMatFormFieldOptions()],\n})\nexport class LoginFormComponent {}\n",
             "styleUrl": "./login-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>login-form works!</p>\n"
+            "templateData": "<form>\n  <mat-form-field>\n    <mat-label i18n>Username</mat-label>\n    <input\n      #un=\"mdtxInput\"\n      type=\"email\"\n      name=\"username\"\n      matInput\n      mdtxInput\n      type=\"text\"\n      [required]=\"true\"\n    />\n    <mat-error>{{ un.errorMessage() }}</mat-error>\n  </mat-form-field>\n</form>\n"
         },
         {
             "name": "LoginWithCodeFormComponent",
@@ -927,7 +931,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LoginFormComponent>",
-                "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n}"
+                "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideNoopAnimations()],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -1572,7 +1576,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LoginFormComponent>",
-                    "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n}"
+                    "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideNoopAnimations()],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",

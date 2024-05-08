@@ -1,5 +1,50 @@
 {
-    "pipes": [],
+    "pipes": [
+        {
+            "name": "LabelcasePipe",
+            "id": "pipe-LabelcasePipe-cd2e95f503b9302291f2ae1a1e868b28274665374b4dae8dea1ada468348b9243944982cfc7ab812aa66f7013dca45c7c03a755a1859b353fe11fda89a0895d2",
+            "file": "libs/material/core/src/lib/pipes/labelcase.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 9,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "standalone": true,
+            "ngname": "labelcase",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\nimport { names } from '@mdtx/utils';\r\n\r\n@Pipe({\r\n  name: 'labelcase',\r\n  standalone: true,\r\n})\r\nexport class LabelcasePipe implements PipeTransform {\r\n  transform(value: string): string {\r\n    return names(value).titleName;\r\n  }\r\n}\r\n"
+        }
+    ],
     "interfaces": [
         {
             "name": "IElementRef",
@@ -22464,7 +22509,7 @@
         {
             "name": "ErrorStateMatcher",
             "id": "class-ErrorStateMatcher-9cf04395f19f34c2657d22ec1a887a2f88316f2a0b3becba4683b2d0db28861fb9dad6f4608c2c2a99fe0895b410dfddf48bdc618a1fcd92d50401ebd610e7db",
-            "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
+            "file": "libs/material/core/src/lib/error-state/error-state-matcher.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
@@ -22930,12 +22975,12 @@
         },
         {
             "name": "InputDirective",
-            "id": "directive-InputDirective-0dfa687354105e8e78d5218c109fba44eb8a36263a8ccb844e919f5c419a20dbbec9c83ccf15a5483721400d7ba0d17b456d28b95506e7d73539523c43a9eebf",
+            "id": "directive-InputDirective-2e8d201e38143e107e8199ab453529323037a86bb50d456ace9c0dfaa248c2361c10baafa08a48276d21adf99fe6acf3b7bad868768ed515bfa545d04347ba02",
             "file": "libs/material/core/src/lib/directive/input.directive.ts",
             "type": "directive",
             "description": "<ul>\n<li>Check errors</li>\n<li>Check typing</li>\n</ul>\n",
             "rawdescription": "\n\n- Check errors\n- Check typing\n",
-            "sourceCode": "import {\r\n  Directive,\r\n  ElementRef,\r\n  HostListener,\r\n  Input,\r\n  OnInit,\r\n} from '@angular/core';\r\nimport {\r\n  ValidatorFn,\r\n  __email,\r\n  __isRequired,\r\n  __max,\r\n  __maxLength,\r\n  __min,\r\n  __minLength,\r\n  __password,\r\n} from '../validators';\r\n\r\n/**\r\n * - Check errors\r\n * - Check typing\r\n */\r\n@Directive({\r\n  selector: '[mdtxInput]',\r\n  standalone: true,\r\n  exportAs: 'mdtxInput',\r\n})\r\nexport class InputDirective implements OnInit {\r\n  private __isTyping = false;\r\n  private __typingTimer!: any;\r\n  private __dirty?: boolean;\r\n  private __validators: ValidatorFn<any>[] = [];\r\n  private __errorMessage?: string | null;\r\n\r\n  @Input() typingDebounceTime = 400;\r\n\r\n  @HostListener('input')\r\n  inputHander(event: InputEvent) {\r\n    this.__dirty = true;\r\n    this.__isTyping = true;\r\n    if (this.__typingTimer) clearTimeout(this.__typingTimer);\r\n    this.__typingTimer = setTimeout(() => {\r\n      this.__isTyping = false;\r\n\r\n      const errorMessage = this.__validators\r\n        .map((handler) => {\r\n          return handler((event.target as HTMLInputElement).value);\r\n        })\r\n        .shift();\r\n\r\n      this.__errorMessage = errorMessage;\r\n    }, this.typingDebounceTime);\r\n  }\r\n\r\n  constructor(public readonly ref: ElementRef<HTMLInputElement>) {}\r\n\r\n  private addValidator(validatorFn: ValidatorFn<any>) {\r\n    this.__validators.push(validatorFn);\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    const { name, required, minLength, maxLength, min, max, type } =\r\n      this.ref.nativeElement;\r\n\r\n    if (!name) throw new Error('Input name is required!');\r\n    if (required) this.addValidator(__isRequired(name));\r\n    if (minLength != undefined) this.addValidator(__minLength(name, minLength));\r\n    if (maxLength != undefined) this.addValidator(__maxLength(name, maxLength));\r\n    if (min != undefined) this.addValidator(__min(name, parseInt(min)));\r\n    if (max != undefined) this.addValidator(__max(name, parseInt(max)));\r\n    if (type === 'email') this.addValidator(__email(name));\r\n    if (type === 'password') this.addValidator(__password(name));\r\n  }\r\n\r\n  isTyping() {\r\n    return this.__isTyping;\r\n  }\r\n\r\n  isDirty() {\r\n    return this.__dirty;\r\n  }\r\n\r\n  errorMessage() {\r\n    return this.__errorMessage;\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Directive,\r\n  ElementRef,\r\n  HostListener,\r\n  Input,\r\n  OnInit,\r\n} from '@angular/core';\r\nimport {\r\n  ValidatorFn,\r\n  __email,\r\n  __isRequired,\r\n  __max,\r\n  __maxLength,\r\n  __min,\r\n  __minLength,\r\n  __password,\r\n} from '../validators';\r\n\r\n/**\r\n * - Check errors\r\n * - Check typing\r\n */\r\n@Directive({\r\n  selector: '[mdtxInput]',\r\n  standalone: true,\r\n  exportAs: 'mdtxInput',\r\n})\r\nexport class InputDirective implements AfterViewInit {\r\n  private __isTyping = false;\r\n  private __typingTimer!: any;\r\n  private __dirty?: boolean;\r\n  private __validators: ValidatorFn<any>[] = [];\r\n  private __errorMessage?: string | null;\r\n\r\n  @Input() typingDebounceTime = 400;\r\n\r\n  @HostListener('input')\r\n  inputHander() {\r\n    this.__dirty = true;\r\n    this.__isTyping = true;\r\n    if (this.__typingTimer) clearTimeout(this.__typingTimer);\r\n    this.__typingTimer = setTimeout(() => {\r\n      this.__isTyping = false;\r\n\r\n      const errorMessage = this.__validators\r\n        .map((handler) => {\r\n          return handler(this.ref.nativeElement.value);\r\n        })\r\n        .filter((e) => e)\r\n        .shift();\r\n\r\n      this.__errorMessage = errorMessage;\r\n    }, this.typingDebounceTime);\r\n  }\r\n\r\n  constructor(public readonly ref: ElementRef<HTMLInputElement>) {}\r\n\r\n  private addValidator(validatorFn: ValidatorFn<any>) {\r\n    this.__validators.push(validatorFn);\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    const { name, required, minLength, maxLength, min, max, type } =\r\n      this.ref.nativeElement;\r\n\r\n    if (!name) throw new Error('Input name is required!');\r\n    if (required == true) this.addValidator(__isRequired(name));\r\n    if (minLength >= 0) this.addValidator(__minLength(name, minLength));\r\n    if (maxLength > 0) this.addValidator(__maxLength(name, maxLength));\r\n    if (min != undefined) this.addValidator(__min(name, parseInt(min)));\r\n    if (max != undefined) this.addValidator(__max(name, parseInt(max)));\r\n    if (type === 'email') this.addValidator(__email(name));\r\n    if (type === 'password') this.addValidator(__password(name));\r\n  }\r\n\r\n  isTyping() {\r\n    return this.__isTyping;\r\n  }\r\n\r\n  isDirty() {\r\n    return this.__dirty;\r\n  }\r\n\r\n  errorMessage() {\r\n    return this.__errorMessage;\r\n  }\r\n\r\n  isValid() {\r\n    return this.errorMessage() ? false : true;\r\n  }\r\n\r\n  isInvalid() {\r\n    return !this.isValid();\r\n  }\r\n}\r\n",
             "selector": "[mdtxInput]",
             "providers": [],
             "exportAs": "mdtxInput",
@@ -22947,7 +22992,7 @@
                     "defaultValue": "400",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35,
+                    "line": 36,
                     "type": "number",
                     "decorators": []
                 }
@@ -22959,18 +23004,11 @@
             "hostListeners": [
                 {
                     "name": "input",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "InputEvent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "args": [],
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 38
+                    "line": 39
                 }
             ],
             "propertiesClass": [
@@ -22981,7 +23019,7 @@
                     "type": "boolean",
                     "optional": true,
                     "description": "",
-                    "line": 31,
+                    "line": 32,
                     "modifierKind": [
                         123
                     ]
@@ -22993,7 +23031,7 @@
                     "type": "string | null",
                     "optional": true,
                     "description": "",
-                    "line": 33,
+                    "line": 34,
                     "modifierKind": [
                         123
                     ]
@@ -23006,7 +23044,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "modifierKind": [
                         123
                     ]
@@ -23018,7 +23056,7 @@
                     "type": "any",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 31,
                     "modifierKind": [
                         123
                     ]
@@ -23031,7 +23069,7 @@
                     "type": "ValidatorFn<any>[]",
                     "optional": false,
                     "description": "",
-                    "line": 32,
+                    "line": 33,
                     "modifierKind": [
                         123
                     ]
@@ -23043,7 +23081,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 55,
+                    "line": 57,
                     "modifierKind": [
                         125,
                         148
@@ -23064,7 +23102,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 59,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -23088,24 +23126,17 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 83,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
                     "name": "inputHander",
-                    "args": [
-                        {
-                            "name": "event",
-                            "type": "InputEvent",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -23116,17 +23147,6 @@
                     ],
                     "modifierKind": [
                         170
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "event",
-                            "type": "InputEvent",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
                     ]
                 },
                 {
@@ -23135,7 +23155,17 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 81,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23145,24 +23175,34 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "ngOnInit",
+                    "name": "isValid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 89,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
             ],
             "extends": [],
             "implements": [
-                "OnInit"
+                "AfterViewInit"
             ],
             "constructorObj": {
                 "name": "constructor",
@@ -23177,7 +23217,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 53,
+                "line": 55,
                 "jsdoctags": [
                     {
                         "name": "ref",
@@ -23510,8 +23550,70 @@
     ],
     "components": [
         {
-            "name": "FullscreenComponent",
-            "id": "component-FullscreenComponent-dd130164a29bc34980d80e7c99c06863c0a3ea0e91888a24f82535d2dd8287992d0bfd6d6db8c3cd15b055ab1f86b3b9b571ea9a8d99b93adf061c16567cbd3d",
+            "name": "FormComponent",
+            "id": "component-FormComponent-8019c70e9469144f4e122a1ae1105ac3c3bbc6c5392522576c71877be087d85602e32a879d99d1bacb58ddc7f0edac61052027d45bf468b5ca464284d03bfba2",
+            "file": "libs/material/form/src/lib/form/form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "submit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-form',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './form.component.html',\r\n  styleUrl: './form.component.scss',\r\n})\r\nexport class FormComponent {\r\n  constructor() {}\r\n  submit() {}\r\n}\r\n",
+            "styleUrl": "./form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 11
+            },
+            "extends": [],
+            "templateData": "<p>form works!</p>\r\n"
+        },
+        {
+            "name": "FullscreenDirectiveComponent",
+            "id": "component-FullscreenDirectiveComponent-e5493a4d69d0413453113a856ae17fcdded0fd369c8419847c8dd0394e8e5c18380893a682a7d66cfaa8596cc970ffbbe6f67bb8919c77af98b334ce6b01a955",
             "file": "libs/material/core/src/lib/directive/fullscreen.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23547,15 +23649,91 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FullscreenDirective } from './fullscreen.directive';\r\nimport { MatButtonModule } from '@angular/material/button';\r\n@Component({\r\n  selector: 'mdtx-fullscreen-directive-test',\r\n  standalone: true,\r\n  imports: [FullscreenDirective, MatButtonModule],\r\n  template: `\r\n    <div #elementRef>\r\n      <p>Testing <strong>mdtxFullscreen</strong> directive</p>\r\n\r\n      <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\r\n        {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\r\n      </button>\r\n    </div>\r\n  `,\r\n})\r\nexport class FullscreenComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FullscreenDirective } from './fullscreen.directive';\r\nimport { MatButtonModule } from '@angular/material/button';\r\n@Component({\r\n  selector: 'mdtx-fullscreen-directive-test',\r\n  standalone: true,\r\n  imports: [FullscreenDirective, MatButtonModule],\r\n  template: `\r\n    <div #elementRef>\r\n      <p>Testing <strong>mdtxFullscreen</strong> directive</p>\r\n\r\n      <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\r\n        {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\r\n      </button>\r\n    </div>\r\n  `,\r\n})\r\nexport class FullscreenDirectiveComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": []
         },
         {
+            "name": "InputComponent",
+            "id": "component-InputComponent-4916e209feadb905651a8dc423e5040f3084f03abab1ceee5090874c3737f1209559dfee2a3f72676732d41ebd7e1aa24916446195fc7b28a87efa20c6d62dd0",
+            "file": "libs/material/form/src/lib/form/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-input",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatFormFieldModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatInputModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\n\r\n@Component({\r\n  selector: 'mdtx-input',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n  ],\r\n  templateUrl: './input.component.html',\r\n  styleUrl: './input.component.scss',\r\n})\r\nexport class InputComponent {\r\n  @Input() type!: string;\r\n  \r\n}\r\n",
+            "styleUrl": "./input.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>input works!</p>\r\n"
+        },
+        {
             "name": "InputDirectiveComponent",
-            "id": "component-InputDirectiveComponent-3386d69c925c73739dfc4d17707168c84dc7947d97afc96d717b14825b6bfc2acae3e1ab689f3a149d08add81de94baf864f957fe41ef1b5b4072f035fa45a27",
+            "id": "component-InputDirectiveComponent-9ac8a91ea4eafe49ea8ff3660a8a567ae610b9ae5bf032301ef14b4daf7abed5973f3b1a8ebca65e1c7952c1b601f763ad7cce448e1f43f6d76c2a2161365fb3",
             "file": "libs/material/core/src/lib/directive/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23565,7 +23743,7 @@
             "selector": "mdtx-input-directive-test",
             "styleUrls": [],
             "styles": [],
-            "template": "<div>   <input\n     #firstName=\"mdtxInput\"\n     mdtxInput\n     type=\"text\"\n     name=\"firstName\"\n     minlength=\"3\"\n     maxlength=\"30\"\n   />\n\n   <span class=\"error\" *ngIf=\"firstName.errorMessage() as error\">\n     {{ error }}\n   </span>\n </div>",
+            "template": "<div>\n  <input\n    #fn=\"mdtxInput\"\n    mdtxInput\n    [typingDebounceTime]=\"4000\"\n    type=\"text\"\n    name=\"firstName\"\n    minlength=\"3\"\n    maxlength=\"30\"\n  />\n  <span class=\"material-icons\" *ngIf=\"fn.isTyping()\">keyboard</span>\n  <span class=\"error\"> {{ fn.errorMessage() }} </span>\n</div>\n<div>\n  <input\n    #ln=\"mdtxInput\"\n    mdtxInput\n    type=\"text\"\n    name=\"lastName\"\n    [typingDebounceTime]=\"100\"\n    [required]=\"true\"\n    minlength=\"3\"\n    maxlength=\"30\"\n  />\n  <span class=\"material-icons\" *ngIf=\"ln.isTyping()\">keyboard</span>\n  <span class=\"error\"> {{ ln.errorMessage() }} </span>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -23591,7 +23769,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { InputDirective } from './input.directive';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-directive-test',\r\n  standalone: true,\r\n  imports: [CommonModule, InputDirective],\r\n  template: ` <div>\r\n    <input\r\n      #firstName=\"mdtxInput\"\r\n      mdtxInput\r\n      type=\"text\"\r\n      name=\"firstName\"\r\n      minlength=\"3\"\r\n      maxlength=\"30\"\r\n    />\r\n\r\n    <span class=\"error\" *ngIf=\"firstName.errorMessage() as error\">\r\n      {{ error }}\r\n    </span>\r\n  </div>`,\r\n})\r\nexport class InputDirectiveComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { InputDirective } from './input.directive';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-directive-test',\r\n  standalone: true,\r\n  imports: [CommonModule, InputDirective],\r\n  template: `\r\n    <div>\r\n      <input\r\n        #fn=\"mdtxInput\"\r\n        mdtxInput\r\n        [typingDebounceTime]=\"4000\"\r\n        type=\"text\"\r\n        name=\"firstName\"\r\n        minlength=\"3\"\r\n        maxlength=\"30\"\r\n      />\r\n      <span class=\"material-icons\" *ngIf=\"fn.isTyping()\">keyboard</span>\r\n      <span class=\"error\"> {{ fn.errorMessage() }} </span>\r\n    </div>\r\n    <div>\r\n      <input\r\n        #ln=\"mdtxInput\"\r\n        mdtxInput\r\n        type=\"text\"\r\n        name=\"lastName\"\r\n        [typingDebounceTime]=\"100\"\r\n        [required]=\"true\"\r\n        minlength=\"3\"\r\n        maxlength=\"30\"\r\n      />\r\n      <span class=\"material-icons\" *ngIf=\"ln.isTyping()\">keyboard</span>\r\n      <span class=\"error\"> {{ ln.errorMessage() }} </span>\r\n    </div>\r\n  `,\r\n})\r\nexport class InputDirectiveComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -23642,14 +23820,14 @@
         },
         {
             "name": "LocalStoreComponent",
-            "id": "component-LocalStoreComponent-b2f544f3778e649a01fdf00e9b032e83c79bed4d14ddd42083ea8bde120c0d590d3394612c5a7bf3b4fe4c94a8658d9a1a57329c696c3fb766fb4b37f29eb670",
+            "id": "component-LocalStoreComponent-6fdb92d66c2c78b865509eb00f0404088062a02d3a271d03f08d35000754bee8dc1ba934334e1f9efa72dcb53364ed8ba11f93ec2398876dc854819f2734e001",
             "file": "libs/material/core/src/lib/localstore/local-store.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-local-store",
+            "selector": "mdtx-local-store-test",
             "styleUrls": [],
             "styles": [],
             "template": "<p>Testing <strong>LocalStore</strong></p>\n<hr />\n<strong>Current Value</strong>: {{ store.$value | async }}\n<hr />\n<button (click)=\"store.set('Updated Value')\">Update Value</button>\n",
@@ -23695,7 +23873,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { LocalStore } from './local-store';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nconst store = LocalStore.createStore('some', { debounce: 400 });\r\n@Component({\r\n  selector: 'mdtx-local-store',\r\n  imports: [CommonModule],\r\n  standalone: true,\r\n  template: `\r\n    <p>Testing <strong>LocalStore</strong></p>\r\n    <hr />\r\n    <strong>Current Value</strong>: {{ store.$value | async }}\r\n    <hr />\r\n    <button (click)=\"store.set('Updated Value')\">Update Value</button>\r\n  `,\r\n})\r\nexport class LocalStoreComponent implements OnInit {\r\n  store!: LocalStore;\r\n\r\n  ngOnInit(): void {\r\n    this.store = store;\r\n    this.store.set('Current Value');\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { LocalStore } from './local-store';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nconst store = LocalStore.createStore('some', { debounce: 400 });\r\n@Component({\r\n  selector: 'mdtx-local-store-test',\r\n  imports: [CommonModule],\r\n  standalone: true,\r\n  template: `\r\n    <p>Testing <strong>LocalStore</strong></p>\r\n    <hr />\r\n    <strong>Current Value</strong>: {{ store.$value | async }}\r\n    <hr />\r\n    <button (click)=\"store.set('Updated Value')\">Update Value</button>\r\n  `,\r\n})\r\nexport class LocalStoreComponent implements OnInit {\r\n  store!: LocalStore;\r\n\r\n  ngOnInit(): void {\r\n    this.store = store;\r\n    this.store.set('Current Value');\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -23748,62 +23926,8 @@
             "templateData": "<p>table works!</p>\n"
         },
         {
-            "name": "TypingComponent",
-            "id": "component-TypingComponent-282e2291b64ba93bf46e3a1117dc2bdd370d7fce4c946a57c365c8347aff3e7486348c8c2dbdbdc5144fe6116daad73b9439b3fd1ffea47d42cf120b1771c289",
-            "file": "libs/material/core/src/lib/directive/typing.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "mdtx-typing-directive-test",
-            "styleUrls": [],
-            "styles": [],
-            "template": "<ng-template #first>\n  <div>\n    <p>Testing <strong>mdtxTyping</strong> directive</p>\n    <hr />\n\n    Value :{{ input.value }}\n    <input\n      #input\n      #typing=\"mdtxInput\"\n      type=\"text\"\n      [typingDebounceTime]=\"3000\"\n      mdtxInput\n      placeholder=\"Type something\"\n    />\n    <span>{{ typing.isTyping() ? 'Typing' : 'Not Typing' }}</span>\n  </div>\n</ng-template>\n\n<ng-container *ngTemplateOutlet=\"first\"></ng-container>\n<ng-container *ngTemplateOutlet=\"first\"></ng-container>\n<ng-container *ngTemplateOutlet=\"first\"></ng-container>\n<ng-container *ngTemplateOutlet=\"first\"></ng-container>\n",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "debounceTime",
-                    "defaultValue": "2000",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 36,
-                    "type": "number",
-                    "decorators": []
-                }
-            ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "InputDirective",
-                    "type": "directive"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { TypingDirective } from './typing.directive';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputDirective } from './input.directive';\r\n\r\n@Component({\r\n  selector: 'mdtx-typing-directive-test',\r\n  standalone: true,\r\n  imports: [CommonModule, InputDirective],\r\n  template: `\r\n    <ng-template #first>\r\n      <div>\r\n        <p>Testing <strong>mdtxTyping</strong> directive</p>\r\n        <hr />\r\n\r\n        Value :{{ input.value }}\r\n        <input\r\n          #input\r\n          #typing=\"mdtxInput\"\r\n          type=\"text\"\r\n          [typingDebounceTime]=\"3000\"\r\n          mdtxInput\r\n          placeholder=\"Type something\"\r\n        />\r\n        <span>{{ typing.isTyping() ? 'Typing' : 'Not Typing' }}</span>\r\n      </div>\r\n    </ng-template>\r\n\r\n    <ng-container *ngTemplateOutlet=\"first\"></ng-container>\r\n    <ng-container *ngTemplateOutlet=\"first\"></ng-container>\r\n    <ng-container *ngTemplateOutlet=\"first\"></ng-container>\r\n    <ng-container *ngTemplateOutlet=\"first\"></ng-container>\r\n  `,\r\n})\r\nexport class TypingComponent {\r\n  @Input() debounceTime = 2000;\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": []
-        },
-        {
-            "name": "ViewportComponent",
-            "id": "component-ViewportComponent-8ef65fd50dfbde0251c82ace84bc776e78c4f3d5d655bd91191dc1166042d2a577e990efcac9e5d78fcf89e2411182d5504b9ae233a1070c55de47a5ea57c818",
+            "name": "ViewportDirectiveComponent",
+            "id": "component-ViewportDirectiveComponent-9ec433d230435c27e794db3943653f5c4984678080d962fe03c908579cc058ba94e4b76323191a14e1305fcaca9886ff02580baf8404a5de3837918d657b2865",
             "file": "libs/material/core/src/lib/directive/viewport.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23835,14 +23959,115 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ViewportDirective } from './viewport.directive';\r\n\r\n@Component({\r\n  selector: 'mdtx-viewport-directive-test',\r\n  standalone: true,\r\n  imports: [ViewportDirective],\r\n  template: `\r\n    <div #viewport=\"mdtxViewport\" mdtxViewport>\r\n      <p>Testing <strong>mdtxViewport</strong> directive</p>\r\n      <table>\r\n        <tr>\r\n          <td><strong>viewport.isHandset()</strong></td>\r\n          <td>{{ viewport.isHandset() }}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td><strong>viewport.isNotHandset()</strong></td>\r\n          <td>{{ viewport.isNotHandset() }}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  `,\r\n})\r\nexport class ViewportComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ViewportDirective } from './viewport.directive';\r\n\r\n@Component({\r\n  selector: 'mdtx-viewport-directive-test',\r\n  standalone: true,\r\n  imports: [ViewportDirective],\r\n  template: `\r\n    <div #viewport=\"mdtxViewport\" mdtxViewport>\r\n      <p>Testing <strong>mdtxViewport</strong> directive</p>\r\n      <table>\r\n        <tr>\r\n          <td><strong>viewport.isHandset()</strong></td>\r\n          <td>{{ viewport.isHandset() }}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td><strong>viewport.isNotHandset()</strong></td>\r\n          <td>{{ viewport.isNotHandset() }}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  `,\r\n})\r\nexport class ViewportDirectiveComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": []
         }
     ],
-    "modules": [],
+    "modules": [
+        {
+            "name": "CommonFormModule",
+            "id": "module-CommonFormModule-9e088f02aed989a1678175b13644069595148eb771287734b2a203206dd07bf2f2078c1628202ed37416ed6b31cdc5e46c3035d9cf87c0f42331a8b298a4a58c",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/material/core/src/lib/modules/common-form.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { MatDatepickerModule } from '@angular/material/datepicker';\r\nimport { MatCheckboxModule } from '@angular/material/checkbox';\r\nimport { MatRadioModule } from '@angular/material/radio';\r\nimport { MatSelectModule } from '@angular/material/select';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { CommonModule } from './common.module';\r\nimport { InputDirective } from '../directive';\r\n\r\nconst modules = [\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatAutocompleteModule,\r\n  MatDatepickerModule,\r\n  MatCheckboxModule,\r\n  MatRadioModule,\r\n  MatSelectModule,\r\n  MatListModule,\r\n  InputDirective,\r\n];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonFormModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "CommonModule"
+                        },
+                        {
+                            "name": "InputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CommonModule"
+                        },
+                        {
+                            "name": "InputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CommonModule",
+            "id": "module-CommonModule-0df1171db01f4bfc630fdcbd57559dc887280b78f0c22b5e8fca9b981e2aa28ac64a6657de8e85fd2f379e1b26af38f9db7181815fc0d434321e5bc4d6eaeca4",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/material/core/src/lib/modules/common.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FullscreenDirective, ViewportDirective } from '../directive';\r\nimport { CommonModule as NgCommonModule } from '@angular/common';\r\n\r\nconst modules = [NgCommonModule, FullscreenDirective, ViewportDirective];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "CommonModule"
+                        },
+                        {
+                            "name": "InputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CommonModule"
+                        },
+                        {
+                            "name": "InputDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
     "miscellaneous": {
         "variables": [
             {
@@ -23883,7 +24108,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23893,17 +24118,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/typing works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23913,7 +24128,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23923,7 +24138,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23933,7 +24148,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23943,7 +24158,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "IconList",
@@ -23992,8 +24207,8 @@
                 "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<FullscreenComponent>",
-                "defaultValue": "{\n  component: FullscreenComponent,\n  title: 'FullscreenComponent',\n}"
+                "type": "Meta<FullscreenDirectiveComponent>",
+                "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24003,17 +24218,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputDirectiveComponent>",
-                "defaultValue": "{\n  component: InputDirectiveComponent,\n  title: 'InputDirectiveComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<TypingComponent>",
-                "defaultValue": "{\n  component: TypingComponent,\n  title: 'TypingComponent',\n}"
+                "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24022,8 +24227,8 @@
                 "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<ViewportComponent>",
-                "defaultValue": "{\n  component: ViewportComponent,\n  title: 'ViewportComponent',\n}"
+                "type": "Meta<ViewportDirectiveComponent>",
+                "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24033,7 +24238,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LocalStoreComponent>",
-                "defaultValue": "{\n  component: LocalStoreComponent,\n  title: 'LocalStoreComponent',\n}"
+                "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24043,7 +24248,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LayoutComponent>",
-                "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n}"
+                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24053,7 +24258,27 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TableComponent>",
-                "defaultValue": "{\n  component: TableComponent,\n  title: 'TableComponent',\n}"
+                "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n}"
+            },
+            {
+                "name": "modules",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/modules/common-form.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatAutocompleteModule,\r\n  MatDatepickerModule,\r\n  MatCheckboxModule,\r\n  MatRadioModule,\r\n  MatSelectModule,\r\n  MatListModule,\r\n  InputDirective,\r\n]"
+            },
+            {
+                "name": "modules",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/modules/common.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
             },
             {
                 "name": "Primary",
@@ -24063,7 +24288,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -24073,17 +24298,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -24093,7 +24308,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -24103,7 +24318,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -24113,7 +24328,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -24123,7 +24338,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "store",
@@ -24514,7 +24729,7 @@
             },
             {
                 "name": "provideErrorStateMatcher",
-                "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
+                "file": "libs/material/core/src/lib/error-state/error-state-matcher.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -24522,6 +24737,37 @@
                 "description": "",
                 "args": [],
                 "returnType": "Provider"
+            },
+            {
+                "name": "provideMatFormFieldOptions",
+                "file": "libs/material/core/src/lib/providers/provide-form-field-options.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "options",
+                        "type": "Partial",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "options",
+                        "type": "Partial",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             }
         ],
         "typealiases": [
@@ -24595,7 +24841,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FullscreenComponent>",
+                "rawtype": "StoryObj<FullscreenDirectiveComponent>",
                 "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -24617,18 +24863,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<TypingComponent>",
-                "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<ViewportComponent>",
+                "rawtype": "StoryObj<ViewportDirectiveComponent>",
                 "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -24725,7 +24960,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24734,8 +24969,8 @@
                     "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<FullscreenComponent>",
-                    "defaultValue": "{\n  component: FullscreenComponent,\n  title: 'FullscreenComponent',\n}"
+                    "type": "Meta<FullscreenDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24745,7 +24980,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/core/src/lib/directive/input.component.stories.ts": [
@@ -24757,7 +24992,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24767,7 +25002,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputDirectiveComponent>",
-                    "defaultValue": "{\n  component: InputDirectiveComponent,\n  title: 'InputDirectiveComponent',\n}"
+                    "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24777,39 +25012,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/core/src/lib/directive/typing.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/typing works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<TypingComponent>",
-                    "defaultValue": "{\n  component: TypingComponent,\n  title: 'TypingComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
@@ -24821,7 +25024,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24830,8 +25033,8 @@
                     "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ViewportComponent>",
-                    "defaultValue": "{\n  component: ViewportComponent,\n  title: 'ViewportComponent',\n}"
+                    "type": "Meta<ViewportDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24841,7 +25044,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
@@ -24853,7 +25056,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24863,7 +25066,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LocalStoreComponent>",
-                    "defaultValue": "{\n  component: LocalStoreComponent,\n  title: 'LocalStoreComponent',\n}"
+                    "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24873,7 +25076,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
@@ -24885,7 +25088,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24895,7 +25098,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LayoutComponent>",
-                    "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n}"
+                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24905,7 +25108,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/table/src/lib/table/table.component.stories.ts": [
@@ -24917,7 +25120,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -24927,7 +25130,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TableComponent>",
-                    "defaultValue": "{\n  component: TableComponent,\n  title: 'TableComponent',\n}"
+                    "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -24937,7 +25140,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/core/src/lib/types/icons.ts": [
@@ -24982,6 +25185,30 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "InputTypeList()"
+                }
+            ],
+            "libs/material/core/src/lib/modules/common-form.module.ts": [
+                {
+                    "name": "modules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/modules/common-form.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  MatAutocompleteModule,\r\n  MatDatepickerModule,\r\n  MatCheckboxModule,\r\n  MatRadioModule,\r\n  MatSelectModule,\r\n  MatListModule,\r\n  InputDirective,\r\n]"
+                }
+            ],
+            "libs/material/core/src/lib/modules/common.module.ts": [
+                {
+                    "name": "modules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/modules/common.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
                 }
             ],
             "libs/material/core/src/lib/localstore/local-store.component.ts": [
@@ -25377,10 +25604,10 @@
                     ]
                 }
             ],
-            "libs/material/form/src/lib/common/error-state-matcher.ts": [
+            "libs/material/core/src/lib/error-state/error-state-matcher.ts": [
                 {
                     "name": "provideErrorStateMatcher",
-                    "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
+                    "file": "libs/material/core/src/lib/error-state/error-state-matcher.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -25388,6 +25615,39 @@
                     "description": "",
                     "args": [],
                     "returnType": "Provider"
+                }
+            ],
+            "libs/material/core/src/lib/providers/provide-form-field-options.ts": [
+                {
+                    "name": "provideMatFormFieldOptions",
+                    "file": "libs/material/core/src/lib/providers/provide-form-field-options.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "options",
+                            "type": "Partial",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "options",
+                            "type": "Partial",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -25476,7 +25736,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<FullscreenComponent>",
+                    "rawtype": "StoryObj<FullscreenDirectiveComponent>",
                     "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -25497,25 +25757,12 @@
                     "kind": 183
                 }
             ],
-            "libs/material/core/src/lib/directive/typing.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<TypingComponent>",
-                    "file": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ViewportComponent>",
+                    "rawtype": "StoryObj<ViewportDirectiveComponent>",
                     "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -25579,7 +25826,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 4,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -25616,7 +25863,7 @@
                 "filePath": "libs/material/core/src/lib/directive/fullscreen.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "FullscreenComponent",
+                "name": "FullscreenDirectiveComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -25674,8 +25921,8 @@
                 "type": "directive",
                 "linktype": "directive",
                 "name": "InputDirective",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -25685,45 +25932,6 @@
                 "name": "AppLogoDirective",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/directive/typing.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/directive/typing.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "TypingComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -25769,7 +25977,7 @@
                 "filePath": "libs/material/core/src/lib/directive/viewport.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ViewportComponent",
+                "name": "ViewportDirectiveComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -25781,6 +25989,25 @@
                 "name": "ViewportDirective",
                 "coveragePercent": 8,
                 "coverageCount": "1/12",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/error-state/error-state-matcher.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ErrorStateMatcher",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/error-state/error-state-matcher.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideErrorStateMatcher",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -25896,6 +26123,35 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/core/src/lib/modules/common-form.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "modules",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/modules/common.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "modules",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/pipes/labelcase.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "LabelcasePipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/core/src/lib/providers/create-provider.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
@@ -25914,6 +26170,16 @@
                 "coveragePercent": 100,
                 "coverageCount": "1/1",
                 "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/providers/provide-form-field-options.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideMatFormFieldOptions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "libs/material/core/src/lib/types/autocomplete.ts",
@@ -26073,22 +26339,21 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/form/src/lib/common/error-state-matcher.ts",
-                "type": "class",
-                "linktype": "classe",
-                "name": "ErrorStateMatcher",
+                "filePath": "libs/material/form/src/lib/form/form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/form/src/lib/common/error-state-matcher.ts",
-                "type": "function",
-                "linktype": "miscellaneous",
-                "linksubtype": "function",
-                "name": "provideErrorStateMatcher",
+                "filePath": "libs/material/form/src/lib/form/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
