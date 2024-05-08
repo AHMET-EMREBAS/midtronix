@@ -4,7 +4,7 @@
         {
             "name": "IElementRef",
             "id": "interface-IElementRef-62cd471cbc9bbbe57c58689b4026c8acfb7182cd75c15be2b8df94f695a511bf9c775fb564c1db8154e9475aaf6a76d4d434b798790fd247ca4e630d2e258dd6",
-            "file": "libs/material/core/src/lib/types/element-ref.ts",
+            "file": "libs/material/core/src/lib/interface/element-ref.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -26,9 +26,72 @@
             "extends": []
         },
         {
+            "name": "ILocalStore",
+            "id": "interface-ILocalStore-fcc0ebb2dff20f9f87cd5e27f94e06c55a57f66926eee554da8bd38ad0ad0f04bee6cc6845b656175414c3ac7af920f7c1646017f03a4208016fb9e58d877acd",
+            "file": "libs/material/core/src/lib/localstore/local-store.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { BehaviorSubject, debounceTime } from 'rxjs';\r\n\r\nexport interface ILocalStore {\r\n  get(): string | null;\r\n  set(value: string): void;\r\n  remove(): void;\r\n}\r\n\r\n/**\r\n * Use {@link LocalStore} to create a new store\r\n */\r\nexport class __LocalStore implements ILocalStore {\r\n  protected readonly $__value = new BehaviorSubject('');\r\n  readonly $value = this.$__value.pipe(debounceTime(400));\r\n  constructor(protected readonly key: string) {}\r\n\r\n  get() {\r\n    return localStorage.getItem(this.key);\r\n  }\r\n\r\n  set(value: string) {\r\n    this.$__value.next(value);\r\n    return localStorage.setItem(this.key, value);\r\n  }\r\n\r\n  remove() {\r\n    return localStorage.removeItem(this.key);\r\n  }\r\n}\r\n\r\n/**\r\n * Create local storeage if it does not exist\r\n */\r\nexport class LocalStore {\r\n  protected static readonly keys = new Set();\r\n  private constructor() {\r\n    // Singleton\r\n  }\r\n\r\n  static createStore(key: string) {\r\n    if (this.keys.has(key)) {\r\n      throw new Error(`${key} is already used!`);\r\n    }\r\n    this.keys.add(key);\r\n    return new __LocalStore(key);\r\n  }\r\n}\r\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 173,
+            "methods": [
+                {
+                    "name": "get",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string | null",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "remove",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 6,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 5,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": []
+        },
+        {
             "name": "ITemplateRef",
             "id": "interface-ITemplateRef-4e3d17c38f71b0e19a21ce45d10211ffc3d5d8634d4fb43dbd4c134597aa3f098f6281dd19e8b1debbe85432105af982387eb0d1184412447a0d20134986be30",
-            "file": "libs/material/core/src/lib/types/template-ref.ts",
+            "file": "libs/material/core/src/lib/interface/template-ref.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -52,7 +115,7 @@
         {
             "name": "IToggle",
             "id": "interface-IToggle-fb9c9560012b72552865a0b6466f02662e25c49e4da1049119ef67e800b6922b823be680c3cf9aca2f2e704facb0e55a3096079bd1f56afd2297cf88a72d1981",
-            "file": "libs/material/core/src/lib/types/toggle.ts",
+            "file": "libs/material/core/src/lib/interface/toggle.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -146,7 +209,7 @@
         {
             "name": "IToggleValue",
             "id": "interface-IToggleValue-fb9c9560012b72552865a0b6466f02662e25c49e4da1049119ef67e800b6922b823be680c3cf9aca2f2e704facb0e55a3096079bd1f56afd2297cf88a72d1981",
-            "file": "libs/material/core/src/lib/types/toggle.ts",
+            "file": "libs/material/core/src/lib/interface/toggle.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
@@ -22375,6 +22438,131 @@
             "hostListeners": []
         },
         {
+            "name": "__LocalStore",
+            "id": "class-__LocalStore-fcc0ebb2dff20f9f87cd5e27f94e06c55a57f66926eee554da8bd38ad0ad0f04bee6cc6845b656175414c3ac7af920f7c1646017f03a4208016fb9e58d877acd",
+            "file": "libs/material/core/src/lib/localstore/local-store.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { BehaviorSubject, debounceTime } from 'rxjs';\r\n\r\nexport interface ILocalStore {\r\n  get(): string | null;\r\n  set(value: string): void;\r\n  remove(): void;\r\n}\r\n\r\n/**\r\n * Use {@link LocalStore} to create a new store\r\n */\r\nexport class __LocalStore implements ILocalStore {\r\n  protected readonly $__value = new BehaviorSubject('');\r\n  readonly $value = this.$__value.pipe(debounceTime(400));\r\n  constructor(protected readonly key: string) {}\r\n\r\n  get() {\r\n    return localStorage.getItem(this.key);\r\n  }\r\n\r\n  set(value: string) {\r\n    this.$__value.next(value);\r\n    return localStorage.setItem(this.key, value);\r\n  }\r\n\r\n  remove() {\r\n    return localStorage.removeItem(this.key);\r\n  }\r\n}\r\n\r\n/**\r\n * Create local storeage if it does not exist\r\n */\r\nexport class LocalStore {\r\n  protected static readonly keys = new Set();\r\n  private constructor() {\r\n    // Singleton\r\n  }\r\n\r\n  static createStore(key: string) {\r\n    if (this.keys.has(key)) {\r\n      throw new Error(`${key} is already used!`);\r\n    }\r\n    this.keys.add(key);\r\n    return new __LocalStore(key);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "key",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "key",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "$__value",
+                    "defaultValue": "new BehaviorSubject('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        124,
+                        148
+                    ]
+                },
+                {
+                    "name": "$value",
+                    "defaultValue": "this.$__value.pipe(debounceTime(400))",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "description": "<p>Use {@link LocalStore} to create a new store</p>\n",
+            "rawdescription": "\n\nUse {@link LocalStore} to create a new store\n",
+            "methods": [
+                {
+                    "name": "get",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "remove",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "set",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "ILocalStore"
+            ]
+        },
+        {
             "name": "ErrorStateMatcher",
             "id": "class-ErrorStateMatcher-9cf04395f19f34c2657d22ec1a887a2f88316f2a0b3becba4683b2d0db28861fb9dad6f4608c2c2a99fe0895b410dfddf48bdc618a1fcd92d50401ebd610e7db",
             "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
@@ -22437,17 +22625,171 @@
             "implements": [
                 "__ErrorStateMatcher"
             ]
+        },
+        {
+            "name": "LocalStore",
+            "id": "class-LocalStore-fcc0ebb2dff20f9f87cd5e27f94e06c55a57f66926eee554da8bd38ad0ad0f04bee6cc6845b656175414c3ac7af920f7c1646017f03a4208016fb9e58d877acd",
+            "file": "libs/material/core/src/lib/localstore/local-store.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { BehaviorSubject, debounceTime } from 'rxjs';\r\n\r\nexport interface ILocalStore {\r\n  get(): string | null;\r\n  set(value: string): void;\r\n  remove(): void;\r\n}\r\n\r\n/**\r\n * Use {@link LocalStore} to create a new store\r\n */\r\nexport class __LocalStore implements ILocalStore {\r\n  protected readonly $__value = new BehaviorSubject('');\r\n  readonly $value = this.$__value.pipe(debounceTime(400));\r\n  constructor(protected readonly key: string) {}\r\n\r\n  get() {\r\n    return localStorage.getItem(this.key);\r\n  }\r\n\r\n  set(value: string) {\r\n    this.$__value.next(value);\r\n    return localStorage.setItem(this.key, value);\r\n  }\r\n\r\n  remove() {\r\n    return localStorage.removeItem(this.key);\r\n  }\r\n}\r\n\r\n/**\r\n * Create local storeage if it does not exist\r\n */\r\nexport class LocalStore {\r\n  protected static readonly keys = new Set();\r\n  private constructor() {\r\n    // Singleton\r\n  }\r\n\r\n  static createStore(key: string) {\r\n    if (this.keys.has(key)) {\r\n      throw new Error(`${key} is already used!`);\r\n    }\r\n    this.keys.add(key);\r\n    return new __LocalStore(key);\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 35,
+                "modifierKind": [
+                    123
+                ]
+            },
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "keys",
+                    "defaultValue": "new Set()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        124,
+                        126,
+                        148
+                    ]
+                }
+            ],
+            "description": "<p>Create local storeage if it does not exist</p>\n",
+            "rawdescription": "\n\nCreate local storeage if it does not exist\n",
+            "methods": [
+                {
+                    "name": "createStore",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "__LocalStore",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        126
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": []
         }
     ],
     "directives": [
         {
+            "name": "AppLogoDirective",
+            "id": "directive-AppLogoDirective-a57b3ae50e147a65c32d6db32fee814ec7885c3917c48b8580d84b25d0981977c75a6d5758689304c15888b7fa13a30ec5b995113db5ad0bc706ad781a4f4f75",
+            "file": "libs/material/core/src/lib/directive/logo.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef, OnInit } from '@angular/core';\r\nimport { IElementRef } from '../interface';\r\n\r\n@Directive({\r\n  selector: '[mdtxLogo]',\r\n  standalone: true,\r\n})\r\nexport class AppLogoDirective implements IElementRef<HTMLImageElement>, OnInit {\r\n  constructor(public elementRef: ElementRef<HTMLImageElement>) {}\r\n\r\n  ngOnInit(): void {\r\n    this.elementRef.nativeElement.classList.add('logo');\r\n\r\n    this.elementRef.nativeElement.setAttribute(\r\n      'src',\r\n      'assets/icons/icon-72x72.png'\r\n    );\r\n    this.elementRef.nativeElement.setAttribute('alt', 'App Logo');\r\n  }\r\n}\r\n",
+            "selector": "[mdtxLogo]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLImageElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "IElementRef",
+                "OnInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLImageElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLImageElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "FullscreenDirective",
-            "id": "directive-FullscreenDirective-e44a13ef0e42d025c0b543cdfc791962fc9c7491f31ded9c73ea2d79ff99379e15a09d961681a30d1a4cecb3a17cdeeee822114c36cca6f525ccb8f811fefcc3",
+            "id": "directive-FullscreenDirective-624e21b562db599b6b994146c1c2a3a056730aaeba448b376a0a8c631b215d513e53970c0b67abd0ae352e34144db7bb19a22bb5e971628f9c35e5f5e3ad8678",
             "file": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
             "type": "directive",
             "description": "<p>When the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.</p>\n",
             "rawdescription": "\n\nWhen the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.\n",
-            "sourceCode": "import { Directive, HostListener, Input } from '@angular/core';\r\n\r\n/**\r\n * When the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.\r\n */\r\n@Directive({\r\n  selector: '[mdtxFullscreen]',\r\n  standalone: true,\r\n  exportAs: 'mdtxFullscreen',\r\n})\r\nexport class FullscreenDirective {\r\n  @Input() mdtxFullscreen!: HTMLDivElement;\r\n  @HostListener('click')\r\n  async clickHandler() {\r\n    if (document.fullscreenElement) {\r\n      await document.exitFullscreen();\r\n      console.log('What is going on here?');\r\n    } else {\r\n      setTimeout(async () => {\r\n        await this.mdtxFullscreen?.requestFullscreen();\r\n      }, 300);\r\n    }\r\n  }\r\n\r\n  isFullscreen() {\r\n    return !!document.fullscreenElement;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Directive, HostListener, Input } from '@angular/core';\r\nimport { IToggleValue } from '../interface';\r\n\r\n/**\r\n * When the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.\r\n */\r\n@Directive({\r\n  selector: '[mdtxFullscreen]',\r\n  standalone: true,\r\n  exportAs: 'mdtxFullscreen',\r\n})\r\nexport class FullscreenDirective implements IToggleValue {\r\n  @Input() mdtxFullscreen!: HTMLDivElement;\r\n\r\n  @HostListener('click')\r\n  async clickHandler() {\r\n    if (document.fullscreenElement) {\r\n      await document.exitFullscreen();\r\n    } else {\r\n      setTimeout(async () => {\r\n        await this.mdtxFullscreen?.requestFullscreen();\r\n      }, 300);\r\n    }\r\n  }\r\n\r\n  isFullscreen() {\r\n    return !!document.fullscreenElement;\r\n  }\r\n\r\n  toggleValue<T>(value: T, handsetValue: T): T {\r\n    if (this.isFullscreen()) {\r\n      if (typeof handsetValue == 'function') {\r\n        return handsetValue();\r\n      }\r\n      return handsetValue;\r\n    }\r\n    if (typeof value === 'function') {\r\n      return value();\r\n    }\r\n    return value;\r\n  }\r\n}\r\n",
             "selector": "[mdtxFullscreen]",
             "providers": [],
             "exportAs": "mdtxFullscreen",
@@ -22458,7 +22800,7 @@
                     "name": "mdtxFullscreen",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 13,
                     "type": "HTMLDivElement",
                     "decorators": []
                 }
@@ -22474,7 +22816,7 @@
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14
+                    "line": 16
                 }
             ],
             "propertiesClass": [],
@@ -22485,7 +22827,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -22505,21 +22847,69 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "handsetValue",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "T",
+                    "typeParameters": [
+                        "T"
+                    ],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "handsetValue",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "IToggleValue"
+            ]
         },
         {
             "name": "ViewportDirective",
-            "id": "directive-ViewportDirective-8427309075ad73b44dfc12a88c6922953f279a6ca8a8e083ad29ea76bb872dcb1d4a1c9826018769f5fff9ea5e9d577e2267dc3ce7b9f5dce248bd69d7ac9fd5",
+            "id": "directive-ViewportDirective-a1c747ffa03a484f218d69b428a107f325f22c1b9bf3c229053d003479238b06bc13cdac21c13eb1f7a43b617e13b0c4a6840680acacddc54a5d56a2ab8b5372",
             "file": "libs/material/core/src/lib/directive/viewport.directive.ts",
             "type": "directive",
             "description": "<p>Provides the viewport information in the template so we can render content conditionally.</p>\n",
             "rawdescription": "\n\nProvides the viewport information in the template so we can render content conditionally.\n",
-            "sourceCode": "import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';\r\nimport { Observable, Subscription, map } from 'rxjs';\r\nimport { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';\r\nimport { IToggleValue } from '../types';\r\n\r\n/**\r\n * Provides the viewport information in the template so we can render content conditionally.\r\n */\r\n@Directive({\r\n  selector: '[mdtxViewport]',\r\n  standalone: true,\r\n  exportAs: 'mdtxViewport',\r\n})\r\nexport class ViewportDirective implements IToggleValue, OnInit, OnDestroy {\r\n  private __isHandset?: boolean;\r\n  private __isNotHandset?: boolean;\r\n  private __sub!: Subscription;\r\n\r\n  private $isHandset: Observable<boolean> = this.media\r\n    .observe([Breakpoints.Handset, Breakpoints.Small, Breakpoints.XSmall])\r\n    .pipe(\r\n      map((e) => {\r\n        const result = e.matches;\r\n        this.__isHandset = result;\r\n        this.__isNotHandset = !this.__isHandset;\r\n        return result;\r\n      })\r\n    );\r\n\r\n  constructor(\r\n    public readonly elementRef: ElementRef<HTMLElement>,\r\n    private readonly media: BreakpointObserver\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.__sub = this.$isHandset.subscribe();\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.__sub.unsubscribe();\r\n  }\r\n\r\n  toggleValue<T>(value: T, handsetValue: T): T {\r\n    if (this.__isHandset) {\r\n      if (typeof handsetValue == 'function') {\r\n        return handsetValue();\r\n      }\r\n      return handsetValue;\r\n    }\r\n    if (typeof value === 'function') {\r\n      return value();\r\n    }\r\n    return value;\r\n  }\r\n\r\n  isHandset() {\r\n    return this.__isHandset;\r\n  }\r\n\r\n  isNotHandset() {\r\n    return this.__isNotHandset;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';\r\nimport { Observable, Subscription, map } from 'rxjs';\r\nimport { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';\r\nimport { IToggleValue } from '../interface';\r\n\r\n/**\r\n * Provides the viewport information in the template so we can render content conditionally.\r\n */\r\n@Directive({\r\n  selector: '[mdtxViewport]',\r\n  standalone: true,\r\n  exportAs: 'mdtxViewport',\r\n})\r\nexport class ViewportDirective implements IToggleValue, OnInit, OnDestroy {\r\n  private __isHandset?: boolean;\r\n  private __isNotHandset?: boolean;\r\n  private __sub!: Subscription;\r\n\r\n  private $isHandset: Observable<boolean> = this.media\r\n    .observe([Breakpoints.Handset, Breakpoints.Small, Breakpoints.XSmall])\r\n    .pipe(\r\n      map((e) => {\r\n        const result = e.matches;\r\n        this.__isHandset = result;\r\n        this.__isNotHandset = !this.__isHandset;\r\n        return result;\r\n      })\r\n    );\r\n\r\n  constructor(\r\n    public readonly elementRef: ElementRef<HTMLElement>,\r\n    private readonly media: BreakpointObserver\r\n  ) {}\r\n\r\n  ngOnInit(): void {\r\n    this.__sub = this.$isHandset.subscribe();\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.__sub.unsubscribe();\r\n  }\r\n\r\n  toggleValue<T>(value: T, handsetValue: T): T {\r\n    if (this.__isHandset) {\r\n      if (typeof handsetValue == 'function') {\r\n        return handsetValue();\r\n      }\r\n      return handsetValue;\r\n    }\r\n    if (typeof value === 'function') {\r\n      return value();\r\n    }\r\n    return value;\r\n  }\r\n\r\n  isHandset() {\r\n    return this.__isHandset;\r\n  }\r\n\r\n  isNotHandset() {\r\n    return this.__isNotHandset;\r\n  }\r\n}\r\n",
             "selector": "[mdtxViewport]",
             "providers": [],
             "exportAs": "mdtxViewport",
@@ -22734,7 +23124,7 @@
     "components": [
         {
             "name": "FullscreenComponent",
-            "id": "component-FullscreenComponent-c78b2c2365ab956220153c015a8440b1c046aad33df4102253959e7f6a5ad52cc7297d9250f62537e3990d69f29cd1b6b4fa21e1f0439aba28d5384f4432bf38",
+            "id": "component-FullscreenComponent-a439ee9f728579b9702ff97a19e1ddfe2869a27633de165f2455adf5bd49d77b42d03c551454245400b746b6047319fd430e2c77f75ba8883a937a1a28b98ee0",
             "file": "libs/material/core/src/lib/directive/fullscreen.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -22744,7 +23134,7 @@
             "selector": "mdtx-fullscreen",
             "styleUrls": [],
             "styles": [],
-            "template": "<div #elementRef>\n  <h1>Testing <strong>mdtxFullscreen</strong> directive</h1>\n  <hr />\n  <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\n    {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\n  </button>\n</div>\n",
+            "template": "<div #elementRef>\n  <p>Testing <strong>mdtxFullscreen</strong> directive</p>\n\n  <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\n    {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\n  </button>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -22770,7 +23160,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FullscreenDirective } from './fullscreen.directive';\r\nimport { MatButtonModule } from '@angular/material/button';\r\n@Component({\r\n  selector: 'mdtx-fullscreen',\r\n  standalone: true,\r\n  imports: [FullscreenDirective, MatButtonModule],\r\n  template: `\r\n    <div #elementRef>\r\n      <h1>Testing <strong>mdtxFullscreen</strong> directive</h1>\r\n      <hr />\r\n      <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\r\n        {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\r\n      </button>\r\n    </div>\r\n  `,\r\n})\r\nexport class FullscreenComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FullscreenDirective } from './fullscreen.directive';\r\nimport { MatButtonModule } from '@angular/material/button';\r\n@Component({\r\n  selector: 'mdtx-fullscreen',\r\n  standalone: true,\r\n  imports: [FullscreenDirective, MatButtonModule],\r\n  template: `\r\n    <div #elementRef>\r\n      <p>Testing <strong>mdtxFullscreen</strong> directive</p>\r\n\r\n      <button #fs=\"mdtxFullscreen\" [mdtxFullscreen]=\"elementRef\">\r\n        {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}\r\n      </button>\r\n    </div>\r\n  `,\r\n})\r\nexport class FullscreenComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -22820,25 +23210,47 @@
             "templateData": "<p>layout works!</p>\n"
         },
         {
-            "name": "NameComponent",
-            "id": "component-NameComponent-7ed81824441affb4cdfd00ad8ffbc4fb463778412e308d8e45be23c46af73ec678151e9840bbc60101b71b52793897f54c21bd7c9a781acc42c702b664d0eccc",
-            "file": "libs/material/core/src/lib/directive/viewport.component.ts",
+            "name": "LocalStoreComponent",
+            "id": "component-LocalStoreComponent-7f242dbc7de79ccccbe37e246ede34f9bf7eb3b0f851754b99f1770707af5052fdcfd0173ae9a7ff2b0c39fd9c2b27a8af2987b7dfc86f6b598ba09a855a5362",
+            "file": "libs/material/core/src/lib/localstore/local-store.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-viewport-component",
+            "selector": "mdtx-local-store",
             "styleUrls": [],
             "styles": [],
-            "template": "<div #viewport=\"mdtxViewport\" mdtxViewport>\n  <strong>Is handset: </strong> <span>{{ viewport.isHandset() }}</span>\n  <strong>Is not handset: </strong>\n  <span>{{ viewport.isNotHandset() }}</span>\n</div>\n",
+            "template": "<p>Testing <strong>LocalStore</strong></p>\n<hr />\n<strong>Current Value</strong>: {{ store.$value | async }}\n<hr />\n<button (click)=\"store.set('New Value')\">Update Value</button>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "store",
+                    "defaultValue": "LocalStore.createStore('some')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -22846,18 +23258,21 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "ViewportDirective",
-                    "type": "directive"
+                    "name": "CommonModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { ViewportDirective } from './viewport.directive';\r\n\r\n@Component({\r\n  selector: 'mdtx-viewport-component',\r\n  standalone: true,\r\n  imports: [ViewportDirective],\r\n  template: `\r\n    <div #viewport=\"mdtxViewport\" mdtxViewport>\r\n      <strong>Is handset: </strong> <span>{{ viewport.isHandset() }}</span>\r\n      <strong>Is not handset: </strong>\r\n      <span>{{ viewport.isNotHandset() }}</span>\r\n    </div>\r\n  `,\r\n})\r\nexport class NameComponent {}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { LocalStore } from './local-store';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-local-store',\r\n  imports: [CommonModule],\r\n  standalone: true,\r\n  template: `\r\n    <p>Testing <strong>LocalStore</strong></p>\r\n    <hr />\r\n    <strong>Current Value</strong>: {{ store.$value | async }}\r\n    <hr />\r\n    <button (click)=\"store.set('New Value')\">Update Value</button>\r\n  `,\r\n})\r\nexport class LocalStoreComponent implements OnInit {\r\n  store = LocalStore.createStore('some');\r\n\r\n  ngOnInit(): void {\r\n    this.store.set('Some Value');\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ]
         },
         {
             "name": "TableComponent",
@@ -22901,6 +23316,46 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>table works!</p>\n"
+        },
+        {
+            "name": "ViewportComponent",
+            "id": "component-ViewportComponent-08e990822242bcec490e36df3e977ffce86fe21121ce720d02bc18e7aee020497088e522089761a641cafa1c4d32336bb1216a9c9d86a5aa53a50818afcc827d",
+            "file": "libs/material/core/src/lib/directive/viewport.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-viewport",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<div #viewport=\"mdtxViewport\" mdtxViewport>\n  <p>Testing <strong>mdtxViewport</strong> directive</p>\n  <table>\n    <tr>\n      <td><strong>viewport.isHandset()</strong></td>\n      <td>{{ viewport.isHandset() }}</td>\n    </tr>\n\n    <tr>\n      <td><strong>viewport.isNotHandset()</strong></td>\n      <td>{{ viewport.isNotHandset() }}</td>\n    </tr>\n  </table>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ViewportDirective",
+                    "type": "directive"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ViewportDirective } from './viewport.directive';\r\n\r\n@Component({\r\n  selector: 'mdtx-viewport',\r\n  standalone: true,\r\n  imports: [ViewportDirective],\r\n  template: `\r\n    <div #viewport=\"mdtxViewport\" mdtxViewport>\r\n      <p>Testing <strong>mdtxViewport</strong> directive</p>\r\n      <table>\r\n        <tr>\r\n          <td><strong>viewport.isHandset()</strong></td>\r\n          <td>{{ viewport.isHandset() }}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td><strong>viewport.isNotHandset()</strong></td>\r\n          <td>{{ viewport.isNotHandset() }}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  `,\r\n})\r\nexport class ViewportComponent {}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
         }
     ],
     "modules": [],
@@ -22955,6 +23410,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -23033,8 +23498,18 @@
                 "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<NameComponent>",
-                "defaultValue": "{\n  component: NameComponent,\n  title: 'NameComponent',\n}"
+                "type": "Meta<ViewportComponent>",
+                "defaultValue": "{\n  component: ViewportComponent,\n  title: 'ViewportComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<LocalStoreComponent>",
+                "defaultValue": "{\n  component: LocalStoreComponent,\n  title: 'LocalStoreComponent',\n}"
             },
             {
                 "name": "meta",
@@ -23071,6 +23546,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -23304,8 +23789,19 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<NameComponent>",
+                "rawtype": "StoryObj<ViewportComponent>",
                 "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<LocalStoreComponent>",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -23420,14 +23916,46 @@
                     "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<NameComponent>",
-                    "defaultValue": "{\n  component: NameComponent,\n  title: 'NameComponent',\n}"
+                    "type": "Meta<ViewportComponent>",
+                    "defaultValue": "{\n  component: ViewportComponent,\n  title: 'ViewportComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<LocalStoreComponent>",
+                    "defaultValue": "{\n  component: LocalStoreComponent,\n  title: 'LocalStoreComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -23770,8 +24298,21 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<NameComponent>",
+                    "rawtype": "StoryObj<ViewportComponent>",
                     "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<LocalStoreComponent>",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -23808,7 +24349,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 6,
+        "count": 5,
         "status": "low",
         "files": [
             {
@@ -23855,8 +24396,17 @@
                 "type": "directive",
                 "linktype": "directive",
                 "name": "FullscreenDirective",
-                "coveragePercent": 20,
-                "coverageCount": "1/5",
+                "coveragePercent": 16,
+                "coverageCount": "1/6",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directive/logo.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "AppLogoDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -23893,7 +24443,7 @@
                 "filePath": "libs/material/core/src/lib/directive/viewport.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "NameComponent",
+                "name": "ViewportComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -23905,6 +24455,108 @@
                 "name": "ViewportDirective",
                 "coveragePercent": 8,
                 "coverageCount": "1/12",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/interface/element-ref.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IElementRef",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/interface/template-ref.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ITemplateRef",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/interface/toggle.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IToggle",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/interface/toggle.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IToggleValue",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LocalStoreComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "__LocalStore",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "LocalStore",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/localstore/local-store.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ILocalStore",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
@@ -23954,15 +24606,6 @@
                 "name": "Autocompletes",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/types/element-ref.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IElementRef",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -24021,33 +24664,6 @@
                 "name": "InputTypes",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/types/template-ref.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "ITemplateRef",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/types/toggle.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IToggle",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/types/toggle.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IToggleValue",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
                 "status": "low"
             },
             {

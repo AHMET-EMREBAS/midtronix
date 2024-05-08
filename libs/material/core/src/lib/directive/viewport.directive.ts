@@ -1,7 +1,7 @@
 import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { IToggleValue } from '../types';
+import { IToggleValue } from '../interface';
 
 /**
  * Provides the viewport information in the template so we can render content conditionally.

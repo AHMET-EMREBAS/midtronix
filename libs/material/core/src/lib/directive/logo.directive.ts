@@ -1,5 +1,5 @@
 import { Directive, ElementRef, OnInit } from '@angular/core';
-import { IElementRef } from '../types';
+import { IElementRef } from '../interface';
 
 @Directive({
   selector: '[mdtxLogo]',
