@@ -22,6 +22,55 @@
       },
       "defaultConfiguration": "production"
     },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/modules/.storybook",
+        "browserTarget": "modules:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/modules/.storybook",
+          "-p",
+          "libs/modules/tsconfig.json"
+        ],
+        "assets": ["libs/modules/src/assets", "libs/modules/src/favicon.svg"],
+        "styles": ["libs/modules/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/modules",
+        "configDir": "libs/modules/modules/.storybook",
+        "browserTarget": "modules:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/modules/.storybook",
+          "-p",
+          "libs/modules/tsconfig.json"
+        ],
+        "assets": ["libs/modules/src/assets", "libs/modules/src/favicon.svg"],
+        "styles": ["libs/modules/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
