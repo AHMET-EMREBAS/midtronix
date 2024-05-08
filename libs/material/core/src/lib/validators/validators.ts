@@ -5,7 +5,9 @@ export type ValidatorFn<T> = (value: T) => string | null;
 
 export function __isRequired(name: string): ValidatorFn<string> {
   return (value = '') =>
-    value ? null : $localize`${names(name).fileName} is required!`;
+    value && value.length > 0
+      ? null
+      : $localize`${names(name).fileName} is required!`;
 }
 
 export function __minLength(

@@ -1,1 +1,15 @@
-<p>login-form works!</p>
+<form>
+  <mat-form-field>
+    <mat-label i18n>Username</mat-label>
+    <input
+      #un="mdtxInput"
+      type="email"
+      name="username"
+      matInput
+      mdtxInput
+      type="text"
+      [required]="true"
+    />
+    <mat-error>{{ un.errorMessage() }}</mat-error>
+  </mat-form-field>
+</form>

@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Directive,
   ElementRef,
   HostListener,
@@ -25,7 +26,7 @@ import {
   standalone: true,
   exportAs: 'mdtxInput',
 })
-export class InputDirective implements OnInit {
+export class InputDirective implements AfterViewInit {
   private __isTyping = false;
   private __typingTimer!: any;
   private __dirty?: boolean;
@@ -59,14 +60,14 @@ export class InputDirective implements OnInit {
     this.__validators.push(validatorFn);
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     const { name, required, minLength, maxLength, min, max, type } =
       this.ref.nativeElement;
 
     if (!name) throw new Error('Input name is required!');
-    if (required) this.addValidator(__isRequired(name));
-    if (minLength != undefined) this.addValidator(__minLength(name, minLength));
-    if (maxLength != undefined) this.addValidator(__maxLength(name, maxLength));
+    if (required == true) this.addValidator(__isRequired(name));
+    if (minLength >= 0) this.addValidator(__minLength(name, minLength));
+    if (maxLength > 0) this.addValidator(__maxLength(name, maxLength));
     if (min != undefined) this.addValidator(__min(name, parseInt(min)));
     if (max != undefined) this.addValidator(__max(name, parseInt(max)));
     if (type === 'email') this.addValidator(__email(name));
