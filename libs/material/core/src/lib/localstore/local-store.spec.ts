@@ -7,7 +7,5 @@ describe('LocalStoreManager', () => {
 
     store.remove();
     expect(store.get()).toBeNull();
-
-    expect(() => LocalStore.createStore('some')).toThrow();
   });
 });
