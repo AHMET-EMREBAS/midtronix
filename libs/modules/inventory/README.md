@@ -1,7 +1,9 @@
 # modules-inventory
 
-This library was generated with [Nx](https://nx.dev).
+This module contains
 
-## Running unit tests
-
-Run `nx test modules-inventory` to execute the unit tests.
+- Inventory management
+- Produc details/images/videos
+- Price/Price Level
+- Quantity/Store Quantity
+- Store management

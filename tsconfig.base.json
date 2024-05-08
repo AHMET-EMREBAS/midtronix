@@ -28,6 +28,7 @@
       "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
       "@mdtx/modules/inventory": ["libs/modules/inventory/src/index.ts"],
       "@mdtx/modules/pos": ["libs/modules/pos/src/index.ts"],
+      "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },

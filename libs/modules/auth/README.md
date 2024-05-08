@@ -1,7 +1,6 @@
 # modules-auth
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test modules-auth` to execute the unit tests.
+This module contains 
+- Login/Logout
+- User/Resource Access Management  
+- User Roles/Permissons

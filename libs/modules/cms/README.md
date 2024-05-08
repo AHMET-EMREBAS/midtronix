@@ -1,7 +1,7 @@
 # modules-cms
 
-This library was generated with [Nx](https://nx.dev).
+This module contains
 
-## Running unit tests
+- Customer management/services/tickets/communication
 
-Run `nx test modules-cms` to execute the unit tests.
+

@@ -1,7 +1,5 @@
 # modules-pos
 
-This library was generated with [Nx](https://nx.dev).
+This module contains
 
-## Running unit tests
-
-Run `nx test modules-pos` to execute the unit tests.
+- POS system
