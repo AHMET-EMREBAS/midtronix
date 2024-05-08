@@ -1,1 +1,1 @@
-export * from './lib/modules-cms/modules-cms.component';
+export * from './lib';

@@ -1,1 +1,1 @@
-export * from './lib/modules-inventory/modules-inventory.component';
+export * from './lib';

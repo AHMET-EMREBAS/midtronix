@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModulesCmsComponent } from './modules-cms.component';
+import { PosComponent } from './pos.component';
 
-describe('ModulesCmsComponent', () => {
-  let component: ModulesCmsComponent;
-  let fixture: ComponentFixture<ModulesCmsComponent>;
+describe('PosComponent', () => {
+  let component: PosComponent;
+  let fixture: ComponentFixture<PosComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModulesCmsComponent],
+      imports: [PosComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModulesCmsComponent);
+    fixture = TestBed.createComponent(PosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

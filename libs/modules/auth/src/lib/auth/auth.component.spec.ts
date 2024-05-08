@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModulesPosComponent } from './modules-pos.component';
+import { AuthComponent } from './auth.component';
 
-describe('ModulesPosComponent', () => {
-  let component: ModulesPosComponent;
-  let fixture: ComponentFixture<ModulesPosComponent>;
+describe('AuthComponent', () => {
+  let component: AuthComponent;
+  let fixture: ComponentFixture<AuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModulesPosComponent],
+      imports: [AuthComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModulesPosComponent);
+    fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

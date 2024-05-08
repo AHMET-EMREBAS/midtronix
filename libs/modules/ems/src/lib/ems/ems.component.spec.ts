@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ModulesPmsComponent } from './modules-pms.component';
+import { EmsComponent } from './ems.component';
 
-describe('ModulesPmsComponent', () => {
-  let component: ModulesPmsComponent;
-  let fixture: ComponentFixture<ModulesPmsComponent>;
+describe('EmsComponent', () => {
+  let component: EmsComponent;
+  let fixture: ComponentFixture<EmsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModulesPmsComponent],
+      imports: [EmsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModulesPmsComponent);
+    fixture = TestBed.createComponent(EmsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

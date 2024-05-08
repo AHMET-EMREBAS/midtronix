@@ -1,1 +1,1 @@
-export * from './lib/modules-ems/modules-ems.component';
+export * from './lib';

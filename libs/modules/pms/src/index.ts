@@ -1,1 +1,1 @@
-export * from './lib/modules-pms/modules-pms.component';
+export * from './lib';
