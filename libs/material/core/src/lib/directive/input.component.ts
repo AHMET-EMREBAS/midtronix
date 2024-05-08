@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
       <input
         #fn="mdtxInput"
         mdtxInput
+        [typingDebounceTime]="4000"
         type="text"
         name="firstName"
         minlength="3"
@@ -25,6 +26,7 @@ import { CommonModule } from '@angular/common';
         mdtxInput
         type="text"
         name="lastName"
+        [typingDebounceTime]="100"
         [required]="true"
         minlength="3"
         maxlength="30"
