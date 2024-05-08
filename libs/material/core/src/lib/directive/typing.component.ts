@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { InputDirective } from './input.directive';
 
 @Component({
-  selector: 'mdtx-typing',
+  selector: 'mdtx-typing-directive-test',
   standalone: true,
   imports: [CommonModule, InputDirective],
   template: `

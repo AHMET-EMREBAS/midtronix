@@ -16,6 +16,10 @@ import {
   __password,
 } from '../validators';
 
+/**
+ * - Check errors
+ * - Check typing
+ */
 @Directive({
   selector: '[mdtxInput]',
   standalone: true,

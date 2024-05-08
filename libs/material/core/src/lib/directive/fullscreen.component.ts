@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FullscreenDirective } from './fullscreen.directive';
 import { MatButtonModule } from '@angular/material/button';
 @Component({
-  selector: 'mdtx-fullscreen',
+  selector: 'mdtx-fullscreen-directive-test',
   standalone: true,
   imports: [FullscreenDirective, MatButtonModule],
   template: `

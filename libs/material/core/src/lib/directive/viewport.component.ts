@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ViewportDirective } from './viewport.directive';
 
 @Component({
-  selector: 'mdtx-viewport',
+  selector: 'mdtx-viewport-directive-test',
   standalone: true,
   imports: [ViewportDirective],
   template: `
