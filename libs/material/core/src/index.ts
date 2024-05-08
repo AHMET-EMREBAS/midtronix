@@ -1,1 +1,1 @@
-export * from './lib/material-core/material-core.component';
+export * from './lib';

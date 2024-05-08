@@ -20,6 +20,10 @@
   .gap-#{$value}em {
     gap: #{$value}em;
   }
+
+  .grow-#{$value} {
+    flex-grow: #{$value};
+  }
 }
 
 .space-between {

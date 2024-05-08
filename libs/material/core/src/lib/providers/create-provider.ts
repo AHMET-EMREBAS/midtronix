@@ -1,10 +1,4 @@
-import {
-  Inject,
-  InjectionToken,
-  InjectorType,
-  Provider,
-  Type,
-} from '@angular/core';
+import { Inject, InjectionToken, Provider, Type } from '@angular/core';
 import { CreateProviderResult } from '@mdtx/common';
 
 /**
