@@ -19,7 +19,6 @@
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/database": ["libs/database/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
-      "@mdtx/material": ["libs/material/material/src/index.ts"],
       "@mdtx/material/core": ["libs/material/core/src/index.ts"],
       "@mdtx/material/form": ["libs/material/form/src/index.ts"],
       "@mdtx/material/layout": ["libs/material/layout/src/index.ts"],
