@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 // .storybook/manager.js
 
 import { addons } from '@storybook/manager-api';

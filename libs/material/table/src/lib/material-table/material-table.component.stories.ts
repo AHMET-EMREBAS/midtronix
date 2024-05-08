@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import type { Meta, StoryObj } from '@storybook/angular';
 import { MaterialTableComponent } from './material-table.component';
 

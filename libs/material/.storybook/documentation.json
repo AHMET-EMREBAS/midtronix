@@ -7,12 +7,12 @@
     "classes": [
         {
             "name": "ErrorStateMatcher",
-            "id": "class-ErrorStateMatcher-358ae3f979f555a1fead0c4603c96133da640f6abf284635608c8e4a58e1b9d7b05bbddd8ef47f54cce2a289cfacd3be7043f446cfb8d32198d5c86a81869f51",
+            "id": "class-ErrorStateMatcher-9cf04395f19f34c2657d22ec1a887a2f88316f2a0b3becba4683b2d0db28861fb9dad6f4608c2c2a99fe0895b410dfddf48bdc618a1fcd92d50401ebd610e7db",
             "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { InjectionToken, Provider } from '@angular/core';\r\nimport { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';\r\nimport {\r\n  _ErrorStateTracker,\r\n  ErrorStateMatcher as __ErrorStateMatcher,\r\n} from '@angular/material/core';\r\n\r\nexport class ErrorStateMatcher implements __ErrorStateMatcher {\r\n  isErrorState(\r\n    control: AbstractControl<any, any> | null,\r\n    form: FormGroupDirective | NgForm | null\r\n  ): boolean {\r\n    return (control?.dirty && control.touched && !control.valid) ?? false;\r\n  }\r\n}\r\n\r\nexport function provideErrorStateMatcher(): Provider {\r\n  return {\r\n    provide: __ErrorStateMatcher,\r\n    useClass: ErrorStateMatcher,\r\n  };\r\n}\r\n",
+            "sourceCode": "import { Provider } from '@angular/core';\r\nimport { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';\r\nimport { ErrorStateMatcher as __ErrorStateMatcher } from '@angular/material/core';\r\n\r\nexport class ErrorStateMatcher implements __ErrorStateMatcher {\r\n  isErrorState(\r\n    control: AbstractControl<any, any> | null,\r\n    form: FormGroupDirective | NgForm | null\r\n  ): boolean {\r\n    return (control?.dirty && control.touched && !control.valid) ?? false;\r\n  }\r\n}\r\n\r\nexport function provideErrorStateMatcher(): Provider {\r\n  return {\r\n    provide: __ErrorStateMatcher,\r\n    useClass: ErrorStateMatcher,\r\n  };\r\n}\r\n",
             "inputsClass": [],
             "outputsClass": [],
             "properties": [],
@@ -36,7 +36,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 10,
+                    "line": 9,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -72,49 +72,6 @@
     ],
     "directives": [],
     "components": [
-        {
-            "name": "MaterialComponent",
-            "id": "component-MaterialComponent-b560637867c479b8c7bba31e372b44725e6372fd476507c8d4894c916d552f08c80d7f9a985f203cc6e6d7ebebccae6f847448a32be1e46f828c113dbbcae379",
-            "file": "libs/material/src/lib/material/material.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "lib-material",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./material.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-material',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './material.component.html',\n  styleUrl: './material.component.css',\n})\nexport class MaterialComponent {}\n",
-            "styleUrl": "./material.component.css",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<p>material works!</p>\n"
-        },
         {
             "name": "MaterialLayoutComponent",
             "id": "component-MaterialLayoutComponent-c01ce579203588833f2676b21d1eb75a2ac8c1ecd5de4f9087d5c96727866f4e5a5cb7ede087738403ba33b0651620fd2292f2ca3523540a1d6ed1f2813d61ab",
@@ -204,7 +161,78 @@
     ],
     "modules": [],
     "miscellaneous": {
-        "variables": [],
+        "variables": [
+            {
+                "name": "____material____",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/src/index.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "''"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-layout works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-table works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<MaterialLayoutComponent>",
+                "defaultValue": "{\n  component: MaterialLayoutComponent,\n  title: 'MaterialLayoutComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<MaterialTableComponent>",
+                "defaultValue": "{\n  component: MaterialTableComponent,\n  title: 'MaterialTableComponent',\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            }
+        ],
         "functions": [
             {
                 "name": "createClassProvider",
@@ -330,9 +358,109 @@
                 "returnType": "Provider"
             }
         ],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<MaterialLayoutComponent>",
+                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<MaterialTableComponent>",
+                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            }
+        ],
         "enumerations": [],
-        "groupedVariables": {},
+        "groupedVariables": {
+            "libs/material/src/index.ts": [
+                {
+                    "name": "____material____",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/src/index.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "''"
+                }
+            ],
+            "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-layout works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<MaterialLayoutComponent>",
+                    "defaultValue": "{\n  component: MaterialLayoutComponent,\n  title: 'MaterialLayoutComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/table/src/lib/material-table/material-table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-table works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<MaterialTableComponent>",
+                    "defaultValue": "{\n  component: MaterialTableComponent,\n  title: 'MaterialTableComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ]
+        },
         "groupedFunctions": {
             "libs/material/core/src/lib/providers/create-provider.ts": [
                 {
@@ -463,12 +591,39 @@
             ]
         },
         "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<MaterialLayoutComponent>",
+                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/table/src/lib/material-table/material-table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<MaterialTableComponent>",
+                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
-        "count": 28,
-        "status": "medium",
+        "count": 15,
+        "status": "low",
         "files": [
             {
                 "filePath": "libs/material/core/src/lib/providers/create-provider.ts",
@@ -510,6 +665,36 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -519,10 +704,41 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/src/lib/material/material.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "MaterialComponent",
+                "filePath": "libs/material/src/index.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "____material____",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
