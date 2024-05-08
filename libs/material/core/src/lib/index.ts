@@ -5,3 +5,4 @@ export * from './interface';
 export * from './directive';
 export * from './validators';
 export * from './error-state';
+export * from './pipes';
