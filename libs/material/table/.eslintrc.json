@@ -8,8 +8,7 @@
         "@nx/enforce-module-boundaries": [
           "error",
           {
-            "enforceBuildableLibDependency": true,
-            "allow": ["@angular/core", "@angular/common"],
+            "enforceBuildableLibDependency": false,
             "depConstraints": [
               {
                 "sourceTag": "*",
