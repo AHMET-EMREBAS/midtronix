@@ -15,8 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mdtx/auth": ["libs/auth/src/index.ts"],
-      "@mdtx/auth-client": ["libs/auth-client/src/index.ts"],
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/database": ["libs/database/src/index.ts"],
@@ -26,6 +24,10 @@
       "@mdtx/material/form": ["libs/material/form/src/index.ts"],
       "@mdtx/material/layout": ["libs/material/layout/src/index.ts"],
       "@mdtx/material/table": ["libs/material/table/src/index.ts"],
+      "@mdtx/modules/auth": ["libs/modules/auth/src/index.ts"],
+      "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
+      "@mdtx/modules/inventory": ["libs/modules/inventory/src/index.ts"],
+      "@mdtx/modules/pos": ["libs/modules/pos/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },
