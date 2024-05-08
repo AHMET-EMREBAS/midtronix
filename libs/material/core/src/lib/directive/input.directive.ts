@@ -35,7 +35,7 @@ export class InputDirective implements OnInit {
   @Input() typingDebounceTime = 400;
 
   @HostListener('input')
-  inputHander(event: InputEvent) {
+  inputHander() {
     this.__dirty = true;
     this.__isTyping = true;
     if (this.__typingTimer) clearTimeout(this.__typingTimer);
@@ -44,8 +44,9 @@ export class InputDirective implements OnInit {
 
       const errorMessage = this.__validators
         .map((handler) => {
-          return handler((event.target as HTMLInputElement).value);
+          return handler(this.ref.nativeElement.value);
         })
+        .filter((e) => e)
         .shift();
 
       this.__errorMessage = errorMessage;
@@ -82,5 +83,13 @@ export class InputDirective implements OnInit {
 
   errorMessage() {
     return this.__errorMessage;
+  }
+
+  isValid() {
+    return this.errorMessage() ? false : true;
+  }
+
+  isInvalid() {
+    return !this.isValid();
   }
 }

@@ -22,4 +22,4 @@ import { ViewportDirective } from './viewport.directive';
     </div>
   `,
 })
-export class ViewportComponent {}
+export class ViewportDirectiveComponent {}

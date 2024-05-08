@@ -15,4 +15,4 @@ import { MatButtonModule } from '@angular/material/button';
     </div>
   `,
 })
-export class FullscreenComponent {}
+export class FullscreenDirectiveComponent {}

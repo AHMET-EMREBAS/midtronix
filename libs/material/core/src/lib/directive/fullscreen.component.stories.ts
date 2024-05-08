@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { FullscreenComponent } from './fullscreen.component';
+import { FullscreenDirectiveComponent } from './fullscreen.component';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<FullscreenComponent> = {
-  component: FullscreenComponent,
+const meta: Meta<FullscreenDirectiveComponent> = {
+  component: FullscreenDirectiveComponent,
   title: 'FullscreenComponent',
 };
 export default meta;
-type Story = StoryObj<FullscreenComponent>;
+type Story = StoryObj<FullscreenDirectiveComponent>;
 
 export const Primary: Story = {
   args: {},

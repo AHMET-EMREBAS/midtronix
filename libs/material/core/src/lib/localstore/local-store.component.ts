@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 const store = LocalStore.createStore('some', { debounce: 400 });
 @Component({
-  selector: 'mdtx-local-store',
+  selector: 'mdtx-local-store-test',
   imports: [CommonModule],
   standalone: true,
   template: `

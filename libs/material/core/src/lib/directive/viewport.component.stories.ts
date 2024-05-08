@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewportComponent } from './viewport.component';
+import { ViewportDirectiveComponent } from './viewport.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<ViewportComponent> = {
-  component: ViewportComponent,
+const meta: Meta<ViewportDirectiveComponent> = {
+  component: ViewportDirectiveComponent,
   title: 'ViewportComponent',
 };
 export default meta;
-type Story = StoryObj<ViewportComponent>;
+type Story = StoryObj<ViewportDirectiveComponent>;
 
 export const Primary: Story = {
   args: {},
