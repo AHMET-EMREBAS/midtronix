@@ -23,7 +23,6 @@
       "@mdtx/material/core": ["libs/material/core/src/index.ts"],
       "@mdtx/material/form": ["libs/material/form/src/index.ts"],
       "@mdtx/material/layout": ["libs/material/layout/src/index.ts"],
-      "@mdtx/material/packager": ["libs/material/packager/src/index.ts"],
       "@mdtx/material/table": ["libs/material/table/src/index.ts"],
       "@mdtx/modules/auth": ["libs/modules/auth/src/index.ts"],
       "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
