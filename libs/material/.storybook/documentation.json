@@ -70,23 +70,100 @@
             ]
         }
     ],
-    "directives": [],
+    "directives": [
+        {
+            "name": "FullscreenDirective",
+            "id": "directive-FullscreenDirective-aeb9dc66448250ed7656618a2cc7d62b518d131cb41a1f6b61c85c1abd1fc52ae61186d1e1803d5a10750888e7ef8896c734a704b6f1fb7bdb7c28d251f7a979",
+            "file": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
+            "type": "directive",
+            "description": "<p>When user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.</p>\n",
+            "rawdescription": "\n\nWhen user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.\n",
+            "sourceCode": "import { Directive, ElementRef, HostListener } from '@angular/core';\r\n\r\n/**\r\n * When user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.\r\n */\r\n@Directive({\r\n  selector: '[mdtxFullscreen]',\r\n})\r\nexport class FullscreenDirective {\r\n  @HostListener('click')\r\n  clickHandler() {\r\n    this.ref.nativeElement.requestFullscreen();\r\n  }\r\n\r\n  constructor(protected readonly ref: ElementRef<HTMLButtonElement>) {}\r\n}\r\n",
+            "selector": "[mdtxFullscreen]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "clickHandler",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'click'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "extends": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLButtonElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLButtonElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
     "components": [
         {
-            "name": "MaterialLayoutComponent",
-            "id": "component-MaterialLayoutComponent-c01ce579203588833f2676b21d1eb75a2ac8c1ecd5de4f9087d5c96727866f4e5a5cb7ede087738403ba33b0651620fd2292f2ca3523540a1d6ed1f2813d61ab",
-            "file": "libs/material/layout/src/lib/material-layout/material-layout.component.ts",
+            "name": "FullscreenComponent",
+            "id": "component-FullscreenComponent-a9833b95a7439fdcb8e5332659459c23033e5b440d98238adc2d20b8a92739ef0ea05ec8af1dad61cc7533936775becd63f939a44d2e6202db434e2d54319022",
+            "file": "libs/material/core/src/lib/directive/fullscreen.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-material-layout",
+            "selector": "mdtx-fullscreen-component",
             "styleUrls": [],
             "styles": [],
-            "templateUrl": [
-                "./material-layout.component.html"
-            ],
+            "template": "",
+            "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
@@ -98,37 +175,30 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-material-layout',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './material-layout.component.html',\r\n  styleUrl: './material-layout.component.css',\r\n})\r\nexport class MaterialLayoutComponent {}\r\n",
-            "styleUrl": "./material-layout.component.css",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FullscreenDirective } from './fullscreen.directive';\r\n@Component({\r\n  selector: 'mdtx-fullscreen-component',\r\n  standalone: true,\r\n  imports: [],\r\n  template: ``,\r\n})\r\nexport class FullscreenComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>material-layout works!</p>\r\n"
+            "extends": []
         },
         {
-            "name": "MaterialTableComponent",
-            "id": "component-MaterialTableComponent-0c77f05cf60c3871220e9906cb7e8df17b65f7bbfdb8a65f885b7c8ca9e84607992fc0188b34f7a6d1a94f904c2c1448e656d2dad06219522cd82e19ed7fc6cc",
-            "file": "libs/material/table/src/lib/material-table/material-table.component.ts",
+            "name": "LayoutComponent",
+            "id": "component-LayoutComponent-701d1a45012368ee94ebec0f43e467dd9758d8841959869b9b7424ac2c1edf7af54d8c78cd2d71ff606c34cfa9691bc2d45208eba62082b14fcb52a84999129d",
+            "file": "libs/material/layout/src/lib/layout/layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-material-table",
+            "selector": "mdtx-layout",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./material-table.component.html"
+                "./layout.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -150,13 +220,56 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-material-table',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './material-table.component.html',\r\n  styleUrl: './material-table.component.css',\r\n})\r\nexport class MaterialTableComponent {}\r\n",
-            "styleUrl": "./material-table.component.css",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n})\nexport class LayoutComponent {}\n",
+            "styleUrl": "./layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>material-table works!</p>\r\n"
+            "templateData": "<p>layout works!</p>\n"
+        },
+        {
+            "name": "TableComponent",
+            "id": "component-TableComponent-91c6593d35741b9a08b86016763d954f5adce83cf78483a3829e52be7d2bc80450db088cfb248ca111605f033e93aef2ef786c96e28a37d924f3548b988f475d",
+            "file": "libs/material/table/src/lib/table/table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {}\n",
+            "styleUrl": "./table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>table works!</p>\n"
         }
     ],
     "modules": [],
@@ -176,47 +289,67 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-table works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<MaterialLayoutComponent>",
-                "defaultValue": "{\n  component: MaterialLayoutComponent,\n  title: 'MaterialLayoutComponent',\n}"
+                "type": "Meta<FullscreenComponent>",
+                "defaultValue": "{\n  component: FullscreenComponent,\n  title: 'FullscreenComponent',\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<MaterialTableComponent>",
-                "defaultValue": "{\n  component: MaterialTableComponent,\n  title: 'MaterialTableComponent',\n}"
+                "type": "Meta<LayoutComponent>",
+                "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TableComponent>",
+                "defaultValue": "{\n  component: TableComponent,\n  title: 'TableComponent',\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -226,7 +359,17 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -363,8 +506,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<MaterialLayoutComponent>",
-                "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "rawtype": "StoryObj<FullscreenComponent>",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -374,8 +517,19 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<MaterialTableComponent>",
-                "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "rawtype": "StoryObj<LayoutComponent>",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TableComponent>",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -396,64 +550,96 @@
                     "defaultValue": "''"
                 }
             ],
-            "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts": [
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<MaterialLayoutComponent>",
-                    "defaultValue": "{\n  component: MaterialLayoutComponent,\n  title: 'MaterialLayoutComponent',\n}"
+                    "type": "Meta<FullscreenComponent>",
+                    "defaultValue": "{\n  component: FullscreenComponent,\n  title: 'FullscreenComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/table/src/lib/material-table/material-table.component.stories.ts": [
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material-table works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<MaterialTableComponent>",
-                    "defaultValue": "{\n  component: MaterialTableComponent,\n  title: 'MaterialTableComponent',\n}"
+                    "type": "Meta<LayoutComponent>",
+                    "defaultValue": "{\n  component: LayoutComponent,\n  title: 'LayoutComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/table/src/lib/table/table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TableComponent>",
+                    "defaultValue": "{\n  component: TableComponent,\n  title: 'TableComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -592,26 +778,39 @@
         },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts": [
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<MaterialLayoutComponent>",
-                    "file": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                    "rawtype": "StoryObj<FullscreenComponent>",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "libs/material/table/src/lib/material-table/material-table.component.stories.ts": [
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<MaterialTableComponent>",
-                    "file": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                    "rawtype": "StoryObj<LayoutComponent>",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/table/src/lib/table/table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TableComponent>",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -622,9 +821,57 @@
     },
     "routes": [],
     "coverage": {
-        "count": 15,
+        "count": 12,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FullscreenComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "FullscreenDirective",
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/core/src/lib/providers/create-provider.ts",
                 "type": "function",
@@ -665,7 +912,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "filePath": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -675,7 +922,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "filePath": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -685,7 +932,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.stories.ts",
+                "filePath": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -695,10 +942,10 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.ts",
+                "filePath": "libs/material/layout/src/lib/layout/layout.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "MaterialLayoutComponent",
+                "name": "LayoutComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -714,7 +961,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -724,7 +971,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -734,7 +981,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/table/src/lib/material-table/material-table.component.stories.ts",
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -744,10 +991,10 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/table/src/lib/material-table/material-table.component.ts",
+                "filePath": "libs/material/table/src/lib/table/table.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "MaterialTableComponent",
+                "name": "TableComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
