@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ViewportDirective } from './viewport.directive';
 
 @Component({
-  selector: 'mdtx-viewport-component',
+  selector: 'mdtx-viewport',
   standalone: true,
   imports: [ViewportDirective],
   template: `
     <div #viewport="mdtxViewport" mdtxViewport>
-      <strong>Is handset: </strong> <span>{{ viewport.isHandset() }}</span>
-      <strong>Is not handset: </strong>
-      <span>{{ viewport.isNotHandset() }}</span>
+      <p>Testing <strong>mdtxViewport</strong> directive</p>
+      <table>
+        <tr>
+          <td><strong>viewport.isHandset()</strong></td>
+          <td>{{ viewport.isHandset() }}</td>
+        </tr>
+
+        <tr>
+          <td><strong>viewport.isNotHandset()</strong></td>
+          <td>{{ viewport.isNotHandset() }}</td>
+        </tr>
+      </table>
     </div>
   `,
 })
-export class NameComponent {}
+export class ViewportComponent {}

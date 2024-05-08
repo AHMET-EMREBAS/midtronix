@@ -40,17 +40,17 @@ export class ViewportDirective implements IToggleValue, OnInit, OnDestroy {
     this.__sub.unsubscribe();
   }
 
-  toggleValue<T>(actualValue: T, conditionalValue: T): T {
+  toggleValue<T>(value: T, handsetValue: T): T {
     if (this.__isHandset) {
-      if (typeof conditionalValue == 'function') {
-        return conditionalValue();
+      if (typeof handsetValue == 'function') {
+        return handsetValue();
       }
-      return conditionalValue;
+      return handsetValue;
     }
-    if (typeof actualValue === 'function') {
-      return actualValue();
+    if (typeof value === 'function') {
+      return value();
     }
-    return actualValue;
+    return value;
   }
 
   isHandset() {

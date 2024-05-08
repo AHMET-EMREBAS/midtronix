@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { FullscreenDirective } from './fullscreen.directive';
 import { MatButtonModule } from '@angular/material/button';
 @Component({
-  selector: 'mdtx-fullscreen-component',
+  selector: 'mdtx-fullscreen',
   standalone: true,
   imports: [FullscreenDirective, MatButtonModule],
   template: `
-    <div
-      #elementRef
-      style="background-color: orange; width: 100%; height: 100%;"
-    >
-      <button [mdtxFullscreen]="elementRef">FullScreen</button>
+    <div #elementRef>
+      <p>Testing <strong>mdtxFullscreen</strong> directive</p>
+
+      <button #fs="mdtxFullscreen" [mdtxFullscreen]="elementRef">
+        {{ fs.isFullscreen() ? 'Minimize' : 'Fullscreen' }}
+      </button>
     </div>
   `,
 })

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 
 /**
  * When the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.
@@ -6,6 +6,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 @Directive({
   selector: '[mdtxFullscreen]',
   standalone: true,
+  exportAs: 'mdtxFullscreen',
 })
 export class FullscreenDirective {
   @Input() mdtxFullscreen!: HTMLDivElement;
@@ -19,5 +20,9 @@ export class FullscreenDirective {
         await this.mdtxFullscreen?.requestFullscreen();
       }, 300);
     }
+  }
+
+  isFullscreen() {
+    return !!document.fullscreenElement;
   }
 }
