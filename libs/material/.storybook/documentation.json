@@ -22975,12 +22975,12 @@
         },
         {
             "name": "InputDirective",
-            "id": "directive-InputDirective-2e8d201e38143e107e8199ab453529323037a86bb50d456ace9c0dfaa248c2361c10baafa08a48276d21adf99fe6acf3b7bad868768ed515bfa545d04347ba02",
+            "id": "directive-InputDirective-c5c378801cda9d62edfbe5937e831355c2fbc911fd4b5af62abeb58f18141900ff98269d3906c1d52964d9dbecbed4030bb91100cf328838fcdc2d175700f545",
             "file": "libs/material/core/src/lib/directive/input.directive.ts",
             "type": "directive",
-            "description": "<ul>\n<li>Check errors</li>\n<li>Check typing</li>\n</ul>\n",
-            "rawdescription": "\n\n- Check errors\n- Check typing\n",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Directive,\r\n  ElementRef,\r\n  HostListener,\r\n  Input,\r\n  OnInit,\r\n} from '@angular/core';\r\nimport {\r\n  ValidatorFn,\r\n  __email,\r\n  __isRequired,\r\n  __max,\r\n  __maxLength,\r\n  __min,\r\n  __minLength,\r\n  __password,\r\n} from '../validators';\r\n\r\n/**\r\n * - Check errors\r\n * - Check typing\r\n */\r\n@Directive({\r\n  selector: '[mdtxInput]',\r\n  standalone: true,\r\n  exportAs: 'mdtxInput',\r\n})\r\nexport class InputDirective implements AfterViewInit {\r\n  private __isTyping = false;\r\n  private __typingTimer!: any;\r\n  private __dirty?: boolean;\r\n  private __validators: ValidatorFn<any>[] = [];\r\n  private __errorMessage?: string | null;\r\n\r\n  @Input() typingDebounceTime = 400;\r\n\r\n  @HostListener('input')\r\n  inputHander() {\r\n    this.__dirty = true;\r\n    this.__isTyping = true;\r\n    if (this.__typingTimer) clearTimeout(this.__typingTimer);\r\n    this.__typingTimer = setTimeout(() => {\r\n      this.__isTyping = false;\r\n\r\n      const errorMessage = this.__validators\r\n        .map((handler) => {\r\n          return handler(this.ref.nativeElement.value);\r\n        })\r\n        .filter((e) => e)\r\n        .shift();\r\n\r\n      this.__errorMessage = errorMessage;\r\n    }, this.typingDebounceTime);\r\n  }\r\n\r\n  constructor(public readonly ref: ElementRef<HTMLInputElement>) {}\r\n\r\n  private addValidator(validatorFn: ValidatorFn<any>) {\r\n    this.__validators.push(validatorFn);\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    const { name, required, minLength, maxLength, min, max, type } =\r\n      this.ref.nativeElement;\r\n\r\n    if (!name) throw new Error('Input name is required!');\r\n    if (required == true) this.addValidator(__isRequired(name));\r\n    if (minLength >= 0) this.addValidator(__minLength(name, minLength));\r\n    if (maxLength > 0) this.addValidator(__maxLength(name, maxLength));\r\n    if (min != undefined) this.addValidator(__min(name, parseInt(min)));\r\n    if (max != undefined) this.addValidator(__max(name, parseInt(max)));\r\n    if (type === 'email') this.addValidator(__email(name));\r\n    if (type === 'password') this.addValidator(__password(name));\r\n  }\r\n\r\n  isTyping() {\r\n    return this.__isTyping;\r\n  }\r\n\r\n  isDirty() {\r\n    return this.__dirty;\r\n  }\r\n\r\n  errorMessage() {\r\n    return this.__errorMessage;\r\n  }\r\n\r\n  isValid() {\r\n    return this.errorMessage() ? false : true;\r\n  }\r\n\r\n  isInvalid() {\r\n    return !this.isValid();\r\n  }\r\n}\r\n",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef, HostListener, Input } from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[mdtxInput]',\r\n  standalone: true,\r\n  exportAs: 'mdtxInput',\r\n})\r\nexport class InputDirective {\r\n  private __isTyping = false;\r\n  private __typingTimer!: any;\r\n  private __dirty?: boolean;\r\n\r\n  @Input() typingDebounceTime = 1000;\r\n\r\n  @HostListener('input')\r\n  inputHander() {\r\n    this.__dirty = true;\r\n    this.__isTyping = true;\r\n    if (this.__typingTimer) clearTimeout(this.__typingTimer);\r\n    this.__typingTimer = setTimeout(() => {\r\n      this.__isTyping = false;\r\n    }, this.typingDebounceTime);\r\n  }\r\n\r\n  constructor(public readonly ref: ElementRef<HTMLInputElement>) {}\r\n\r\n  isTyping() {\r\n    return this.__isTyping;\r\n  }\r\n\r\n  isDirty() {\r\n    return this.__dirty;\r\n  }\r\n}\r\n",
             "selector": "[mdtxInput]",
             "providers": [],
             "exportAs": "mdtxInput",
@@ -22989,10 +22989,10 @@
             "inputsClass": [
                 {
                     "name": "typingDebounceTime",
-                    "defaultValue": "400",
+                    "defaultValue": "1000",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 13,
                     "type": "number",
                     "decorators": []
                 }
@@ -23008,7 +23008,7 @@
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 39
+                    "line": 16
                 }
             ],
             "propertiesClass": [
@@ -23019,19 +23019,7 @@
                     "type": "boolean",
                     "optional": true,
                     "description": "",
-                    "line": 32,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "__errorMessage",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string | null",
-                    "optional": true,
-                    "description": "",
-                    "line": 34,
+                    "line": 11,
                     "modifierKind": [
                         123
                     ]
@@ -23044,7 +23032,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30,
+                    "line": 9,
                     "modifierKind": [
                         123
                     ]
@@ -23056,20 +23044,7 @@
                     "type": "any",
                     "optional": false,
                     "description": "",
-                    "line": 31,
-                    "modifierKind": [
-                        123
-                    ]
-                },
-                {
-                    "name": "__validators",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "ValidatorFn<any>[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 33,
+                    "line": 10,
                     "modifierKind": [
                         123
                     ]
@@ -23081,7 +23056,7 @@
                     "type": "ElementRef<HTMLInputElement>",
                     "optional": false,
                     "description": "",
-                    "line": 57,
+                    "line": 25,
                     "modifierKind": [
                         125,
                         148
@@ -23090,53 +23065,12 @@
             ],
             "methodsClass": [
                 {
-                    "name": "addValidator",
-                    "args": [
-                        {
-                            "name": "validatorFn",
-                            "type": "ValidatorFn<any>",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 59,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "modifierKind": [
-                        123
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "validatorFn",
-                            "type": "ValidatorFn<any>",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "errorMessage",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "string",
-                    "typeParameters": [],
-                    "line": 85,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "inputHander",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 16,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -23155,17 +23089,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 81,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "isInvalid",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 93,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23175,35 +23099,12 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 77,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "isValid",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 89,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 63,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
             ],
             "extends": [],
-            "implements": [
-                "AfterViewInit"
-            ],
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -23217,7 +23118,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 55,
+                "line": 23,
                 "jsdoctags": [
                     {
                         "name": "ref",
@@ -24081,6 +23982,16 @@
                 "defaultValue": "''"
             },
             {
+                "name": "___form___",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/index.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'form module'"
+            },
+            {
                 "name": "AutocompleteList",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -24927,6 +24838,18 @@
                     "deprecationMessage": "",
                     "type": "string",
                     "defaultValue": "''"
+                }
+            ],
+            "libs/material/form/src/lib/index.ts": [
+                {
+                    "name": "___form___",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/index.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'form module'"
                 }
             ],
             "libs/material/core/src/lib/types/autocomplete.ts": [
@@ -25921,8 +25844,8 @@
                 "type": "directive",
                 "linktype": "directive",
                 "name": "InputDirective",
-                "coveragePercent": 5,
-                "coverageCount": "1/18",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -26354,6 +26277,16 @@
                 "name": "InputComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/index.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "___form___",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

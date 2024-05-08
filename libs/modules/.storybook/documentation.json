@@ -267,7 +267,7 @@
         },
         {
             "name": "ForgotPasswordFormComponent",
-            "id": "component-ForgotPasswordFormComponent-4e976e978ea7f3d42271e03ba67c3002c685099f187d9473a2b8e03455004517a4c426ca15db903ce9613d28fd982cd4e0e1eb23a59b90196a4f57fe46699aa8",
+            "id": "component-ForgotPasswordFormComponent-0b3dc909ae7b84d5797e44d3616707758dee17172012f440e72f41165383e4cc5650c70c93a88f932a1c71608136416b4b20ad08fc5e19ac83d735dde960c666",
             "file": "libs/modules/auth/src/lib/forgot-password-form/forgot-password-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -293,14 +293,14 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-forgot-password-form',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './forgot-password-form.component.html',\n  styleUrl: './forgot-password-form.component.scss',\n})\nexport class ForgotPasswordFormComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '@mdtx/material/form';\n\n@Component({\n  selector: 'mdtx-forgot-password-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './forgot-password-form.component.html',\n  styleUrl: './forgot-password-form.component.scss',\n})\nexport class ForgotPasswordFormComponent {}\n",
             "styleUrl": "./forgot-password-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -396,7 +396,7 @@
         },
         {
             "name": "LoginFormComponent",
-            "id": "component-LoginFormComponent-75b7882849c87eb201ae20c10027ffa7f7c5e1ddf7f07596a6c441e43c39f6e3e3c2eafad6cb3a33aa3086339b3bbb04b3ec5fe4c89ca9c2292165a6e748fe7d",
+            "id": "component-LoginFormComponent-898f3126535d62cb543e7793980194be4dc69640d8245ef1061b5fa5710b39a09e2cdd998d7c6d3b651be37195e60c9c059c2c156009156d45c21603542f328c",
             "file": "libs/modules/auth/src/lib/login-form/login-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -405,6 +405,9 @@
             "providers": [
                 {
                     "name": "provideMatFormFieldOptions()"
+                },
+                {
+                    "name": "provideErrorStateMatcher()"
                 }
             ],
             "selector": "mdtx-login-form",
@@ -417,7 +420,18 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "formGroup",
+                    "defaultValue": "this.builder.nonNullable.group({\n    username: [\n      '',\n      InputValidator.create('username').required().email().build(),\n    ],\n    password: [\n      '',\n      InputValidator.create('password').required().password().build(),\n    ],\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -433,13 +447,39 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport {\n  MAT_FORM_FIELD_DEFAULT_OPTIONS,\n  MatFormFieldAppearance,\n  MatFormFieldDefaultOptions,\n} from '@angular/material/form-field';\nimport {\n  CommonFormModule,\n  provideMatFormFieldOptions,\n} from '@mdtx/material/core';\n@Component({\n  selector: 'mdtx-login-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './login-form.component.html',\n  styleUrl: './login-form.component.scss',\n  providers: [provideMatFormFieldOptions()],\n})\nexport class LoginFormComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { AbstractControl, FormBuilder, Validators } from '@angular/forms';\nimport {\n  InputValidator,\n  provideErrorStateMatcher,\n  provideMatFormFieldOptions,\n} from '@mdtx/material/core';\nimport { isStrongPassword } from 'class-validator';\n\nimport { CommonFormModule } from '@mdtx/material/form';\n@Component({\n  selector: 'mdtx-login-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './login-form.component.html',\n  styleUrl: './login-form.component.scss',\n  providers: [provideMatFormFieldOptions(), provideErrorStateMatcher()],\n})\nexport class LoginFormComponent {\n  formGroup = this.builder.nonNullable.group({\n    username: [\n      '',\n      InputValidator.create('username').required().email().build(),\n    ],\n    password: [\n      '',\n      InputValidator.create('password').required().password().build(),\n    ],\n  });\n  constructor(protected readonly builder: FormBuilder) {}\n}\n",
             "styleUrl": "./login-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "builder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 29,
+                "jsdoctags": [
+                    {
+                        "name": "builder",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": "<form>\n  <mat-form-field>\n    <mat-label i18n>Username</mat-label>\n    <input\n      #un=\"mdtxInput\"\n      type=\"email\"\n      name=\"username\"\n      matInput\n      mdtxInput\n      type=\"text\"\n      [required]=\"true\"\n    />\n    <mat-error>{{ un.errorMessage() }}</mat-error>\n  </mat-form-field>\n</form>\n"
+            "templateData": "<form [formGroup]=\"formGroup\" novalidate>\n  <mdtx-input [options]=\"{ type: 'email', autocomplete: 'off' }\"></mdtx-input>\n  <mdtx-input\n    [options]=\"{ type: 'password', autocomplete: 'off' }\"\n  ></mdtx-input>\n  <div class=\"actions\">\n    <button type=\"button\" mat-raised-button color=\"primary\" i18n>Login</button>\n    <button\n      type=\"button\"\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formGroup.reset()\"\n      i18n\n    >\n      Reset\n    </button>\n    <button type=\"button\" mat-stroked-button color=\"primary\" i18n>\n      Forgot Password\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "LoginWithCodeFormComponent",
@@ -2327,7 +2367,7 @@
                 "linktype": "component",
                 "name": "LoginFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

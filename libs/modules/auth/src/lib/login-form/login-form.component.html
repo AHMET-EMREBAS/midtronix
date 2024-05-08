@@ -1,32 +1,8 @@
 <form [formGroup]="formGroup" novalidate>
-  <mat-form-field>
-    <mat-label i18n>Username</mat-label>
-    <input
-      #username="mdtxInput"
-      matInput
-      mdtxInput
-      type="email"
-      formControlName="username"
-      [required]="true"
-    />
-    <mat-error>{{ formGroup.get('username')?.errors | json }}</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label i18n>Password</mat-label>
-    <input
-      #passwordInput="mdtxInput"
-      matInput
-      mdtxInput
-      type="password"
-      formControlName="password"
-      [required]="true"
-    />
-    <button type="button" mat-icon-button matSuffix>
-      <mat-icon>visibility</mat-icon>
-    </button>
-    <mat-error> {{ formGroup.get('password')?.errors | json }}</mat-error>
-  </mat-form-field>
-
+  <mdtx-input [options]="{ type: 'email', autocomplete: 'off' }"></mdtx-input>
+  <mdtx-input
+    [options]="{ type: 'password', autocomplete: 'off' }"
+  ></mdtx-input>
   <div class="actions">
     <button type="button" mat-raised-button color="primary" i18n>Login</button>
     <button

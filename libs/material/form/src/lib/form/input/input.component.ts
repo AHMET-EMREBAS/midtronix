@@ -1,27 +1,18 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'mdtx-input',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
 })
 export class InputComponent {
   @Input() type!: string;
-  
+  @Input() inputName!: string;
+  @Input() prefixIcon = 'info';
+  @Input() formControl!: FormControl;
+  @Input() options?: Partial<HTMLInputElement>;
+
+  errorMessage(): string {
+    return Object.values(this.formControl.errors ?? {}).pop();
+  }
 }

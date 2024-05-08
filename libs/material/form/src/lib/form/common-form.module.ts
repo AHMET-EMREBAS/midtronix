@@ -10,9 +10,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule } from './common.module';
-import { InputDirective } from '../directive';
-
+import { CommonModule } from '@angular/common';
+import { InputDirective, SetAttributesDirective } from '@mdtx/material/core';
+import { InputComponent } from './input/input.component';
 const modules = [
   CommonModule,
   FormsModule,
@@ -28,10 +28,12 @@ const modules = [
   MatSelectModule,
   MatListModule,
   InputDirective,
+  SetAttributesDirective,
 ];
 
 @NgModule({
+  declarations: [InputComponent],
   imports: [...modules],
-  exports: [...modules],
+  exports: [...modules, InputComponent],
 })
 export class CommonFormModule {}

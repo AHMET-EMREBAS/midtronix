@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import {
-  MAT_FORM_FIELD_DEFAULT_OPTIONS,
-  MatFormFieldAppearance,
-  MatFormFieldDefaultOptions,
-} from '@angular/material/form-field';
-import {
-  CommonFormModule,
+  InputValidator,
   provideErrorStateMatcher,
   provideMatFormFieldOptions,
 } from '@mdtx/material/core';
 import { isStrongPassword } from 'class-validator';
+
+import { CommonFormModule } from '@mdtx/material/form';
 @Component({
   selector: 'mdtx-login-form',
   standalone: true,
@@ -21,14 +18,13 @@ import { isStrongPassword } from 'class-validator';
 })
 export class LoginFormComponent {
   formGroup = this.builder.nonNullable.group({
-    username: ['', [Validators.required, Validators.email]],
+    username: [
+      '',
+      InputValidator.create('username').required().email().build(),
+    ],
     password: [
       '',
-      [
-        Validators.required,
-        (c: AbstractControl) =>
-          isStrongPassword(c.value) ? null : { password: 'true' },
-      ],
+      InputValidator.create('password').required().password().build(),
     ],
   });
   constructor(protected readonly builder: FormBuilder) {}

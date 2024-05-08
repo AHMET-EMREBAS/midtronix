@@ -1,1 +1,5 @@
-<p>input works!</p>
+<mat-form-field>
+  <mat-label>{{ options?.ariaLabel }}</mat-label>
+  <input matInput [formControl]="formControl" [mdtxSetAttributes]="options" />
+  <mat-error>{{ errorMessage() }}</mat-error>
+</mat-form-field>
