@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'mdtx-ems',
+  selector: 'mdtx-landing-page',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './ems.component.html',
-  styleUrl: './ems.component.scss',
+  templateUrl: './landing-page.component.html',
+  styleUrl: './landing-page.component.scss',
 })
-export class EmsComponent {}
+export class LandingPageComponent {}

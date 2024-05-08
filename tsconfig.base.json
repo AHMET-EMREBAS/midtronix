@@ -28,6 +28,7 @@
       "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
       "@mdtx/modules/ems": ["libs/modules/ems/src/index.ts"],
       "@mdtx/modules/inventory": ["libs/modules/inventory/src/index.ts"],
+      "@mdtx/modules/landing-page": ["libs/modules/landing-page/src/index.ts"],
       "@mdtx/modules/pms": ["libs/modules/pms/src/index.ts"],
       "@mdtx/modules/pos": ["libs/modules/pos/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],

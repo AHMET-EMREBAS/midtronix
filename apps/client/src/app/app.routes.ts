@@ -1,6 +1,16 @@
 import { Route } from '@angular/router';
-import { ProductRoutes } from './product';
-import {} from '@mdtx/modules/website'
+import { WebsiteRoutes } from '@mdtx/modules/website';
+import { CmsRoutes } from '@mdtx/modules/cms';
+import { InventoryRoutes } from '@mdtx/modules/inventory';
+import { EmsRoutes } from '@mdtx/modules/ems';
+import { PmsRoutes } from '@mdtx/modules/pms';
+import { PosRoutes } from '@mdtx/modules/pos';
+
 export const appRoutes: Route[] = [
-  { path: 'website', loadChildren: () => ProductRoutes },
+  { path: 'website', loadChildren: () => WebsiteRoutes },
+  { path: 'cms', loadChildren: () => CmsRoutes },
+  { path: 'ems', loadChildren: () => EmsRoutes },
+  { path: 'inventory', loadChildren: () => InventoryRoutes },
+  { path: 'pms', loadChildren: () => PmsRoutes },
+  { path: 'pos', loadChildren: () => PosRoutes },
 ];
