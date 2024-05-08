@@ -4,22 +4,89 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "ErrorStateMatcher",
+            "id": "class-ErrorStateMatcher-358ae3f979f555a1fead0c4603c96133da640f6abf284635608c8e4a58e1b9d7b05bbddd8ef47f54cce2a289cfacd3be7043f446cfb8d32198d5c86a81869f51",
+            "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { InjectionToken, Provider } from '@angular/core';\r\nimport { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';\r\nimport {\r\n  _ErrorStateTracker,\r\n  ErrorStateMatcher as __ErrorStateMatcher,\r\n} from '@angular/material/core';\r\n\r\nexport class ErrorStateMatcher implements __ErrorStateMatcher {\r\n  isErrorState(\r\n    control: AbstractControl<any, any> | null,\r\n    form: FormGroupDirective | NgForm | null\r\n  ): boolean {\r\n    return (control?.dirty && control.touched && !control.valid) ?? false;\r\n  }\r\n}\r\n\r\nexport function provideErrorStateMatcher(): Provider {\r\n  return {\r\n    provide: __ErrorStateMatcher,\r\n    useClass: ErrorStateMatcher,\r\n  };\r\n}\r\n",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [],
+            "methods": [
+                {
+                    "name": "isErrorState",
+                    "args": [
+                        {
+                            "name": "control",
+                            "type": "AbstractControl<any | any> | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "form",
+                            "type": "FormGroupDirective | NgForm | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "control",
+                            "type": "AbstractControl<any | any> | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "form",
+                            "type": "FormGroupDirective | NgForm | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "__ErrorStateMatcher"
+            ]
+        }
+    ],
     "directives": [],
     "components": [
         {
             "name": "MaterialComponent",
-            "id": "component-MaterialComponent-a3deb3c2316ca9517b39f70eca40bdd2ddb221e3d9cdb131c7c169b51e4a2fef72ccd16c975ee9ff87b83341e7fe04bda3824408a33f1ee2b43eb4dfb75bea9a",
-            "file": "libs/material/material/src/lib/material.component.ts",
+            "id": "component-MaterialComponent-b560637867c479b8c7bba31e372b44725e6372fd476507c8d4894c916d552f08c80d7f9a985f203cc6e6d7ebebccae6f847448a32be1e46f828c113dbbcae379",
+            "file": "libs/material/src/lib/material/material.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
+            "selector": "lib-material",
             "styleUrls": [],
             "styles": [],
-            "template": "<h1>Material Components</h1>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./material.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
@@ -31,158 +98,440 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  template: `<h1>Material Components</h1>`,\r\n  standalone: true,\r\n})\r\nexport class MaterialComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-material',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './material.component.html',\n  styleUrl: './material.component.css',\n})\nexport class MaterialComponent {}\n",
+            "styleUrl": "./material.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "extends": [],
+            "templateData": "<p>material works!</p>\n"
+        },
+        {
+            "name": "MaterialLayoutComponent",
+            "id": "component-MaterialLayoutComponent-c01ce579203588833f2676b21d1eb75a2ac8c1ecd5de4f9087d5c96727866f4e5a5cb7ede087738403ba33b0651620fd2292f2ca3523540a1d6ed1f2813d61ab",
+            "file": "libs/material/layout/src/lib/material-layout/material-layout.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-material-layout",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./material-layout.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-material-layout',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './material-layout.component.html',\r\n  styleUrl: './material-layout.component.css',\r\n})\r\nexport class MaterialLayoutComponent {}\r\n",
+            "styleUrl": "./material-layout.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>material-layout works!</p>\r\n"
+        },
+        {
+            "name": "MaterialTableComponent",
+            "id": "component-MaterialTableComponent-0c77f05cf60c3871220e9906cb7e8df17b65f7bbfdb8a65f885b7c8ca9e84607992fc0188b34f7a6d1a94f904c2c1448e656d2dad06219522cd82e19ed7fc6cc",
+            "file": "libs/material/table/src/lib/material-table/material-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-material-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./material-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-material-table',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './material-table.component.html',\r\n  styleUrl: './material-table.component.css',\r\n})\r\nexport class MaterialTableComponent {}\r\n",
+            "styleUrl": "./material-table.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>material-table works!</p>\r\n"
         }
     ],
     "modules": [],
     "miscellaneous": {
-        "variables": [
+        "variables": [],
+        "functions": [
             {
-                "name": "Heading",
+                "name": "createClassProvider",
+                "file": "libs/material/core/src/lib/providers/create-provider.ts",
                 "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/material/src/lib/material.component.stories.ts",
+                "subtype": "function",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material works!/gi)).toBeTruthy();\n  },\n}"
+                "description": "<p>Create a class provider, injector, and token function</p>\n",
+                "args": [
+                    {
+                        "name": "tokenPrefix",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "CreateProviderResult<Type<T>, Provider, InjectionToken<T>>",
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 202,
+                            "end": 213,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "tokenPrefix"
+                        },
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 196,
+                            "end": 201,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "param"
+                        },
+                        "comment": ""
+                    },
+                    {
+                        "tagName": {
+                            "pos": 219,
+                            "end": 226,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "returns"
+                        },
+                        "comment": ""
+                    }
+                ]
             },
             {
-                "name": "meta",
+                "name": "createValueProvider",
+                "file": "libs/material/core/src/lib/providers/create-provider.ts",
                 "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/material/src/lib/material.component.stories.ts",
+                "subtype": "function",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<MaterialComponent>",
-                "defaultValue": "{\n  component: MaterialComponent,\n  title: 'MaterialComponent',\n}"
+                "description": "<p>Create a value provider, injector, and token function</p>\n",
+                "args": [
+                    {
+                        "name": "tokenPrefix",
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "CreateProviderResult<T, Provider, InjectionToken<T>>",
+                "jsdoctags": [
+                    {
+                        "name": {
+                            "pos": 730,
+                            "end": 741,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "tokenPrefix"
+                        },
+                        "type": "string",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "pos": 724,
+                            "end": 729,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "param"
+                        },
+                        "comment": ""
+                    },
+                    {
+                        "tagName": {
+                            "pos": 747,
+                            "end": 754,
+                            "flags": 16777216,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 80,
+                            "escapedText": "returns"
+                        },
+                        "comment": ""
+                    }
+                ]
             },
             {
-                "name": "Primary",
+                "name": "provideErrorStateMatcher",
+                "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
                 "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/material/src/lib/material.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            }
-        ],
-        "functions": [],
-        "typealiases": [
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<MaterialComponent>",
-                "file": "libs/material/material/src/lib/material.component.stories.ts",
+                "subtype": "function",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
-                "kind": 183
+                "args": [],
+                "returnType": "Provider"
             }
         ],
+        "typealiases": [],
         "enumerations": [],
-        "groupedVariables": {
-            "libs/material/material/src/lib/material.component.stories.ts": [
+        "groupedVariables": {},
+        "groupedFunctions": {
+            "libs/material/core/src/lib/providers/create-provider.ts": [
                 {
-                    "name": "Heading",
+                    "name": "createClassProvider",
+                    "file": "libs/material/core/src/lib/providers/create-provider.ts",
                     "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/material/src/lib/material.component.stories.ts",
+                    "subtype": "function",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/material works!/gi)).toBeTruthy();\n  },\n}"
+                    "description": "<p>Create a class provider, injector, and token function</p>\n",
+                    "args": [
+                        {
+                            "name": "tokenPrefix",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "CreateProviderResult<Type<T>, Provider, InjectionToken<T>>",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 202,
+                                "end": 213,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "tokenPrefix"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 196,
+                                "end": 201,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "tagName": {
+                                "pos": 219,
+                                "end": 226,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "meta",
+                    "name": "createValueProvider",
+                    "file": "libs/material/core/src/lib/providers/create-provider.ts",
                     "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/material/src/lib/material.component.stories.ts",
+                    "subtype": "function",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<MaterialComponent>",
-                    "defaultValue": "{\n  component: MaterialComponent,\n  title: 'MaterialComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/material/src/lib/material.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "description": "<p>Create a value provider, injector, and token function</p>\n",
+                    "args": [
+                        {
+                            "name": "tokenPrefix",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "CreateProviderResult<T, Provider, InjectionToken<T>>",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 730,
+                                "end": 741,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "tokenPrefix"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 724,
+                                "end": 729,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": ""
+                        },
+                        {
+                            "tagName": {
+                                "pos": 747,
+                                "end": 754,
+                                "flags": 16777216,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ]
                 }
-            ]
-        },
-        "groupedFunctions": {},
-        "groupedEnumerations": {},
-        "groupedTypeAliases": {
-            "libs/material/material/src/lib/material.component.stories.ts": [
+            ],
+            "libs/material/form/src/lib/common/error-state-matcher.ts": [
                 {
-                    "name": "Story",
+                    "name": "provideErrorStateMatcher",
+                    "file": "libs/material/form/src/lib/common/error-state-matcher.ts",
                     "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<MaterialComponent>",
-                    "file": "libs/material/material/src/lib/material.component.stories.ts",
+                    "subtype": "function",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
-                    "kind": 183
+                    "args": [],
+                    "returnType": "Provider"
                 }
             ]
-        }
+        },
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
     },
     "routes": [],
     "coverage": {
-        "count": 0,
-        "status": "low",
+        "count": 28,
+        "status": "medium",
         "files": [
             {
-                "filePath": "libs/material/material/src/lib/material.component.stories.ts",
-                "type": "variable",
+                "filePath": "libs/material/core/src/lib/providers/create-provider.ts",
+                "type": "function",
                 "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
+                "linksubtype": "function",
+                "name": "createClassProvider",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/providers/create-provider.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "createValueProvider",
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/common/error-state-matcher.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "ErrorStateMatcher",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/common/error-state-matcher.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideErrorStateMatcher",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/material/src/lib/material.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
+                "filePath": "libs/material/layout/src/lib/material-layout/material-layout.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MaterialLayoutComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "libs/material/material/src/lib/material.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/material/src/lib/material.component.ts",
+                "filePath": "libs/material/src/lib/material/material.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "MaterialComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/material-table/material-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MaterialTableComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

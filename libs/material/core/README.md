@@ -1,3 +1,3 @@
 # material-core
 
-Core component features
+Core components

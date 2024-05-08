@@ -2,7 +2,7 @@
   "name": "material-table",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/material/table/src",
-  "prefix": "lib",
+  "prefix": "mdtx",
   "projectType": "library",
   "tags": [],
   "targets": {

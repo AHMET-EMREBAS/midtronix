@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @nx/enforce-module-boundaries */
-import { InjectionToken, Provider } from '@angular/core';
+import { Provider } from '@angular/core';
 import { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
-import {
-  _ErrorStateTracker,
-  ErrorStateMatcher as __ErrorStateMatcher,
-} from '@angular/material/core';
+import { ErrorStateMatcher as __ErrorStateMatcher } from '@angular/material/core';
 
 export class ErrorStateMatcher implements __ErrorStateMatcher {
   isErrorState(

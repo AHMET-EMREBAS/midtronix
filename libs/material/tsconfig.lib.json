@@ -11,7 +11,11 @@
     "src/**/*.spec.ts",
     "src/test-setup.ts",
     "jest.config.ts",
-    "src/**/*.test.ts"
+    "src/**/*.test.ts",
+    "core/**",
+    "form/**",
+    "layout/**",
+    "table/**"
   ],
   "include": ["src/**/*.ts"]
 }

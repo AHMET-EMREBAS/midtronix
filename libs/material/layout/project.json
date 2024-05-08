@@ -2,7 +2,7 @@
   "name": "material-layout",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/material/layout/src",
-  "prefix": "lib",
+  "prefix": "mdtx",
   "projectType": "library",
   "tags": [],
   "targets": {
