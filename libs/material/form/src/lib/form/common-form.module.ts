@@ -11,8 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { InputDirective, SetAttributesDirective } from '@mdtx/material/core';
-import { InputComponent } from './input/input.component';
+import { InputDirective } from '@mdtx/material/core';
 const modules = [
   CommonModule,
   FormsModule,
@@ -28,12 +27,10 @@ const modules = [
   MatSelectModule,
   MatListModule,
   InputDirective,
-  SetAttributesDirective,
 ];
 
 @NgModule({
-  declarations: [InputComponent],
   imports: [...modules],
-  exports: [...modules, InputComponent],
+  exports: [...modules],
 })
 export class CommonFormModule {}

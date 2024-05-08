@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import {
   InputValidator,
   provideErrorStateMatcher,
   provideMatFormFieldOptions,
 } from '@mdtx/material/core';
-import { isStrongPassword } from 'class-validator';
-
 import { CommonFormModule } from '@mdtx/material/form';
+
+import '@angular/localize/init';
 @Component({
   selector: 'mdtx-login-form',
   standalone: true,
@@ -28,4 +28,16 @@ export class LoginFormComponent {
     ],
   });
   constructor(protected readonly builder: FormBuilder) {}
+
+  private getControl(name: string) {
+    return this.formGroup.get(name) as FormControl;
+  }
+
+  private errors(name: string): any {
+    return this.getControl(name)?.errors ?? {};
+  }
+
+  errorMessage(name: string) {
+    return Object.values(this.errors(name)).pop();
+  }
 }
