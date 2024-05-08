@@ -2,6 +2,8 @@
 
 This module contains
 
-- Customer management/services/tickets/communication
+- Customer Management System
+- Tickets
+- 
 
 

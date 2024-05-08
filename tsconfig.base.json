@@ -26,7 +26,9 @@
       "@mdtx/material/table": ["libs/material/table/src/index.ts"],
       "@mdtx/modules/auth": ["libs/modules/auth/src/index.ts"],
       "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
+      "@mdtx/modules/ems": ["libs/modules/ems/src/index.ts"],
       "@mdtx/modules/inventory": ["libs/modules/inventory/src/index.ts"],
+      "@mdtx/modules/pms": ["libs/modules/pms/src/index.ts"],
       "@mdtx/modules/pos": ["libs/modules/pos/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
