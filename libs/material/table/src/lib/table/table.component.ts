@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -10,6 +11,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { IID } from '@mdtx/common';
 export interface PeriodicElement {
   id: number;
   name: string;
@@ -46,22 +48,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent {
+export class TableComponent<T extends IID = any> implements OnInit {
   readonly firstColumns = ['first', 'second'];
   readonly lastColumns = ['last'];
 
   readonly selectedItems = new Map();
 
-  @Input() columns: string[] = ['id', 'position', 'name', 'weight', 'symbol'];
-  @Input() displayedColumns: string[] = [
-    ...this.firstColumns,
-    'position',
-    'name',
-    'weight',
-    'symbol',
-    ...this.lastColumns,
-  ];
-  @Input() dataSource = ELEMENT_DATA;
+  @Input() columns!: string[];
+  @Input() displayedColumns!: string[];
+  @Input() dataSource!: any[];
+
+  ngOnInit(): void {
+    this.columns = ['id', 'name'];
+    this.displayedColumns = this.columns;
+    this.displayedColumns = [
+      ...this.firstColumns,
+      ...this.columns,
+      ...this.lastColumns,
+    ];
+
+    this.dataSource = [
+      { id: 1, name: 'some' },
+      { id: 2, name: 'another' },
+      { id: 3, name: 'other' },
+    ];
+  }
 
   selectItem(event: Partial<MatCheckboxChange>, item: any) {
     if (event.checked) {
@@ -87,6 +98,7 @@ export class TableComponent {
   isAllSelected() {
     return this.dataSource.length === this.selectedItems.size;
   }
+  
   isPartialSelected() {
     return (
       this.selectedItems.size > 0 &&

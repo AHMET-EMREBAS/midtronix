@@ -1,12 +1,3 @@
-.table-container {
-  display: flex;
-  flex-direction: column;
-  max-height: 78vh;
-  position: relative;
-  overflow: auto;
-  padding-bottom: 5em;
-}
-
 tr:nth-child(even):not(:first-child):not(:has(th)) {
   background-color: rgb(209, 209, 209);
 }
@@ -20,6 +11,15 @@ th:nth-child(2) {
   margin: 0px;
   text-align: center;
   background-color: rgb(156, 156, 156);
+}
+
+td:last-child,
+th:last-child {
+  width: 30px !important;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  // background-color: rgb(156, 156, 156);
 }
 
 tr:first-child > th:first-child,
