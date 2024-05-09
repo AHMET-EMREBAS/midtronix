@@ -28,3 +28,13 @@ th:nth-child(2) {
   text-align: center;
   background-color: rgb(206, 206, 206);
 }
+
+tr:first-child > th:first-child,
+tr:first-child > th:nth-child(2) {
+  background-color: white !important;
+}
+th {
+  font-weight: bolder !important;
+  text-transform: capitalize !important;
+  letter-spacing: 0.1em;
+}
