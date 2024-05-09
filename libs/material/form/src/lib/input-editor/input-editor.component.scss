@@ -1,5 +1,8 @@
 #editor {
   min-height: 200px;
   width: 100%;
-  font-family: Comfortaa;
+}
+
+#editor * {
+  font-family: Comfortaa !important;
 }
