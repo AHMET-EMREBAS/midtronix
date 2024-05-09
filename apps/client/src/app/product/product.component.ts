@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ProductService } from './product.service';
-import { provideErrorStateMatcher } from '@mdtx/material/form';
+import { provideErrorStateMatcher } from '@mdtx/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { of } from 'rxjs';
 
