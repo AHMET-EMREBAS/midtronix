@@ -7,4 +7,3 @@ export * from './validators';
 export * from './error-state';
 export * from './pipes';
 export * from './modules';
-export * from './error-messsage';

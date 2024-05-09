@@ -23154,6 +23154,88 @@
             }
         },
         {
+            "name": "ErrorMessageDirective",
+            "id": "directive-ErrorMessageDirective-102d0625b96a185c17d99f477c1e602498b1b6f2089fbcf7878f7ba83ff14f97c4d8edb6be92724357ab4f7150e687da304ba2cb30bec2f47d6ab5f004b1d230",
+            "file": "libs/material/core/src/lib/error-messsage/error-message.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Directive,\r\n  ElementRef,\r\n  Input,\r\n  isDevMode,\r\n} from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[mdtxErrorMessage]',\r\n  standalone: true,\r\n})\r\nexport class ErrorMessageDirective implements AfterViewInit {\r\n  isDevMode = isDevMode();\r\n  @Input() errorCondition?: boolean;\r\n\r\n  constructor(protected readonly ref: ElementRef<HTMLParagraphElement>) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    if (this.errorCondition && this.isDevMode) {\r\n      this.ref.nativeElement.hidden = false;\r\n\r\n      this.ref.nativeElement.style.fontFamily = `Comfortaa`;\r\n      this.ref.nativeElement.style.color = `red`;\r\n      this.ref.nativeElement.style.border = `1px solid red`;\r\n      this.ref.nativeElement.style.background = `white`;\r\n      this.ref.nativeElement.style.padding = `1em`;\r\n    } else {\r\n      this.ref.nativeElement.hidden = true;\r\n    }\r\n  }\r\n}\r\n",
+            "selector": "[mdtxErrorMessage]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "errorCondition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "isDevMode",
+                    "defaultValue": "isDevMode()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLParagraphElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLParagraphElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "FullscreenDirective",
             "id": "directive-FullscreenDirective-624e21b562db599b6b994146c1c2a3a056730aaeba448b376a0a8c631b215d513e53970c0b67abd0ae352e34144db7bb19a22bb5e971628f9c35e5f5e3ad8678",
             "file": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
@@ -23796,7 +23878,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-45c765abac0929a13f18406c71157ec6df781b008e9a72d1e4b17bfb321e42bc950e9067ee35430baa6a7a2f985790fd4601b5233b4f229e23e53e1cf7e6a256",
+            "id": "component-InputAutocompleteComponent-6feeaaba3ac60e9778ae2170670f63f5895935f7f3a6dfb3bca98b4bfce4ffef6abaded46cce8d5450df1f898eee6d0baa8d5369485bdd74b9750ae6f94cd40a",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24032,7 +24114,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { IInputOption } from '@mdtx/material/core';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime, map } from 'rxjs';\n@Component({\n  selector: 'mdtx-input-autocomplete',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-autocomplete.component.html',\n  styleUrl: './input-autocomplete.component.scss',\n})\nexport class InputAutocompleteComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  @Input() options!: IInputOption[];\n  \n  filteredOptions$!: Observable<IInputOption[]>;\n\n  override ngOnInit(): void {\n    if (!this.options) throw new Error('options is required!');\n    this.formControl = new FormControl('', []);\n    this.filteredOptions$ = this.formControl.valueChanges.pipe(\n      debounceTime(600),\n      map((e) => {\n        return this.options.filter((o) => o.name.startsWith(e));\n      })\n    );\n    super.ngOnInit();\n  }\n\n  displayWith(option: IInputOption) {\n    return option.name;\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { IInputOption } from '@mdtx/material/core';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime, map } from 'rxjs';\n@Component({\n  selector: 'mdtx-input-autocomplete',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-autocomplete.component.html',\n  styleUrl: './input-autocomplete.component.scss',\n})\nexport class InputAutocompleteComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  @Input() options!: IInputOption[];\n\n  filteredOptions$!: Observable<IInputOption[]>;\n\n  override ngOnInit(): void {\n    if (!this.options) throw new Error('options is required!');\n    this.formControl = new FormControl('', []);\n    this.filteredOptions$ = this.formControl.valueChanges.pipe(\n      debounceTime(600),\n      map((e) => {\n        return this.options.filter((o) => o.name.startsWith(e));\n      })\n    );\n    super.ngOnInit();\n  }\n\n  displayWith(option: IInputOption) {\n    return option.name;\n  }\n}\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -24043,7 +24125,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [matAutocomplete]=\"auto\"\n  />\n  <mat-autocomplete\n    autoActiveFirstOption\n    #auto=\"matAutocomplete\"\n    [displayWith]=\"displayWith\"\n  >\n    @for (option of filteredOptions$ | async ; track option) {\n    <mat-option [value]=\"option\">{{ option }}</mat-option>\n    }\n  </mat-autocomplete>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n\n  <mat-progress-spinner\n    [diameter]=\"30\"\n    mode=\"indeterminate\"\n  ></mat-progress-spinner>\n</mat-form-field>\n"
+            "templateData": "<p mdtxErrorMessage [errorCondition]=\"options === undefined\">\n  Options is required!\n</p>\n<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [matAutocomplete]=\"auto\"\n  />\n  <mat-autocomplete\n    autoActiveFirstOption\n    #auto=\"matAutocomplete\"\n    [displayWith]=\"displayWith\"\n  >\n    @for (option of filteredOptions$ | async ; track option) {\n    <mat-option [value]=\"option\">{{ option }}</mat-option>\n    }\n  </mat-autocomplete>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n</mat-form-field>\n"
         },
         {
             "name": "InputBaseComponent",
@@ -25133,13 +25215,13 @@
     "modules": [
         {
             "name": "CommonFormModule",
-            "id": "module-CommonFormModule-5d10ac8c8c7b095b7eb8c54fbe3edc58c60a267fa4bf2dc799fcd51079f9da015a5b59e8b245235721fd862552fc876592dd1d6eb51453e0112049c4960ac343",
+            "id": "module-CommonFormModule-17bd1217de44eaa04f05b52184bdbc90dd509fbe62f78465919ac732d79178d8f2caa1829c6592978265cdfc109c6f7ce0b3b35097a1d53a75a3a5535a8e88aa",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/form/src/lib/form/common-form.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputDirective } from '@mdtx/material/core';\r\n\r\nimport { MatProgressSpinnerModule} from '@angular/material/progress-spinner'\r\nconst modules = [\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule\r\n];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonFormModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ErrorMessageDirective, InputDirective } from '@mdtx/material/core';\r\n\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\nconst modules = [\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonFormModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -25153,10 +25235,13 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "FullscreenDirective"
+                            "name": "CommonModule"
                         },
                         {
-                            "name": "ViewportDirective"
+                            "name": "ErrorMessageDirective"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -25164,10 +25249,13 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "FullscreenDirective"
+                            "name": "CommonModule"
                         },
                         {
-                            "name": "ViewportDirective"
+                            "name": "ErrorMessageDirective"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -25203,10 +25291,13 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "FullscreenDirective"
+                            "name": "CommonModule"
                         },
                         {
-                            "name": "ViewportDirective"
+                            "name": "ErrorMessageDirective"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -25214,10 +25305,13 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "FullscreenDirective"
+                            "name": "CommonModule"
                         },
                         {
-                            "name": "ViewportDirective"
+                            "name": "ErrorMessageDirective"
+                        },
+                        {
+                            "name": "InputDirective"
                         }
                     ]
                 },
@@ -25263,46 +25357,6 @@
                 "deprecationMessage": "",
                 "type": "Readonly<Autocomplete[]>",
                 "defaultValue": "AutocompleteList()"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -25488,6 +25542,46 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -25548,51 +25642,11 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FullscreenDirectiveComponent>",
-                "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<InputDirectiveComponent>",
-                "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ViewportDirectiveComponent>",
-                "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<LocalStoreComponent>",
-                "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputAutocompleteComponent>",
-                "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n}"
+                "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -25768,6 +25822,46 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FullscreenDirectiveComponent>",
+                "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputDirectiveComponent>",
+                "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewportDirectiveComponent>",
+                "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<LocalStoreComponent>",
+                "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -25788,61 +25882,21 @@
                 "name": "modules",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/modules/common.module.ts",
+                "file": "libs/material/form/src/lib/form/common-form.module.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
+                "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n]"
             },
             {
                 "name": "modules",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/form/src/lib/form/common-form.module.ts",
+                "file": "libs/material/core/src/lib/modules/common.module.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule\r\n]"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
+                "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
             },
             {
                 "name": "Primary",
@@ -26023,6 +26077,46 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -26282,50 +26376,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<InputDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<LocalStoreComponent>",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<InputAutocompleteComponent>",
                 "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts",
                 "deprecated": false,
@@ -26524,6 +26574,50 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FullscreenDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewportDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<LocalStoreComponent>",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<LayoutComponent>",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
@@ -26579,134 +26673,6 @@
                     "defaultValue": "AutocompleteList()"
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FullscreenDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/directive/input.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ViewportDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<LocalStoreComponent>",
-                    "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
             "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -26726,7 +26692,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputAutocompleteComponent>",
-                    "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n}"
+                    "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -27283,6 +27249,134 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FullscreenDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/directive/input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewportDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<LocalStoreComponent>",
+                    "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -27391,6 +27485,18 @@
                     "defaultValue": "InputTypeList()"
                 }
             ],
+            "libs/material/form/src/lib/form/common-form.module.ts": [
+                {
+                    "name": "modules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/form/common-form.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n]"
+                }
+            ],
             "libs/material/core/src/lib/modules/common.module.ts": [
                 {
                     "name": "modules",
@@ -27401,18 +27507,6 @@
                     "deprecationMessage": "",
                     "type": "[]",
                     "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
-                }
-            ],
-            "libs/material/form/src/lib/form/common-form.module.ts": [
-                {
-                    "name": "modules",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/form/common-form.module.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule\r\n]"
                 }
             ],
             "libs/material/core/src/lib/localstore/local-store.component.ts": [
@@ -27670,58 +27764,6 @@
                     "kind": 187
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/directive/input.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<InputDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<LocalStoreComponent>",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts": [
                 {
                     "name": "Story",
@@ -27956,6 +27998,58 @@
                     "kind": 183
                 }
             ],
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FullscreenDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/directive/input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewportDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<LocalStoreComponent>",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Story",
@@ -28149,6 +28243,15 @@
                 "name": "ViewportDirective",
                 "coveragePercent": 8,
                 "coverageCount": "1/12",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/error-messsage/error-message.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ErrorMessageDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {

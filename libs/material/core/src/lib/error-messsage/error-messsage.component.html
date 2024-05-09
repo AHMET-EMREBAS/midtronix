@@ -1,9 +1,0 @@
-<ng-template #error let-msg="msg">
-  <p>{{ msg }}</p>
-</ng-template>
-
-<ng-container *ngIf="isDevMode && errorCondition">
-  <ng-container
-    *ngTemplateOutlet="error; context: { msg: message }"
-  ></ng-container>
-</ng-container>
