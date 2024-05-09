@@ -410,57 +410,6 @@
             "kind": 171,
             "methods": [],
             "extends": []
-        },
-        {
-            "name": "PeriodicElement",
-            "id": "interface-PeriodicElement-142abd831e0225391419a118975b930e2029aa2600f707374053735111db2e217540dd6954c992cc60cde0f68228e3aab9327f7fe7d457283e4d2563bbfd3184",
-            "file": "libs/material/table/src/lib/table/table.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\n\nexport interface PeriodicElement {\n  name: string;\n  position: number;\n  weight: number;\n  symbol: string;\n}\n\nconst ELEMENT_DATA: PeriodicElement[] = [\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n];\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule, MatTableModule, MatSortModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\n  dataSource = ELEMENT_DATA;\n}\n",
-            "properties": [
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "position",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "optional": false,
-                    "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "symbol",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 10
-                },
-                {
-                    "name": "weight",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "optional": false,
-                    "description": "",
-                    "line": 9
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
         }
     ],
     "injectables": [],
@@ -29784,8 +29733,55 @@
             ]
         },
         {
+            "name": "SampleTableComponent",
+            "id": "component-SampleTableComponent-5a450affec38d2b06497dc0e0b48ce22e128af00e643e78cd6026ae2a86d332999f64596d098c5c2518d7211c0fcb65c5618332b2189018812cb0d1ecbe771ec",
+            "file": "libs/material/table/src/lib/sample-table/sample-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-sample-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sample-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TableComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { TableComponent } from '../table/table.component';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-sample-table',\n  standalone: true,\n  imports: [CommonModule, TableComponent],\n  templateUrl: './sample-table.component.html',\n  styleUrl: './sample-table.component.scss',\n})\nexport class SampleTableComponent {}\n",
+            "styleUrl": "./sample-table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mdtx-table\n  [dataSource]=\"[\n    { id: 1, name: 'data 1' },\n    { id: 2, name: 'data 2' },\n    { id: 3, name: 'data 3' },\n    { id: 4, name: 'data 4' },\n    { id: 5, name: 'data 5' },\n    { id: 6, name: 'data 6' },\n    { id: 7, name: 'data 7' },\n    { id: 8, name: 'data 8' },\n    { id: 9, name: 'data 9' },\n    { id: 10, name: 'data 10' }\n  ]\"\n  [columns]=\"['id', 'name']\"\n  [displayedColumns]=\"['id', 'name']\"\n></mdtx-table>\n"
+        },
+        {
             "name": "TableComponent",
-            "id": "component-TableComponent-142abd831e0225391419a118975b930e2029aa2600f707374053735111db2e217540dd6954c992cc60cde0f68228e3aab9327f7fe7d457283e4d2563bbfd3184",
+            "id": "component-TableComponent-c277f2124a2ce0db0b4e415880666c9f1490fbc7f51eddcbc3ed023ed94addb5f6e56ce001fe96155fa32deb86d18c407b4752625006b6a4df3e099105ce841f",
             "file": "libs/material/table/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29800,31 +29796,177 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "columns",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "string[]",
+                    "decorators": []
+                },
+                {
+                    "name": "dataSource",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "displayedColumns",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "string[]",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "dataSource",
-                    "defaultValue": "ELEMENT_DATA",
+                    "name": "firstColumns",
+                    "defaultValue": "['first', 'second']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "lastColumns",
+                    "defaultValue": "['last']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "selectedItems",
+                    "defaultValue": "new Map()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
-                },
-                {
-                    "name": "displayedColumns",
-                    "defaultValue": "['position', 'name', 'weight', 'symbol']",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string[]",
-                    "optional": false,
-                    "description": "",
-                    "line": 33
+                    "line": 33,
+                    "modifierKind": [
+                        148
+                    ]
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "isAllSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isPartialSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectAll",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectItem",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -29836,24 +29978,43 @@
                     "type": "module"
                 },
                 {
+                    "name": "MatSortModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                },
+                {
                     "name": "MatTableModule",
                     "type": "module"
                 },
                 {
-                    "name": "MatSortModule",
+                    "name": "MatMenuModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\n\nexport interface PeriodicElement {\n  name: string;\n  position: number;\n  weight: number;\n  symbol: string;\n}\n\nconst ELEMENT_DATA: PeriodicElement[] = [\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n];\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule, MatTableModule, MatSortModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\n  dataSource = ELEMENT_DATA;\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\nimport {\n  MatCheckboxChange,\n  MatCheckboxModule,\n} from '@angular/material/checkbox';\n\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatMenuModule } from '@angular/material/menu';\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSortModule,\n    MatButtonModule,\n    MatIconModule,\n    MatCheckboxModule,\n    MatTableModule,\n    MatMenuModule,\n  ],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent implements OnInit {\n  readonly firstColumns = ['first', 'second'];\n  readonly lastColumns = ['last'];\n\n  readonly selectedItems = new Map();\n\n  @Input() columns!: string[];\n  @Input() displayedColumns!: string[];\n  @Input() dataSource!: any[];\n\n  ngOnInit(): void {\n    if (!this.displayedColumns) {\n      this.displayedColumns = [\n        ...this.firstColumns,\n        ...this.columns,\n        ...this.lastColumns,\n      ];\n    } else {\n      this.displayedColumns = {\n        ...this.firstColumns,\n        ...this.displayedColumns,\n        ...this.lastColumns,\n      };\n    }\n  }\n\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\n    if (event.checked) {\n      this.selectedItems.set(item.id, item);\n    } else {\n      this.selectedItems.delete(item.id);\n    }\n    console.log([...this.selectedItems.entries()]);\n  }\n\n  selectAll(event: Partial<MatCheckboxChange>) {\n    if (event.checked) {\n      this.dataSource.forEach((e) => {\n        this.selectItem(event, e);\n      });\n    } else {\n      this.dataSource.forEach((e) => {\n        this.selectItem(event, e);\n      });\n    }\n  }\n\n  isAllSelected() {\n    return this.dataSource.length === this.selectedItems.size;\n  }\n\n  isPartialSelected() {\n    return (\n      this.selectedItems.size > 0 &&\n      this.selectedItems.size < this.dataSource.length\n    );\n  }\n}\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\n  <!--- Note that these columns can be defined in any order.\n          The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Position Column -->\n  <ng-container matColumnDef=\"position\">\n    <th mat-header-cell *matHeaderCellDef>No.</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.position }}</td>\n  </ng-container>\n\n  <!-- Name Column -->\n  <ng-container matColumnDef=\"name\">\n    <th mat-header-cell *matHeaderCellDef>Name</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.name }}</td>\n  </ng-container>\n\n  <!-- Weight Column -->\n  <ng-container matColumnDef=\"weight\">\n    <th mat-header-cell *matHeaderCellDef>Weight</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.weight }}</td>\n  </ng-container>\n\n  <!-- Symbol Column -->\n  <ng-container matColumnDef=\"symbol\">\n    <th mat-header-cell *matHeaderCellDef>Symbol</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.symbol }}</td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\n</table>\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"table-container\">\n  <table mat-table [dataSource]=\"dataSource\">\n    <!-- first Column -->\n    <ng-container matColumnDef=\"first\">\n      <th mat-header-cell *matHeaderCellDef></th>\n      <td mat-cell *matCellDef=\"let row\"></td>\n    </ng-container>\n    <!-- First column ends -->\n\n    <!-- Second column -->\n    <ng-container matColumnDef=\"second\">\n      <th mat-header-cell *matHeaderCellDef>\n        <mat-checkbox\n          [checked]=\"isAllSelected()\"\n          [indeterminate]=\"isPartialSelected()\"\n          (change)=\"selectAll($event)\"\n        ></mat-checkbox>\n      </th>\n      <td mat-cell *matCellDef=\"let row\">\n        <mat-checkbox\n          [checked]=\"selectedItems.get(row.id)\"\n          (change)=\"selectItem($event, row)\"\n        ></mat-checkbox>\n      </td>\n    </ng-container>\n\n    <!-- Columns -->\n    @for(col of columns; track col){\n    <ng-container [matColumnDef]=\"col\">\n      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>\n      <td mat-cell *matCellDef=\"let row\">{{ row[col] }}</td>\n    </ng-container>\n    }\n\n    <!-- Last column -->\n    <ng-container matColumnDef=\"last\">\n      <th mat-header-cell *matHeaderCellDef></th>\n      <td mat-cell *matCellDef=\"let row\"></td>\n    </ng-container>\n\n    <!-- Headers -->\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\n  </table>\n</div>\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -30081,16 +30242,6 @@
                 "defaultValue": "new FormControl('', [])"
             },
             {
-                "name": "ELEMENT_DATA",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/table/src/lib/table/table.component.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "PeriodicElement[]",
-                "defaultValue": "[\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n]"
-            },
-            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -30129,16 +30280,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -30354,11 +30495,31 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "IconList",
@@ -30439,16 +30600,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<LocalStoreComponent>",
                 "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<LayoutComponent>",
-                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -30664,11 +30815,31 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<LayoutComponent>",
+                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SampleTableComponent>",
+                "defaultValue": "{\n  component: SampleTableComponent,\n  title: 'SampleTableComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TableComponent>",
-                "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n}"
+                "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "modules",
@@ -30735,16 +30906,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -30959,6 +31120,26 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -31328,17 +31509,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<LayoutComponent>",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<BaseFormComponent>",
                 "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                 "deprecated": false,
@@ -31561,6 +31731,28 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputTimeComponent>",
                 "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<LayoutComponent>",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SampleTableComponent>",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31824,18 +32016,6 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    formControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
                 }
             ],
-            "libs/material/table/src/lib/table/table.component.ts": [
-                {
-                    "name": "ELEMENT_DATA",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/table/src/lib/table/table.component.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "PeriodicElement[]",
-                    "defaultValue": "[\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n]"
-                }
-            ],
             "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -31958,38 +32138,6 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<LayoutComponent>",
-                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32508,6 +32656,70 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
                 }
             ],
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<LayoutComponent>",
+                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SampleTableComponent>",
+                    "defaultValue": "{\n  component: SampleTableComponent,\n  title: 'SampleTableComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/table/src/lib/table/table.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -32517,7 +32729,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/table works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -32527,7 +32739,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TableComponent>",
-                    "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n}"
+                    "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -33005,19 +33217,6 @@
                     "kind": 183
                 }
             ],
-            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<LayoutComponent>",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/material/form/src/lib/form/base-form.component.stories.ts": [
                 {
                     "name": "Story",
@@ -33285,6 +33484,32 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputTimeComponent>",
                     "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<LayoutComponent>",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SampleTableComponent>",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -34764,6 +34989,45 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SampleTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -34799,26 +35063,7 @@
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/table/src/lib/table/table.component.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "PeriodicElement",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/table/src/lib/table/table.component.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ELEMENT_DATA",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/12",
                 "status": "low"
             }
         ]

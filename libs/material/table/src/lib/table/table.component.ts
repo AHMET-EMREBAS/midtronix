@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -35,14 +35,28 @@ export class TableComponent implements OnInit {
   @Input() columns!: string[];
   @Input() displayedColumns!: string[];
   @Input() dataSource!: any[];
+  @Input() conditionalColumn = 'id';
+  @Output() selectionChange = new EventEmitter();
 
   ngOnInit(): void {
-    if (!this.displayedColumns) {
-      this.displayedColumns = [
-        ...this.firstColumns,
-        ...this.columns,
-        ...this.lastColumns,
-      ];
+    if (this.columns) {
+      if (!this.displayedColumns) {
+        this.displayedColumns = [
+          ...this.firstColumns,
+          ...this.columns,
+          ...this.lastColumns,
+        ];
+      } else {
+        this.displayedColumns = [
+          ...this.firstColumns,
+          ...this.displayedColumns,
+          ...this.lastColumns,
+        ];
+      }
+    }
+
+    if (!this.dataSource) {
+      this.dataSource = [];
     }
   }
 
@@ -52,7 +66,7 @@ export class TableComponent implements OnInit {
     } else {
       this.selectedItems.delete(item.id);
     }
-    console.log([...this.selectedItems.entries()]);
+    this.selectionChange.emit(this.selectedItems);
   }
 
   selectAll(event: Partial<MatCheckboxChange>) {
@@ -65,6 +79,7 @@ export class TableComponent implements OnInit {
         this.selectItem(event, e);
       });
     }
+    this.selectionChange.emit(this.selectedItems);
   }
 
   isAllSelected() {
@@ -76,5 +91,14 @@ export class TableComponent implements OnInit {
       this.selectedItems.size > 0 &&
       this.selectedItems.size < this.dataSource.length
     );
+  }
+
+  colMetCondition(row: any) {
+    console.log('Chekcing condition : ', row[this.conditionalColumn]);
+    return row[this.conditionalColumn] == true;
+  }
+
+  colNotMetContion(row: any) {
+    return row[this.conditionalColumn] == false;
   }
 }

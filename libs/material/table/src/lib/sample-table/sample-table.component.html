@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <div style="display: flex; gap: 1em">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="deleteSelection(table.selectedItems)"
+    >
+      Delete Selection
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="markAllRead(table.selectedItems)"
+    >
+      Mark All Read
+    </button>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <mdtx-input-text #search [formControl]="searchControl" prefixIcon="search">
+  </mdtx-input-text>
+</mat-toolbar>
+<div style="max-height: 400px; overflow: auto">
+  <mdtx-table
+    #table
+    [dataSource]="(filteredData | async)!"
+    [columns]="['id', 'name', 'read']"
+    [displayedColumns]="['id', 'name', 'read']"
+    conditionalColumn="read"
+    (selectionChange)="handleSelectionChange($event)"
+  ></mdtx-table>
+</div>

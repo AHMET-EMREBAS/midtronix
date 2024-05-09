@@ -20,8 +20,7 @@ import { Icon } from '@mdtx/material/core';
   styleUrl: './input-base.component.scss',
 })
 export class InputBaseComponent implements OnInit, AfterViewInit {
-  formControl!: FormControl;
-
+  @Input() formControl!: FormControl;
   @Input() label!: string;
   @Input() inputName!: string;
   @Input() hint = '';
