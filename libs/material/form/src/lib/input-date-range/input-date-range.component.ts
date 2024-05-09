@@ -68,6 +68,7 @@ export class InputDateRangeComponent
   standalone: true,
   imports: [InputDateRangeComponent],
   providers: [
+    provideNativeDateAdapter(),
     provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),
   ],
   template: `
@@ -80,5 +81,26 @@ export class InputDateRangeComponent
   `,
 })
 export class InputFiveDayDateRangeComponent extends InputDateRangeComponent {
+  readonly __component = InputDateRangeComponent;
+}
+
+@Component({
+  selector: 'mdtx-three-day-date-range',
+  standalone: true,
+  imports: [InputDateRangeComponent],
+  providers: [
+    provideNativeDateAdapter(),
+    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.THREE),
+  ],
+  template: `
+    <mdtx-input-date-range
+      [formControl]="formControl"
+      [inputName]="inputName"
+      [prefixIcon]="prefixIcon"
+      [label]="label"
+    ></mdtx-input-date-range>
+  `,
+})
+export class InputTreeDayDateRangeComponent extends InputDateRangeComponent {
   readonly __component = InputDateRangeComponent;
 }
