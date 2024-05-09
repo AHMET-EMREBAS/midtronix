@@ -1,1 +1,41 @@
-<p>input-autocomplete works!</p>
+<div class="error-message" *ngIf="!options"></div>
+<mdtx-error-message
+  message="Options required!"
+  [errorCondition]="options == undefined"
+></mdtx-error-message>
+<mat-form-field class="example-full-width">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="text"
+    #mdtxInput="mdtxInput"
+    mdtxInput
+    matInput
+    [ariaLabel]="label"
+    [formControl]="formControl"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete
+    autoActiveFirstOption
+    #auto="matAutocomplete"
+    [displayWith]="displayWith"
+  >
+    @for (option of filteredOptions$ | async ; track option) {
+    <mat-option [value]="option">{{ option }}</mat-option>
+    }
+  </mat-autocomplete>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>
+  }
+
+  <!-- Typing indicator -->
+  <mat-icon matSuffix>
+    @if(mdtxInput.isTyping()){
+    <mat-progress-spinner
+      [diameter]="22"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    }
+  </mat-icon>
+</mat-form-field>

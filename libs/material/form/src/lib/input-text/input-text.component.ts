@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonFormModule } from '../form';
 
 @Component({
   selector: 'mdtx-input-text',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonFormModule],
   templateUrl: './input-text.component.html',
   styleUrl: './input-text.component.scss',
 })

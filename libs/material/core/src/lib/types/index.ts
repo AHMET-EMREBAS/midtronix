@@ -5,3 +5,4 @@ export * from './icon-variant';
 export * from './icons';
 export * from './input-type';
 export * from './menu-item';
+export * from './input-option';
