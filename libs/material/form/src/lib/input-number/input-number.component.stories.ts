@@ -25,11 +25,14 @@ export const Primary: Story = {
   args: {
     label: 'Number Input',
     prefixIcon: 'numbers',
+
+    textPrefix: '$',
+    textSuffix: '.99',
   },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/Number Input/gi)).toBeTruthy();

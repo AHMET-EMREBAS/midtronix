@@ -1,1 +1,5 @@
-<p>input-radio works!</p>
+<mat-radio-group #radioGroup [ariaLabel]="label" [formControl]="formControl">
+  @for(o of options; track o){
+  <mat-radio-button #rb [value]="o">{{ o.name }}</mat-radio-button>
+  }
+</mat-radio-group>

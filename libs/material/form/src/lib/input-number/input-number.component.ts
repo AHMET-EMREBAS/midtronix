@@ -11,6 +11,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   styleUrl: './input-number.component.scss',
 })
 export class InputNumberComponent extends InputBaseComponent {
+  @Input() minValue?: number;
+  @Input() maxValue?: number;
   @Input() textSuffix?: string;
   @Input() textPrefix?: string;
 }

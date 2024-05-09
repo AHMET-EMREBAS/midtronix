@@ -39,6 +39,6 @@ export const Heading: Story = {
   args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-select works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Select Option!/gi)).toBeTruthy();
   },
 };
