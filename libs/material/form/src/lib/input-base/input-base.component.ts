@@ -39,9 +39,11 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
   protected __validateInputs() {
-    if (!this.formControl) throw new Error('formControl is required!');
-    if (!this.inputName) throw new Error('inputName is required!');
-    if (!this.label) throw new Error('label is required!');
+    if (!this.formControl) console.error('formControl is required!');
+    if (!this.inputName) console.error('inputName is required!');
+    if (!this.label) console.error('label is required!');
+
+    if (!this.formControl) this.formControl = new FormControl();
   }
 
   ngOnInit(): void {

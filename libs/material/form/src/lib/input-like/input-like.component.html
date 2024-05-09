@@ -1,1 +1,13 @@
-<p>input-like works!</p>
+<button
+  mat-icon-button
+  [color]="liked ? 'accent' : 'primary'"
+  (click)="toggle()"
+>
+  <mat-icon [class.fill]="liked !== undefined">{{
+    liked === true || liked === undefined
+      ? 'thumb_up'
+      : liked === false
+      ? 'thumb_down'
+      : 'thumb_up'
+  }}</mat-icon>
+</button>

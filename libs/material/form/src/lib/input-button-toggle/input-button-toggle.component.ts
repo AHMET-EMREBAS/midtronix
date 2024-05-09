@@ -18,7 +18,8 @@ export class InputButtonToggleComponent
   @Input() options?: IInputOption[];
 
   override ngOnInit(): void {
-    this.formControl = new FormControl('', []);
     super.ngOnInit();
+
+    if (!this.options) console.error('Options is required');
   }
 }

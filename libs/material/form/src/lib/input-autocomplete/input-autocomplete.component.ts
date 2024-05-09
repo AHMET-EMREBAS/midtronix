@@ -3,7 +3,6 @@ import { InputBaseComponent } from '../input-base';
 import { CommonFormModule } from '../form';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { IInputOption } from '@mdtx/material/core';
-import { FormControl } from '@angular/forms';
 import { Observable, debounceTime, map, startWith } from 'rxjs';
 @Component({
   selector: 'mdtx-input-autocomplete',
@@ -21,8 +20,9 @@ export class InputAutocompleteComponent
   filteredOptions$!: Observable<IInputOption[]>;
 
   override ngOnInit(): void {
-    if (!this.options) throw new Error('options is required!');
-    this.formControl = new FormControl('', []);
+    super.ngOnInit();
+    if (!this.options) console.error('Options is required!');
+
     this.filteredOptions$ = this.formControl.valueChanges.pipe(
       startWith(''),
       debounceTime(600),
@@ -34,7 +34,6 @@ export class InputAutocompleteComponent
           : this.options.filter((e) => e);
       })
     );
-    super.ngOnInit();
   }
 
   displayWith(option: IInputOption) {

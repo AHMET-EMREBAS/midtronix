@@ -25284,11 +25284,11 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mat-form-field>\n  <mat-label>{{ label }}</mat-label>\n  <input\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [formControl]=\"formControl\"\n    [matDatepicker]=\"picker\"\n  />\n  <mat-hint>MM/DD/YYYY</mat-hint>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  \n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\n  <mat-datepicker #picker></mat-datepicker>\n</mat-form-field>\n"
+            "templateData": "<mat-form-field>\n  <mat-label>{{ label }}</mat-label>\n  <input\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [formControl]=\"formControl\"\n    [matDatepicker]=\"picker\"\n  />\n  <mat-hint>MM/DD/YYYY</mat-hint>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\n  <mat-datepicker #picker></mat-datepicker>\n</mat-form-field>\n"
         },
         {
             "name": "InputDateRangeComponent",
-            "id": "component-InputDateRangeComponent-76aca7bb598cb3ed18436e45f1ebd9c663e79fd78ad4da5cfc7a1a114f829c0c55ec7dabaa4ee23dc4775d8a49776eaf1257f12ef0a6902df528b8c7cd0cc17e",
+            "id": "component-InputDateRangeComponent-4b45927f97f32b2d77cbffea4ae129a5dc63d0a516e3eabe163a835a487b51e3e2858c7bef5a8bf9a54c1d750ac6fd12a8f8e0071b2edcd2856c9ae1756bed13",
             "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -25536,7 +25536,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  input,\n} from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport {\n  MatDateRangePicker,\n  MatDatepickerModule,\n} from '@angular/material/datepicker';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Subscription, debounceTime } from 'rxjs';\nimport {\n  DateRangeSelectionStrategies,\n  provideDateRangeSelectionStrategy,\n} from './strategies';\n\nconst today = new Date();\nconst month = today.getMonth();\nconst year = today.getFullYear();\n\n@Component({\n  selector: 'mdtx-input-date-range',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-date-range.component.html',\n  styleUrl: './input-date-range.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDateRangeComponent\n  extends InputBaseComponent\n  implements OnInit, OnDestroy, AfterViewInit\n{\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\n  protected sub!: Subscription;\n\n  dateRange = new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  });\n\n  override ngOnInit(): void {\n    this.sub = this.dateRange.valueChanges\n      .pipe(debounceTime(600))\n      .subscribe((value) => {\n        this.formControl.setValue(value);\n      });\n    super.ngOnInit();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n  }\n\n  ngOnDestroy(): void {\n    this.sub.unsubscribe();\n  }\n}\n\n@Component({\n  selector: 'mdtx-five-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputFiveDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  input,\n} from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport {\n  MatDateRangePicker,\n  MatDatepickerModule,\n} from '@angular/material/datepicker';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Subscription, debounceTime } from 'rxjs';\nimport {\n  DateRangeSelectionStrategies,\n  provideDateRangeSelectionStrategy,\n} from './strategies';\n\nconst today = new Date();\nconst month = today.getMonth();\nconst year = today.getFullYear();\n\n@Component({\n  selector: 'mdtx-input-date-range',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-date-range.component.html',\n  styleUrl: './input-date-range.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDateRangeComponent\n  extends InputBaseComponent\n  implements OnInit, OnDestroy, AfterViewInit\n{\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\n  protected sub!: Subscription;\n\n  dateRange = new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  });\n\n  override ngOnInit(): void {\n    this.sub = this.dateRange.valueChanges\n      .pipe(debounceTime(600))\n      .subscribe((value) => {\n        this.formControl.setValue(value);\n      });\n    super.ngOnInit();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n  }\n\n  ngOnDestroy(): void {\n    this.sub.unsubscribe();\n  }\n}\n\n@Component({\n  selector: 'mdtx-five-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputFiveDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n\n@Component({\n  selector: 'mdtx-three-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.THREE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputTreeDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n",
             "styleUrl": "./input-date-range.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -25553,13 +25553,17 @@
         },
         {
             "name": "InputDatetimeComponent",
-            "id": "component-InputDatetimeComponent-3cbb979bc855f8919cdfd4ffba3fef110a4bd2a473ec33c320f3d5165e8ae798f91150f3f123efeb54627af7ef2965eaf6a9bd79441755645ef85463ec306f62",
+            "id": "component-InputDatetimeComponent-d105c39de633181bc5b9d7c52e51fd551c1d1baeb1990eef485bbd343e8b4da8199af08934a93d6e316463a2a6116e4f2696ff8312942ca25f8df6334698346f",
             "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "provideNativeDateAdapter()"
+                }
+            ],
             "selector": "mdtx-input-datetime",
             "styleUrls": [],
             "styles": [],
@@ -25568,10 +25572,161 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -25579,20 +25734,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDatepickerModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-datetime',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-datetime.component.html',\n  styleUrl: './input-datetime.component.scss',\n})\nexport class InputDatetimeComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { CommonFormModule } from '../form';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { InputBaseComponent } from '../input-base';\n\n@Component({\n  selector: 'mdtx-input-datetime',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-datetime.component.html',\n  styleUrl: './input-datetime.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDatetimeComponent extends InputBaseComponent {}\n",
             "styleUrl": "./input-datetime.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-datetime works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "templateData": "<h1>This component is not ready yet!</h1>\n<mat-form-field>\n  <mat-label>{{ label }}</mat-label>\n  <input\n    #mdtxInput=\"mdtxInput\"\n    type=\"datetime-local\"\n    mdtxInput\n    matInput\n    [formControl]=\"formControl\"\n    [matDatepicker]=\"picker\"\n  />\n  <mat-hint>MM/DD/YYYY</mat-hint>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\n  <mat-datepicker #picker></mat-datepicker>\n</mat-form-field>\n"
         },
         {
             "name": "InputDirectiveComponent",
@@ -25640,7 +25801,7 @@
         },
         {
             "name": "InputEditorComponent",
-            "id": "component-InputEditorComponent-27a6b61b26a8a007e4094eb7bc615e1f129fdcaa4bf04425e5ec30118c9b6c5b70833e1ad837102b68c548d7ba2a1196a85295f015a269f21fc2b35cd90886a4",
+            "id": "component-InputEditorComponent-f85061312cd4ea6eb180a58dfe4bc2fb07466c3cc97cdca4a5f50a86bbc7aaf5729d6a655aae4ee4e672aff8890c61bb8e24d3c3becdafeb81c3a62781d03635",
             "file": "libs/material/form/src/lib/input-editor/input-editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -25655,10 +25816,191 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "editor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "editorContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'editor'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -25673,23 +26015,31 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-editor',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-editor.component.html',\n  styleUrl: './input-editor.component.scss',\n})\nexport class InputEditorComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputBaseComponent } from '../input-base';\nimport Quill from 'quill';\n@Component({\n  selector: 'mdtx-input-editor',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-editor.component.html',\n  styleUrl: './input-editor.component.scss',\n})\nexport class InputEditorComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @ViewChild('editor') editorContainer!: ElementRef<HTMLDivElement>;\n\n  editor: any;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const editor = new Quill(this.editorContainer.nativeElement, {\n      theme: 'snow',\n    });\n\n    editor.on('text-change', (value: string) => {\n      this.formControl.setValue(value);\n    });\n\n    this.formControl.valueChanges.subscribe((value) => {\n      console.table({ controlValue: value });\n    });\n  }\n}\n",
             "styleUrl": "./input-editor.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-editor works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<h3>{{ label }}</h3>\n<div #editor></div>\n"
         },
         {
             "name": "InputFiveDayDateRangeComponent",
-            "id": "component-InputFiveDayDateRangeComponent-76aca7bb598cb3ed18436e45f1ebd9c663e79fd78ad4da5cfc7a1a114f829c0c55ec7dabaa4ee23dc4775d8a49776eaf1257f12ef0a6902df528b8c7cd0cc17e",
+            "id": "component-InputFiveDayDateRangeComponent-4b45927f97f32b2d77cbffea4ae129a5dc63d0a516e3eabe163a835a487b51e3e2858c7bef5a8bf9a54c1d750ac6fd12a8f8e0071b2edcd2856c9ae1756bed13",
             "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [
+                {
+                    "name": "provideNativeDateAdapter()"
+                },
                 {
                     "name": "provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE)",
                     "ns": "provideDateRangeSelectionStrategy(DateRangeSelectionStrategies"
@@ -25796,7 +26146,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 83,
+                    "line": 84,
                     "modifierKind": [
                         148
                     ]
@@ -25952,7 +26302,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  input,\n} from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport {\n  MatDateRangePicker,\n  MatDatepickerModule,\n} from '@angular/material/datepicker';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Subscription, debounceTime } from 'rxjs';\nimport {\n  DateRangeSelectionStrategies,\n  provideDateRangeSelectionStrategy,\n} from './strategies';\n\nconst today = new Date();\nconst month = today.getMonth();\nconst year = today.getFullYear();\n\n@Component({\n  selector: 'mdtx-input-date-range',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-date-range.component.html',\n  styleUrl: './input-date-range.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDateRangeComponent\n  extends InputBaseComponent\n  implements OnInit, OnDestroy, AfterViewInit\n{\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\n  protected sub!: Subscription;\n\n  dateRange = new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  });\n\n  override ngOnInit(): void {\n    this.sub = this.dateRange.valueChanges\n      .pipe(debounceTime(600))\n      .subscribe((value) => {\n        this.formControl.setValue(value);\n      });\n    super.ngOnInit();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n  }\n\n  ngOnDestroy(): void {\n    this.sub.unsubscribe();\n  }\n}\n\n@Component({\n  selector: 'mdtx-five-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputFiveDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  input,\n} from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport {\n  MatDateRangePicker,\n  MatDatepickerModule,\n} from '@angular/material/datepicker';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Subscription, debounceTime } from 'rxjs';\nimport {\n  DateRangeSelectionStrategies,\n  provideDateRangeSelectionStrategy,\n} from './strategies';\n\nconst today = new Date();\nconst month = today.getMonth();\nconst year = today.getFullYear();\n\n@Component({\n  selector: 'mdtx-input-date-range',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-date-range.component.html',\n  styleUrl: './input-date-range.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDateRangeComponent\n  extends InputBaseComponent\n  implements OnInit, OnDestroy, AfterViewInit\n{\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\n  protected sub!: Subscription;\n\n  dateRange = new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  });\n\n  override ngOnInit(): void {\n    this.sub = this.dateRange.valueChanges\n      .pipe(debounceTime(600))\n      .subscribe((value) => {\n        this.formControl.setValue(value);\n      });\n    super.ngOnInit();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n  }\n\n  ngOnDestroy(): void {\n    this.sub.unsubscribe();\n  }\n}\n\n@Component({\n  selector: 'mdtx-five-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputFiveDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n\n@Component({\n  selector: 'mdtx-three-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.THREE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputTreeDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -26348,6 +26698,288 @@
             "templateData": "<p>input-time works!</p>\n"
         },
         {
+            "name": "InputTreeDayDateRangeComponent",
+            "id": "component-InputTreeDayDateRangeComponent-4b45927f97f32b2d77cbffea4ae129a5dc63d0a516e3eabe163a835a487b51e3e2858c7bef5a8bf9a54c1d750ac6fd12a8f8e0071b2edcd2856c9ae1756bed13",
+            "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "provideNativeDateAdapter()"
+                },
+                {
+                    "name": "provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.THREE)",
+                    "ns": "provideDateRangeSelectionStrategy(DateRangeSelectionStrategies"
+                }
+            ],
+            "selector": "mdtx-three-day-date-range",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<mdtx-input-date-range\n  [formControl]=\"formControl\"\n  [inputName]=\"inputName\"\n  [prefixIcon]=\"prefixIcon\"\n  [label]=\"label\"\n></mdtx-input-date-range>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "__component",
+                    "defaultValue": "InputDateRangeComponent",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 105,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "dateRange",
+                    "defaultValue": "new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "inheritance": {
+                        "file": "InputDateRangeComponent"
+                    }
+                },
+                {
+                    "name": "dateRangePicker",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatDateRangePicker<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'dateRangePicker'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "InputDateRangeComponent"
+                    }
+                },
+                {
+                    "name": "sub",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputDateRangeComponent"
+                    }
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputDateRangeComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "InputDateRangeComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  Input,\n  OnDestroy,\n  OnInit,\n  ViewChild,\n  input,\n} from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport {\n  MatDateRangePicker,\n  MatDatepickerModule,\n} from '@angular/material/datepicker';\nimport { provideNativeDateAdapter } from '@angular/material/core';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { Subscription, debounceTime } from 'rxjs';\nimport {\n  DateRangeSelectionStrategies,\n  provideDateRangeSelectionStrategy,\n} from './strategies';\n\nconst today = new Date();\nconst month = today.getMonth();\nconst year = today.getFullYear();\n\n@Component({\n  selector: 'mdtx-input-date-range',\n  standalone: true,\n  imports: [CommonFormModule, MatDatepickerModule],\n  templateUrl: './input-date-range.component.html',\n  styleUrl: './input-date-range.component.scss',\n  providers: [provideNativeDateAdapter()],\n})\nexport class InputDateRangeComponent\n  extends InputBaseComponent\n  implements OnInit, OnDestroy, AfterViewInit\n{\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\n  protected sub!: Subscription;\n\n  dateRange = new FormGroup({\n    start: new FormControl(new Date(year, month, today.getDate())),\n    end: new FormControl(new Date(year, month, today.getDate())),\n  });\n\n  override ngOnInit(): void {\n    this.sub = this.dateRange.valueChanges\n      .pipe(debounceTime(600))\n      .subscribe((value) => {\n        this.formControl.setValue(value);\n      });\n    super.ngOnInit();\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n  }\n\n  ngOnDestroy(): void {\n    this.sub.unsubscribe();\n  }\n}\n\n@Component({\n  selector: 'mdtx-five-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.FIVE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputFiveDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n\n@Component({\n  selector: 'mdtx-three-day-date-range',\n  standalone: true,\n  imports: [InputDateRangeComponent],\n  providers: [\n    provideNativeDateAdapter(),\n    provideDateRangeSelectionStrategy(DateRangeSelectionStrategies.THREE),\n  ],\n  template: `\n    <mdtx-input-date-range\n      [formControl]=\"formControl\"\n      [inputName]=\"inputName\"\n      [prefixIcon]=\"prefixIcon\"\n      [label]=\"label\"\n    ></mdtx-input-date-range>\n  `,\n})\nexport class InputTreeDayDateRangeComponent extends InputDateRangeComponent {\n  readonly __component = InputDateRangeComponent;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "InputDateRangeComponent"
+            ]
+        },
+        {
             "name": "LayoutComponent",
             "id": "component-LayoutComponent-701d1a45012368ee94ebec0f43e467dd9758d8841959869b9b7424ac2c1edf7af54d8c78cd2d71ff606c34cfa9691bc2d45208eba62082b14fcb52a84999129d",
             "file": "libs/material/layout/src/lib/layout/layout.component.ts",
@@ -26703,6 +27335,26 @@
                 "defaultValue": "new FormControl('', [])"
             },
             {
+                "name": "dateControl",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormControl('', [])"
+            },
+            {
+                "name": "editorControl",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormControl('', [])"
+            },
+            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -26830,7 +27482,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-datetime works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -26840,7 +27492,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-editor works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Post/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -27400,7 +28052,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -27410,7 +28062,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Post',\n    formControl: editorControl,\n    inputName: 'editor',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -28270,6 +28922,90 @@
                     "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
                 }
             ],
+            "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts": [
+                {
+                    "name": "dateControl",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormControl('', [])"
+                },
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputDatetimeComponent>",
+                    "defaultValue": "{\n  component: InputDatetimeComponent,\n  title: 'InputDatetimeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
+                }
+            ],
+            "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts": [
+                {
+                    "name": "editorControl",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormControl('', [])"
+                },
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Post/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputEditorComponent>",
+                    "defaultValue": "{\n  component: InputEditorComponent,\n  title: 'InputEditorComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Post',\n    formControl: editorControl,\n    inputName: 'editor',\n  },\n}"
+                }
+            ],
             "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -28556,70 +29292,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
-                }
-            ],
-            "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-datetime works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputDatetimeComponent>",
-                    "defaultValue": "{\n  component: InputDatetimeComponent,\n  title: 'InputDatetimeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
-            "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-editor works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputEditorComponent>",
-                    "defaultValue": "{\n  component: InputEditorComponent,\n  title: 'InputEditorComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
@@ -30440,6 +31112,15 @@
             },
             {
                 "filePath": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputTreeDayDateRangeComponent",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -30591,6 +31272,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "dateControl",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Heading",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -30621,6 +31312,16 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputDatetimeComponent",
+                "coveragePercent": 7,
+                "coverageCount": "1/13",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "editorControl",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -30660,8 +31361,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputEditorComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 6,
+                "coverageCount": "1/15",
                 "status": "low"
             },
             {

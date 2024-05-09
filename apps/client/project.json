@@ -38,7 +38,10 @@
           "apps/client/src/assets",
           "apps/client/src/manifest.webmanifest"
         ],
-        "styles": ["apps/client/src/styles.scss"],
+        "styles": [
+          "apps/client/src/styles.scss",
+          "node_modules/quill/dist/quill.snow.css"
+        ],
         "scripts": [],
         "serviceWorker": true,
         "ngswConfigPath": "apps/client/ngsw-config.json"

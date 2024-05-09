@@ -35,7 +35,7 @@ const year = today.getFullYear();
 })
 export class InputDateRangeComponent
   extends InputBaseComponent
-  implements OnInit, OnDestroy, AfterViewInit
+  implements OnInit, OnDestroy
 {
   @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;
   protected sub!: Subscription;
@@ -46,16 +46,12 @@ export class InputDateRangeComponent
   });
 
   override ngOnInit(): void {
+    super.ngOnInit();
     this.sub = this.dateRange.valueChanges
       .pipe(debounceTime(600))
       .subscribe((value) => {
         this.formControl.setValue(value);
       });
-    super.ngOnInit();
-  }
-
-  override ngAfterViewInit(): void {
-    super.ngAfterViewInit();
   }
 
   ngOnDestroy(): void {
