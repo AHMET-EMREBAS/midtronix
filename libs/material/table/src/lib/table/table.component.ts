@@ -51,7 +51,7 @@ export class TableComponent {
   ];
   @Input() dataSource = ELEMENT_DATA;
 
-  selectItem(event: MatCheckboxChange, item: any) {
+  selectItem(event: Partial<MatCheckboxChange>, item: any) {
     if (event.checked) {
       this.selectedItems.set(item.id, item);
     } else {
@@ -60,7 +60,7 @@ export class TableComponent {
     console.log([...this.selectedItems.entries()]);
   }
 
-  selectAll(event: MatCheckboxChange) {
+  selectAll(event: Partial<MatCheckboxChange>) {
     if (event.checked) {
       this.dataSource.forEach((e) => {
         this.selectItem(event, e);
