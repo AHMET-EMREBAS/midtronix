@@ -96,6 +96,26 @@ export class InputValidator {
     return this;
   }
 
+  beforeHour(hour?: number) {
+    if (hour)
+      this.validators.push((c) => {
+        return new Date(c.value).getHours() >= hour
+          ? { afterHour: `${this.name} should be before the hour ${hour}` }
+          : null;
+      });
+    return this;
+  }
+  
+  afterHour(hour?: number) {
+    if (hour)
+      this.validators.push((c) => {
+        return new Date(c.value).getHours() <= hour
+          ? { afterHour: `${this.name} should be after the hour ${hour}` }
+          : null;
+      });
+    return this;
+  }
+
   build() {
     return [...this.validators];
   }

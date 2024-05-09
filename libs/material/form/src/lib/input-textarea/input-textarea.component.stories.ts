@@ -22,13 +22,15 @@ export default meta;
 type Story = StoryObj<InputTextareaComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Type your text here',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-textarea works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Type your text here/gi)).toBeTruthy();
   },
 };

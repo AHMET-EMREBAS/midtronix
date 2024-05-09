@@ -1,1 +1,28 @@
-<p>input-time works!</p>
+<mat-form-field class="example-full-width">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="time"
+    #mdtxInput="mdtxInput"
+    mdtxInput
+    matInput
+    [ariaLabel]="label"
+    [formControl]="formControl"
+  />
+
+  <!-- Typing indicator -->
+  <mat-icon matIconSuffix>
+    @if(mdtxInput.isTyping()){
+    <mat-progress-spinner
+      [diameter]="22"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    }
+  </mat-icon>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>
+  }
+
+  <mat-error>{{ getErrorMessage() }}</mat-error>
+</mat-form-field>

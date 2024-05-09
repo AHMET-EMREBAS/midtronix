@@ -22,13 +22,15 @@ export default meta;
 type Story = StoryObj<InputTimeComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Select Time',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-time works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Select Time/gi)).toBeTruthy();
   },
 };
