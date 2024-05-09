@@ -22,13 +22,15 @@ export default meta;
 type Story = StoryObj<InputSliderComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Slide Me',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-slider works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Slide Me/gi)).toBeTruthy();
   },
 };
