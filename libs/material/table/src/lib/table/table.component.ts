@@ -6,6 +6,10 @@ import {
   MatCheckboxChange,
   MatCheckboxModule,
 } from '@angular/material/checkbox';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 export interface PeriodicElement {
   id: number;
   name: string;
@@ -30,12 +34,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'mdtx-table',
   standalone: true,
-  imports: [CommonModule, MatCheckboxModule, MatTableModule, MatSortModule],
+  imports: [
+    CommonModule,
+    MatSortModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatMenuModule,
+  ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
 export class TableComponent {
-  readonly firstColumns = ['first'];
+  readonly firstColumns = ['first', 'second'];
   readonly lastColumns = ['last'];
 
   readonly selectedItems = new Map();
