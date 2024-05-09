@@ -1,1 +1,19 @@
-<p>input-list-select works!</p>
+<mat-selection-list
+  #listItems
+  [multiple]="multiple"
+  [formControl]="formControl"
+>
+  @for (o of options; track o) {
+  <mat-list-option #optionRef [value]="o">
+    <span matListItemIcon>
+      <mat-icon
+        [color]="(optionRef.selectedChange | async) ? 'accent' : ''"
+        [class.fill]="optionRef.selectedChange | async"
+      >
+        {{ o.icon ?? 'info' }}
+      </mat-icon>
+    </span>
+    <span matListItemLine>{{ o.name }}</span>
+  </mat-list-option>
+  }
+</mat-selection-list>

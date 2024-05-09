@@ -4,9 +4,11 @@
     class="mat-mdc-chip-set-stacked"
     [formControl]="formControl"
     [ariaLabel]="label"
+    [multiple]="multiple"
   >
     @for (o of options; track o) {
     <mat-chip-option>{{ o.name }}</mat-chip-option>
+
     }
   </mat-chip-listbox>
 </div>

@@ -16,8 +16,8 @@ export class InputLikeComponent extends InputBaseComponent {
   toggle() {
     const last = this.toggleList.shift();
     this.toggleList = [...this.toggleList, last];
-
     console.log(this.toggleList);
     this.liked = this.toggleList[0];
+    this.formControl.setValue(this.liked);
   }
 }

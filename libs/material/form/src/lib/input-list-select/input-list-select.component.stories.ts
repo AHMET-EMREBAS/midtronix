@@ -22,11 +22,21 @@ export default meta;
 type Story = StoryObj<InputListSelectComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Select Option',
+    inputName: 'option',
+    prefixIcon: 'category',
+    options: [
+      { id: 1, name: 'Option 1' },
+      { id: 2, name: 'Option 2' },
+      { id: 3, name: 'Option 3' },
+      { id: 4, name: 'Option 4' },
+    ],
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     expect(canvas.getByText(/input-list-select works!/gi)).toBeTruthy();
