@@ -11,28 +11,6 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { IID } from '@mdtx/common';
-export interface PeriodicElement {
-  id: number;
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { id: 1, position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { id: 2, position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { id: 3, position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { id: 4, position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { id: 5, position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { id: 6, position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { id: 7, position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { id: 8, position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { id: 9, position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { id: 10, position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];
-
 @Component({
   selector: 'mdtx-table',
   standalone: true,
@@ -48,7 +26,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })
-export class TableComponent<T extends IID = any> implements OnInit {
+export class TableComponent implements OnInit {
   readonly firstColumns = ['first', 'second'];
   readonly lastColumns = ['last'];
 
@@ -59,19 +37,13 @@ export class TableComponent<T extends IID = any> implements OnInit {
   @Input() dataSource!: any[];
 
   ngOnInit(): void {
-    this.columns = ['id', 'name'];
-    this.displayedColumns = this.columns;
-    this.displayedColumns = [
-      ...this.firstColumns,
-      ...this.columns,
-      ...this.lastColumns,
-    ];
-
-    this.dataSource = [
-      { id: 1, name: 'some' },
-      { id: 2, name: 'another' },
-      { id: 3, name: 'other' },
-    ];
+    if (!this.displayedColumns) {
+      this.displayedColumns = [
+        ...this.firstColumns,
+        ...this.columns,
+        ...this.lastColumns,
+      ];
+    }
   }
 
   selectItem(event: Partial<MatCheckboxChange>, item: any) {
@@ -98,7 +70,7 @@ export class TableComponent<T extends IID = any> implements OnInit {
   isAllSelected() {
     return this.dataSource.length === this.selectedItems.size;
   }
-  
+
   isPartialSelected() {
     return (
       this.selectedItems.size > 0 &&
