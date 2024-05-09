@@ -22,13 +22,16 @@ export default meta;
 type Story = StoryObj<InputNumberComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Number Input',
+    prefixIcon: 'numbers',
+  },
 };
 
 export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-number works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Number Input/gi)).toBeTruthy();
   },
 };

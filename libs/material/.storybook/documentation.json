@@ -72,13 +72,22 @@
         },
         {
             "name": "IInputOption",
-            "id": "interface-IInputOption-f23b95842e8e3716ec5df3d4e238cb5ddfde4bd38fe4db04609491b50d6bfcba46969f4ccef40b278188618a0d568fe143cfbedc1fd92973d574d8975089ade2",
+            "id": "interface-IInputOption-61e6a629d1108dcb56af3629cc4911339f2df15bdcbd2ce06e0a0e7b99781dfc46d2dd83b25df5a0ee8e1b7ae1417f2a90700362d7ee3440bb09326bac8ccf4e",
             "file": "libs/material/core/src/lib/types/input-option.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IInputOption {\r\n  id: number;\r\n  name: string;\r\n}\r\n",
+            "sourceCode": "export interface IInputOption {\r\n  id: number;\r\n  name: string;\r\n  icon?: string;\r\n}\r\n",
             "properties": [
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 7
+                },
                 {
                     "name": "id",
                     "deprecated": false,
@@ -24821,7 +24830,7 @@
         },
         {
             "name": "InputChipSelectComponent",
-            "id": "component-InputChipSelectComponent-4a5a937ab918911906ea63eaba1d7ce1db2113fc84535a05f39295c7e504bbd67a35aee48872bc6b7f4ba8b5dc3d44c28301edda61140a685e31371fc3fba2ab",
+            "id": "component-InputChipSelectComponent-de886e0fd3576b463d9d617ebcb141f7cd2069551cb9cec007801ea1d3ecfae42279907b2ebeca50a65db0cd6e9256a4b066937a684d9d64f7883f9327908530",
             "file": "libs/material/form/src/lib/input-chip-select/input-chip-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24837,6 +24846,15 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                },
                 {
                     "name": "options",
                     "deprecated": false,
@@ -25066,7 +25084,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\n\n@Component({\n  selector: 'mdtx-input-chip-select',\n  standalone: true,\n  imports: [CommonFormModule, MatChipsModule],\n  templateUrl: './input-chip-select.component.html',\n  styleUrl: './input-chip-select.component.scss',\n})\nexport class InputChipSelectComponent extends InputAutocompleteComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\n\n@Component({\n  selector: 'mdtx-input-chip-select',\n  standalone: true,\n  imports: [CommonFormModule, MatChipsModule],\n  templateUrl: './input-chip-select.component.html',\n  styleUrl: './input-chip-select.component.scss',\n})\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\n  @Input() multiple = false;\n}\n",
             "styleUrl": "./input-chip-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -25074,7 +25092,7 @@
             "extends": [
                 "InputAutocompleteComponent"
             ],
-            "templateData": "<div class=\"form-field\">\n  <h3>{{ label }}</h3>\n  <mat-chip-listbox\n    class=\"mat-mdc-chip-set-stacked\"\n    [formControl]=\"formControl\"\n    [ariaLabel]=\"label\"\n  >\n    @for (o of options; track o) {\n    <mat-chip-option>{{ o.name }}</mat-chip-option>\n    }\n  </mat-chip-listbox>\n</div>\n"
+            "templateData": "<div class=\"form-field\">\n  <h3>{{ label }}</h3>\n  <mat-chip-listbox\n    class=\"mat-mdc-chip-set-stacked\"\n    [formControl]=\"formControl\"\n    [ariaLabel]=\"label\"\n    [multiple]=\"multiple\"\n  >\n    @for (o of options; track o) {\n    <mat-chip-option>{{ o.name }}</mat-chip-option>\n\n    }\n  </mat-chip-listbox>\n</div>\n"
         },
         {
             "name": "InputDateComponent",
@@ -26016,7 +26034,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<h3>{{ label }}</h3>\n<div #editor></div>\n"
+            "templateData": "<h3>{{ label }}</h3>\n<div #editor style=\"font-family: Comfortaa;\"></div>\n"
         },
         {
             "name": "InputFiveDayDateRangeComponent",
@@ -26299,7 +26317,7 @@
         },
         {
             "name": "InputLikeComponent",
-            "id": "component-InputLikeComponent-2b831f8dd2ec53aa5918d84baf839d3c7c61b50e09aaa79394828d2a44b10527a58b24e9c56640e160650f220d07f77a498ac013a630745539bbec87ec3214e1",
+            "id": "component-InputLikeComponent-62cd02f8fce05fc35354193187980510567f09ca88b4305a9ed9a5c23b24319703df1b761d45b9562a6df2ce365144a3d7d7d40f446a6a6930a358cd0bd5c9d1",
             "file": "libs/material/form/src/lib/input-like/input-like.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26513,7 +26531,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\n\n@Component({\n  selector: 'mdtx-input-like',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-like.component.html',\n  styleUrl: './input-like.component.scss',\n})\nexport class InputLikeComponent extends InputBaseComponent {\n  toggleList = [true, false, undefined];\n  liked: boolean | undefined = undefined;\n\n  toggle() {\n    const last = this.toggleList.shift();\n    this.toggleList = [...this.toggleList, last];\n\n    console.log(this.toggleList);\n    this.liked = this.toggleList[0];\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\n\n@Component({\n  selector: 'mdtx-input-like',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-like.component.html',\n  styleUrl: './input-like.component.scss',\n})\nexport class InputLikeComponent extends InputBaseComponent {\n  toggleList = [true, false, undefined];\n  liked: boolean | undefined = undefined;\n\n  toggle() {\n    const last = this.toggleList.shift();\n    this.toggleList = [...this.toggleList, last];\n    console.log(this.toggleList);\n    this.liked = this.toggleList[0];\n    this.formControl.setValue(this.liked);\n  }\n}\n",
             "styleUrl": "./input-like.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -26525,7 +26543,7 @@
         },
         {
             "name": "InputListSelectComponent",
-            "id": "component-InputListSelectComponent-86d6165564d8761f65d4cb0762cb6cf0af0522971f1142cee8cd799fc37a42a61842c7c6d2077ceac8085e06978e08ea9c44bb688050ef65e86563a8eda88823",
+            "id": "component-InputListSelectComponent-589cec3ef9a4deb1001f9d472901ce2659118d779ad2bf084c41ec2fff6f124210f871a89711b3f4b6746d33162cecbc587f01b1029e1a2d97eac3ddb2de3ebf",
             "file": "libs/material/form/src/lib/input-list-select/input-list-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26540,10 +26558,230 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputChipSelectComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "IInputOption[]",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "filteredOptions$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<IInputOption[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "displayWith",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -26551,20 +26789,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatListModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-list-select',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-list-select.component.html',\n  styleUrl: './input-list-select.component.scss',\n})\nexport class InputListSelectComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatListModule } from '@angular/material/list';\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\n@Component({\n  selector: 'mdtx-input-list-select',\n  standalone: true,\n  imports: [CommonFormModule, MatListModule],\n  templateUrl: './input-list-select.component.html',\n  styleUrl: './input-list-select.component.scss',\n})\nexport class InputListSelectComponent extends InputChipSelectComponent {}\n",
             "styleUrl": "./input-list-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-list-select works!</p>\n"
+            "extends": [
+                "InputChipSelectComponent"
+            ],
+            "templateData": "<mat-selection-list\n  #listItems\n  [multiple]=\"multiple\"\n  [formControl]=\"formControl\"\n>\n  @for (o of options; track o) {\n  <mat-list-option #optionRef [value]=\"o\">\n    <span matListItemIcon>\n      <mat-icon\n        [color]=\"(optionRef.selectedChange | async) ? 'accent' : ''\"\n        [class.fill]=\"optionRef.selectedChange | async\"\n      >\n        {{ o.icon ?? 'info' }}\n      </mat-icon>\n    </span>\n    <span matListItemLine>{{ o.name }}</span>\n  </mat-list-option>\n  }\n</mat-selection-list>\n"
         },
         {
             "name": "InputNumberComponent",
@@ -27679,7 +27923,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-list-select works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-list-select works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -28249,7 +28493,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -29502,7 +29746,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-list-select works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-list-select works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -29522,7 +29766,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-number/input-number.component.stories.ts": [
@@ -30972,9 +31216,9 @@
                 "type": "interface",
                 "linktype": "interface",
                 "name": "IInputOption",
-                "coveragePercent": 33,
-                "coverageCount": "1/3",
-                "status": "medium"
+                "coveragePercent": 25,
+                "coverageCount": "1/4",
+                "status": "low"
             },
             {
                 "filePath": "libs/material/core/src/lib/types/input-type.ts",
@@ -31215,8 +31459,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputChipSelectComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {
@@ -31606,8 +31850,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputListSelectComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {

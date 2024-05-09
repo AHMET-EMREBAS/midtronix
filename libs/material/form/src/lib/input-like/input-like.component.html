@@ -1,6 +1,6 @@
 <button
   mat-icon-button
-  [color]="liked ? 'accent' : 'primary'"
+  [color]="liked === true ? 'primary' : liked === false ? 'accent' : ''"
   (click)="toggle()"
 >
   <mat-icon [class.fill]="liked !== undefined">{{

@@ -10,7 +10,7 @@ import { CommonFormModule } from '../form';
   styleUrl: './input-like.component.scss',
 })
 export class InputLikeComponent extends InputBaseComponent {
-  toggleList = [true, false, undefined];
+  toggleList = [undefined, true, false];
   liked: boolean | undefined = undefined;
 
   toggle() {

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { InputBaseComponent } from '../input-base';
+import { CommonFormModule } from '../form';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'mdtx-input-number',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonFormModule, MatAutocompleteModule],
   templateUrl: './input-number.component.html',
   styleUrl: './input-number.component.scss',
 })
-export class InputNumberComponent {}
+export class InputNumberComponent extends InputBaseComponent {}
