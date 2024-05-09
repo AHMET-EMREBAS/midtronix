@@ -69,7 +69,6 @@ export class InputDateRangeComponent
   ],
   template: `
     <mdtx-input-date-range
-      [formControl]="formControl"
       [inputName]="inputName"
       [prefixIcon]="prefixIcon"
       [label]="label"
@@ -90,7 +89,6 @@ export class InputFiveDayDateRangeComponent extends InputDateRangeComponent {
   ],
   template: `
     <mdtx-input-date-range
-      [formControl]="formControl"
       [inputName]="inputName"
       [prefixIcon]="prefixIcon"
       [label]="label"

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { InputTimeComponent } from './input-time.component';
 
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 describe('InputTimeComponent', () => {
   let component: InputTimeComponent;
   let fixture: ComponentFixture<InputTimeComponent>;
@@ -8,6 +9,7 @@ describe('InputTimeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [InputTimeComponent],
+      providers: [provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(InputTimeComponent);
