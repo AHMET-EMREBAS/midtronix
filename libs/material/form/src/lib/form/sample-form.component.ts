@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BaseFormComponent } from './base-form.component';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { InputNumberComponent } from '../input-number/input-number.component';
@@ -13,21 +13,17 @@ import { InputSliderComponent } from '../input-slider/input-slider.component';
 import { InputTextareaComponent } from '../input-textarea/input-textarea.component';
 import { InputEditorComponent } from '../input-editor/input-editor.component';
 import { InputLikeComponent } from '../input-like/input-like.component';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
+import { CommonFormModule } from './common-form.module';
+import { InputBaseComponent } from '../input-base';
 
 @Component({
   selector: 'mdtx-sample-form',
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
+    CommonFormModule,
     MatButtonModule,
     MatIconModule,
     // Input components
@@ -49,54 +45,39 @@ import { provideMatFormFieldOptions } from '@mdtx/material/core';
   providers: [provideMatFormFieldOptions({ appearance: 'outline' })],
   template: `
     <form
-      [formGroup]="formGroup"
       style="padding: 1em; display: flex; flex-direction: column; gap: 1em;"
+      novalidate
     >
-      <!-- Text input -->
       <mdtx-input-text
-        [formControl]="firstNameControl"
+        #firstName
         inputName="firstName"
         label="What is your name?"
-        [maxLength]="30"
-        [minLength]="3"
       ></mdtx-input-text>
-
-      <!-- Number input -->
       <mdtx-input-number
-        [formControl]="ageControl"
         inputName="age"
+        #age
         label="How old are you?"
-        [minValue]="18"
       ></mdtx-input-number>
-
-      <!-- Textarea -->
       <mdtx-input-textarea
-        [formControl]="descriptionControl"
-        inputName="description"
-        label="Tell me about yourself"
+        inputName="desc"
+        #desc
+        label="About Yourself"
       ></mdtx-input-textarea>
-
-      <!-- date of birth -->
       <mdtx-input-date
-        [formControl]="dob"
         inputName="dob"
-        label="What is your date of birth?"
+        #dob
+        label="Date of birth?"
       ></mdtx-input-date>
-
-      <!-- Current time -->
       <mdtx-input-time
-        [formControl]="ctime"
-        label="What is the current time?"
-        inputName="currentTime"
+        inputName="ctime"
+        #ctime
+        label="Current time?"
       ></mdtx-input-time>
-
-      <!-- Available dates -->
       <mdtx-input-date-range
-        [formControl]="availableDate"
-        inputName="availableDates"
-        label="Select avaialble dates"
+        inputName="adates"
+        #adates
+        label="Dates"
       ></mdtx-input-date-range>
-
       <div style="display: flex; gap: 1em;">
         <button
           mat-raised-button
@@ -117,24 +98,27 @@ export class SampleFormComponent
   extends BaseFormComponent
   implements AfterViewInit
 {
-  firstNameControl = new FormControl('');
-  ageControl = new FormControl('');
-  descriptionControl = new FormControl('');
-  dob = new FormControl('');
-  ctime = new FormControl('');
-  availableDate = new FormControl('');
+  @ViewChild('firstName') firstName!: InputBaseComponent;
+  @ViewChild('age') age!: InputBaseComponent;
+  @ViewChild('desc') desc!: InputBaseComponent;
+  @ViewChild('dob') dob!: InputBaseComponent;
+  @ViewChild('ctime') ctime!: InputBaseComponent;
+  @ViewChild('adates') adates!: InputBaseComponent;
 
   override ngAfterViewInit(): void {
     this.formGroup = new FormGroup({
-      firstName: this.firstNameControl,
-      age: this.ageControl,
-      description: this.descriptionControl,
-      dob: this.dob,
-      currentTime: this.ctime,
-      availableDates: this.availableDate,
+      firstName: this.firstName.formControl,
+      age: this.age.formControl,
+      desc: this.desc.formControl,
+      dob: this.dob.formControl,
+      ctime: this.ctime.formControl,
+      adates: this.adates.formControl,
     });
 
-    
+    this.formGroup.valueChanges.subscribe((data) => {
+      console.log(data);
+    });
+
     super.ngAfterViewInit();
   }
 }

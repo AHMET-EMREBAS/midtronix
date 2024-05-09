@@ -29421,7 +29421,7 @@
         },
         {
             "name": "SampleFormComponent",
-            "id": "component-SampleFormComponent-824b72e458f302da9dd07f32e95424557c2b347849709d04eacf7d4417ab5d38c918d17458646f35882c6d2f595a266e58d52a3e02a46974ddd14561cf12239f",
+            "id": "component-SampleFormComponent-e36fdeb46614f7bc3c6cf9d36cbc4498c78dea7e13574a81ac9175c820718ee079381ff6efdedac84aed89402cb677bb510f3519cc050785d3d606b18f73e77d",
             "file": "libs/material/form/src/lib/form/sample-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29435,7 +29435,7 @@
             "selector": "mdtx-sample-form",
             "styleUrls": [],
             "styles": [],
-            "template": "<form\n  [formGroup]=\"formGroup\"\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\n>\n  <mdtx-input-text\n    inputName=\"firstName\"\n    label=\"What is your name?\"\n    [maxLength]=\"30\"\n    [minLength]=\"3\"\n  ></mdtx-input-text>\n\n  <mdtx-input-number\n    inputName=\"age\"\n    label=\"How old are you?\"\n    [minValue]=\"18\"\n  ></mdtx-input-number>\n\n  <div style=\"display: flex; gap: 1em;\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      type=\"button\"\n      (click)=\"formSubmit()\"\n    >\n      Submit\n    </button>\n    <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
+            "template": "<form\n  [formGroup]=\"formGroup\"\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\n>\n  <!-- Text input -->\n  <mdtx-input-text\n    [formControl]=\"firstNameControl\"\n    inputName=\"firstName\"\n    label=\"What is your name?\"\n    [maxLength]=\"30\"\n    [minLength]=\"3\"\n  ></mdtx-input-text>\n\n  <!-- Number input -->\n  <mdtx-input-number\n    [formControl]=\"ageControl\"\n    inputName=\"age\"\n    label=\"How old are you?\"\n    [minValue]=\"18\"\n  ></mdtx-input-number>\n\n  <!-- Textarea -->\n  <mdtx-input-textarea\n    [formControl]=\"descriptionControl\"\n    inputName=\"description\"\n    label=\"Tell me about yourself\"\n  ></mdtx-input-textarea>\n\n  <!-- date of birth -->\n  <mdtx-input-date\n    [formControl]=\"dob\"\n    inputName=\"dob\"\n    label=\"What is your date of birth?\"\n  ></mdtx-input-date>\n\n  <!-- Current time -->\n  <mdtx-input-time\n    [formControl]=\"ctime\"\n    label=\"What is the current time?\"\n    inputName=\"currentTime\"\n  ></mdtx-input-time>\n\n  <!-- Available dates -->\n  <mdtx-input-date-range\n    [formControl]=\"availableDate\"\n    inputName=\"availableDates\"\n    label=\"Select avaialble dates\"\n  ></mdtx-input-date-range>\n\n  <div style=\"display: flex; gap: 1em;\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      type=\"button\"\n      (click)=\"formSubmit()\"\n    >\n      Submit\n    </button>\n    <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -29454,6 +29454,66 @@
                 }
             ],
             "propertiesClass": [
+                {
+                    "name": "ageControl",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 121
+                },
+                {
+                    "name": "availableDate",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 125
+                },
+                {
+                    "name": "ctime",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 124
+                },
+                {
+                    "name": "descriptionControl",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 122
+                },
+                {
+                    "name": "dob",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 123
+                },
+                {
+                    "name": "firstNameControl",
+                    "defaultValue": "new FormControl('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 120
+                },
                 {
                     "name": "formGroup",
                     "deprecated": false,
@@ -29493,6 +29553,22 @@
             ],
             "methodsClass": [
                 {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 127,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
                     "name": "formReset",
                     "args": [],
                     "optional": false,
@@ -29512,19 +29588,6 @@
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 22,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "inheritance": {
-                        "file": "BaseFormComponent"
-                    }
-                },
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -29610,12 +29673,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      [formGroup]=\"formGroup\"\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\r\n    >\r\n      <mdtx-input-text\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n        [maxLength]=\"30\"\r\n        [minLength]=\"3\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        label=\"How old are you?\"\r\n        [minValue]=\"18\"\r\n      ></mdtx-input-number>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent extends BaseFormComponent {}\r\n",
+            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport {\r\n  FormControl,\r\n  FormGroup,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n} from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      [formGroup]=\"formGroup\"\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\r\n    >\r\n      <!-- Text input -->\r\n      <mdtx-input-text\r\n        [formControl]=\"firstNameControl\"\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n        [maxLength]=\"30\"\r\n        [minLength]=\"3\"\r\n      ></mdtx-input-text>\r\n\r\n      <!-- Number input -->\r\n      <mdtx-input-number\r\n        [formControl]=\"ageControl\"\r\n        inputName=\"age\"\r\n        label=\"How old are you?\"\r\n        [minValue]=\"18\"\r\n      ></mdtx-input-number>\r\n\r\n      <!-- Textarea -->\r\n      <mdtx-input-textarea\r\n        [formControl]=\"descriptionControl\"\r\n        inputName=\"description\"\r\n        label=\"Tell me about yourself\"\r\n      ></mdtx-input-textarea>\r\n\r\n      <!-- date of birth -->\r\n      <mdtx-input-date\r\n        [formControl]=\"dob\"\r\n        inputName=\"dob\"\r\n        label=\"What is your date of birth?\"\r\n      ></mdtx-input-date>\r\n\r\n      <!-- Current time -->\r\n      <mdtx-input-time\r\n        [formControl]=\"ctime\"\r\n        label=\"What is the current time?\"\r\n        inputName=\"currentTime\"\r\n      ></mdtx-input-time>\r\n\r\n      <!-- Available dates -->\r\n      <mdtx-input-date-range\r\n        [formControl]=\"availableDate\"\r\n        inputName=\"availableDates\"\r\n        label=\"Select avaialble dates\"\r\n      ></mdtx-input-date-range>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent\r\n  extends BaseFormComponent\r\n  implements AfterViewInit\r\n{\r\n  firstNameControl = new FormControl('');\r\n  ageControl = new FormControl('');\r\n  descriptionControl = new FormControl('');\r\n  dob = new FormControl('');\r\n  ctime = new FormControl('');\r\n  availableDate = new FormControl('');\r\n\r\n  override ngAfterViewInit(): void {\r\n    this.formGroup = new FormGroup({\r\n      firstName: this.firstNameControl,\r\n      age: this.ageControl,\r\n      description: this.descriptionControl,\r\n      dob: this.dob,\r\n      currentTime: this.ctime,\r\n      availableDates: this.availableDate,\r\n    });\r\n\r\n    super.ngAfterViewInit();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
                 "BaseFormComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
             ]
         },
         {
@@ -33636,7 +33702,7 @@
                 "linktype": "component",
                 "name": "SampleFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {

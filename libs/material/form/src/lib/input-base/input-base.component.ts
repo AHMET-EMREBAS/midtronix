@@ -20,29 +20,20 @@ import { Icon } from '@mdtx/material/core';
   styleUrl: './input-base.component.scss',
 })
 export class InputBaseComponent implements OnInit, AfterViewInit {
-  @Input() formControl!: FormControl;
-
-  @Input() inputName!: string;
+  formControl!: FormControl;
 
   @Input() label!: string;
-
+  @Input() inputName!: string;
   @Input() hint = '';
-  /**
-   * Validation error message comming from the server
-   */
   @Input() serverSideError = '';
-
   @Output() inputEvent = new EventEmitter();
-
   @Input() prefixIcon?: Icon;
 
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
   protected __validateInputs() {
-    if (!this.formControl) console.error('formControl is required!');
     if (!this.inputName) console.error('inputName is required!');
     if (!this.label) console.error('label is required!');
-
     if (!this.formControl) this.formControl = new FormControl();
   }
 
