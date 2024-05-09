@@ -54,4 +54,12 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
     this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));
     this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));
   }
+
+  getErrorMessage() {
+    const errors = this.formControl?.errors;
+    if (errors) {
+      return Object.values(errors).shift();
+    }
+    return 'Field is not valid!';
+  }
 }
