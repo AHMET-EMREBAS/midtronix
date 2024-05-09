@@ -1,25 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { TableComponent } from '../table/table.component';
 import { CommonModule } from '@angular/common';
 import { InputTextComponent } from '@mdtx/material/form';
 import { FormControl } from '@angular/forms';
-import {
-  Observable,
-  debounceTime,
-  map,
-  merge,
-  mergeAll,
-  startWith,
-  switchMap,
-} from 'rxjs';
+import { Observable, debounceTime, map, merge, startWith } from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  MatPaginator,
-  MatPaginatorModule,
-  PageEvent,
-} from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'mdtx-sample-table',

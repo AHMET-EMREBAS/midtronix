@@ -112,6 +112,7 @@
     "@ngrx/entity": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@nx/devkit": "19.0.0",
+    "angular-animations": "^0.11.0",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
     "better-sqlite3": "^9.6.0",

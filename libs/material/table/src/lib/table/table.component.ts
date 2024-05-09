@@ -11,6 +11,11 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import {
+  slideInLeftOnEnterAnimation,
+  slideInRightOnEnterAnimation,
+  slideInDownOnEnterAnimation
+} from 'angular-animations';
 @Component({
   selector: 'mdtx-table',
   standalone: true,
@@ -25,6 +30,15 @@ import { MatMenuModule } from '@angular/material/menu';
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
+
+  animations: [
+    slideInDownOnEnterAnimation({
+      anchor: 'enter',
+      duration: 500,
+      delay: 400,
+      animateChildren: 'after',
+    }),
+  ],
 })
 export class TableComponent implements OnInit {
   readonly firstColumns = ['first', 'second'];

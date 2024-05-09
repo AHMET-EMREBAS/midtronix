@@ -32,6 +32,7 @@
         mat-cell
         *matCellDef="let row"
         [class.condition-not-met]="colNotMetContion(row)"
+        [@enter]
       >
         {{ row[col] }}
       </td>
