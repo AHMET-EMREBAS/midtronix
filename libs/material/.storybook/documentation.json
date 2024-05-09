@@ -22732,12 +22732,12 @@
         },
         {
             "name": "InputValidator",
-            "id": "class-InputValidator-8286c4ff8669606645f43d9272ddc425b8e624ba9cc835e8d28c0981f216976ff9de7d23ce2d574b8410d2d5f0de761721242a0ca7224985776f79e8a58cd43b",
+            "id": "class-InputValidator-04b8a863357be8d2b14cddd24b0345eb3f03d53c367756f2f01dd07a89e86bac5de5cee996e6ca2a11f2417efa1b5bab62b8a8e396e235fac4cf3e7a9839fa3d",
             "file": "libs/material/core/src/lib/validators/input-validator.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n} from 'class-validator';\r\nexport class InputValidator {\r\n  protected readonly validators: ValidatorFn[] = [];\r\n  private constructor(protected readonly name: string) {}\r\n\r\n  static create(name: string) {\r\n    return new InputValidator(name);\r\n  }\r\n\r\n  required() {\r\n    this.validators.push((c) => {\r\n      return c.value ? null : { required: `${this.name} is required!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  minLength(value: number) {\r\n    this.validators.push((c) => {\r\n      return c?.value?.length < value\r\n        ? { minLength: `${this.name} should be longer than ${value}!` }\r\n        : null;\r\n    });\r\n    return this;\r\n  }\r\n\r\n  maxLength(value: number) {\r\n    this.validators.push((c) => {\r\n      return c?.value?.length > value\r\n        ? { maxLength: `${this.name} should be shorter than ${value}!` }\r\n        : null;\r\n    });\r\n    return this;\r\n  }\r\n  min(value: number) {\r\n    this.validators.push((c) => {\r\n      return c?.value < value\r\n        ? { min: `${this.name} should be more than ${value}!` }\r\n        : null;\r\n    });\r\n    return this;\r\n  }\r\n\r\n  max(value: number) {\r\n    this.validators.push((c) => {\r\n      return c?.value > value\r\n        ? { min: `${this.name} should be less than ${value}!` }\r\n        : null;\r\n    });\r\n    return this;\r\n  }\r\n\r\n  email() {\r\n    this.validators.push((c) => {\r\n      return isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.name} should be a valid email!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  password() {\r\n    this.validators.push((c) => {\r\n      return isStrongPassword(c.value)\r\n        ? null\r\n        : { password: `${this.name} should be strong password!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  ean() {\r\n    this.validators.push((c) => {\r\n      return isEAN(c.value)\r\n        ? null\r\n        : { ean: `${this.name} should be a valid ean!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  phone() {\r\n    this.validators.push((c) => {\r\n      return isPhoneNumber(c.value)\r\n        ? null\r\n        : { phone: `${this.name} should be a valid phone!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  build() {\r\n    return [...this.validators];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n} from 'class-validator';\r\nexport class InputValidator {\r\n  protected readonly validators: ValidatorFn[] = [];\r\n  private constructor(protected readonly name: string) {}\r\n\r\n  static create(name: string) {\r\n    return new InputValidator(name);\r\n  }\r\n\r\n  required(value?: boolean) {\r\n    if (value == true)\r\n      this.validators.push((c) => {\r\n        return c.value ? null : { required: `${this.name} is required!` };\r\n      });\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length < value\r\n          ? { minLength: `${this.name} should be longer than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length > value\r\n          ? { maxLength: `${this.name} should be shorter than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n  min(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value < value\r\n          ? { min: `${this.name} should be more than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  max(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value > value\r\n          ? { min: `${this.name} should be less than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  email() {\r\n    this.validators.push((c) => {\r\n      return isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.name} should be a valid email!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  password() {\r\n    this.validators.push((c) => {\r\n      return isStrongPassword(c.value)\r\n        ? null\r\n        : { password: `${this.name} should be strong password!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  ean() {\r\n    this.validators.push((c) => {\r\n      return isEAN(c.value)\r\n        ? null\r\n        : { ean: `${this.name} should be a valid ean!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  phone() {\r\n    this.validators.push((c) => {\r\n      return isPhoneNumber(c.value)\r\n        ? null\r\n        : { phone: `${this.name} should be a valid phone!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  build() {\r\n    return [...this.validators];\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -22792,7 +22792,7 @@
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -22833,7 +22833,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 76,
+                    "line": 81,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -22843,7 +22843,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -22854,13 +22854,14 @@
                             "name": "value",
                             "type": "number",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 49,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22869,6 +22870,7 @@
                             "type": "number",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -22882,13 +22884,14 @@
                             "name": "value",
                             "type": "number",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22897,6 +22900,7 @@
                             "type": "number",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -22910,13 +22914,14 @@
                             "name": "value",
                             "type": "number",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22925,6 +22930,7 @@
                             "type": "number",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -22938,13 +22944,14 @@
                             "name": "value",
                             "type": "number",
                             "deprecated": false,
-                            "deprecationMessage": ""
+                            "deprecationMessage": "",
+                            "optional": true
                         }
                     ],
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -22953,6 +22960,7 @@
                             "type": "number",
                             "deprecated": false,
                             "deprecationMessage": "",
+                            "optional": true,
                             "tagName": {
                                 "text": "param"
                             }
@@ -22965,7 +22973,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 72,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -22975,19 +22983,39 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 85,
+                    "line": 90,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
                     "name": "required",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
                     "line": 16,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "indexSignatures": [],
@@ -24208,6 +24236,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -24254,7 +24295,7 @@
         },
         {
             "name": "InputBaseComponent",
-            "id": "component-InputBaseComponent-84276e459d21559ce9006081db1d2e4d53825cb4893169cc44b04fa6aa6f2a56c0369bd337d042ddb964e6d73f58f570f602756fdf185ccd383886fe35e27f9b",
+            "id": "component-InputBaseComponent-0aec5dd63c98750394bb0b398da7b018a6661f8c1882b0b35e2258669b89f89746dc77d4a92fcec0b6021e4f504cc0b4313172d4225d9d6e94f1b7c3fa6335e9",
             "file": "libs/material/form/src/lib/input-base/input-base.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24368,6 +24409,16 @@
                     ]
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -24402,7 +24453,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime } from 'rxjs';\nimport { Icon } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-base',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-base.component.html',\n  styleUrl: './input-base.component.scss',\n})\nexport class InputBaseComponent implements OnInit, AfterViewInit {\n  @Input() formControl!: FormControl;\n\n  @Input() inputName!: string;\n\n  @Input() label!: string;\n\n  @Input() hint = '';\n  /**\n   * Validation error message comming from the server\n   */\n  @Input() serverSideError = '';\n\n  @Output() inputEvent = new EventEmitter();\n\n  @Input() prefixIcon?: Icon;\n\n  $valueChange!: Observable<any>;\n  $statusChange!: Observable<any>;\n  protected __validateInputs() {\n    if (!this.formControl) console.error('formControl is required!');\n    if (!this.inputName) console.error('inputName is required!');\n    if (!this.label) console.error('label is required!');\n\n    if (!this.formControl) this.formControl = new FormControl();\n  }\n\n  ngOnInit(): void {\n    this.__validateInputs();\n  }\n\n  ngAfterViewInit(): void {\n    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));\n    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime } from 'rxjs';\nimport { Icon } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-base',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-base.component.html',\n  styleUrl: './input-base.component.scss',\n})\nexport class InputBaseComponent implements OnInit, AfterViewInit {\n  @Input() formControl!: FormControl;\n\n  @Input() inputName!: string;\n\n  @Input() label!: string;\n\n  @Input() hint = '';\n  /**\n   * Validation error message comming from the server\n   */\n  @Input() serverSideError = '';\n\n  @Output() inputEvent = new EventEmitter();\n\n  @Input() prefixIcon?: Icon;\n\n  $valueChange!: Observable<any>;\n  $statusChange!: Observable<any>;\n  protected __validateInputs() {\n    if (!this.formControl) console.error('formControl is required!');\n    if (!this.inputName) console.error('inputName is required!');\n    if (!this.label) console.error('label is required!');\n\n    if (!this.formControl) this.formControl = new FormControl();\n  }\n\n  ngOnInit(): void {\n    this.__validateInputs();\n  }\n\n  ngAfterViewInit(): void {\n    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));\n    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));\n  }\n\n  getErrorMessage() {\n    const errors = this.formControl?.errors;\n    if (errors) {\n      return Object.values(errors).shift();\n    }\n    return 'Field is not valid!';\n  }\n}\n",
             "styleUrl": "./input-base.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -24579,6 +24630,19 @@
                     "modifierKind": [
                         124
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -24774,6 +24838,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -24830,7 +24907,7 @@
         },
         {
             "name": "InputChipSelectComponent",
-            "id": "component-InputChipSelectComponent-de886e0fd3576b463d9d617ebcb141f7cd2069551cb9cec007801ea1d3ecfae42279907b2ebeca50a65db0cd6e9256a4b066937a684d9d64f7883f9327908530",
+            "id": "component-InputChipSelectComponent-82b21aa176850cba2b21ee4bf5d0bb3da0bd701f390458c7195886ab07222890bbae65b65c028e6628552d68dd4c27eb1c6c4565b4820bc1135eab76b97df6c7",
             "file": "libs/material/form/src/lib/input-chip-select/input-chip-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24848,7 +24925,6 @@
             "inputsClass": [
                 {
                     "name": "multiple",
-                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 14,
@@ -25053,6 +25129,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -25084,7 +25173,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\n\n@Component({\n  selector: 'mdtx-input-chip-select',\n  standalone: true,\n  imports: [CommonFormModule, MatChipsModule],\n  templateUrl: './input-chip-select.component.html',\n  styleUrl: './input-chip-select.component.scss',\n})\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\n  @Input() multiple = false;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\n\n@Component({\n  selector: 'mdtx-input-chip-select',\n  standalone: true,\n  imports: [CommonFormModule, MatChipsModule],\n  templateUrl: './input-chip-select.component.html',\n  styleUrl: './input-chip-select.component.scss',\n})\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\n  @Input() multiple?: boolean;\n}\n",
             "styleUrl": "./input-chip-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -25239,6 +25328,19 @@
                     "modifierKind": [
                         124
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -25514,6 +25616,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -25704,6 +25819,19 @@
                     "modifierKind": [
                         124
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -25996,6 +26124,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
@@ -26280,6 +26421,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -26317,7 +26471,7 @@
         },
         {
             "name": "InputLikeComponent",
-            "id": "component-InputLikeComponent-62cd02f8fce05fc35354193187980510567f09ca88b4305a9ed9a5c23b24319703df1b761d45b9562a6df2ce365144a3d7d7d40f446a6a6930a358cd0bd5c9d1",
+            "id": "component-InputLikeComponent-cd3ce6c6cf5d3e36a46267af476d8c691a99ccb73bd3b557a3a3efafe36a69dac7a6971dd1d3f1dd7871db11da7c96cea57e18860225eac61b137ca88b7cdc4f",
             "file": "libs/material/form/src/lib/input-like/input-like.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26430,7 +26584,7 @@
                 },
                 {
                     "name": "toggleList",
-                    "defaultValue": "[true, false, undefined]",
+                    "defaultValue": "[undefined, true, false]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
@@ -26491,6 +26645,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -26531,7 +26698,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\n\n@Component({\n  selector: 'mdtx-input-like',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-like.component.html',\n  styleUrl: './input-like.component.scss',\n})\nexport class InputLikeComponent extends InputBaseComponent {\n  toggleList = [true, false, undefined];\n  liked: boolean | undefined = undefined;\n\n  toggle() {\n    const last = this.toggleList.shift();\n    this.toggleList = [...this.toggleList, last];\n    console.log(this.toggleList);\n    this.liked = this.toggleList[0];\n    this.formControl.setValue(this.liked);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\n\n@Component({\n  selector: 'mdtx-input-like',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-like.component.html',\n  styleUrl: './input-like.component.scss',\n})\nexport class InputLikeComponent extends InputBaseComponent {\n  toggleList = [undefined, true, false];\n  liked: boolean | undefined = undefined;\n\n  toggle() {\n    const last = this.toggleList.shift();\n    this.toggleList = [...this.toggleList, last];\n    console.log(this.toggleList);\n    this.liked = this.toggleList[0];\n    this.formControl.setValue(this.liked);\n  }\n}\n",
             "styleUrl": "./input-like.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -26539,7 +26706,7 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<button\n  mat-icon-button\n  [color]=\"liked ? 'accent' : 'primary'\"\n  (click)=\"toggle()\"\n>\n  <mat-icon [class.fill]=\"liked !== undefined\">{{\n    liked === true || liked === undefined\n      ? 'thumb_up'\n      : liked === false\n      ? 'thumb_down'\n      : 'thumb_up'\n  }}</mat-icon>\n</button>\n"
+            "templateData": "<button\n  mat-icon-button\n  [color]=\"liked === true ? 'primary' : liked === false ? 'accent' : ''\"\n  (click)=\"toggle()\"\n>\n  <mat-icon [class.fill]=\"liked !== undefined\">{{\n    liked === true || liked === undefined\n      ? 'thumb_up'\n      : liked === false\n      ? 'thumb_down'\n      : 'thumb_up'\n  }}</mat-icon>\n</button>\n"
         },
         {
             "name": "InputListSelectComponent",
@@ -26561,7 +26728,6 @@
             "inputsClass": [
                 {
                     "name": "multiple",
-                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 14,
@@ -26769,6 +26935,19 @@
                     }
                 },
                 {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -26812,7 +26991,7 @@
         },
         {
             "name": "InputNumberComponent",
-            "id": "component-InputNumberComponent-6dba025ab5a41a0c6b9a7b25ec503bc71397af99359a69751d56136fb243f3f557d3900503efd70f62ed1cab4da085a06fadcea3f2d6f4fe8f68c032a1b781ed",
+            "id": "component-InputNumberComponent-6b1ac16998140b177850606619d0f337b9ee6fdc54c3ddf222d1e7b8737af818e533d6e8fdfc823ce7fd40158329a58771ec41814d514e3fc39b4e56d6b33e07",
             "file": "libs/material/form/src/lib/input-number/input-number.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26827,10 +27006,209 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "maxValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "minValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "textPrefix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "textSuffix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -26838,24 +27216,33 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatAutocompleteModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-number',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-number.component.html',\n  styleUrl: './input-number.component.scss',\n})\nexport class InputNumberComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-number',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-number.component.html',\n  styleUrl: './input-number.component.scss',\n})\nexport class InputNumberComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minValue?: number;\n  @Input() maxValue?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .min(this.minValue)\n      .max(this.maxValue)\n      .build();\n\n    this.formControl.addValidators(validators);\n  }\n\n  getErrorMessage() {\n    const errors = this.formControl.errors;\n\n    if (errors) {\n      return Object.values(errors).shift();\n    }\n    return 'Field is not valid!';\n  }\n}\n",
             "styleUrl": "./input-number.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-number works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"number\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [min]=\"minValue ?? null\"\n    [max]=\"maxValue ?? null\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputRadioComponent",
-            "id": "component-InputRadioComponent-fc82c2430057c2b9e7f61f982d1ed3ad2154d0e67d58432912f00b1ab45641c185fbf7b8addb06a6f5a1518a54dcd845db9f67232a8ef0576ff2d435adc7dafd",
+            "id": "component-InputRadioComponent-675e7b0bdab235f5079d590f15ab257e6e7f30964921b93ac211d3d7f916ba566b5e49824a7f2927974de2370aba82b03da57be9f8e25eacd090fd37d2909428",
             "file": "libs/material/form/src/lib/input-radio/input-radio.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26870,10 +27257,231 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "IInputOption[]",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "filteredOptions$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<IInputOption[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "displayWith",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -26881,24 +27489,30 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatRadioModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-radio',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-radio.component.html',\n  styleUrl: './input-radio.component.scss',\n})\nexport class InputRadioComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\nimport { CommonFormModule } from '../form';\nimport { MatRadioModule } from '@angular/material/radio';\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\n@Component({\n  selector: 'mdtx-input-radio',\n  standalone: true,\n  imports: [CommonFormModule, MatRadioModule],\n  templateUrl: './input-radio.component.html',\n  styleUrl: './input-radio.component.scss',\n})\nexport class InputRadioComponent extends InputAutocompleteComponent {}\n",
             "styleUrl": "./input-radio.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-radio works!</p>\n"
+            "extends": [
+                "InputAutocompleteComponent"
+            ],
+            "templateData": "<mat-radio-group #radioGroup [ariaLabel]=\"label\" [formControl]=\"formControl\">\n  @for(o of options; track o){\n  <mat-radio-button #rb [value]=\"o\">{{ o.name }}</mat-radio-button>\n  }\n</mat-radio-group>\n"
         },
         {
             "name": "InputSelectComponent",
-            "id": "component-InputSelectComponent-4eed89bc72dd4b81ed52c11e88f61265992a825720e03d1ae4a14be71b6a4821352730b146b42e6a3f5e34224bdc48b60a4e965a95a4a751f764cdad378e455c",
+            "id": "component-InputSelectComponent-7a3ab5a85f20d2334e2f3bab290343b23778d51f6dcc3a39256798fc6b186dd01e6050bf37a541dc886005ffccf155a26dc7f99ab7f37d44dbe306f37a13cca0",
             "file": "libs/material/form/src/lib/input-select/input-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26913,10 +27527,242 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "multiple",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputChipSelectComponent"
+                    }
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "IInputOption[]",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "filteredOptions$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<IInputOption[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "displayWith",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "IInputOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -26924,24 +27770,30 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSelectModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-select',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-select.component.html',\n  styleUrl: './input-select.component.scss',\n})\nexport class InputSelectComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatSelectModule } from '@angular/material/select';\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\n\n@Component({\n  selector: 'mdtx-input-select',\n  standalone: true,\n  imports: [CommonFormModule, MatSelectModule],\n  templateUrl: './input-select.component.html',\n  styleUrl: './input-select.component.scss',\n})\nexport class InputSelectComponent extends InputChipSelectComponent {}\n",
             "styleUrl": "./input-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-select works!</p>\n"
+            "extends": [
+                "InputChipSelectComponent"
+            ],
+            "templateData": "<mat-form-field>\n  <mat-label>{{ label }}</mat-label>\n  <mat-select [formControl]=\"formControl\" [multiple]=\"multiple\">\n    @for (o of options; track o) {\n    <mat-option [value]=\"o\">{{ o.name }}</mat-option>\n    }\n  </mat-select>\n</mat-form-field>\n"
         },
         {
             "name": "InputSliderComponent",
-            "id": "component-InputSliderComponent-f53fcf5c9aa4af7ddf27e183c49caa9c9b0e60af7cf1b317db8b8a8e5744dafb68aee873672f29b982acdb47b054ed97bf3dff3019e5eb06159b4aea94460ce9",
+            "id": "component-InputSliderComponent-ca0e7c8157f0488a0bf9c4e72751195a9773e9146457238cb7a04c7420ebde5ebbd869950d4583ef533a9905d7bd07c75ccc4de64d89c7fb51a5ca78bca429d1",
             "file": "libs/material/form/src/lib/input-slider/input-slider.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26956,10 +27808,193 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "activeLabel",
+                    "defaultValue": "undefined",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string | undefined",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getLabel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -26967,20 +28002,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSlideToggleModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-slider',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-slider.component.html',\n  styleUrl: './input-slider.component.scss',\n})\nexport class InputSliderComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\n@Component({\n  selector: 'mdtx-input-slider',\n  standalone: true,\n  imports: [CommonFormModule, MatSlideToggleModule],\n  templateUrl: './input-slider.component.html',\n  styleUrl: './input-slider.component.scss',\n})\nexport class InputSliderComponent extends InputBaseComponent {\n  @Input() activeLabel?: string | undefined = undefined;\n\n  getLabel() {\n    return this.formControl.value == true\n      ? this.activeLabel ?? this.label\n      : this.label;\n  }\n}\n",
             "styleUrl": "./input-slider.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-slider works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "templateData": "<mat-slide-toggle #slideRef [formControl]=\"formControl\" labelPosition=\"before\">\n  {{ getLabel() }}\n</mat-slide-toggle>\n<strong> ({{ formControl.value }}) </strong>\n"
         },
         {
             "name": "InputTextareaComponent",
@@ -27027,7 +28068,7 @@
         },
         {
             "name": "InputTextComponent",
-            "id": "component-InputTextComponent-00c58f83624a8891481868e935eeab41ff5534bc74dc276a57dc8c3440f65c64de0f71d1136303581072a355416b33c1993b6a337a3716753331715f8a02625f",
+            "id": "component-InputTextComponent-bd34427a253f8c358acd738665994b3bbf1fbf614502d06d98f18427248a5b30118d7433b289b03c671c08fd5fccc2986a4ed691a6cc029b80031c72a7b6a0ed",
             "file": "libs/material/form/src/lib/input-text/input-text.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27042,10 +28083,209 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "maxLength",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "minLength",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "textPrefix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "textSuffix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -27055,18 +28295,27 @@
                 {
                     "name": "CommonFormModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatAutocompleteModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '../form';\n\n@Component({\n  selector: 'mdtx-input-text',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-text.component.html',\n  styleUrl: './input-text.component.scss',\n})\nexport class InputTextComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputBaseComponent } from '../input-base';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-text',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-text.component.html',\n  styleUrl: './input-text.component.scss',\n})\nexport class InputTextComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minLength?: number;\n  @Input() maxLength?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .minLength(this.minLength)\n      .maxLength(this.maxLength)\n      .build();\n    this.formControl.addValidators(validators);\n  }\n}\n",
             "styleUrl": "./input-text.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-text works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [minlength]=\"minLength ?? null\"\n    [maxlength]=\"maxLength ?? null\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputTimeComponent",
@@ -27350,6 +28599,19 @@
                     "modifierKind": [
                         124
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -27933,7 +29195,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-number works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Number Input/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -27943,7 +29205,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-radio works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Option/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -27953,7 +29215,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-select works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Option/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -27963,7 +29225,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-slider works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Slide Me/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -28423,7 +29685,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n    multiple: false,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -28503,7 +29765,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Number Input',\n    prefixIcon: 'numbers',\n\n    textPrefix: '$',\n    textSuffix: '.99',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -28513,7 +29775,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -28533,7 +29795,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Slide Me',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -29702,7 +30964,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n    multiple: false,\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
@@ -29778,7 +31040,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-number works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Number Input/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -29798,7 +31060,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Number Input',\n    prefixIcon: 'numbers',\n\n    textPrefix: '$',\n    textSuffix: '.99',\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts": [
@@ -29810,7 +31072,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-radio works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Option/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -29830,7 +31092,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select Option',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-select/input-select.component.stories.ts": [
@@ -29842,7 +31104,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-select works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Option/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -29874,7 +31136,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-slider works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Slide Me/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -29894,7 +31156,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Slide Me',\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-text/input-text.component.stories.ts": [
@@ -31303,8 +32565,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputAutocompleteComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {
@@ -31343,7 +32605,7 @@
                 "linktype": "component",
                 "name": "InputBaseComponent",
                 "coveragePercent": 7,
-                "coverageCount": "1/13",
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -31381,8 +32643,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputButtonToggleComponent",
-                "coveragePercent": 7,
-                "coverageCount": "1/14",
+                "coveragePercent": 6,
+                "coverageCount": "1/15",
                 "status": "low"
             },
             {
@@ -31421,7 +32683,7 @@
                 "linktype": "component",
                 "name": "InputCheckboxComponent",
                 "coveragePercent": 7,
-                "coverageCount": "1/13",
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -31460,7 +32722,7 @@
                 "linktype": "component",
                 "name": "InputChipSelectComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/17",
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -31509,7 +32771,7 @@
                 "linktype": "component",
                 "name": "InputDateRangeComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/17",
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -31518,7 +32780,7 @@
                 "linktype": "component",
                 "name": "InputFiveDayDateRangeComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/18",
+                "coverageCount": "1/19",
                 "status": "low"
             },
             {
@@ -31527,7 +32789,7 @@
                 "linktype": "component",
                 "name": "InputTreeDayDateRangeComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/18",
+                "coverageCount": "1/19",
                 "status": "low"
             },
             {
@@ -31675,7 +32937,7 @@
                 "linktype": "component",
                 "name": "InputDateComponent",
                 "coveragePercent": 7,
-                "coverageCount": "1/13",
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -31724,7 +32986,7 @@
                 "linktype": "component",
                 "name": "InputDatetimeComponent",
                 "coveragePercent": 7,
-                "coverageCount": "1/13",
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -31773,7 +33035,7 @@
                 "linktype": "component",
                 "name": "InputEditorComponent",
                 "coveragePercent": 6,
-                "coverageCount": "1/15",
+                "coverageCount": "1/16",
                 "status": "low"
             },
             {
@@ -31811,8 +33073,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputLikeComponent",
-                "coveragePercent": 6,
-                "coverageCount": "1/16",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {
@@ -31851,7 +33113,7 @@
                 "linktype": "component",
                 "name": "InputListSelectComponent",
                 "coveragePercent": 5,
-                "coverageCount": "1/17",
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -31889,8 +33151,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputNumberComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -31928,8 +33190,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputRadioComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {
@@ -31967,8 +33229,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputSelectComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -32006,8 +33268,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputSliderComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 6,
+                "coverageCount": "1/16",
                 "status": "low"
             },
             {
@@ -32045,8 +33307,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputTextComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {

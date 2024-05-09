@@ -27,6 +27,7 @@ export class InputTextComponent
       .minLength(this.minLength)
       .maxLength(this.maxLength)
       .build();
+      
     this.formControl.addValidators(validators);
   }
 }

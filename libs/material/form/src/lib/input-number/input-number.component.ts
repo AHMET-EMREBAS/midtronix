@@ -31,12 +31,5 @@ export class InputNumberComponent
     this.formControl.addValidators(validators);
   }
 
-  getErrorMessage() {
-    const errors = this.formControl.errors;
-
-    if (errors) {
-      return Object.values(errors).shift();
-    }
-    return 'Field is not valid!';
-  }
+  
 }
