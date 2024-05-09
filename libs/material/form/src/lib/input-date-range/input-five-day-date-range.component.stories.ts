@@ -3,16 +3,16 @@ import {
   type Meta,
   type StoryObj,
 } from '@storybook/angular';
-import { InputDateComponent } from './input-date.component';
+import { InputFiveDayDateRangeComponent } from './input-date-range.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { FormControl } from '@angular/forms';
 
-const meta: Meta<InputDateComponent> = {
-  component: InputDateComponent,
-  title: 'InputDateComponent',
+const meta: Meta<InputFiveDayDateRangeComponent> = {
+  component: InputFiveDayDateRangeComponent,
+  title: 'InputFiveDayDateRangeComponent',
   decorators: [
     applicationConfig({
       providers: [provideAnimations()],
@@ -20,7 +20,7 @@ const meta: Meta<InputDateComponent> = {
   ],
 };
 export default meta;
-type Story = StoryObj<InputDateComponent>;
+type Story = StoryObj<InputFiveDayDateRangeComponent>;
 
 const dateControl = new FormControl('', []);
 
@@ -31,6 +31,7 @@ export const Primary: Story = {
     inputName: 'date',
   },
 };
+
 export const Heading: Story = {
   args: Primary.args,
   play: async ({ canvasElement }) => {

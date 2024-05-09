@@ -1,1 +1,46 @@
-<p>input-date-range works!</p>
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+
+  <mat-date-range-input
+    #mdtxInput="mdtxInput"
+    mdtxInput
+    [formGroup]="dateRange"
+    [rangePicker]="dateRangePicker"
+    [comparisonStart]="dateRange.value.start"
+    [comparisonEnd]="dateRange.value.end"
+  >
+    <input
+      matStartDate
+      i18n-placeholder
+      placeholder="Start date"
+      formControlName="start"
+    />
+    <input
+      matEndDate
+      i18n-placeholder
+      placeholder="End date"
+      formControlName="end"
+    />
+  </mat-date-range-input>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>
+  }
+
+  <!-- Typing indicator -->
+  <mat-icon matSuffix>
+    @if(mdtxInput.isTyping()){
+    <mat-progress-spinner
+      [diameter]="22"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    }
+  </mat-icon>
+
+  <mat-datepicker-toggle
+    matIconSuffix
+    [for]="dateRangePicker"
+  ></mat-datepicker-toggle>
+  <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
+</mat-form-field>

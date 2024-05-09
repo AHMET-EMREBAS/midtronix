@@ -1,1 +1,30 @@
-<p>input-date works!</p>
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    #mdtxInput="mdtxInput"
+    mdtxInput
+    matInput
+    [formControl]="formControl"
+    [matDatepicker]="picker"
+  />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>
+  }
+
+  <!-- Typing indicator -->
+  <mat-icon matSuffix>
+    @if(mdtxInput.isTyping()){
+    <mat-progress-spinner
+      [diameter]="22"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    }
+  </mat-icon>
+
+  
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
