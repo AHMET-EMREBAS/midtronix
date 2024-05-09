@@ -21,8 +21,11 @@ import { Icon } from '@mdtx/material/core';
 })
 export class InputBaseComponent implements OnInit, AfterViewInit {
   @Input() formControl!: FormControl;
+
   @Input() inputName!: string;
+
   @Input() label!: string;
+
   @Input() hint = '';
   /**
    * Validation error message comming from the server

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { ErrorMessageDirective, InputDirective } from '@mdtx/material/core';
+import { InputDirective } from '@mdtx/material/core';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 const modules = [
@@ -18,7 +18,6 @@ const modules = [
   MatIconModule,
   InputDirective,
   MatProgressSpinnerModule,
-  ErrorMessageDirective,
 ];
 
 @NgModule({

@@ -1,1 +1,13 @@
-<p>input-button-toggle works!</p>
+<div class="form-field">
+  <h3>{{ label }}</h3>
+  <mat-button-toggle-group
+    [formControl]="formControl"
+    [name]="inputName"
+    [ariaLabel]="label"
+  >
+    @for(o of options; track o){
+
+    <mat-button-toggle [value]="o">{{ o.name }}</mat-button-toggle>
+    }
+  </mat-button-toggle-group>
+</div>

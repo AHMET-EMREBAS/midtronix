@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[mdtxErrorMessage]',
+  selector: '[mdtxDevErrormessage]',
   standalone: true,
 })
-export class ErrorMessageDirective implements AfterViewInit {
+export class DevErrorMessageDirective implements AfterViewInit {
   isDevMode = isDevMode();
   @Input() errorCondition?: boolean;
 
