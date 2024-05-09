@@ -1,9 +1,14 @@
-import { applicationConfig, type Meta, type StoryObj } from '@storybook/angular';
+import {
+  applicationConfig,
+  type Meta,
+  type StoryObj,
+} from '@storybook/angular';
 import { InputDatetimeComponent } from './input-datetime.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { FormControl } from '@angular/forms';
 
 const meta: Meta<InputDatetimeComponent> = {
   component: InputDatetimeComponent,
@@ -17,14 +22,20 @@ const meta: Meta<InputDatetimeComponent> = {
 export default meta;
 type Story = StoryObj<InputDatetimeComponent>;
 
+const dateControl = new FormControl('', []);
+
 export const Primary: Story = {
-  args: {},
+  args: {
+    label: 'Select date',
+    formControl: dateControl,
+    inputName: 'date',
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/input-datetime works!/gi)).toBeTruthy();
+    expect(canvas.getByText(/Select date/gi)).toBeTruthy();
   },
 };
