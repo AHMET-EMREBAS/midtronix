@@ -1,12 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
 import { TableComponent } from '../table/table.component';
 import { CommonModule } from '@angular/common';
 import { InputTextComponent } from '@mdtx/material/form';
 import { FormControl } from '@angular/forms';
-import { Observable, debounceTime, map, startWith } from 'rxjs';
+import {
+  Observable,
+  debounceTime,
+  map,
+  merge,
+  mergeAll,
+  startWith,
+  switchMap,
+} from 'rxjs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  PageEvent,
+} from '@angular/material/paginator';
 
 @Component({
   selector: 'mdtx-sample-table',
@@ -17,12 +30,16 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatToolbarModule,
     InputTextComponent,
+    MatPaginatorModule,
   ],
   templateUrl: './sample-table.component.html',
   styleUrl: './sample-table.component.scss',
 })
-export class SampleTableComponent {
+export class SampleTableComponent implements AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   searchControl = new FormControl('', []);
+
   data = [
     { id: 1, name: 'data 1', read: false },
     { id: 2, name: 'data 2', read: true },
@@ -44,20 +61,23 @@ export class SampleTableComponent {
     { id: 18, name: 'data 18', read: false },
   ];
 
-  filteredData: Observable<{ id: number; name: string }[]> =
-    this.searchControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(600),
-      map((search) => {
-        if (search) {
-          return this.data.filter((e) =>
-            e.name.toLowerCase().includes(search?.toLowerCase())
-          );
-        }
+  filteredData!: Observable<{ id: number; name: string }[]>;
 
-        return this.data;
+  ngAfterViewInit(): void {
+    this.filteredData = merge(
+      this.searchControl.valueChanges,
+      this.paginator.page
+    ).pipe(
+      debounceTime(600),
+      startWith(''),
+      map(() => {
+        return this.filterData(this.searchControl.value);
+      }),
+      map((data) => {
+        return this.paginateData(data);
       })
     );
+  }
 
   handleSelectionChange(event: any) {
     console.log(event);
@@ -78,5 +98,25 @@ export class SampleTableComponent {
         this.data.filter((e) => e.id == key).map((e) => (e.read = true));
       }
     }
+  }
+
+  paginateData(data: any[]) {
+    if (this.paginator) {
+      return data.slice(
+        this.paginator.pageIndex * this.paginator.pageSize,
+        this.paginator.pageSize
+      );
+    }
+
+    return [];
+  }
+
+  filterData(search?: string | null) {
+    if (search) {
+      return this.data.filter((e) =>
+        e.name.toLowerCase().includes(search?.toLowerCase())
+      );
+    }
+    return this.data;
   }
 }

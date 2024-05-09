@@ -19,6 +19,7 @@
   <mdtx-input-text #search [formControl]="searchControl" prefixIcon="search">
   </mdtx-input-text>
 </mat-toolbar>
+
 <div style="max-height: 400px; overflow: auto">
   <mdtx-table
     #table
@@ -28,4 +29,14 @@
     conditionalColumn="read"
     (selectionChange)="handleSelectionChange($event)"
   ></mdtx-table>
+  <mat-paginator
+    #paginator
+    style="position: sticky; bottom: 0px"
+    [pageSizeOptions]="[2, 5, 7, 10, 12, 20]"
+    [length]="data.length"
+    [pageIndex]="0"
+    [pageSize]="2"
+    [showFirstLastButtons]="true"
+  >
+  </mat-paginator>
 </div>
