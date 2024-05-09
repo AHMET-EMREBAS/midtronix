@@ -24078,7 +24078,7 @@
     "components": [
         {
             "name": "BaseFormComponent",
-            "id": "component-BaseFormComponent-536937768710e770242dbee7d0266e08ec684cc6cabbcc9969a861386d60ae426941b5193486f68a83b9dad3e033930fded6d940b5567c5c45dca2bf77da1c24",
+            "id": "component-BaseFormComponent-01cd990b2111479a666fead350627715e778674f0e7c10adab3b38db46428f4cd64e38b9dba0a190ea18d29c6b224b81624342ef503a52026a96520bfa665fc6",
             "file": "libs/material/form/src/lib/form/base-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24134,22 +24134,32 @@
             ],
             "methodsClass": [
                 {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 17,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "submit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -24163,7 +24173,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-component',\r\n  standalone: true,\r\n  template: '',\r\n})\r\nexport class BaseFormComponent implements AfterViewInit {\r\n  formGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n  \r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.formGroup.valueChanges.pipe(debounceTime(600));\r\n    this.statusChange$ = this.formGroup.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  submit() {\r\n    this.submitEvent.emit(this.formGroup.value);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-component',\r\n  standalone: true,\r\n  template: '',\r\n})\r\nexport class BaseFormComponent implements AfterViewInit {\r\n  formGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.formGroup.valueChanges.pipe(debounceTime(600));\r\n    this.statusChange$ = this.formGroup.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  formSubmit() {\r\n    this.submitEvent.emit(this.formGroup.value);\r\n  }\r\n\r\n  formReset() {\r\n    this.formGroup.reset();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -29411,17 +29421,21 @@
         },
         {
             "name": "SampleFormComponent",
-            "id": "component-SampleFormComponent-d46c46747ce4689c871a5565e59c60f47b3408f17105bc7d7cd7aff2f0750e9e38b4a1ea6e78f73c6e99da2f4bbf78be5f8a044d400a45d987afcc78a5626b64",
+            "id": "component-SampleFormComponent-824b72e458f302da9dd07f32e95424557c2b347849709d04eacf7d4417ab5d38c918d17458646f35882c6d2f595a266e58d52a3e02a46974ddd14561cf12239f",
             "file": "libs/material/form/src/lib/form/sample-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "provideMatFormFieldOptions({ appearance:  })"
+                }
+            ],
             "selector": "mdtx-sample-form",
             "styleUrls": [],
             "styles": [],
-            "template": "<form\n  [formGroup]=\"formGroup\"\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\n>\n  <div style=\"display: flex; gap: 1em;\"></div>\n</form>\n",
+            "template": "<form\n  [formGroup]=\"formGroup\"\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\n>\n  <mdtx-input-text\n    inputName=\"firstName\"\n    label=\"What is your name?\"\n    [maxLength]=\"30\"\n    [minLength]=\"3\"\n  ></mdtx-input-text>\n\n  <mdtx-input-number\n    inputName=\"age\"\n    label=\"How old are you?\"\n    [minValue]=\"18\"\n  ></mdtx-input-number>\n\n  <div style=\"display: flex; gap: 1em;\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      type=\"button\"\n      (click)=\"formSubmit()\"\n    >\n      Submit\n    </button>\n    <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -29479,12 +29493,12 @@
             ],
             "methodsClass": [
                 {
-                    "name": "ngAfterViewInit",
+                    "name": "formReset",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -29492,12 +29506,25 @@
                     }
                 },
                 {
-                    "name": "submit",
+                    "name": "formSubmit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -29583,7 +29610,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  template: `\r\n    <form\r\n      [formGroup]=\"formGroup\"\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\r\n    >\r\n      <div style=\"display: flex; gap: 1em;\"></div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent extends BaseFormComponent {}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      [formGroup]=\"formGroup\"\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em;\"\r\n    >\r\n      <mdtx-input-text\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n        [maxLength]=\"30\"\r\n        [minLength]=\"3\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        label=\"How old are you?\"\r\n        [minValue]=\"18\"\r\n      ></mdtx-input-number>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent extends BaseFormComponent {}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -29917,7 +29944,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -31762,7 +31789,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -33560,7 +33587,7 @@
                 "linktype": "component",
                 "name": "BaseFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -33609,7 +33636,7 @@
                 "linktype": "component",
                 "name": "SampleFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
