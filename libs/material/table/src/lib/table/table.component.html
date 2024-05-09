@@ -1,31 +1,33 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- First column -->
+    <ng-container matColumnDef="first">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox  [checked]="isAllSelected()"  [indeterminate]="isPartialSelected()" (change)="selectAll($event)"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox
+          [checked]="selectedItems.get(row.id)"
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-  </ng-container>
+          (change)="selectItem($event, row)"
+        ></mat-checkbox>
+      </td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
+    <!-- Columns -->
+    @for(col of columns; track col){
+    <ng-container [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+      <td mat-cell *matCellDef="let row">{{ row[col] }}</td>
+    </ng-container>
+    }
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef>Weight</th>
-    <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+    <!-- Last column -->
+    <ng-container matColumnDef="last">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">last-column</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

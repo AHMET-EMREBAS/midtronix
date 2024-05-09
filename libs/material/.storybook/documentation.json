@@ -410,6 +410,57 @@
             "kind": 171,
             "methods": [],
             "extends": []
+        },
+        {
+            "name": "PeriodicElement",
+            "id": "interface-PeriodicElement-142abd831e0225391419a118975b930e2029aa2600f707374053735111db2e217540dd6954c992cc60cde0f68228e3aab9327f7fe7d457283e4d2563bbfd3184",
+            "file": "libs/material/table/src/lib/table/table.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\n\nexport interface PeriodicElement {\n  name: string;\n  position: number;\n  weight: number;\n  symbol: string;\n}\n\nconst ELEMENT_DATA: PeriodicElement[] = [\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n];\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule, MatTableModule, MatSortModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\n  dataSource = ELEMENT_DATA;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "position",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "symbol",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "weight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
         }
     ],
     "injectables": [],
@@ -29401,7 +29452,7 @@
         },
         {
             "name": "SampleFormComponent",
-            "id": "component-SampleFormComponent-0cff379819d2220df9454361d2ecee40e6a78ce42992ff6bcf4c70eb6429cb036c3cda9831feba8e84799c06c68f78edc29c90af33b89d32ec7af0505371c0e8",
+            "id": "component-SampleFormComponent-1efd7484f2b3d1c7e5e7858fff5d9bd27e6308eed4063909eacc11ff38fd3afa4a0868d4fd37406dec9b5712d24cb28c57d1d35ec4b21360a05e302601decdf8",
             "file": "libs/material/form/src/lib/form/sample-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29415,7 +29466,7 @@
             "selector": "mdtx-sample-form",
             "styleUrls": [],
             "styles": [],
-            "template": "<form\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\n  novalidate\n>\n  <mdtx-input-text\n    #firstName\n    inputName=\"firstName\"\n    label=\"What is your name?\"\n  ></mdtx-input-text>\n\n  <mdtx-input-number\n    inputName=\"age\"\n    #age\n    label=\"How old are you?\"\n  ></mdtx-input-number>\n\n  <mdtx-input-textarea\n    inputName=\"desc\"\n    #desc\n    label=\"About Yourself\"\n  ></mdtx-input-textarea>\n\n  <mdtx-input-date\n    inputName=\"dob\"\n    #dob\n    label=\"Date of birth?\"\n  ></mdtx-input-date>\n\n  <mdtx-input-time\n    inputName=\"ctime\"\n    #ctime\n    label=\"Current time?\"\n  ></mdtx-input-time>\n\n  <mdtx-input-date-range\n    inputName=\"adates\"\n    #adates\n    label=\"Dates\"\n  ></mdtx-input-date-range>\n\n  <mdtx-input-button-toggle\n    inputName=\"button\"\n    #btoggle\n    label=\"Button Toggle\"\n  ></mdtx-input-button-toggle>\n\n  <div style=\"display: flex; gap: 1em;\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      type=\"button\"\n      (click)=\"formSubmit()\"\n    >\n      Submit\n    </button>\n    <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
+            "template": "<form\n  style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\n  novalidate\n>\n  <mdtx-input-text\n    #firstName\n    inputName=\"firstName\"\n    label=\"What is your name?\"\n  ></mdtx-input-text>\n\n  <mdtx-input-number\n    inputName=\"age\"\n    #age\n    label=\"How old are you?\"\n  ></mdtx-input-number>\n\n  <mdtx-input-textarea\n    inputName=\"desc\"\n    #desc\n    label=\"About Yourself\"\n  ></mdtx-input-textarea>\n\n  <mdtx-input-date\n    inputName=\"dob\"\n    #dob\n    label=\"Date of birth?\"\n  ></mdtx-input-date>\n\n  <mdtx-input-time\n    inputName=\"ctime\"\n    #ctime\n    label=\"Current time?\"\n  ></mdtx-input-time>\n\n  <mdtx-input-date-range\n    inputName=\"adates\"\n    #adates\n    label=\"Dates\"\n  ></mdtx-input-date-range>\n\n  <mdtx-input-button-toggle\n    inputName=\"button\"\n    #btoggle\n    label=\"Button Toggle\"\n    [options]=\"[\n      { id: 1, name: 'option 1' },\n      { id: 2, name: 'option 2' },\n      { id: 3, name: 'option 3' },\n      { id: 4, name: 'option 4' }\n    ]\"\n  ></mdtx-input-button-toggle>\n\n  <div style=\"display: flex; gap: 1em;\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      type=\"button\"\n      (click)=\"formSubmit()\"\n    >\n      Submit\n    </button>\n    <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -29441,7 +29492,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 127,
+                    "line": 133,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29459,7 +29510,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 123,
+                    "line": 129,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29477,7 +29528,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 126,
+                    "line": 132,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29495,7 +29546,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 124,
+                    "line": 130,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29513,7 +29564,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 125,
+                    "line": 131,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29531,7 +29582,7 @@
                     "type": "InputBaseComponent",
                     "optional": false,
                     "description": "",
-                    "line": 122,
+                    "line": 128,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -29549,7 +29600,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 129
+                    "line": 135
                 },
                 {
                     "name": "formGroup",
@@ -29595,7 +29646,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 130,
+                    "line": 136,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -29611,7 +29662,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 145,
+                    "line": 151,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -29720,7 +29771,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  OnDestroy,\r\n  OnInit,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormControl, FormGroup } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\nimport { CommonFormModule } from './common-form.module';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { Subscription } from 'rxjs';\r\nimport { InputButtonToggleComponent } from '../input-button-toggle/input-button-toggle.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    CommonFormModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputButtonToggleComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\r\n      novalidate\r\n    >\r\n      <mdtx-input-text\r\n        #firstName\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        #age\r\n        label=\"How old are you?\"\r\n      ></mdtx-input-number>\r\n\r\n      <mdtx-input-textarea\r\n        inputName=\"desc\"\r\n        #desc\r\n        label=\"About Yourself\"\r\n      ></mdtx-input-textarea>\r\n\r\n      <mdtx-input-date\r\n        inputName=\"dob\"\r\n        #dob\r\n        label=\"Date of birth?\"\r\n      ></mdtx-input-date>\r\n\r\n      <mdtx-input-time\r\n        inputName=\"ctime\"\r\n        #ctime\r\n        label=\"Current time?\"\r\n      ></mdtx-input-time>\r\n\r\n      <mdtx-input-date-range\r\n        inputName=\"adates\"\r\n        #adates\r\n        label=\"Dates\"\r\n      ></mdtx-input-date-range>\r\n\r\n      <mdtx-input-button-toggle\r\n        inputName=\"button\"\r\n        #btoggle\r\n        label=\"Button Toggle\"\r\n      ></mdtx-input-button-toggle>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent\r\n  extends BaseFormComponent\r\n  implements AfterViewInit, OnDestroy\r\n{\r\n  @ViewChild('firstName') firstName!: InputBaseComponent;\r\n  @ViewChild('age') age!: InputBaseComponent;\r\n  @ViewChild('desc') desc!: InputBaseComponent;\r\n  @ViewChild('dob') dob!: InputBaseComponent;\r\n  @ViewChild('ctime') ctime!: InputBaseComponent;\r\n  @ViewChild('adates') adates!: InputBaseComponent;\r\n\r\n  sub!: Subscription;\r\n  override ngAfterViewInit(): void {\r\n    this.formGroup = new FormGroup({\r\n      firstName: this.firstName.formControl,\r\n      age: this.age.formControl,\r\n      desc: this.desc.formControl,\r\n      dob: this.dob.formControl,\r\n      ctime: this.ctime.formControl,\r\n      adates: this.adates.formControl,\r\n    });\r\n\r\n    super.ngAfterViewInit();\r\n\r\n    this.sub = this.valueChange$.subscribe(console.log);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  OnDestroy,\r\n  OnInit,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormControl, FormGroup } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\nimport { CommonFormModule } from './common-form.module';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { Subscription } from 'rxjs';\r\nimport { InputButtonToggleComponent } from '../input-button-toggle/input-button-toggle.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    CommonFormModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputButtonToggleComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\r\n      novalidate\r\n    >\r\n      <mdtx-input-text\r\n        #firstName\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        #age\r\n        label=\"How old are you?\"\r\n      ></mdtx-input-number>\r\n\r\n      <mdtx-input-textarea\r\n        inputName=\"desc\"\r\n        #desc\r\n        label=\"About Yourself\"\r\n      ></mdtx-input-textarea>\r\n\r\n      <mdtx-input-date\r\n        inputName=\"dob\"\r\n        #dob\r\n        label=\"Date of birth?\"\r\n      ></mdtx-input-date>\r\n\r\n      <mdtx-input-time\r\n        inputName=\"ctime\"\r\n        #ctime\r\n        label=\"Current time?\"\r\n      ></mdtx-input-time>\r\n\r\n      <mdtx-input-date-range\r\n        inputName=\"adates\"\r\n        #adates\r\n        label=\"Dates\"\r\n      ></mdtx-input-date-range>\r\n\r\n      <mdtx-input-button-toggle\r\n        inputName=\"button\"\r\n        #btoggle\r\n        label=\"Button Toggle\"\r\n        [options]=\"[\r\n          { id: 1, name: 'option 1' },\r\n          { id: 2, name: 'option 2' },\r\n          { id: 3, name: 'option 3' },\r\n          { id: 4, name: 'option 4' }\r\n        ]\"\r\n      ></mdtx-input-button-toggle>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent\r\n  extends BaseFormComponent\r\n  implements AfterViewInit, OnDestroy\r\n{\r\n  @ViewChild('firstName') firstName!: InputBaseComponent;\r\n  @ViewChild('age') age!: InputBaseComponent;\r\n  @ViewChild('desc') desc!: InputBaseComponent;\r\n  @ViewChild('dob') dob!: InputBaseComponent;\r\n  @ViewChild('ctime') ctime!: InputBaseComponent;\r\n  @ViewChild('adates') adates!: InputBaseComponent;\r\n\r\n  sub!: Subscription;\r\n  override ngAfterViewInit(): void {\r\n    this.formGroup = new FormGroup({\r\n      firstName: this.firstName.formControl,\r\n      age: this.age.formControl,\r\n      desc: this.desc.formControl,\r\n      dob: this.dob.formControl,\r\n      ctime: this.ctime.formControl,\r\n      adates: this.adates.formControl,\r\n    });\r\n\r\n    super.ngAfterViewInit();\r\n\r\n    this.sub = this.valueChange$.subscribe(console.log);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -29734,7 +29785,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-91c6593d35741b9a08b86016763d954f5adce83cf78483a3829e52be7d2bc80450db088cfb248ca111605f033e93aef2ef786c96e28a37d924f3548b988f475d",
+            "id": "component-TableComponent-142abd831e0225391419a118975b930e2029aa2600f707374053735111db2e217540dd6954c992cc60cde0f68228e3aab9327f7fe7d457283e4d2563bbfd3184",
             "file": "libs/material/table/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29751,7 +29802,28 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "dataSource",
+                    "defaultValue": "ELEMENT_DATA",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "displayedColumns",
+                    "defaultValue": "['position', 'name', 'weight', 'symbol']",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -29762,18 +29834,26 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatTableModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSortModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatSortModule } from '@angular/material/sort';\n\nexport interface PeriodicElement {\n  name: string;\n  position: number;\n  weight: number;\n  symbol: string;\n}\n\nconst ELEMENT_DATA: PeriodicElement[] = [\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n];\n@Component({\n  selector: 'mdtx-table',\n  standalone: true,\n  imports: [CommonModule, MatTableModule, MatSortModule],\n  templateUrl: './table.component.html',\n  styleUrl: './table.component.scss',\n})\nexport class TableComponent {\n  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];\n  dataSource = ELEMENT_DATA;\n}\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>table works!</p>\n"
+            "templateData": "<table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\n  <!--- Note that these columns can be defined in any order.\n          The actual rendered columns are set as a property on the row definition\" -->\n\n  <!-- Position Column -->\n  <ng-container matColumnDef=\"position\">\n    <th mat-header-cell *matHeaderCellDef>No.</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.position }}</td>\n  </ng-container>\n\n  <!-- Name Column -->\n  <ng-container matColumnDef=\"name\">\n    <th mat-header-cell *matHeaderCellDef>Name</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.name }}</td>\n  </ng-container>\n\n  <!-- Weight Column -->\n  <ng-container matColumnDef=\"weight\">\n    <th mat-header-cell *matHeaderCellDef>Weight</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.weight }}</td>\n  </ng-container>\n\n  <!-- Symbol Column -->\n  <ng-container matColumnDef=\"symbol\">\n    <th mat-header-cell *matHeaderCellDef>Symbol</th>\n    <td mat-cell *matCellDef=\"let element\">{{ element.symbol }}</td>\n  </ng-container>\n\n  <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n  <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\n</table>\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -30001,6 +30081,16 @@
                 "defaultValue": "new FormControl('', [])"
             },
             {
+                "name": "ELEMENT_DATA",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "PeriodicElement[]",
+                "defaultValue": "[\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n]"
+            },
+            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -30039,6 +30129,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -30254,16 +30354,6 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -30349,6 +30439,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<LocalStoreComponent>",
                 "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<LayoutComponent>",
+                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -30564,16 +30664,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<LayoutComponent>",
-                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/table/src/lib/table/table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -30645,6 +30735,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -30859,16 +30959,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -31238,6 +31328,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<LayoutComponent>",
+                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<BaseFormComponent>",
                 "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                 "deprecated": false,
@@ -31460,17 +31561,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputTimeComponent>",
                 "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<LayoutComponent>",
-                "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31734,6 +31824,18 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    formControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
                 }
             ],
+            "libs/material/table/src/lib/table/table.component.ts": [
+                {
+                    "name": "ELEMENT_DATA",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "PeriodicElement[]",
+                    "defaultValue": "[\n  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },\n  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },\n  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },\n  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },\n  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },\n  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },\n  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },\n  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },\n  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },\n  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },\n]"
+                }
+            ],
             "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -31856,6 +31958,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<LayoutComponent>",
+                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32374,38 +32508,6 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
                 }
             ],
-            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<LayoutComponent>",
-                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
             "libs/material/table/src/lib/table/table.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -32903,6 +33005,19 @@
                     "kind": 183
                 }
             ],
+            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<LayoutComponent>",
+                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/form/src/lib/form/base-form.component.stories.ts": [
                 {
                     "name": "Story",
@@ -33170,19 +33285,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputTimeComponent>",
                     "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<LayoutComponent>",
-                    "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -34696,6 +34798,25 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "PeriodicElement",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ELEMENT_DATA",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
