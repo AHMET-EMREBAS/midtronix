@@ -26,6 +26,7 @@ import { provideMatFormFieldOptions } from '@mdtx/material/core';
 import { CommonFormModule } from './common-form.module';
 import { InputBaseComponent } from '../input-base';
 import { Subscription } from 'rxjs';
+import { InputButtonToggleComponent } from '../input-button-toggle/input-button-toggle.component';
 
 @Component({
   selector: 'mdtx-sample-form',
@@ -38,6 +39,7 @@ import { Subscription } from 'rxjs';
     InputTextareaComponent,
     InputNumberComponent,
     InputAutocompleteComponent,
+    InputButtonToggleComponent,
     InputChipSelectComponent,
     InputDateComponent,
     InputDateRangeComponent,
@@ -52,7 +54,7 @@ import { Subscription } from 'rxjs';
   providers: [provideMatFormFieldOptions({ appearance: 'outline' })],
   template: `
     <form
-      style="padding: 1em; display: flex; flex-direction: column; gap: 1em;"
+      style="padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;"
       novalidate
     >
       <mdtx-input-text
@@ -60,31 +62,49 @@ import { Subscription } from 'rxjs';
         inputName="firstName"
         label="What is your name?"
       ></mdtx-input-text>
+
       <mdtx-input-number
         inputName="age"
         #age
         label="How old are you?"
       ></mdtx-input-number>
+
       <mdtx-input-textarea
         inputName="desc"
         #desc
         label="About Yourself"
       ></mdtx-input-textarea>
+
       <mdtx-input-date
         inputName="dob"
         #dob
         label="Date of birth?"
       ></mdtx-input-date>
+
       <mdtx-input-time
         inputName="ctime"
         #ctime
         label="Current time?"
       ></mdtx-input-time>
+
       <mdtx-input-date-range
         inputName="adates"
         #adates
         label="Dates"
       ></mdtx-input-date-range>
+
+      <mdtx-input-button-toggle
+        inputName="button"
+        #btoggle
+        label="Button Toggle"
+        [options]="[
+          { id: 1, name: 'option 1' },
+          { id: 2, name: 'option 2' },
+          { id: 3, name: 'option 3' },
+          { id: 4, name: 'option 4' }
+        ]"
+      ></mdtx-input-button-toggle>
+
       <div style="display: flex; gap: 1em;">
         <button
           mat-raised-button

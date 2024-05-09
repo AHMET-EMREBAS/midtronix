@@ -5070,3 +5070,9 @@ html {
 }
 
 /*# sourceMappingURL=quill.snow.css.map*/
+
+/* material */
+
+mat-form-field {
+  width: 100%;
+}
