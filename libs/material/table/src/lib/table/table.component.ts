@@ -14,7 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {
   slideInLeftOnEnterAnimation,
   slideInRightOnEnterAnimation,
-  slideInDownOnEnterAnimation
+  slideInDownOnEnterAnimation,
 } from 'angular-animations';
 @Component({
   selector: 'mdtx-table',
@@ -97,18 +97,23 @@ export class TableComponent implements OnInit {
   }
 
   isAllSelected() {
-    return this.dataSource.length === this.selectedItems.size;
+    for (const a of this.dataSource) {
+      if (!this.selectedItems.get(a.id)) {
+        return false;
+      }
+    }
+    return true;
   }
 
   isPartialSelected() {
-    return (
-      this.selectedItems.size > 0 &&
-      this.selectedItems.size < this.dataSource.length
-    );
+    if (this.isAllSelected()) {
+      return false;
+    }
+
+    return this.selectedItems.size > 0;
   }
 
   colMetCondition(row: any) {
-    console.log('Chekcing condition : ', row[this.conditionalColumn]);
     return row[this.conditionalColumn] == true;
   }
 

@@ -67,10 +67,6 @@ export class SampleTableComponent implements AfterViewInit {
     );
   }
 
-  handleSelectionChange(event: any) {
-    console.log(event);
-  }
-
   deleteSelection(items: Map<number, any>) {
     for (const [key, value] of items) {
       if (key) {
@@ -89,11 +85,12 @@ export class SampleTableComponent implements AfterViewInit {
   }
 
   paginateData(data: any[]) {
+    const pageSize = this.paginator.pageSize;
+    const pageIndex = this.paginator.pageIndex;
+    const pageLength = this.paginator.length;
+
     if (this.paginator) {
-      return data.slice(
-        this.paginator.pageIndex * this.paginator.pageSize,
-        this.paginator.pageSize
-      );
+      return data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);
     }
 
     return [];
