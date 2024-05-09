@@ -1,1 +1,38 @@
-<p>input-text works!</p>
+<mat-form-field class="example-full-width">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="text"
+    #mdtxInput="mdtxInput"
+    mdtxInput
+    matInput
+    [ariaLabel]="label"
+    [formControl]="formControl"
+    [minlength]="minLength ?? null"
+    [maxlength]="maxLength ?? null"
+  />
+
+  <!-- Text suffix -->
+  @if(textPrefix){
+  <span matTextPrefix> {{ textPrefix }}</span>
+  }
+
+  <!-- Text suffix -->
+  @if(textSuffix){
+  <span matTextSuffix> {{ textSuffix }}</span>
+  }
+
+  <!-- Typing indicator -->
+  <mat-icon matIconSuffix>
+    @if(mdtxInput.isTyping()){
+    <mat-progress-spinner
+      [diameter]="22"
+      mode="indeterminate"
+    ></mat-progress-spinner>
+    }
+  </mat-icon>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>
+  }
+</mat-form-field>

@@ -13,45 +13,50 @@ export class InputValidator {
     return new InputValidator(name);
   }
 
-  required() {
-    this.validators.push((c) => {
-      return c.value ? null : { required: `${this.name} is required!` };
-    });
+  required(value?: boolean) {
+    if (value == true)
+      this.validators.push((c) => {
+        return c.value ? null : { required: `${this.name} is required!` };
+      });
     return this;
   }
 
-  minLength(value: number) {
-    this.validators.push((c) => {
-      return c?.value?.length < value
-        ? { minLength: `${this.name} should be longer than ${value}!` }
-        : null;
-    });
+  minLength(value?: number) {
+    if (value != undefined)
+      this.validators.push((c) => {
+        return c?.value?.length < value
+          ? { minLength: `${this.name} should be longer than ${value}!` }
+          : null;
+      });
     return this;
   }
 
-  maxLength(value: number) {
-    this.validators.push((c) => {
-      return c?.value?.length > value
-        ? { maxLength: `${this.name} should be shorter than ${value}!` }
-        : null;
-    });
+  maxLength(value?: number) {
+    if (value != undefined)
+      this.validators.push((c) => {
+        return c?.value?.length > value
+          ? { maxLength: `${this.name} should be shorter than ${value}!` }
+          : null;
+      });
     return this;
   }
-  min(value: number) {
-    this.validators.push((c) => {
-      return c?.value < value
-        ? { min: `${this.name} should be more than ${value}!` }
-        : null;
-    });
+  min(value?: number) {
+    if (value != undefined)
+      this.validators.push((c) => {
+        return c?.value < value
+          ? { min: `${this.name} should be more than ${value}!` }
+          : null;
+      });
     return this;
   }
 
-  max(value: number) {
-    this.validators.push((c) => {
-      return c?.value > value
-        ? { min: `${this.name} should be less than ${value}!` }
-        : null;
-    });
+  max(value?: number) {
+    if (value != undefined)
+      this.validators.push((c) => {
+        return c?.value > value
+          ? { min: `${this.name} should be less than ${value}!` }
+          : null;
+      });
     return this;
   }
 
