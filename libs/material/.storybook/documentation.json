@@ -23154,14 +23154,14 @@
             }
         },
         {
-            "name": "ErrorMessageDirective",
-            "id": "directive-ErrorMessageDirective-102d0625b96a185c17d99f477c1e602498b1b6f2089fbcf7878f7ba83ff14f97c4d8edb6be92724357ab4f7150e687da304ba2cb30bec2f47d6ab5f004b1d230",
-            "file": "libs/material/core/src/lib/error-messsage/error-message.directive.ts",
+            "name": "DevErrorMessageDirective",
+            "id": "directive-DevErrorMessageDirective-dd2045f7e762556120451673d2a14515381ef67e22843533675d60e30de4fe8c368b5146b2fabafa1ab0dd044c25c831768bc290893714325cc0af61d878c25e",
+            "file": "libs/material/core/src/lib/directive/dev-error-message.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Directive,\r\n  ElementRef,\r\n  Input,\r\n  isDevMode,\r\n} from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[mdtxErrorMessage]',\r\n  standalone: true,\r\n})\r\nexport class ErrorMessageDirective implements AfterViewInit {\r\n  isDevMode = isDevMode();\r\n  @Input() errorCondition?: boolean;\r\n\r\n  constructor(protected readonly ref: ElementRef<HTMLParagraphElement>) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    if (this.errorCondition && this.isDevMode) {\r\n      this.ref.nativeElement.hidden = false;\r\n\r\n      this.ref.nativeElement.style.fontFamily = `Comfortaa`;\r\n      this.ref.nativeElement.style.color = `red`;\r\n      this.ref.nativeElement.style.border = `1px solid red`;\r\n      this.ref.nativeElement.style.background = `white`;\r\n      this.ref.nativeElement.style.padding = `1em`;\r\n    } else {\r\n      this.ref.nativeElement.hidden = true;\r\n    }\r\n  }\r\n}\r\n",
-            "selector": "[mdtxErrorMessage]",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Directive,\r\n  ElementRef,\r\n  Input,\r\n  isDevMode,\r\n} from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[mdtxDevErrormessage]',\r\n  standalone: true,\r\n})\r\nexport class DevErrorMessageDirective implements AfterViewInit {\r\n  isDevMode = isDevMode();\r\n  @Input() errorCondition?: boolean;\r\n\r\n  constructor(protected readonly ref: ElementRef<HTMLParagraphElement>) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    if (this.errorCondition && this.isDevMode) {\r\n      this.ref.nativeElement.hidden = false;\r\n\r\n      this.ref.nativeElement.style.fontFamily = `Comfortaa`;\r\n      this.ref.nativeElement.style.color = `red`;\r\n      this.ref.nativeElement.style.border = `1px solid red`;\r\n      this.ref.nativeElement.style.background = `white`;\r\n      this.ref.nativeElement.style.padding = `1em`;\r\n    } else {\r\n      this.ref.nativeElement.hidden = true;\r\n    }\r\n  }\r\n}\r\n",
+            "selector": "[mdtxDevErrormessage]",
             "providers": [],
             "hostDirectives": [],
             "standalone": true,
@@ -23878,7 +23878,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-6feeaaba3ac60e9778ae2170670f63f5895935f7f3a6dfb3bca98b4bfce4ffef6abaded46cce8d5450df1f898eee6d0baa8d5369485bdd74b9750ae6f94cd40a",
+            "id": "component-InputAutocompleteComponent-248f38fa7cddb16e7e272e85a06efea0187defc85ed9a4ef3a5388702002a25a004893d3654b567a6a589f21638f1b69cf10933d35a850f26cc98601c5abde0d",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23918,7 +23918,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -23929,7 +23929,7 @@
                     "name": "inputName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -23940,7 +23940,7 @@
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 27,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -23951,7 +23951,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -23965,7 +23965,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nValidation error message comming from the server\n",
                     "description": "<p>Validation error message comming from the server</p>\n",
-                    "line": 30,
+                    "line": 33,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -23979,7 +23979,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -24003,7 +24003,7 @@
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 37,
+                    "line": 40,
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -24015,7 +24015,7 @@
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 36,
+                    "line": 39,
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -24035,7 +24035,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24072,7 +24072,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -24088,7 +24088,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -24114,7 +24114,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { IInputOption } from '@mdtx/material/core';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime, map } from 'rxjs';\n@Component({\n  selector: 'mdtx-input-autocomplete',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-autocomplete.component.html',\n  styleUrl: './input-autocomplete.component.scss',\n})\nexport class InputAutocompleteComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  @Input() options!: IInputOption[];\n\n  filteredOptions$!: Observable<IInputOption[]>;\n\n  override ngOnInit(): void {\n    if (!this.options) throw new Error('options is required!');\n    this.formControl = new FormControl('', []);\n    this.filteredOptions$ = this.formControl.valueChanges.pipe(\n      debounceTime(600),\n      map((e) => {\n        return this.options.filter((o) => o.name.startsWith(e));\n      })\n    );\n    super.ngOnInit();\n  }\n\n  displayWith(option: IInputOption) {\n    return option.name;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { IInputOption } from '@mdtx/material/core';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\n@Component({\n  selector: 'mdtx-input-autocomplete',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-autocomplete.component.html',\n  styleUrl: './input-autocomplete.component.scss',\n})\nexport class InputAutocompleteComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  @Input() options!: IInputOption[];\n\n  filteredOptions$!: Observable<IInputOption[]>;\n\n  override ngOnInit(): void {\n    if (!this.options) throw new Error('options is required!');\n    this.formControl = new FormControl('', []);\n    this.filteredOptions$ = this.formControl.valueChanges.pipe(\n      startWith(''),\n      debounceTime(600),\n      map((e) => {\n        return e\n          ? this.options.filter((o) =>\n              o.name.toLowerCase().startsWith(e.toLowerCase())\n            )\n          : this.options.filter((e) => e);\n      })\n    );\n    super.ngOnInit();\n  }\n\n  displayWith(option: IInputOption) {\n    return option.name;\n  }\n}\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -24125,11 +24125,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p mdtxErrorMessage [errorCondition]=\"options === undefined\">\n  Options is required!\n</p>\n<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [matAutocomplete]=\"auto\"\n  />\n  <mat-autocomplete\n    autoActiveFirstOption\n    #auto=\"matAutocomplete\"\n    [displayWith]=\"displayWith\"\n  >\n    @for (option of filteredOptions$ | async ; track option) {\n    <mat-option [value]=\"option\">{{ option }}</mat-option>\n    }\n  </mat-autocomplete>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n</mat-form-field>\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [matAutocomplete]=\"auto\"\n  />\n  <mat-autocomplete\n    autoActiveFirstOption\n    #auto=\"matAutocomplete\"\n    [displayWith]=\"displayWith\"\n  >\n    @for (option of filteredOptions$ | async ; track option) {\n    <mat-option [value]=\"option\">{{ option.name }}</mat-option>\n    }\n  </mat-autocomplete>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n</mat-form-field>\n"
         },
         {
             "name": "InputBaseComponent",
-            "id": "component-InputBaseComponent-899813b30ddc3d577bc26c7f54aa30193289798c31197a6bc06aaf0ba84c7e8f32a4ed3ac94bbd0500ffe30e56b9381134c8a89d1a6c213c7f9622a0b08332d0",
+            "id": "component-InputBaseComponent-0006013a3883660cbdbf4299083bfc1c2bdeced7c8ad3ed240babb842d420583281c40e642a6dda05bb58687255e45a6c63703d57f403292803fb85a28a1d263",
             "file": "libs/material/form/src/lib/input-base/input-base.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24158,7 +24158,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -24166,7 +24166,7 @@
                     "name": "inputName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -24174,7 +24174,7 @@
                     "name": "label",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -24182,7 +24182,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 34,
+                    "line": 37,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -24193,7 +24193,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\n\nValidation error message comming from the server\n",
                     "description": "<p>Validation error message comming from the server</p>\n",
-                    "line": 30,
+                    "line": 33,
                     "type": "string",
                     "decorators": []
                 }
@@ -24204,7 +24204,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -24216,7 +24216,7 @@
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 40
                 },
                 {
                     "name": "$valueChange",
@@ -24225,7 +24225,7 @@
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 36
+                    "line": 39
                 }
             ],
             "methodsClass": [
@@ -24235,7 +24235,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -24248,7 +24248,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24258,7 +24258,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 47,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -24277,7 +24277,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime } from 'rxjs';\nimport { Icon } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-base',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-base.component.html',\n  styleUrl: './input-base.component.scss',\n})\nexport class InputBaseComponent implements OnInit, AfterViewInit {\n  @Input() formControl!: FormControl;\n  @Input() inputName!: string;\n  @Input() label!: string;\n  @Input() hint = '';\n  /**\n   * Validation error message comming from the server\n   */\n  @Input() serverSideError = '';\n\n  @Output() inputEvent = new EventEmitter();\n\n  @Input() prefixIcon?: Icon;\n\n  $valueChange!: Observable<any>;\n  $statusChange!: Observable<any>;\n  protected __validateInputs() {\n    if (!this.formControl) throw new Error('formControl is required!');\n    if (!this.inputName) throw new Error('inputName is required!');\n    if (!this.label) throw new Error('label is required!');\n  }\n\n  ngOnInit(): void {\n    this.__validateInputs();\n  }\n\n  ngAfterViewInit(): void {\n    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));\n    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));\n  }\n}\n",
+            "sourceCode": "import {\n  AfterViewInit,\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormControl } from '@angular/forms';\nimport { Observable, debounceTime } from 'rxjs';\nimport { Icon } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-base',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-base.component.html',\n  styleUrl: './input-base.component.scss',\n})\nexport class InputBaseComponent implements OnInit, AfterViewInit {\n  @Input() formControl!: FormControl;\n\n  @Input() inputName!: string;\n\n  @Input() label!: string;\n\n  @Input() hint = '';\n  /**\n   * Validation error message comming from the server\n   */\n  @Input() serverSideError = '';\n\n  @Output() inputEvent = new EventEmitter();\n\n  @Input() prefixIcon?: Icon;\n\n  $valueChange!: Observable<any>;\n  $statusChange!: Observable<any>;\n  protected __validateInputs() {\n    if (!this.formControl) throw new Error('formControl is required!');\n    if (!this.inputName) throw new Error('inputName is required!');\n    if (!this.label) throw new Error('label is required!');\n  }\n\n  ngOnInit(): void {\n    this.__validateInputs();\n  }\n\n  ngAfterViewInit(): void {\n    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));\n    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));\n  }\n}\n",
             "styleUrl": "./input-base.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -24291,7 +24291,7 @@
         },
         {
             "name": "InputButtonToggleComponent",
-            "id": "component-InputButtonToggleComponent-92927230202ea012b1205c393234bcdb5246d2496eaa7ae0214ea6bdbc0c4b9c43ba255913d6e8405fc1ae99f7c9aff1dac26a2c158c074d263cd067af29ca96",
+            "id": "component-InputButtonToggleComponent-784af5027d7c7f1995f1ba1e358f343b55b5066ad57d3af343801f3bdcd84a8a9109b6feade99d50a8ae2a954f1b71b6145fab953f4366a51e43935709d41c84",
             "file": "libs/material/form/src/lib/input-button-toggle/input-button-toggle.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24306,10 +24306,172 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "IInputOption[]",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -24317,24 +24479,33 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonToggleModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-button-toggle',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-button-toggle.component.html',\n  styleUrl: './input-button-toggle.component.scss',\n})\nexport class InputButtonToggleComponent {}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { MatButtonToggleModule } from '@angular/material/button-toggle';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl } from '@angular/forms';\nimport { IInputOption } from '@mdtx/material/core';\nimport { CommonFormModule } from '../form';\n@Component({\n  selector: 'mdtx-input-button-toggle',\n  standalone: true,\n  imports: [CommonFormModule, MatButtonToggleModule],\n  templateUrl: './input-button-toggle.component.html',\n  styleUrl: './input-button-toggle.component.scss',\n})\nexport class InputButtonToggleComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  @Input() options?: IInputOption[];\n\n  override ngOnInit(): void {\n    this.formControl = new FormControl('', []);\n    super.ngOnInit();\n  }\n}\n",
             "styleUrl": "./input-button-toggle.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-button-toggle works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"form-field\">\n  <h3>{{ label }}</h3>\n  <mat-button-toggle-group\n    [formControl]=\"formControl\"\n    [name]=\"inputName\"\n    [ariaLabel]=\"label\"\n  >\n    @for(o of options; track o){\n\n    <mat-button-toggle [value]=\"o\">{{ o.name }}</mat-button-toggle>\n    }\n  </mat-button-toggle-group>\n</div>\n"
         },
         {
             "name": "InputCheckboxComponent",
-            "id": "component-InputCheckboxComponent-a5bace5959a5994978fb5d5fee95fa9de7be1852201ff55dab07ae90cdbe3d158c49433001b0473cb904f8e2eb3257818a262d8767c0bc00cee579dc3b054a2f",
+            "id": "component-InputCheckboxComponent-287f61ecf561f9c429caf7d8717e57639b783be31d711a0874610d5175d65cca835497d19c090ccceffde2b7c022725eeb6d027bebb1ca2cdc6fb13ba9bd73da",
             "file": "libs/material/form/src/lib/input-checkbox/input-checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24349,10 +24520,164 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 51,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -24360,20 +24685,29 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCheckboxModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-checkbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-checkbox.component.html',\n  styleUrl: './input-checkbox.component.scss',\n})\nexport class InputCheckboxComponent {}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CommonFormModule } from '../form';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl } from '@angular/forms';\n@Component({\n  selector: 'mdtx-input-checkbox',\n  standalone: true,\n  imports: [CommonFormModule, MatCheckboxModule],\n  templateUrl: './input-checkbox.component.html',\n  styleUrl: './input-checkbox.component.scss',\n})\nexport class InputCheckboxComponent\n  extends InputBaseComponent\n  implements OnInit\n{\n  override ngOnInit(): void {\n    this.formControl = new FormControl(false, []);\n    super.ngAfterViewInit();\n  }\n}\n",
             "styleUrl": "./input-checkbox.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-checkbox works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-checkbox labelPosition=\"before\">{{ label }}</mat-checkbox>\n"
         },
         {
             "name": "InputChipSelectComponent",
@@ -25215,13 +25549,13 @@
     "modules": [
         {
             "name": "CommonFormModule",
-            "id": "module-CommonFormModule-17bd1217de44eaa04f05b52184bdbc90dd509fbe62f78465919ac732d79178d8f2caa1829c6592978265cdfc109c6f7ce0b3b35097a1d53a75a3a5535a8e88aa",
+            "id": "module-CommonFormModule-a5bf1e620c76635cefbbfa462259be19c4064a8226dd95d0f048674532d514f05a13927262d308ee6ada89e8c441d5ea543cf8aab04184cde1f1498e2b856d0f",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/form/src/lib/form/common-form.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ErrorMessageDirective, InputDirective } from '@mdtx/material/core';\r\n\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\nconst modules = [\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonFormModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputDirective } from '@mdtx/material/core';\r\n\r\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\r\nconst modules = [\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonFormModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -25235,13 +25569,10 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "CommonModule"
+                            "name": "FullscreenDirective"
                         },
                         {
-                            "name": "ErrorMessageDirective"
-                        },
-                        {
-                            "name": "InputDirective"
+                            "name": "ViewportDirective"
                         }
                     ]
                 },
@@ -25249,13 +25580,10 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "CommonModule"
+                            "name": "FullscreenDirective"
                         },
                         {
-                            "name": "ErrorMessageDirective"
-                        },
-                        {
-                            "name": "InputDirective"
+                            "name": "ViewportDirective"
                         }
                     ]
                 },
@@ -25291,13 +25619,10 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "CommonModule"
+                            "name": "FullscreenDirective"
                         },
                         {
-                            "name": "ErrorMessageDirective"
-                        },
-                        {
-                            "name": "InputDirective"
+                            "name": "ViewportDirective"
                         }
                     ]
                 },
@@ -25305,13 +25630,10 @@
                     "type": "exports",
                     "elements": [
                         {
-                            "name": "CommonModule"
+                            "name": "FullscreenDirective"
                         },
                         {
-                            "name": "ErrorMessageDirective"
-                        },
-                        {
-                            "name": "InputDirective"
+                            "name": "ViewportDirective"
                         }
                     ]
                 },
@@ -25362,11 +25684,51 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-autocomplete works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    expect(canvas.getByText(/Select Autocomplete/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -25376,7 +25738,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    inputName: '',\n    label: '',\n    hint: '',\n    serverSideError: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-base works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-base works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -25386,7 +25748,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-button-toggle works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select One/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -25542,46 +25904,6 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -25642,11 +25964,51 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<FullscreenDirectiveComponent>",
+                "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputDirectiveComponent>",
+                "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewportDirectiveComponent>",
+                "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<LocalStoreComponent>",
+                "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputAutocompleteComponent>",
-                "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations(), DevErrorMessageDirective],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -25822,46 +26184,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<FullscreenDirectiveComponent>",
-                "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<InputDirectiveComponent>",
-                "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ViewportDirectiveComponent>",
-                "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<LocalStoreComponent>",
-                "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -25882,21 +26204,61 @@
                 "name": "modules",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/form/src/lib/form/common-form.module.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n]"
-            },
-            {
-                "name": "modules",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/material/core/src/lib/modules/common.module.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
+            },
+            {
+                "name": "modules",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/form/common-form.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n]"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -25906,7 +26268,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select Autocomplete',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -25916,7 +26278,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    inputName: '',\n    label: '',\n    hint: '',\n    serverSideError: '',\n  },\n}"
+                "defaultValue": "{\n  args: {}\n}"
             },
             {
                 "name": "Primary",
@@ -25926,7 +26288,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select One',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -26077,46 +26439,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -26376,6 +26698,50 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<FullscreenDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewportDirectiveComponent>",
+                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<LocalStoreComponent>",
+                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<InputAutocompleteComponent>",
                 "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts",
                 "deprecated": false,
@@ -26574,50 +26940,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<InputDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<LocalStoreComponent>",
-                "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<LayoutComponent>",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "deprecated": false,
@@ -26673,6 +26995,134 @@
                     "defaultValue": "AutocompleteList()"
                 }
             ],
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<FullscreenDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/directive/input.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewportDirectiveComponent>",
+                    "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<LocalStoreComponent>",
+                    "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
             "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -26682,7 +27132,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-autocomplete works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    expect(canvas.getByText(/Select Autocomplete/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -26692,7 +27142,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputAutocompleteComponent>",
-                    "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: InputAutocompleteComponent,\n  title: 'InputAutocompleteComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations(), DevErrorMessageDirective],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -26702,7 +27152,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select Autocomplete',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-base/input-base.component.stories.ts": [
@@ -26714,7 +27164,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    inputName: '',\n    label: '',\n    hint: '',\n    serverSideError: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-base works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-base works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -26734,7 +27184,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    inputName: '',\n    label: '',\n    hint: '',\n    serverSideError: '',\n  },\n}"
+                    "defaultValue": "{\n  args: {}\n}"
                 }
             ],
             "libs/material/form/src/lib/input-button-toggle/input-button-toggle.component.stories.ts": [
@@ -26746,7 +27196,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-button-toggle works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select One/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -26766,7 +27216,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select One',\n    inputName: 'option',\n    prefixIcon: 'category',\n    options: [\n      { id: 1, name: 'Option 1' },\n      { id: 2, name: 'Option 2' },\n      { id: 3, name: 'Option 3' },\n      { id: 4, name: 'Option 4' },\n    ],\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-checkbox/input-checkbox.component.stories.ts": [
@@ -27249,134 +27699,6 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<FullscreenDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: FullscreenDirectiveComponent,\r\n  title: 'FullscreenComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/directive/input.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: InputDirectiveComponent,\r\n  title: 'InputDirectiveComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/viewport works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ViewportDirectiveComponent>",
-                    "defaultValue": "{\r\n  component: ViewportDirectiveComponent,\r\n  title: 'ViewportComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/local-store works!/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<LocalStoreComponent>",
-                    "defaultValue": "{\r\n  component: LocalStoreComponent,\r\n  title: 'LocalStoreComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -27485,18 +27807,6 @@
                     "defaultValue": "InputTypeList()"
                 }
             ],
-            "libs/material/form/src/lib/form/common-form.module.ts": [
-                {
-                    "name": "modules",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/form/common-form.module.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n  ErrorMessageDirective,\r\n]"
-                }
-            ],
             "libs/material/core/src/lib/modules/common.module.ts": [
                 {
                     "name": "modules",
@@ -27507,6 +27817,18 @@
                     "deprecationMessage": "",
                     "type": "[]",
                     "defaultValue": "[NgCommonModule, FullscreenDirective, ViewportDirective]"
+                }
+            ],
+            "libs/material/form/src/lib/form/common-form.module.ts": [
+                {
+                    "name": "modules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/form/common-form.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n]"
                 }
             ],
             "libs/material/core/src/lib/localstore/local-store.component.ts": [
@@ -27764,6 +28086,58 @@
                     "kind": 187
                 }
             ],
+            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<FullscreenDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/directive/input.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewportDirectiveComponent>",
+                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<LocalStoreComponent>",
+                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.stories.ts": [
                 {
                     "name": "Story",
@@ -27998,58 +28372,6 @@
                     "kind": 183
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/directive/input.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<InputDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/core/src/lib/localstore/local-store.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<LocalStoreComponent>",
-                    "file": "libs/material/core/src/lib/localstore/local-store.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
                 {
                     "name": "Story",
@@ -28083,6 +28405,15 @@
         "count": 2,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/core/src/lib/directive/dev-error-message.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "DevErrorMessageDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
                 "type": "variable",
@@ -28243,15 +28574,6 @@
                 "name": "ViewportDirective",
                 "coveragePercent": 8,
                 "coverageCount": "1/12",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/core/src/lib/error-messsage/error-message.directive.ts",
-                "type": "directive",
-                "linktype": "directive",
-                "name": "ErrorMessageDirective",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -28662,8 +28984,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputButtonToggleComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 7,
+                "coverageCount": "1/14",
                 "status": "low"
             },
             {
@@ -28701,8 +29023,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputCheckboxComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 7,
+                "coverageCount": "1/13",
                 "status": "low"
             },
             {

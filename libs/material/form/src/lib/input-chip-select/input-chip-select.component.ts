@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonFormModule } from '../form';
+import { MatChipsModule } from '@angular/material/chips';
+import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';
 
 @Component({
   selector: 'mdtx-input-chip-select',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonFormModule, MatChipsModule],
   templateUrl: './input-chip-select.component.html',
   styleUrl: './input-chip-select.component.scss',
 })
-export class InputChipSelectComponent {}
+export class InputChipSelectComponent extends InputAutocompleteComponent {}

@@ -1,1 +1,12 @@
-<p>input-chip-select works!</p>
+<div class="form-field">
+  <h3>{{ label }}</h3>
+  <mat-chip-listbox
+    class="mat-mdc-chip-set-stacked"
+    [formControl]="formControl"
+    [ariaLabel]="label"
+  >
+    @for (o of options; track o) {
+    <mat-chip-option>{{ o.name }}</mat-chip-option>
+    }
+  </mat-chip-listbox>
+</div>
