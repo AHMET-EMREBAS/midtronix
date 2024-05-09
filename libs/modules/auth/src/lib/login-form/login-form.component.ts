@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import {
   InputValidator,
@@ -6,6 +6,7 @@ import {
   provideMatFormFieldOptions,
 } from '@mdtx/material/core';
 import { CommonFormModule } from '@mdtx/material/form';
+import { ILogin } from '@mdtx/common';
 
 import '@angular/localize/init';
 @Component({
@@ -17,6 +18,8 @@ import '@angular/localize/init';
   providers: [provideMatFormFieldOptions(), provideErrorStateMatcher()],
 })
 export class LoginFormComponent {
+  @Output() loginEvent = new EventEmitter<ILogin>();
+
   formGroup = this.builder.nonNullable.group({
     username: [
       '',
@@ -27,6 +30,7 @@ export class LoginFormComponent {
       InputValidator.create('password').required().password().build(),
     ],
   });
+
   constructor(protected readonly builder: FormBuilder) {}
 
   private getControl(name: string) {
@@ -39,5 +43,9 @@ export class LoginFormComponent {
 
   errorMessage(name: string) {
     return Object.values(this.errors(name)).pop();
+  }
+
+  login() {
+    this.loginEvent.emit(this.formGroup.value as ILogin);
   }
 }
