@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { BaseFormComponent } from './base-form.component';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { InputNumberComponent } from '../input-number/input-number.component';
@@ -19,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 import { CommonFormModule } from './common-form.module';
 import { InputBaseComponent } from '../input-base';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'mdtx-sample-form',
@@ -96,7 +103,7 @@ import { InputBaseComponent } from '../input-base';
 })
 export class SampleFormComponent
   extends BaseFormComponent
-  implements AfterViewInit
+  implements AfterViewInit, OnDestroy
 {
   @ViewChild('firstName') firstName!: InputBaseComponent;
   @ViewChild('age') age!: InputBaseComponent;
@@ -105,6 +112,7 @@ export class SampleFormComponent
   @ViewChild('ctime') ctime!: InputBaseComponent;
   @ViewChild('adates') adates!: InputBaseComponent;
 
+  sub!: Subscription;
   override ngAfterViewInit(): void {
     this.formGroup = new FormGroup({
       firstName: this.firstName.formControl,
@@ -115,10 +123,12 @@ export class SampleFormComponent
       adates: this.adates.formControl,
     });
 
-    this.formGroup.valueChanges.subscribe((data) => {
-      console.log(data);
-    });
-
     super.ngAfterViewInit();
+
+    this.sub = this.valueChange$.subscribe(console.log);
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
