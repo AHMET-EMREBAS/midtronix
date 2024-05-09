@@ -22732,12 +22732,12 @@
         },
         {
             "name": "InputValidator",
-            "id": "class-InputValidator-04b8a863357be8d2b14cddd24b0345eb3f03d53c367756f2f01dd07a89e86bac5de5cee996e6ca2a11f2417efa1b5bab62b8a8e396e235fac4cf3e7a9839fa3d",
+            "id": "class-InputValidator-2b3d72714653e5c1938c0811c63aa9a76945ee59249c477d29094518a2cf646f9307e77062081d96fa2910b952adda578febf4b5efdcc3cc2b4adcb6775ac6de",
             "file": "libs/material/core/src/lib/validators/input-validator.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n} from 'class-validator';\r\nexport class InputValidator {\r\n  protected readonly validators: ValidatorFn[] = [];\r\n  private constructor(protected readonly name: string) {}\r\n\r\n  static create(name: string) {\r\n    return new InputValidator(name);\r\n  }\r\n\r\n  required(value?: boolean) {\r\n    if (value == true)\r\n      this.validators.push((c) => {\r\n        return c.value ? null : { required: `${this.name} is required!` };\r\n      });\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length < value\r\n          ? { minLength: `${this.name} should be longer than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length > value\r\n          ? { maxLength: `${this.name} should be shorter than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n  min(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value < value\r\n          ? { min: `${this.name} should be more than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  max(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value > value\r\n          ? { min: `${this.name} should be less than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  email() {\r\n    this.validators.push((c) => {\r\n      return isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.name} should be a valid email!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  password() {\r\n    this.validators.push((c) => {\r\n      return isStrongPassword(c.value)\r\n        ? null\r\n        : { password: `${this.name} should be strong password!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  ean() {\r\n    this.validators.push((c) => {\r\n      return isEAN(c.value)\r\n        ? null\r\n        : { ean: `${this.name} should be a valid ean!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  phone() {\r\n    this.validators.push((c) => {\r\n      return isPhoneNumber(c.value)\r\n        ? null\r\n        : { phone: `${this.name} should be a valid phone!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  build() {\r\n    return [...this.validators];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n} from 'class-validator';\r\nexport class InputValidator {\r\n  protected readonly validators: ValidatorFn[] = [];\r\n  private constructor(protected readonly name: string) {}\r\n\r\n  static create(name: string) {\r\n    return new InputValidator(name);\r\n  }\r\n\r\n  required(value?: boolean) {\r\n    if (value == true)\r\n      this.validators.push((c) => {\r\n        return c.value ? null : { required: `${this.name} is required!` };\r\n      });\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length < value\r\n          ? { minLength: `${this.name} should be longer than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value?.length > value\r\n          ? { maxLength: `${this.name} should be shorter than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n  min(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value < value\r\n          ? { min: `${this.name} should be more than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  max(value?: number) {\r\n    if (value != undefined)\r\n      this.validators.push((c) => {\r\n        return c?.value > value\r\n          ? { min: `${this.name} should be less than ${value}!` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  email() {\r\n    this.validators.push((c) => {\r\n      return isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.name} should be a valid email!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  password() {\r\n    this.validators.push((c) => {\r\n      return isStrongPassword(c.value)\r\n        ? null\r\n        : { password: `${this.name} should be strong password!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  ean() {\r\n    this.validators.push((c) => {\r\n      return isEAN(c.value)\r\n        ? null\r\n        : { ean: `${this.name} should be a valid ean!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  phone() {\r\n    this.validators.push((c) => {\r\n      return isPhoneNumber(c.value)\r\n        ? null\r\n        : { phone: `${this.name} should be a valid phone!` };\r\n    });\r\n    return this;\r\n  }\r\n\r\n  beforeHour(hour?: number) {\r\n    if (hour)\r\n      this.validators.push((c) => {\r\n        return new Date(c.value).getHours() >= hour\r\n          ? { afterHour: `${this.name} should be before the hour ${hour}` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n  \r\n  afterHour(hour?: number) {\r\n    if (hour)\r\n      this.validators.push((c) => {\r\n        return new Date(c.value).getHours() <= hour\r\n          ? { afterHour: `${this.name} should be after the hour ${hour}` }\r\n          : null;\r\n      });\r\n    return this;\r\n  }\r\n\r\n  build() {\r\n    return [...this.validators];\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -22787,12 +22787,72 @@
             ],
             "methods": [
                 {
+                    "name": "afterHour",
+                    "args": [
+                        {
+                            "name": "hour",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "this",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "hour",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "beforeHour",
+                    "args": [
+                        {
+                            "name": "hour",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "this",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "hour",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "build",
                     "args": [],
                     "optional": false,
                     "returnType": "{}",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -26991,7 +27051,7 @@
         },
         {
             "name": "InputNumberComponent",
-            "id": "component-InputNumberComponent-6b1ac16998140b177850606619d0f337b9ee6fdc54c3ddf222d1e7b8737af818e533d6e8fdfc823ce7fd40158329a58771ec41814d514e3fc39b4e56d6b33e07",
+            "id": "component-InputNumberComponent-deab896a400c5eb130cade93332c88e264926612d572f80640788a700bcbbffcff1092986d62371caa4d10d0bd9693e948be028084e98233edf83e94f046981a",
             "file": "libs/material/form/src/lib/input-number/input-number.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27151,19 +27211,6 @@
             ],
             "methodsClass": [
                 {
-                    "name": "getErrorMessage",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 34,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
@@ -27191,6 +27238,19 @@
                     "modifierKind": [
                         124
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -27227,7 +27287,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-number',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-number.component.html',\n  styleUrl: './input-number.component.scss',\n})\nexport class InputNumberComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minValue?: number;\n  @Input() maxValue?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .min(this.minValue)\n      .max(this.maxValue)\n      .build();\n\n    this.formControl.addValidators(validators);\n  }\n\n  getErrorMessage() {\n    const errors = this.formControl.errors;\n\n    if (errors) {\n      return Object.values(errors).shift();\n    }\n    return 'Field is not valid!';\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-number',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-number.component.html',\n  styleUrl: './input-number.component.scss',\n})\nexport class InputNumberComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minValue?: number;\n  @Input() maxValue?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .min(this.minValue)\n      .max(this.maxValue)\n      .build();\n\n    this.formControl.addValidators(validators);\n  }\n\n  \n}\n",
             "styleUrl": "./input-number.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -27238,7 +27298,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"number\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [min]=\"minValue ?? null\"\n    [max]=\"maxValue ?? null\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"number\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputRadioComponent",
@@ -28025,7 +28085,7 @@
         },
         {
             "name": "InputTextareaComponent",
-            "id": "component-InputTextareaComponent-12a7405d8b0371e3c804e9df55185670ae3ee45138370c1527be96c0da7d7478a8d49eaf6ec25b6217a6ec8f1b0011cff0265778f92ca17b3f648a22935a9f93",
+            "id": "component-InputTextareaComponent-44593583051ea7538da646c073f939a640db1db21400f6b0cd837f85beec607fc238716d2ee4adbb7835b9b019fd7f69ef0a6664de0e5fcfdbb9c15a8e6c31e6",
             "file": "libs/material/form/src/lib/input-textarea/input-textarea.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28040,10 +28100,209 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "maxLength",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "minLength",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "textPrefix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "textSuffix",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -28051,24 +28310,33 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatAutocompleteModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-textarea',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-textarea.component.html',\n  styleUrl: './input-textarea.component.scss',\n})\nexport class InputTextareaComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { InputBaseComponent } from '../input-base';\nimport { InputValidator } from '@mdtx/material/core';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\n\n@Component({\n  selector: 'mdtx-input-textarea',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-textarea.component.html',\n  styleUrl: './input-textarea.component.scss',\n})\nexport class InputTextareaComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minLength?: number;\n  @Input() maxLength?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .minLength(this.minLength)\n      .maxLength(this.maxLength)\n      .build();\n\n    this.formControl.addValidators(validators);\n  }\n}\n",
             "styleUrl": "./input-textarea.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-textarea works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <textarea\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n  ></textarea>\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputTextComponent",
-            "id": "component-InputTextComponent-bd34427a253f8c358acd738665994b3bbf1fbf614502d06d98f18427248a5b30118d7433b289b03c671c08fd5fccc2986a4ed691a6cc029b80031c72a7b6a0ed",
+            "id": "component-InputTextComponent-198da849c65ef5a2460cdf5df5874e01295a96ac2cf80533630a8e1c08645c06db9c624213fdf881cdd3724899695d41269f26fbb3aa19922a29860f3c7ace09",
             "file": "libs/material/form/src/lib/input-text/input-text.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28304,7 +28572,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputBaseComponent } from '../input-base';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-text',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-text.component.html',\n  styleUrl: './input-text.component.scss',\n})\nexport class InputTextComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minLength?: number;\n  @Input() maxLength?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .minLength(this.minLength)\n      .maxLength(this.maxLength)\n      .build();\n    this.formControl.addValidators(validators);\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { InputBaseComponent } from '../input-base';\nimport { InputValidator } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-input-text',\n  standalone: true,\n  imports: [CommonFormModule, MatAutocompleteModule],\n  templateUrl: './input-text.component.html',\n  styleUrl: './input-text.component.scss',\n})\nexport class InputTextComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() minLength?: number;\n  @Input() maxLength?: number;\n  @Input() textSuffix?: string;\n  @Input() textPrefix?: string;\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName)\n      .minLength(this.minLength)\n      .maxLength(this.maxLength)\n      .build();\n      \n    this.formControl.addValidators(validators);\n  }\n}\n",
             "styleUrl": "./input-text.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28315,11 +28583,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n    [minlength]=\"minLength ?? null\"\n    [maxlength]=\"maxLength ?? null\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"text\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n  />\n\n  <!-- Text suffix -->\n  @if(textPrefix){\n  <span matTextPrefix> {{ textPrefix }}</span>\n  }\n\n  <!-- Text suffix -->\n  @if(textSuffix){\n  <span matTextSuffix> {{ textSuffix }}</span>\n  }\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputTimeComponent",
-            "id": "component-InputTimeComponent-305a0f32e0773b9c40f45037fce3c3e5eec310ff9b4e2347261d833014e9d1aacd4adf365dade826e54826f1b29379d0859ee42d7dd10f8dc486bf40a2fd4684",
+            "id": "component-InputTimeComponent-05864afb5ec94bd4926eefe65b4c33829c927f8743ad2d6f02f96fc7fa6ffcb8577f54507bc547f7038d658e4fe2f02559e46cb356d34c506417631c57e20eda",
             "file": "libs/material/form/src/lib/input-time/input-time.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28334,10 +28602,236 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "afterHour",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "beforeHour",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nValidation error message comming from the server\n",
+                    "description": "<p>Validation error message comming from the server</p>\n",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 40,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getList",
+                    "args": [
+                        {
+                            "name": "start",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "end",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "start",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "end",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "__validateInputs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -28345,20 +28839,29 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatChipsModule",
                     "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-input-time',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './input-time.component.html',\n  styleUrl: './input-time.component.scss',\n})\nexport class InputTimeComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { InputBaseComponent } from '../input-base';\n\nimport { MatChipsModule } from '@angular/material/chips';\nimport { InputValidator } from '@mdtx/material/core';\n@Component({\n  selector: 'mdtx-input-time',\n  standalone: true,\n  imports: [CommonFormModule, MatChipsModule],\n  templateUrl: './input-time.component.html',\n  styleUrl: './input-time.component.scss',\n})\nexport class InputTimeComponent\n  extends InputBaseComponent\n  implements AfterViewInit\n{\n  @Input() beforeHour?: number;\n  @Input() afterHour?: number;\n\n  getList(start: number, end: number) {\n    return ' '\n      .repeat(end - start)\n      .split(' ')\n      .map((e) => start++);\n  }\n\n  override ngAfterViewInit(): void {\n    super.ngAfterViewInit();\n\n    const validators = InputValidator.create(this.inputName ?? 'some')\n      .beforeHour(this.beforeHour)\n      .afterHour(this.afterHour)\n      .build();\n    this.formControl.addValidators(validators);\n  }\n}\n",
             "styleUrl": "./input-time.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>input-time works!</p>\n"
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<mat-form-field class=\"example-full-width\">\n  <mat-label>{{ label }}</mat-label>\n  <input\n    type=\"time\"\n    #mdtxInput=\"mdtxInput\"\n    mdtxInput\n    matInput\n    [ariaLabel]=\"label\"\n    [formControl]=\"formControl\"\n  />\n\n  <!-- Typing indicator -->\n  <mat-icon matIconSuffix>\n    @if(mdtxInput.isTyping()){\n    <mat-progress-spinner\n      [diameter]=\"22\"\n      mode=\"indeterminate\"\n    ></mat-progress-spinner>\n    }\n  </mat-icon>\n\n  <!-- Prefix icon -->\n  @if(prefixIcon){\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\n  }\n\n  <mat-error>{{ getErrorMessage() }}</mat-error>\n</mat-form-field>\n"
         },
         {
             "name": "InputTreeDayDateRangeComponent",
@@ -29245,7 +29748,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-textarea works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Type your text here/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -29255,7 +29758,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-time works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Time/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -29815,7 +30318,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Type your text here',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -29825,7 +30328,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select Time',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -31200,7 +31703,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-textarea works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Type your text here/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -31220,7 +31723,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Type your text here',\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-time/input-time.component.stories.ts": [
@@ -31232,7 +31735,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-time works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select Time/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -31252,7 +31755,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    label: 'Select Time',\n  },\n}"
                 }
             ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
@@ -32517,7 +33020,7 @@
                 "linktype": "classe",
                 "name": "InputValidator",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -33346,8 +33849,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputTextareaComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/18",
                 "status": "low"
             },
             {
@@ -33385,8 +33888,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "InputTimeComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coveragePercent": 5,
+                "coverageCount": "1/17",
                 "status": "low"
             },
             {

@@ -25,6 +25,11 @@ export class InputTimeComponent
       .map((e) => start++);
   }
 
+  d = new Date();
+  some = {
+    hour: this.d.getHours(),
+  };
+
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
 

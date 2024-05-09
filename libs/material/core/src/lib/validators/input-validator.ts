@@ -96,20 +96,31 @@ export class InputValidator {
     return this;
   }
 
+  private createTime(value: string) {
+    const [h, m] = value.split(':');
+
+    const d = new Date();
+
+    d.setHours(parseInt(h));
+    d.setMinutes(parseInt(m));
+
+    return d;
+  }
+
   beforeHour(hour?: number) {
     if (hour)
       this.validators.push((c) => {
-        return new Date(c.value).getHours() >= hour
+        return this.createTime(c.value).getHours() >= hour
           ? { afterHour: `${this.name} should be before the hour ${hour}` }
           : null;
       });
     return this;
   }
-  
+
   afterHour(hour?: number) {
     if (hour)
       this.validators.push((c) => {
-        return new Date(c.value).getHours() <= hour
+        return this.createTime(c.value).getHours() <= hour
           ? { afterHour: `${this.name} should be after the hour ${hour}` }
           : null;
       });
