@@ -11,5 +11,5 @@ import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomp
   styleUrl: './input-chip-select.component.scss',
 })
 export class InputChipSelectComponent extends InputAutocompleteComponent {
-  @Input() multiple = false;
+  @Input() multiple?: boolean;
 }

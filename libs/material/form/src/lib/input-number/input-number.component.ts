@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputBaseComponent } from '../input-base';
 import { CommonFormModule } from '../form';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -10,4 +10,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   templateUrl: './input-number.component.html',
   styleUrl: './input-number.component.scss',
 })
-export class InputNumberComponent extends InputBaseComponent {}
+export class InputNumberComponent extends InputBaseComponent {
+  @Input() textSuffix?: string;
+  @Input() textPrefix?: string;
+}

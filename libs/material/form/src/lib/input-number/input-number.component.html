@@ -9,6 +9,16 @@
     [formControl]="formControl"
   />
 
+  <!-- Text suffix -->
+  @if(textPrefix){
+  <span matTextPrefix> {{ textPrefix }}</span>
+  }
+
+  <!-- Text suffix -->
+  @if(textSuffix){
+  <span matTextSuffix> {{ textSuffix }}</span>
+  }
+
   <!-- Typing indicator -->
   <mat-icon matIconSuffix>
     @if(mdtxInput.isTyping()){
