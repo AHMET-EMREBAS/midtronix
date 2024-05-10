@@ -1,206 +1,108 @@
 <div #screen="mdtxViewport" mdtxViewport class="main-container">
+  <!-- ################### TOOLBAR START -->
   <mat-toolbar color="primary" mdtxScroll="x">
-    Top toolbar
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-button [matMenuTriggerFor]="some">Open</button>
-    <mat-menu #some yPosition="below">
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-    </mat-menu>
+    <div class="row-container">
+      <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
+    </div>
+    <div class="row-container flex-grow-1">
+      <mdtx-template-outlet [items]="toolbarCenter"></mdtx-template-outlet>
+    </div>
+    <div class="row-container">
+      <mdtx-template-outlet [items]="toolbarRight"></mdtx-template-outlet>
+    </div>
   </mat-toolbar>
+  <!-- ################### TOOLBAR END -->
 
+  <!-- ################### PROGRESSBAR START -->
   <mat-progress-bar
     mode="determinate"
-    value="40"
+    [value]="progressValue"
     color="accent"
   ></mat-progress-bar>
+  <!-- ################### PROGRESSBAR END -->
 
-  <!-- Sidenav Container -->
+  <!--######################### SIDENAV CONTAINER START -->
   <mat-sidenav-container>
-    <!-- Left sidenav -->
-    <mat-sidenav #leftSidenav position="start">
+    <!--######################### LEFT SIDENAV START -->
+    <mat-sidenav #sidenavLeftRef position="start">
       <div class="column-container" mdtxScroll="y">
-        <h1>Starts</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Left Sidennav</h1>
-        <h1>Ends</h1>
+        <!-- TOP -->
+        <div class="column-container">
+          <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
+        </div>
+        <!-- CENTER -->
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavLeftCenter"
+          ></mdtx-template-outlet>
+        </div>
+        <!-- BOTTOM -->
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavLeftBottom"
+          ></mdtx-template-outlet>
+        </div>
       </div>
     </mat-sidenav>
+    <!--######################### LEFT SIDENAV END -->
 
-    <!-- Right sidenav -->
-    <mat-sidenav #rightSidenav position="end">
-      <h1>Right Sidennav</h1>
+    <!--#########################  SIDENAV RIGHT START -->
+    <mat-sidenav #sidenavRightRef position="end">
+      <div class="column-container" mdtxScroll="y">
+        <!-- TOP -->
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavRightTop"
+          ></mdtx-template-outlet>
+        </div>
+        <!-- CENTER -->
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavRightCenter"
+          ></mdtx-template-outlet>
+        </div>
+        <!-- BOTTOM -->
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavRightBottom"
+          ></mdtx-template-outlet>
+        </div>
+      </div>
     </mat-sidenav>
+    <!--####################### SIDENAV RIGHT END  -->
 
+    <!--###################### SIDENAV CONTENT START  -->
     <mat-sidenav-content>
-      <button (click)="leftSidenav.open()">Left Sidenav</button>
-      <button (click)="rightSidenav.open()">Right Sidenav</button>
-      Sidenav content
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+      <!-- TOP -->
+      <div class="column-container">
+        <mdtx-template-outlet [items]="contentTop"></mdtx-template-outlet>
+      </div>
 
+      <!-- CENTER -->
+      <div class="column-container">
+        <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="column-container">
+        <mdtx-template-outlet [items]="contentBottom"></mdtx-template-outlet>
+      </div>
+    </mat-sidenav-content>
+    <!--####################### SIDENAV CONTENT END -->
+  </mat-sidenav-container>
+  <!--######################### SIDENAV CONTAINER END -->
+
+  <!-- ################################ STATUSBAR START -->
   <mat-toolbar mdtxScroll="x">
-    <div class="toolbar-left">
-      <ng-container></ng-container>
+    <div class="row-container">
+      <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>
-    <div class="toolbar-center">
-      <ng-container></ng-container>
+    <div class="row-container flex-grow-1">
+      <mdtx-template-outlet [items]="statusbarCenter"></mdtx-template-outlet>
     </div>
-    <div class="toolbar-right">
-      <ng-container></ng-container>
+    <div class="row-container">
+      <mdtx-template-outlet [items]="statusbarRight"></mdtx-template-outlet>
     </div>
   </mat-toolbar>
+  <!-- ################################ STATUSBAR END -->
 </div>

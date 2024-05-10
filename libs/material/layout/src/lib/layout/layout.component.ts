@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule, MenuPositionY } from '@angular/material/menu';
@@ -13,7 +13,9 @@ import {
   ScrollDirective,
 } from '@mdtx/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { LayoutDirectives } from './layout-directives.module';
+import { LayoutDirectives } from './layout.directive';
+import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
+import { BaseLayoutComponent } from './base-layout.component';
 @Component({
   selector: 'mdtx-layout',
   standalone: true,
@@ -28,6 +30,7 @@ import { LayoutDirectives } from './layout-directives.module';
     ReactiveFormsModule,
     MatToolbarModule,
     MatProgressBarModule,
+    TemplateOutletComponent,
     FullscreenDirective,
     ViewportDirective,
     ScrollDirective,
@@ -36,4 +39,6 @@ import { LayoutDirectives } from './layout-directives.module';
   styleUrl: './layout.component.scss',
   providers: [...LayoutDirectives],
 })
-export class LayoutComponent {}
+export class LayoutComponent extends BaseLayoutComponent {
+  @Input() progressValue = 100;
+}

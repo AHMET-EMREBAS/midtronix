@@ -48,12 +48,12 @@
     "interfaces": [
         {
             "name": "IElementRef",
-            "id": "interface-IElementRef-62cd471cbc9bbbe57c58689b4026c8acfb7182cd75c15be2b8df94f695a511bf9c775fb564c1db8154e9475aaf6a76d4d434b798790fd247ca4e630d2e258dd6",
-            "file": "libs/material/core/src/lib/interface/element-ref.ts",
+            "id": "interface-IElementRef-7a901c669b963e363a885bc232cb3beaf7cb2d07ef3c4691ad96d26fe2e8321f2799c734b38f4fa5298fa09ad036c7b15376945826ae99caa3fc89d56dedb791",
+            "file": "libs/material/core/src/lib/interface/referance.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { ElementRef } from '@angular/core';\r\n\r\nexport interface IElementRef<T> {\r\n  elementRef: ElementRef<T>;\r\n}\r\n",
+            "sourceCode": "import { ElementRef, TemplateRef } from '@angular/core';\r\n\r\nexport interface IElementRef<T> {\r\n  elementRef: ElementRef<T>;\r\n}\r\nexport interface ITemplateRef<T> {\r\n  templateRef: TemplateRef<T>;\r\n}\r\n",
             "properties": [
                 {
                     "name": "elementRef",
@@ -179,12 +179,12 @@
         },
         {
             "name": "ITemplateRef",
-            "id": "interface-ITemplateRef-4e3d17c38f71b0e19a21ce45d10211ffc3d5d8634d4fb43dbd4c134597aa3f098f6281dd19e8b1debbe85432105af982387eb0d1184412447a0d20134986be30",
-            "file": "libs/material/core/src/lib/interface/template-ref.ts",
+            "id": "interface-ITemplateRef-7a901c669b963e363a885bc232cb3beaf7cb2d07ef3c4691ad96d26fe2e8321f2799c734b38f4fa5298fa09ad036c7b15376945826ae99caa3fc89d56dedb791",
+            "file": "libs/material/core/src/lib/interface/referance.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { TemplateRef } from '@angular/core';\r\n\r\nexport interface ITemplateRef<T> {\r\n  templateRef: TemplateRef<T>;\r\n}\r\n",
+            "sourceCode": "import { ElementRef, TemplateRef } from '@angular/core';\r\n\r\nexport interface IElementRef<T> {\r\n  elementRef: ElementRef<T>;\r\n}\r\nexport interface ITemplateRef<T> {\r\n  templateRef: TemplateRef<T>;\r\n}\r\n",
             "properties": [
                 {
                     "name": "templateRef",
@@ -193,7 +193,7 @@
                     "type": "TemplateRef<T>",
                     "optional": false,
                     "description": "",
-                    "line": 4
+                    "line": 7
                 }
             ],
             "indexSignatures": [],
@@ -23398,6 +23398,68 @@
             }
         },
         {
+            "name": "BaseLayoutPositionDirective",
+            "id": "directive-BaseLayoutPositionDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxBasePosition]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "extends": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<NgTemplateOutlet>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 5,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<NgTemplateOutlet>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "FullscreenDirective",
             "id": "directive-FullscreenDirective-71de0f7b89de45e5389e900b9d1605ae5e3a9246ae67ddf57f0888b982b6572838548d2a06c1e89622d6f50914f2c102f078edc93a238b99be33eaaa2b6f8a12",
             "file": "libs/material/core/src/lib/directives/fullscreen.directive.ts",
@@ -23709,18 +23771,642 @@
             }
         },
         {
+            "name": "LayoutContentBottomDirective",
+            "id": "directive-LayoutContentBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxContentBottom]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutContentCenterDirective",
+            "id": "directive-LayoutContentCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxContentCenter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutContentTopDirective",
+            "id": "directive-LayoutContentTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxContentTop]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavLeftBottomDirective",
+            "id": "directive-LayoutSidenavLeftBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavLeftBottom]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavLeftCenterDirective",
+            "id": "directive-LayoutSidenavLeftCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavLeftCenter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavLeftTopDirective",
+            "id": "directive-LayoutSidenavLeftTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavLeftTop]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavRightBottomDirective",
+            "id": "directive-LayoutSidenavRightBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavRightBottom]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavRightCenterDirective",
+            "id": "directive-LayoutSidenavRightCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavRightCenter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutSidenavRightTopDirective",
+            "id": "directive-LayoutSidenavRightTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxSidenavRightTop]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutStatusbarCenterDirective",
+            "id": "directive-LayoutStatusbarCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxStatusbarCenter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutStatusbarLeftDirective",
+            "id": "directive-LayoutStatusbarLeftDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxStatusbarLeft]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutStatusbarRightDirective",
+            "id": "directive-LayoutStatusbarRightDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxStatusbarRight]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutToolbarCenterDirective",
+            "id": "directive-LayoutToolbarCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxToolbarCenter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutToolbarLeftDirective",
+            "id": "directive-LayoutToolbarLeftDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxToolbarLeft]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
+            "name": "LayoutToolbarRightDirective",
+            "id": "directive-LayoutToolbarRightDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "selector": "[mdtxToolbarRight]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": false,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "optional": false,
+                    "description": "",
+                    "line": 6,
+                    "modifierKind": [
+                        125,
+                        148
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutPositionDirective"
+                    }
+                }
+            ],
+            "methodsClass": [],
+            "extends": [
+                "BaseLayoutPositionDirective"
+            ]
+        },
+        {
             "name": "ScrollDirective",
-            "id": "directive-ScrollDirective-8a0ee0cf46be89c829b062cec0a1cff57fceec5227e4045b29fd7ef29eead67fa89ecac5e05086ceb51b1262d39d4578cd0350af4aad8b92a6d4f2f33e9ff612",
+            "id": "directive-ScrollDirective-21090c7f9db5f831bded01127e16a2484a2c8d4157e5a0e31c49424989667a226b8ffae294bc864e7c50c20659474d0776a6549104a673afd319ddd536e22005",
             "file": "libs/material/core/src/lib/directives/scroll.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, HostListener } from '@angular/core';\n\n@Directive({\n  selector: '[mdtxScroll]',\n  standalone: true,\n})\nexport class ScrollDirective {\n  startX: number | null = null;\n  startY: number | null = null;\n\n  @HostListener('mousedown')\n  mousedownHandler(event: any) {\n    this.startX = event.pageX;\n    this.startY = event.pageY;\n  }\n\n  @HostListener('mousemove')\n  mousemoveHandler(event: any) {\n    if (this.startX !== null && this.startY !== null) {\n      const deltaX = this.startX - event.pageX;\n      const deltaY = this.startY - event.pageY;\n\n      // If horizontal scroll detected, prevent default vertical scroll behavior\n      if (Math.abs(deltaX) > Math.abs(deltaY)) {\n        event.preventDefault();\n        window.scrollBy(deltaX, 0);\n      }\n\n      this.startX = event.pageX;\n      this.startY = event.pageY;\n    }\n  }\n\n  @HostListener('mouseup')\n  mouseupHander() {\n    this.startX = null;\n    this.startY = null;\n  }\n}\n",
+            "sourceCode": "import {\n  Directive,\n  ElementRef,\n  HostListener,\n  Input,\n  OnInit,\n} from '@angular/core';\n\n@Directive({\n  selector: '[mdtxScroll]',\n  standalone: true,\n})\nexport class ScrollDirective implements OnInit {\n  @Input() mdtxScroll?: 'x' | 'y';\n\n  startX: number | null = null;\n  startY: number | null = null;\n\n  @HostListener('mousedown', ['$event'])\n  mousedownHandler(event: any) {\n    this.cursorPointer();\n    this.startX = event.pageX;\n    this.startY = event.pageY;\n  }\n\n  @HostListener('mousemove', ['$event'])\n  mousemoveHandler(event: any) {\n    if (this.startX !== null && this.startY !== null) {\n      const deltaX = this.startX - event.pageX;\n      const deltaY = this.startY - event.pageY;\n\n      // If horizontal scroll detected, prevent default vertical scroll behavior\n      if (this.mdtxScroll === 'x') {\n        if (Math.abs(deltaX) > Math.abs(deltaY)) {\n          event.preventDefault();\n          this.ref.nativeElement.scrollBy(deltaX, 0);\n        }\n      } else if (this.mdtxScroll === 'y') {\n        // if (Math.abs(deltaY) < Math.abs(deltaX)) {\n        event.preventDefault();\n        this.ref.nativeElement.scrollBy(0, deltaY);\n        // }\n      }\n\n      this.startX = event.pageX;\n      this.startY = event.pageY;\n    }\n  }\n\n  @HostListener('mouseup')\n  mouseupHander() {\n    this.cursorDefault();\n    this.startX = null;\n    this.startY = null;\n  }\n\n  constructor(protected readonly ref: ElementRef<HTMLElement>) {}\n\n  protected cursorPointer() {\n    if (this.mdtxScroll === 'x') {\n      this.ref.nativeElement.style.setProperty('cursor', 'w-resize');\n    } else if (this.mdtxScroll === 'y') {\n      this.ref.nativeElement.style.setProperty('cursor', 's-resize');\n    }\n  }\n  protected cursorDefault() {\n    this.ref.nativeElement.style.setProperty('cursor', 'initial');\n  }\n  ngOnInit(): void {\n    if (!this.mdtxScroll) this.mdtxScroll = 'y';\n  }\n}\n",
             "selector": "[mdtxScroll]",
             "providers": [],
             "hostDirectives": [],
             "standalone": true,
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "mdtxScroll",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "\"x\" | \"y\"",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -23736,10 +24422,12 @@
                             "deprecationMessage": ""
                         }
                     ],
-                    "argsDecorator": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12
+                    "line": 20
                 },
                 {
                     "name": "mousemove",
@@ -23751,10 +24439,12 @@
                             "deprecationMessage": ""
                         }
                     ],
-                    "argsDecorator": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18
+                    "line": 27
                 },
                 {
                     "name": "mouseup",
@@ -23762,7 +24452,7 @@
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 35
+                    "line": 51
                 }
             ],
             "propertiesClass": [
@@ -23774,7 +24464,7 @@
                     "type": "number | null",
                     "optional": false,
                     "description": "",
-                    "line": 8
+                    "line": 16
                 },
                 {
                     "name": "startY",
@@ -23784,10 +24474,36 @@
                     "type": "number | null",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 17
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "cursorDefault",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 66,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ]
+                },
+                {
+                    "name": "cursorPointer",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ]
+                },
                 {
                     "name": "mousedownHandler",
                     "args": [
@@ -23801,13 +24517,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
                         {
                             "name": "HostListener",
-                            "stringifiedArguments": "'mousedown'"
+                            "stringifiedArguments": "'mousedown', ['$event']"
                         }
                     ],
                     "modifierKind": [
@@ -23838,13 +24554,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
                         {
                             "name": "HostListener",
-                            "stringifiedArguments": "'mousemove'"
+                            "stringifiedArguments": "'mousemove', ['$event']"
                         }
                     ],
                     "modifierKind": [
@@ -23868,7 +24584,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -23880,9 +24596,48 @@
                     "modifierKind": [
                         170
                     ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 }
             ],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 55,
+                "jsdoctags": [
+                    {
+                        "name": "ref",
+                        "type": "ElementRef<HTMLElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "ViewportDirective",
@@ -24209,6 +24964,311 @@
             "implements": [
                 "AfterViewInit"
             ]
+        },
+        {
+            "name": "BaseLayoutComponent",
+            "id": "component-BaseLayoutComponent-dc953af5a75c6b0518431696e9c6cde364769a977afc6398e57effa9181cf49fb15b730c0a3f3606944d8b5d7b40fc19ea1d6d68743e09daf36aa96b8ed73b41",
+            "file": "libs/material/layout/src/lib/layout/base-layout.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [],
+            "styles": [],
+            "template": "",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "contentBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "contentCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "contentTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavLeftBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavLeftCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 51,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavLeftTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavRightBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavRightCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 45,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sidenavRightTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "statusbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "statusbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarLeftDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarLeftDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "statusbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarRightDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarRightDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "toolbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "toolbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarLeftDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarLeftDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "toolbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarRightDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarRightDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\r\nimport {\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n} from './layout.directive';\r\n\r\n@Component({ template: '' })\r\nexport class BaseLayoutComponent {\r\n  @ContentChildren(LayoutToolbarLeftDirective)\r\n  toolbarLeft!: QueryList<LayoutToolbarLeftDirective>;\r\n  @ContentChildren(LayoutToolbarRightDirective)\r\n  toolbarRight!: QueryList<LayoutToolbarRightDirective>;\r\n  @ContentChildren(LayoutToolbarCenterDirective)\r\n  toolbarCenter!: QueryList<LayoutToolbarCenterDirective>;\r\n  @ContentChildren(LayoutStatusbarLeftDirective)\r\n  statusbarLeft!: QueryList<LayoutStatusbarLeftDirective>;\r\n  @ContentChildren(LayoutStatusbarRightDirective)\r\n  statusbarRight!: QueryList<LayoutStatusbarRightDirective>;\r\n  @ContentChildren(LayoutStatusbarCenterDirective)\r\n  statusbarCenter!: QueryList<LayoutStatusbarCenterDirective>;\r\n  @ContentChildren(LayoutContentTopDirective)\r\n  contentTop!: QueryList<LayoutContentTopDirective>;\r\n  @ContentChildren(LayoutContentBottomDirective)\r\n  contentBottom!: QueryList<LayoutContentBottomDirective>;\r\n  @ContentChildren(LayoutContentCenterDirective)\r\n  contentCenter!: QueryList<LayoutContentCenterDirective>;\r\n  @ContentChildren(LayoutSidenavRightTopDirective)\r\n  sidenavRightTop!: QueryList<LayoutSidenavRightTopDirective>;\r\n  @ContentChildren(LayoutSidenavRightBottomDirective)\r\n  sidenavRightBottom!: QueryList<LayoutSidenavRightBottomDirective>;\r\n  @ContentChildren(LayoutSidenavRightCenterDirective)\r\n  sidenavRightCenter!: QueryList<LayoutSidenavRightCenterDirective>;\r\n  @ContentChildren(LayoutSidenavLeftTopDirective)\r\n  sidenavLeftTop!: QueryList<LayoutSidenavLeftTopDirective>;\r\n  @ContentChildren(LayoutSidenavLeftBottomDirective)\r\n  sidenavLeftBottom!: QueryList<LayoutSidenavLeftBottomDirective>;\r\n  @ContentChildren(LayoutSidenavLeftCenterDirective)\r\n  sidenavLeftCenter!: QueryList<LayoutSidenavLeftCenterDirective>;\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
         },
         {
             "name": "FullscreenDirectiveComponent",
@@ -29365,13 +30425,18 @@
         },
         {
             "name": "LayoutComponent",
-            "id": "component-LayoutComponent-8e681b9eb06303d281e39566a6fd47fde39b6c7599e5c99628826eb9ffb35c3885a6ee4b09cc3e594440ad621e949c20d469605958befc6cf8bc659bbbda2329",
+            "id": "component-LayoutComponent-a3cb61d07b426fdaa07d9288afb698df3385f8a5bcfbe77df8eee96d452523333e70d85f0f0fceaff2af06e2573292146329382428851bb354afb0e168f5c9b5",
             "file": "libs/material/layout/src/lib/layout/layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "LayoutDirectives",
+                    "type": "directive"
+                }
+            ],
             "selector": "mdtx-layout",
             "styleUrls": [],
             "styles": [],
@@ -29380,9 +30445,335 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "progressValue",
+                    "defaultValue": "100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "contentBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 37,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "contentCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "contentTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutContentTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutContentTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavLeftBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 49,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavLeftCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 51,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavLeftTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavLeftTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavLeftTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavRightBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightBottomDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightBottomDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavRightCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 45,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "sidenavRightTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutSidenavRightTopDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 41,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutSidenavRightTopDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "statusbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "statusbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarLeftDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarLeftDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "statusbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutStatusbarRightDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutStatusbarRightDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "toolbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarCenterDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarCenterDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "toolbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarLeftDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarLeftDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                },
+                {
+                    "name": "toolbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<LayoutToolbarRightDirective>",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "LayoutToolbarRightDirective"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "inheritance": {
+                        "file": "BaseLayoutComponent"
+                    }
+                }
+            ],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -29431,6 +30822,10 @@
                     "type": "module"
                 },
                 {
+                    "name": "TemplateOutletComponent",
+                    "type": "component"
+                },
+                {
                     "name": "FullscreenDirective",
                     "type": "directive"
                 },
@@ -29446,13 +30841,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatMenuModule, MenuPositionY } from '@angular/material/menu';\nimport { MatListModule } from '@angular/material/list';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { ViewportDirective, FullscreenDirective, ScrollDirective } from '@mdtx/material/core';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSidenavModule,\n    MatMenuModule,\n    MatListModule,\n    MatButtonModule,\n    MatIconModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatToolbarModule,\n    MatProgressBarModule,\n    FullscreenDirective,\n    ViewportDirective,\n    ScrollDirective\n  ],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n})\nexport class LayoutComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatMenuModule, MenuPositionY } from '@angular/material/menu';\nimport { MatListModule } from '@angular/material/list';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport {\n  ViewportDirective,\n  FullscreenDirective,\n  ScrollDirective,\n} from '@mdtx/material/core';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { LayoutDirectives } from './layout.directive';\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\nimport { BaseLayoutComponent } from './base-layout.component';\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSidenavModule,\n    MatMenuModule,\n    MatListModule,\n    MatButtonModule,\n    MatIconModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatToolbarModule,\n    MatProgressBarModule,\n    TemplateOutletComponent,\n    FullscreenDirective,\n    ViewportDirective,\n    ScrollDirective,\n  ],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n  providers: [...LayoutDirectives],\n})\nexport class LayoutComponent extends BaseLayoutComponent {\n  @Input() progressValue = 100;\n}\n",
             "styleUrl": "./layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <mat-toolbar color=\"primary\" mdtxScroll>\n    Top toolbar\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-button [matMenuTriggerFor]=\"some\">Open</button>\n    <mat-menu #some yPosition=\"below\">\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n    </mat-menu>\n  </mat-toolbar>\n\n  <mat-progress-bar\n    mode=\"determinate\"\n    value=\"40\"\n    color=\"accent\"\n  ></mat-progress-bar>\n\n  <!-- Sidenav Container -->\n  <mat-sidenav-container>\n    <!-- Left sidenav -->\n    <mat-sidenav #leftSidenav position=\"start\">\n      <h1>Left Sidennav</h1>\n    </mat-sidenav>\n\n    <!-- Right sidenav -->\n    <mat-sidenav #rightSidenav position=\"end\">\n      <h1>Right Sidennav</h1>\n    </mat-sidenav>\n\n    <mat-sidenav-content>\n      <button (click)=\"leftSidenav.open()\">Left Sidenav</button>\n      <button (click)=\"rightSidenav.open()\">Right Sidenav</button>\n      Sidenav content\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n\n  <mat-toolbar>\n    Statusbar\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n\n    <button mat-button [matMenuTriggerFor]=\"some\">Open</button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n\n    <mat-menu #some yPosition=\"above\">\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n    </mat-menu>\n  </mat-toolbar>\n</div>\n"
+            "extends": [
+                "BaseLayoutComponent"
+            ],
+            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <mat-toolbar color=\"primary\" mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n\n  <mat-progress-bar\n    mode=\"determinate\"\n    [value]=\"progressValue\"\n    color=\"accent\"\n  ></mat-progress-bar>\n\n  <!--######################### SIDENAV CONTAINER START -->\n  <mat-sidenav-container>\n    <!--######################### LEFT SIDENAV START -->\n    <mat-sidenav #sidenavLeftRef position=\"start\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!--######################### LEFT SIDENAV END -->\n\n    <!--#########################  SIDENAV RIGHT START -->\n    <mat-sidenav #sidenavRightRef position=\"end\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightTop\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!--####################### SIDENAV RIGHT END  -->\n\n    <!--###################### SIDENAV CONTENT START  -->\n    <mat-sidenav-content>\n      <!-- TOP -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\n      </div>\n\n      <!-- CENTER -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\n      </div>\n\n      <!-- BOTTOM -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\n      </div>\n    </mat-sidenav-content>\n    <!--####################### SIDENAV CONTENT END -->\n  </mat-sidenav-container>\n  <!--######################### SIDENAV CONTAINER END -->\n\n  <!-- ################################ STATUSBAR START -->\n  <mat-toolbar mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n  <!-- ################################ STATUSBAR END -->\n</div>\n"
         },
         {
             "name": "LocalStoreComponent",
@@ -29850,6 +31247,53 @@
                 "AfterViewInit",
                 "OnDestroy"
             ]
+        },
+        {
+            "name": "SampleLayoutComponent",
+            "id": "component-SampleLayoutComponent-b94003153dee4a8e7cbd41ecca9bea80bac6aaab685e7a9236ce7c5be7316d73e0f71e072e318026fbcce5b14231fc09ee220050ec24308d6736f7c50176b9d1",
+            "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-sample-layout",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sample-layout.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "LayoutModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LayoutModule } from '../layout/layout.module';\n\n@Component({\n  selector: 'mdtx-sample-layout',\n  standalone: true,\n  imports: [CommonModule, LayoutModule, ],\n  templateUrl: './sample-layout.component.html',\n  styleUrl: './sample-layout.component.scss',\n})\nexport class SampleLayoutComponent {}\n",
+            "styleUrl": "./sample-layout.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mdtx-layout>\n  <ng-container mdtxToolbarLeft>Toolbar Left</ng-container>\n  <ng-container mdtxToolbarCenter>Toolbar Center</ng-container>\n  <ng-container mdtxToolbarRight>Toolbar Right</ng-container>\n\n  <ng-container mdtxStatusbarLeft>Statusbar Left</ng-container>\n  <ng-container mdtxStatusbarCenter>Statusbar Center</ng-container>\n  <ng-container mdtxStatusbarRight>Statusbar Right</ng-container>\n\n  <ng-container mdtxContentTop>Content Top</ng-container>\n  <ng-container mdtxContentCenter>Content Center</ng-container>\n  <ng-container mdtxContentBottom>Content Bottom</ng-container>\n\n  <ng-container mdtxLeftSidenavTop>Left Sidenav Top</ng-container>\n  <ng-container mdtxLeftSidenavCenter>Left Sidenav Center</ng-container>\n  <ng-container mdtxLeftSidenavBottom>Left Sidenav Bottom</ng-container>\n\n  <ng-container mdtxRightSidenavTop>Right Sidenav Top</ng-container>\n  <ng-container mdtxRightSidenavCenter>Right Sidenav Center</ng-container>\n  <ng-container mdtxRightSidenavBottom>Right Sidenav Bottom</ng-container>\n</mdtx-layout>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -30402,6 +31846,75 @@
             "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ row[col] }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n  </table>\r\n</div>\r\n"
         },
         {
+            "name": "TemplateOutletComponent",
+            "id": "component-TemplateOutletComponent-bfd575aee7ee79e50996875d51c32cdddc59dd947bf1bfabff759bd7a20cdb278e15be9604c14d3d50a707505848e7a00bf954eb484a1230d39d40e2d6bb8082",
+            "file": "libs/material/layout/src/lib/template-outlet/template-outlet.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-template-outlet",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./template-outlet.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "QueryList<ITemplateRef<NgTemplateOutlet>>",
+                    "decorators": []
+                },
+                {
+                    "name": "testing",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "testName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, QueryList } from '@angular/core';\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-template-outlet',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './template-outlet.component.html',\n  styleUrl: './template-outlet.component.scss',\n})\nexport class TemplateOutletComponent {\n  @Input() testing = false;\n  @Input() testName?: string;\n  @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;\n}\n",
+            "styleUrl": "./template-outlet.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "@if(items){ @for(item of items; track item){\n<ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n} }\n"
+        },
+        {
             "name": "ViewportDirectiveComponent",
             "id": "component-ViewportDirectiveComponent-9ec433d230435c27e794db3943653f5c4984678080d962fe03c908579cc058ba94e4b76323191a14e1305fcaca9886ff02580baf8404a5de3837918d657b2865",
             "file": "libs/material/core/src/lib/directives/viewport.component.ts",
@@ -30530,6 +32043,141 @@
                         },
                         {
                             "name": "ViewportDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "LayoutModule",
+            "id": "module-LayoutModule-003cb2e8bd5f84c2f39dca83122dcccf0b769f88673869e4ee3b6a157b2edd2512fe52e42c0e90191077dcfee5b38828cad0298c87e3d831c4b42ae647f7f5e1",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/material/layout/src/lib/layout/layout.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { LayoutDirectives } from './layout.directive';\r\nimport { LayoutComponent } from './layout.component';\r\n\r\n@NgModule({\r\n  declarations: [...LayoutDirectives],\r\n  imports: [LayoutComponent],\r\n  exports: [...LayoutDirectives, LayoutComponent],\r\n})\r\nexport class LayoutModule {}\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "LayoutContentBottomDirective"
+                        },
+                        {
+                            "name": "LayoutContentCenterDirective"
+                        },
+                        {
+                            "name": "LayoutContentTopDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftBottomDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftCenterDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftTopDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightBottomDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightCenterDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightTopDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarCenterDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarLeftDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarRightDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarCenterDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarLeftDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarRightDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "LayoutComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "LayoutComponent"
+                        },
+                        {
+                            "name": "LayoutContentBottomDirective"
+                        },
+                        {
+                            "name": "LayoutContentCenterDirective"
+                        },
+                        {
+                            "name": "LayoutContentTopDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftBottomDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftCenterDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavLeftTopDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightBottomDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightCenterDirective"
+                        },
+                        {
+                            "name": "LayoutSidenavRightTopDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarCenterDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarLeftDirective"
+                        },
+                        {
+                            "name": "LayoutStatusbarRightDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarCenterDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarLeftDirective"
+                        },
+                        {
+                            "name": "LayoutToolbarRightDirective"
                         }
                     ]
                 },
@@ -30750,6 +32398,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-date-range-variants works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -30890,6 +32548,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -30945,6 +32613,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "InputTypeList()"
+            },
+            {
+                "name": "LayoutDirectives",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n]"
             },
             {
                 "name": "meta",
@@ -31065,6 +32743,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<InputDateComponent>",
                 "defaultValue": "{\r\n  component: InputDateComponent,\r\n  title: 'InputDateComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputFiveDayDateRangeComponent>",
+                "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n}"
             },
             {
                 "name": "meta",
@@ -31205,6 +32893,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<LayoutComponent>",
                 "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SampleLayoutComponent>",
+                "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n}"
             },
             {
                 "name": "meta",
@@ -31380,6 +33078,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -31515,6 +33223,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -31982,6 +33700,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<InputFiveDayDateRangeComponent>",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<InputDateRangeComponent>",
                 "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
                 "deprecated": false,
@@ -32127,6 +33856,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<LayoutComponent>",
                 "file": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SampleLayoutComponent>",
+                "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -32753,6 +34493,38 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n    multiple: false,\r\n  },\r\n}"
                 }
             ],
+            "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-date-range-variants works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputFiveDayDateRangeComponent>",
+                    "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -33073,6 +34845,38 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
+            "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SampleLayoutComponent>",
+                    "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -33179,6 +34983,18 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "InputTypeList()"
+                }
+            ],
+            "libs/material/layout/src/lib/layout/layout.directive.ts": [
+                {
+                    "name": "LayoutDirectives",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n]"
                 }
             ],
             "libs/material/core/src/lib/modules/common.module.ts": [
@@ -33706,6 +35522,19 @@
                     "kind": 183
                 }
             ],
+            "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputFiveDayDateRangeComponent>",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts": [
                 {
                     "name": "Story",
@@ -33888,6 +35717,19 @@
                     "kind": 183
                 }
             ],
+            "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SampleLayoutComponent>",
+                    "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
                 {
                     "name": "Story",
@@ -34042,7 +35884,7 @@
                 "linktype": "directive",
                 "name": "ScrollDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {
@@ -34113,7 +35955,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/interface/element-ref.ts",
+                "filePath": "libs/material/core/src/lib/interface/referance.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "IElementRef",
@@ -34122,7 +35964,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/interface/template-ref.ts",
+                "filePath": "libs/material/core/src/lib/interface/referance.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "ITemplateRef",
@@ -34659,6 +36501,36 @@
                 "name": "InputChipSelectComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/18",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -35326,6 +37198,15 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/layout/src/lib/layout/base-layout.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BaseLayoutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/16",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/layout/src/lib/layout/layout.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -35361,7 +37242,209 @@
                 "linktype": "component",
                 "name": "LayoutComponent",
                 "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "BaseLayoutPositionDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutContentBottomDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutContentCenterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutContentTopDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavLeftBottomDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavLeftCenterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavLeftTopDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavRightBottomDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavRightCenterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutSidenavRightTopDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutStatusbarCenterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutStatusbarLeftDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutStatusbarRightDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutToolbarCenterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutToolbarLeftDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "LayoutToolbarRightDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LayoutDirectives",
+                "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/sample-layout.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SampleLayoutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/template-outlet/template-outlet.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TemplateOutletComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {
