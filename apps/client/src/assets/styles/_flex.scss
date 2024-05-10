@@ -1,21 +1,3 @@
-.flex {
-  display: flex;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 @for $value from 1 through 10 {
   .gap-#{$value}em {
     gap: #{$value}em;
@@ -24,12 +6,4 @@
   .grow-#{$value} {
     flex-grow: #{$value};
   }
-}
-
-.space-between {
-  justify-content: space-between;
-}
-
-.space-around {
-  justify-content: space-around;
 }

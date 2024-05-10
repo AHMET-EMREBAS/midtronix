@@ -18,6 +18,7 @@ export class ScrollDirective implements OnInit {
 
   @HostListener('mousedown', ['$event'])
   mousedownHandler(event: any) {
+    console.log('Mouse down : ', event);
     this.cursorPointer();
     this.startX = event.pageX;
     this.startY = event.pageY;
@@ -25,6 +26,7 @@ export class ScrollDirective implements OnInit {
 
   @HostListener('mousemove', ['$event'])
   mousemoveHandler(event: any) {
+    console.log('Mouse move : ', event);
     if (this.startX !== null && this.startY !== null) {
       const deltaX = this.startX - event.pageX;
       const deltaY = this.startY - event.pageY;
@@ -36,8 +38,9 @@ export class ScrollDirective implements OnInit {
           this.ref.nativeElement.scrollBy(deltaX, 0);
         }
       } else if (this.mdtxScroll === 'y') {
-        // if (Math.abs(deltaY) < Math.abs(deltaX)) {
+        // if (Math.abs(deltaX) < Math.abs(deltaY)) {
         event.preventDefault();
+        console.log('Scrolling : ', deltaY);
         this.ref.nativeElement.scrollBy(0, deltaY);
         // }
       }
@@ -49,6 +52,7 @@ export class ScrollDirective implements OnInit {
 
   @HostListener('mouseup')
   mouseupHander() {
+    console.log('Mouse up : ', event);
     this.cursorDefault();
     this.startX = null;
     this.startY = null;

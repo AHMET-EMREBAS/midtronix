@@ -2,18 +2,17 @@
   <!-- ################### TOOLBAR START -->
   <mat-toolbar color="primary" mdtxScroll="x">
     <div class="row-container">
-      <button (click)="sidenavLeftRef.open()">
+      <button mat-icon-button (click)="sidenavLeftRef.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
     </div>
-    <div class="row-container flex-grow-1">
+    <div class="row-container flex-grow-1 center">
       <mdtx-template-outlet [items]="toolbarCenter"></mdtx-template-outlet>
     </div>
-    <div class="row-container">
+    <div class="row-container right">
       <mdtx-template-outlet [items]="toolbarRight"></mdtx-template-outlet>
-
-      <button (click)="sidenavRightRef.open()">
+      <button mat-icon-button (click)="sidenavRightRef.toggle()">
         <mat-icon>settings</mat-icon>
       </button>
     </div>
@@ -32,49 +31,17 @@
   <mat-sidenav-container>
     <!-- ######################### LEFT SIDENAV START -->
     <mat-sidenav #sidenavLeftRef position="start">
-      <div class="column-container" mdtxScroll="y">
-        <!-- TOP -->
-        <div class="column-container">
-          <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
-        </div>
-        <!-- CENTER -->
-        <div class="column-container">
-          <mdtx-template-outlet
-            [items]="sidenavLeftCenter"
-          ></mdtx-template-outlet>
-        </div>
-        <!-- BOTTOM -->
-        <div class="column-container">
-          <mdtx-template-outlet
-            [items]="sidenavLeftBottom"
-          ></mdtx-template-outlet>
-        </div>
-      </div>
+      <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
+      <mdtx-template-outlet [items]="sidenavLeftCenter"></mdtx-template-outlet>
+      <mdtx-template-outlet [items]="sidenavLeftBottom"></mdtx-template-outlet>
     </mat-sidenav>
     <!-- ######################### LEFT SIDENAV END -->
 
     <!-- #########################  SIDENAV RIGHT START -->
     <mat-sidenav #sidenavRightRef position="end">
-      <div class="column-container" mdtxScroll="y">
-        <!-- TOP -->
-        <div class="column-container">
-          <mdtx-template-outlet
-            [items]="sidenavRightTop"
-          ></mdtx-template-outlet>
-        </div>
-        <!-- CENTER -->
-        <div class="column-container">
-          <mdtx-template-outlet
-            [items]="sidenavRightCenter"
-          ></mdtx-template-outlet>
-        </div>
-        <!-- BOTTOM -->
-        <div class="column-container">
-          <mdtx-template-outlet
-            [items]="sidenavRightBottom"
-          ></mdtx-template-outlet>
-        </div>
-      </div>
+      <mdtx-template-outlet [items]="sidenavRightTop"></mdtx-template-outlet>
+      <mdtx-template-outlet [items]="sidenavRightCenter"></mdtx-template-outlet>
+      <mdtx-template-outlet [items]="sidenavRightBottom"></mdtx-template-outlet>
     </mat-sidenav>
     <!-- ####################### SIDENAV RIGHT END  -->
 
@@ -104,10 +71,10 @@
     <div class="row-container">
       <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>
-    <div class="row-container flex-grow-1">
+    <div class="row-container flex-grow-1 center">
       <mdtx-template-outlet [items]="statusbarCenter"></mdtx-template-outlet>
     </div>
-    <div class="row-container">
+    <div class="row-container right">
       <mdtx-template-outlet [items]="statusbarRight"></mdtx-template-outlet>
     </div>
   </mat-toolbar>

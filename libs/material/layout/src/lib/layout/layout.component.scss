@@ -1,33 +1,46 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 mat-sidenav-container {
   position: relative;
   flex-grow: 1;
 }
+mat-sidenav-content {
+  padding-bottom: 3em;
+  flex-grow: 1;
+  max-height: 100vh;
+  overflow: auto;
+  border: 10px solid black;
+}
 .column-container {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  pointer-events: all;
 }
 
 .row-container {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
-  overflow-y: hidden;
+  align-items: center;
 }
 
-.main-container {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  display: flex;
-  flex-direction: column;
+.row-container.right {
+  justify-content: flex-end;
+}
+.row-container.center {
+  justify-content: center;
+  flex-grow: 1;
+}
+
+mat-toolbar,
+mat-sidenav {
+  user-select: none;
 }
 
 mat-toolbar {
@@ -36,14 +49,10 @@ mat-toolbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding-left: 3em;
   padding-right: 3em;
   gap: 1em;
-}
-
-mat-toolbar,
-mat-sidenav {
-  user-select: none;
 }
 
 .toolbar-left,
@@ -59,4 +68,14 @@ mat-sidenav {
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.column-container.scrollable {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.row-container.scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
 }

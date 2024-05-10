@@ -23398,68 +23398,6 @@
             }
         },
         {
-            "name": "BaseLayoutPositionDirective",
-            "id": "directive-BaseLayoutPositionDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
-            "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
-            "type": "directive",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
-            "selector": "[mdtxBasePosition]",
-            "providers": [],
-            "hostDirectives": [],
-            "standalone": false,
-            "inputsClass": [],
-            "outputsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "propertiesClass": [
-                {
-                    "name": "templateRef",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
-                    "optional": false,
-                    "description": "",
-                    "line": 6,
-                    "modifierKind": [
-                        125,
-                        148
-                    ]
-                }
-            ],
-            "methodsClass": [],
-            "extends": [],
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "templateRef",
-                        "type": "TemplateRef<NgTemplateOutlet>",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 5,
-                "jsdoctags": [
-                    {
-                        "name": "templateRef",
-                        "type": "TemplateRef<NgTemplateOutlet>",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            }
-        },
-        {
             "name": "FullscreenDirective",
             "id": "directive-FullscreenDirective-71de0f7b89de45e5389e900b9d1605ae5e3a9246ae67ddf57f0888b982b6572838548d2a06c1e89622d6f50914f2c102f078edc93a238b99be33eaaa2b6f8a12",
             "file": "libs/material/core/src/lib/directives/fullscreen.directive.ts",
@@ -23772,12 +23710,12 @@
         },
         {
             "name": "LayoutContentBottomDirective",
-            "id": "directive-LayoutContentBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutContentBottomDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxContentBottom]",
             "providers": [],
             "hostDirectives": [],
@@ -23793,32 +23731,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 36,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 35,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutContentCenterDirective",
-            "id": "directive-LayoutContentCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutContentCenterDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxContentCenter]",
             "providers": [],
             "hostDirectives": [],
@@ -23834,32 +23796,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 40,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 39,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutContentTopDirective",
-            "id": "directive-LayoutContentTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutContentTopDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxContentTop]",
             "providers": [],
             "hostDirectives": [],
@@ -23875,32 +23861,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 32,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 31,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavLeftBottomDirective",
-            "id": "directive-LayoutSidenavLeftBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavLeftBottomDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavLeftBottom]",
             "providers": [],
             "hostDirectives": [],
@@ -23916,32 +23926,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 48,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 47,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavLeftCenterDirective",
-            "id": "directive-LayoutSidenavLeftCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavLeftCenterDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavLeftCenter]",
             "providers": [],
             "hostDirectives": [],
@@ -23957,32 +23991,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 52,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 51,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavLeftTopDirective",
-            "id": "directive-LayoutSidenavLeftTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavLeftTopDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavLeftTop]",
             "providers": [],
             "hostDirectives": [],
@@ -23998,32 +24056,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 44,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 43,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavRightBottomDirective",
-            "id": "directive-LayoutSidenavRightBottomDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavRightBottomDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavRightBottom]",
             "providers": [],
             "hostDirectives": [],
@@ -24039,32 +24121,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 60,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 59,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavRightCenterDirective",
-            "id": "directive-LayoutSidenavRightCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavRightCenterDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavRightCenter]",
             "providers": [],
             "hostDirectives": [],
@@ -24080,32 +24186,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 64,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 63,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutSidenavRightTopDirective",
-            "id": "directive-LayoutSidenavRightTopDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutSidenavRightTopDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxSidenavRightTop]",
             "providers": [],
             "hostDirectives": [],
@@ -24121,32 +24251,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 56,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 55,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutStatusbarCenterDirective",
-            "id": "directive-LayoutStatusbarCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutStatusbarCenterDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxStatusbarCenter]",
             "providers": [],
             "hostDirectives": [],
@@ -24162,32 +24316,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 28,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 27,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutStatusbarLeftDirective",
-            "id": "directive-LayoutStatusbarLeftDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutStatusbarLeftDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxStatusbarLeft]",
             "providers": [],
             "hostDirectives": [],
@@ -24203,32 +24381,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 20,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutStatusbarRightDirective",
-            "id": "directive-LayoutStatusbarRightDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutStatusbarRightDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxStatusbarRight]",
             "providers": [],
             "hostDirectives": [],
@@ -24244,32 +24446,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 24,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutToolbarCenterDirective",
-            "id": "directive-LayoutToolbarCenterDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutToolbarCenterDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxToolbarCenter]",
             "providers": [],
             "hostDirectives": [],
@@ -24285,32 +24511,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 16,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutToolbarLeftDirective",
-            "id": "directive-LayoutToolbarLeftDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutToolbarLeftDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxToolbarLeft]",
             "providers": [],
             "hostDirectives": [],
@@ -24326,32 +24576,56 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 8,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 7,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "LayoutToolbarRightDirective",
-            "id": "directive-LayoutToolbarRightDirective-3ce6cf98905a2a7e023111f1f1e99991b2902ab8be5495323b33f20a90f712b557e2c60f9a727b71b7a62ef3b005d4c7ef17e09e11e44dbd2e0d66081003892b",
+            "id": "directive-LayoutToolbarRightDirective-9d86c86bca0a2f938aab8b4a0c8a652b26fd8f913a3ffaccba19e9e8d407d5bc3245bd44a3dbfd2d9d6d7f56598a528a0bc22b4d9f6e09570016a2a51d844db1",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\n\r\n@Directive({ selector: '[mdtxBasePosition]' })\r\nexport class BaseLayoutPositionDirective {\r\n  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
+            "sourceCode": "import { NgTemplateOutlet } from '@angular/common';\r\nimport { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxToolbarLeft]' })\r\nexport class LayoutToolbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarRight]' })\r\nexport class LayoutToolbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxToolbarCenter]' })\r\nexport class LayoutToolbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarLeft]' })\r\nexport class LayoutStatusbarLeftDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarRight]' })\r\nexport class LayoutStatusbarRightDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxStatusbarCenter]' })\r\nexport class LayoutStatusbarCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentTop]' })\r\nexport class LayoutContentTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentBottom]' })\r\nexport class LayoutContentBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxContentCenter]' })\r\nexport class LayoutContentCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftTop]' })\r\nexport class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftBottom]' })\r\nexport class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavLeftCenter]' })\r\nexport class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightTop]' })\r\nexport class LayoutSidenavRightTopDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightBottom]' })\r\nexport class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n@Directive({ selector: '[mdtxSidenavRightCenter]' })\r\nexport class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const LayoutDirectives = [\r\n  LayoutToolbarLeftDirective,\r\n  LayoutToolbarRightDirective,\r\n  LayoutToolbarCenterDirective,\r\n  LayoutStatusbarLeftDirective,\r\n  LayoutStatusbarRightDirective,\r\n  LayoutStatusbarCenterDirective,\r\n  LayoutContentTopDirective,\r\n  LayoutContentBottomDirective,\r\n  LayoutContentCenterDirective,\r\n  LayoutSidenavLeftTopDirective,\r\n  LayoutSidenavLeftBottomDirective,\r\n  LayoutSidenavLeftCenterDirective,\r\n  LayoutSidenavRightTopDirective,\r\n  LayoutSidenavRightBottomDirective,\r\n  LayoutSidenavRightCenterDirective,\r\n];\r\n",
             "selector": "[mdtxToolbarRight]",
             "providers": [],
             "hostDirectives": [],
@@ -24367,23 +24641,47 @@
                     "name": "templateRef",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "TemplateRef<NgTemplateOutlet>",
+                    "type": "TemplateRef<any>",
                     "optional": false,
                     "description": "",
-                    "line": 6,
+                    "line": 12,
                     "modifierKind": [
                         125,
                         148
-                    ],
-                    "inheritance": {
-                        "file": "BaseLayoutPositionDirective"
-                    }
+                    ]
                 }
             ],
             "methodsClass": [],
-            "extends": [
-                "BaseLayoutPositionDirective"
-            ]
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "ScrollDirective",
@@ -24861,7 +25159,7 @@
     "components": [
         {
             "name": "BaseFormComponent",
-            "id": "component-BaseFormComponent-01cd990b2111479a666fead350627715e778674f0e7c10adab3b38db46428f4cd64e38b9dba0a190ea18d29c6b224b81624342ef503a52026a96520bfa665fc6",
+            "id": "component-BaseFormComponent-39fa13b8db7e527a7b34a6912d4fd30f9bc30a614904fe2a12e33d6ccc34dbfe416c5d5b5c9a4b8ceeb4dd7a4a232a691497348ef6777270a29b114af11e07a1",
             "file": "libs/material/form/src/lib/form/base-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -24956,7 +25254,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-component',\r\n  standalone: true,\r\n  template: '',\r\n})\r\nexport class BaseFormComponent implements AfterViewInit {\r\n  formGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.formGroup.valueChanges.pipe(debounceTime(600));\r\n    this.statusChange$ = this.formGroup.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  formSubmit() {\r\n    this.submitEvent.emit(this.formGroup.value);\r\n  }\r\n\r\n  formReset() {\r\n    this.formGroup.reset();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-component',\r\n  standalone: true,\r\n  template: '',\r\n})\r\nexport class BaseFormComponent implements AfterViewInit {\r\n  formGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.formGroup?.valueChanges.pipe(debounceTime(600));\r\n    this.statusChange$ = this.formGroup?.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  formSubmit() {\r\n    this.submitEvent.emit(this.formGroup.value);\r\n  }\r\n\r\n  formReset() {\r\n    this.formGroup.reset();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -30849,7 +31147,7 @@
             "extends": [
                 "BaseLayoutComponent"
             ],
-            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <!-- ################### TOOLBAR START -->\n  <mat-toolbar color=\"primary\" mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n  <!-- ################### TOOLBAR END -->\n\n  <!-- ################### PROGRESSBAR START -->\n  <mat-progress-bar\n    mode=\"determinate\"\n    [value]=\"progressValue\"\n    color=\"accent\"\n  ></mat-progress-bar>\n  <!-- ################### PROGRESSBAR END -->\n\n  <!--######################### SIDENAV CONTAINER START -->\n  <mat-sidenav-container>\n    <!--######################### LEFT SIDENAV START -->\n    <mat-sidenav #sidenavLeftRef position=\"start\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!--######################### LEFT SIDENAV END -->\n\n    <!--#########################  SIDENAV RIGHT START -->\n    <mat-sidenav #sidenavRightRef position=\"end\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightTop\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!--####################### SIDENAV RIGHT END  -->\n\n    <!--###################### SIDENAV CONTENT START  -->\n    <mat-sidenav-content>\n      <!-- TOP -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\n      </div>\n\n      <!-- CENTER -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\n      </div>\n\n      <!-- BOTTOM -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\n      </div>\n    </mat-sidenav-content>\n    <!--####################### SIDENAV CONTENT END -->\n  </mat-sidenav-container>\n  <!--######################### SIDENAV CONTAINER END -->\n\n  <!-- ################################ STATUSBAR START -->\n  <mat-toolbar mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n  <!-- ################################ STATUSBAR END -->\n</div>\n"
+            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <!-- ################### TOOLBAR START -->\n  <mat-toolbar color=\"primary\" mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <button (click)=\"sidenavLeftRef.open()\">\n        <mat-icon>menu</mat-icon>\n      </button>\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\n\n      <button (click)=\"sidenavRightRef.open()\">\n        <mat-icon>settings</mat-icon>\n      </button>\n    </div>\n  </mat-toolbar>\n  <!-- ################### TOOLBAR END -->\n\n  <!-- ################### PROGRESSBAR START -->\n  <mat-progress-bar\n    mode=\"determinate\"\n    [value]=\"progressValue\"\n    color=\"accent\"\n  ></mat-progress-bar>\n  <!-- ################### PROGRESSBAR END -->\n\n  <!-- ######################### SIDENAV CONTAINER START -->\n  <mat-sidenav-container>\n    <!-- ######################### LEFT SIDENAV START -->\n    <mat-sidenav #sidenavLeftRef position=\"start\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!-- ######################### LEFT SIDENAV END -->\n\n    <!-- #########################  SIDENAV RIGHT START -->\n    <mat-sidenav #sidenavRightRef position=\"end\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightTop\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!-- ####################### SIDENAV RIGHT END  -->\n\n    <!-- ###################### SIDENAV CONTENT START  -->\n    <mat-sidenav-content>\n      <!-- TOP -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\n      </div>\n\n      <!-- CENTER -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\n      </div>\n\n      <!-- BOTTOM -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\n      </div>\n    </mat-sidenav-content>\n    <!-- ####################### SIDENAV CONTENT END -->\n  </mat-sidenav-container>\n  <!-- ######################### SIDENAV CONTAINER END -->\n\n  <!-- ################################ STATUSBAR START -->\n  <mat-toolbar mdtxScroll=\"x\" color=\"accent\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n  <!-- ################################ STATUSBAR END -->\n</div>\n"
         },
         {
             "name": "LocalStoreComponent",
@@ -31293,7 +31591,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mdtx-layout>\n  <ng-container mdtxToolbarLeft>Toolbar Left</ng-container>\n  <ng-container mdtxToolbarCenter>Toolbar Center</ng-container>\n  <ng-container mdtxToolbarRight>Toolbar Right</ng-container>\n\n  <ng-container mdtxStatusbarLeft>Statusbar Left</ng-container>\n  <ng-container mdtxStatusbarCenter>Statusbar Center</ng-container>\n  <ng-container mdtxStatusbarRight>Statusbar Right</ng-container>\n\n  <ng-container mdtxContentTop>Content Top</ng-container>\n  <ng-container mdtxContentCenter>Content Center</ng-container>\n  <ng-container mdtxContentBottom>Content Bottom</ng-container>\n\n  <ng-container mdtxSidenavLeftTop>Left Sidenav Top</ng-container>\n  <ng-container mdtxSidenavLeftCenter>Left Sidenav Center</ng-container>\n  <ng-container mdtxSidenavLeftBottom>Left Sidenav Bottom</ng-container>\n\n  <ng-container mdtxSidenavRightTop>Right Sidenav Top</ng-container>\n  <ng-container mdtxSidenavRightCenter>Right Sidenav Center</ng-container>\n  <ng-container mdtxSidenavRightBottom>Right Sidenav Bottom</ng-container>\n</mdtx-layout>\n"
+            "templateData": "<mdtx-layout>\n  <ng-template mdtxToolbarLeft>Toolbar Left</ng-template>\n  <ng-template mdtxToolbarCenter>Toolbar Center</ng-template>\n  <ng-template mdtxToolbarRight>Toolbar Right</ng-template>\n\n  <ng-template mdtxStatusbarLeft>Statusbar Left</ng-template>\n  <ng-template mdtxStatusbarCenter>Statusbar Center</ng-template>\n  <ng-template mdtxStatusbarRight>Statusbar Right</ng-template>\n\n  <ng-template mdtxContentTop>Content Top</ng-template>\n  <ng-template mdtxContentCenter>Content Center</ng-template>\n  <ng-template mdtxContentBottom>Content Bottom</ng-template>\n\n  <ng-template mdtxSidenavLeftTop>Left Sidenav Top</ng-template>\n  <ng-template mdtxSidenavLeftCenter>Left Sidenav Center</ng-template>\n  <ng-template mdtxSidenavLeftBottom>Left Sidenav Bottom</ng-template>\n\n  <ng-template mdtxSidenavRightTop>Right Sidenav Top</ng-template>\n  <ng-template mdtxSidenavRightCenter>Right Sidenav Center</ng-template>\n  <ng-template mdtxSidenavRightBottom>Right Sidenav Bottom</ng-template>\n</mdtx-layout>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -31847,7 +32145,7 @@
         },
         {
             "name": "TemplateOutletComponent",
-            "id": "component-TemplateOutletComponent-bfd575aee7ee79e50996875d51c32cdddc59dd947bf1bfabff759bd7a20cdb278e15be9604c14d3d50a707505848e7a00bf954eb484a1230d39d40e2d6bb8082",
+            "id": "component-TemplateOutletComponent-5a386c37d8f16f22fa6eef859fa576d849fde4439e0ca3633d2807b1dd4141391533c7c0c4eb695ae15a463d8088ea0e296282b096d1356b5bacd3d8ac013ed1",
             "file": "libs/material/layout/src/lib/template-outlet/template-outlet.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31867,25 +32165,8 @@
                     "name": "items",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
-                    "type": "QueryList<ITemplateRef<NgTemplateOutlet>>",
-                    "decorators": []
-                },
-                {
-                    "name": "testing",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
                     "line": 13,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "testName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
+                    "type": "QueryList<ITemplateRef<NgTemplateOutlet>>",
                     "decorators": []
                 }
             ],
@@ -31906,7 +32187,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, QueryList } from '@angular/core';\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-template-outlet',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './template-outlet.component.html',\n  styleUrl: './template-outlet.component.scss',\n})\nexport class TemplateOutletComponent {\n  @Input() testing = false;\n  @Input() testName?: string;\n  @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;\n}\n",
+            "sourceCode": "import { Component, Input, QueryList } from '@angular/core';\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-template-outlet',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './template-outlet.component.html',\n  styleUrl: './template-outlet.component.scss',\n})\nexport class TemplateOutletComponent {\n  @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;\n}\n",
             "styleUrl": "./template-outlet.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -32238,7 +32519,7 @@
                 "name": "dateControl",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -32248,7 +32529,7 @@
                 "name": "dateControl",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
+                "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -32402,23 +32683,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-date-range-variants works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -32752,7 +33023,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputFiveDayDateRangeComponent>",
-                "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n}"
+                "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -32763,16 +33034,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<InputDateRangeComponent>",
                 "defaultValue": "{\r\n  component: InputDateRangeComponent,\r\n  title: 'InputDateRangeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<InputFiveDayDateRangeComponent>",
-                "defaultValue": "{\r\n  component: InputFiveDayDateRangeComponent,\r\n  title: 'InputFiveDayDateRangeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -32902,7 +33163,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SampleLayoutComponent>",
-                "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n}"
+                "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -33082,23 +33343,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -33722,17 +33973,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<InputFiveDayDateRangeComponent>",
-                "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<InputDatetimeComponent>",
                 "file": "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts",
                 "deprecated": false,
@@ -33973,6 +34213,48 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
+            "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts": [
+                {
+                    "name": "dateControl",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormControl('', [])"
+                },
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputFiveDayDateRangeComponent>",
+                    "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
+                }
+            ],
             "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts": [
                 {
                     "name": "dateControl",
@@ -34009,48 +34291,6 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
-                }
-            ],
-            "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts": [
-                {
-                    "name": "dateControl",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "new FormControl('', [])"
-                },
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputFiveDayDateRangeComponent>",
-                    "defaultValue": "{\r\n  component: InputFiveDayDateRangeComponent,\r\n  title: 'InputFiveDayDateRangeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -34493,38 +34733,6 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n    multiple: false,\r\n  },\r\n}"
                 }
             ],
-            "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-date-range-variants works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<InputFiveDayDateRangeComponent>",
-                    "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -34864,7 +35072,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SampleLayoutComponent>",
-                    "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n}"
+                    "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -35542,19 +35750,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputDateRangeComponent>",
                     "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<InputFiveDayDateRangeComponent>",
-                    "file": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -36508,6 +36703,16 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "dateControl",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Heading",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -36626,46 +36831,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "year",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "dateControl",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/form/src/lib/input-date-range/input-five-day-date-range.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -37249,7 +37414,7 @@
                 "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
-                "name": "BaseLayoutPositionDirective",
+                "name": "LayoutContentBottomDirective",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
@@ -37258,18 +37423,9 @@
                 "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
-                "name": "LayoutContentBottomDirective",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/layout/src/lib/layout/layout.directive.ts",
-                "type": "directive",
-                "linktype": "directive",
                 "name": "LayoutContentCenterDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37278,7 +37434,7 @@
                 "linktype": "directive",
                 "name": "LayoutContentTopDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37287,7 +37443,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavLeftBottomDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37296,7 +37452,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavLeftCenterDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37305,7 +37461,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavLeftTopDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37314,7 +37470,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavRightBottomDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37323,7 +37479,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavRightCenterDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37332,7 +37488,7 @@
                 "linktype": "directive",
                 "name": "LayoutSidenavRightTopDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37341,7 +37497,7 @@
                 "linktype": "directive",
                 "name": "LayoutStatusbarCenterDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37350,7 +37506,7 @@
                 "linktype": "directive",
                 "name": "LayoutStatusbarLeftDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37359,7 +37515,7 @@
                 "linktype": "directive",
                 "name": "LayoutStatusbarRightDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37368,7 +37524,7 @@
                 "linktype": "directive",
                 "name": "LayoutToolbarCenterDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37377,7 +37533,7 @@
                 "linktype": "directive",
                 "name": "LayoutToolbarLeftDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37386,7 +37542,7 @@
                 "linktype": "directive",
                 "name": "LayoutToolbarRightDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -37444,7 +37600,7 @@
                 "linktype": "component",
                 "name": "TemplateOutletComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
