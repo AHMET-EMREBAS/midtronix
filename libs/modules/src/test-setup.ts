@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 // @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
 globalThis.ngJest = {
   testEnvironmentOptions: {
