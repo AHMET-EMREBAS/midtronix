@@ -1,7 +1,9 @@
 {
   "name": "@mdtx/material/form",
   "version": "0.0.1",
-  "peerDependencies": {},
+  "peerDependencies": {
+    "@mdtx/material/core": "0.0.1"
+  },
   "dependencies": {},
   "sideEffects": false
 }

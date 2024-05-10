@@ -1,7 +1,11 @@
 {
   "name": "@mdtx/material",
   "version": "0.0.1",
-  "peerDependencies": {},
-  "dependencies": {},
+  "peerDependencies": {
+    "@mdtx/material/core": "0.0.1",
+    "@mdtx/material/form": "0.0.1",
+    "@mdtx/material/layout": "0.0.1",
+    "@mdtx/material/table": "0.0.1"
+  },
   "sideEffects": false
 }

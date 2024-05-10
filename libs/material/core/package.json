@@ -1,7 +1,10 @@
 {
   "name": "@mdtx/material/core",
   "version": "0.0.1",
-  "peerDependencies": {},
+  "peerDependencies": {
+    "@mdtx/utils": "0.0.1",
+    "@mdtx/common": "0.0.1"
+  },
   "dependencies": {},
   "sideEffects": false
 }
