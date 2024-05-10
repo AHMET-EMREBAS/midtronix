@@ -1,1 +1,181 @@
-<p>layout works!</p>
+<div #screen="mdtxViewport" mdtxViewport class="main-container">
+  <mat-toolbar color="primary" mdtxScroll>
+    Top toolbar
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-button [matMenuTriggerFor]="some">Open</button>
+    <mat-menu #some yPosition="below">
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-progress-bar
+    mode="determinate"
+    value="40"
+    color="accent"
+  ></mat-progress-bar>
+
+  <!-- Sidenav Container -->
+  <mat-sidenav-container>
+    <!-- Left sidenav -->
+    <mat-sidenav #leftSidenav position="start">
+      <h1>Left Sidennav</h1>
+    </mat-sidenav>
+
+    <!-- Right sidenav -->
+    <mat-sidenav #rightSidenav position="end">
+      <h1>Right Sidennav</h1>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <button (click)="leftSidenav.open()">Left Sidenav</button>
+      <button (click)="rightSidenav.open()">Right Sidenav</button>
+      Sidenav content
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar>
+    Statusbar
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <button mat-button [matMenuTriggerFor]="some">Open</button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>home</mat-icon>
+    </button>
+
+    <mat-menu #some yPosition="above">
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+      <button mat-menu-item>Some</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>

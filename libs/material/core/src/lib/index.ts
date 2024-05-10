@@ -1,4 +1,4 @@
-export * from './directive';
+export * from './directives';
 export * from './error-state';
 export * from './interface';
 export * from './localstore';

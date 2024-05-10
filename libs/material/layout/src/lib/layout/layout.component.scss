@@ -1,0 +1,24 @@
+mat-sidenav-container {
+  position: relative;
+  flex-grow: 1;
+}
+.main-container {
+  border: 3px solid orange;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-toolbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+mat-toolbar::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+}

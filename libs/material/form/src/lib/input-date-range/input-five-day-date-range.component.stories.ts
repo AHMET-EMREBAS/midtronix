@@ -3,12 +3,12 @@ import {
   type Meta,
   type StoryObj,
 } from '@storybook/angular';
-import { InputFiveDayDateRangeComponent } from './input-date-range.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { FormControl } from '@angular/forms';
+import { InputFiveDayDateRangeComponent } from './input-date-range-variants.component';
 
 const meta: Meta<InputFiveDayDateRangeComponent> = {
   component: InputFiveDayDateRangeComponent,
