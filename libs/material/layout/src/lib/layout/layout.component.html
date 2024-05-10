@@ -1,13 +1,13 @@
 <div #screen="mdtxViewport" mdtxViewport class="main-container">
   <!-- ################### TOOLBAR START -->
-  <mat-toolbar color="primary" mdtxScroll="x">
+  <mat-toolbar color="primary">
     <div class="row-container">
       <button mat-icon-button (click)="sidenavLeftRef.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
     </div>
-    <div class="row-container flex-grow-1 center">
+    <div class="row-container center">
       <mdtx-template-outlet [items]="toolbarCenter"></mdtx-template-outlet>
     </div>
     <div class="row-container right">
@@ -30,18 +30,56 @@
   <!-- ######################### SIDENAV CONTAINER START -->
   <mat-sidenav-container>
     <!-- ######################### LEFT SIDENAV START -->
-    <mat-sidenav #sidenavLeftRef position="start">
-      <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
-      <mdtx-template-outlet [items]="sidenavLeftCenter"></mdtx-template-outlet>
-      <mdtx-template-outlet [items]="sidenavLeftBottom"></mdtx-template-outlet>
+    <mat-sidenav
+      #sidenavLeftRef
+      position="start"
+      [opened]="screen.isNotHandset()"
+      [mode]="screen.toggleValue('side', 'over')"
+    >
+      <div class="column-container full padding-1">
+        <div class="column-container">
+          <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
+        </div>
+
+        <div class="column-container center">
+          <mdtx-template-outlet
+            [items]="sidenavLeftCenter"
+          ></mdtx-template-outlet>
+        </div>
+
+        <div class="column-container bottom">
+          <mdtx-template-outlet
+            [items]="sidenavLeftBottom"
+          ></mdtx-template-outlet>
+        </div>
+      </div>
     </mat-sidenav>
     <!-- ######################### LEFT SIDENAV END -->
 
     <!-- #########################  SIDENAV RIGHT START -->
-    <mat-sidenav #sidenavRightRef position="end">
-      <mdtx-template-outlet [items]="sidenavRightTop"></mdtx-template-outlet>
-      <mdtx-template-outlet [items]="sidenavRightCenter"></mdtx-template-outlet>
-      <mdtx-template-outlet [items]="sidenavRightBottom"></mdtx-template-outlet>
+    <mat-sidenav
+      #sidenavRightRef
+      position="end"
+      [mode]="screen.toggleValue('side', 'over')"
+    >
+      <div class="column-container full padding-1">
+        <div class="column-container">
+          <mdtx-template-outlet
+            [items]="sidenavRightTop"
+          ></mdtx-template-outlet>
+        </div>
+        <div class="column-container center">
+          <mdtx-template-outlet
+            [items]="sidenavRightCenter"
+          ></mdtx-template-outlet>
+        </div>
+
+        <div class="column-container bottom">
+          <mdtx-template-outlet
+            [items]="sidenavRightBottom"
+          ></mdtx-template-outlet>
+        </div>
+      </div>
     </mat-sidenav>
     <!-- ####################### SIDENAV RIGHT END  -->
 
@@ -67,7 +105,7 @@
   <!-- ######################### SIDENAV CONTAINER END -->
 
   <!-- ################################ STATUSBAR START -->
-  <mat-toolbar mdtxScroll="x" color="accent">
+  <mat-toolbar color="accent">
     <div class="row-container">
       <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>

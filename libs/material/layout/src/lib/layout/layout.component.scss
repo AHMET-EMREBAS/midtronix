@@ -9,25 +9,31 @@ mat-sidenav-container {
   position: relative;
   flex-grow: 1;
 }
+
 mat-sidenav-content {
   padding-bottom: 3em;
   flex-grow: 1;
   max-height: 100vh;
   overflow: auto;
-  border: 10px solid black;
+  // border: 10px solid black;
+}
+.column-container.full {
+  height: 100%;
+}
+.row-container.full {
+  width: 100%;
 }
 .column-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  pointer-events: all;
+  gap: 1em;
 }
 
 .row-container {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1em;
 }
 
 .row-container.right {
@@ -35,6 +41,13 @@ mat-sidenav-content {
 }
 .row-container.center {
   justify-content: center;
+  flex-grow: 1;
+}
+
+.column-container.bottom {
+  justify-content: flex-end;
+}
+.column-container.center {
   flex-grow: 1;
 }
 
@@ -55,6 +68,10 @@ mat-toolbar {
   gap: 1em;
 }
 
+mat-sidenav {
+  min-width: 200px;
+}
+
 .toolbar-left,
 .toolbar-center,
 .toolbar-right {
@@ -68,6 +85,10 @@ mat-toolbar {
 
 .flex-grow-1 {
   flex-grow: 1;
+}
+
+.padding-1 {
+  padding: 1em;
 }
 
 .column-container.scrollable {
