@@ -10,7 +10,5 @@ import { ITemplateRef } from '@mdtx/material/core';
   styleUrl: './template-outlet.component.scss',
 })
 export class TemplateOutletComponent {
-  @Input() testing = false;
-  @Input() testName?: string;
   @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;
 }

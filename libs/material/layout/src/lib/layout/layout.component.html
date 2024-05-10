@@ -21,9 +21,9 @@
   ></mat-progress-bar>
   <!-- ################### PROGRESSBAR END -->
 
-  <!--######################### SIDENAV CONTAINER START -->
+  <!-- ######################### SIDENAV CONTAINER START -->
   <mat-sidenav-container>
-    <!--######################### LEFT SIDENAV START -->
+    <!-- ######################### LEFT SIDENAV START -->
     <mat-sidenav #sidenavLeftRef position="start">
       <div class="column-container" mdtxScroll="y">
         <!-- TOP -->
@@ -44,9 +44,9 @@
         </div>
       </div>
     </mat-sidenav>
-    <!--######################### LEFT SIDENAV END -->
+    <!-- ######################### LEFT SIDENAV END -->
 
-    <!--#########################  SIDENAV RIGHT START -->
+    <!-- #########################  SIDENAV RIGHT START -->
     <mat-sidenav #sidenavRightRef position="end">
       <div class="column-container" mdtxScroll="y">
         <!-- TOP -->
@@ -69,9 +69,9 @@
         </div>
       </div>
     </mat-sidenav>
-    <!--####################### SIDENAV RIGHT END  -->
+    <!-- ####################### SIDENAV RIGHT END  -->
 
-    <!--###################### SIDENAV CONTENT START  -->
+    <!-- ###################### SIDENAV CONTENT START  -->
     <mat-sidenav-content>
       <!-- TOP -->
       <div class="column-container">
@@ -88,12 +88,12 @@
         <mdtx-template-outlet [items]="contentBottom"></mdtx-template-outlet>
       </div>
     </mat-sidenav-content>
-    <!--####################### SIDENAV CONTENT END -->
+    <!-- ####################### SIDENAV CONTENT END -->
   </mat-sidenav-container>
-  <!--######################### SIDENAV CONTAINER END -->
+  <!-- ######################### SIDENAV CONTAINER END -->
 
   <!-- ################################ STATUSBAR START -->
-  <mat-toolbar mdtxScroll="x">
+  <mat-toolbar mdtxScroll="x" color="accent">
     <div class="row-container">
       <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>

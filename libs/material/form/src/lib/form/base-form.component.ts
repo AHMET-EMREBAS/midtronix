@@ -15,8 +15,8 @@ export class BaseFormComponent implements AfterViewInit {
   statusChange$!: Observable<any>;
 
   ngAfterViewInit(): void {
-    this.valueChange$ = this.formGroup.valueChanges.pipe(debounceTime(600));
-    this.statusChange$ = this.formGroup.statusChanges.pipe(debounceTime(600));
+    this.valueChange$ = this.formGroup?.valueChanges.pipe(debounceTime(600));
+    this.statusChange$ = this.formGroup?.statusChanges.pipe(debounceTime(600));
   }
 
   formSubmit() {

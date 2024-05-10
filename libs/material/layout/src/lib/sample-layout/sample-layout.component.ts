@@ -5,7 +5,7 @@ import { LayoutModule } from '../layout/layout.module';
 @Component({
   selector: 'mdtx-sample-layout',
   standalone: true,
-  imports: [CommonModule, LayoutModule, ],
+  imports: [CommonModule, LayoutModule],
   templateUrl: './sample-layout.component.html',
   styleUrl: './sample-layout.component.scss',
 })

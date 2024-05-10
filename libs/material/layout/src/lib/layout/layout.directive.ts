@@ -1,41 +1,68 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NgTemplateOutlet } from '@angular/common';
 import { Directive, TemplateRef } from '@angular/core';
-
-@Directive({ selector: '[mdtxBasePosition]' })
-export class BaseLayoutPositionDirective {
-  constructor(public readonly templateRef: TemplateRef<NgTemplateOutlet>) {}
-}
+import { ITemplateRef } from '@mdtx/material/core';
 
 @Directive({ selector: '[mdtxToolbarLeft]' })
-export class LayoutToolbarLeftDirective extends BaseLayoutPositionDirective {}
+export class LayoutToolbarLeftDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxToolbarRight]' })
-export class LayoutToolbarRightDirective extends BaseLayoutPositionDirective {}
+export class LayoutToolbarRightDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxToolbarCenter]' })
-export class LayoutToolbarCenterDirective extends BaseLayoutPositionDirective {}
+export class LayoutToolbarCenterDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxStatusbarLeft]' })
-export class LayoutStatusbarLeftDirective extends BaseLayoutPositionDirective {}
+export class LayoutStatusbarLeftDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxStatusbarRight]' })
-export class LayoutStatusbarRightDirective extends BaseLayoutPositionDirective {}
+export class LayoutStatusbarRightDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxStatusbarCenter]' })
-export class LayoutStatusbarCenterDirective extends BaseLayoutPositionDirective {}
+export class LayoutStatusbarCenterDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxContentTop]' })
-export class LayoutContentTopDirective extends BaseLayoutPositionDirective {}
+export class LayoutContentTopDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxContentBottom]' })
-export class LayoutContentBottomDirective extends BaseLayoutPositionDirective {}
+export class LayoutContentBottomDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxContentCenter]' })
-export class LayoutContentCenterDirective extends BaseLayoutPositionDirective {}
+export class LayoutContentCenterDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavLeftTop]' })
-export class LayoutSidenavLeftTopDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavLeftBottom]' })
-export class LayoutSidenavLeftBottomDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavLeftBottomDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavLeftCenter]' })
-export class LayoutSidenavLeftCenterDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavLeftCenterDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavRightTop]' })
-export class LayoutSidenavRightTopDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavRightTopDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavRightBottom]' })
-export class LayoutSidenavRightBottomDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavRightBottomDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavRightCenter]' })
-export class LayoutSidenavRightCenterDirective extends BaseLayoutPositionDirective {}
+export class LayoutSidenavRightCenterDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 
 export const LayoutDirectives = [
   LayoutToolbarLeftDirective,
