@@ -2,11 +2,15 @@
   "name": "@mdtx/modules/website",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@mdtx/material/layout": "0.0.1",
+    "@mdtx/inventory": "0.0.1",
+    "@mdtx/modules/cms": "0.0.1",
+    "@mdtx/modules/pms": "0.0.1",
+    "@mdtx/modules/ems": "0.0.1",
+    "@mdtx/modules/auth": "0.0.1",
+    "@mdtx/modules/pos": "0.0.1",
+    "@mdtx/modules/landing-page": "0.0.1"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
+  "dependencies": {},
   "sideEffects": false
 }

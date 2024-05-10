@@ -1,12 +1,12 @@
 {
-  "name": "@mdtx/auth",
+  "name": "@mdtx/modules/auth",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@mdtx/material/layout": "0.0.1",
+    "@mdtx/material/form": "0.0.1",
+    "@mdtx/material/core": "0.0.1",
+    "@mdtx/common": "0.0.1"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
+  "dependencies": {},
   "sideEffects": false
 }
