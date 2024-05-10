@@ -12,6 +12,6 @@ export class AppLogoDirective implements IElementRef<HTMLImageElement>, OnInit {
   ngOnInit(): void {
     this.elementRef.nativeElement.classList.add('logo');
     this.elementRef.nativeElement.setAttribute('src', APP_LOGO_PATH);
-    this.elementRef.nativeElement.setAttribute('alt', $localize`App Logo`);
+    this.elementRef.nativeElement.setAttribute('alt', `App Logo`);
   }
 }

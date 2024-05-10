@@ -12,20 +12,20 @@ describe('Create Provider', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [
-        valueProvider.provideFn('value-test-value'),
-        classProvider.provideFn(TestClass),
+        valueProvider.provide('value-test-value'),
+        classProvider.provide(TestClass),
       ],
     }).compileComponents();
   });
 
   it('should provide the classes', () => {
-    expect(TestBed.inject<TestClass>(classProvider.tokenFn()).value).toBe(
+    expect(TestBed.inject<TestClass>(classProvider.token()).value).toBe(
       'class-test-value'
     );
   });
 
   it('should provide the values', () => {
-    expect(TestBed.inject<string>(valueProvider.tokenFn())).toBe(
+    expect(TestBed.inject<string>(valueProvider.token())).toBe(
       'value-test-value'
     );
   });

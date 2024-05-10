@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppLayoutComponent } from './app-layout.component';
-
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 describe('AppLayoutComponent', () => {
   let component: AppLayoutComponent;
   let fixture: ComponentFixture<AppLayoutComponent>;
@@ -8,6 +8,7 @@ describe('AppLayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppLayoutComponent],
+      providers: [provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppLayoutComponent);
