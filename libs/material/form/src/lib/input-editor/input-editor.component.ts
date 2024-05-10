@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputBaseComponent } from '../input-base';
-import Quill from 'quill';
+import Quill  from 'quill';
 @Component({
   selector: 'mdtx-input-editor',
   standalone: true,

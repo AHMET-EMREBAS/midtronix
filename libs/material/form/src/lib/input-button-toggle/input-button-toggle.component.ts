@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { InputBaseComponent } from '../input-base';
-import { FormControl } from '@angular/forms';
 import { IInputOption } from '@mdtx/material/core';
 import { CommonFormModule } from '../form';
 @Component({
@@ -16,10 +15,4 @@ export class InputButtonToggleComponent
   implements OnInit
 {
   @Input() options?: IInputOption[];
-
-  override ngOnInit(): void {
-    super.ngOnInit();
-
-    if (!this.options) console.error('Options is required');
-  }
 }

@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   OnDestroy,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { BaseFormComponent } from './base-form.component';
@@ -19,7 +18,7 @@ import { InputSliderComponent } from '../input-slider/input-slider.component';
 import { InputTextareaComponent } from '../input-textarea/input-textarea.component';
 import { InputEditorComponent } from '../input-editor/input-editor.component';
 import { InputLikeComponent } from '../input-like/input-like.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';

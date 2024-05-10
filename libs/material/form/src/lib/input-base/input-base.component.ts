@@ -31,8 +31,6 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
   protected __validateInputs() {
-    if (!this.inputName) console.log('inputName is required!');
-    if (!this.label) console.log('label is required!');
     if (!this.formControl) this.formControl = new FormControl();
   }
 

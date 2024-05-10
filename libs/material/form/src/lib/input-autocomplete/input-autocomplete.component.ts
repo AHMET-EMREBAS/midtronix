@@ -21,7 +21,6 @@ export class InputAutocompleteComponent
 
   override ngOnInit(): void {
     super.ngOnInit();
-    if (!this.options) console.error('Options is required!');
 
     this.filteredOptions$ = this.formControl.valueChanges.pipe(
       startWith(''),
