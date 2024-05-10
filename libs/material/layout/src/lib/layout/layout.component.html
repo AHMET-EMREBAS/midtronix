@@ -2,6 +2,9 @@
   <!-- ################### TOOLBAR START -->
   <mat-toolbar color="primary" mdtxScroll="x">
     <div class="row-container">
+      <button (click)="sidenavLeftRef.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
       <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
     </div>
     <div class="row-container flex-grow-1">
@@ -9,6 +12,10 @@
     </div>
     <div class="row-container">
       <mdtx-template-outlet [items]="toolbarRight"></mdtx-template-outlet>
+
+      <button (click)="sidenavRightRef.open()">
+        <mat-icon>settings</mat-icon>
+      </button>
     </div>
   </mat-toolbar>
   <!-- ################### TOOLBAR END -->
