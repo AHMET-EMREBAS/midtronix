@@ -10,11 +10,15 @@ import { PmsRoutes } from '@mdtx/modules/pms';
 import { EmsRoutes } from '@mdtx/modules/ems';
 import { AuthRoutes } from '@mdtx/modules/auth';
 import { PosRoutes } from '@mdtx/modules/pos';
-
+import { LandingPageComponent } from '@mdtx/modules/landing-page';
 export const WebsiteRoutes: Routes = [
   {
-    title: 'Welcome',
     path: '',
+    loadComponent: () => LandingPageComponent,
+  },
+  {
+    title: 'Welcome',
+    path: 'website',
     loadComponent: () => AppLayoutComponent,
     providers: [
       SidenavLeftTopProvider.provide([
