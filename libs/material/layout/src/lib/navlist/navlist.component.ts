@@ -12,12 +12,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-export const {
-  injectFn: InjectNavlist,
-  provideFn: provideNavlist,
-  tokenFn: getNavlistToken,
-} = createValueProvider<Navlist>('navlist');
-
+export const NavlistProvider = createValueProvider<Navlist>('navlist');
+export const BaseRouteProvider = createValueProvider<string>('baseRoute');
 @Component({
   selector: 'mdtx-navlist',
   standalone: true,
@@ -36,11 +32,9 @@ export const {
 })
 export class NavlistComponent {
   @Input() inToolbar?: boolean;
-  @Input() baseRoute = '';
   @Input() items?: Navlist;
-  constructor(@Optional() @Inject(getNavlistToken()) items: Navlist) {
-    if (items) {
-      this.items = items;
-    }
+
+  constructor(@Optional() @Inject(NavlistProvider.token()) items?: Navlist) {
+    if (items) this.items = items;
   }
 }

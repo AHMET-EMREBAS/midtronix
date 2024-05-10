@@ -1,7 +1,19 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Routes } from '@angular/router';
-import { PosComponent } from './pos/pos.component';
+import {
+  AppLayoutComponent,
+  SidenavLeftBottomProvider,
+} from '@mdtx/material/layout';
 
 export const PosRoutes: Routes = [
-  { path: '', loadComponent: () => PosComponent },
+  {
+    title: 'Point Of Sale',
+    path: '',
+    loadComponent: () => AppLayoutComponent,
+    providers: [
+      SidenavLeftBottomProvider.provide([
+        { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
+      ]),
+    ],
+  },
 ];

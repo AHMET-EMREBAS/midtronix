@@ -63,13 +63,13 @@ mat-toolbar {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
   gap: 1em;
 }
 
 mat-sidenav {
-  min-width: 200px;
+  min-width: 240px;
 }
 
 .toolbar-left,

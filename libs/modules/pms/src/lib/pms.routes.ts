@@ -1,7 +1,16 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Routes } from '@angular/router';
-import { PmsComponent } from './pms/pms.component';
+import { AppLayoutComponent, SidenavLeftBottomProvider } from '@mdtx/material/layout';
 
 export const PmsRoutes: Routes = [
-  { path: '', loadComponent: () => PmsComponent },
+  {
+    title: 'Project Management',
+    path: '',
+    loadComponent: () => AppLayoutComponent,
+    providers:[ 
+      SidenavLeftBottomProvider.provide([
+        { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
+      ]),
+    ]
+  },
 ];

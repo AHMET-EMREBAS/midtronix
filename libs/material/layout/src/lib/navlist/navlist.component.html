@@ -7,13 +7,17 @@
 <ng-template #navListItem let-item="item">
   <a
     mat-list-item
-    [routerLink]="[baseRoute, item.route]"
+    [routerLink]="[item.route]"
     #routerLinkActive="routerLinkActive"
     routerLinkActive
   >
-    <span matListItemLine>{{ item.label }}</span>
+    <span matListItemTitle  [class.bold]="routerLinkActive.isActive">{{ item.label }}</span>
+    <!-- <span matListItemLine>{{ item.label }}</span> -->
     <span matListItemIcon>
-      <mat-icon [color]="item.color" [class.fill]="routerLinkActive.isActive">
+      <mat-icon
+        [color]="item.color ?? 'primary'"
+        [class.fill]="routerLinkActive.isActive"
+      >
         {{ item.icon }}
       </mat-icon>
     </span>
@@ -24,7 +28,7 @@
   @if(screen.isHandset()){
   <button
     mat-icon-button
-    [routerLink]="[baseRoute, item.route]"
+    [routerLink]="[item.route]"
     #routerLinkActive="routerLinkActive"
     routerLinkActive
   >
@@ -36,7 +40,7 @@
 
   <button
     mat-stroked-button
-    [routerLink]="[baseRoute, item.route]"
+    [routerLink]="[item.route]"
     #routerLinkActive="routerLinkActive"
     routerLinkActive="mat-raised-button"
   >

@@ -1,7 +1,16 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Routes } from '@angular/router';
-import { InventoryComponent } from './inventory/inventory.component';
+import { AppLayoutComponent, SidenavLeftBottomProvider } from '@mdtx/material/layout';
 
 export const InventoryRoutes: Routes = [
-  { path: '', loadComponent: () => InventoryComponent },
+  {
+    title: 'Inventory Management',
+    path: '',
+    loadComponent: () => AppLayoutComponent,
+    providers: [
+      SidenavLeftBottomProvider.provide([
+        { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
+      ]),
+    ],
+  },
 ];

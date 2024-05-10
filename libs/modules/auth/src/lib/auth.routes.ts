@@ -1,7 +1,19 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Routes } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
+import {
+  AppLayoutComponent,
+  SidenavLeftBottomProvider,
+} from '@mdtx/material/layout';
 
 export const AuthRoutes: Routes = [
-  { path: '', loadComponent: () => AuthComponent },
+  {
+    title: 'Security Management',
+    path: '',
+    loadComponent: () => AppLayoutComponent,
+    providers: [
+      SidenavLeftBottomProvider.provide([
+        { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
+      ]),
+    ],
+  },
 ];

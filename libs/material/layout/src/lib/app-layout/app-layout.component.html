@@ -1,1 +1,46 @@
-<p>app-layout works!</p>
+<mdtx-layout [progressValue]="100">
+  <ng-template mdtxToolbarLeft>
+    {{title.getTitle()}}
+    <mdtx-navlist [items]="toolbarLeft" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxToolbarRight
+    ><mdtx-navlist [items]="toolbarRight" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxToolbarCenter
+    ><mdtx-navlist [items]="toolbarCenter" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+
+  <ng-template mdtxStatusbarLeft
+    ><mdtx-navlist [items]="statusbarLeft" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxStatusbarRight
+    ><mdtx-navlist [items]="statusbarRight" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxStatusbarCenter
+    ><mdtx-navlist [items]="statusbarCenter" [inToolbar]="true"></mdtx-navlist
+  ></ng-template>
+
+  <ng-template mdtxSidenavLeftTop
+    ><mdtx-navlist [items]="sidenavLeftTop"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxSidenavLeftCenter
+    ><mdtx-navlist [items]="sidenavLeftCenter"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxSidenavLeftBottom
+    ><mdtx-navlist [items]="sidenavLeftBottom"></mdtx-navlist
+  ></ng-template>
+
+  <ng-template mdtxSidenavRightTop
+    ><mdtx-navlist [items]="sidenavRightTop"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxSidenavRightCenter
+    ><mdtx-navlist [items]="sidenavRightCenter"></mdtx-navlist
+  ></ng-template>
+  <ng-template mdtxSidenavRightBottom
+    ><mdtx-navlist [items]="sidenavRightBottom"></mdtx-navlist
+  ></ng-template>
+
+  <ng-template mdtxContentCenter>
+    <router-outlet></router-outlet>
+  </ng-template>
+</mdtx-layout>
