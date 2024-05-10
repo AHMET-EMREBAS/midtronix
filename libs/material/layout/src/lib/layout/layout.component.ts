@@ -11,6 +11,7 @@ import {
   ViewportDirective,
   FullscreenDirective,
   ScrollDirective,
+  Icon,
 } from '@mdtx/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutDirectives } from './layout.directive';
@@ -41,4 +42,5 @@ import { BaseLayoutComponent } from './base-layout.component';
 })
 export class LayoutComponent extends BaseLayoutComponent {
   @Input() progressValue = 100;
+  @Input() rightSidenavIcon?: Icon = 'settings';
 }

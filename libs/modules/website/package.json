@@ -1,16 +1,7 @@
 {
   "name": "@mdtx/modules/website",
   "version": "0.0.1",
-  "peerDependencies": {
-    "@mdtx/material/layout": "0.0.1",
-    "@mdtx/inventory": "0.0.1",
-    "@mdtx/modules/cms": "0.0.1",
-    "@mdtx/modules/pms": "0.0.1",
-    "@mdtx/modules/ems": "0.0.1",
-    "@mdtx/modules/auth": "0.0.1",
-    "@mdtx/modules/pos": "0.0.1",
-    "@mdtx/modules/landing-page": "0.0.1"
-  },
+  "peerDependencies": {},
   "dependencies": {},
   "sideEffects": false
 }

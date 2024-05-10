@@ -2,7 +2,7 @@ import { Component, Inject, Input, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '../layout/layout.module';
 import { RouterModule } from '@angular/router';
-import { Navlist, createValueProvider } from '@mdtx/material/core';
+import { Icon, Navlist, createValueProvider } from '@mdtx/material/core';
 import { NavlistComponent } from '../navlist/navlist.component';
 import { Title } from '@angular/platform-browser';
 
@@ -42,6 +42,7 @@ export const SidenavLeftCenterProvider =
   styleUrl: './app-layout.component.scss',
 })
 export class AppLayoutComponent {
+  @Input() rightSidenavIcon?:Icon = 'settings';
   @Input() progressValue = 100;
   @Input() toolbarLeft?: Navlist;
   @Input() toolbarRight?: Navlist;

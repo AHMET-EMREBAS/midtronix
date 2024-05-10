@@ -1,6 +1,6 @@
-<mdtx-layout [progressValue]="100">
+<mdtx-layout [progressValue]="100" [rightSidenavIcon]="rightSidenavIcon">
   <ng-template mdtxToolbarLeft>
-    {{title.getTitle()}}
+    {{ title.getTitle() }}
     <mdtx-navlist [items]="toolbarLeft" [inToolbar]="true"></mdtx-navlist
   ></ng-template>
   <ng-template mdtxToolbarRight

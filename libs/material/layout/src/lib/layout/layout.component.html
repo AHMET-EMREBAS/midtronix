@@ -2,7 +2,11 @@
   <!-- ################### TOOLBAR START -->
   <mat-toolbar color="primary">
     <div class="row-container">
-      <button mat-icon-button (click)="sidenavLeftRef.toggle()">
+      <button
+        mat-icon-button
+        (click)="sidenavLeftRef.toggle()"
+        aria-label="Toggle Left Sidenav"
+      >
         <mat-icon>menu</mat-icon>
       </button>
       <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
@@ -12,8 +16,12 @@
     </div>
     <div class="row-container right">
       <mdtx-template-outlet [items]="toolbarRight"></mdtx-template-outlet>
-      <button mat-icon-button (click)="sidenavRightRef.toggle()">
-        <mat-icon>settings</mat-icon>
+      <button
+        mat-icon-button
+        (click)="sidenavRightRef.toggle()"
+        aria-label="Toggle Right Sidenav"
+      >
+        <mat-icon>{{ rightSidenavIcon }}</mat-icon>
       </button>
     </div>
   </mat-toolbar>
