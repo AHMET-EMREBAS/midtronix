@@ -129,7 +129,7 @@
   <mat-sidenav-container>
     <!-- Left sidenav -->
     <mat-sidenav #leftSidenav position="start">
-      <div class="column-container" mdtxScroll="y" style="border: 3px solid red;">
+      <div class="column-container" mdtxScroll="y">
         <h1>Starts</h1>
         <h1>Left Sidennav</h1>
         <h1>Left Sidennav</h1>
@@ -192,38 +192,15 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <mat-toolbar>
-    Statusbar
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-
-    <button mat-button [matMenuTriggerFor]="some">Open</button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>home</mat-icon>
-    </button>
-
-    <mat-menu #some yPosition="above">
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-      <button mat-menu-item>Some</button>
-    </mat-menu>
+  <mat-toolbar mdtxScroll="x">
+    <div class="toolbar-left">
+      <ng-container></ng-container>
+    </div>
+    <div class="toolbar-center">
+      <ng-container></ng-container>
+    </div>
+    <div class="toolbar-right">
+      <ng-container></ng-container>
+    </div>
   </mat-toolbar>
 </div>

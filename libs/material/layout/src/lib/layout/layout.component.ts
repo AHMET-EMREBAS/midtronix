@@ -7,8 +7,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ViewportDirective, FullscreenDirective, ScrollDirective } from '@mdtx/material/core';
+import {
+  ViewportDirective,
+  FullscreenDirective,
+  ScrollDirective,
+} from '@mdtx/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LayoutDirectives } from './layout-directives.module';
 @Component({
   selector: 'mdtx-layout',
   standalone: true,
@@ -25,9 +30,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressBarModule,
     FullscreenDirective,
     ViewportDirective,
-    ScrollDirective
+    ScrollDirective,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
+  providers: [...LayoutDirectives],
 })
 export class LayoutComponent {}
