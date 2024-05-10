@@ -78,8 +78,10 @@ h6 {
   letter-spacing: 1px;
 }
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0px;
+  height: 0px;
+  /* width: 6px;
+  height: 6px; */
 }
 ::-webkit-scrollbar-thumb {
   background: #dc143c;

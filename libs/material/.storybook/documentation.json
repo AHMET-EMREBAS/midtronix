@@ -23324,7 +23324,7 @@
         {
             "name": "AppLogoDirective",
             "id": "directive-AppLogoDirective-1ccc3a1fa1d321eef0699faf556a6fe33bd543787e85e12b35c34112fc70bb429b96f9d5ab27770b46c35bc856434a3169eec259fe4461e5d6ad6d31dbded63d",
-            "file": "libs/material/core/src/lib/directive/logo.directive.ts",
+            "file": "libs/material/core/src/lib/directives/logo.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -23400,7 +23400,7 @@
         {
             "name": "FullscreenDirective",
             "id": "directive-FullscreenDirective-71de0f7b89de45e5389e900b9d1605ae5e3a9246ae67ddf57f0888b982b6572838548d2a06c1e89622d6f50914f2c102f078edc93a238b99be33eaaa2b6f8a12",
-            "file": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
+            "file": "libs/material/core/src/lib/directives/fullscreen.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -23520,7 +23520,7 @@
         {
             "name": "InputDirective",
             "id": "directive-InputDirective-bc0b8329535212206cdeafaaec7fa8323ac1c85f60406c4b57d751553d05e21feb173b8092907633de83eeb0f186c543a813fe7dc822fa908d22ac9d0deaddd6",
-            "file": "libs/material/core/src/lib/directive/input.directive.ts",
+            "file": "libs/material/core/src/lib/directives/input.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -23709,9 +23709,185 @@
             }
         },
         {
+            "name": "ScrollDirective",
+            "id": "directive-ScrollDirective-8a0ee0cf46be89c829b062cec0a1cff57fceec5227e4045b29fd7ef29eead67fa89ecac5e05086ceb51b1262d39d4578cd0350af4aad8b92a6d4f2f33e9ff612",
+            "file": "libs/material/core/src/lib/directives/scroll.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, HostListener } from '@angular/core';\n\n@Directive({\n  selector: '[mdtxScroll]',\n  standalone: true,\n})\nexport class ScrollDirective {\n  startX: number | null = null;\n  startY: number | null = null;\n\n  @HostListener('mousedown')\n  mousedownHandler(event: any) {\n    this.startX = event.pageX;\n    this.startY = event.pageY;\n  }\n\n  @HostListener('mousemove')\n  mousemoveHandler(event: any) {\n    if (this.startX !== null && this.startY !== null) {\n      const deltaX = this.startX - event.pageX;\n      const deltaY = this.startY - event.pageY;\n\n      // If horizontal scroll detected, prevent default vertical scroll behavior\n      if (Math.abs(deltaX) > Math.abs(deltaY)) {\n        event.preventDefault();\n        window.scrollBy(deltaX, 0);\n      }\n\n      this.startX = event.pageX;\n      this.startY = event.pageY;\n    }\n  }\n\n  @HostListener('mouseup')\n  mouseupHander() {\n    this.startX = null;\n    this.startY = null;\n  }\n}\n",
+            "selector": "[mdtxScroll]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "mousedown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12
+                },
+                {
+                    "name": "mousemove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18
+                },
+                {
+                    "name": "mouseup",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "startX",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "startY",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "mousedownHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mousedown'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mousemoveHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mousemove'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "mouseupHander",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'mouseup'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "extends": []
+        },
+        {
             "name": "ViewportDirective",
             "id": "directive-ViewportDirective-eae30407ea66ea376e97e2f79fead7ef0e2a26cc2aa5a3a7740b60644f2a953620251e38e53f96b73d787e06ddd5babfd81c283c782611cba8b357d58ca93e71",
-            "file": "libs/material/core/src/lib/directive/viewport.directive.ts",
+            "file": "libs/material/core/src/lib/directives/viewport.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -24037,7 +24213,7 @@
         {
             "name": "FullscreenDirectiveComponent",
             "id": "component-FullscreenDirectiveComponent-e5493a4d69d0413453113a856ae17fcdded0fd369c8419847c8dd0394e8e5c18380893a682a7d66cfaa8596cc970ffbbe6f67bb8919c77af98b334ce6b01a955",
-            "file": "libs/material/core/src/lib/directive/fullscreen.component.ts",
+            "file": "libs/material/core/src/lib/directives/fullscreen.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -25942,7 +26118,7 @@
         {
             "name": "InputDirectiveComponent",
             "id": "component-InputDirectiveComponent-bf9b1ff323da437c8570b89cce72c78391afae459c7d954dd9da6af7db4d09e0f9e5ceb72eea08f9cb3e817368d38567e11b642e54fef10ef461df8a21fea4ee",
-            "file": "libs/material/core/src/lib/directive/input-directive.component.ts",
+            "file": "libs/material/core/src/lib/directives/input-directive.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -29189,7 +29365,7 @@
         },
         {
             "name": "LayoutComponent",
-            "id": "component-LayoutComponent-9bac16651a8e97c834f22a5cade35410658390ae2f4357edc279e3300f720db9e44c15873fde544f4e2b06c3a347375259524a83c1ac80cd06609764a18e9800",
+            "id": "component-LayoutComponent-8e681b9eb06303d281e39566a6fd47fde39b6c7599e5c99628826eb9ffb35c3885a6ee4b09cc3e594440ad621e949c20d469605958befc6cf8bc659bbbda2329",
             "file": "libs/material/layout/src/lib/layout/layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29245,18 +29421,38 @@
                 {
                     "name": "ReactiveFormsModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatProgressBarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FullscreenDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "ViewportDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "ScrollDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatListModule } from '@angular/material/list';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSidenavModule,\n    MatMenuModule,\n    MatListModule,\n    MatButtonModule,\n    MatIconModule,\n    FormsModule,\n    ReactiveFormsModule,\n  ],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n})\nexport class LayoutComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatMenuModule, MenuPositionY } from '@angular/material/menu';\nimport { MatListModule } from '@angular/material/list';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { ViewportDirective, FullscreenDirective, ScrollDirective } from '@mdtx/material/core';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSidenavModule,\n    MatMenuModule,\n    MatListModule,\n    MatButtonModule,\n    MatIconModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatToolbarModule,\n    MatProgressBarModule,\n    FullscreenDirective,\n    ViewportDirective,\n    ScrollDirective\n  ],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n})\nexport class LayoutComponent {}\n",
             "styleUrl": "./layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-sidenav-container>\n  <mat-sidenav #leftSidenav>\n    <h1>Left Sidennav</h1>\n  </mat-sidenav>\n\n  <mat-sidenav-content>\n    <button (click)=\"leftSidenav.open()\">Open</button>\n    Sidenav content\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
+            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <mat-toolbar color=\"primary\" mdtxScroll>\n    Top toolbar\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-button [matMenuTriggerFor]=\"some\">Open</button>\n    <mat-menu #some yPosition=\"below\">\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n    </mat-menu>\n  </mat-toolbar>\n\n  <mat-progress-bar\n    mode=\"determinate\"\n    value=\"40\"\n    color=\"accent\"\n  ></mat-progress-bar>\n\n  <!-- Sidenav Container -->\n  <mat-sidenav-container>\n    <!-- Left sidenav -->\n    <mat-sidenav #leftSidenav position=\"start\">\n      <h1>Left Sidennav</h1>\n    </mat-sidenav>\n\n    <!-- Right sidenav -->\n    <mat-sidenav #rightSidenav position=\"end\">\n      <h1>Right Sidennav</h1>\n    </mat-sidenav>\n\n    <mat-sidenav-content>\n      <button (click)=\"leftSidenav.open()\">Left Sidenav</button>\n      <button (click)=\"rightSidenav.open()\">Right Sidenav</button>\n      Sidenav content\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n\n  <mat-toolbar>\n    Statusbar\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n\n    <button mat-button [matMenuTriggerFor]=\"some\">Open</button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n    <button mat-icon-button>\n      <mat-icon>home</mat-icon>\n    </button>\n\n    <mat-menu #some yPosition=\"above\">\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n      <button mat-menu-item>Some</button>\n    </mat-menu>\n  </mat-toolbar>\n</div>\n"
         },
         {
             "name": "LocalStoreComponent",
@@ -30208,7 +30404,7 @@
         {
             "name": "ViewportDirectiveComponent",
             "id": "component-ViewportDirectiveComponent-9ec433d230435c27e794db3943653f5c4984678080d962fe03c908579cc058ba94e4b76323191a14e1305fcaca9886ff02580baf8404a5de3837918d657b2865",
-            "file": "libs/material/core/src/lib/directive/viewport.component.ts",
+            "file": "libs/material/core/src/lib/directives/viewport.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -30299,13 +30495,13 @@
         },
         {
             "name": "CommonModule",
-            "id": "module-CommonModule-0df1171db01f4bfc630fdcbd57559dc887280b78f0c22b5e8fca9b981e2aa28ac64a6657de8e85fd2f379e1b26af38f9db7181815fc0d434321e5bc4d6eaeca4",
+            "id": "module-CommonModule-b9fcb0f81184baeda426dbf6c6b777c015822aedbfc69e98a7863c41d7b7e162cf3925745db7c1de5cf8bfb1c54a80535b6523934da98f8aeebfc21fd5e7c4eb",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/core/src/lib/modules/common.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FullscreenDirective, ViewportDirective } from '../directive';\r\nimport { CommonModule as NgCommonModule } from '@angular/common';\r\n\r\nconst modules = [NgCommonModule, FullscreenDirective, ViewportDirective];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { FullscreenDirective, ViewportDirective } from '../directives';\r\nimport { CommonModule as NgCommonModule } from '@angular/common';\r\n\r\nconst modules = [NgCommonModule, FullscreenDirective, ViewportDirective];\r\n\r\n@NgModule({\r\n  imports: [...modules],\r\n  exports: [...modules],\r\n})\r\nexport class CommonModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -30354,7 +30550,7 @@
                 "name": "APP_LOGO_PATH",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/logo.directive.ts",
+                "file": "libs/material/core/src/lib/directives/logo.directive.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "string",
@@ -30434,17 +30630,17 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -30454,7 +30650,7 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -30688,7 +30884,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -30754,7 +30950,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<FullscreenDirectiveComponent>",
@@ -30764,7 +30960,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputDirectiveComponent>",
@@ -30774,7 +30970,7 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ViewportDirectiveComponent>",
@@ -31008,7 +31204,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LayoutComponent>",
-                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
+                "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -31064,7 +31260,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -31074,7 +31270,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -31084,7 +31280,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -31655,7 +31851,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31666,7 +31862,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31677,7 +31873,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31961,12 +32157,12 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "libs/material/core/src/lib/directive/logo.directive.ts": [
+            "libs/material/core/src/lib/directives/logo.directive.ts": [
                 {
                     "name": "APP_LOGO_PATH",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/logo.directive.ts",
+                    "file": "libs/material/core/src/lib/directives/logo.directive.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "string",
@@ -32205,22 +32401,22 @@
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    formControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+            "libs/material/core/src/lib/directives/fullscreen.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/fullscreen works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<FullscreenDirectiveComponent>",
@@ -32230,19 +32426,19 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/material/core/src/lib/directive/input-directive.component.stories.ts": [
+            "libs/material/core/src/lib/directives/input-directive.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32252,7 +32448,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputDirectiveComponent>",
@@ -32262,19 +32458,19 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+            "libs/material/core/src/lib/directives/viewport.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32284,7 +32480,7 @@
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ViewportDirectiveComponent>",
@@ -32294,7 +32490,7 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32854,7 +33050,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -32864,7 +33060,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LayoutComponent>",
-                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n}"
+                    "defaultValue": "{\r\n  component: LayoutComponent,\r\n  title: 'LayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -33354,39 +33550,39 @@
                     "kind": 187
                 }
             ],
-            "libs/material/core/src/lib/directive/fullscreen.component.stories.ts": [
+            "libs/material/core/src/lib/directives/fullscreen.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<FullscreenDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "libs/material/core/src/lib/directive/input-directive.component.stories.ts": [
+            "libs/material/core/src/lib/directives/input-directive.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "libs/material/core/src/lib/directive/viewport.component.stories.ts": [
+            "libs/material/core/src/lib/directives/viewport.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ViewportDirectiveComponent>",
-                    "file": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                    "file": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -33726,7 +33922,7 @@
         "status": "low",
         "files": [
             {
-                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33736,7 +33932,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33746,7 +33942,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33756,7 +33952,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/fullscreen.component.ts",
+                "filePath": "libs/material/core/src/lib/directives/fullscreen.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "FullscreenDirectiveComponent",
@@ -33765,7 +33961,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/fullscreen.directive.ts",
+                "filePath": "libs/material/core/src/lib/directives/fullscreen.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "FullscreenDirective",
@@ -33774,7 +33970,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33784,7 +33980,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33794,7 +33990,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/input-directive.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/input-directive.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33804,7 +34000,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/input-directive.component.ts",
+                "filePath": "libs/material/core/src/lib/directives/input-directive.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "InputDirectiveComponent",
@@ -33813,7 +34009,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/input.directive.ts",
+                "filePath": "libs/material/core/src/lib/directives/input.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "InputDirective",
@@ -33822,7 +34018,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/logo.directive.ts",
+                "filePath": "libs/material/core/src/lib/directives/logo.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "AppLogoDirective",
@@ -33831,7 +34027,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/logo.directive.ts",
+                "filePath": "libs/material/core/src/lib/directives/logo.directive.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33841,7 +34037,16 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/scroll.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "ScrollDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33851,7 +34056,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33861,7 +34066,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/viewport.component.stories.ts",
+                "filePath": "libs/material/core/src/lib/directives/viewport.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -33871,7 +34076,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/viewport.component.ts",
+                "filePath": "libs/material/core/src/lib/directives/viewport.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ViewportDirectiveComponent",
@@ -33880,7 +34085,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/core/src/lib/directive/viewport.directive.ts",
+                "filePath": "libs/material/core/src/lib/directives/viewport.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "ViewportDirective",
