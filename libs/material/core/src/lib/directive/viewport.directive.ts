@@ -3,9 +3,6 @@ import { Observable, Subscription, map } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { IToggleValue } from '../interface';
 
-/**
- * Provides the viewport information in the template so we can render content conditionally.
- */
 @Directive({
   selector: '[mdtxViewport]',
   standalone: true,

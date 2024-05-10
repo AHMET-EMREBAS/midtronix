@@ -13,7 +13,7 @@ export class InputDirective {
   @Input() typingDebounceTime = 1000;
 
   @HostListener('input')
-  inputHander() {
+  onInputHandler() {
     this.__dirty = true;
     this.__isTyping = true;
     if (this.__typingTimer) clearTimeout(this.__typingTimer);
@@ -24,10 +24,18 @@ export class InputDirective {
 
   constructor(public readonly ref: ElementRef<HTMLInputElement>) {}
 
+  /**
+   * Check user is typing into the input field or not
+   * @returns boolean
+   */
   isTyping() {
     return this.__isTyping;
   }
 
+  /**
+   * Check user typed into the input field or not
+   * @returns boolean
+   */
   isDirty() {
     return this.__dirty;
   }

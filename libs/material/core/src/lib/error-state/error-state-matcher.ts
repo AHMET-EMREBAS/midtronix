@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @nx/enforce-module-boundaries */
 import { Provider } from '@angular/core';
 import { AbstractControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher as __ErrorStateMatcher } from '@angular/material/core';

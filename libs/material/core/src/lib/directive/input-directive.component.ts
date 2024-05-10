@@ -18,7 +18,6 @@ import { CommonModule } from '@angular/common';
         maxlength="30"
       />
       <span class="material-icons" *ngIf="fn.isTyping()">keyboard</span>
-      <span class="error"> {{ fn.errorMessage() }} </span>
     </div>
     <div>
       <input
@@ -32,7 +31,6 @@ import { CommonModule } from '@angular/common';
         maxlength="30"
       />
       <span class="material-icons" *ngIf="ln.isTyping()">keyboard</span>
-      <span class="error"> {{ ln.errorMessage() }} </span>
     </div>
   `,
 })

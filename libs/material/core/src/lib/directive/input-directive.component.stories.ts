@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InputDirectiveComponent } from './input.component';
+import { InputDirectiveComponent } from './input-directive.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

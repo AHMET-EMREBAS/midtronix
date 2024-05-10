@@ -1,9 +1,6 @@
 import { Directive, HostListener, Input } from '@angular/core';
 import { IToggleValue } from '../interface';
 
-/**
- * When the user clicks the button with the mdtxFullscreen directive, the screen for the provided element will be toggled.
- */
 @Directive({
   selector: '[mdtxFullscreen]',
   standalone: true,
