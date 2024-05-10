@@ -1,5 +1,14 @@
 <mdtx-layout>
-  <ng-template mdtxToolbarLeft>Toolbar Left</ng-template>
+  <ng-template mdtxToolbarLeft>
+    <mdtx-navlist
+      [items]="[
+        { label: 'Home', icon: 'home', route: 'home', color: 'primary' },
+        { label: 'About', icon: 'info', route: 'about', color: 'primary' }
+      ]"
+      [inToolbar]="true"
+    >
+    </mdtx-navlist>
+  </ng-template>
   <ng-template mdtxToolbarCenter>Toolbar Center</ng-template>
   <ng-template mdtxToolbarRight>Toolbar Right</ng-template>
 
@@ -9,98 +18,26 @@
 
   <ng-template mdtxContentTop>Content Top</ng-template>
   <ng-template mdtxContentCenter>
-    <h1>Sample title</h1>
-    <p>Sample content</p>
+    <router-outlet></router-outlet>
   </ng-template>
   <ng-template mdtxContentBottom>Content Bottom</ng-template>
 
   <ng-template mdtxSidenavLeftTop>
-    <h3>Menu Items</h3>
+    <mdtx-navlist
+      [items]="[
+        { label: 'Home', icon: 'home', route: 'home', color: 'primary' },
+        { label: 'About', icon: 'info', route: 'about', color: 'primary' }
+      ]"
+    >
+    </mdtx-navlist>
   </ng-template>
-  <ng-template mdtxSidenavLeftCenter>
-    <mat-nav-list>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-    </mat-nav-list>
-  </ng-template>
+  <ng-template mdtxSidenavLeftCenter> </ng-template>
   <ng-template mdtxSidenavLeftBottom>Left Sidenav Bottom</ng-template>
 
   <ng-template mdtxSidenavRightTop>Right Sidenav Top</ng-template>
   <ng-template mdtxSidenavRightCenter>
     <h3>Start</h3>
 
-    <mat-nav-list>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-      <a mat-list-item>
-        <span matListItemLine>Home</span>
-        <span matListItemIcon>
-          <mat-icon>home</mat-icon>
-        </span>
-      </a>
-    </mat-nav-list>
     <h1>End</h1>
   </ng-template>
   <ng-template mdtxSidenavRightBottom>Right Sidenav Bottom</ng-template>

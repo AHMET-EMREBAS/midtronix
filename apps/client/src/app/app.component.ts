@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SampleLayoutComponent } from '@mdtx/material/layout';
 @Component({
   standalone: true,
-  imports: [RouterModule, SampleLayoutComponent],
+  imports: [RouterModule],
   selector: 'mdtx-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

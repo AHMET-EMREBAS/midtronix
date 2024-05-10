@@ -3,19 +3,13 @@ describe('BaseLayoutComponent', () => {
     let result = '';
     ['Toolbar', 'Statusbar'].forEach((e) => {
       ['Left', 'Right', 'Center'].forEach((s) => {
-        result +=
-          `@ContentChildren(Layout${e}${s}Directive) ${e}${s}!:QueryList<Layout${e}${s}Directive>; ` +
-          '\n';
-        s;
+        result += `@Input() ${e}${s}?:Navlist; ` + '\n';
       });
     });
-
+    // @Input() toolbarLeftItems?: Navlist;
     ['Content', 'SidenavRight', 'SidenavLeft'].forEach((e) => {
       ['Top', 'Bottom', 'Center'].forEach((s) => {
-        result +=
-          `@ContentChildren(Layout${e}${s}Directive) ${e}${s}!:QueryList<Layout${e}${s}Directive>; ` +
-          '\n';
-        s;
+        result += `@Input() ${e}${s}?:Navlist; ` + '\n';
       });
     });
 

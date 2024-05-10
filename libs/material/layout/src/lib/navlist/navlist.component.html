@@ -1,0 +1,78 @@
+<span
+  #screen="mdtxViewport"
+  mdtxViewport
+  style="position: fixed; z-index: 0"
+></span>
+
+<ng-template #navListItem let-item="item">
+  <a
+    mat-list-item
+    [routerLink]="[baseRoute, item.route]"
+    #routerLinkActive="routerLinkActive"
+    routerLinkActive
+  >
+    <span matListItemLine>{{ item.label }}</span>
+    <span matListItemIcon>
+      <mat-icon [color]="item.color" [class.fill]="routerLinkActive.isActive">
+        {{ item.icon }}
+      </mat-icon>
+    </span>
+  </a>
+</ng-template>
+
+<ng-template #navButtonItem let-item="item">
+  @if(screen.isHandset()){
+  <button
+    mat-icon-button
+    [routerLink]="[baseRoute, item.route]"
+    #routerLinkActive="routerLinkActive"
+    routerLinkActive
+  >
+    <mat-icon [class.fill]="routerLinkActive.isActive">
+      {{ item.icon }}
+    </mat-icon>
+  </button>
+  } @else {
+
+  <button
+    mat-stroked-button
+    [routerLink]="[baseRoute, item.route]"
+    #routerLinkActive="routerLinkActive"
+    routerLinkActive="mat-raised-button"
+  >
+    <mat-icon>{{ item.icon }}</mat-icon>
+    {{ item.label }}
+  </button>
+  }
+</ng-template>
+
+<ng-template #navlist>
+  <mat-nav-list>
+    @for(item of items; track item){ @if(item.divider){
+    <mat-divider></mat-divider>
+    } @else {
+    <ng-container
+      *ngTemplateOutlet="navListItem; context: { item }"
+    ></ng-container>
+    } }
+  </mat-nav-list>
+</ng-template>
+
+<ng-template #navbuttons>
+  <div class="row-container">
+    @for(item of items; track item){ @if(item.divider){
+    <mat-divider></mat-divider>
+    } @else {
+    <ng-container
+      *ngTemplateOutlet="navButtonItem; context: { item }"
+    ></ng-container>
+    } }
+  </div>
+</ng-template>
+
+@if(inToolbar){
+<ng-container *ngTemplateOutlet="navbuttons"></ng-container>
+} @else {
+
+<ng-container *ngTemplateOutlet="navlist"></ng-container>
+}

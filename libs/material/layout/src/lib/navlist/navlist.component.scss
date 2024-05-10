@@ -1,0 +1,10 @@
+.row-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+mat-nav-list * {
+  cursor: pointer !important;
+}
