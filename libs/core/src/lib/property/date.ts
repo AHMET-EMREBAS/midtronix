@@ -3,10 +3,10 @@ import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
 /**
- * Validate boolean value by type
+ * Validate date value by type
  * @param options {@link PropertyOptions}
  */
-export function __Date(options?: PropertyOptions) {
+export function __DateProperty(options?: PropertyOptions) {
   const decorators: PropertyDecorator[] = [];
 
   options = {

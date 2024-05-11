@@ -1,15 +1,4 @@
-import {
-  IsIn,
-  ArrayMinSize,
-  ArrayMaxSize,
-  isNumber,
-  isArray,
-  IsArray,
-  IsNumber,
-  Max,
-  Min,
-  IsBoolean,
-} from 'class-validator';
+import { IsBoolean } from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
