@@ -17,38 +17,40 @@ import {
   ValidationPipe,
   Query,
   PaginatorDto,
+  RestRouteBuilder,
 } from '@mdtx/core';
 import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
 
-@ApiTags(ProductController.name)
-@Controller()
+const R = RestRouteBuilder.get('Product');
+
+@R.Controler()
 export class ProductController {
   constructor(
     @InjectRepository(Product)
     protected readonly repo: Repository<Product>
   ) {}
 
-  @Post('product')
+  @R.SaveOne()
   saveProduct(@Body(ValidationPipe) product: CreateProductDto) {
     return this.repo.save(product);
   }
 
-  @Get('products')
+  @R.FindAll()
   findProducts(@Query(ValidationPipe) paginator: PaginatorDto) {
     return this.repo.find({ ...paginator });
   }
 
-  @Get('product/:id')
+  @R.FindOneById()
   findProductById(@Param('id', ParseIntPipe) id: number) {
     return this.repo.findOneBy({ id });
   }
 
-  @Delete('product/:id')
+  @R.DeleteOne()
   deleteProductById(@Param('id', ParseIntPipe) id: number) {
     return this.repo.delete(id);
   }
 
-  @Put('product/:id')
+  @R.UpdateOne()
   updateProductById(
     @Param('id', ParseIntPipe) id: number,
     @Body(ValidationPipe) body: UpdateProductDto
@@ -56,7 +58,7 @@ export class ProductController {
     return this.repo.update(id, body);
   }
 
-  @Put('product/:id/:relationName/:relationId')
+  @R.AddRelation()
   addRelationToProduct(@Param(ValidationPipe) relationDto: AddRelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
@@ -66,7 +68,7 @@ export class ProductController {
       .add(relationId);
   }
 
-  @Delete('product/:id/:relationName/:relationId')
+  @R.RemoveRelation()
   removeRelationToProduct(
     @Param(ValidationPipe) relationDto: RemoveRelationDto
   ) {
@@ -78,7 +80,7 @@ export class ProductController {
       .remove(relationId);
   }
 
-  @Post('product/:id/:relationName/:relationId')
+  @R.SetRelation()
   setRelationToProduct(@Param(ValidationPipe) relationDto: SetRelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
@@ -88,7 +90,7 @@ export class ProductController {
       .set(relationId);
   }
 
-  @Delete('product/:id/:relationName')
+  @R.UnsetRelation()
   unsetRelationToProduct(@Param(ValidationPipe) relationDto: UnsetRelationDto) {
     const { id, relationName } = relationDto;
     return this.repo

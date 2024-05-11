@@ -6,8 +6,6 @@ import {
   Post,
   Put,
   applyDecorators,
-} from '../__external';
-import {
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
   ApiOkResponse,
@@ -15,7 +13,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
   ApiUnprocessableEntityResponse,
-} from '@nestjs/swagger';
+} from '../__external';
 import { PermissionBuilder, ResourcePermissions } from './auth';
 
 export class RestRouteBuilder {
