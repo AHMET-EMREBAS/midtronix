@@ -4,7 +4,6 @@ import {
   BooleanTransformer,
   DefaultValueTransformer,
   IntegerTransformer,
-  ObjectTransformer,
 } from './transformers';
 
 @Exclude()
@@ -19,10 +18,10 @@ export class PaginatorDto {
   @IntegerTransformer()
   skip?: number;
 
-  @Property({ type: 'object' })
-  @DefaultValueTransformer({ id: 'asc' })
-  @ObjectTransformer()
-  order?: Record<string, 'asc' | 'desc' | 'ASC' | 'DESC'>;
+  // @Property({ type: 'object',   })
+  // @DefaultValueTransformer({ id: 'asc' })
+  // @ObjectTransformer()
+  // order?: Record<string, 'asc' | 'desc' | 'ASC' | 'DESC'>;
 
   @Property({ type: 'boolean' })
   @DefaultValueTransformer(false)
