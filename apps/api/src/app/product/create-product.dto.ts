@@ -1,5 +1,5 @@
 import { ICreateProductDto, IID } from '@mdtx/common';
-import { Exclude, IDDto, IDObjectProperty, Property } from '@mdtx/core';
+import { Exclude, IDObjectProperty, Property } from '@mdtx/core';
 import { PartialType } from '@nestjs/swagger';
 
 @Exclude()

@@ -1,5 +1,5 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { DataSource } from 'typeorm';
+import { DataSource } from '@mdtx/core';
 import { PriceLevel, Product } from './product';
 import * as faker from 'faker';
 import { testDB } from './__test';

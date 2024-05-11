@@ -12,6 +12,3 @@ export interface IOrder<TSku extends IID, TCart extends IID>
   sku: TSku;
   cart: TCart;
 }
-
-export interface ICreateOrderDto
-  extends Omit<IOrder<IID, IID>, keyof IBaseEntity> {}

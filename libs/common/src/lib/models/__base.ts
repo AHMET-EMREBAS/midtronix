@@ -29,7 +29,7 @@ export interface IName extends IBaseEntity {
  * Name and description and timestamp
  */
 export interface IDescription extends IName {
-  description: string;
+  description?: string;
 }
 
 export interface IUrl extends IBaseEntity {

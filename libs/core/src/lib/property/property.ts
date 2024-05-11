@@ -1,6 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import {
   ArrayMaxSize,
   ArrayMinSize,
@@ -23,23 +23,27 @@ export function Property(options?: PropertyOptions) {
     required: options?.required ?? false,
     nullable: options?.required === true ? false : true,
     isArray: options?.isArray ?? false,
-    description: options?.description ?? 'Describe the property',
-    example: options?.example ?? 'No example provided!',
+    description: options?.description ?? undefined,
+    example: options?.example ?? undefined,
     default: options?.default ?? undefined,
     format: options?.format ?? options?.type ?? 'string',
   };
 
-  const decorators: PropertyDecorator[] = [
-    Expose(),
-    ApiProperty({ ...options }),
-  ];
+  const decorators: PropertyDecorator[] = [ApiProperty({ ...options })];
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
-  const { type, isArray, required, minItems, maxItems } = options;
+  const { type, isArray, required, minItems, maxItems, noValidate, exclude } =
+    options;
 
   const validationOptions: ValidationOptions = { each: isArray };
 
+  if (exclude) push(Exclude());
+  else push(Expose());
+
+  if (noValidate) {
+    return applyDecorators(...decorators);
+  }
   // Required or optional validation
   if (required) push(IsNotEmpty(validationOptions));
   else push(IsOptional(validationOptions));

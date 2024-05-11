@@ -2,7 +2,6 @@
 
 import { DataSource, Type } from '@mdtx/core';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { DataSourceOptions } from 'typeorm';
 
 /**
  * Create a test database resource

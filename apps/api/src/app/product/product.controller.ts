@@ -17,7 +17,6 @@ import {
   ValidationPipe,
   Query,
   PaginatorDto,
-  QueryDto,
 } from '@mdtx/core';
 import { Product } from '@mdtx/database';
 import { CreateProductDto, UpdateProductDto } from './create-product.dto';
@@ -36,11 +35,8 @@ export class ProductController {
   }
 
   @Get('products')
-  findProducts(
-    @Query(ValidationPipe) paginator: PaginatorDto,
-    @Query(ValidationPipe) query: QueryDto
-  ) {
-    return this.repo.find({ ...paginator, where: query.search });
+  findProducts(@Query(ValidationPipe) paginator: PaginatorDto) {
+    return this.repo.find({ ...paginator });
   }
 
   @Get('product/:id')

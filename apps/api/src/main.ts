@@ -22,11 +22,6 @@ async function bootstrap() {
 
   await app.listen(port);
 
-  if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => app.close());
-  }
-
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );

@@ -23,6 +23,3 @@ export interface ICustomerAddress<TOwner extends IID>
 export interface ICustomerEmail<TOwner extends IID> extends IEmail<TOwner> {}
 
 export interface ICustomerPhone<TOwner extends IID> extends IPhone<TOwner> {}
-
-export interface ICreateCustomerDto
-  extends Omit<ICustomer<IID, IID>, keyof IBaseEntity> {}

@@ -17,5 +17,7 @@ export type __ExtendedPropertyOptions = {
   type?: PropertyType;
   format?: StringFormat;
   objectType?: Type;
+  noValidate?: boolean;
+  exclude?: boolean;
 };
 export type PropertyOptions = ApiPropertyOptions & __ExtendedPropertyOptions;
