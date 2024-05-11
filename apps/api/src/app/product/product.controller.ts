@@ -18,8 +18,7 @@ import {
   Query,
   PaginatorDto,
 } from '@mdtx/core';
-import { Product } from '@mdtx/database';
-import { CreateProductDto, UpdateProductDto } from './create-product.dto';
+import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
 
 @ApiTags(ProductController.name)
 @Controller()
