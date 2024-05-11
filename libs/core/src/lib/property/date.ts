@@ -1,6 +1,9 @@
-import { IsDateString, ValidationOptions } from 'class-validator';
+import {
+  ValidationOptions,
+  applyDecorators,
+  IsDateString,
+} from '../__external';
 import { PropertyOptions } from './types';
-import { applyDecorators } from '@nestjs/common';
 
 /**
  * Validate date value by type

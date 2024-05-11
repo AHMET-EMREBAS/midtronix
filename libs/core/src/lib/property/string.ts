@@ -2,20 +2,20 @@ import {
   IsDate,
   IsEAN,
   IsEmail,
-  IsIn,
   IsStrongPassword,
   MaxLength,
   MinLength,
   IsUUID,
-  IsUrl,
   IsPhoneNumber,
+  IsIn,
+  IsUrl,
   isNumber,
   isArray,
   IsString,
   ValidationOptions,
-} from 'class-validator';
+  applyDecorators,
+} from '../__external';
 import { PropertyOptions } from './types';
-import { applyDecorators } from '@nestjs/common';
 
 /**
  * Validate string value by maxLength, minLength, format, and enum

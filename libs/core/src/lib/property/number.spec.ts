@@ -1,7 +1,6 @@
 import { PropertyOptions as PO } from './types';
 import { __NumberProperty } from './number';
-import { plainToInstance } from 'class-transformer';
-import { validateSync } from 'class-validator';
+import { plainToInstance, validateSync } from '../__external';
 describe('NumberProperty', () => {
   describe('undefined value test', () => {
     it.each`
@@ -40,8 +39,6 @@ describe('NumberProperty', () => {
 
         const error = errors[0];
 
-        
-
         expect(errorList.length).toBe(
           Object.keys(error.constraints ?? {}).length
         );
@@ -78,7 +75,6 @@ describe('NumberProperty', () => {
           return;
         }
 
-        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );
@@ -114,7 +110,6 @@ describe('NumberProperty', () => {
           return;
         }
 
-        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );

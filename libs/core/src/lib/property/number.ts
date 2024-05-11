@@ -6,9 +6,9 @@ import {
   Max,
   Min,
   ValidationOptions,
-} from 'class-validator';
+  applyDecorators,
+} from '../__external';
 import { PropertyOptions } from './types';
-import { applyDecorators } from '@nestjs/common';
 
 /**
  * Validate number value by maximum, minium, and enum

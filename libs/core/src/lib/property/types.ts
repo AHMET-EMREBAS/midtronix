@@ -1,5 +1,4 @@
-import { Type } from '@nestjs/common';
-import { ApiPropertyOptions } from '@nestjs/swagger';
+import { Type, ApiPropertyOptions } from '../__external';
 
 export type PropertyType = 'string' | 'number' | 'boolean' | 'date' | 'object';
 

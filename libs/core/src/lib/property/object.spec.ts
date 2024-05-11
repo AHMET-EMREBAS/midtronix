@@ -1,8 +1,7 @@
 import { __StringProperty } from './string';
 import { __ObjectProperty } from './object';
 import { PropertyOptions as PO } from './types';
-import { plainToInstance } from 'class-transformer';
-import { validateSync } from 'class-validator';
+import { plainToInstance, validateSync } from '../__external';
 
 class B {
   @__StringProperty()

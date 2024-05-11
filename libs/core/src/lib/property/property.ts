@@ -1,14 +1,15 @@
-import { applyDecorators } from '@nestjs/common';
-import { ApiProperty } from '@nestjs/swagger';
-import { Exclude, Expose } from 'class-transformer';
 import {
+  applyDecorators,
+  ApiProperty,
   ArrayMaxSize,
   ArrayMinSize,
   IsArray,
   IsNotEmpty,
   IsOptional,
   ValidationOptions,
-} from 'class-validator';
+  Exclude,
+  Expose,
+} from '../__external';
 import { PropertyOptions } from './types';
 import { __StringProperty } from './string';
 import { __NumberProperty } from './number';

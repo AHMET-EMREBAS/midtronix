@@ -1,6 +1,5 @@
-import { IsBoolean, ValidationOptions } from 'class-validator';
+import { IsBoolean, ValidationOptions, applyDecorators } from '../__external';
 import { PropertyOptions } from './types';
-import { applyDecorators } from '@nestjs/common';
 
 /**
  * Validate boolean value by type
@@ -11,7 +10,7 @@ export function __BooleanProperty(options?: PropertyOptions) {
 
   options = { ...options, type: 'boolean' };
 
-  const validationOptions:ValidationOptions = { each: !!options.isArray };
+  const validationOptions: ValidationOptions = { each: !!options.isArray };
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 

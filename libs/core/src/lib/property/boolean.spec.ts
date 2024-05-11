@@ -1,5 +1,4 @@
-import { plainToInstance } from 'class-transformer';
-import { validateSync } from 'class-validator';
+import { plainToInstance, validateSync } from '../__external';
 import { __BooleanProperty } from './boolean';
 import { PropertyOptions as PO } from './types';
 
@@ -28,7 +27,6 @@ describe('BooleanProperty', () => {
           return;
         }
 
-        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );

@@ -1,35 +1,12 @@
-/* eslint-disable @nx/enforce-module-boundaries */
 import { IID } from '@mdtx/common';
-import { Type, applyDecorators } from '@nestjs/common';
-import { JoinColumn, JoinTable, ManyToMany, ManyToOne } from 'typeorm';
-export {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
-  ViewColumn,
-  ViewEntity,
-  EventSubscriber,
-  ManyToOne,
-  ManyToMany,
-  OneToMany,
-  OneToOne,
+import {
   JoinColumn,
   JoinTable,
-  EntitySubscriberInterface,
-  DataSource,
-  Repository,
-  ObjectLiteral,
-} from 'typeorm';
-export { PartialType, PickType, OmitType } from '@nestjs/swagger';
-export {
-  TypeOrmModule,
-  InjectRepository,
-  InjectDataSource,
-} from '@nestjs/typeorm';
-
+  ManyToMany,
+  ManyToOne,
+  Type,
+  applyDecorators,
+} from './../__external';
 export function OneRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
     ManyToOne(

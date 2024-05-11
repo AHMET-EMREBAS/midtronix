@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { IsObject, ValidateNested, ValidationOptions } from 'class-validator';
-import { PropertyOptions } from './types';
-import { applyDecorators } from '@nestjs/common';
-import { Type } from 'class-transformer';
 
+import { PropertyOptions } from './types';
+
+import {
+  applyDecorators,
+  IsObject,
+  ValidateNested,
+  ValidationOptions,
+  TypeDef,
+} from '../__external';
 export class EmptyObject {}
 
 export function __ObjectProperty(options?: PropertyOptions) {
@@ -25,7 +30,7 @@ export function __ObjectProperty(options?: PropertyOptions) {
   if (!objectType)
     throw new Error('Object type is required for object property');
 
-  push(Type(() => objectType));
+  push(TypeDef(() => objectType));
 
   return applyDecorators(...decorators);
 }

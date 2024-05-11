@@ -1,7 +1,7 @@
 import { PropertyOptions as PO } from './types';
 import { __StringProperty } from './string';
-import { plainToInstance } from 'class-transformer';
-import { validateSync } from 'class-validator';
+import { plainToInstance, validateSync } from '../__external';
+
 describe('StringProperty', () => {
   describe('undefined value test', () => {
     it.each`
@@ -40,8 +40,6 @@ describe('StringProperty', () => {
 
         const error = errors[0];
 
-        
-
         expect(errorList.length).toBe(
           Object.keys(error.constraints ?? {}).length
         );
@@ -78,7 +76,6 @@ describe('StringProperty', () => {
           return;
         }
 
-        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );
@@ -113,7 +110,6 @@ describe('StringProperty', () => {
           return;
         }
 
-        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );

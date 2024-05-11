@@ -1,5 +1,5 @@
-import { Inject, Provider, Type } from '@nestjs/common';
 import { CreateProviderResult } from '@mdtx/common';
+import { Inject, Provider, Type } from './../__external';
 import { v4 } from 'uuid';
 /**
  * Create class provider, injector, and getToken function for a resource
