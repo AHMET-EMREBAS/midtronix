@@ -6,8 +6,6 @@ import {
   SidenavLeftCenterProvider,
   SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
-import { CategoryComponent } from './category/category.component';
-import { CategoryFormComponent } from './category/cateogy-form.component';
 
 export const InventoryRoutes: Routes = [
   {
@@ -37,9 +35,6 @@ export const InventoryRoutes: Routes = [
       ]),
     ],
 
-    children: [
-      { path: 'category', loadComponent: () => CategoryComponent },
-      { path: 'create-category', loadComponent: () => CategoryFormComponent },
-    ],
+    children: [],
   },
 ];
