@@ -90,15 +90,12 @@ describe('StringProperty', () => {
 
   describe('string array value test', () => {
     it.each`
-      options                                                                 | value                   | errorList
-      ${{ isArray: true } as PO}                                              | ${undefined}            | ${['isString', 'isArray']}
-      ${{ isArray: true, minLength: 3 } as PO}                                | ${undefined}            | ${['isString', 'isArray', 'minLength']}
-      ${{ isArray: true, minLength: 3, maxLength: 5 } as PO}                  | ${undefined}            | ${['isString', 'isArray', 'minLength', 'maxLength']}
-      ${{ isArray: true, minLength: 3, maxLength: 5, format: 'email' } as PO} | ${undefined}            | ${['isString', 'isArray', 'minLength', 'maxLength', 'isEmail']}
-      ${{ isArray: true } as PO}                                              | ${[]}                   | ${[]}
-      ${{ isArray: true, minItems: 1, maxItems: 3 } as PO}                    | ${[]}                   | ${['arrayMinSize']}
-      ${{ isArray: true, minItems: 1, maxItems: 3 } as PO}                    | ${['a', 'c', 'c']}      | ${[]}
-      ${{ isArray: true, minItems: 1, maxItems: 3 } as PO}                    | ${['a', 'c', 'c', 'd']} | ${['arrayMaxSize']}
+      options                                                                 | value        | errorList
+      ${{ isArray: true } as PO}                                              | ${undefined} | ${['isString']}
+      ${{ isArray: true, minLength: 3 } as PO}                                | ${undefined} | ${['isString', 'minLength']}
+      ${{ isArray: true, minLength: 3, maxLength: 5 } as PO}                  | ${undefined} | ${['isString', 'minLength', 'maxLength']}
+      ${{ isArray: true, minLength: 3, maxLength: 5, format: 'email' } as PO} | ${undefined} | ${['isString', 'minLength', 'maxLength', 'isEmail']}
+      ${{ isArray: true } as PO}                                              | ${[]}        | ${[]}
     `(
       'should validate with $options and return $errorList errors',
       ({ value, options, errorList }) => {

@@ -6,21 +6,18 @@ import {
   IsStrongPassword,
   MaxLength,
   MinLength,
-  ArrayMinSize,
-  ArrayMaxSize,
   IsUUID,
   IsUrl,
   IsPhoneNumber,
   isNumber,
   isArray,
   IsString,
-  IsArray,
 } from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
 /**
- * Validate string value
+ * Validate string value by maxLength, minLength, format, and enum
  * @param options {@link PropertyOptions}
  */
 export function __StringProperty(options?: PropertyOptions) {
@@ -35,12 +32,6 @@ export function __StringProperty(options?: PropertyOptions) {
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
   push(IsString(vo));
-
-  if (options.isArray) {
-    push(IsArray());
-    if (options.minItems) push(ArrayMinSize(options.minItems));
-    if (options.maxItems) push(ArrayMaxSize(options.maxItems));
-  }
 
   if (isNumber(minLength)) push(MinLength(minLength, vo));
   if (isNumber(maxLength)) push(MaxLength(maxLength, vo));

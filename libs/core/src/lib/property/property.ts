@@ -2,6 +2,9 @@ import { applyDecorators } from '@nestjs/common';
 import { ApiPropertyOptions, ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
 import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsArray,
   IsDate,
   IsEAN,
   IsEmail,
@@ -18,7 +21,6 @@ import {
 } from 'class-validator';
 import { IDDto } from '../dto';
 import { PropertyOptions } from './types';
-
 
 export function Property(options?: PropertyOptions) {
   const decorators: PropertyDecorator[] = [
@@ -39,7 +41,15 @@ export function Property(options?: PropertyOptions) {
     decorators.push(IsOptional(vo));
   }
 
+  const push = (pd: PropertyDecorator) => decorators.push(pd);
   if (options) {
+    
+    if (options.isArray) {
+      push(IsArray());
+      if (options.minItems) push(ArrayMinSize(options.minItems));
+      if (options.maxItems) push(ArrayMaxSize(options.maxItems));
+    }
+
     if (options.type === 'string') {
       const { minLength, maxLength, format, enum: enums } = options;
 
