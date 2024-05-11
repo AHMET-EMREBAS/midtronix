@@ -8,6 +8,8 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
+declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
@@ -19,6 +21,12 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, doc);
 
   await app.listen(port);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
+
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
