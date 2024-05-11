@@ -1,6 +1,6 @@
 import { CreateProviderResult } from '@mdtx/common';
-import { Inject, Provider, Type } from './../__external';
-import { v4 } from 'uuid';
+import { Inject, Provider, Type, v4 } from './../__external';
+
 /**
  * Create class provider, injector, and getToken function for a resource
  * @param tokenPrefix

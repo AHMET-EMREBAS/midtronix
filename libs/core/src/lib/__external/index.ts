@@ -1,4 +1,16 @@
-export { Type, applyDecorators, Inject, Provider } from '@nestjs/common';
+export {
+  Type,
+  applyDecorators,
+  Inject,
+  Provider,
+  SetMetadata,
+  createParamDecorator,
+  CustomDecorator,
+  ExecutionContext,
+} from '@nestjs/common';
+export { Reflector } from '@nestjs/core';
+
+export { v4 } from 'uuid';
 export {
   Entity,
   Column,
