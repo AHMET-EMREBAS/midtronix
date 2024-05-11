@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    color="primary"
+    [routerLink]="['..', 'create-category']"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    color="accent"
+    (click)="deleteItems(table.selectedItems)"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <div style="flex-grow: 1"></div>
+  <input
+    style="height: 3em; padding-left: 2em"
+    type="search"
+    [formControl]="searchControl"
+    placeholder="Search"
+  />
+</mat-toolbar>
+
+<mdtx-table
+  #table
+  [dataSource]="(filteredData | async)!"
+  [columns]="['id', 'name', 'read']"
+  [displayedColumns]="['id', 'name', 'read']"
+  conditionalColumn="read"
+></mdtx-table>

@@ -23323,12 +23323,12 @@
     "directives": [
         {
             "name": "AppLogoDirective",
-            "id": "directive-AppLogoDirective-1ccc3a1fa1d321eef0699faf556a6fe33bd543787e85e12b35c34112fc70bb429b96f9d5ab27770b46c35bc856434a3169eec259fe4461e5d6ad6d31dbded63d",
+            "id": "directive-AppLogoDirective-e2d716a3976c6b274d79701e49cf044d22e2c37e24b8f0017e39fd08358fa3ace231b58dbc9650b16af83ddee3e3ba9308098588ba3de7761c204eeeb57b7eb9",
             "file": "libs/material/core/src/lib/directives/logo.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, ElementRef, OnInit } from '@angular/core';\r\nimport { IElementRef } from '../interface';\r\n\r\nexport const APP_LOGO_PATH = 'assets/icons/icon-72x72.png';\r\n@Directive({\r\n  selector: '[mdtxLogo]',\r\n  standalone: true,\r\n})\r\nexport class AppLogoDirective implements IElementRef<HTMLImageElement>, OnInit {\r\n  constructor(public elementRef: ElementRef<HTMLImageElement>) {}\r\n\r\n  ngOnInit(): void {\r\n    this.elementRef.nativeElement.classList.add('logo');\r\n    this.elementRef.nativeElement.setAttribute('src', APP_LOGO_PATH);\r\n    this.elementRef.nativeElement.setAttribute('alt', $localize`App Logo`);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Directive, ElementRef, OnInit } from '@angular/core';\r\nimport { IElementRef } from '../interface';\r\n\r\nexport const APP_LOGO_PATH = 'assets/icons/icon-72x72.png';\r\n@Directive({\r\n  selector: '[mdtxLogo]',\r\n  standalone: true,\r\n})\r\nexport class AppLogoDirective implements IElementRef<HTMLImageElement>, OnInit {\r\n  constructor(public elementRef: ElementRef<HTMLImageElement>) {}\r\n\r\n  ngOnInit(): void {\r\n    this.elementRef.nativeElement.classList.add('logo');\r\n    this.elementRef.nativeElement.setAttribute('src', APP_LOGO_PATH);\r\n    this.elementRef.nativeElement.setAttribute('alt', `App Logo`);\r\n  }\r\n}\r\n",
             "selector": "[mdtxLogo]",
             "providers": [],
             "hostDirectives": [],
@@ -24685,12 +24685,12 @@
         },
         {
             "name": "ScrollDirective",
-            "id": "directive-ScrollDirective-21090c7f9db5f831bded01127e16a2484a2c8d4157e5a0e31c49424989667a226b8ffae294bc864e7c50c20659474d0776a6549104a673afd319ddd536e22005",
+            "id": "directive-ScrollDirective-9f4c98911a15d6b3a4823ea8b108013ce3551d3c1182abac201772499e259f702692483699cffdfcec08e44e1d763479f79869e973cc05b972e140f0cfc9b001",
             "file": "libs/material/core/src/lib/directives/scroll.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import {\n  Directive,\n  ElementRef,\n  HostListener,\n  Input,\n  OnInit,\n} from '@angular/core';\n\n@Directive({\n  selector: '[mdtxScroll]',\n  standalone: true,\n})\nexport class ScrollDirective implements OnInit {\n  @Input() mdtxScroll?: 'x' | 'y';\n\n  startX: number | null = null;\n  startY: number | null = null;\n\n  @HostListener('mousedown', ['$event'])\n  mousedownHandler(event: any) {\n    this.cursorPointer();\n    this.startX = event.pageX;\n    this.startY = event.pageY;\n  }\n\n  @HostListener('mousemove', ['$event'])\n  mousemoveHandler(event: any) {\n    if (this.startX !== null && this.startY !== null) {\n      const deltaX = this.startX - event.pageX;\n      const deltaY = this.startY - event.pageY;\n\n      // If horizontal scroll detected, prevent default vertical scroll behavior\n      if (this.mdtxScroll === 'x') {\n        if (Math.abs(deltaX) > Math.abs(deltaY)) {\n          event.preventDefault();\n          this.ref.nativeElement.scrollBy(deltaX, 0);\n        }\n      } else if (this.mdtxScroll === 'y') {\n        // if (Math.abs(deltaY) < Math.abs(deltaX)) {\n        event.preventDefault();\n        this.ref.nativeElement.scrollBy(0, deltaY);\n        // }\n      }\n\n      this.startX = event.pageX;\n      this.startY = event.pageY;\n    }\n  }\n\n  @HostListener('mouseup')\n  mouseupHander() {\n    this.cursorDefault();\n    this.startX = null;\n    this.startY = null;\n  }\n\n  constructor(protected readonly ref: ElementRef<HTMLElement>) {}\n\n  protected cursorPointer() {\n    if (this.mdtxScroll === 'x') {\n      this.ref.nativeElement.style.setProperty('cursor', 'w-resize');\n    } else if (this.mdtxScroll === 'y') {\n      this.ref.nativeElement.style.setProperty('cursor', 's-resize');\n    }\n  }\n  protected cursorDefault() {\n    this.ref.nativeElement.style.setProperty('cursor', 'initial');\n  }\n  ngOnInit(): void {\n    if (!this.mdtxScroll) this.mdtxScroll = 'y';\n  }\n}\n",
+            "sourceCode": "import {\r\n  Directive,\r\n  ElementRef,\r\n  HostListener,\r\n  Input,\r\n  OnInit,\r\n} from '@angular/core';\r\n\r\n@Directive({\r\n  selector: '[mdtxScroll]',\r\n  standalone: true,\r\n})\r\nexport class ScrollDirective implements OnInit {\r\n  @Input() mdtxScroll?: 'x' | 'y';\r\n\r\n  startX: number | null = null;\r\n  startY: number | null = null;\r\n\r\n  @HostListener('mousedown', ['$event'])\r\n  mousedownHandler(event: any) {\r\n    console.log('Mouse down : ', event);\r\n    this.cursorPointer();\r\n    this.startX = event.pageX;\r\n    this.startY = event.pageY;\r\n  }\r\n\r\n  @HostListener('mousemove', ['$event'])\r\n  mousemoveHandler(event: any) {\r\n    console.log('Mouse move : ', event);\r\n    if (this.startX !== null && this.startY !== null) {\r\n      const deltaX = this.startX - event.pageX;\r\n      const deltaY = this.startY - event.pageY;\r\n\r\n      // If horizontal scroll detected, prevent default vertical scroll behavior\r\n      if (this.mdtxScroll === 'x') {\r\n        if (Math.abs(deltaX) > Math.abs(deltaY)) {\r\n          event.preventDefault();\r\n          this.ref.nativeElement.scrollBy(deltaX, 0);\r\n        }\r\n      } else if (this.mdtxScroll === 'y') {\r\n        // if (Math.abs(deltaX) < Math.abs(deltaY)) {\r\n        event.preventDefault();\r\n        console.log('Scrolling : ', deltaY);\r\n        this.ref.nativeElement.scrollBy(0, deltaY);\r\n        // }\r\n      }\r\n\r\n      this.startX = event.pageX;\r\n      this.startY = event.pageY;\r\n    }\r\n  }\r\n\r\n  @HostListener('mouseup')\r\n  mouseupHander() {\r\n    console.log('Mouse up : ', event);\r\n    this.cursorDefault();\r\n    this.startX = null;\r\n    this.startY = null;\r\n  }\r\n\r\n  constructor(protected readonly ref: ElementRef<HTMLElement>) {}\r\n\r\n  protected cursorPointer() {\r\n    if (this.mdtxScroll === 'x') {\r\n      this.ref.nativeElement.style.setProperty('cursor', 'w-resize');\r\n    } else if (this.mdtxScroll === 'y') {\r\n      this.ref.nativeElement.style.setProperty('cursor', 's-resize');\r\n    }\r\n  }\r\n  protected cursorDefault() {\r\n    this.ref.nativeElement.style.setProperty('cursor', 'initial');\r\n  }\r\n  ngOnInit(): void {\r\n    if (!this.mdtxScroll) this.mdtxScroll = 'y';\r\n  }\r\n}\r\n",
             "selector": "[mdtxScroll]",
             "providers": [],
             "hostDirectives": [],
@@ -24742,7 +24742,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27
+                    "line": 28
                 },
                 {
                     "name": "mouseup",
@@ -24750,7 +24750,7 @@
                     "argsDecorator": [],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51
+                    "line": 54
                 }
             ],
             "propertiesClass": [
@@ -24782,7 +24782,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 66,
+                    "line": 70,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -24795,7 +24795,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 59,
+                    "line": 63,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -24852,7 +24852,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -24882,7 +24882,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 54,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -24901,7 +24901,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 69,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -24923,7 +24923,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 55,
+                "line": 59,
                 "jsdoctags": [
                     {
                         "name": "ref",
@@ -25157,6 +25157,538 @@
         }
     ],
     "components": [
+        {
+            "name": "AboutComponent",
+            "id": "component-AboutComponent-d37d7bf18699a937b2ca941266eb55855ec5c63aefdb207334b0c17dfec76c8d0c8924cfc7389c95781adc5bd1438e5b9b8b37f7e5eb653ad42c491087f33bb3",
+            "file": "libs/material/layout/src/lib/sample-layout/about/about.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-about",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./about.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-about',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './about.component.html',\r\n  styleUrl: './about.component.scss',\r\n})\r\nexport class AboutComponent {}\r\n",
+            "styleUrl": "./about.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>about works!</p>\r\n"
+        },
+        {
+            "name": "AppLayoutComponent",
+            "id": "component-AppLayoutComponent-024bb7351ff39a69e8a4ea937fb7b1024742a2b5682c7c72fa6c2f79c2632732283a268291db153147a81c3189661e22376f6fb86beedc9b0fb33efa01f4ed0f",
+            "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-app-layout",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./app-layout.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "contentBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "contentCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "contentTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "progressValue",
+                    "defaultValue": "100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 46,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "rightSidenavIcon",
+                    "defaultValue": "'settings'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "Icon",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavLeftBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 60,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavLeftCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 61,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavLeftTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 59,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavRightBottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 57,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavRightCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 58,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "sidenavRightTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 56,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "statusbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "statusbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "statusbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 51,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "toolbarCenter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "toolbarLeft",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 47,
+                    "type": "Navlist",
+                    "decorators": []
+                },
+                {
+                    "name": "toolbarRight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 48,
+                    "type": "Navlist",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Title",
+                    "optional": false,
+                    "description": "",
+                    "line": 64,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "LayoutModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NavlistComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, Input, Optional } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LayoutModule } from '../layout/layout.module';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Icon, Navlist, createValueProvider } from '@mdtx/material/core';\r\nimport { NavlistComponent } from '../navlist/navlist.component';\r\nimport { Title } from '@angular/platform-browser';\r\n\r\nexport const ToolbarLeftProvider = createValueProvider<Navlist>('toolbarLeft');\r\nexport const ToolbarRightProvider =\r\n  createValueProvider<Navlist>('toolbarRight');\r\nexport const ToolbarCenterProvider =\r\n  createValueProvider<Navlist>('toolbarCenter');\r\nexport const StatusbarLeftProvider =\r\n  createValueProvider<Navlist>('statusbarLeft');\r\nexport const StatusbarRightProvider =\r\n  createValueProvider<Navlist>('statusbarRight');\r\nexport const StatusbarCenterProvider =\r\n  createValueProvider<Navlist>('statusbarCenter');\r\nexport const ContentTopProvider = createValueProvider<Navlist>('contentTop');\r\nexport const ContentBottomProvider =\r\n  createValueProvider<Navlist>('contentBottom');\r\nexport const ContentCenterProvider =\r\n  createValueProvider<Navlist>('contentCenter');\r\nexport const SidenavRightTopProvider =\r\n  createValueProvider<Navlist>('sidenavRightTop');\r\nexport const SidenavRightBottomProvider =\r\n  createValueProvider<Navlist>('sidenavRightBottom');\r\nexport const SidenavRightCenterProvider =\r\n  createValueProvider<Navlist>('sidenavRightCenter');\r\nexport const SidenavLeftTopProvider =\r\n  createValueProvider<Navlist>('sidenavLeftTop');\r\nexport const SidenavLeftBottomProvider =\r\n  createValueProvider<Navlist>('sidenavLeftBottom');\r\nexport const SidenavLeftCenterProvider =\r\n  createValueProvider<Navlist>('sidenavLeftCenter');\r\n@Component({\r\n  selector: 'mdtx-app-layout',\r\n  standalone: true,\r\n  imports: [CommonModule, LayoutModule, RouterModule, NavlistComponent],\r\n  templateUrl: './app-layout.component.html',\r\n  styleUrl: './app-layout.component.scss',\r\n})\r\nexport class AppLayoutComponent {\r\n  @Input() rightSidenavIcon?:Icon = 'settings';\r\n  @Input() progressValue = 100;\r\n  @Input() toolbarLeft?: Navlist;\r\n  @Input() toolbarRight?: Navlist;\r\n  @Input() toolbarCenter?: Navlist;\r\n  @Input() statusbarLeft?: Navlist;\r\n  @Input() statusbarRight?: Navlist;\r\n  @Input() statusbarCenter?: Navlist;\r\n  @Input() contentTop?: Navlist;\r\n  @Input() contentBottom?: Navlist;\r\n  @Input() contentCenter?: Navlist;\r\n  @Input() sidenavRightTop?: Navlist;\r\n  @Input() sidenavRightBottom?: Navlist;\r\n  @Input() sidenavRightCenter?: Navlist;\r\n  @Input() sidenavLeftTop?: Navlist;\r\n  @Input() sidenavLeftBottom?: Navlist;\r\n  @Input() sidenavLeftCenter?: Navlist;\r\n\r\n  constructor(\r\n    public readonly title: Title,\r\n    @Optional() @Inject(ToolbarLeftProvider.token()) toolbarLeft?: Navlist,\r\n    @Optional() @Inject(ToolbarRightProvider.token()) toolbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(ToolbarCenterProvider.token())\r\n    toolbarCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarLeftProvider.token())\r\n    statusbarLeft?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarRightProvider.token())\r\n    statusbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarCenterProvider.token())\r\n    statusbarCenter?: Navlist,\r\n    @Optional() @Inject(ContentTopProvider.token()) contentTop?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentBottomProvider.token())\r\n    contentBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentCenterProvider.token())\r\n    contentCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightTopProvider.token())\r\n    sidenavRightTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightBottomProvider.token())\r\n    sidenavRightBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightCenterProvider.token())\r\n    sidenavRightCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftTopProvider.token())\r\n    sidenavLeftTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftBottomProvider.token())\r\n    sidenavLeftBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftCenterProvider.token())\r\n    sidenavLeftCenter?: Navlist\r\n  ) {\r\n    if (toolbarLeft) this.toolbarLeft = toolbarLeft;\r\n    if (toolbarRight) this.toolbarRight = toolbarRight;\r\n    if (toolbarCenter) this.toolbarCenter = toolbarCenter;\r\n    if (statusbarLeft) this.statusbarLeft = statusbarLeft;\r\n    if (statusbarRight) this.statusbarRight = statusbarRight;\r\n    if (statusbarCenter) this.statusbarCenter = statusbarCenter;\r\n    if (contentTop) this.contentTop = contentTop;\r\n    if (contentBottom) this.contentBottom = contentBottom;\r\n    if (contentCenter) this.contentCenter = contentCenter;\r\n    if (sidenavRightTop) this.sidenavRightTop = sidenavRightTop;\r\n    if (sidenavRightBottom) this.sidenavRightBottom = sidenavRightBottom;\r\n    if (sidenavRightCenter) this.sidenavRightCenter = sidenavRightCenter;\r\n    if (sidenavLeftTop) this.sidenavLeftTop = sidenavLeftTop;\r\n    if (sidenavLeftBottom) this.sidenavLeftBottom = sidenavLeftBottom;\r\n    if (sidenavLeftCenter) this.sidenavLeftCenter = sidenavLeftCenter;\r\n  }\r\n}\r\n",
+            "styleUrl": "./app-layout.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "title",
+                        "type": "Title",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "toolbarLeft",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "toolbarRight",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "toolbarCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "statusbarLeft",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "statusbarRight",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "statusbarCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "contentTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "contentBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "contentCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavRightTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavRightBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavRightCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavLeftTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavLeftBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    },
+                    {
+                        "name": "sidenavLeftCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "line": 61,
+                "jsdoctags": [
+                    {
+                        "name": "title",
+                        "type": "Title",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "toolbarLeft",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "toolbarRight",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "toolbarCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "statusbarLeft",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "statusbarRight",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "statusbarCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "contentTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "contentBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "contentCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavRightTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavRightBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavRightCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavLeftTop",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavLeftBottom",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "sidenavLeftCenter",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mdtx-layout [progressValue]=\"100\" [rightSidenavIcon]=\"rightSidenavIcon\">\r\n  <ng-template mdtxToolbarLeft>\r\n    {{ title.getTitle() }}\r\n    <mdtx-navlist [items]=\"toolbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxToolbarRight\r\n    ><mdtx-navlist [items]=\"toolbarRight\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxToolbarCenter\r\n    ><mdtx-navlist [items]=\"toolbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxStatusbarLeft\r\n    ><mdtx-navlist [items]=\"statusbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxStatusbarRight\r\n    ><mdtx-navlist [items]=\"statusbarRight\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxStatusbarCenter\r\n    ><mdtx-navlist [items]=\"statusbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxSidenavLeftTop\r\n    ><mdtx-navlist [items]=\"sidenavLeftTop\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavLeftCenter\r\n    ><mdtx-navlist [items]=\"sidenavLeftCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavLeftBottom\r\n    ><mdtx-navlist [items]=\"sidenavLeftBottom\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxSidenavRightTop\r\n    ><mdtx-navlist [items]=\"sidenavRightTop\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavRightCenter\r\n    ><mdtx-navlist [items]=\"sidenavRightCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavRightBottom\r\n    ><mdtx-navlist [items]=\"sidenavRightBottom\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxContentCenter>\r\n    <router-outlet></router-outlet>\r\n  </ng-template>\r\n</mdtx-layout>\r\n"
+        },
         {
             "name": "BaseFormComponent",
             "id": "component-BaseFormComponent-39fa13b8db7e527a7b34a6912d4fd30f9bc30a614904fe2a12e33d6ccc34dbfe416c5d5b5c9a4b8ceeb4dd7a4a232a691497348ef6777270a29b114af11e07a1",
@@ -25611,6 +26143,49 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "HomeComponent",
+            "id": "component-HomeComponent-a067810462c8a2a962dc3fdf5754deb65d645cc580602754af6fcfde59200233be5246ded7e3a720cd35c7577509580dee38d7bb7b2ae24431057774782a82ec",
+            "file": "libs/material/layout/src/lib/sample-layout/home/home.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-home",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./home.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-home',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './home.component.html',\r\n  styleUrl: './home.component.scss',\r\n})\r\nexport class HomeComponent {}\r\n",
+            "styleUrl": "./home.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>home works!</p>\r\n"
         },
         {
             "name": "InputAutocompleteComponent",
@@ -30723,7 +31298,7 @@
         },
         {
             "name": "LayoutComponent",
-            "id": "component-LayoutComponent-a3cb61d07b426fdaa07d9288afb698df3385f8a5bcfbe77df8eee96d452523333e70d85f0f0fceaff2af06e2573292146329382428851bb354afb0e168f5c9b5",
+            "id": "component-LayoutComponent-d20a8e4ff05f50143dd19a1066d454e0989e00965145774c921e9679b7f329d0d4a8a52bd448aa15934638e79a56ca2d86b8dc1a971aa32248d28918a2316383",
             "file": "libs/material/layout/src/lib/layout/layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -30749,8 +31324,17 @@
                     "defaultValue": "100",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 43,
+                    "line": 44,
                     "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "rightSidenavIcon",
+                    "defaultValue": "'settings'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 45,
+                    "type": "Icon",
                     "decorators": []
                 }
             ],
@@ -31139,7 +31723,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatMenuModule, MenuPositionY } from '@angular/material/menu';\nimport { MatListModule } from '@angular/material/list';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport {\n  ViewportDirective,\n  FullscreenDirective,\n  ScrollDirective,\n} from '@mdtx/material/core';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { LayoutDirectives } from './layout.directive';\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\nimport { BaseLayoutComponent } from './base-layout.component';\n@Component({\n  selector: 'mdtx-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatSidenavModule,\n    MatMenuModule,\n    MatListModule,\n    MatButtonModule,\n    MatIconModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatToolbarModule,\n    MatProgressBarModule,\n    TemplateOutletComponent,\n    FullscreenDirective,\n    ViewportDirective,\n    ScrollDirective,\n  ],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.scss',\n  providers: [...LayoutDirectives],\n})\nexport class LayoutComponent extends BaseLayoutComponent {\n  @Input() progressValue = 100;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatMenuModule, MenuPositionY } from '@angular/material/menu';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  ViewportDirective,\r\n  FullscreenDirective,\r\n  ScrollDirective,\r\n  Icon,\r\n} from '@mdtx/material/core';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { LayoutDirectives } from './layout.directive';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { BaseLayoutComponent } from './base-layout.component';\r\n@Component({\r\n  selector: 'mdtx-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSidenavModule,\r\n    MatMenuModule,\r\n    MatListModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatToolbarModule,\r\n    MatProgressBarModule,\r\n    TemplateOutletComponent,\r\n    FullscreenDirective,\r\n    ViewportDirective,\r\n    ScrollDirective,\r\n  ],\r\n  templateUrl: './layout.component.html',\r\n  styleUrl: './layout.component.scss',\r\n  providers: [...LayoutDirectives],\r\n})\r\nexport class LayoutComponent extends BaseLayoutComponent {\r\n  @Input() progressValue = 100;\r\n  @Input() rightSidenavIcon?: Icon = 'settings';\r\n}\r\n",
             "styleUrl": "./layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -31147,7 +31731,7 @@
             "extends": [
                 "BaseLayoutComponent"
             ],
-            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\n  <!-- ################### TOOLBAR START -->\n  <mat-toolbar color=\"primary\" mdtxScroll=\"x\">\n    <div class=\"row-container\">\n      <button (click)=\"sidenavLeftRef.open()\">\n        <mat-icon>menu</mat-icon>\n      </button>\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\n\n      <button (click)=\"sidenavRightRef.open()\">\n        <mat-icon>settings</mat-icon>\n      </button>\n    </div>\n  </mat-toolbar>\n  <!-- ################### TOOLBAR END -->\n\n  <!-- ################### PROGRESSBAR START -->\n  <mat-progress-bar\n    mode=\"determinate\"\n    [value]=\"progressValue\"\n    color=\"accent\"\n  ></mat-progress-bar>\n  <!-- ################### PROGRESSBAR END -->\n\n  <!-- ######################### SIDENAV CONTAINER START -->\n  <mat-sidenav-container>\n    <!-- ######################### LEFT SIDENAV START -->\n    <mat-sidenav #sidenavLeftRef position=\"start\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavLeftBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!-- ######################### LEFT SIDENAV END -->\n\n    <!-- #########################  SIDENAV RIGHT START -->\n    <mat-sidenav #sidenavRightRef position=\"end\">\n      <div class=\"column-container\" mdtxScroll=\"y\">\n        <!-- TOP -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightTop\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- CENTER -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightCenter\"\n          ></mdtx-template-outlet>\n        </div>\n        <!-- BOTTOM -->\n        <div class=\"column-container\">\n          <mdtx-template-outlet\n            [items]=\"sidenavRightBottom\"\n          ></mdtx-template-outlet>\n        </div>\n      </div>\n    </mat-sidenav>\n    <!-- ####################### SIDENAV RIGHT END  -->\n\n    <!-- ###################### SIDENAV CONTENT START  -->\n    <mat-sidenav-content>\n      <!-- TOP -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\n      </div>\n\n      <!-- CENTER -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\n      </div>\n\n      <!-- BOTTOM -->\n      <div class=\"column-container\">\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\n      </div>\n    </mat-sidenav-content>\n    <!-- ####################### SIDENAV CONTENT END -->\n  </mat-sidenav-container>\n  <!-- ######################### SIDENAV CONTAINER END -->\n\n  <!-- ################################ STATUSBAR START -->\n  <mat-toolbar mdtxScroll=\"x\" color=\"accent\">\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container flex-grow-1\">\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\n    </div>\n    <div class=\"row-container\">\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\n    </div>\n  </mat-toolbar>\n  <!-- ################################ STATUSBAR END -->\n</div>\n"
+            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\r\n  <!-- ################### TOOLBAR START -->\r\n  <mat-toolbar color=\"primary\">\r\n    <div class=\"row-container\">\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavLeftRef.toggle()\"\r\n        aria-label=\"Toggle Left Sidenav\"\r\n      >\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container center\">\r\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container right\">\r\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavRightRef.toggle()\"\r\n        aria-label=\"Toggle Right Sidenav\"\r\n      >\r\n        <mat-icon>{{ rightSidenavIcon }}</mat-icon>\r\n      </button>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################### TOOLBAR END -->\r\n\r\n  <!-- ################### PROGRESSBAR START -->\r\n  <mat-progress-bar\r\n    mode=\"determinate\"\r\n    [value]=\"progressValue\"\r\n    color=\"accent\"\r\n    aria-label=\"Progressbar\"\r\n  ></mat-progress-bar>\r\n  <!-- ################### PROGRESSBAR END -->\r\n\r\n  <!-- ######################### SIDENAV CONTAINER START -->\r\n  <mat-sidenav-container>\r\n    <!-- ######################### LEFT SIDENAV START -->\r\n    <mat-sidenav\r\n      #sidenavLeftRef\r\n      position=\"start\"\r\n      [opened]=\"screen.isNotHandset()\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\">\r\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div class=\"column-container center\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div class=\"column-container bottom\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ######################### LEFT SIDENAV END -->\r\n\r\n    <!-- #########################  SIDENAV RIGHT START -->\r\n    <mat-sidenav\r\n      #sidenavRightRef\r\n      position=\"end\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightTop\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n        <div class=\"column-container center\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div class=\"column-container bottom\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ####################### SIDENAV RIGHT END  -->\r\n\r\n    <!-- ###################### SIDENAV CONTENT START  -->\r\n    <mat-sidenav-content>\r\n      <!-- TOP -->\r\n      <div class=\"column-container\">\r\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\r\n      </div>\r\n\r\n      <!-- CENTER -->\r\n      <div class=\"column-container\">\r\n        <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\r\n      </div>\r\n\r\n      <!-- BOTTOM -->\r\n      <div class=\"column-container\">\r\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\r\n      </div>\r\n    </mat-sidenav-content>\r\n    <!-- ####################### SIDENAV CONTENT END -->\r\n  </mat-sidenav-container>\r\n  <!-- ######################### SIDENAV CONTAINER END -->\r\n\r\n  <!-- ################################ STATUSBAR START -->\r\n  <mat-toolbar color=\"accent\">\r\n    <div class=\"row-container\">\r\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container flex-grow-1 center\">\r\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container right\">\r\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################################ STATUSBAR END -->\r\n</div>\r\n"
         },
         {
             "name": "LocalStoreComponent",
@@ -31212,6 +31796,122 @@
             "implements": [
                 "OnInit"
             ]
+        },
+        {
+            "name": "NavlistComponent",
+            "id": "component-NavlistComponent-99b11e421e68aec6dd62e282e4a1ff8ec570c4085803993f49b7240661322a48401d22157e06742b7e34b18b7548b923bfa563d06d0a2b6b7f441eb63f80f563",
+            "file": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-navlist",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navlist.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "inToolbar",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "Navlist",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDividerModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatListModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ViewportDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, Input, Optional } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport {\r\n  Navlist,\r\n  ViewportDirective,\r\n  createValueProvider,\r\n} from '@mdtx/material/core';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { RouterModule } from '@angular/router';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatDividerModule } from '@angular/material/divider';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\n\r\nexport const NavlistProvider = createValueProvider<Navlist>('navlist');\r\nexport const BaseRouteProvider = createValueProvider<string>('baseRoute');\r\n@Component({\r\n  selector: 'mdtx-navlist',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    RouterModule,\r\n    MatDividerModule,\r\n    MatListModule,\r\n    MatIconModule,\r\n    ViewportDirective,\r\n    MatButtonModule,\r\n    MatTooltipModule,\r\n  ],\r\n  templateUrl: './navlist.component.html',\r\n  styleUrl: './navlist.component.scss',\r\n})\r\nexport class NavlistComponent {\r\n  @Input() inToolbar?: boolean;\r\n  @Input() items?: Navlist;\r\n\r\n  constructor(@Optional() @Inject(NavlistProvider.token()) items?: Navlist) {\r\n    if (items) this.items = items;\r\n  }\r\n}\r\n",
+            "styleUrl": "./navlist.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "items",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true
+                    }
+                ],
+                "line": 35,
+                "jsdoctags": [
+                    {
+                        "name": "items",
+                        "type": "Navlist",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "optional": true,
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<span\r\n  #screen=\"mdtxViewport\"\r\n  mdtxViewport\r\n  style=\"position: fixed; z-index: 0\"\r\n></span>\r\n\r\n<ng-template #navListItem let-item=\"item\">\r\n  <a\r\n    mat-list-item\r\n    [routerLink]=\"[item.route]\"\r\n    #routerLinkActive=\"routerLinkActive\"\r\n    routerLinkActive\r\n  >\r\n    <span matListItemTitle  [class.bold]=\"routerLinkActive.isActive\">{{ item.label }}</span>\r\n    <!-- <span matListItemLine>{{ item.label }}</span> -->\r\n    <span matListItemIcon>\r\n      <mat-icon\r\n        [color]=\"item.color ?? 'primary'\"\r\n        [class.fill]=\"routerLinkActive.isActive\"\r\n      >\r\n        {{ item.icon }}\r\n      </mat-icon>\r\n    </span>\r\n  </a>\r\n</ng-template>\r\n\r\n<ng-template #navButtonItem let-item=\"item\">\r\n  @if(screen.isHandset()){\r\n  <button\r\n    mat-icon-button\r\n    [routerLink]=\"[item.route]\"\r\n    #routerLinkActive=\"routerLinkActive\"\r\n    routerLinkActive\r\n  >\r\n    <mat-icon [class.fill]=\"routerLinkActive.isActive\">\r\n      {{ item.icon }}\r\n    </mat-icon>\r\n  </button>\r\n  } @else {\r\n\r\n  <button\r\n    mat-stroked-button\r\n    [routerLink]=\"[item.route]\"\r\n    #routerLinkActive=\"routerLinkActive\"\r\n    routerLinkActive=\"mat-raised-button\"\r\n  >\r\n    <mat-icon>{{ item.icon }}</mat-icon>\r\n    {{ item.label }}\r\n  </button>\r\n  }\r\n</ng-template>\r\n\r\n<ng-template #navlist>\r\n  <mat-nav-list>\r\n    @for(item of items; track item){ @if(item.divider){\r\n    <mat-divider></mat-divider>\r\n    } @else {\r\n    <ng-container\r\n      *ngTemplateOutlet=\"navListItem; context: { item }\"\r\n    ></ng-container>\r\n    } }\r\n  </mat-nav-list>\r\n</ng-template>\r\n\r\n<ng-template #navbuttons>\r\n  <div class=\"row-container\">\r\n    @for(item of items; track item){ @if(item.divider){\r\n    <mat-divider></mat-divider>\r\n    } @else {\r\n    <ng-container\r\n      *ngTemplateOutlet=\"navButtonItem; context: { item }\"\r\n    ></ng-container>\r\n    } }\r\n  </div>\r\n</ng-template>\r\n\r\n@if(inToolbar){\r\n<ng-container *ngTemplateOutlet=\"navbuttons\"></ng-container>\r\n} @else {\r\n\r\n<ng-container *ngTemplateOutlet=\"navlist\"></ng-container>\r\n}\r\n"
         },
         {
             "name": "SampleFormComponent",
@@ -31548,7 +32248,7 @@
         },
         {
             "name": "SampleLayoutComponent",
-            "id": "component-SampleLayoutComponent-746db5b2d984cdce95bc6ff4aa1544921d8953729387a0679f9903cdb1e10ce73a8cf4864d515ef9d1671e984818a989a35708263bc2c932589d0bc17e002271",
+            "id": "component-SampleLayoutComponent-a6e219fb97ba7a296efd7518476a43158395561e463dcbd98f7a6d20bf7fa7e2d856784e6201548b6f8a6c1d0af43545dd7495caa2eb4efd35f7da943d6c40f5",
             "file": "libs/material/layout/src/lib/sample-layout/sample-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31580,18 +32280,30 @@
                 {
                     "name": "LayoutModule",
                     "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NavlistComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { LayoutModule } from '../layout/layout.module';\n\n@Component({\n  selector: 'mdtx-sample-layout',\n  standalone: true,\n  imports: [CommonModule, LayoutModule],\n  templateUrl: './sample-layout.component.html',\n  styleUrl: './sample-layout.component.scss',\n})\nexport class SampleLayoutComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LayoutModule } from '../layout/layout.module';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { NavlistComponent } from '../navlist/navlist.component';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    LayoutModule,\r\n    RouterModule,\r\n    NavlistComponent,\r\n    MatIconModule,\r\n  ],\r\n  templateUrl: './sample-layout.component.html',\r\n  styleUrl: './sample-layout.component.scss',\r\n})\r\nexport class SampleLayoutComponent {}\r\n",
             "styleUrl": "./sample-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mdtx-layout>\n  <ng-template mdtxToolbarLeft>Toolbar Left</ng-template>\n  <ng-template mdtxToolbarCenter>Toolbar Center</ng-template>\n  <ng-template mdtxToolbarRight>Toolbar Right</ng-template>\n\n  <ng-template mdtxStatusbarLeft>Statusbar Left</ng-template>\n  <ng-template mdtxStatusbarCenter>Statusbar Center</ng-template>\n  <ng-template mdtxStatusbarRight>Statusbar Right</ng-template>\n\n  <ng-template mdtxContentTop>Content Top</ng-template>\n  <ng-template mdtxContentCenter>Content Center</ng-template>\n  <ng-template mdtxContentBottom>Content Bottom</ng-template>\n\n  <ng-template mdtxSidenavLeftTop>Left Sidenav Top</ng-template>\n  <ng-template mdtxSidenavLeftCenter>Left Sidenav Center</ng-template>\n  <ng-template mdtxSidenavLeftBottom>Left Sidenav Bottom</ng-template>\n\n  <ng-template mdtxSidenavRightTop>Right Sidenav Top</ng-template>\n  <ng-template mdtxSidenavRightCenter>Right Sidenav Center</ng-template>\n  <ng-template mdtxSidenavRightBottom>Right Sidenav Bottom</ng-template>\n</mdtx-layout>\n"
+            "templateData": "<mdtx-layout>\r\n  <ng-template mdtxToolbarLeft>\r\n    <mdtx-navlist\r\n      [items]=\"[\r\n        { label: 'Home', icon: 'home', route: 'home', color: 'primary' },\r\n        { label: 'About', icon: 'info', route: 'about', color: 'primary' }\r\n      ]\"\r\n      [inToolbar]=\"true\"\r\n    >\r\n    </mdtx-navlist>\r\n  </ng-template>\r\n  <!-- <ng-template mdtxToolbarCenter>Toolbar Center</ng-template> -->\r\n  <!-- <ng-template mdtxToolbarRight>Toolbar Right</ng-template> -->\r\n\r\n  <!-- <ng-template mdtxStatusbarLeft>Statusbar Left</ng-template> -->\r\n  <!-- <ng-template mdtxStatusbarCenter>Statusbar Center</ng-template> -->\r\n  <!-- <ng-template mdtxStatusbarRight>Statusbar Right</ng-template> -->\r\n\r\n  <!-- <ng-template mdtxContentTop>Content Top</ng-template> -->\r\n  <ng-template mdtxContentCenter>\r\n    <router-outlet></router-outlet>\r\n  </ng-template>\r\n  <!-- <ng-template mdtxContentBottom>Content Bottom</ng-template> -->\r\n\r\n  <ng-template mdtxSidenavLeftTop>\r\n    <mdtx-navlist\r\n      [items]=\"[\r\n        { label: 'Home', icon: 'home', route: 'home', color: 'primary' },\r\n        { label: 'About', icon: 'info', route: 'about', color: 'primary' }\r\n      ]\"\r\n    >\r\n    </mdtx-navlist>\r\n  </ng-template>\r\n  <!-- <ng-template mdtxSidenavLeftCenter> </ng-template> -->\r\n  <!-- <ng-template mdtxSidenavLeftBottom>Left Sidenav Bottom</ng-template> -->\r\n\r\n  <!-- <ng-template mdtxSidenavRightTop>Right Sidenav Top</ng-template> -->\r\n  <!-- <ng-template mdtxSidenavRightCenter></ng-template> -->\r\n  <!-- <ng-template mdtxSidenavRightBottom>Right Sidenav Bottom</ng-template> -->\r\n</mdtx-layout>\r\n"
         },
         {
             "name": "SampleTableComponent",
@@ -32145,7 +32857,7 @@
         },
         {
             "name": "TemplateOutletComponent",
-            "id": "component-TemplateOutletComponent-5a386c37d8f16f22fa6eef859fa576d849fde4439e0ca3633d2807b1dd4141391533c7c0c4eb695ae15a463d8088ea0e296282b096d1356b5bacd3d8ac013ed1",
+            "id": "component-TemplateOutletComponent-44722f0b70d11f5e2b3904a0ed019209703394352b16b430d47e5f6f0e4b388ede38c7c3f34ed8a8d1d47d07a535dad1a796ff4f758c59fe51eea22956f03251",
             "file": "libs/material/layout/src/lib/template-outlet/template-outlet.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -32187,13 +32899,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, QueryList } from '@angular/core';\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-template-outlet',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './template-outlet.component.html',\n  styleUrl: './template-outlet.component.scss',\n})\nexport class TemplateOutletComponent {\n  @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;\n}\n",
+            "sourceCode": "import { Component, Input, QueryList } from '@angular/core';\r\nimport { CommonModule, NgTemplateOutlet } from '@angular/common';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-template-outlet',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './template-outlet.component.html',\r\n  styleUrl: './template-outlet.component.scss',\r\n})\r\nexport class TemplateOutletComponent {\r\n  @Input() items?: QueryList<ITemplateRef<NgTemplateOutlet>>;\r\n}\r\n",
             "styleUrl": "./template-outlet.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "@if(items){ @for(item of items; track item){\n<ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n} }\n"
+            "templateData": "@if(items){ @for(item of items; track item){\r\n<ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n} }\r\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -32506,6 +33218,46 @@
                 "defaultValue": "AutocompleteList()"
             },
             {
+                "name": "BaseRouteProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<string>('baseRoute')"
+            },
+            {
+                "name": "ContentBottomProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('contentBottom')"
+            },
+            {
+                "name": "ContentCenterProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('contentCenter')"
+            },
+            {
+                "name": "ContentTopProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('contentTop')"
+            },
+            {
                 "name": "dateControl",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -32683,7 +33435,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -32823,7 +33575,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -33023,7 +33775,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputFiveDayDateRangeComponent>",
-                "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: InputFiveDayDateRangeComponent,\r\n  title: 'InputFiveDayDateRangeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -33163,7 +33915,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SampleLayoutComponent>",
-                "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: SampleLayoutComponent,\r\n  title: 'SampleLayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -33214,6 +33966,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "today.getMonth()"
+            },
+            {
+                "name": "NavlistProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('navlist')"
             },
             {
                 "name": "Primary",
@@ -33343,7 +34105,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -33483,7 +34245,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -33506,6 +34268,96 @@
                 "defaultValue": "{\r\n  args: {\r\n    columns: ['id', 'name'],\r\n    displayedColumns: ['id', 'name'],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1' },\r\n      { id: 2, name: 'item 2' },\r\n      { id: 3, name: 'item 3' },\r\n      { id: 4, name: 'item 4' },\r\n      { id: 5, name: 'item 5' },\r\n      { id: 6, name: 'item 6' },\r\n      { id: 7, name: 'item 7' },\r\n      { id: 8, name: 'item 8' },\r\n      { id: 9, name: 'item 9' },\r\n      { id: 10, name: 'item 10' },\r\n    ],\r\n  },\r\n}"
             },
             {
+                "name": "SidenavLeftBottomProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavLeftBottom')"
+            },
+            {
+                "name": "SidenavLeftCenterProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavLeftCenter')"
+            },
+            {
+                "name": "SidenavLeftTopProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavLeftTop')"
+            },
+            {
+                "name": "SidenavRightBottomProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavRightBottom')"
+            },
+            {
+                "name": "SidenavRightCenterProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavRightCenter')"
+            },
+            {
+                "name": "SidenavRightTopProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('sidenavRightTop')"
+            },
+            {
+                "name": "StatusbarCenterProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('statusbarCenter')"
+            },
+            {
+                "name": "StatusbarLeftProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('statusbarLeft')"
+            },
+            {
+                "name": "StatusbarRightProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('statusbarRight')"
+            },
+            {
                 "name": "store",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -33524,6 +34376,36 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new Date()"
+            },
+            {
+                "name": "ToolbarCenterProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('toolbarCenter')"
+            },
+            {
+                "name": "ToolbarLeftProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('toolbarLeft')"
+            },
+            {
+                "name": "ToolbarRightProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createValueProvider<Navlist>('toolbarRight')"
             },
             {
                 "name": "year",
@@ -33641,8 +34523,8 @@
                 "jsdoctags": [
                     {
                         "name": {
-                            "pos": 730,
-                            "end": 741,
+                            "pos": 724,
+                            "end": 735,
                             "flags": 16777216,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -33653,8 +34535,8 @@
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
-                            "pos": 724,
-                            "end": 729,
+                            "pos": 718,
+                            "end": 723,
                             "flags": 16777216,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -33665,8 +34547,8 @@
                     },
                     {
                         "tagName": {
-                            "pos": 747,
-                            "end": 754,
+                            "pos": 741,
+                            "end": 748,
                             "flags": 16777216,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -33810,6 +34692,28 @@
                 "subtype": "typealias",
                 "rawtype": "literal type",
                 "file": "libs/material/core/src/lib/types/menu-item.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "Navlist",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "NavlistItem[]",
+                "file": "libs/material/core/src/lib/types/navlist.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 188
+            },
+            {
+                "name": "NavlistItem",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/core/src/lib/types/navlist.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -34171,6 +35075,180 @@
                     "defaultValue": "AutocompleteList()"
                 }
             ],
+            "libs/material/layout/src/lib/navlist/navlist.component.ts": [
+                {
+                    "name": "BaseRouteProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<string>('baseRoute')"
+                },
+                {
+                    "name": "NavlistProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('navlist')"
+                }
+            ],
+            "libs/material/layout/src/lib/app-layout/app-layout.component.ts": [
+                {
+                    "name": "ContentBottomProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('contentBottom')"
+                },
+                {
+                    "name": "ContentCenterProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('contentCenter')"
+                },
+                {
+                    "name": "ContentTopProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('contentTop')"
+                },
+                {
+                    "name": "SidenavLeftBottomProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavLeftBottom')"
+                },
+                {
+                    "name": "SidenavLeftCenterProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavLeftCenter')"
+                },
+                {
+                    "name": "SidenavLeftTopProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavLeftTop')"
+                },
+                {
+                    "name": "SidenavRightBottomProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavRightBottom')"
+                },
+                {
+                    "name": "SidenavRightCenterProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavRightCenter')"
+                },
+                {
+                    "name": "SidenavRightTopProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('sidenavRightTop')"
+                },
+                {
+                    "name": "StatusbarCenterProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('statusbarCenter')"
+                },
+                {
+                    "name": "StatusbarLeftProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('statusbarLeft')"
+                },
+                {
+                    "name": "StatusbarRightProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('statusbarRight')"
+                },
+                {
+                    "name": "ToolbarCenterProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('toolbarCenter')"
+                },
+                {
+                    "name": "ToolbarLeftProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('toolbarLeft')"
+                },
+                {
+                    "name": "ToolbarRightProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createValueProvider<Navlist>('toolbarRight')"
+                }
+            ],
             "libs/material/form/src/lib/input-date/input-date.component.stories.ts": [
                 {
                     "name": "dateControl",
@@ -34232,7 +35310,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select date/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -34242,7 +35320,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputFiveDayDateRangeComponent>",
-                    "defaultValue": "{\n  component: InputFiveDayDateRangeComponent,\n  title: 'InputFiveDayDateRangeComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: InputFiveDayDateRangeComponent,\r\n  title: 'InputFiveDayDateRangeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -34252,7 +35330,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    label: 'Select date',\n    formControl: dateControl,\n    inputName: 'date',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts": [
@@ -35062,7 +36140,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/sample-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -35072,7 +36150,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SampleLayoutComponent>",
-                    "defaultValue": "{\n  component: SampleLayoutComponent,\n  title: 'SampleLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: SampleLayoutComponent,\r\n  title: 'SampleLayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -35082,7 +36160,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
@@ -35352,8 +36430,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 730,
-                                "end": 741,
+                                "pos": 724,
+                                "end": 735,
                                 "flags": 16777216,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -35364,8 +36442,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 724,
-                                "end": 729,
+                                "pos": 718,
+                                "end": 723,
                                 "flags": 16777216,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -35376,8 +36454,8 @@
                         },
                         {
                             "tagName": {
-                                "pos": 747,
-                                "end": 754,
+                                "pos": 741,
+                                "end": 748,
                                 "flags": 16777216,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -35568,6 +36646,30 @@
                     "subtype": "typealias",
                     "rawtype": "literal type",
                     "file": "libs/material/core/src/lib/types/menu-item.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
+            "libs/material/core/src/lib/types/navlist.ts": [
+                {
+                    "name": "Navlist",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "NavlistItem[]",
+                    "file": "libs/material/core/src/lib/types/navlist.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 188
+                },
+                {
+                    "name": "NavlistItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/core/src/lib/types/navlist.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -37363,6 +38465,165 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppLayoutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ContentBottomProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ContentCenterProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ContentTopProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavLeftBottomProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavLeftCenterProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavLeftTopProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavRightBottomProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavRightCenterProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SidenavRightTopProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "StatusbarCenterProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "StatusbarLeftProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "StatusbarRightProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ToolbarCenterProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ToolbarLeftProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/app-layout/app-layout.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ToolbarRightProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/layout/src/lib/layout/base-layout.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -37407,7 +38668,7 @@
                 "linktype": "component",
                 "name": "LayoutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -37551,6 +38812,53 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "LayoutDirectives",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavlistComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BaseRouteProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/navlist/navlist.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NavlistProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/about/about.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AboutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/layout/src/lib/sample-layout/home/home.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

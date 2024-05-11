@@ -8,9 +8,11 @@ import { provideStore } from '@ngrx/store';
 import { provideEntityData, withEffects } from '@ngrx/data';
 import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
     provideClientHydration(),
     provideRouter(appRoutes, withHashLocation()),
     provideHttpClient(withInterceptors([])),
@@ -20,9 +22,11 @@ export const appConfig: ApplicationConfig = {
       {
         pluralNames: {
           Product: 'Products',
+          Category: 'Categories',
         },
         entityMetadata: {
           Product: {},
+          Category: {},
         },
       },
       withEffects()
