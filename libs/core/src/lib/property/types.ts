@@ -1,17 +1,7 @@
 import { Type } from '@nestjs/common';
 import { ApiPropertyOptions } from '@nestjs/swagger';
 
-export type PropertyType =
-  | 'string'
-  | 'number'
-  | 'boolean'
-  | 'date'
-  | 'object'
-  | 'query-string'
-  | 'query-number'
-  | 'query-boolean'
-  | 'query-date'
-  | 'query-object';
+export type PropertyType = 'string' | 'number' | 'boolean' | 'date' | 'object';
 
 export type StringFormat =
   | 'date'
