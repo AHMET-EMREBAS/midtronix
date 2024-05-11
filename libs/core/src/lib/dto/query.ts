@@ -1,6 +1,6 @@
 import { Exclude, Transform } from 'class-transformer';
 import { Property } from '../property';
-import { IsIn, IsNotIn, isArray } from 'class-validator';
+import { IsNotIn, isArray } from 'class-validator';
 import { ILike } from 'typeorm';
 
 @Exclude()

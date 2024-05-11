@@ -1,4 +1,12 @@
-import { IsIn, isNumber, isArray, IsNumber, Max, Min } from 'class-validator';
+import {
+  IsIn,
+  isNumber,
+  isArray,
+  IsNumber,
+  Max,
+  Min,
+  ValidationOptions,
+} from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
@@ -11,17 +19,17 @@ export function __NumberProperty(options?: PropertyOptions) {
 
   options = { ...options, type: 'number' };
 
-  const vo = { each: !!options.isArray };
+  const validationOptions: ValidationOptions = { each: !!options.isArray };
 
   const { maximum, minimum, enum: enums } = options;
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
-  push(IsNumber(undefined, vo));
+  push(IsNumber(undefined, validationOptions));
 
-  if (isNumber(maximum)) push(Max(maximum, vo));
-  if (isNumber(minimum)) push(Min(minimum, vo));
-  if (isArray(enums)) push(IsIn(enums, vo));
+  if (isNumber(maximum)) push(Max(maximum, validationOptions));
+  if (isNumber(minimum)) push(Min(minimum, validationOptions));
+  if (isArray(enums)) push(IsIn(enums, validationOptions));
 
   return applyDecorators(...decorators);
 }

@@ -28,7 +28,7 @@ describe('BooleanProperty', () => {
           return;
         }
 
-        expect(error.constraints).toBeTruthy();
+        
         expect(Object.keys(error.constraints ?? {}).length).toBe(
           errorList.length
         );

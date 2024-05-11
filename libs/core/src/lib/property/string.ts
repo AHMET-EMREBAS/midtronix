@@ -12,6 +12,7 @@ import {
   isNumber,
   isArray,
   IsString,
+  ValidationOptions,
 } from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
@@ -25,26 +26,28 @@ export function __StringProperty(options?: PropertyOptions) {
 
   options = { ...options, type: 'string' };
 
-  const vo = { each: !!options.isArray };
+  const validationOptions: ValidationOptions = { each: !!options.isArray };
 
   const { minLength, maxLength, format, enum: enums } = options;
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
-  push(IsString(vo));
+  push(IsString(validationOptions));
 
-  if (isNumber(minLength)) push(MinLength(minLength, vo));
-  if (isNumber(maxLength)) push(MaxLength(maxLength, vo));
-  if (isArray(enums)) push(IsIn(enums, vo));
+  if (isNumber(minLength)) push(MinLength(minLength, validationOptions));
+  if (isNumber(maxLength)) push(MaxLength(maxLength, validationOptions));
+  if (isArray(enums)) push(IsIn(enums, validationOptions));
 
   if (format) {
-    if (format === 'email') push(IsEmail(undefined, vo));
-    else if (format === 'password') push(IsStrongPassword(undefined, vo));
-    else if (format === 'barcode') push(IsEAN(vo));
-    else if (format === 'date') push(IsDate(vo));
-    else if (format === 'uuid') push(IsUUID(undefined, vo));
-    else if (format === 'url') push(IsUrl(undefined, vo));
-    else if (format === 'phone') push(IsPhoneNumber(undefined, vo));
+    if (format === 'email') push(IsEmail(undefined, validationOptions));
+    else if (format === 'password')
+      push(IsStrongPassword(undefined, validationOptions));
+    else if (format === 'barcode') push(IsEAN(validationOptions));
+    else if (format === 'date') push(IsDate(validationOptions));
+    else if (format === 'uuid') push(IsUUID(undefined, validationOptions));
+    else if (format === 'url') push(IsUrl(undefined, validationOptions));
+    else if (format === 'phone')
+      push(IsPhoneNumber(undefined, validationOptions));
   }
 
   return applyDecorators(...decorators);

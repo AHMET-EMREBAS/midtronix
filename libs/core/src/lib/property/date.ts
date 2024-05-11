@@ -1,4 +1,4 @@
-import { IsDateString } from 'class-validator';
+import { IsDateString, ValidationOptions } from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
@@ -15,11 +15,11 @@ export function __DateProperty(options?: PropertyOptions) {
     example: new Date().toLocaleDateString(),
   };
 
-  const vo = { each: !!options.isArray };
+  const validationOptions: ValidationOptions = { each: !!options.isArray };
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
-  push(IsDateString({}, vo));
+  push(IsDateString({}, validationOptions));
 
   return applyDecorators(...decorators);
 }

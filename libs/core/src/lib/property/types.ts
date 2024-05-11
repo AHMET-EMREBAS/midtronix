@@ -1,15 +1,6 @@
 import { Type } from '@nestjs/common';
 import { ApiPropertyOptions } from '@nestjs/swagger';
 
-export type StringFormat =
-  | 'date'
-  | 'email'
-  | 'password'
-  | 'barcode'
-  | 'uuid'
-  | 'phone'
-  | 'url';
-
 export type PropertyType =
   | 'string'
   | 'number'
@@ -21,6 +12,16 @@ export type PropertyType =
   | 'query-boolean'
   | 'query-date'
   | 'query-object';
+
+export type StringFormat =
+  | 'date'
+  | 'email'
+  | 'password'
+  | 'barcode'
+  | 'uuid'
+  | 'phone'
+  | 'url'
+  | PropertyType;
 
 export type __ExtendedPropertyOptions = {
   type?: PropertyType;

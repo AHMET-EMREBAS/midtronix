@@ -1,90 +1,61 @@
 import { applyDecorators } from '@nestjs/common';
-import { ApiPropertyOptions, ApiProperty } from '@nestjs/swagger';
-import { Expose, Type } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
+import { Expose } from 'class-transformer';
 import {
   ArrayMaxSize,
   ArrayMinSize,
   IsArray,
-  IsDate,
-  IsEAN,
-  IsEmail,
-  IsIn,
   IsNotEmpty,
   IsOptional,
-  IsStrongPassword,
-  Max,
-  MaxLength,
-  Min,
-  MinLength,
-  ValidateNested,
   ValidationOptions,
 } from 'class-validator';
-import { IDDto } from '../dto';
 import { PropertyOptions } from './types';
+import { __StringProperty } from './string';
+import { __NumberProperty } from './number';
+import { __BooleanProperty } from './boolean';
+import { __DateProperty } from './date';
+import { __ObjectProperty } from './object';
 
 export function Property(options?: PropertyOptions) {
+  options = {
+    ...options,
+    type: options?.type ?? 'string',
+    required: options?.required ?? false,
+    nullable: options?.required === true ? false : true,
+    isArray: options?.isArray ?? false,
+    description: options?.description ?? 'Describe the property',
+    example: options?.example ?? 'No example provided!',
+    default: options?.default ?? undefined,
+    format: options?.format ?? options?.type ?? 'string',
+  };
+
   const decorators: PropertyDecorator[] = [
     Expose(),
-    ApiProperty({
-      ...options,
-      required: !!options?.required,
-      nullable: !options?.required,
-    }),
+    ApiProperty({ ...options }),
   ];
 
-  const isArray = !!options?.isArray;
-  const vo: ValidationOptions = { each: isArray };
-
-  if (options?.required == true) {
-    decorators.push(IsNotEmpty(vo));
-  } else {
-    decorators.push(IsOptional(vo));
-  }
-
   const push = (pd: PropertyDecorator) => decorators.push(pd);
-  if (options) {
-    
-    if (options.isArray) {
-      push(IsArray());
-      if (options.minItems) push(ArrayMinSize(options.minItems));
-      if (options.maxItems) push(ArrayMaxSize(options.maxItems));
-    }
 
-    if (options.type === 'string') {
-      const { minLength, maxLength, format, enum: enums } = options;
+  const { type, isArray, required, minItems, maxItems } = options;
 
-      if (minLength != undefined) decorators.push(MinLength(minLength, vo));
+  const validationOptions: ValidationOptions = { each: isArray };
 
-      if (maxLength != undefined) decorators.push(MaxLength(maxLength, vo));
+  // Required or optional validation
+  if (required) push(IsNotEmpty(validationOptions));
+  else push(IsOptional(validationOptions));
 
-      if (enums != undefined) decorators.push(IsIn(enums as string[]));
-
-      if (format) {
-        if (format === 'email') decorators.push(IsEmail(undefined, vo));
-        if (format === 'password')
-          decorators.push(IsStrongPassword(undefined, vo));
-        if (format === 'barcode') decorators.push(IsEAN(vo));
-
-        if (format === 'date') decorators.push(IsDate(vo));
-      }
-    } else if (options.type === 'number') {
-      const { minimum, maximum } = options;
-
-      if (minimum != undefined) decorators.push(Min(minimum, vo));
-      if (maximum != undefined) decorators.push(Max(maximum, vo));
-    }
+  // Array validation
+  if (isArray) {
+    push(IsArray());
+    if (minItems) push(ArrayMinSize(minItems));
+    if (maxItems) push(ArrayMaxSize(maxItems));
   }
+
+  if (type === 'string') push(__StringProperty(options));
+  else if (type === 'number') push(__NumberProperty(options));
+  else if (type === 'boolean') push(__BooleanProperty(options));
+  else if (type === 'date') push(__DateProperty(options));
+  else if (type === 'object') push(__ObjectProperty(options));
 
   return applyDecorators(...decorators);
-}
-
-export function ObjectIdProperty(options?: ApiPropertyOptions) {
-  const vo: ValidationOptions = { each: !options?.isArray };
-  return applyDecorators(
-    Expose(),
-    ApiProperty({ ...options, type: 'object', isArray: !!options?.isArray }),
-    options?.required ? IsNotEmpty(vo) : IsOptional(vo),
-    ValidateNested(vo),
-    Type(() => IDDto)
-  );
 }
