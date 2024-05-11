@@ -11,16 +11,16 @@ export function createClassProvider<T>(
 ): CreateProviderResult<Type<T>, Provider, string> {
   const token = tokenPrefix + v4();
   return {
-    provideFn(value: Type<T>) {
+    provide(value: Type<T>) {
       return {
         provide: token,
         useClass: value,
       };
     },
-    injectFn() {
+    inject() {
       return Inject(token);
     },
-    tokenFn() {
+    token() {
       return token;
     },
   };
@@ -31,16 +31,16 @@ export function createValueProvider<T>(
 ): CreateProviderResult<T, Provider, string> {
   const token = tokenPrefix + v4();
   return {
-    provideFn(value: T) {
+    provide(value: T) {
       return {
         provide: token,
         useValue: value,
       };
     },
-    injectFn() {
+    inject() {
       return Inject(token);
     },
-    tokenFn() {
+    token() {
       return token;
     },
   };

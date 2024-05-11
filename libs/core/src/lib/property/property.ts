@@ -17,13 +17,10 @@ import {
   ValidationOptions,
 } from 'class-validator';
 import { IDDto } from '../dto';
+import { PropertyOptions } from './types';
 
-type PropertyType = 'string' | 'number' | 'boolean';
-type StringFormat = 'date' | 'email' | 'password' | 'barcode';
 
-export function Property(
-  options?: ApiPropertyOptions & { type?: PropertyType; format?: StringFormat }
-) {
+export function Property(options?: PropertyOptions) {
   const decorators: PropertyDecorator[] = [
     Expose(),
     ApiProperty({

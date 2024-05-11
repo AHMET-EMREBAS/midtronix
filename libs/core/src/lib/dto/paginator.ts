@@ -1,25 +1,16 @@
-import { Exclude, Transform } from 'class-transformer';
+import { Exclude } from 'class-transformer';
 import { Property } from '../property';
-
 @Exclude()
-export class PaginatorDto<TOrder = Record<any, any>> {
+export class PaginatorDto {
   @Property({ type: 'number' })
-  @Transform(({ value }) => {
-    return value ?? 500;
-  })
   take?: number;
 
   @Property({ type: 'number' })
   skip?: number;
 
-  @Property({ type: 'string' })
-  @Transform(({ value }) => {
-    if (value && typeof value === 'string' && value.includes(':')) {
-      const [prop, dir] = value.split(':');
+  @Property({ type: 'query-object' })
+  order?: Record<string, 'asc' | 'desc' | 'ASC' | 'DESC'>;
 
-      if (prop && dir) return { [prop]: dir };
-    }
-    return undefined;
-  })
-  order?: TOrder;
+  @Property({ type: 'boolean' })
+  withDeleted?: boolean;
 }
