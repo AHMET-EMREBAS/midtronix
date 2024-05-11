@@ -6,7 +6,7 @@ import {
   Post,
   Put,
   applyDecorators,
-} from '@nestjs/common';
+} from '../__external';
 import {
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
@@ -21,9 +21,13 @@ import { PermissionBuilder, ResourcePermissions } from './auth';
 export class RestRouteBuilder {
   protected readonly AP: RestApiPaths;
   protected readonly RP: ResourcePermissions;
-  constructor(protected readonly className: string) {
+  private constructor(protected readonly className: string) {
     this.AP = RestApiPathBuilder.get(className);
     this.RP = PermissionBuilder.get(className);
+  }
+
+  static get(className: string) {
+    return new RestRouteBuilder(className);
   }
 
   protected __common() {

@@ -7,6 +7,11 @@ export {
   createParamDecorator,
   CustomDecorator,
   ExecutionContext,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
 } from '@nestjs/common';
 export { Reflector } from '@nestjs/core';
 
@@ -39,6 +44,13 @@ export {
   OmitType,
   ApiPropertyOptions,
   ApiProperty,
+  ApiCreatedResponse,
+  ApiInternalServerErrorResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+  ApiUnauthorizedResponse,
+  ApiUnprocessableEntityResponse,
 } from '@nestjs/swagger';
 export {
   TypeOrmModule,
