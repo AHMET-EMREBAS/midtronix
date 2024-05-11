@@ -6,7 +6,7 @@ import { applyDecorators } from '@nestjs/common';
  * Validate boolean value by type
  * @param options {@link PropertyOptions}
  */
-export function __Boolean(options?: PropertyOptions) {
+export function __BooleanProperty(options?: PropertyOptions) {
   const decorators: PropertyDecorator[] = [];
 
   options = { ...options, type: 'boolean' };

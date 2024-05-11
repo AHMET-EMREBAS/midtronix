@@ -1,19 +1,19 @@
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import { __DateProperty } from './date';
+import { __BooleanProperty } from './boolean';
 import { PropertyOptions as PO } from './types';
 
-describe('DateProperty', () => {
+describe('BooleanProperty', () => {
   describe('undefined value test', () => {
     it.each`
-      options     | value                                   | errorList
-      ${{} as PO} | ${undefined}                            | ${['isDateString']}
-      ${{} as PO} | ${new Date('01/01/1990').toISOString()} | ${[]}
+      options     | value        | errorList
+      ${{} as PO} | ${undefined} | ${['isBoolean']}
+      ${{} as PO} | ${true}      | ${[]}
     `(
       'should validate with $options and return $errorList errors',
       ({ value, options, errorList }) => {
         class A {
-          @__DateProperty({ ...options })
+          @__BooleanProperty({ ...options })
           name!: string;
         }
         const instance = plainToInstance(A, { name: value });
