@@ -8,7 +8,7 @@ import { OmitType } from '@nestjs/swagger';
  * @param relationId
  */
 @Exclude()
-export class AddRelationDto {
+export class RelationDto {
   @Property({ type: 'number', required: true }) id!: number;
   @Property({ type: 'string', required: true }) relationName!: string;
   @Property({ type: 'number', required: true }) relationId!: number;
@@ -17,24 +17,25 @@ export class AddRelationDto {
 /**
  * @param id
  * @param relationName
- * @param relationId
  */
 @Exclude()
-export class RemoveRelationDto extends AddRelationDto {}
+export class UnsetRelationDto extends OmitType(RelationDto, ['relationId']) {}
 
-/**
- * @param id
- * @param relationName
- * @param relationId
- */
-@Exclude()
-export class SetRelationDto extends AddRelationDto {}
+export function createRelationDto(relations: string[]) {
+  @Exclude()
+  class __RelationDto extends RelationDto {
+    @Property({ type: 'string', enum: relations })
+    override relationName!: string;
+  }
 
-/**
- * @param id
- * @param relationName
- */
-@Exclude()
-export class UnsetRelationDto extends OmitType(AddRelationDto, [
-  'relationId',
-]) {}
+  return __RelationDto;
+}
+
+export function createUnsetRelationDto(relations: string[]) {
+  @Exclude()
+  class __RelationDto extends OmitType(createRelationDto(relations), [
+    'relationId',
+  ]) {}
+
+  return __RelationDto;
+}

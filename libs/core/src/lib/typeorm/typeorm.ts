@@ -7,6 +7,7 @@ import {
   Type,
   applyDecorators,
 } from './../__external';
+
 export function OneRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
     ManyToOne(

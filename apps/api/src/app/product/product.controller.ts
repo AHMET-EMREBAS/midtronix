@@ -1,23 +1,15 @@
 import {
-  Controller,
-  Get,
-  Put,
-  Post,
-  Delete,
   Param,
   ParseIntPipe,
   InjectRepository,
   Repository,
   Body,
-  AddRelationDto,
   UnsetRelationDto,
-  SetRelationDto,
-  RemoveRelationDto,
-  ApiTags,
   ValidationPipe,
   Query,
   PaginatorDto,
   RestRouteBuilder,
+  RelationDto,
 } from '@mdtx/core';
 import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
 
@@ -59,7 +51,7 @@ export class ProductController {
   }
 
   @R.AddRelation()
-  addRelationToProduct(@Param(ValidationPipe) relationDto: AddRelationDto) {
+  addRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
@@ -69,9 +61,7 @@ export class ProductController {
   }
 
   @R.RemoveRelation()
-  removeRelationToProduct(
-    @Param(ValidationPipe) relationDto: RemoveRelationDto
-  ) {
+  removeRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
@@ -81,7 +71,7 @@ export class ProductController {
   }
 
   @R.SetRelation()
-  setRelationToProduct(@Param(ValidationPipe) relationDto: SetRelationDto) {
+  setRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
     const { id, relationId, relationName } = relationDto;
     return this.repo
       .createQueryBuilder()
