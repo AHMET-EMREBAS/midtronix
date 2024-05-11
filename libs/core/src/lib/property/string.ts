@@ -6,20 +6,24 @@ import {
   IsStrongPassword,
   MaxLength,
   MinLength,
+  ArrayMinSize,
+  ArrayMaxSize,
   IsUUID,
   IsUrl,
   IsPhoneNumber,
   isNumber,
   isArray,
+  IsString,
+  IsArray,
 } from 'class-validator';
 import { PropertyOptions } from './types';
 import { applyDecorators } from '@nestjs/common';
 
 /**
- * Senitize and transform string values
- * @param options
+ * Validate string value
+ * @param options {@link PropertyOptions}
  */
-export function StringProperty(options?: PropertyOptions) {
+export function __StringProperty(options?: PropertyOptions) {
   const decorators: PropertyDecorator[] = [];
 
   options = { ...options, type: 'string' };
@@ -30,9 +34,17 @@ export function StringProperty(options?: PropertyOptions) {
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
+  push(IsString(vo));
+
+  if (options.isArray) {
+    push(IsArray());
+    if (options.minItems) push(ArrayMinSize(options.minItems));
+    if (options.maxItems) push(ArrayMaxSize(options.maxItems));
+  }
+
   if (isNumber(minLength)) push(MinLength(minLength, vo));
   if (isNumber(maxLength)) push(MaxLength(maxLength, vo));
-  if (isArray(enums)) push(IsIn(enums as string[]));
+  if (isArray(enums)) push(IsIn(enums, vo));
 
   if (format) {
     if (format === 'email') push(IsEmail(undefined, vo));
