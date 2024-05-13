@@ -4,7 +4,7 @@ import {
   RestRouteBuilder,
   RelationDto,
 } from '@mdtx/core';
-import { CreateProductDto, UpdateProductDto } from '@mdtx/database';
+import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
 import { ProductService } from './product.service';
 
 const R = RestRouteBuilder.get('Product');
@@ -39,22 +39,22 @@ export class ProductController {
   }
 
   @R.AddRelation()
-  addRelationToProduct(@R.Param() relationDto: RelationDto) {
+  addRelationToProduct(@R.Param() relationDto: RelationDto<Product>) {
     return this.productService.addRelation(relationDto);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto) {
+  removeRelation(@R.Param() relationDto: RelationDto<Product>) {
     return this.productService.removeRelation(relationDto);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto) {
+  setRelation(@R.Param() relationDto: RelationDto<Product>) {
     return this.productService.setRelation(relationDto);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto) {
+  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Product>) {
     return this.productService.unsetRelation(relationDto);
   }
 }

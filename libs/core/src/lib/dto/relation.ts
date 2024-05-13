@@ -10,7 +10,7 @@ import { IID } from '@mdtx/common';
  */
 @Exclude()
 export class RelationDto<
-  T extends IID,
+  T extends IID = any,
   P = keyof T extends string ? keyof T : string
 > {
   @Property({ type: 'number', required: true }) id!: T['id'];
@@ -24,7 +24,7 @@ export class RelationDto<
  */
 @Exclude()
 export class UnsetRelationDto<
-  T extends IID,
+  T extends IID = IID,
   P = keyof T extends string ? keyof T : string
 > {
   @Property({ type: 'number', required: true }) id!: T['id'];

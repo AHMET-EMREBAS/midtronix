@@ -14,7 +14,11 @@ import {
   ApiUnauthorizedResponse,
   ApiUnprocessableEntityResponse,
 } from '../__external';
-import { PermissionBuilder, ResourcePermissions } from './auth';
+import {
+  PermissionBuilder,
+  ResourceNameMeta,
+  ResourcePermissions,
+} from './auth';
 import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
 import { ValidationPipe } from '../dto';
 
@@ -46,6 +50,7 @@ export class RestRouteBuilder {
   Controler() {
     return applyDecorators(
       Controller(),
+      ResourceNameMeta.set(this.className),
       ApiTags(this.className + 'Controller')
     );
   }

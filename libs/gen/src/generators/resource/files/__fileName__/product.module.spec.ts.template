@@ -9,28 +9,35 @@ import {
   testDBOptions,
 } from '@mdtx/database';
 import { Repository } from 'typeorm';
+import { <%- className %>Service } from './<%- fileName %>.service';
+import { RepositoryService } from '@mdtx/core';
 
 describe('<%- className %>ModuleTest', () => {
   let app: TestingModule;
   let controller: <%- className %>Controller;
   let repo: Repository<<%- className %>>;
+  let service: RepositoryService<<%- className %>>;
   
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([<%- className %>]),
+        TypeOrmModule.forFeature([<%- className %>, Category, Department, Manufacturer]),
       ],
       controllers: [<%- className %>Controller],
+      providers: [<%- className %>Service],
     }).compile();
     controller = app.get(<%- className %>Controller);
     repo = app.get(getRepositoryToken(<%- className %>));
+
+    service = app.get(<%- className %>Service);
   });
 
   it('should initialize classes', () => {
     expect(app).toBeDefined();
     expect(controller).toBeDefined();
     expect(repo).toBeDefined();
+    expect(service).toBeTruthy();
   });
 
   afterAll(() => {

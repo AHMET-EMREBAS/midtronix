@@ -1,106 +1,60 @@
 import {
-  Controller,
-  Get,
-  Put,
-  Post,
-  Delete,
-  Param,
-  ParseIntPipe,
-  InjectRepository,
-  Repository,
-  Body,
-  AddRelationDto,
   UnsetRelationDto,
-  SetRelationDto,
-  RemoveRelationDto,
-  ApiTags,
-  ValidationPipe,
-  Query,
   PaginatorDto,
-  QueryDto,
+  RestRouteBuilder,
+  RelationDto,
 } from '@mdtx/core';
-import { <%- className %> } from '@mdtx/database';
-import { Create<%- className %>Dto, Update<%- className %>Dto } from './create-<%- fileName %>.dto';
+import { Create<%- className %>Dto, <%- className %>, Update<%- className %>Dto } from '@mdtx/database';
+import { <%- className %>Service } from './<%- fileName %>.service';
 
-@ApiTags(<%- className %>Controller.name)
-@Controller()
+const R = RestRouteBuilder.get('<%- className %>');
+
+@R.Controler()
 export class <%- className %>Controller {
+  constructor(protected readonly <%- propertyName %>Service: <%- className %>Service) {}
 
-  constructor(
-    @InjectRepository(<%- className %>)
-    protected readonly repo: Repository<<%- className %>>
-  ) {}
-
-  @Post('<%- fileName %>')
-  save<%- className %>(@Body(ValidationPipe) <%- fileName %>: Create<%- className %>Dto) {
-    return this.repo.save(<%- fileName %>);
+  @R.SaveOne()
+  save(@R.Body() <%- propertyName %>: Create<%- className %>Dto) {
+    return this.<%- propertyName %>Service.save(<%- propertyName %>);
   }
 
-  @Get('<%- fileName %>s')
-  find<%- className %>s(
-    @Query(ValidationPipe) paginator: PaginatorDto,
-    @Query(ValidationPipe) query: QueryDto
-  ) {
-    return this.repo.find({ ...paginator, where: query.search });
+  @R.FindAll()
+  findAll(@R.Query() paginator: PaginatorDto) {
+    return this.<%- propertyName %>Service.findAll({ ...paginator });
   }
 
-  @Get('<%- fileName %>/:id')
-  find<%- className %>ById(@Param('id', ParseIntPipe) id: number) {
-    return this.repo.findOneBy({ id });
+  @R.FindOneById()
+  findOneById(@R.ParamID() id: number) {
+    return this.<%- propertyName %>Service.findOneById(id);
   }
 
-  @Delete('<%- fileName %>/:id')
-  delete<%- className %>ById(@Param('id', ParseIntPipe) id: number) {
-    return this.repo.delete(id);
+  @R.DeleteOne()
+  deleteById(@R.ParamID() id: number) {
+    return this.<%- propertyName %>Service.deleteById(id);
   }
 
-  @Put('<%- fileName %>/:id')
-  update<%- className %>ById(
-    @Param('id', ParseIntPipe) id: number,
-    @Body(ValidationPipe) body: Update<%- className %>Dto
-  ) {
-    return this.repo.update(id, body);
+  @R.UpdateOne()
+  updateOneById(@R.ParamID() id: number, @R.Body() body: Update<%- className %>Dto) {
+    return this.<%- propertyName %>Service.updateOneById(id, body);
   }
 
-  @Put('<%- fileName %>/:id/:relationName/:relationId')
-  addRelationTo<%- className %>(@Param(ValidationPipe) relationDto: AddRelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .add(relationId);
+  @R.AddRelation()
+  addRelationTo<%- className %>(@R.Param() relationDto: RelationDto<<%- className %>>) {
+    return this.<%- propertyName %>Service.addRelation(relationDto);
   }
 
-  @Delete('<%- fileName %>/:id/:relationName/:relationId')
-  removeRelationTo<%- className %>(
-    @Param(ValidationPipe) relationDto: RemoveRelationDto
-  ) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .remove(relationId);
+  @R.RemoveRelation()
+  removeRelation(@R.Param() relationDto: RelationDto<<%- className %>>) {
+    return this.<%- propertyName %>Service.removeRelation(relationDto);
   }
 
-  @Post('<%- fileName %>/:id/:relationName/:relationId')
-  setRelationTo<%- className %>(@Param(ValidationPipe) relationDto: SetRelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .set(relationId);
+  @R.SetRelation()
+  setRelation(@R.Param() relationDto: RelationDto<<%- className %>>) {
+    return this.<%- propertyName %>Service.setRelation(relationDto);
   }
 
-  @Delete('<%- fileName %>/:id/:relationName')
-  unsetRelationTo<%- className %>(@Param(ValidationPipe) relationDto: UnsetRelationDto) {
-    const { id, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .set(null);
+  @R.UnsetRelation()
+  unsetRelation(@R.Param() relationDto: UnsetRelationDto<<%- className %>>) {
+    return this.<%- propertyName %>Service.unsetRelation(relationDto);
   }
 }

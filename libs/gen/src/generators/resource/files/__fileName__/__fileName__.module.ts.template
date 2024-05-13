@@ -1,12 +1,14 @@
-import { <%- className %> } from '@mdtx/database';
+import { Category, Department, Manufacturer, <%- className %> } from '@mdtx/database';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { <%- className %>Controller } from './product.controller';
+import { <%- className %>Controller } from './<%- fileName %>.controller';
+import { <%- className %>Service } from './<%- fileName %>.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([<%- className %>]),
   ],
   controllers: [<%- className %>Controller],
+  providers: [<%- className %>Service],
 })
 export class <%- className %>Module {}
