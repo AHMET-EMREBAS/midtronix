@@ -3,31 +3,37 @@ import {
   Equal,
   FindOptionsWhere,
   ILike,
-  ObjectLiteral,
   Repository,
 } from 'typeorm';
-import { PaginatorDto, RelationDto, UnsetRelationDto } from '../dto';
+import {
+  DeleteResultDto,
+  PaginatorDto,
+  RelationDto,
+  UnsetRelationDto,
+  UpdateResultDto,
+} from '../dto';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+import { IID } from '@mdtx/common';
 
-export class RepositoryService<T extends ObjectLiteral> {
+export class RepositoryService<T extends IID> {
   constructor(protected repository: Repository<T>) {}
 
-  findAll(paginator: PaginatorDto, where?: FindOptionsWhere<T>) {
-    return this.repository.find({ ...paginator, where });
+  async findAll(paginator: PaginatorDto, where?: FindOptionsWhere<T>) {
+    return await this.repository.find({ ...paginator, where });
   }
 
-  findOneById(id: T['id']) {
-    return this.repository.findOneBy({ id });
+  async findOneById(id: T['id']) {
+    return await this.repository.findOneBy({ id } as FindOptionsWhere<T>);
   }
 
-  findOneContainsBy(property: keyof T, query: string) {
-    return this.repository.findOneBy({
+  async findOneContainsBy(property: keyof T, query: string) {
+    return await this.repository.findOneBy({
       [property]: ILike(`%${query}%`),
     } as FindOptionsWhere<T>);
   }
 
-  findOneEqualsBy(property: keyof T, query: string) {
-    return this.repository.findOneBy({
+  async findOneEqualsBy(property: keyof T, query: string) {
+    return await this.repository.findOneBy({
       [property]: ILike(`${query}`),
     } as FindOptionsWhere<T>);
   }
@@ -36,12 +42,12 @@ export class RepositoryService<T extends ObjectLiteral> {
     return { count: await this.repository.count() };
   }
 
-  save(entity: DeepPartial<T>) {
-    return this.repository.save(entity);
+  async save(entity: DeepPartial<T>) {
+    return await this.repository.save(entity);
   }
 
-  saveMany(entities: DeepPartial<T>[]) {
-    return this.repository.save(entities);
+  async saveMany(entities: DeepPartial<T>[]) {
+    return await this.repository.save(entities);
   }
 
   /**
@@ -50,14 +56,17 @@ export class RepositoryService<T extends ObjectLiteral> {
    * @param query
    * @returns
    */
-  deleteAllBy<P extends keyof T>(property: keyof T, query: T[P]) {
+  deleteAllBy<P extends keyof T>(
+    property: keyof T,
+    query: T[P]
+  ): Promise<DeleteResultDto> {
     return this.repository.delete({
       [property]: Equal(query),
     } as FindOptionsWhere<T>);
   }
 
-  deleteById(id: number) {
-    return this.repository.delete(id);
+  async deleteById(id: number): Promise<DeleteResultDto> {
+    return await this.repository.delete(id);
   }
 
   /**
@@ -71,50 +80,59 @@ export class RepositoryService<T extends ObjectLiteral> {
     property: keyof T,
     query: T[P],
     entity: QueryDeepPartialEntity<T>
-  ) {
+  ): Promise<UpdateResultDto> {
     return this.repository.update(
       { [property]: Equal(query) } as FindOptionsWhere<T>,
       entity
     );
   }
 
-  updateOneById(id: number, entity: QueryDeepPartialEntity<T>) {
-    return this.repository.update(id, entity);
+  async updateOneById(
+    id: number,
+    entity: QueryDeepPartialEntity<T>
+  ): Promise<UpdateResultDto> {
+    return await this.repository.update(id, entity);
   }
 
-  addRelation(relationDto: RelationDto<T>) {
+  async addRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
-    return this.repository
+    await this.repository
       .createQueryBuilder()
       .relation(relationName)
       .of(id)
       .add(relationId);
+    return await this.findOneById(id);
   }
 
-  removeRelation(relationDto: RelationDto<T>) {
+  async removeRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
-    return this.repository
+    await this.repository
       .createQueryBuilder()
       .relation(relationName)
       .of(id)
       .add(relationId);
+
+    return await this.findOneById(id);
   }
 
-  setRelation(relationDto: RelationDto<T>) {
+  async setRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
-    return this.repository
+    await this.repository
       .createQueryBuilder()
       .relation(relationName)
       .of(id)
       .set(relationId);
+    return await this.findOneById(id);
   }
 
-  unsetRelation(relationDto: UnsetRelationDto<T>) {
+  async unsetRelation(relationDto: UnsetRelationDto<T>) {
     const { id, relationName } = relationDto;
-    return this.repository
+    await this.repository
       .createQueryBuilder()
       .relation(relationName)
       .of(id)
       .set(null);
+
+    return await this.findOneById(id);
   }
 }

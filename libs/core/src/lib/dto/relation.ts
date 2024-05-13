@@ -1,6 +1,7 @@
 import { Exclude } from 'class-transformer';
 import { Property } from '../property';
 import { OmitType } from '@nestjs/swagger';
+import { IID } from '@mdtx/common';
 
 /**
  * @param id
@@ -8,8 +9,11 @@ import { OmitType } from '@nestjs/swagger';
  * @param relationId
  */
 @Exclude()
-export class RelationDto<T, P = keyof T extends string ? keyof T : string> {
-  @Property({ type: 'number', required: true }) id!: number;
+export class RelationDto<
+  T extends IID,
+  P = keyof T extends string ? keyof T : string
+> {
+  @Property({ type: 'number', required: true }) id!: T['id'];
   @Property({ type: 'string', required: true }) relationName!: P;
   @Property({ type: 'number', required: true }) relationId!: number;
 }
@@ -20,14 +24,14 @@ export class RelationDto<T, P = keyof T extends string ? keyof T : string> {
  */
 @Exclude()
 export class UnsetRelationDto<
-  T,
+  T extends IID,
   P = keyof T extends string ? keyof T : string
 > {
-  @Property({ type: 'number', required: true }) id!: number;
+  @Property({ type: 'number', required: true }) id!: T['id'];
   @Property({ type: 'string', required: true }) relationName!: P;
 }
 
-export function createRelationDto<T>(relations: string[]) {
+export function createRelationDto<T extends IID>(relations: string[]) {
   @Exclude()
   class __RelationDto extends RelationDto<T> {
     @Property({ type: 'string', enum: relations })

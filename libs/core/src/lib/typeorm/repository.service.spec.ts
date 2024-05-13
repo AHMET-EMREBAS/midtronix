@@ -61,10 +61,17 @@ describe('RepositoryService', () => {
 
   it('should operate', async () => {
     const owner = await ownerService.save({ name: 'Owner' });
+    const owner2 = await ownerService.save({ name: 'Owner 2' });
+
     const cat1 = await catService.save({ name: 'cat 1' });
     const cat2 = await catService.save({ name: 'cat 2' });
     const sample = await sampleService.save({
       name: 'name',
+      owner: { id: owner.id },
+      categories: [{ id: cat1.id }],
+    });
+    const sample1 = await sampleService.save({
+      name: 'name 1',
       owner: { id: owner.id },
       categories: [{ id: cat1.id }],
     });
@@ -73,8 +80,8 @@ describe('RepositoryService', () => {
     expect(cat1).toBeTruthy();
     expect(sample).toBeTruthy();
 
-    expect((await sampleService.count()).count).toBe(1);
-    expect((await ownerService.count()).count).toBe(1);
+    expect((await sampleService.count()).count).toBe(2);
+    expect((await ownerService.count()).count).toBe(2);
     expect((await catService.count()).count).toBe(2);
 
     const found = await sampleService.findOneById(1);
@@ -100,5 +107,11 @@ describe('RepositoryService', () => {
     expect(founds.length).toBe(1);
 
     expect(founds[0].categories?.length).toBe(2);
+
+    await sampleService.removeRelation({
+      id: sample.id,
+      relationId: cat1.id,
+      relationName: 'categories',
+    });
   });
 });
