@@ -4,6 +4,8 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Repository,
+  ViewColumn,
+  ViewEntity,
 } from 'typeorm';
 import { ManyRelation, OneRelation, OwnerRelation } from './typeorm';
 import { RepositoryService } from './respository.service';
@@ -28,6 +30,28 @@ class Sample extends BaseEntity {
   owner!: Owner;
 }
 
+@ViewEntity({
+  expression(ds) {
+    return ds
+      .createQueryBuilder()
+      .select('s.id', 'id')
+      .addSelect('s.name', 'name')
+      .addSelect('o.name', 'owner')
+      .addSelect("STRING_AGG(c.name, ',')", 'categories')
+      .from(Sample, 's')
+      .leftJoin('sample_categories_category', 'sc', 'sc.sampleId = s.id')
+      .leftJoin(Owner, 'o', 'o.id = s.ownerId')
+      .leftJoin(Category, 'c', 'c.id =sc.categoryId')
+      .groupBy('s.id, s.name, o.name');
+  },
+})
+class SampleView {
+  @ViewColumn() id!: number;
+  @ViewColumn() name!: string;
+  @ViewColumn() categories!: string;
+  @ViewColumn() owner!: string;
+}
+
 describe('RepositoryService', () => {
   let ds: DataSource;
   let repo: Repository<Sample>;
@@ -39,13 +63,15 @@ describe('RepositoryService', () => {
   let ownerRepo: Repository<Owner>;
   let ownerService: RepositoryService<Owner>;
 
+  let sampleViewRepo: Repository<SampleView>;
+
   beforeAll(async () => {
     ds = await new DataSource({
       type: 'postgres',
       database: 'testdb',
       username: 'postgres',
       password: 'password',
-      entities: [Owner, Sample, Category],
+      entities: [Owner, Sample, Category, SampleView],
       synchronize: true,
       dropSchema: true,
     }).initialize();
@@ -57,6 +83,8 @@ describe('RepositoryService', () => {
 
     ownerRepo = ds.getRepository(Owner);
     ownerService = new RepositoryService(ownerRepo);
+
+    sampleViewRepo = ds.getTreeRepository(SampleView);
   });
 
   it('should operate', async () => {
@@ -114,6 +142,12 @@ describe('RepositoryService', () => {
       relationName: 'categories',
     });
 
+    await sampleService.addRelation({
+      id: sample.id,
+      relationId: cat1.id,
+      relationName: 'categories',
+    });
+
     expect(removeRelationResult?.categories?.length).toBe(1);
 
     const updateOwnerResult = await sampleService.setRelation({
@@ -122,14 +156,16 @@ describe('RepositoryService', () => {
       relationId: owner2.id,
     });
 
-    const foundOwner = (await sampleService
-      .createQueryBuilder()
-      .from(Sample, 's')
-      .where(`s.ownerId = ${owner2.id}`)
-      .execute()) as Sample;
+    sampleViewRepo.createQueryBuilder('c');
 
-    expect(foundOwner).toBeTruthy();
-    expect(foundOwner.id).toBe(sample.id);
-    expect(foundOwner.name).toBe(sample.name);
+    const manyFind = await sampleViewRepo.find();
+
+    console.log(manyFind);
+    const result = await sampleViewRepo.findOneBy({ id: sample.id });
+
+    expect(result?.id).toBe(sample.id);
+    expect(result?.name).toBe(sample.name);
+    expect(result?.categories).toBe(cat1.name + ',' + cat2.name);
+    expect(result?.owner).toBe(owner2.name);
   });
 });

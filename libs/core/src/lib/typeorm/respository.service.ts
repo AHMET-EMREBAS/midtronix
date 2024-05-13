@@ -136,8 +136,8 @@ export class RepositoryService<T extends IID> {
     return await this.findOneById(id);
   }
 
-  createQueryBuilder() {
-    return this.repository.createQueryBuilder();
+  createQueryBuilder(alias?: string) {
+    return this.repository.createQueryBuilder(alias);
   }
 
   metadata() {
