@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mdtx/client-services": ["libs/client-services/src/index.ts"],
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/database": ["libs/database/src/index.ts"],

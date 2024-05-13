@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { TableComponent } from '../table/table.component';
@@ -68,7 +69,7 @@ export class SampleTableComponent implements AfterViewInit {
   }
 
   deleteSelection(items: Map<number, any>) {
-    for (const [key, value] of items) {
+    for (const [key] of items) {
       if (key) {
         this.data = this.data.filter((e) => e.id != key);
       }
@@ -77,7 +78,7 @@ export class SampleTableComponent implements AfterViewInit {
   }
 
   markAllRead(items: Map<number, any>) {
-    for (const [key, value] of items) {
+    for (const [key] of items) {
       if (key) {
         this.data.filter((e) => e.id == key).map((e) => (e.read = true));
       }
@@ -87,7 +88,6 @@ export class SampleTableComponent implements AfterViewInit {
   paginateData(data: any[]) {
     const pageSize = this.paginator.pageSize;
     const pageIndex = this.paginator.pageIndex;
-    const pageLength = this.paginator.length;
 
     if (this.paginator) {
       return data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);

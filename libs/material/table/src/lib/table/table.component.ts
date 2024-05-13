@@ -11,11 +11,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import {
-  slideInLeftOnEnterAnimation,
-  slideInRightOnEnterAnimation,
-  slideInDownOnEnterAnimation,
-} from 'angular-animations';
+import { slideInDownOnEnterAnimation } from 'angular-animations';
 @Component({
   selector: 'mdtx-table',
   standalone: true,
