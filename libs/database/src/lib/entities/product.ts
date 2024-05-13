@@ -4,6 +4,7 @@ import {
   ManyRelation,
   OneRelation,
   OwnerRelation,
+  Type,
 } from '@mdtx/core';
 import { NameEntity, ProductCommonEntity, BaseEntity } from './__base';
 import {
@@ -88,3 +89,19 @@ export class ProductImage
 export class ProductVideo
   extends VideoEntity(Product)
   implements IProductVideo<Product> {}
+
+export const ProductEntities: Readonly<Type[]> = [
+  Product,
+  Category,
+  Department,
+];
+
+export const SkuEntities: Readonly<Type[]> = [Product, Sku];
+
+export const PriceEntities: Readonly<Type[]> = [Sku, Price, PriceLevel];
+
+export const QuantityEntities: Readonly<Type[]> = [Store, Sku, Quantity];
+
+export const ProductImageEntities: Readonly<Type[]> = [Product, ProductImage];
+
+export const ProductVideoEntities: Readonly<Type[]> = [Product, ProductVideo];

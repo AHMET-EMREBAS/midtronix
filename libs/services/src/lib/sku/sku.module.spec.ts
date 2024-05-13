@@ -1,29 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductController } from './product.controller';
+import { SkuController } from './sku.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Product, ProductEntities, testDBOptions } from '@mdtx/database';
+import { Sku, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
-import { ProductService } from './product.service';
+import { SkuService } from './sku.service';
 import { RepositoryService } from '@mdtx/core';
 
-describe('ProductModuleTest', () => {
+describe('SkuModuleTest', () => {
   let app: TestingModule;
-  let controller: ProductController;
-  let repo: Repository<Product>;
-  let service: RepositoryService<Product>;
+  let controller: SkuController;
+  let repo: Repository<Sku>;
+  let service: RepositoryService<Sku>;
+
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([...ProductEntities]),
+        TypeOrmModule.forFeature([Sku]),
       ],
-      controllers: [ProductController],
-      providers: [ProductService],
+      controllers: [SkuController],
+      providers: [SkuService],
     }).compile();
-    controller = app.get(ProductController);
-    repo = app.get(getRepositoryToken(Product));
+    controller = app.get(SkuController);
+    repo = app.get(getRepositoryToken(Sku));
 
-    service = app.get(ProductService);
+    service = app.get(SkuService);
   });
 
   it('should initialize classes', () => {

@@ -5,7 +5,7 @@ import {
   PhoneEntity,
   UserDetailEntity,
 } from './contact';
-import { Entity, ManyRelation } from '@mdtx/core';
+import { Entity, ManyRelation, Type } from '@mdtx/core';
 import { IRole } from '@mdtx/common';
 
 /**
@@ -39,18 +39,29 @@ export class User extends CredentialEntity {
  */
 @Entity()
 export class UserDetail extends UserDetailEntity(User) {}
+
 /**
  * Extends {@link AddressEntity}
  */
 @Entity()
 export class UserAddress extends AddressEntity(User) {}
+
 /**
  * Extends {@link EmailEntity}
  */
 @Entity()
 export class UserEmail extends EmailEntity(User) {}
+
 /**
  * Extends {@link PhoneEntity}
  */
 @Entity()
 export class UserPhone extends PhoneEntity(User) {}
+
+export const UserEntities: Readonly<Type[]> = [User, Role, Permission];
+
+export const UserPhoneEntities: Readonly<Type[]> = [User, UserPhone];
+
+export const UserEmailEntities: Readonly<Type[]> = [User, UserEmail];
+
+export const UserAddressEntities: Readonly<Type[]> = [User, UserAddress];

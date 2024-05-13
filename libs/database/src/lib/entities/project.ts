@@ -1,5 +1,5 @@
 import { IProject, ISprint, ITask } from '@mdtx/common';
-import { Column, Entity, OwnerRelation } from '@mdtx/core';
+import { Column, Entity, OwnerRelation, Type } from '@mdtx/core';
 import { DescriptionEntity } from './__base';
 import { User } from './user';
 
@@ -12,9 +12,15 @@ export class Sprint extends DescriptionEntity implements ISprint<Project> {
 }
 
 @Entity()
-export class Task extends DescriptionEntity implements ITask<User> {
+export class Task extends DescriptionEntity implements ITask<User, Sprint> {
   @Column({ type: 'varchar', nullable: true }) due!: Date;
   @Column({ type: 'varchar', nullable: true }) status!: string;
   @Column({ type: 'varchar', nullable: true }) difficulty!: string;
+
+  @OwnerRelation(Sprint) sprint!: Sprint;
   @OwnerRelation(User) assignees!: User[];
 }
+
+export const ProjectEntities: Readonly<Type[]> = [Project];
+export const SprintEntities: Readonly<Type[]> = [Project, Sprint];
+export const TaskEntities: Readonly<Type[]> = [Project, Sprint, Task, User];

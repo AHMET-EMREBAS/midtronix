@@ -1,29 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductController } from './product.controller';
+import { CustomerController } from './customer.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Product, ProductEntities, testDBOptions } from '@mdtx/database';
+import { Customer, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
-import { ProductService } from './product.service';
+import { CustomerService } from './customer.service';
 import { RepositoryService } from '@mdtx/core';
 
-describe('ProductModuleTest', () => {
+describe('CustomerModuleTest', () => {
   let app: TestingModule;
-  let controller: ProductController;
-  let repo: Repository<Product>;
-  let service: RepositoryService<Product>;
+  let controller: CustomerController;
+  let repo: Repository<Customer>;
+  let service: RepositoryService<Customer>;
+
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([...ProductEntities]),
+        TypeOrmModule.forFeature([Customer]),
       ],
-      controllers: [ProductController],
-      providers: [ProductService],
+      controllers: [CustomerController],
+      providers: [CustomerService],
     }).compile();
-    controller = app.get(ProductController);
-    repo = app.get(getRepositoryToken(Product));
+    controller = app.get(CustomerController);
+    repo = app.get(getRepositoryToken(Customer));
 
-    service = app.get(ProductService);
+    service = app.get(CustomerService);
   });
 
   it('should initialize classes', () => {

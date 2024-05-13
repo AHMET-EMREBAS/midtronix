@@ -1,5 +1,5 @@
 import { IStore } from '@mdtx/common';
-import { Entity } from '@mdtx/core';
+import { Entity, Type } from '@mdtx/core';
 import { DescriptionEntity } from './__base';
 import { AddressEntity, EmailEntity, PhoneEntity } from './contact';
 
@@ -14,3 +14,5 @@ export class StorePhone extends PhoneEntity(Store) {}
 
 @Entity()
 export class StoreEmail extends EmailEntity(Store) {}
+
+export const StoreEntities: Readonly<Type[]> = [Store];

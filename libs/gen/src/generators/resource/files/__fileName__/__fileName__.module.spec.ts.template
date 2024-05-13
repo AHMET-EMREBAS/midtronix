@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { <%- className %>Controller } from './<%- fileName %>.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { <%- className %>, testDBOptions } from '@mdtx/database';
+import { <%- className %>, <%- className %>Entities, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
 import { <%- className %>Service } from './<%- fileName %>.service';
 import { RepositoryService } from '@mdtx/core';
@@ -11,12 +11,11 @@ describe('<%- className %>ModuleTest', () => {
   let controller: <%- className %>Controller;
   let repo: Repository<<%- className %>>;
   let service: RepositoryService<<%- className %>>;
-  
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([<%- className %>]),
+        TypeOrmModule.forFeature([...<%- className %>Entities]),
       ],
       controllers: [<%- className %>Controller],
       providers: [<%- className %>Service],

@@ -1,29 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductController } from './product.controller';
+import { StoreController } from './store.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Product, ProductEntities, testDBOptions } from '@mdtx/database';
+import { Store, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
-import { ProductService } from './product.service';
+import { StoreService } from './store.service';
 import { RepositoryService } from '@mdtx/core';
 
-describe('ProductModuleTest', () => {
+describe('StoreModuleTest', () => {
   let app: TestingModule;
-  let controller: ProductController;
-  let repo: Repository<Product>;
-  let service: RepositoryService<Product>;
+  let controller: StoreController;
+  let repo: Repository<Store>;
+  let service: RepositoryService<Store>;
+
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([...ProductEntities]),
+        TypeOrmModule.forFeature([Store]),
       ],
-      controllers: [ProductController],
-      providers: [ProductService],
+      controllers: [StoreController],
+      providers: [StoreService],
     }).compile();
-    controller = app.get(ProductController);
-    repo = app.get(getRepositoryToken(Product));
+    controller = app.get(StoreController);
+    repo = app.get(getRepositoryToken(Store));
 
-    service = app.get(ProductService);
+    service = app.get(StoreService);
   });
 
   it('should initialize classes', () => {

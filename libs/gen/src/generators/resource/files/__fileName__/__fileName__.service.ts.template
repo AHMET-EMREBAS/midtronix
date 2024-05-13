@@ -1,0 +1,10 @@
+import { InjectRepository, Repository, RepositoryService } from '@mdtx/core';
+import { <%- className %> } from '@mdtx/database';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class <%- className %>Service extends RepositoryService<<%- className %>> {
+  constructor(@InjectRepository(<%- className %>) repo: Repository<<%- className %>>) {
+    super(repo);
+  }
+}

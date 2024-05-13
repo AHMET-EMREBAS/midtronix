@@ -23,10 +23,12 @@ export interface ISprint<TProject extends IID> extends IDescription {
  * @param difficulty
  * @param assignees
  */
-export interface ITask<TUser extends IID> extends IDescription {
+export interface ITask<TUser extends IID, TSprint extends IID>
+  extends IDescription {
   due: Date;
   status: string;
   difficulty: string;
+  sprint: TSprint;
   assignees: TUser[];
 }
 

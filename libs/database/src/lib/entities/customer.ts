@@ -1,6 +1,11 @@
 import { CredentialEntity, NameEntity } from './__base';
-import { AddressEntity, EmailEntity, PhoneEntity, UserDetailEntity } from './contact';
-import { Entity, ManyRelation } from '@mdtx/core';
+import {
+  AddressEntity,
+  EmailEntity,
+  PhoneEntity,
+  UserDetailEntity,
+} from './contact';
+import { Entity, ManyRelation, Type } from '@mdtx/core';
 import { IRole } from '@mdtx/common';
 
 /**
@@ -56,3 +61,24 @@ export class CustomerEmail extends EmailEntity(Customer) {}
  */
 @Entity()
 export class CustomerPhone extends PhoneEntity(Customer) {}
+
+export const CustomerEntities: Readonly<Type[]> = [
+  Customer,
+  CustomerRole,
+  CustomerPermission,
+];
+
+export const CustomerPhoneEntities: Readonly<Type[]> = [
+  Customer,
+  CustomerPhone,
+];
+
+export const CustomerEmailEntities: Readonly<Type[]> = [
+  Customer,
+  CustomerEmail,
+];
+
+export const CustomerAddressEntities: Readonly<Type[]> = [
+  Customer,
+  CustomerAddress,
+];

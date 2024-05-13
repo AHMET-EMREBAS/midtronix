@@ -1,29 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductController } from './product.controller';
+import { PermissionController } from './permission.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Product, ProductEntities, testDBOptions } from '@mdtx/database';
+import { Permission, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
-import { ProductService } from './product.service';
+import { PermissionService } from './permission.service';
 import { RepositoryService } from '@mdtx/core';
 
-describe('ProductModuleTest', () => {
+describe('PermissionModuleTest', () => {
   let app: TestingModule;
-  let controller: ProductController;
-  let repo: Repository<Product>;
-  let service: RepositoryService<Product>;
+  let controller: PermissionController;
+  let repo: Repository<Permission>;
+  let service: RepositoryService<Permission>;
+
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([...ProductEntities]),
+        TypeOrmModule.forFeature([Permission]),
       ],
-      controllers: [ProductController],
-      providers: [ProductService],
+      controllers: [PermissionController],
+      providers: [PermissionService],
     }).compile();
-    controller = app.get(ProductController);
-    repo = app.get(getRepositoryToken(Product));
+    controller = app.get(PermissionController);
+    repo = app.get(getRepositoryToken(Permission));
 
-    service = app.get(ProductService);
+    service = app.get(PermissionService);
   });
 
   it('should initialize classes', () => {
