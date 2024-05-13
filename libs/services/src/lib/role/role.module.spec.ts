@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RoleController } from './role.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Role, testDBOptions } from '@mdtx/database';
+import { Role, RoleEntities, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
 import { RoleService } from './role.service';
 import { RepositoryService } from '@mdtx/core';
@@ -11,12 +11,11 @@ describe('RoleModuleTest', () => {
   let controller: RoleController;
   let repo: Repository<Role>;
   let service: RepositoryService<Role>;
-
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([Role]),
+        TypeOrmModule.forFeature([...RoleEntities]),
       ],
       controllers: [RoleController],
       providers: [RoleService],

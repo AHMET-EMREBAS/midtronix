@@ -15,50 +15,50 @@ const R = RestRouteBuilder.get('Permission');
 
 @R.Controler()
 export class PermissionController {
-  constructor(protected readonly permissionService: PermissionService) {}
+  constructor(protected readonly service: PermissionService) {}
 
   @R.SaveOne()
-  save(@R.Body() permission: CreatePermissionDto) {
-    return this.permissionService.save(permission);
+  save(@R.Body() body: CreatePermissionDto) {
+    return this.service.save(body);
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.permissionService.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()
   findOneById(@R.ParamID() id: number) {
-    return this.permissionService.findOneById(id);
+    return this.service.findOneById(id);
   }
 
   @R.DeleteOne()
   deleteById(@R.ParamID() id: number) {
-    return this.permissionService.deleteById(id);
+    return this.service.deleteById(id);
   }
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdatePermissionDto) {
-    return this.permissionService.updateOneById(id, body);
+    return this.service.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToPermission(@R.Param() relationDto: RelationDto<Permission>) {
-    return this.permissionService.addRelation(relationDto);
+  addRelationToPermission(@R.Param() param: RelationDto<Permission>) {
+    return this.service.addRelation(param);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto<Permission>) {
-    return this.permissionService.removeRelation(relationDto);
+  removeRelation(@R.Param() param: RelationDto<Permission>) {
+    return this.service.removeRelation(param);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto<Permission>) {
-    return this.permissionService.setRelation(relationDto);
+  setRelation(@R.Param() param: RelationDto<Permission>) {
+    return this.service.setRelation(param);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Permission>) {
-    return this.permissionService.unsetRelation(relationDto);
+  unsetRelation(@R.Param() param: UnsetRelationDto<Permission>) {
+    return this.service.unsetRelation(param);
   }
 }

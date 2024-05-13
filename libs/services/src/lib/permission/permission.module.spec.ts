@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PermissionController } from './permission.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import { Permission, testDBOptions } from '@mdtx/database';
+import { Permission, PermissionEntities, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
 import { PermissionService } from './permission.service';
 import { RepositoryService } from '@mdtx/core';
@@ -11,12 +11,11 @@ describe('PermissionModuleTest', () => {
   let controller: PermissionController;
   let repo: Repository<Permission>;
   let service: RepositoryService<Permission>;
-
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([Permission]),
+        TypeOrmModule.forFeature([...PermissionEntities]),
       ],
       controllers: [PermissionController],
       providers: [PermissionService],

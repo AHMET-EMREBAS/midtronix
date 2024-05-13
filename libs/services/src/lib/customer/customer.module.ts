@@ -1,13 +1,11 @@
-import { Customer, CustomerPermission, CustomerRole } from '@mdtx/database';
+import { CustomerEntities } from '@mdtx/database';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerController } from './customer.controller';
 import { CustomerService } from './customer.service';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Customer, CustomerRole, CustomerPermission]),
-  ],
+  imports: [TypeOrmModule.forFeature([...CustomerEntities])],
   controllers: [CustomerController],
   providers: [CustomerService],
 })

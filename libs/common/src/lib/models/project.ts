@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IComment, IDescription, IID } from './__base';
+import { IComment, ICommonTask, IDescription, IID } from './__base';
 
 /**
  * @param name
@@ -16,20 +16,18 @@ export interface ISprint<TProject extends IID> extends IDescription {
 }
 
 /**
- * @param name
- * @param description
- * @param due
- * @param status
- * @param difficulty
- * @param assignees
+ * @param name string
+ * @param description string
+ * @param due string
+ * @param status string
+ * @param difficulty string
+ * @param startDate Date
+ * @param finishDate Date
+ * @param assignees TUser[]
  */
 export interface ITask<TUser extends IID, TSprint extends IID>
-  extends IDescription {
-  due: Date;
-  status: string;
-  difficulty: string;
+  extends ICommonTask<TUser> {
   sprint: TSprint;
-  assignees: TUser[];
 }
 
 export interface ITaskComment<TUser extends IID, TTarget extends IID>

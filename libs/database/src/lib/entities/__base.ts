@@ -7,6 +7,7 @@ import {
   IProductCommon,
   IUrl,
   ICredential,
+  ICommonTask,
 } from '@mdtx/common';
 import {
   Column,
@@ -17,6 +18,7 @@ import {
   Type,
   OwnerRelation,
   OneRelation,
+  ManyRelation,
 } from '@mdtx/core';
 
 // export interface ILike<TUser> extends IOwner<TUser> {
@@ -88,6 +90,35 @@ export class ProductCommonEntity
 {
   @Column({ type: 'varchar', unique: true })
   upc!: string;
+}
+
+/**
+ * @param name string
+ * @param description string
+ * @param due number
+ * @param difficulty number
+ * @param status number
+ * @param startDate number
+ * @param finishDate number
+ * @param assignees TUser[]
+ * @returns
+ */
+export function CreateCommonTaskEntity<TUser extends IID>(
+  assignee: Type<TUser>
+) {
+  class CommonTaskEntity
+    extends DescriptionEntity
+    implements ICommonTask<TUser>
+  {
+    @Column({ type: 'integer' }) due!: number;
+    @Column({ type: 'integer' }) difficulty!: number;
+    @Column({ type: 'integer' }) status!: number;
+    @Column({ type: 'integer' }) startDate!: number;
+    @Column({ type: 'integer' }) finishDate!: number;
+    @ManyRelation(assignee, { eager: false }) assignees!: TUser[];
+  }
+
+  return CommonTaskEntity;
 }
 
 /**

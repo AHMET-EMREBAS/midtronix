@@ -11,50 +11,50 @@ const R = RestRouteBuilder.get('Store');
 
 @R.Controler()
 export class StoreController {
-  constructor(protected readonly storeService: StoreService) {}
+  constructor(protected readonly service: StoreService) {}
 
   @R.SaveOne()
-  save(@R.Body() store: CreateStoreDto) {
-    return this.storeService.save(store);
+  save(@R.Body() body: CreateStoreDto) {
+    return this.service.save(body);
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.storeService.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()
   findOneById(@R.ParamID() id: number) {
-    return this.storeService.findOneById(id);
+    return this.service.findOneById(id);
   }
 
   @R.DeleteOne()
   deleteById(@R.ParamID() id: number) {
-    return this.storeService.deleteById(id);
+    return this.service.deleteById(id);
   }
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateStoreDto) {
-    return this.storeService.updateOneById(id, body);
+    return this.service.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToStore(@R.Param() relationDto: RelationDto<Store>) {
-    return this.storeService.addRelation(relationDto);
+  addRelationToStore(@R.Param() param: RelationDto<Store>) {
+    return this.service.addRelation(param);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto<Store>) {
-    return this.storeService.removeRelation(relationDto);
+  removeRelation(@R.Param() param: RelationDto<Store>) {
+    return this.service.removeRelation(param);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto<Store>) {
-    return this.storeService.setRelation(relationDto);
+  setRelation(@R.Param() param: RelationDto<Store>) {
+    return this.service.setRelation(param);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Store>) {
-    return this.storeService.unsetRelation(relationDto);
+  unsetRelation(@R.Param() param: UnsetRelationDto<Store>) {
+    return this.service.unsetRelation(param);
   }
 }

@@ -7,6 +7,7 @@ import {
   Type,
   applyDecorators,
 } from './../__external';
+import { RelationOptions } from 'typeorm';
 
 export function OneRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
@@ -19,12 +20,15 @@ export function OneRelation<T extends IID>(target: Type<T>) {
   );
 }
 
-export function ManyRelation<T extends IID>(target: Type<T>) {
+export function ManyRelation<T extends IID>(
+  target: Type<T>,
+  options: RelationOptions = { eager: true, nullable: true }
+) {
   return applyDecorators(
     ManyToMany(
       () => target,
       (t) => t.id,
-      { eager: true, nullable: true }
+      { ...options, nullable: true }
     ),
     JoinTable()
   );

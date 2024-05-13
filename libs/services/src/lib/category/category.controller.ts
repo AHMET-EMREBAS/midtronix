@@ -11,50 +11,50 @@ const R = RestRouteBuilder.get('Category');
 
 @R.Controler()
 export class CategoryController {
-  constructor(protected readonly categoryService: CategoryService) {}
+  constructor(protected readonly service: CategoryService) {}
 
   @R.SaveOne()
-  save(@R.Body() category: CreateCategoryDto) {
-    return this.categoryService.save(category);
+  save(@R.Body() body: CreateCategoryDto) {
+    return this.service.save(body);
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.categoryService.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()
   findOneById(@R.ParamID() id: number) {
-    return this.categoryService.findOneById(id);
+    return this.service.findOneById(id);
   }
 
   @R.DeleteOne()
   deleteById(@R.ParamID() id: number) {
-    return this.categoryService.deleteById(id);
+    return this.service.deleteById(id);
   }
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateCategoryDto) {
-    return this.categoryService.updateOneById(id, body);
+    return this.service.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToCategory(@R.Param() relationDto: RelationDto<Category>) {
-    return this.categoryService.addRelation(relationDto);
+  addRelationToCategory(@R.Param() param: RelationDto<Category>) {
+    return this.service.addRelation(param);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto<Category>) {
-    return this.categoryService.removeRelation(relationDto);
+  removeRelation(@R.Param() param: RelationDto<Category>) {
+    return this.service.removeRelation(param);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto<Category>) {
-    return this.categoryService.setRelation(relationDto);
+  setRelation(@R.Param() param: RelationDto<Category>) {
+    return this.service.setRelation(param);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Category>) {
-    return this.categoryService.unsetRelation(relationDto);
+  unsetRelation(@R.Param() param: UnsetRelationDto<Category>) {
+    return this.service.unsetRelation(param);
   }
 }

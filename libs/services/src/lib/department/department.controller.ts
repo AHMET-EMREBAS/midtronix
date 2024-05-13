@@ -15,50 +15,50 @@ const R = RestRouteBuilder.get('Department');
 
 @R.Controler()
 export class DepartmentController {
-  constructor(protected readonly departmentService: DepartmentService) {}
+  constructor(protected readonly service: DepartmentService) {}
 
   @R.SaveOne()
-  save(@R.Body() department: CreateDepartmentDto) {
-    return this.departmentService.save(department);
+  save(@R.Body() body: CreateDepartmentDto) {
+    return this.service.save(body);
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.departmentService.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()
   findOneById(@R.ParamID() id: number) {
-    return this.departmentService.findOneById(id);
+    return this.service.findOneById(id);
   }
 
   @R.DeleteOne()
   deleteById(@R.ParamID() id: number) {
-    return this.departmentService.deleteById(id);
+    return this.service.deleteById(id);
   }
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateDepartmentDto) {
-    return this.departmentService.updateOneById(id, body);
+    return this.service.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToDepartment(@R.Param() relationDto: RelationDto<Department>) {
-    return this.departmentService.addRelation(relationDto);
+  addRelationToDepartment(@R.Param() param: RelationDto<Department>) {
+    return this.service.addRelation(param);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto<Department>) {
-    return this.departmentService.removeRelation(relationDto);
+  removeRelation(@R.Param() param: RelationDto<Department>) {
+    return this.service.removeRelation(param);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto<Department>) {
-    return this.departmentService.setRelation(relationDto);
+  setRelation(@R.Param() param: RelationDto<Department>) {
+    return this.service.setRelation(param);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Department>) {
-    return this.departmentService.unsetRelation(relationDto);
+  unsetRelation(@R.Param() param: UnsetRelationDto<Department>) {
+    return this.service.unsetRelation(param);
   }
 }

@@ -51,3 +51,12 @@ export interface IComment<TUser extends IID, TTarget extends IID>
 export interface ILike<TUser extends IID> extends IOwner<TUser> {
   like?: boolean;
 }
+
+export interface ICommonTask<TUser extends IID> extends IDescription {
+  due: number;
+  startDate: number;
+  finishDate: number;
+  status: number;
+  difficulty: number;
+  assignees: TUser[];
+}

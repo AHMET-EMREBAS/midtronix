@@ -11,50 +11,50 @@ const R = RestRouteBuilder.get('Role');
 
 @R.Controler()
 export class RoleController {
-  constructor(protected readonly roleService: RoleService) {}
+  constructor(protected readonly service: RoleService) {}
 
   @R.SaveOne()
-  save(@R.Body() role: CreateRoleDto) {
-    return this.roleService.save(role);
+  save(@R.Body() body: CreateRoleDto) {
+    return this.service.save(body);
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.roleService.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()
   findOneById(@R.ParamID() id: number) {
-    return this.roleService.findOneById(id);
+    return this.service.findOneById(id);
   }
 
   @R.DeleteOne()
   deleteById(@R.ParamID() id: number) {
-    return this.roleService.deleteById(id);
+    return this.service.deleteById(id);
   }
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateRoleDto) {
-    return this.roleService.updateOneById(id, body);
+    return this.service.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToRole(@R.Param() relationDto: RelationDto<Role>) {
-    return this.roleService.addRelation(relationDto);
+  addRelationToRole(@R.Param() param: RelationDto<Role>) {
+    return this.service.addRelation(param);
   }
 
   @R.RemoveRelation()
-  removeRelation(@R.Param() relationDto: RelationDto<Role>) {
-    return this.roleService.removeRelation(relationDto);
+  removeRelation(@R.Param() param: RelationDto<Role>) {
+    return this.service.removeRelation(param);
   }
 
   @R.SetRelation()
-  setRelation(@R.Param() relationDto: RelationDto<Role>) {
-    return this.roleService.setRelation(relationDto);
+  setRelation(@R.Param() param: RelationDto<Role>) {
+    return this.service.setRelation(param);
   }
 
   @R.UnsetRelation()
-  unsetRelation(@R.Param() relationDto: UnsetRelationDto<Role>) {
-    return this.roleService.unsetRelation(relationDto);
+  unsetRelation(@R.Param() param: UnsetRelationDto<Role>) {
+    return this.service.unsetRelation(param);
   }
 }
