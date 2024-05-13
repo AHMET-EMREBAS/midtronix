@@ -4,7 +4,7 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
-import { BaseFormComponent } from './base-form.component';
+import { FormComponent } from './form.component';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { InputNumberComponent } from '../input-number/input-number.component';
 import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';
@@ -121,7 +121,7 @@ import { InputButtonToggleComponent } from '../input-button-toggle/input-button-
   `,
 })
 export class SampleFormComponent
-  extends BaseFormComponent
+  extends FormComponent
   implements AfterViewInit, OnDestroy
 {
   @ViewChild('firstName') firstName!: InputBaseComponent;
@@ -133,13 +133,13 @@ export class SampleFormComponent
 
   sub!: Subscription;
   override ngAfterViewInit(): void {
-    this.formGroup = new FormGroup({
-      firstName: this.firstName.formControl,
-      age: this.age.formControl,
-      desc: this.desc.formControl,
-      dob: this.dob.formControl,
-      ctime: this.ctime.formControl,
-      adates: this.adates.formControl,
+    this.resourceFormGroup = new FormGroup({
+      firstName: this.firstName.inputControl,
+      age: this.age.inputControl,
+      desc: this.desc.inputControl,
+      dob: this.dob.inputControl,
+      ctime: this.ctime.inputControl,
+      adates: this.adates.inputControl,
     });
 
     super.ngAfterViewInit();

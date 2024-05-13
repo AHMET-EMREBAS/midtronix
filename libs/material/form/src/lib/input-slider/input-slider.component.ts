@@ -13,7 +13,7 @@ export class InputSliderComponent extends InputBaseComponent {
   @Input() activeLabel?: string | undefined = undefined;
 
   getLabel() {
-    return this.formControl.value == true
+    return this.inputControl.value == true
       ? this.activeLabel ?? this.label
       : this.label;
   }

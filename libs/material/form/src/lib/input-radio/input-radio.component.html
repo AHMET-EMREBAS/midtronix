@@ -1,4 +1,4 @@
-<mat-radio-group #radioGroup  [formControl]="formControl">
+<mat-radio-group #radioGroup [formControl]="inputControl">
   @for(o of options; track o){
   <mat-radio-button #rb [value]="o">{{ o.name }}</mat-radio-button>
   }

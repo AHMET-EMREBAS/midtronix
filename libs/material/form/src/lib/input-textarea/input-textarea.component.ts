@@ -27,6 +27,6 @@ export class InputTextareaComponent
       .maxLength(this.maxLength)
       .build();
 
-    this.formControl.addValidators(validators);
+    this.inputControl.addValidators(validators);
   }
 }

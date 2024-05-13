@@ -35,12 +35,19 @@ export class ProductForm
     const { category, department, description, manufacturers, name, upc } =
       new ProductForm(required);
     return new FormGroup({
-      name,
-      description,
-      upc,
       category,
       department,
+      description,
       manufacturers,
+      name,
+      upc,
     });
+  }
+
+  static controls(required = true): FormType<ICreateProductDto> {
+    const { name, upc, description, manufacturers, category, department } =
+      new ProductForm(required);
+
+    return { name, upc, description, manufacturers, category, department };
   }
 }

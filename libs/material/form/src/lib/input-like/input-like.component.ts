@@ -18,6 +18,6 @@ export class InputLikeComponent extends InputBaseComponent {
     this.toggleList = [...this.toggleList, last];
     console.log(this.toggleList);
     this.liked = this.toggleList[0];
-    this.formControl.setValue(this.liked);
+    this.inputControl.setValue(this.liked);
   }
 }

@@ -1,2 +1,2 @@
 export * from './common-form.module';
-export * from './base-form.component';
+export * from './form.component';

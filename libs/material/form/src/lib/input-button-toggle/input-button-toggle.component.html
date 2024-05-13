@@ -1,6 +1,6 @@
 <div class="form-field">
   <h3>{{ label }}</h3>
-  <mat-button-toggle-group [formControl]="formControl" [name]="inputName">
+  <mat-button-toggle-group [formControl]="inputControl" [name]="inputName">
     @for(o of options; track o){
 
     <mat-button-toggle [value]="o">{{ o.name }}</mat-button-toggle>

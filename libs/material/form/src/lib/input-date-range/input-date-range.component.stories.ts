@@ -27,7 +27,7 @@ const dateControl = new FormControl('', []);
 export const Primary: Story = {
   args: {
     label: 'Select date',
-    formControl: dateControl,
+    inputControl: dateControl,
     inputName: 'date',
   },
 };

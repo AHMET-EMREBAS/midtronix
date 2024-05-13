@@ -27,7 +27,7 @@ const editorControl = new FormControl('', []);
 export const Primary: Story = {
   args: {
     label: 'Post',
-    formControl: editorControl,
+    inputControl: editorControl,
     inputName: 'editor',
   },
 };

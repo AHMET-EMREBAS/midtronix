@@ -37,6 +37,6 @@ export class InputTimeComponent
       .beforeHour(this.beforeHour)
       .afterHour(this.afterHour)
       .build();
-    this.formControl.addValidators(validators);
+    this.inputControl.addValidators(validators);
   }
 }

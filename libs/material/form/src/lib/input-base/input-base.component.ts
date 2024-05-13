@@ -20,7 +20,7 @@ import { Icon } from '@mdtx/material/core';
   styleUrl: './input-base.component.scss',
 })
 export class InputBaseComponent implements OnInit, AfterViewInit {
-  @Input() formControl!: FormControl;
+  @Input() inputControl!: FormControl;
   @Input() label!: string;
   @Input() inputName!: string;
   @Input() hint = '';
@@ -31,7 +31,7 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
   protected __validateInputs() {
-    if (!this.formControl) this.formControl = new FormControl();
+    if (!this.inputControl) this.inputControl = new FormControl();
   }
 
   ngOnInit(): void {
@@ -39,12 +39,12 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));
-    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));
+    this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));
+    this.$statusChange = this.inputControl.statusChanges.pipe(debounceTime(600));
   }
 
   getErrorMessage() {
-    const errors = this.formControl?.errors;
+    const errors = this.inputControl?.errors;
     if (errors) {
       return Object.values(errors).shift();
     }

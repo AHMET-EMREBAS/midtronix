@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { BaseFormComponent } from './base-form.component';
+import { FormComponent } from './form.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<BaseFormComponent> = {
-  component: BaseFormComponent,
+const meta: Meta<FormComponent> = {
+  component: FormComponent,
   title: 'BaseFormComponent',
 };
 export default meta;
-type Story = StoryObj<BaseFormComponent>;
+type Story = StoryObj<FormComponent>;
 
 export const Primary: Story = {
   args: {},

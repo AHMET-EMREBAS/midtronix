@@ -22,7 +22,7 @@ export class InputAutocompleteComponent
   override ngOnInit(): void {
     super.ngOnInit();
 
-    this.filteredOptions$ = this.formControl.valueChanges.pipe(
+    this.filteredOptions$ = this.inputControl.valueChanges.pipe(
       startWith(''),
       debounceTime(600),
       map((e) => {

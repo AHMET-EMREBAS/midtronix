@@ -19,3 +19,20 @@ body {
 mat-form-field {
   width: 100%;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  button {
+    width: 100%;
+  }
+}

@@ -25,10 +25,10 @@ export class InputEditorComponent
     });
 
     editor.on('text-change', (value: string) => {
-      this.formControl.setValue(value);
+      this.inputControl.setValue(value);
     });
 
-    this.formControl.valueChanges.subscribe((value) => {
+    this.inputControl.valueChanges.subscribe((value) => {
       console.table({ controlValue: value });
     });
   }

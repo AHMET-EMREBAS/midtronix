@@ -41,7 +41,7 @@ export class InputDateRangeComponent
     this.sub = this.dateRange.valueChanges
       .pipe(debounceTime(600))
       .subscribe((value) => {
-        this.formControl.setValue(value);
+        this.inputControl.setValue(value);
       });
   }
 

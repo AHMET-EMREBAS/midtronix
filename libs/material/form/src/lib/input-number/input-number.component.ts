@@ -28,7 +28,7 @@ export class InputNumberComponent
       .max(this.maxValue)
       .build();
 
-    this.formControl.addValidators(validators);
+    this.inputControl.addValidators(validators);
   }
 
   
