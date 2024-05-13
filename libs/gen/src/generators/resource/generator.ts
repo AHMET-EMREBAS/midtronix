@@ -7,7 +7,7 @@ export async function resourceGenerator(
   tree: Tree,
   options: ResourceGeneratorSchema
 ) {
-  const projectRoot = `libs/${options.name}/src/lib`;
+  const projectRoot = `libs/services/src/lib`;
 
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     ...names(options.name),

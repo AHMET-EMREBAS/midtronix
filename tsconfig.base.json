@@ -33,6 +33,7 @@
       "@mdtx/modules/pms": ["libs/modules/pms/src/index.ts"],
       "@mdtx/modules/pos": ["libs/modules/pos/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
+      "@mdtx/services": ["libs/services/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },
