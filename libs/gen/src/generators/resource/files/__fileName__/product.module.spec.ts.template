@@ -1,13 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { <%- className %>Controller } from './<%- fileName %>.controller';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
-import {
-  Category,
-  Department,
-  Manufacturer,
-  <%- className %>,
-  testDBOptions,
-} from '@mdtx/database';
+import { <%- className %>, testDBOptions } from '@mdtx/database';
 import { Repository } from 'typeorm';
 import { <%- className %>Service } from './<%- fileName %>.service';
 import { RepositoryService } from '@mdtx/core';
@@ -22,7 +16,7 @@ describe('<%- className %>ModuleTest', () => {
     app = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRoot(testDBOptions()),
-        TypeOrmModule.forFeature([<%- className %>, Category, Department, Manufacturer]),
+        TypeOrmModule.forFeature([<%- className %>]),
       ],
       controllers: [<%- className %>Controller],
       providers: [<%- className %>Service],

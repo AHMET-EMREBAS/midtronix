@@ -1,4 +1,4 @@
-import { Category, Department, Manufacturer, <%- className %> } from '@mdtx/database';
+import { <%- className %> } from '@mdtx/database';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { <%- className %>Controller } from './<%- fileName %>.controller';
