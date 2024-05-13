@@ -24,6 +24,9 @@ export class CreateSprintDto
 }
 
 @Exclude()
+export class UpdateSprintDto extends PartialType(CreateSprintDto) {}
+
+@Exclude()
 export class CreateTaskDto
   extends CreateCommonTaskDto
   implements ICreateTaskDto
