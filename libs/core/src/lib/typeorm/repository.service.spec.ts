@@ -104,14 +104,32 @@ describe('RepositoryService', () => {
     });
 
     const founds = await sampleService.findAll({});
-    expect(founds.length).toBe(1);
+    expect(founds.length).toBe(2);
 
     expect(founds[0].categories?.length).toBe(2);
 
-    await sampleService.removeRelation({
+    const removeRelationResult = await sampleService.removeRelation({
       id: sample.id,
       relationId: cat1.id,
       relationName: 'categories',
     });
+
+    expect(removeRelationResult?.categories?.length).toBe(1);
+
+    const updateOwnerResult = await sampleService.setRelation({
+      id: sample.id,
+      relationName: 'owner',
+      relationId: owner2.id,
+    });
+
+    const foundOwner = (await sampleService
+      .createQueryBuilder()
+      .from(Sample, 's')
+      .where(`s.ownerId = ${owner2.id}`)
+      .execute()) as Sample;
+
+    expect(foundOwner).toBeTruthy();
+    expect(foundOwner.id).toBe(sample.id);
+    expect(foundOwner.name).toBe(sample.name);
   });
 });

@@ -110,7 +110,7 @@ export class RepositoryService<T extends IID> {
       .createQueryBuilder()
       .relation(relationName)
       .of(id)
-      .add(relationId);
+      .remove(relationId);
 
     return await this.findOneById(id);
   }
@@ -134,5 +134,13 @@ export class RepositoryService<T extends IID> {
       .set(null);
 
     return await this.findOneById(id);
+  }
+
+  createQueryBuilder() {
+    return this.repository.createQueryBuilder();
+  }
+
+  metadata() {
+    return this.repository.metadata;
   }
 }
