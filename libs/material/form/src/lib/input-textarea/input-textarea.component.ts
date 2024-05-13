@@ -2,12 +2,11 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { InputBaseComponent } from '../input-base';
 import { InputValidator } from '@mdtx/material/core';
 import { CommonFormModule } from '../form';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'mdtx-input-textarea',
   standalone: true,
-  imports: [CommonFormModule, MatAutocompleteModule],
+  imports: [CommonFormModule],
   templateUrl: './input-textarea.component.html',
   styleUrl: './input-textarea.component.scss',
 })

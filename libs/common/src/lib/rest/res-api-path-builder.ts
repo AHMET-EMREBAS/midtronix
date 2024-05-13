@@ -1,5 +1,4 @@
 import { plural } from '@mdtx/utils';
-import { resolveNaptr } from 'dns';
 
 export type RestApiPaths = {
   METADATA_KEY: string;

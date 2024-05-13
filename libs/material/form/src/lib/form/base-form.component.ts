@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, debounceTime } from 'rxjs';
 
 @Component({
@@ -20,10 +20,17 @@ export class BaseFormComponent implements AfterViewInit {
   }
 
   formSubmit() {
+    console.log('Form is submitting: ', this.formGroup.value);
     this.submitEvent.emit(this.formGroup.value);
   }
 
   formReset() {
     this.formGroup.reset();
+  }
+
+  control(name: string) {
+    const formControl = this.formGroup.get(name) as FormControl;
+    if (!formControl) throw new Error(`${name} |  FormControl is not found!`);
+    return formControl;
   }
 }

@@ -1,8 +1,7 @@
 import { ICreateProductDto } from '@mdtx/common';
-import { FormType } from '../__base/form-type';
-import { FormControl, FormGroup } from '../__externals';
-import { DescriptionForm } from '../__base';
 import { InputValidator } from '@mdtx/material/core';
+import { FormType, DescriptionForm } from '../__base';
+import { FormControl, FormGroup } from '../__externals';
 
 export class ProductForm
   extends DescriptionForm
@@ -31,4 +30,17 @@ export class ProductForm
       .maxLength(14)
       .build()
   );
+
+  static formGroup(required = true): FormGroup {
+    const { category, department, description, manufacturers, name, upc } =
+      new ProductForm(required);
+    return new FormGroup({
+      name,
+      description,
+      upc,
+      category,
+      department,
+      manufacturers,
+    });
+  }
 }

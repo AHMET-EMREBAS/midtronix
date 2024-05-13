@@ -1,11 +1,11 @@
-<mat-form-field class="example-full-width">
+<mat-form-field>
   <mat-label>{{ label }}</mat-label>
   <textarea
     #mdtxInput="mdtxInput"
+    [name]="inputName"
+    [formControl]="formControl"
     mdtxInput
     matInput
-    
-    [formControl]="formControl"
   ></textarea>
 
   <!-- Text suffix -->

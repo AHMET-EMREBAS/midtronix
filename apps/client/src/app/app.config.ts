@@ -23,10 +23,12 @@ export const appConfig: ApplicationConfig = {
         pluralNames: {
           Product: 'Products',
           Category: 'Categories',
+          Department: 'Departments',
         },
         entityMetadata: {
           Product: {},
           Category: {},
+          Department: {},
         },
       },
       withEffects()
