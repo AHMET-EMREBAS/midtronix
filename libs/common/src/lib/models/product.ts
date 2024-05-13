@@ -13,8 +13,8 @@ export interface IProduct<
   TDepartment extends IID = IID,
   TManufacturer extends IID = IID
 > extends IProductCommon {
-  category: TCategory;
-  department: TDepartment;
+  category?: TCategory;
+  department?: TDepartment;
   manufacturers?: TManufacturer[];
 }
 

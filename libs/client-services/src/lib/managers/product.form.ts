@@ -1,4 +1,4 @@
-import { ICreateProductDto } from '@mdtx/common';
+import { ICreateProductDto, IProduct } from '@mdtx/common';
 import { InputValidator } from '@mdtx/material/core';
 import { FormType, DescriptionForm } from '../__base';
 import { FormControl, FormGroup } from '../__externals';
@@ -42,6 +42,25 @@ export class ProductForm
       name,
       upc,
     });
+  }
+
+  static columns(): (keyof IProduct)[] {
+    return [
+      'id',
+      'name',
+      'upc',
+      'description',
+      'category',
+      'department',
+      'manufacturers',
+      'createdAt',
+      'updatedAt',
+      'deletedAt',
+    ];
+  }
+
+  static displayedColumns(): (keyof IProduct)[] {
+    return ['id', 'name', 'upc', 'description', 'category', 'department'];
   }
 
   static controls(required = true): FormType<ICreateProductDto> {

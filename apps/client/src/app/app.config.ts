@@ -9,13 +9,13 @@ import { provideEntityData, withEffects } from '@ngrx/data';
 import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
+import { httpInterceptors } from './app.interceptors';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
-    provideClientHydration(),
+    provideHttpClient(withInterceptors(httpInterceptors)),
     provideRouter(appRoutes, withHashLocation()),
-    provideHttpClient(withInterceptors([])),
     provideStore([]),
     provideEffects([]),
     provideEntityData(

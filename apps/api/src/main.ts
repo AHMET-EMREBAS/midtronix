@@ -7,17 +7,18 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
+  app.enableCors({ origin: '*' });
 
   const config = new DocumentBuilder().setTitle('Api').build();
   const doc = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, doc);
 
+  
+  const port = process.env.PORT || 3000;
   await app.listen(port);
 
   Logger.log(

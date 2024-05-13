@@ -1,0 +1,60 @@
+<mat-stepper [linear]="true">
+    <mat-step #firstStepRef label="Product" [stepControl]="firstStep">
+      <form class="form-container" [formGroup]="firstStep">
+        <mdtx-input-text
+          [inputControl]="control('name')"
+          label="Product Name"
+          i18n-label
+        ></mdtx-input-text>
+
+        <mdtx-input-text
+          [inputControl]="control('upc')"
+          label="UPC"
+          i18n-label
+        ></mdtx-input-text>
+
+        <mdtx-input-textarea
+          label="Description"
+          [inputControl]="control('description')"
+        ></mdtx-input-textarea>
+      </form>
+    </mat-step>
+
+    <mat-step label="Details" [stepControl]="secondStep">
+      <form class="form-container" [formGroup]="secondStep">
+        <mdtx-input-text
+          [inputControl]="control('category')"
+          label="Category"
+          i18n-label
+        ></mdtx-input-text>
+
+        <mdtx-input-text
+          [inputControl]="control('department')"
+          label="Department"
+          i18n-label
+        ></mdtx-input-text>
+
+        <mdtx-input-text
+          [inputControl]="control('manufacturers')"
+          label="Manufacturer"
+          i18n-label
+        ></mdtx-input-text>
+      </form>
+    </mat-step>
+
+    <mat-step label="Complete">
+      <div class="form-actions">
+        <button mat-raised-button color="primary" (click)="formSubmit()" i18n>
+          Save Product
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="formReset(); firstStepRef.select()"
+          i18n
+        >
+          Reset
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
