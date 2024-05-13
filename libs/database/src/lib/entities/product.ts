@@ -92,16 +92,33 @@ export class ProductVideo
 
 export const ProductEntities: Readonly<Type[]> = [
   Product,
+  Manufacturer,
   Category,
   Department,
 ];
 
-export const SkuEntities: Readonly<Type[]> = [Product, Sku];
+export const SkuEntities: Readonly<Type[]> = [...ProductEntities, Sku];
 
-export const PriceEntities: Readonly<Type[]> = [Sku, Price, PriceLevel];
+export const PriceEntities: Readonly<Type[]> = [
+  Sku,
+  Price,
+  PriceLevel,
+  ...ProductEntities,
+];
 
-export const QuantityEntities: Readonly<Type[]> = [Store, Sku, Quantity];
+export const QuantityEntities: Readonly<Type[]> = [
+  ...ProductEntities,
+  Store,
+  Sku,
+  Quantity,
+];
 
-export const ProductImageEntities: Readonly<Type[]> = [Product, ProductImage];
+export const ProductImageEntities: Readonly<Type[]> = [
+  ...ProductEntities,
+  ProductImage,
+];
 
-export const ProductVideoEntities: Readonly<Type[]> = [Product, ProductVideo];
+export const ProductVideoEntities: Readonly<Type[]> = [
+  ...ProductEntities,
+  ProductVideo,
+];

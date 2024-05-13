@@ -4,7 +4,6 @@ import {
   ICreateProductDto,
   ICreateQuantityDto,
   ICreateSkuDto,
-  ICreateStoreDto,
   IID,
 } from '@mdtx/common';
 import {
@@ -16,6 +15,7 @@ import {
   PickType,
 } from '@mdtx/core';
 import { CreateDescriptionDto, CreateNameDto } from './__base.dto';
+import { CreateImageDto, CreateVideoDto } from './media.dto';
 
 @Exclude()
 export class CreatePriceLevelDto
@@ -76,3 +76,12 @@ export class CreateQuantityDto implements ICreateQuantityDto {
 export class UpdateQuantityDto extends PickType(CreateQuantityDto, [
   'quantity',
 ]) {}
+
+@Exclude()
+export class CreateProductImageDto extends CreateImageDto {}
+@Exclude()
+export class UpdateProductImageDto extends PartialType(CreateProductImageDto) {}
+@Exclude()
+export class CreateProductVideoDto extends CreateVideoDto {}
+@Exclude()
+export class UpdateProductVideoDto extends PartialType(CreateProductVideoDto) {}

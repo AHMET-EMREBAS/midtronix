@@ -1,6 +1,6 @@
 import { IMessage } from '@mdtx/common';
 import { Column, Entity, OwnerRelation, Type } from '@mdtx/core';
-import { User } from './user';
+import { User, UserEntities } from './user';
 import { BaseEntity } from './__base';
 
 @Entity()
@@ -14,6 +14,9 @@ export class Message extends BaseEntity implements IMessage<User, User> {
 @Entity()
 export class Notification extends Message implements IMessage<User, User> {}
 
-export const MessageEntities: Readonly<Type[]> = [Message, User];
+export const MessageEntities: Readonly<Type[]> = [Message, ...UserEntities];
 
-export const NotificationEntities: Readonly<Type[]> = [Notification, User];
+export const NotificationEntities: Readonly<Type[]> = [
+  Notification,
+  ...UserEntities,
+];

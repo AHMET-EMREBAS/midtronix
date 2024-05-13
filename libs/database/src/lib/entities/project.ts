@@ -1,7 +1,7 @@
 import { IProject, ISprint, ITask } from '@mdtx/common';
 import { Column, Entity, OwnerRelation, Type } from '@mdtx/core';
 import { CreateCommonTaskEntity, DescriptionEntity } from './__base';
-import { User } from './user';
+import { User, UserEntities } from './user';
 
 @Entity()
 export class Project extends DescriptionEntity implements IProject {}
@@ -21,4 +21,9 @@ export class Task
 
 export const ProjectEntities: Readonly<Type[]> = [Project];
 export const SprintEntities: Readonly<Type[]> = [Project, Sprint];
-export const TaskEntities: Readonly<Type[]> = [Project, Sprint, Task, User];
+export const TaskEntities: Readonly<Type[]> = [
+  Project,
+  Sprint,
+  Task,
+  ...UserEntities,
+];

@@ -69,16 +69,25 @@ export const CustomerEntities: Readonly<Type[]> = [
 ];
 
 export const CustomerPhoneEntities: Readonly<Type[]> = [
-  Customer,
   CustomerPhone,
+  ...CustomerEntities,
 ];
 
 export const CustomerEmailEntities: Readonly<Type[]> = [
-  Customer,
   CustomerEmail,
+  ...CustomerEntities,
 ];
 
 export const CustomerAddressEntities: Readonly<Type[]> = [
-  Customer,
   CustomerAddress,
+  ...CustomerEntities,
+];
+
+export const CustomerRoleEntities: Readonly<Type[]> = [
+  CustomerRole,
+  CustomerPermission,
+];
+
+export const CustomerPermissionEntities: Readonly<Type[]> = [
+  CustomerPermission,
 ];
