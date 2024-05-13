@@ -27,7 +27,7 @@ export interface ISprint<TProject extends IID> extends IDescription {
  */
 export interface ITask<TUser extends IID, TSprint extends IID>
   extends ICommonTask<TUser> {
-  sprint: TSprint;
+  sprint?: TSprint;
 }
 
 export interface ITaskComment<TUser extends IID, TTarget extends IID>

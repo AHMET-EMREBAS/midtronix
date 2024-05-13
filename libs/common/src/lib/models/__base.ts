@@ -53,10 +53,10 @@ export interface ILike<TUser extends IID> extends IOwner<TUser> {
 }
 
 export interface ICommonTask<TUser extends IID> extends IDescription {
-  due: number;
-  startDate: number;
-  finishDate: number;
-  status: number;
-  difficulty: number;
-  assignees: TUser[];
+  due?: number;
+  startDate?: number;
+  finishDate?: number;
+  status?: number;
+  difficulty?: number;
+  assignees?: TUser[];
 }

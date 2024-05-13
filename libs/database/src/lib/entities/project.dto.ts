@@ -5,7 +5,7 @@ import {
   IID,
 } from '@mdtx/common';
 import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
-import { CreateDescriptionDto } from './__base.dto';
+import { CreateCommonTaskDto, CreateDescriptionDto } from './__base.dto';
 
 @Exclude()
 export class CreateProjectDto
@@ -25,13 +25,10 @@ export class CreateSprintDto
 
 @Exclude()
 export class CreateTaskDto
-  extends CreateDescriptionDto
+  extends CreateCommonTaskDto
   implements ICreateTaskDto
 {
-  @Property({ type: 'date' }) due!: Date;
-  @Property({ type: 'string' }) status!: string;
-  @Property({ type: 'string' }) difficulty!: string;
-  @IDObjectProperty({ isArray: true }) assignees!: IID[];
+  @IDObjectProperty() sprint!: IID;
 }
 
 @Exclude()

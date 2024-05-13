@@ -9,7 +9,7 @@ export interface ICreateProjectDto extends Omit<IProject, keyof IBaseEntity> {}
 export interface ICreateSprintDto
   extends Omit<ISprint<IID>, keyof IBaseEntity> {}
 
-export interface ICreateTaskDto extends Omit<ITask<IID>, keyof IBaseEntity> {}
+export interface ICreateTaskDto extends Omit<ITask<IID, IID>, keyof IBaseEntity> {}
 
 export interface ICreateTaskCommentDto
   extends Omit<ITaskComment<IID, IID>, keyof IBaseEntity> {}

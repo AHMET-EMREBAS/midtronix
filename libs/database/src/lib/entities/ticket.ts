@@ -1,5 +1,5 @@
 import { CreateCommonTaskEntity } from './__base';
-import { Entity, OwnerRelation } from '@mdtx/core';
+import { Entity, OwnerRelation, Type } from '@mdtx/core';
 import { User } from './user';
 import { Customer } from './customer';
 import { ITicket } from '@mdtx/common';
@@ -12,3 +12,5 @@ export class Ticket
   @OwnerRelation(Customer)
   customer!: Customer;
 }
+
+export const TicketEntities: Readonly<Type[]> = [Ticket, Customer, User];

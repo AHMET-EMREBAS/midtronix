@@ -1,4 +1,6 @@
 import {
+  IBaseEntity,
+  ICommonTask,
   ICreateAddressDto,
   ICreateCredentialDto,
   ICreateEmailDto,
@@ -11,7 +13,13 @@ import {
   IID,
   IName,
 } from '@mdtx/common';
-import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
+import {
+  Exclude,
+  IDDto,
+  IDObjectProperty,
+  PartialType,
+  Property,
+} from '@mdtx/core';
 
 @Exclude()
 export class CreateOwnerDto implements ICreateOwnerDto {
@@ -121,3 +129,15 @@ export class UpdateRoleDto extends PartialType(CreateRoleDto) {}
 
 @Exclude()
 export class UpdateUseDetailDto extends PartialType(CreateUseDetailDto) {}
+
+export class CreateCommonTaskDto
+  extends CreateDescriptionDto
+  implements Omit<ICommonTask<IDDto>, keyof IBaseEntity>
+{
+  @Property({ type: 'number' }) due?: number;
+  @Property({ type: 'number' }) startDate?: number;
+  @Property({ type: 'number' }) finishDate?: number;
+  @Property({ type: 'number' }) status?: number;
+  @Property({ type: 'number' }) difficulty?: number;
+  @Property({ type: 'number' }) assignees?: IDDto[];
+}
