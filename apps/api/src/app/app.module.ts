@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductModule } from './product';
+import * as Modules from '@mdtx/services';
 
+const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -13,7 +14,7 @@ import { ProductModule } from './product';
       synchronize: true,
       dropSchema: true,
     }),
-    ProductModule,
+    ...modules,
   ],
 })
 export class AppModule {}
