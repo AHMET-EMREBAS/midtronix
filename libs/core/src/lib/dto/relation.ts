@@ -8,9 +8,9 @@ import { OmitType } from '@nestjs/swagger';
  * @param relationId
  */
 @Exclude()
-export class RelationDto {
+export class RelationDto<T, P = keyof T extends string ? keyof T : string> {
   @Property({ type: 'number', required: true }) id!: number;
-  @Property({ type: 'string', required: true }) relationName!: string;
+  @Property({ type: 'string', required: true }) relationName!: P;
   @Property({ type: 'number', required: true }) relationId!: number;
 }
 
@@ -19,13 +19,19 @@ export class RelationDto {
  * @param relationName
  */
 @Exclude()
-export class UnsetRelationDto extends OmitType(RelationDto, ['relationId']) {}
+export class UnsetRelationDto<
+  T,
+  P = keyof T extends string ? keyof T : string
+> {
+  @Property({ type: 'number', required: true }) id!: number;
+  @Property({ type: 'string', required: true }) relationName!: P;
+}
 
-export function createRelationDto(relations: string[]) {
+export function createRelationDto<T>(relations: string[]) {
   @Exclude()
-  class __RelationDto extends RelationDto {
+  class __RelationDto extends RelationDto<T> {
     @Property({ type: 'string', enum: relations })
-    override relationName!: string;
+    override relationName!: keyof T extends string ? string & keyof T : string;
   }
 
   return __RelationDto;

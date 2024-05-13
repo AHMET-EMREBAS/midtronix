@@ -15,17 +15,22 @@ import {
   ApiUnprocessableEntityResponse,
 } from '../__external';
 import { PermissionBuilder, ResourcePermissions } from './auth';
+import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { ValidationPipe } from '../dto';
 
 export class RestRouteBuilder {
   protected readonly AP: RestApiPaths;
   protected readonly RP: ResourcePermissions;
-  private constructor(protected readonly className: string) {
+  private constructor(
+    protected readonly className: string,
+    protected readonly validationPipe: typeof ValidationPipe
+  ) {
     this.AP = RestApiPathBuilder.get(className);
     this.RP = PermissionBuilder.get(className);
   }
 
-  static get(className: string) {
-    return new RestRouteBuilder(className);
+  static get(className: string, validationPipe = ValidationPipe) {
+    return new RestRouteBuilder(className, validationPipe);
   }
 
   protected __common() {
@@ -134,5 +139,21 @@ export class RestRouteBuilder {
       this.RP.CanDelete(),
       this.__common()
     );
+  }
+
+  Query() {
+    return Query(this.validationPipe);
+  }
+
+  Body() {
+    return Body(this.validationPipe);
+  }
+
+  ParamID() {
+    return Param('id', ParseIntPipe);
+  }
+
+  Param() {
+    return Param(this.validationPipe);
   }
 }

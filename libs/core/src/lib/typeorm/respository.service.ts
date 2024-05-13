@@ -1,6 +1,6 @@
 import {
   DeepPartial,
-  Entity,
+  Equal,
   FindOptionsWhere,
   ILike,
   ObjectLiteral,
@@ -32,23 +32,57 @@ export class RepositoryService<T extends ObjectLiteral> {
     } as FindOptionsWhere<T>);
   }
 
-  count() {
-    return { count: this.repository.count() };
+  async count() {
+    return { count: await this.repository.count() };
   }
 
-  save(entity: T) {
+  save(entity: DeepPartial<T>) {
     return this.repository.save(entity);
+  }
+
+  saveMany(entities: DeepPartial<T>[]) {
+    return this.repository.save(entities);
+  }
+
+  /**
+   * Delete all entities that match with the criteria
+   * @param property
+   * @param query
+   * @returns
+   */
+  deleteAllBy<P extends keyof T>(property: keyof T, query: T[P]) {
+    return this.repository.delete({
+      [property]: Equal(query),
+    } as FindOptionsWhere<T>);
   }
 
   deleteById(id: number) {
     return this.repository.delete(id);
   }
 
-  update(id: number, entity: QueryDeepPartialEntity<T>) {
+  /**
+   * Update all entities that match with the criteria
+   * @param property
+   * @param query
+   * @param entity
+   * @returns
+   */
+  updateAllBy<P extends keyof T>(
+    property: keyof T,
+    query: T[P],
+    entity: QueryDeepPartialEntity<T>
+  ) {
+    return this.repository.update(
+      { [property]: Equal(query) } as FindOptionsWhere<T>,
+      entity
+    );
+  }
+
+  updateOneById(id: number, entity: QueryDeepPartialEntity<T>) {
     return this.repository.update(id, entity);
   }
 
-  addRelation(relationDto: RelationDto) {
+  addRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
     return this.repository
       .createQueryBuilder()
@@ -57,7 +91,7 @@ export class RepositoryService<T extends ObjectLiteral> {
       .add(relationId);
   }
 
-  removeRelation(relationDto: RelationDto) {
+  removeRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
     return this.repository
       .createQueryBuilder()
@@ -66,7 +100,7 @@ export class RepositoryService<T extends ObjectLiteral> {
       .add(relationId);
   }
 
-  setRelation(relationDto: RelationDto) {
+  setRelation(relationDto: RelationDto<T>) {
     const { id, relationId, relationName } = relationDto;
     return this.repository
       .createQueryBuilder()
@@ -75,7 +109,7 @@ export class RepositoryService<T extends ObjectLiteral> {
       .set(relationId);
   }
 
-  unsetRelation(relationDto: UnsetRelationDto) {
+  unsetRelation(relationDto: UnsetRelationDto<T>) {
     const { id, relationName } = relationDto;
     return this.repository
       .createQueryBuilder()

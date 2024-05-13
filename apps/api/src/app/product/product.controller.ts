@@ -1,92 +1,60 @@
 import {
-  Param,
-  ParseIntPipe,
-  InjectRepository,
-  Repository,
-  Body,
   UnsetRelationDto,
-  ValidationPipe,
-  Query,
   PaginatorDto,
   RestRouteBuilder,
   RelationDto,
 } from '@mdtx/core';
-import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
+import { CreateProductDto, UpdateProductDto } from '@mdtx/database';
+import { ProductService } from './product.service';
 
 const R = RestRouteBuilder.get('Product');
 
 @R.Controler()
 export class ProductController {
-  constructor(
-    @InjectRepository(Product)
-    protected readonly repo: Repository<Product>
-  ) {}
+  constructor(protected readonly productService: ProductService) {}
 
   @R.SaveOne()
-  saveProduct(@Body(ValidationPipe) product: CreateProductDto) {
-    return this.repo.save(product);
+  save(@R.Body() product: CreateProductDto) {
+    return this.productService.save(product);
   }
 
   @R.FindAll()
-  findProducts(@Query(ValidationPipe) paginator: PaginatorDto) {
-    return this.repo.find({ ...paginator });
+  findAll(@R.Query() paginator: PaginatorDto) {
+    return this.productService.findAll({ ...paginator });
   }
 
   @R.FindOneById()
-  findProductById(@Param('id', ParseIntPipe) id: number) {
-    return this.repo.findOneBy({ id });
+  findOneById(@R.ParamID() id: number) {
+    return this.productService.findOneById(id);
   }
 
   @R.DeleteOne()
-  deleteProductById(@Param('id', ParseIntPipe) id: number) {
-    return this.repo.delete(id);
+  deleteById(@R.ParamID() id: number) {
+    return this.productService.deleteById(id);
   }
 
   @R.UpdateOne()
-  updateProductById(
-    @Param('id', ParseIntPipe) id: number,
-    @Body(ValidationPipe) body: UpdateProductDto
-  ) {
-    return this.repo.update(id, body);
+  updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateProductDto) {
+    return this.productService.updateOneById(id, body);
   }
 
   @R.AddRelation()
-  addRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .add(relationId);
+  addRelationToProduct(@R.Param() relationDto: RelationDto) {
+    return this.productService.addRelation(relationDto);
   }
 
   @R.RemoveRelation()
-  removeRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .remove(relationId);
+  removeRelation(@R.Param() relationDto: RelationDto) {
+    return this.productService.removeRelation(relationDto);
   }
 
   @R.SetRelation()
-  setRelationToProduct(@Param(ValidationPipe) relationDto: RelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .set(relationId);
+  setRelation(@R.Param() relationDto: RelationDto) {
+    return this.productService.setRelation(relationDto);
   }
 
   @R.UnsetRelation()
-  unsetRelationToProduct(@Param(ValidationPipe) relationDto: UnsetRelationDto) {
-    const { id, relationName } = relationDto;
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationName)
-      .of(id)
-      .set(null);
+  unsetRelation(@R.Param() relationDto: UnsetRelationDto) {
+    return this.productService.unsetRelation(relationDto);
   }
 }
