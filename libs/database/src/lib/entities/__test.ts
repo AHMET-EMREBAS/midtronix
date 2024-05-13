@@ -29,5 +29,7 @@ export function testDBOptions(): TypeOrmModuleOptions {
     autoLoadEntities: true,
     synchronize: true,
     dropSchema: true,
+    poolSize: 200,
+    connectTimeoutMS: 1000 * 10,
   };
 }
