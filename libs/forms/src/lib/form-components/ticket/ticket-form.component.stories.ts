@@ -49,17 +49,34 @@ export const Heading: Story = {
     const resetButton = findButton('reset');
 
     // Form Fields
+
+    // Form Fields
     const name = findInput('name');
+    const description = findInput('description');
+    const due = findInput('due');
+    const startDate = findInput('startDate');
+    const finishDate = findInput('finishDate');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
     expect(resetButton).toBeTruthy();
 
     // Validte input Elements
+
+    // Validte input Elements
     expect(name).toBeTruthy();
+    expect(description).toBeTruthy();
+    expect(due).toBeTruthy();
+    expect(startDate).toBeTruthy();
+    expect(finishDate).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'ticket name');
+      await type(name, 'Type task name here');
+      await type(description, 'Type task description here');
+
+      await type(due, '5/14/2024');
+      await type(startDate, '5/16/2024');
+      await type(finishDate, '5/20/2024');
 
       await click(submitButton);
 

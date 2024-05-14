@@ -5078,3 +5078,9 @@ html {
 mat-form-field {
   width: 100%;
 }
+
+storybook-root,
+#storybook-root,
+.storybook-root {
+  overflow: auto;
+}

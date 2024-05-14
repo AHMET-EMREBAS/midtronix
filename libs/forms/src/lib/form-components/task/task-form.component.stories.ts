@@ -50,6 +50,10 @@ export const Heading: Story = {
 
     // Form Fields
     const name = findInput('name');
+    const description = findInput('description');
+    const due = findInput('due');
+    const startDate = findInput('startDate');
+    const finishDate = findInput('finishDate');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
@@ -57,11 +61,20 @@ export const Heading: Story = {
 
     // Validte input Elements
     expect(name).toBeTruthy();
+    expect(description).toBeTruthy();
+    expect(due).toBeTruthy();
+    expect(startDate).toBeTruthy();
+    expect(finishDate).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'task name');
+      await type(name, 'Type task name here');
+      await type(description, 'Type task description here');
 
-      await click(submitButton);
+      await type(due, '5/14/2024');
+      await type(startDate, '5/16/2024');
+      await type(finishDate, '5/20/2024');
+
+      await await click(submitButton);
 
       await click(resetButton);
     };
