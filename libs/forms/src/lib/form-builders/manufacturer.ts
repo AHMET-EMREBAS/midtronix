@@ -6,6 +6,7 @@ export const ManufacturerFormBuilder =
     .add('name')
     .required()
     .shortText()
+    
     .add('description')
     .longText()
 

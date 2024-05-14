@@ -1,11 +1,11 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-input-text
-    inputName="name"
-    label="Message Name"
-    prefixIcon="category"
-    [inputControl]="control('name')"
-  ></mdtx-input-text>
+  <mdtx-input-textarea
+    inputName="message"
+    label="Message"
+    prefixIcon="message"
+    [inputControl]="control('message')"
+  ></mdtx-input-textarea>
 
   <!-- Form actions -->
   <div class="form-actions">
@@ -16,7 +16,7 @@
       [disabled]="isFormInvalid()"
       [attr.data-testid]="'submit'"
     >
-      Save Message
+      Send
     </button>
     <button
       mat-stroked-button

@@ -1,16 +1,15 @@
-<!-- username
-password-->
-
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-input-username
-    inputName="username"
-    [inputControl]="control('username')"
-  ></mdtx-input-username>
-  <mdtx-input-password
-    inputName="password"
-    [inputControl]="control('password')"
-  ></mdtx-input-password>
+  <mdtx-input-text
+    inputName="name"
+    prefixIcon="image"
+    [inputControl]="control('name')"
+  ></mdtx-input-text>
+
+  <mdtx-input-url
+    inputName="url"
+    [inputControl]="control('url')"
+  ></mdtx-input-url>
 
   <!-- Form actions -->
   <div class="form-actions">
@@ -21,7 +20,7 @@ password-->
       [disabled]="isFormInvalid()"
       [attr.data-testid]="'submit'"
     >
-      Save Customer
+      Save Video
     </button>
     <button
       mat-stroked-button

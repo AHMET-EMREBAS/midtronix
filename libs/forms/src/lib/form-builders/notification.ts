@@ -8,11 +8,5 @@ export const NotificationFormBuilder =
     .required()
     .longText()
 
-    .add('source')
-    .required()
-
-    .add('target')
-    .required()
-
     .done()
     .lock();

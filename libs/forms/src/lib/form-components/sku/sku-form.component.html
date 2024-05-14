@@ -2,10 +2,20 @@
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
-    label="Sku Name"
-    prefixIcon="category"
+    prefixIcon="inventory"
     [inputControl]="control('name')"
   ></mdtx-input-text>
+
+  <mdtx-input-text
+    inputName="upc"
+    prefixIcon="barcode"
+    [inputControl]="control('upc')"
+  ></mdtx-input-text>
+
+  <mdtx-input-textarea
+    inputName="description"
+    [inputControl]="control('description')"
+  ></mdtx-input-textarea>
 
   <!-- Form actions -->
   <div class="form-actions">

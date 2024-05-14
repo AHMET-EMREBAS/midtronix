@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { CommonFormModule } from '../form';
 
@@ -9,4 +9,6 @@ import { CommonFormModule } from '../form';
   templateUrl: './input-phone.component.html',
   styleUrl: './input-phone.component.scss',
 })
-export class InputPhoneComponent extends InputTextComponent {}
+export class InputPhoneComponent extends InputTextComponent {
+  @Input() override prefixIcon = 'call';
+}

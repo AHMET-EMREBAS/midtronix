@@ -7,5 +7,6 @@ export const DepartmentFormBuilder = new FormGroupBuilder<ICreateDepartmentDto>(
   .add('name')
   .required()
   .shortText()
+  
   .done()
   .lock();

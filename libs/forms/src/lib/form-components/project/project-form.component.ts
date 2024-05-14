@@ -7,7 +7,7 @@ import { ProjectFormBuilder } from '../../form-builders';
 @Component({
   selector: 'mdtx-project-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent],
+  imports: [CommonFormModule, InputTextComponent, InputTextComponent],
   templateUrl: './project-form.component.html',
   styleUrl: './project-form.component.scss',
 })

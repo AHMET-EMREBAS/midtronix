@@ -7,8 +7,5 @@ export const CustomerEmailFormBuilder =
     .required()
     .email()
 
-    .add('owner')
-    .required()
-    
     .done()
     .lock();
