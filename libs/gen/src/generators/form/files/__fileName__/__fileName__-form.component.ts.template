@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { CommonFormModule, InputTextComponent } from '@mdtx/material/form';
+import { BaseFormComponent } from '../../__base';
+import { <%- className %>FormBuilder } from '../../form-builders';
+
+@Component({
+  selector: 'mdtx-<%- fileName %>-form',
+  standalone: true,
+  imports: [CommonFormModule, InputTextComponent],
+  templateUrl: './<%- fileName %>-form.component.html',
+  styleUrl: './<%- fileName %>-form.component.scss',
+})
+export class <%- className %>FormComponent extends BaseFormComponent {
+  override createFormGroup(): FormGroup {
+    return new FormGroup({
+      ...<%- className %>FormBuilder.controls(),
+    });
+  }
+}

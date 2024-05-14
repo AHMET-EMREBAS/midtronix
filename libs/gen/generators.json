@@ -14,6 +14,11 @@
       "factory": "./src/generators/ngrx-service/generator",
       "schema": "./src/generators/ngrx-service/schema.json",
       "description": "ngrx-service generator"
+    },
+    "form": {
+      "factory": "./src/generators/form/generator",
+      "schema": "./src/generators/form/schema.json",
+      "description": "form generator"
     }
   }
 }
