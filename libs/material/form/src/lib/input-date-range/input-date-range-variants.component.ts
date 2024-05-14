@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import {
   DateRangeSelectionStrategies,
@@ -43,5 +43,6 @@ export class InputFiveDayDateRangeComponent extends InputDateRangeComponent {
   `,
 })
 export class InputTreeDayDateRangeComponent extends InputDateRangeComponent {
+  @Input() override prefixIcon = 'event';
   readonly __component = InputDateRangeComponent;
 }

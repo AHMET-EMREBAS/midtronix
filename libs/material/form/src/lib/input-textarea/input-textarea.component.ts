@@ -13,6 +13,8 @@ export class InputTextareaComponent
   extends InputBaseComponent
   implements AfterViewInit
 {
+
+  @Input() override prefixIcon = 'description';
   @Input() minLength?: number;
   @Input() maxLength?: number;
   @Input() textSuffix?: string;

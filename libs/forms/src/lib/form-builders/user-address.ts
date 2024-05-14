@@ -19,8 +19,5 @@ export const UserAddressFormBuilder =
     .required()
     .shortText()
 
-    .add('owner')
-    .required()
-
     .done()
     .lock();

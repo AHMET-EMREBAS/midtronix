@@ -8,6 +8,253 @@
     "directives": [],
     "components": [
         {
+            "name": "AddressFormComponent",
+            "id": "component-AddressFormComponent-579e871e918a60db87f3a2e56faeee24fa77a419f058fd5eb39a43cf7cb621a052864778afd1e9ac37182a99679d152ad76e93515a73cbd7c12758af8e0a11b0",
+            "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-address-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./address-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "submitLabel",
+                    "defaultValue": "'Save Address'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "resourceFormGroup",
+                    "defaultValue": "this.createFormGroup()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFormGroup\n",
+                    "description": "<p>FormGroup</p>\n",
+                    "line": 17,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nEmits form value when form submit\n",
+                    "description": "<p>Emits form value when form submit</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form status change</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nSubscribe form status change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form value change</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nSubscribe form value change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createFormGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the formControl from the formGroup\n",
+                    "description": "<p>Get the formControl from the formGroup</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1319,
+                                "end": 1323,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "name"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1313,
+                                "end": 1318,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>formControlName</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1347,
+                                "end": 1354,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReset form\n",
+                    "description": "<p>Reset form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSubmit form\n",
+                    "description": "<p>Submit form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "isFormInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../../__base';\nimport { AddressFormBuilder } from '../../../form-builders';\n\n@Component({\n  selector: 'mdtx-address-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './address-form.component.html',\n  styleUrl: './address-form.component.scss',\n})\nexport class AddressFormComponent extends BaseFormComponent {\n  @Input() submitLabel = 'Save Address';\n\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...AddressFormBuilder.controls(),\n    });\n  }\n}\n",
+            "styleUrl": "./address-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "BaseFormComponent"
+            ],
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"street\"\n    prefixIcon=\"streetview\"\n    [inputControl]=\"control('street')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"city\"\n    prefixIcon=\"location_city\"\n    [inputControl]=\"control('city')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"state\"\n    prefixIcon=\"location_home\"\n    [inputControl]=\"control('state')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"country\"\n    prefixIcon=\"flag\"\n    [inputControl]=\"control('country')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"zip\"\n    prefixIcon=\"local_post_office\"\n    [inputControl]=\"control('zip')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      {{ submitLabel }}\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+        },
+        {
             "name": "BaseFormComponent",
             "id": "component-BaseFormComponent-af042a04ee38d860ea131cd1df92637eba03d0bdb7bb929f511c3bd7d480c18311ab530dad43f0663d2a690427e4e144cfec62c5213314dd0636e3f1046910d6",
             "file": "libs/forms/src/lib/__base/base-form.component.ts",
@@ -437,11 +684,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Category Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Category\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Category\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "CustomerAddressFormComponent",
-            "id": "component-CustomerAddressFormComponent-09d322a2f731930be8641e60cf985f9ebff8abba392700de651f9495e45ee5201593eaf3bc54c4c0423c6e459c02a8ebc62392c3a05f624a219866e7c1f0026b",
+            "id": "component-CustomerAddressFormComponent-6383bba51968c8413ed0ca9144faca9d93751327477c4b3c803cfb3236d05e3f76b9d0c2f50579a47bf5b612d3299f7c5e59804f4e5e8703df6cecc2a614643a",
             "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -667,7 +914,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerAddressFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-address-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './customer-address-form.component.html',\n  styleUrl: './customer-address-form.component.scss',\n})\nexport class CustomerAddressFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerAddressFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormControl, FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerAddressFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-address-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './customer-address-form.component.html',\n  styleUrl: './customer-address-form.component.scss',\n})\nexport class CustomerAddressFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerAddressFormBuilder.controls(undefined),\n    });\n  }\n}\n",
             "styleUrl": "./customer-address-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -675,11 +922,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"CustomerAddress Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save CustomerAddress\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"street\"\n    prefixIcon=\"streetview\"\n    [inputControl]=\"control('street')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"city\"\n    prefixIcon=\"location_city\"\n    [inputControl]=\"control('city')\"\n  ></mdtx-input-text>\n  \n  <mdtx-input-text\n    inputName=\"state\"\n    prefixIcon=\"location_home\"\n    [inputControl]=\"control('state')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"country\"\n    prefixIcon=\"flag\"\n    [inputControl]=\"control('country')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"zip\"\n    prefixIcon=\"local_post_office\"\n    [inputControl]=\"control('zip')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save CustomerAddress\n    </button>\n\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "CustomerEmailFormComponent",
-            "id": "component-CustomerEmailFormComponent-bf4ccbb27768266e7930092dd928885d5f12a9fb9428804eb842ed7e06a8aa52f4f7f353089ab7fa358d15e7946dbf4f48ca86a411370dbc12939d3d8a7e1bef",
+            "id": "component-CustomerEmailFormComponent-a2f0c068f031604f95af173254f9ea7336df7ebb20baec9d3652fe9050a73e5fa71ca0dc38f548d3fb3ac19544e04cf2177e26c725ccb236aa6780bd2c50c887",
             "file": "libs/forms/src/lib/form-components/customer-email/customer-email-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -695,6 +942,18 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
+                {
+                    "name": "submitLabel",
+                    "defaultValue": "'Save Email'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "EmailFormComponent"
+                    }
+                },
                 {
                     "name": "resourceFormGroup",
                     "defaultValue": "this.createFormGroup()",
@@ -760,7 +1019,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -894,30 +1153,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonFormModule",
-                    "type": "module"
-                },
-                {
-                    "name": "InputTextComponent",
+                    "name": "EmailFormComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerEmailFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-email-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './customer-email-form.component.html',\n  styleUrl: './customer-email-form.component.scss',\n})\nexport class CustomerEmailFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerEmailFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CustomerEmailFormBuilder } from '../../form-builders';\nimport { EmailFormComponent } from '../__base';\n\n@Component({\n  selector: 'mdtx-customer-email-form',\n  standalone: true,\n  imports: [EmailFormComponent],\n  templateUrl: './customer-email-form.component.html',\n  styleUrl: './customer-email-form.component.scss',\n})\nexport class CustomerEmailFormComponent extends EmailFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerEmailFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./customer-email-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
-                "BaseFormComponent"
+                "EmailFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"CustomerEmail Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save CustomerEmail\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<mdtx-email-form (submitEvent)=\"formSubmit()\"></mdtx-email-form>\n"
         },
         {
             "name": "CustomerFormComponent",
-            "id": "component-CustomerFormComponent-746f294818a96444bab871a7f1fd074369b6ef5ad6d786b4fce0d5ffc4dd7bc3243e0d13909b60b24bbf27bde749fe49705ec2bdfbc2ffbaa303792c949f3424",
+            "id": "component-CustomerFormComponent-2a1dc6c8ab5bc7cfc40ebce8b025e869d96829d9382a8ebff514501046312d55d6d37a836456ed92f28676d4b9c93f2c274faf4413be85a71b48cf5875036add",
             "file": "libs/forms/src/lib/form-components/customer/customer-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -998,7 +1253,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1138,12 +1393,20 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputUsernameComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputPasswordComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './customer-form.component.html',\n  styleUrl: './customer-form.component.scss',\n})\nexport class CustomerFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputPasswordComponent,\n  InputTextComponent,\n  InputUsernameComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-form',\n  standalone: true,\n  imports: [\n    CommonFormModule,\n    InputTextComponent,\n    InputUsernameComponent,\n    InputPasswordComponent,\n  ],\n  templateUrl: './customer-form.component.html',\n  styleUrl: './customer-form.component.scss',\n})\nexport class CustomerFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerFormBuilder.controls(undefined, ['supervisor', 'username']),\n    });\n  }\n}\n",
             "styleUrl": "./customer-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1151,7 +1414,7 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<!-- username\npassword\nroles\nsupervisor -->\n<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Customer Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Customer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<!-- username\npassword-->\n\n<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username inputName=\"username\" label=\"Username\" prefixIcon=\"email\" [inputControl]=\"control('username')\" ></mdtx-input-username>\n  <mdtx-input-password inputName=\"password\" label=\"Password\" prefixIcon=\"email\" [inputControl]=\"control('password')\" ></mdtx-input-password>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Customer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "CustomerPhoneFormComponent",
@@ -1628,6 +1891,495 @@
                 "BaseFormComponent"
             ],
             "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Department Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Department\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+        },
+        {
+            "name": "EmailFormComponent",
+            "id": "component-EmailFormComponent-f7653b3c894d25d35a679a3367d0f4664bb5879a5e588bb83290b1425200ca4211a41c66d872128ffee33be8a03ae2b348f41300e447a6a439bd62ca896fab15",
+            "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-email-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./email-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "submitLabel",
+                    "defaultValue": "'Save Email'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "resourceFormGroup",
+                    "defaultValue": "this.createFormGroup()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFormGroup\n",
+                    "description": "<p>FormGroup</p>\n",
+                    "line": 17,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nEmits form value when form submit\n",
+                    "description": "<p>Emits form value when form submit</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form status change</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nSubscribe form status change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form value change</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nSubscribe form value change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createFormGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the formControl from the formGroup\n",
+                    "description": "<p>Get the formControl from the formGroup</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1319,
+                                "end": 1323,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "name"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1313,
+                                "end": 1318,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>formControlName</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1347,
+                                "end": 1354,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReset form\n",
+                    "description": "<p>Reset form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSubmit form\n",
+                    "description": "<p>Submit form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "isFormInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputUsernameComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputUsernameComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../../__base';\nimport { EmailFormBuilder } from '../../../form-builders';\n\n@Component({\n  selector: 'mdtx-email-form',\n  standalone: true,\n  imports: [CommonFormModule, InputUsernameComponent],\n  templateUrl: './email-form.component.html',\n  styleUrl: './email-form.component.scss',\n})\nexport class EmailFormComponent extends BaseFormComponent {\n  @Input() submitLabel = 'Save Email';\n  \n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...EmailFormBuilder.controls(),\n    });\n  }\n}\n",
+            "styleUrl": "./email-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "BaseFormComponent"
+            ],
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username\n    inputName=\"username\"\n    prefixIcon=\"email\"\n    [inputControl]=\"control('username')\"\n  ></mdtx-input-username>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      {{ submitLabel }}\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+        },
+        {
+            "name": "ImageFormComponent",
+            "id": "component-ImageFormComponent-e47244d18b8a65e6c00675221e3de6d79dd100d783b16f6c45516b1d6723a1a0f7b0392b367bf4185648ede8d099933ee859d06c76896f9cb89757b232767602",
+            "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-image-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./image-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "resourceFormGroup",
+                    "defaultValue": "this.createFormGroup()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFormGroup\n",
+                    "description": "<p>FormGroup</p>\n",
+                    "line": 17,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nEmits form value when form submit\n",
+                    "description": "<p>Emits form value when form submit</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form status change</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nSubscribe form status change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form value change</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nSubscribe form value change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createFormGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the formControl from the formGroup\n",
+                    "description": "<p>Get the formControl from the formGroup</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1319,
+                                "end": 1323,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "name"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1313,
+                                "end": 1318,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>formControlName</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1347,
+                                "end": 1354,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReset form\n",
+                    "description": "<p>Reset form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSubmit form\n",
+                    "description": "<p>Submit form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "isFormInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputUrlComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputTextComponent,\n  InputUrlComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../../__base';\nimport { ImageFormBuilder } from '../../../form-builders';\n\n@Component({\n  selector: 'mdtx-image-form',\n  standalone: true,\n  imports: [CommonFormModule, InputUrlComponent, InputTextComponent],\n  templateUrl: './image-form.component.html',\n  styleUrl: './image-form.component.scss',\n})\nexport class ImageFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ImageFormBuilder.controls(),\n    });\n  }\n}\n",
+            "styleUrl": "./image-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "BaseFormComponent"
+            ],
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"image\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-url\n    inputName=\"url\"\n    [inputControl]=\"control('url')\"\n  ></mdtx-input-url>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Image\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "ManufacturerFormComponent",
@@ -2580,6 +3332,244 @@
                 "BaseFormComponent"
             ],
             "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Permission Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Permission\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+        },
+        {
+            "name": "PhoneFormComponent",
+            "id": "component-PhoneFormComponent-91dac136035db242e86119686ca042555ef8e6d73cc3177e20add8067ed736bb29a2659112477b772b257efeba583734bc94f5fb120160fd800f36cb62dc8e7f",
+            "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-phone-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./phone-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "resourceFormGroup",
+                    "defaultValue": "this.createFormGroup()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFormGroup\n",
+                    "description": "<p>FormGroup</p>\n",
+                    "line": 17,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nEmits form value when form submit\n",
+                    "description": "<p>Emits form value when form submit</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form status change</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nSubscribe form status change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form value change</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nSubscribe form value change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createFormGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the formControl from the formGroup\n",
+                    "description": "<p>Get the formControl from the formGroup</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1319,
+                                "end": 1323,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "name"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1313,
+                                "end": 1318,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>formControlName</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1347,
+                                "end": 1354,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReset form\n",
+                    "description": "<p>Reset form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSubmit form\n",
+                    "description": "<p>Submit form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "isFormInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputPhoneComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputPhoneComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../../__base';\nimport { PhoneFormBuilder } from '../../../form-builders';\n\n@Component({\n  selector: 'mdtx-phone-form',\n  standalone: true,\n  imports: [CommonFormModule, InputPhoneComponent],\n  templateUrl: './phone-form.component.html',\n  styleUrl: './phone-form.component.scss',\n})\nexport class PhoneFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...PhoneFormBuilder.controls(),\n    });\n  }\n}\n",
+            "styleUrl": "./phone-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "BaseFormComponent"
+            ],
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-phone\n    inputName=\"name\"\n    label=\"Phone Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-phone>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Phone\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "ProductFormComponent",
@@ -5918,6 +6908,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AddressFormBuilder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-builders/__base/address.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroupBuilder<ICreateAddressDto>(\n  'Address Form'\n)\n  .add('street')\n  .required()\n  .shortText()\n\n  .add('city')\n  .required()\n  .shortText()\n\n  .add('state')\n  .required()\n  .shortText()\n\n  .add('country')\n  .required()\n  .shortText()\n\n  .add('zip')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+            },
+            {
                 "name": "CategoryFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5935,7 +6935,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateCustomerAddressDto>('CustomerAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateCustomerAddressDto>('CustomerAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('country')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "CustomerEmailFormBuilder",
@@ -5976,6 +6976,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+            },
+            {
+                "name": "EmailFormBuilder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-builders/__base/email.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroupBuilder<ICreateEmailDto>(\n  'Email Form'\n)\n  .add('email')\n  .email()\n  .required()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "Heading",
@@ -6216,6 +7226,56 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'user-phone name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'address name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'email name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'image name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'phone name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
+                "name": "ImageFormBuilder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-builders/__base/image.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroupBuilder<ICreateImageDto>(\n  'Image Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('url')\n  .url()\n  .required()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "ManufacturerFormBuilder",
@@ -6478,6 +7538,46 @@
                 "defaultValue": "{\n  component: UserPhoneFormComponent,\n  title: 'UserPhoneFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AddressFormComponent>",
+                "defaultValue": "{\n  component: AddressFormComponent,\n  title: 'AddressFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<EmailFormComponent>",
+                "defaultValue": "{\n  component: EmailFormComponent,\n  title: 'EmailFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ImageFormComponent>",
+                "defaultValue": "{\n  component: ImageFormComponent,\n  title: 'ImageFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<PhoneFormComponent>",
+                "defaultValue": "{\n  component: PhoneFormComponent,\n  title: 'PhoneFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
                 "name": "NotificationFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -6496,6 +7596,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new FormGroupBuilder<ICreatePermissionDto>(\n  'Permission Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .done()\n  .lock()"
+            },
+            {
+                "name": "PhoneFormBuilder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-builders/__base/phone.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroupBuilder<ICreatePhoneDto>(\n  'Phone Form'\n)\n  .add('phone')\n  .phone()\n  .required()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "Primary",
@@ -6738,6 +7848,46 @@
                 "defaultValue": "{}"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
                 "name": "ProductFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -6755,7 +7905,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateProductImageDto>('ProductImage Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateProductImageDto>('ProductImage Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "ProductVideoFormBuilder",
@@ -6765,7 +7915,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateProductVideoDto>('ProductVideo Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .add('owner')\n    .required()\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateProductVideoDto>('ProductVideo Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "ProjectFormBuilder",
@@ -6795,7 +7945,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateSkuDto>('Sku Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('upc')\n  .required()\n  .ean()\n\n  .add('description')\n  .longText()\n\n  .add('product')\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateSkuDto>('Sku Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('upc')\n  .required()\n  .ean()\n\n  .add('description')\n  .longText()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "SprintFormBuilder",
@@ -6805,7 +7955,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateSprintDto>(\n  'Sprint Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('project')\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateSprintDto>(\n  'Sprint Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "StoreFormBuilder",
@@ -6825,7 +7975,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateTaskDto>('Task Form')\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('sprint')\n  .required()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateTaskDto>('Task Form')\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
             },
             {
                 "name": "TicketFormBuilder",
@@ -6835,7 +7985,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateTicketDto>(\n  'Ticket Form'\n)\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('customer')\n  .required()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateTicketDto>(\n  'Ticket Form'\n)\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "UserAddressFormBuilder",
@@ -6845,7 +7995,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateUserAddressDto>('UserAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateUserAddressDto>('UserAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "UserEmailFormBuilder",
@@ -6855,7 +8005,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateUserEmailDto>(\n  'UserEmail Form'\n)\n  .add('email')\n  .required()\n  .email()\n\n  .add('owner')\n  .required()\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateUserEmailDto>(\n  'UserEmail Form'\n)\n  .add('email')\n  .required()\n  .email()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "UserFormBuilder",
@@ -6865,7 +8015,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateUserDto>('User Form')\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .add('supervisor')\n  .required()\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateUserDto>('User Form')\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "UserPhoneFormBuilder",
@@ -6875,7 +8025,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateUserPhoneDto>(\n  'UserPhone Form'\n)\n  .add('phone')\n  .required()\n  .phone()\n\n  .add('owner')\n  .required()\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateUserPhoneDto>(\n  'UserPhone Form'\n)\n  .add('phone')\n  .required()\n  .phone()\n\n  .done()\n  .lock()"
+            },
+            {
+                "name": "VideoFormBuilder",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-builders/__base/video.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroupBuilder<ICreateVideoDto>(\n  'Video Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('url')\n  .required()\n  .url()\n\n  .done()\n  .lock()"
             }
         ],
         "functions": [],
@@ -7154,10 +8314,66 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<AddressFormComponent>",
+                "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<EmailFormComponent>",
+                "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ImageFormComponent>",
+                "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<PhoneFormComponent>",
+                "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
         "groupedVariables": {
+            "libs/forms/src/lib/form-builders/__base/address.ts": [
+                {
+                    "name": "AddressFormBuilder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-builders/__base/address.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormGroupBuilder<ICreateAddressDto>(\n  'Address Form'\n)\n  .add('street')\n  .required()\n  .shortText()\n\n  .add('city')\n  .required()\n  .shortText()\n\n  .add('state')\n  .required()\n  .shortText()\n\n  .add('country')\n  .required()\n  .shortText()\n\n  .add('zip')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+                }
+            ],
             "libs/forms/src/lib/form-builders/category.ts": [
                 {
                     "name": "CategoryFormBuilder",
@@ -7179,7 +8395,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateCustomerAddressDto>('CustomerAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateCustomerAddressDto>('CustomerAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('country')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/customer-email.ts": [
@@ -7228,6 +8444,18 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+                }
+            ],
+            "libs/forms/src/lib/form-builders/__base/email.ts": [
+                {
+                    "name": "EmailFormBuilder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-builders/__base/email.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormGroupBuilder<ICreateEmailDto>(\n  'Email Form'\n)\n  .add('email')\n  .email()\n  .required()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-components/category/category-form.component.stories.ts": [
@@ -7998,6 +9226,146 @@
                     "defaultValue": "{}"
                 }
             ],
+            "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'address name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AddressFormComponent>",
+                    "defaultValue": "{\n  component: AddressFormComponent,\n  title: 'AddressFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'email name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<EmailFormComponent>",
+                    "defaultValue": "{\n  component: EmailFormComponent,\n  title: 'EmailFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'image name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ImageFormComponent>",
+                    "defaultValue": "{\n  component: ImageFormComponent,\n  title: 'ImageFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'phone name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PhoneFormComponent>",
+                    "defaultValue": "{\n  component: PhoneFormComponent,\n  title: 'PhoneFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/forms/src/lib/form-builders/__base/image.ts": [
+                {
+                    "name": "ImageFormBuilder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-builders/__base/image.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormGroupBuilder<ICreateImageDto>(\n  'Image Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('url')\n  .url()\n  .required()\n\n  .done()\n  .lock()"
+                }
+            ],
             "libs/forms/src/lib/form-builders/manufacturer.ts": [
                 {
                     "name": "ManufacturerFormBuilder",
@@ -8046,6 +9414,18 @@
                     "defaultValue": "new FormGroupBuilder<ICreatePermissionDto>(\n  'Permission Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .done()\n  .lock()"
                 }
             ],
+            "libs/forms/src/lib/form-builders/__base/phone.ts": [
+                {
+                    "name": "PhoneFormBuilder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-builders/__base/phone.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormGroupBuilder<ICreatePhoneDto>(\n  'Phone Form'\n)\n  .add('phone')\n  .phone()\n  .required()\n\n  .done()\n  .lock()"
+                }
+            ],
             "libs/forms/src/lib/form-builders/product.ts": [
                 {
                     "name": "ProductFormBuilder",
@@ -8067,7 +9447,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateProductImageDto>('ProductImage Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateProductImageDto>('ProductImage Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/product-video.ts": [
@@ -8079,7 +9459,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateProductVideoDto>('ProductVideo Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .add('owner')\n    .required()\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateProductVideoDto>('ProductVideo Form')\n    .add('name')\n    .required()\n    .shortText()\n\n    .add('url')\n    .required()\n    .url()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/project.ts": [
@@ -8115,7 +9495,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateSkuDto>('Sku Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('upc')\n  .required()\n  .ean()\n\n  .add('description')\n  .longText()\n\n  .add('product')\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateSkuDto>('Sku Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('upc')\n  .required()\n  .ean()\n\n  .add('description')\n  .longText()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/sprint.ts": [
@@ -8127,7 +9507,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateSprintDto>(\n  'Sprint Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('project')\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateSprintDto>(\n  'Sprint Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/store.ts": [
@@ -8151,7 +9531,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateTaskDto>('Task Form')\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('sprint')\n  .required()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateTaskDto>('Task Form')\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/ticket.ts": [
@@ -8163,7 +9543,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateTicketDto>(\n  'Ticket Form'\n)\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .add('customer')\n  .required()\n\n  .add('assignees')\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateTicketDto>(\n  'Ticket Form'\n)\n\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('description')\n  .longText()\n\n  .add('difficulty')\n  .range(1, 10)\n\n  .add('due')\n  .date()\n\n  .add('startDate')\n  .date()\n\n  .add('finishDate')\n  .date()\n\n  .add('status')\n  .shortText()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/user-address.ts": [
@@ -8175,7 +9555,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateUserAddressDto>('UserAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .add('owner')\n    .required()\n\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateUserAddressDto>('UserAddress Form')\n    .add('street')\n    .required()\n    .shortText()\n\n    .add('city')\n    .required()\n    .shortText()\n\n    .add('state')\n    .required()\n    .shortText()\n\n    .add('zip')\n    .required()\n    .shortText()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/user-email.ts": [
@@ -8187,7 +9567,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateUserEmailDto>(\n  'UserEmail Form'\n)\n  .add('email')\n  .required()\n  .email()\n\n  .add('owner')\n  .required()\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateUserEmailDto>(\n  'UserEmail Form'\n)\n  .add('email')\n  .required()\n  .email()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/user.ts": [
@@ -8199,7 +9579,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateUserDto>('User Form')\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .add('supervisor')\n  .required()\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateUserDto>('User Form')\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/user-phone.ts": [
@@ -8211,7 +9591,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateUserPhoneDto>(\n  'UserPhone Form'\n)\n  .add('phone')\n  .required()\n  .phone()\n\n  .add('owner')\n  .required()\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateUserPhoneDto>(\n  'UserPhone Form'\n)\n  .add('phone')\n  .required()\n  .phone()\n\n  .done()\n  .lock()"
+                }
+            ],
+            "libs/forms/src/lib/form-builders/__base/video.ts": [
+                {
+                    "name": "VideoFormBuilder",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-builders/__base/video.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new FormGroupBuilder<ICreateVideoDto>(\n  'Video Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('url')\n  .required()\n  .url()\n\n  .done()\n  .lock()"
                 }
             ]
         },
@@ -8542,12 +9934,64 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<AddressFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<EmailFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ImageFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<PhoneFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 13,
+        "count": 12,
         "status": "low",
         "files": [
             {
@@ -8558,6 +10002,56 @@
                 "coveragePercent": 63,
                 "coverageCount": "7/11",
                 "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-builders/__base/address.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "AddressFormBuilder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-builders/__base/email.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EmailFormBuilder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-builders/__base/image.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ImageFormBuilder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-builders/__base/phone.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PhoneFormBuilder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-builders/__base/video.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "VideoFormBuilder",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "libs/forms/src/lib/form-builders/category.ts",
@@ -8800,6 +10294,162 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/address/address-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AddressFormComponent",
+                "coveragePercent": 58,
+                "coverageCount": "7/12",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/email/email-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/email/email-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EmailFormComponent",
+                "coveragePercent": 58,
+                "coverageCount": "7/12",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/image/image-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/image/image-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ImageFormComponent",
+                "coveragePercent": 63,
+                "coverageCount": "7/11",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/phone/phone-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PhoneFormComponent",
+                "coveragePercent": 63,
+                "coverageCount": "7/11",
+                "status": "good"
+            },
+            {
                 "filePath": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -8912,8 +10562,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "CustomerEmailFormComponent",
-                "coveragePercent": 63,
-                "coverageCount": "7/11",
+                "coveragePercent": 58,
+                "coverageCount": "7/12",
                 "status": "good"
             },
             {

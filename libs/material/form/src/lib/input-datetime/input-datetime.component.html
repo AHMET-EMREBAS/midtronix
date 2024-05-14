@@ -1,6 +1,6 @@
 <h1>This component is not ready yet!</h1>
 <mat-form-field>
-  <mat-label>{{ label }}</mat-label>
+  <mat-label>{{ label || inputName | titlecase }}</mat-label>
   <input
     #mdtxInput="mdtxInput"
     type="datetime-local"

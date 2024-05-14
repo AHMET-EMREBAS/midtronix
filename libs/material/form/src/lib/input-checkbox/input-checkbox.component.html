@@ -3,5 +3,5 @@
   [formControl]="inputControl"
   [attr.data-testid]="testid()"
 >
-  {{ label }}
+  {{ label || inputName | titlecase }}
 </mat-checkbox>

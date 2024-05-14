@@ -1,15 +1,10 @@
 <!-- username
-password
-roles
-supervisor -->
+password-->
+
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-input-text
-    inputName="name"
-    label="Customer Name"
-    prefixIcon="category"
-    [inputControl]="control('name')"
-  ></mdtx-input-text>
+  <mdtx-input-username inputName="username" label="Username" prefixIcon="email" [inputControl]="control('username')" ></mdtx-input-username>
+  <mdtx-input-password inputName="password" label="Password" prefixIcon="email" [inputControl]="control('password')" ></mdtx-input-password>
 
   <!-- Form actions -->
   <div class="form-actions">

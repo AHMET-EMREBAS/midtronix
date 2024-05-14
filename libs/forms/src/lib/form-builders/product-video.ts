@@ -11,7 +11,5 @@ export const ProductVideoFormBuilder =
     .required()
     .url()
 
-    .add('owner')
-    .required()
     .done()
     .lock();

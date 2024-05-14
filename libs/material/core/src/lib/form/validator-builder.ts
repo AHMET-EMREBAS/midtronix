@@ -81,7 +81,7 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
   }
 
   shortText() {
-    this.minLength(3);
+    this.minLength(1);
     this.maxLength(60);
     return this;
   }

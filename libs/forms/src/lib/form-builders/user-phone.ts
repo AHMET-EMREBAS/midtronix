@@ -8,8 +8,5 @@ export const UserPhoneFormBuilder = new FormGroupBuilder<ICreateUserPhoneDto>(
   .required()
   .phone()
 
-  .add('owner')
-  .required()
-
   .done()
   .lock();

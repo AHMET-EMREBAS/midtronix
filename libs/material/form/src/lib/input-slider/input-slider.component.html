@@ -4,6 +4,6 @@
   labelPosition="before"
   [attr.data-testid]="testid()"
 >
-  {{ getLabel() }}
+  {{ getLabel() | titlecase }}
 </mat-slide-toggle>
 <strong> ({{ inputControl.value }}) </strong>

@@ -8,8 +8,5 @@ export const UserEmailFormBuilder = new FormGroupBuilder<ICreateUserEmailDto>(
   .required()
   .email()
 
-  .add('owner')
-  .required()
-
   .done()
   .lock();

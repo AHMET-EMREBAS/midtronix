@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-label>{{ label }}</mat-label>
+  <mat-label>{{ label || inputName | titlecase }}</mat-label>
   <input
     #mdtxInput="mdtxInput"
     mdtxInput

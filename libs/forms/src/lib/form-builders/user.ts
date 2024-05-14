@@ -14,8 +14,5 @@ export const UserFormBuilder = new FormGroupBuilder<ICreateUserDto>('User Form')
   .add('roles')
   .required()
 
-  .add('supervisor')
-  .required()
-
   .done()
   .lock();

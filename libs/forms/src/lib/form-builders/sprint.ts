@@ -11,7 +11,5 @@ export const SprintFormBuilder = new FormGroupBuilder<ICreateSprintDto>(
   .add('description')
   .longText()
 
-  .add('project')
-
   .done()
   .lock();

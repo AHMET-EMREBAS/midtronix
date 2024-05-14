@@ -13,6 +13,8 @@ export class InputTextComponent
   extends InputBaseComponent
   implements AfterViewInit
 {
+
+  @Input() override prefixIcon = 'info';
   @Input() inputType = 'text';
   @Input() minLength?: number;
   @Input() maxLength?: number;

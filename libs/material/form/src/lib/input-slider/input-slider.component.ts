@@ -14,7 +14,7 @@ export class InputSliderComponent extends InputBaseComponent {
 
   getLabel() {
     return this.inputControl.value == true
-      ? this.activeLabel ?? this.label
-      : this.label;
+      ? this.activeLabel ?? this.label ?? this.inputName
+      : this.label ?? this.inputName;
   }
 }

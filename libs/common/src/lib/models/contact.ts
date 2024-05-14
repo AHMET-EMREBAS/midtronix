@@ -14,6 +14,7 @@ export interface IAddress<TOwner extends IID = IID> extends IOwner<TOwner> {
   street: string;
   city: string;
   state: string;
+  country: string;
   zip: string;
 }
 

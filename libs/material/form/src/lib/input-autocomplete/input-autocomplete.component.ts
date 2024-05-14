@@ -15,6 +15,7 @@ export class InputAutocompleteComponent
   extends InputBaseComponent
   implements OnInit
 {
+  @Input() override prefixIcon = 'event';
   @Input() options!: IInputOption[];
 
   filteredOptions$!: Observable<IInputOption[]>;

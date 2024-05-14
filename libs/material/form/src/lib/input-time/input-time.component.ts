@@ -13,6 +13,8 @@ export class InputTimeComponent
   extends InputBaseComponent
   implements AfterViewInit
 {
+
+  @Input() override prefixIcon = 'schedule';
   @Input() beforeHour?: number;
   @Input() afterHour?: number;
 

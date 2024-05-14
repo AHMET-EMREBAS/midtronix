@@ -50,7 +50,10 @@ export interface IFormBuilder<T extends Record<string, any>> {
    * @param pn
    * @param value
    */
-  controls(props?: (keyof T)[]): Partial<Record<keyof T, FormControl>>;
+  controls(
+    props?: (keyof T)[],
+    exclude?: (keyof T)[]
+  ): Partial<Record<keyof T, FormControl>>;
 
   lock(): Pick<IFormBuilder<T>, 'getControl' | 'getValidator' | 'controls'>;
 }

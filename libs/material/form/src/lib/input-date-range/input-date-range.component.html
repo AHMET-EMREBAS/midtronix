@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-label>{{ label }}</mat-label>
+  <mat-label>{{ label || inputName | titlecase }}</mat-label>
 
   <mat-date-range-input
     #mdtxInput="mdtxInput"

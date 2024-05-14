@@ -25,6 +25,7 @@ export class InputDateRangeComponent
   extends InputBaseComponent
   implements OnInit, OnDestroy
 {
+  @Input() override prefixIcon = 'event';
   @Input() startDateLabel = 'Start Date';
   @Input() endDateLabel = 'End Date';
 

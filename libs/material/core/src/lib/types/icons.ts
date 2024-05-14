@@ -2129,7 +2129,7 @@ export class __Icon {
   'zoom_out' = '';
 }
 
-export type Icon = keyof __Icon;
+export type Icon = keyof __Icon | string;
 
 export const IconList = () =>
   Object.keys(new __Icon()).sort((p, c) => {

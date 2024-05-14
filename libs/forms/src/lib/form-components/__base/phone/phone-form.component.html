@@ -1,0 +1,30 @@
+<form class="form-container" novalidate="true">
+  <!-- Form Inputs  -->
+  <mdtx-input-phone
+    inputName="name"
+    label="Phone Name"
+    prefixIcon="category"
+    [inputControl]="control('name')"
+  ></mdtx-input-phone>
+
+  <!-- Form actions -->
+  <div class="form-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formSubmit()"
+      [disabled]="isFormInvalid()"
+      [attr.data-testid]="'submit'"
+    >
+      Save Phone
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="formReset()"
+      [attr.data-testid]="'reset'"
+    >
+      Reset
+    </button>
+  </div>
+</form>

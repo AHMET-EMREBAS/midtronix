@@ -15,6 +15,7 @@ export class InputNumberComponent
   extends InputBaseComponent
   implements AfterViewInit
 {
+  @Input() override prefixIcon = 'number';
   @Input() minValue?: number;
   @Input() maxValue?: number;
   @Input() textSuffix?: string;

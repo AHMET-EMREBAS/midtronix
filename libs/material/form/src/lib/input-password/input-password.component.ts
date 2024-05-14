@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { CommonFormModule } from '../form';
 
@@ -10,6 +10,7 @@ import { CommonFormModule } from '../form';
   styleUrl: './input-password.component.scss',
 })
 export class InputPasswordComponent extends InputTextComponent {
+  @Input() override prefixIcon = 'password';
   visible = false;
 
   toggleVisible() {

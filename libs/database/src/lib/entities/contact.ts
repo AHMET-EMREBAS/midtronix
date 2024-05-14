@@ -42,6 +42,7 @@ export function AddressEntity<T extends IID>(owner: Type<T>) {
     @Column({ type: 'varchar', nullable: true }) street!: string;
     @Column({ type: 'varchar', nullable: true }) city!: string;
     @Column({ type: 'varchar', nullable: true }) state!: string;
+    @Column({ type: 'varchar', nullable: true }) country!: string;
     @Column({ type: 'varchar', nullable: true }) zip!: string;
   }
   return Address;

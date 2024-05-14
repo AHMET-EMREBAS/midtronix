@@ -90,7 +90,10 @@ export class CreateAddressDto
   @Property({ type: 'string', required: true }) street!: string;
   @Property({ type: 'string', required: true }) city!: string;
   @Property({ type: 'string', required: true }) state!: string;
-  @Property({ type: 'string', required: true }) zip!: string;
+  @Property({ type: 'string', required: true }) country!: string;
+
+  @Property({ type: 'string', required: true })
+  zip!: string;
 }
 
 @Exclude()

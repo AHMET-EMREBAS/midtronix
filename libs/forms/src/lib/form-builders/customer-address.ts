@@ -15,12 +15,13 @@ export const CustomerAddressFormBuilder =
     .required()
     .shortText()
 
-    .add('zip')
+    .add('country')
     .required()
     .shortText()
 
-    .add('owner')
+    .add('zip')
     .required()
+    .shortText()
 
     .done()
     .lock();

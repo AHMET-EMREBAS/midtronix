@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonFormModule } from '../form';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { InputBaseComponent } from '../input-base';
@@ -12,4 +12,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   styleUrl: './input-date.component.scss',
   providers: [provideNativeDateAdapter()],
 })
-export class InputDateComponent extends InputBaseComponent {}
+export class InputDateComponent extends InputBaseComponent {
+  @Input() override prefixIcon = 'event';
+}
