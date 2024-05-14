@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommonFormModule, InputTextComponent, InputTextareaComponent } from '@mdtx/material/form';
+import {
+  CommonFormModule,
+  InputTextComponent,
+  InputTextareaComponent,
+} from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { SprintFormBuilder } from '../../form-builders';
 

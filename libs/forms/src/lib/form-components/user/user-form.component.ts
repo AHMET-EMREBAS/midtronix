@@ -2,12 +2,16 @@ import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { BaseFormComponent } from '../../__base';
 import { UserFormBuilder } from '../../form-builders';
-import { AddressFormComponent } from '../__base';
+import {
+  InputPasswordComponent,
+  InputTextComponent,
+  InputUsernameComponent,
+} from '@mdtx/material/form';
 
 @Component({
   selector: 'mdtx-user-form',
   standalone: true,
-  imports: [AddressFormComponent],
+  imports: [InputTextComponent, InputUsernameComponent, InputPasswordComponent],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss',
 })

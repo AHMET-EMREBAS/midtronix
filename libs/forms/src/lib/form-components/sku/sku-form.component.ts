@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommonFormModule, InputTextComponent } from '@mdtx/material/form';
+import {
+  CommonFormModule,
+  InputTextComponent,
+  InputTextareaComponent,
+} from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { SkuFormBuilder } from '../../form-builders';
 
 @Component({
   selector: 'mdtx-sku-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent],
+  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],
   templateUrl: './sku-form.component.html',
   styleUrl: './sku-form.component.scss',
 })
