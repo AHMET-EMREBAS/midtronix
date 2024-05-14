@@ -1,2 +1,3 @@
 // @index('./*', f => `export * from '${f.path}'`)
-export * from './collection-base.service';
+export * from './__base';
+export * from './services';

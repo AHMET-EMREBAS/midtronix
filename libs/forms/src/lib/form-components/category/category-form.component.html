@@ -1,5 +1,4 @@
 <form class="form-container" novalidate="true">
-  
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
@@ -15,14 +14,17 @@
       color="primary"
       (click)="formSubmit()"
       [disabled]="isFormInvalid()"
+      [attr.data-testid]="'submit'"
     >
       Save Category
     </button>
-    <button mat-stroked-button color="primary" (click)="formReset()">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="formReset()"
+      [attr.data-testid]="'reset'"
+    >
       Reset
     </button>
   </div>
 </form>
-
-{{ control('name').errors | json }}
-{{ resourceFormGroup.value | json }}
