@@ -13,7 +13,7 @@ import {
   UpdateResultDto,
 } from '../dto';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
-import { IID } from '@mdtx/common';
+import { IID, ResourceMetadata } from '@mdtx/common';
 
 export class RepositoryService<T extends IID> {
   constructor(protected repository: Repository<T>) {}
@@ -140,7 +140,21 @@ export class RepositoryService<T extends IID> {
     return this.repository.createQueryBuilder(alias);
   }
 
-  metadata() {
-    return this.repository.metadata;
+  async metadata(): Promise<ResourceMetadata> {
+    const m = this.repository.metadata;
+    return {
+      count: await this.repository.count(),
+      columns: m.columns.map((e) => e.propertyName),
+      relations: m.relations.map((e) => e.propertyName),
+      nullables: [
+        ...m.columns.filter((e) => e.isNullable).map((e) => e.propertyName),
+        ...m.relations.filter((e) => e.isNullable).map((e) => e.propertyName),
+      ],
+      uniques: [
+        ...m.uniques
+          .map((e) => e.columns.map((e) => e.propertyName).flat())
+          .flat(),
+      ],
+    };
   }
 }

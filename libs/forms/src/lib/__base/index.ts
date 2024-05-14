@@ -1,4 +1,3 @@
 // @index('./*', f => `export * from '${f.path}'`)
 export * from './base';
 export * from './form-type';
-export * from './inputs';

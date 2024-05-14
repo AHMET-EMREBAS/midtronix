@@ -12,6 +12,11 @@ const R = RestRouteBuilder.get('Product');
 @R.Controler()
 export class ProductController {
   constructor(protected readonly service: ProductService) {}
+  
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
 
   @R.SaveOne()
   save(@R.Body() body: CreateProductDto) {

@@ -55,6 +55,15 @@ export class RestRouteBuilder {
     );
   }
 
+  Metadata() {
+    return applyDecorators(
+      Get(this.AP.METADATA_PATH),
+      ApiOkResponse({ description: 'Success' }),
+      this.RP.CanRead(),
+      this.__common()
+    );
+  }
+
   FindAll() {
     return applyDecorators(
       Get(this.AP.PLURAL_PATH),

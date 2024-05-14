@@ -1,10 +1,9 @@
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { Injectable } from '@angular/core';
-import { BaseNgrxService } from '../__base';
 import { HttpClient, IProduct } from '../__externals';
-
+import { CollectionBaseService } from '@mdtx/ngrx';
 @Injectable()
-export class ProductService extends BaseNgrxService<IProduct> {
+export class ProductService extends CollectionBaseService<IProduct> {
   constructor(
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient

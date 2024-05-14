@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormControl } from '@angular/forms';
 import { ValidatorBuilder } from './validator-builder';
 
@@ -28,7 +29,7 @@ export interface IFormBuilder<T extends Record<string, any>> {
    * @param pn
    * @param value
    */
-  getValidator(pn: keyof T): ValidatorBuilder<T>;
+  getValidator(pn: keyof T): ValidatorBuilder;
 
   /**
    * Add property

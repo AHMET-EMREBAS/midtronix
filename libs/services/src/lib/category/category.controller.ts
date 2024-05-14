@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Category');
 export class CategoryController {
   constructor(protected readonly service: CategoryService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateCategoryDto) {
     return this.service.save(body);

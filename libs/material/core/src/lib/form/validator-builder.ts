@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import { IFormBuilder } from './form-builder-interface';
 
-export class ValidatorBuilder<T extends Record<string, any>> {
+export class ValidatorBuilder<T extends Record<string, any> = any> {
   private readonly validatorList: ValidatorFn[] = [];
   private parentInstance!: IFormBuilder<T>;
   constructor(private readonly propertyName: keyof T) {}
@@ -17,17 +17,13 @@ export class ValidatorBuilder<T extends Record<string, any>> {
     return this.propertyName.toString();
   }
 
-  setParent(formBuilder: IFormBuilder<T>) {
-    this.parentInstance = formBuilder;
+  done() {
+    return this.parentInstance;
   }
 
   add(propertyName: keyof T) {
     if (!this.parentInstance) throw new Error('Parent is not set!');
     return this.parentInstance.add(propertyName);
-  }
-
-  done() {
-    return this.parentInstance;
   }
 
   private push(fn: ValidatorFn) {
@@ -41,6 +37,17 @@ export class ValidatorBuilder<T extends Record<string, any>> {
         ? null
         : { required: `${this.__name()} is required!` }
     );
+  }
+
+  shortText() {
+    this.minLength(3);
+    this.maxLength(60);
+    return this;
+  }
+
+  longText() {
+    this.maxLength(600);
+    return this;
   }
 
   minLength(value: number): ValidatorBuilder<T> {
