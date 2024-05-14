@@ -49,17 +49,25 @@ export const Heading: Story = {
     const resetButton = findButton('reset');
 
     // Form Fields
-    const name = findInput('name');
+    const street = findInput('street');
+    const city = findInput('city');
+    const state = findInput('state');
+    const country = findInput('country');
+    const zip = findInput('zip');
 
     // Valdiate buttons
-    expect(submitButton).toBeTruthy();
-    expect(resetButton).toBeTruthy();
-
-    // Validte input Elements
-    expect(name).toBeTruthy();
+    expect(street).toBeTruthy();
+    expect(city).toBeTruthy();
+    expect(state).toBeTruthy();
+    expect(country).toBeTruthy();
+    expect(zip).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'customer-address name');
+      await type(street, 'N Damen');
+      await type(city, 'Chicago');
+      await type(state, 'IL');
+      await type(country, 'US');
+      await type(zip, '60645');
 
       await click(submitButton);
 

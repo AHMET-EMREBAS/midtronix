@@ -49,17 +49,17 @@ export const Heading: Story = {
     const resetButton = findButton('reset');
 
     // Form Fields
-    const name = findInput('name');
+    const phone = findInput('phone');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
     expect(resetButton).toBeTruthy();
 
     // Validte input Elements
-    expect(name).toBeTruthy();
+    expect(phone).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'customer-phone name');
+      await type(phone, '+17739001019');
 
       await click(submitButton);
 

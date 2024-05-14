@@ -47,19 +47,25 @@ export const Heading: Story = {
     // Form Buttons
     const submitButton = findButton('submit');
     const resetButton = findButton('reset');
-
+    const passwordToggle = findButton('password-toggle');
+    
     // Form Fields
-    const name = findInput('name');
+    const username = findInput('username');
+    const password = findInput('password');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
     expect(resetButton).toBeTruthy();
 
     // Validte input Elements
-    expect(name).toBeTruthy();
+    expect(username).toBeTruthy();
+    expect(password).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'customer name');
+      await type(username, 'user@domain.com');
+      await type(password, 'Password123.!');
+
+      await click(passwordToggle);
 
       await click(submitButton);
 

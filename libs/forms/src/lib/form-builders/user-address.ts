@@ -15,6 +15,10 @@ export const UserAddressFormBuilder =
     .required()
     .shortText()
 
+    .add('country')
+    .required()
+    .shortText()
+
     .add('zip')
     .required()
     .shortText()
