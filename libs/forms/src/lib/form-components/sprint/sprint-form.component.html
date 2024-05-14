@@ -2,10 +2,13 @@
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
-    label="Sprint Name"
-    prefixIcon="category"
     [inputControl]="control('name')"
   ></mdtx-input-text>
+
+  <mdtx-input-textarea
+    inputName="description"
+    [inputControl]="control('description')"
+  ></mdtx-input-textarea>
 
   <!-- Form actions -->
   <div class="form-actions">

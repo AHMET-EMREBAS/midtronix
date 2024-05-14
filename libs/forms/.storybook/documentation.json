@@ -1172,7 +1172,7 @@
         },
         {
             "name": "CustomerFormComponent",
-            "id": "component-CustomerFormComponent-2a1dc6c8ab5bc7cfc40ebce8b025e869d96829d9382a8ebff514501046312d55d6d37a836456ed92f28676d4b9c93f2c274faf4413be85a71b48cf5875036add",
+            "id": "component-CustomerFormComponent-c350b21ad9914b638026322cd86dd32697180b6b3df41163823f96f3e70b11eae452ad9cddbe0cb60fa0596c62ec86441426ce51e0ebffafd9af958796bf3e3f",
             "file": "libs/forms/src/lib/form-components/customer/customer-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1406,7 +1406,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputPasswordComponent,\n  InputTextComponent,\n  InputUsernameComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-form',\n  standalone: true,\n  imports: [\n    CommonFormModule,\n    InputTextComponent,\n    InputUsernameComponent,\n    InputPasswordComponent,\n  ],\n  templateUrl: './customer-form.component.html',\n  styleUrl: './customer-form.component.scss',\n})\nexport class CustomerFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerFormBuilder.controls(undefined, ['supervisor', 'username']),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputPasswordComponent,\n  InputTextComponent,\n  InputUsernameComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-form',\n  standalone: true,\n  imports: [\n    CommonFormModule,\n    InputTextComponent,\n    InputUsernameComponent,\n    InputPasswordComponent,\n  ],\n  templateUrl: './customer-form.component.html',\n  styleUrl: './customer-form.component.scss',\n})\nexport class CustomerFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerFormBuilder.controls(undefined, ['supervisor', 'roles']),\n    });\n  }\n}\n",
             "styleUrl": "./customer-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1414,11 +1414,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<!-- username\npassword-->\n\n<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username inputName=\"username\" label=\"Username\" prefixIcon=\"email\" [inputControl]=\"control('username')\" ></mdtx-input-username>\n  <mdtx-input-password inputName=\"password\" label=\"Password\" prefixIcon=\"email\" [inputControl]=\"control('password')\" ></mdtx-input-password>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Customer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<!-- username\npassword-->\n\n<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username\n    inputName=\"username\"\n    [inputControl]=\"control('username')\"\n  ></mdtx-input-username>\n  <mdtx-input-password\n    inputName=\"password\"\n    [inputControl]=\"control('password')\"\n  ></mdtx-input-password>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Customer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "CustomerPhoneFormComponent",
-            "id": "component-CustomerPhoneFormComponent-a4e50c0828e0c8a6c46d2e7801602c4d406dd4df713ac5742d867a70829bed51dda8ec8698eba646b92d3c84af845962597371fa4d5649253f1e41d944d942f3",
+            "id": "component-CustomerPhoneFormComponent-2ef22d4708409f66a2abcb242816442e13e6e68d8b13df1a71f4100b47ef58d3e30ff361ca9f6492ada122cfbf0d51daf408fd2f2e9845692399be7cef3b55d6",
             "file": "libs/forms/src/lib/form-components/customer-phone/customer-phone-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1499,7 +1499,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1633,26 +1633,22 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonFormModule",
-                    "type": "module"
-                },
-                {
-                    "name": "InputTextComponent",
+                    "name": "PhoneFormComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { CustomerPhoneFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-customer-phone-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './customer-phone-form.component.html',\n  styleUrl: './customer-phone-form.component.scss',\n})\nexport class CustomerPhoneFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerPhoneFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CustomerPhoneFormBuilder } from '../../form-builders';\nimport { PhoneFormComponent } from '../__base/phone';\n\n@Component({\n  selector: 'mdtx-customer-phone-form',\n  standalone: true,\n  imports: [PhoneFormComponent],\n  templateUrl: './customer-phone-form.component.html',\n  styleUrl: './customer-phone-form.component.scss',\n})\nexport class CustomerPhoneFormComponent extends PhoneFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...CustomerPhoneFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./customer-phone-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
-                "BaseFormComponent"
+                "PhoneFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"CustomerPhone Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save CustomerPhone\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<mdtx-phone-form (submitEvent)=\"formSubmit()\"></mdtx-phone-form>\n"
         },
         {
             "name": "DepartmentFormComponent",
@@ -2137,7 +2133,7 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username\n    inputName=\"username\"\n    prefixIcon=\"email\"\n    [inputControl]=\"control('username')\"\n  ></mdtx-input-username>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      {{ submitLabel }}\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-username\n    inputName=\"email\"\n    [inputControl]=\"control('email')\"\n  ></mdtx-input-username>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      {{ submitLabel }}\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "ImageFormComponent",
@@ -2617,11 +2613,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Manufacturer Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Manufacturer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"factory\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Manufacturer\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "MessageFormComponent",
-            "id": "component-MessageFormComponent-367c9540bde54ba4d64d6245bc33becfa3afcf4b8d1d1470159de3f61c35e082a6a7fa0572ef5e61d92fb3ed431c2aa9af3ece94b040339a8c0dd5e524c85d4b",
+            "id": "component-MessageFormComponent-88613b5a6b966b1bf261e5e1a3d3458be18042087f36d529ed5fca89402d31764858e14920caee0e4753e51a1771367d14067c7b6ae42587e4405099ea55b463",
             "file": "libs/forms/src/lib/form-components/message/message-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2702,7 +2698,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2842,12 +2838,16 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputTextareaComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { MessageFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-message-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './message-form.component.html',\n  styleUrl: './message-form.component.scss',\n})\nexport class MessageFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...MessageFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputTextComponent,\n  InputTextareaComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { MessageFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-message-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],\n  templateUrl: './message-form.component.html',\n  styleUrl: './message-form.component.scss',\n})\nexport class MessageFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...MessageFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./message-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2855,11 +2855,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Message Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Message\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-textarea\n    inputName=\"message\"\n    label=\"Message\"\n    prefixIcon=\"message\"\n    [inputControl]=\"control('message')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Send\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "NotificationFormComponent",
-            "id": "component-NotificationFormComponent-07cf3d1387385eac84e54c70723f1f7f51e7515c95f58230cebcab43ddb420237ac30e50857c8295d7d500faf20464cca363e0bf16033ecdbec0106378600641",
+            "id": "component-NotificationFormComponent-ef99ff67f18a8af08acc551c5bac3c958c999e727b1b66f026114421f48b3768b8da552721e912bbb871079f3b71c972b92df1d697ef5b0d9ce71246475ce149",
             "file": "libs/forms/src/lib/form-components/notification/notification-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3078,14 +3078,14 @@
                     "type": "module"
                 },
                 {
-                    "name": "InputTextComponent",
+                    "name": "InputTextareaComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { NotificationFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-notification-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './notification-form.component.html',\n  styleUrl: './notification-form.component.scss',\n})\nexport class NotificationFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...NotificationFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextareaComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { NotificationFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-notification-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextareaComponent],\n  templateUrl: './notification-form.component.html',\n  styleUrl: './notification-form.component.scss',\n})\nexport class NotificationFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...NotificationFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./notification-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3093,7 +3093,7 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Notification Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Notification\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n   <!-- Form Inputs  -->\n   <mdtx-input-textarea\n   inputName=\"message\"\n   label=\"Message\"\n   prefixIcon=\"message\"\n   [inputControl]=\"control('message')\"\n ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Notification\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "PermissionFormComponent",
@@ -3569,11 +3569,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-phone\n    inputName=\"name\"\n    label=\"Phone Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-phone>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Phone\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-phone\n    inputName=\"phone\"\n    [inputControl]=\"control('phone')\"\n  ></mdtx-input-phone>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Phone\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "ProductFormComponent",
-            "id": "component-ProductFormComponent-dffa138e24b184c46eccf7c5067882f2ece557cf426be35b8e8585c74fd408e4e4d7404090e7f8f3e8250730a83bbd8f11c8ef32793a435d89bc8b6d998a79f5",
+            "id": "component-ProductFormComponent-a8f1493ace26b716d6cd6cf033eb3e3374398903498b5ad1c0665e41a171351cee9dcbe8312c972f79d8ae1b654f0f601d97a819cc0932c92abaf48ad1964815",
             "file": "libs/forms/src/lib/form-components/product/product-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3654,7 +3654,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -3794,12 +3794,16 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputTextareaComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProductFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-product-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './product-form.component.html',\n  styleUrl: './product-form.component.scss',\n})\nexport class ProductFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputTextComponent,\n  InputTextareaComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProductFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-product-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],\n  templateUrl: './product-form.component.html',\n  styleUrl: './product-form.component.scss',\n})\nexport class ProductFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./product-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3807,11 +3811,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Product Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Product\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"inventory\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"upc\"\n    prefixIcon=\"barcode\"\n    [inputControl]=\"control('upc')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Product\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "ProductImageFormComponent",
-            "id": "component-ProductImageFormComponent-e97b20f65ce62579468a3d43204c96664e7a1ec628d9d79fb5dd390388be63b2879c6bf2b49137c54fc21cf8bb0943dda04220e973e053690bbc50443e2be7f1",
+            "id": "component-ProductImageFormComponent-2d2c46147208935db446ed5c92f4a269c619d7714ed679e24ded396a5adb04029c637355800a9723e5fe87209ce94f1ccf27b7eb8f1b7595a585f9ccb66a0f29",
             "file": "libs/forms/src/lib/form-components/product-image/product-image-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3892,7 +3896,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4026,30 +4030,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonFormModule",
-                    "type": "module"
-                },
-                {
-                    "name": "InputTextComponent",
+                    "name": "ImageFormComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProductImageFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-product-image-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './product-image-form.component.html',\n  styleUrl: './product-image-form.component.scss',\n})\nexport class ProductImageFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductImageFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { ProductImageFormBuilder } from '../../form-builders';\nimport { ImageFormComponent } from '../__base';\n\n@Component({\n  selector: 'mdtx-product-image-form',\n  standalone: true,\n  imports: [ImageFormComponent],\n  templateUrl: './product-image-form.component.html',\n  styleUrl: './product-image-form.component.scss',\n})\nexport class ProductImageFormComponent extends ImageFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductImageFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./product-image-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
-                "BaseFormComponent"
+                "ImageFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"ProductImage Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save ProductImage\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<mdtx-image-form (submitEvent)=\"formSubmit()\"></mdtx-image-form>\r\n"
         },
         {
             "name": "ProductVideoFormComponent",
-            "id": "component-ProductVideoFormComponent-6a1231997f4580011529b0a745a5bd5073c3ccbd81ddb35cf194c08c5e0935932a38cd7e9bcb4e8534afc11c09970723b57a735b92dffde73acdbe6877e2d24c",
+            "id": "component-ProductVideoFormComponent-4997352b23b23080d39e79d7f95647406054c663debb0b7b909b3665cc60c65e43d3738280a80734a3473d18371acf448d4aaea273e50b3fbc09ed4009b1702f",
             "file": "libs/forms/src/lib/form-components/product-video/product-video-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4130,7 +4130,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -4264,30 +4264,26 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonFormModule",
-                    "type": "module"
-                },
-                {
-                    "name": "InputTextComponent",
+                    "name": "VideoFormComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProductVideoFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-product-video-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './product-video-form.component.html',\n  styleUrl: './product-video-form.component.scss',\n})\nexport class ProductVideoFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductVideoFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { ProductVideoFormBuilder } from '../../form-builders';\nimport { VideoFormComponent } from '../__base';\n\n@Component({\n  selector: 'mdtx-product-video-form',\n  standalone: true,\n  imports: [VideoFormComponent],\n  templateUrl: './product-video-form.component.html',\n  styleUrl: './product-video-form.component.scss',\n})\nexport class ProductVideoFormComponent extends VideoFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProductVideoFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./product-video-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
-                "BaseFormComponent"
+                "VideoFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"ProductVideo Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save ProductVideo\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<mdtx-video-form (submitEvent)=\"formSubmit()\"></mdtx-video-form>\n"
         },
         {
             "name": "ProjectFormComponent",
-            "id": "component-ProjectFormComponent-5d388c32db0090a31a479f7842b1d1c5a4a0211b4cd49676b0a84e2e2ec2ff712e83832a5c0f2e86e3be5b2e8c51ca6c4e3faecc0cf9fe36dac735d5039de64c",
+            "id": "component-ProjectFormComponent-a389a66f7299e0041290f08192fdbf79d00b3ae8b783fee5137cb27e937de806b289cc1d099a9c26d1d0a3e6738fc05f0ec325625faee03a97d28246b225f1c5",
             "file": "libs/forms/src/lib/form-components/project/project-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4508,12 +4504,16 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProjectFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-project-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './project-form.component.html',\n  styleUrl: './project-form.component.scss',\n})\nexport class ProjectFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProjectFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { ProjectFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-project-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent, InputTextComponent],\n  templateUrl: './project-form.component.html',\n  styleUrl: './project-form.component.scss',\n})\nexport class ProjectFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...ProjectFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./project-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4521,7 +4521,7 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Project Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Project\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Project\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "RoleFormComponent",
@@ -4997,11 +4997,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Sku Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Sku\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"inventory\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-text\n    inputName=\"upc\"\n    prefixIcon=\"barcode\"\n    [inputControl]=\"control('upc')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Sku\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "SprintFormComponent",
-            "id": "component-SprintFormComponent-34d5bc2510af2528e55565bebd2ee506a1ae64083582f96328b00844d7bf9fe2bc80774a11805a43add783fac449ae16a0ee62623a78b59cca3330d5a1f1ca3f",
+            "id": "component-SprintFormComponent-cee2e64af182c9a7563d9430253943ccbb7ddf98911ed85cf9533e432a7f7cb1e7c5ed31af58bd040b26246fb258bc6d8d229919e07a2568c182b63014890fef",
             "file": "libs/forms/src/lib/form-components/sprint/sprint-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5222,12 +5222,16 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputTextareaComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { SprintFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-sprint-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './sprint-form.component.html',\n  styleUrl: './sprint-form.component.scss',\n})\nexport class SprintFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...SprintFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent, InputTextareaComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { SprintFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-sprint-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],\n  templateUrl: './sprint-form.component.html',\n  styleUrl: './sprint-form.component.scss',\n})\nexport class SprintFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...SprintFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./sprint-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5235,11 +5239,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Sprint Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Sprint\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Sprint\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "StoreFormComponent",
-            "id": "component-StoreFormComponent-62726c75d96f6d04575517359a9528b786251e0b46c17b025a5025f5b87a69eec733f292f7dd72471e627b8a4117aab6f63022a8e290b4d3c1b289135cc95529",
+            "id": "component-StoreFormComponent-808aff19e286b6b7f4a66b8b7d961454638614c8a171baf7f6f93801021d78134adc3eaf043382aec37c66d52bcd78de84f7c23b9df473754f1275f2724f6d4e",
             "file": "libs/forms/src/lib/form-components/store/store-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5320,7 +5324,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -5460,12 +5464,16 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputTextareaComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { StoreFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-store-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './store-form.component.html',\n  styleUrl: './store-form.component.scss',\n})\nexport class StoreFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...StoreFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputTextComponent,\n  InputTextareaComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { StoreFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-store-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],\n  templateUrl: './store-form.component.html',\n  styleUrl: './store-form.component.scss',\n})\nexport class StoreFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...StoreFormBuilder.controls(),\n    });\n  }\n}\n",
             "styleUrl": "./store-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5473,11 +5481,11 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Store Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Store\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Store\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "TaskFormComponent",
-            "id": "component-TaskFormComponent-b77bcbb6bb8d816685c2c17cc1357d22b51e6f8b5f3dfc0bbf5af2579e0dbd3da5911f9e0c927dae1448dbe99f7885d0b2b9f20301d0265623e5f0cbdf6258f6",
+            "id": "component-TaskFormComponent-d7755b53422bb37b6f01f4c6ea0207345f008869eb386d461d06ad9979d8db452419e8703e04ff5f98174795d4a5a9fce99d04e89e1cfa4bdacc3ed98940849a",
             "file": "libs/forms/src/lib/form-components/task/task-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5558,7 +5566,7 @@
                     "optional": false,
                     "returnType": "FormGroup",
                     "typeParameters": [],
-                    "line": 15,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -5698,12 +5706,20 @@
                 {
                     "name": "InputTextComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputDateComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputRadioComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { TaskFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-task-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './task-form.component.html',\n  styleUrl: './task-form.component.scss',\n})\nexport class TaskFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...TaskFormBuilder.controls(),\n    });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport {\n  CommonFormModule,\n  InputDateComponent,\n  InputRadioComponent,\n  InputTextComponent,\n} from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../__base';\nimport { TaskFormBuilder } from '../../form-builders';\n\n@Component({\n  selector: 'mdtx-task-form',\n  standalone: true,\n  imports: [\n    CommonFormModule,\n    InputTextComponent,\n    InputDateComponent,\n    InputRadioComponent,\n  ],\n  templateUrl: './task-form.component.html',\n  styleUrl: './task-form.component.scss',\n})\nexport class TaskFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...TaskFormBuilder.controls([]),\n    });\n  }\n}\n",
             "styleUrl": "./task-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5711,7 +5727,7 @@
             "extends": [
                 "BaseFormComponent"
             ],
-            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"Task Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Task\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-textarea\n    inputName=\"description\"\n    [inputControl]=\"control('description')\"\n  ></mdtx-input-textarea>\n\n  <mdtx-input-date\n    inputName=\"startDate\"\n    label=\"Start Date\"\n    [inputControl]=\"control('startDate')\"\n  >\n  </mdtx-input-date>\n\n  <mdtx-input-date\n    inputName=\"endDate\"\n    label=\"End Date\"\n    [inputControl]=\"control('endDate')\"\n  >\n  </mdtx-input-date>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Task\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         },
         {
             "name": "TicketFormComponent",
@@ -6902,6 +6918,244 @@
                 "BaseFormComponent"
             ],
             "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    label=\"UserPhone Name\"\n    prefixIcon=\"category\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save UserPhone\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
+        },
+        {
+            "name": "VideoFormComponent",
+            "id": "component-VideoFormComponent-2b3f1a1385e178fb9e4e4e989a880632cdc1375d0014b157bcf662fb257c83206cfbdc068617650a03e757e1a6a4907986746ba65a1509f733ac84e9af1d6585",
+            "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-video-form",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./video-form.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "resourceFormGroup",
+                    "defaultValue": "this.createFormGroup()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFormGroup\n",
+                    "description": "<p>FormGroup</p>\n",
+                    "line": 17,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nEmits form value when form submit\n",
+                    "description": "<p>Emits form value when form submit</p>\n",
+                    "line": 22,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form status change</p>\n",
+                    "line": 32,
+                    "rawdescription": "\n\nSubscribe form status change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "<p>Subscribe form value change</p>\n",
+                    "line": 27,
+                    "rawdescription": "\n\nSubscribe form value change\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "createFormGroup",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "FormGroup",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nGet the formControl from the formGroup\n",
+                    "description": "<p>Get the formControl from the formGroup</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1319,
+                                "end": 1323,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "name"
+                            },
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "pos": 1313,
+                                "end": 1318,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>formControlName</p>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1347,
+                                "end": 1354,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "returns"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nReset form\n",
+                    "description": "<p>Reset form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSubmit form\n",
+                    "description": "<p>Submit form</p>\n",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "isFormInvalid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseFormComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\nimport { CommonFormModule, InputTextComponent } from '@mdtx/material/form';\nimport { BaseFormComponent } from '../../../__base';\nimport { VideoFormBuilder } from '../../../form-builders';\n\n@Component({\n  selector: 'mdtx-video-form',\n  standalone: true,\n  imports: [CommonFormModule, InputTextComponent],\n  templateUrl: './video-form.component.html',\n  styleUrl: './video-form.component.scss',\n})\nexport class VideoFormComponent extends BaseFormComponent {\n  override createFormGroup(): FormGroup {\n    return new FormGroup({\n      ...VideoFormBuilder.controls(),\n    });\n  }\n}\n",
+            "styleUrl": "./video-form.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "BaseFormComponent"
+            ],
+            "templateData": "<form class=\"form-container\" novalidate=\"true\">\n  <!-- Form Inputs  -->\n  <mdtx-input-text\n    inputName=\"name\"\n    prefixIcon=\"image\"\n    [inputControl]=\"control('name')\"\n  ></mdtx-input-text>\n\n  <mdtx-input-url\n    inputName=\"url\"\n    [inputControl]=\"control('url')\"\n  ></mdtx-input-url>\n\n  <!-- Form actions -->\n  <div class=\"form-actions\">\n    <button\n      mat-raised-button\n      color=\"primary\"\n      (click)=\"formSubmit()\"\n      [disabled]=\"isFormInvalid()\"\n      [attr.data-testid]=\"'submit'\"\n    >\n      Save Video\n    </button>\n    <button\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formReset()\"\n      [attr.data-testid]=\"'reset'\"\n    >\n      Reset\n    </button>\n  </div>\n</form>\n"
         }
     ],
     "modules": [],
@@ -6945,7 +7199,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateCustomerEmailDto>('CustomerEmail Form')\n    .add('email')\n    .required()\n    .email()\n\n    .add('owner')\n    .required()\n    \n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateCustomerEmailDto>('CustomerEmail Form')\n    .add('email')\n    .required()\n    .email()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "CustomerFormBuilder",
@@ -6955,7 +7209,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateCustomerDto>(\n  'Customer Form'\n)\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .add('supervisor')\n  .required()\n  \n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateCustomerDto>(\n  'Customer Form'\n)\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "CustomerPhoneFormBuilder",
@@ -6965,7 +7219,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateCustomerPhoneDto>('CustomerPhone Form')\n    .add('phone')\n    .required()\n    .phone()\n    \n    .add('owner')\n    .required()\n    \n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateCustomerPhoneDto>('CustomerPhone Form')\n    .add('phone')\n    .required()\n    .phone()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "DepartmentFormBuilder",
@@ -6975,7 +7229,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  \n  .done()\n  .lock()"
             },
             {
                 "name": "EmailFormBuilder",
@@ -7268,6 +7522,16 @@
                 "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'phone name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
             },
             {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'video name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+            },
+            {
                 "name": "ImageFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -7285,7 +7549,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateManufacturerDto>('Manufacturer Form')\n    .add('name')\n    .required()\n    .shortText()\n    .add('description')\n    .longText()\n\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateManufacturerDto>('Manufacturer Form')\n    .add('name')\n    .required()\n    .shortText()\n    \n    .add('description')\n    .longText()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "MessageFormBuilder",
@@ -7295,7 +7559,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateMessageDto>(\n  'Message Form'\n)\n\n  .add('message')\n  .required()\n  .longText()\n\n  .add('source')\n  .required()\n\n  .add('target')\n  .required()\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateMessageDto>(\n  'Message Form'\n)\n\n  .add('message')\n  .required()\n  .longText()\n\n  .done()\n  .lock()"
             },
             {
                 "name": "meta",
@@ -7578,6 +7842,16 @@
                 "defaultValue": "{\n  component: PhoneFormComponent,\n  title: 'PhoneFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
             },
             {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<VideoFormComponent>",
+                "defaultValue": "{\n  component: VideoFormComponent,\n  title: 'VideoFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+            },
+            {
                 "name": "NotificationFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -7585,7 +7859,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateNotificationDto>('Notification Form')\n\n    .add('message')\n    .required()\n    .longText()\n\n    .add('source')\n    .required()\n\n    .add('target')\n    .required()\n\n    .done()\n    .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateNotificationDto>('Notification Form')\n\n    .add('message')\n    .required()\n    .longText()\n\n    .done()\n    .lock()"
             },
             {
                 "name": "PermissionFormBuilder",
@@ -7888,6 +8162,16 @@
                 "defaultValue": "{}"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
                 "name": "ProductFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -7935,7 +8219,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "new FormGroupBuilder<ICreateRoleDto>('Role Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('permissions')\n\n  .done()\n  .lock()"
+                "defaultValue": "new FormGroupBuilder<ICreateRoleDto>('Role Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('permissions')\n\n  \n  .done()\n  .lock()"
             },
             {
                 "name": "SkuFormBuilder",
@@ -8358,6 +8642,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<VideoFormComponent>",
+                "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             }
         ],
         "enumerations": [],
@@ -8407,7 +8702,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateCustomerEmailDto>('CustomerEmail Form')\n    .add('email')\n    .required()\n    .email()\n\n    .add('owner')\n    .required()\n    \n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateCustomerEmailDto>('CustomerEmail Form')\n    .add('email')\n    .required()\n    .email()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/customer.ts": [
@@ -8419,7 +8714,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateCustomerDto>(\n  'Customer Form'\n)\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .add('roles')\n  .required()\n\n  .add('supervisor')\n  .required()\n  \n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateCustomerDto>(\n  'Customer Form'\n)\n\n  .add('username')\n  .required()\n  .email()\n\n  .add('password')\n  .required()\n  .password()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/customer-phone.ts": [
@@ -8431,7 +8726,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateCustomerPhoneDto>('CustomerPhone Form')\n    .add('phone')\n    .required()\n    .phone()\n    \n    .add('owner')\n    .required()\n    \n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateCustomerPhoneDto>('CustomerPhone Form')\n    .add('phone')\n    .required()\n    .phone()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/department.ts": [
@@ -8443,7 +8738,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateDepartmentDto>(\n  'Department Form'\n)\n  .add('name')\n  .required()\n  .shortText()\n  \n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/__base/email.ts": [
@@ -9354,6 +9649,38 @@
                     "defaultValue": "{}"
                 }
             ],
+            "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n\n    const findButton = (testid: string) => canvas.getByTestId(testid);\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\n\n    const type = async (element: any, value: any) =>\n      await userEvent.type(element, value, { delay: 100 });\n\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\n\n    // Form Buttons\n    const submitButton = findButton('submit');\n    const resetButton = findButton('reset');\n\n    // Form Fields\n    const name = findInput('name');\n\n    // Valdiate buttons\n    expect(submitButton).toBeTruthy();\n    expect(resetButton).toBeTruthy();\n\n    // Validte input Elements\n    expect(name).toBeTruthy();\n\n    const submitForm = async () => {\n      await type(name, 'video name');\n\n      await click(submitButton);\n\n      await click(resetButton);\n    };\n\n    await submitForm();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<VideoFormComponent>",
+                    "defaultValue": "{\n  component: VideoFormComponent,\n  title: 'VideoFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideErrorStateMatcher(),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
             "libs/forms/src/lib/form-builders/__base/image.ts": [
                 {
                     "name": "ImageFormBuilder",
@@ -9375,7 +9702,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateManufacturerDto>('Manufacturer Form')\n    .add('name')\n    .required()\n    .shortText()\n    .add('description')\n    .longText()\n\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateManufacturerDto>('Manufacturer Form')\n    .add('name')\n    .required()\n    .shortText()\n    \n    .add('description')\n    .longText()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/message.ts": [
@@ -9387,7 +9714,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateMessageDto>(\n  'Message Form'\n)\n\n  .add('message')\n  .required()\n  .longText()\n\n  .add('source')\n  .required()\n\n  .add('target')\n  .required()\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateMessageDto>(\n  'Message Form'\n)\n\n  .add('message')\n  .required()\n  .longText()\n\n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/notification.ts": [
@@ -9399,7 +9726,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateNotificationDto>('Notification Form')\n\n    .add('message')\n    .required()\n    .longText()\n\n    .add('source')\n    .required()\n\n    .add('target')\n    .required()\n\n    .done()\n    .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateNotificationDto>('Notification Form')\n\n    .add('message')\n    .required()\n    .longText()\n\n    .done()\n    .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/permission.ts": [
@@ -9483,7 +9810,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "new FormGroupBuilder<ICreateRoleDto>('Role Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('permissions')\n\n  .done()\n  .lock()"
+                    "defaultValue": "new FormGroupBuilder<ICreateRoleDto>('Role Form')\n  .add('name')\n  .required()\n  .shortText()\n\n  .add('permissions')\n\n  \n  .done()\n  .lock()"
                 }
             ],
             "libs/forms/src/lib/form-builders/sku.ts": [
@@ -9986,6 +10313,19 @@
                     "description": "",
                     "kind": 183
                 }
+            ],
+            "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<VideoFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
             ]
         }
     },
@@ -10445,6 +10785,45 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "PhoneFormComponent",
+                "coveragePercent": 63,
+                "coverageCount": "7/11",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/video/video-form.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/form-components/__base/video/video-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "VideoFormComponent",
                 "coveragePercent": 63,
                 "coverageCount": "7/11",
                 "status": "good"

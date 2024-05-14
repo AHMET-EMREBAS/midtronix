@@ -15,6 +15,7 @@ export class InputAutocompleteComponent
   extends InputBaseComponent
   implements OnInit
 {
+  @Input() optionNameAsValue = false;
   @Input() override prefixIcon = 'event';
   @Input() options!: IInputOption[];
 
@@ -38,5 +39,12 @@ export class InputAutocompleteComponent
 
   displayWith(option: IInputOption) {
     return option.name;
+  }
+
+  valueWith(option: IInputOption) {
+    if (this.optionNameAsValue) {
+      return option.name;
+    }
+    return option;
   }
 }

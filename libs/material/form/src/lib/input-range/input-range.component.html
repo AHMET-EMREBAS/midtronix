@@ -1,0 +1,17 @@
+<mat-slider
+  [min]="min"
+  [max]="max"
+  [step]="step"
+  showTickMarks
+  discrete
+  color="accent"
+  [attr.data-testid]="testid()"
+>
+  <mat-label>{{ label ?? inputName | titlecase }}</mat-label>
+  <input
+    matSliderThumb
+    [name]="inputName"
+    [formControl]="inputControl"
+    [attr.data-testid]="testid()"
+  />
+</mat-slider>

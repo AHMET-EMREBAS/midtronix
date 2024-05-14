@@ -17,3 +17,13 @@
     width: 100%;
   }
 }
+
+.input-group {
+  display: flex;
+  gap: 1em;
+  width: 100%;
+
+  * {
+    width: 100%;
+  }
+}

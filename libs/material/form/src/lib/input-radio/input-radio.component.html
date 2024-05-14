@@ -3,6 +3,7 @@
   [formControl]="inputControl"
   [attr.data-testid]="testid()"
 >
+  <h3>{{ label || inputName | titlecase }}</h3>
   @for(o of options; track o){
   <mat-radio-button #rb [value]="o">{{ o.name }}</mat-radio-button>
   }

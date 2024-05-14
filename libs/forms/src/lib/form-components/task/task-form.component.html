@@ -2,10 +2,37 @@
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
-    label="Task Name"
-    prefixIcon="category"
     [inputControl]="control('name')"
   ></mdtx-input-text>
+
+  <mdtx-input-textarea
+    inputName="description"
+    [inputControl]="control('description')"
+  ></mdtx-input-textarea>
+
+  <div class="input-group">
+    <mdtx-input-date
+      inputName="startDate"
+      label="Start Date"
+      [inputControl]="control('startDate')"
+    >
+    </mdtx-input-date>
+
+    <mdtx-input-date
+      inputName="finishDate"
+      label="End Date"
+      [inputControl]="control('finishDate')"
+    >
+    </mdtx-input-date>
+  </div>
+
+  <mdtx-input-range
+    [min]="0"
+    [max]="10"
+    [step]="1"
+    inputName="difficulty"
+    [inputControl]="control('difficulty')"
+  ></mdtx-input-range>
 
   <!-- Form actions -->
   <div class="form-actions">
