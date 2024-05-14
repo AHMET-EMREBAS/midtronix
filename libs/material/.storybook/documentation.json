@@ -25690,112 +25690,6 @@
             "templateData": "<mdtx-layout [progressValue]=\"100\" [rightSidenavIcon]=\"rightSidenavIcon\">\r\n  <ng-template mdtxToolbarLeft>\r\n    {{ title.getTitle() }}\r\n    <mdtx-navlist [items]=\"toolbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxToolbarRight\r\n    ><mdtx-navlist [items]=\"toolbarRight\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxToolbarCenter\r\n    ><mdtx-navlist [items]=\"toolbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxStatusbarLeft\r\n    ><mdtx-navlist [items]=\"statusbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxStatusbarRight\r\n    ><mdtx-navlist [items]=\"statusbarRight\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxStatusbarCenter\r\n    ><mdtx-navlist [items]=\"statusbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxSidenavLeftTop\r\n    ><mdtx-navlist [items]=\"sidenavLeftTop\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavLeftCenter\r\n    ><mdtx-navlist [items]=\"sidenavLeftCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavLeftBottom\r\n    ><mdtx-navlist [items]=\"sidenavLeftBottom\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxSidenavRightTop\r\n    ><mdtx-navlist [items]=\"sidenavRightTop\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavRightCenter\r\n    ><mdtx-navlist [items]=\"sidenavRightCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n  <ng-template mdtxSidenavRightBottom\r\n    ><mdtx-navlist [items]=\"sidenavRightBottom\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <ng-template mdtxContentCenter>\r\n    <router-outlet></router-outlet>\r\n  </ng-template>\r\n</mdtx-layout>\r\n"
         },
         {
-            "name": "BaseFormComponent",
-            "id": "component-BaseFormComponent-39fa13b8db7e527a7b34a6912d4fd30f9bc30a614904fe2a12e33d6ccc34dbfe416c5d5b5c9a4b8ceeb4dd7a4a232a691497348ef6777270a29b114af11e07a1",
-            "file": "libs/material/form/src/lib/form/base-form.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "mdtx-base-component",
-            "styleUrls": [],
-            "styles": [],
-            "template": "",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [
-                {
-                    "name": "submitEvent",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 12,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [
-                {
-                    "name": "formGroup",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FormGroup",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                },
-                {
-                    "name": "statusChange$",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Observable<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                },
-                {
-                    "name": "valueChange$",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Observable<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 14
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "formReset",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 26,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "formSubmit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 22,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "ngAfterViewInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 17,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-component',\r\n  standalone: true,\r\n  template: '',\r\n})\r\nexport class BaseFormComponent implements AfterViewInit {\r\n  formGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.formGroup?.valueChanges.pipe(debounceTime(600));\r\n    this.statusChange$ = this.formGroup?.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  formSubmit() {\r\n    this.submitEvent.emit(this.formGroup.value);\r\n  }\r\n\r\n  formReset() {\r\n    this.formGroup.reset();\r\n  }\r\n}\r\n",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "implements": [
-                "AfterViewInit"
-            ]
-        },
-        {
             "name": "BaseLayoutComponent",
             "id": "component-BaseLayoutComponent-dc953af5a75c6b0518431696e9c6cde364769a977afc6398e57effa9181cf49fb15b730c0a3f3606944d8b5d7b40fc19ea1d6d68743e09daf36aa96b8ed73b41",
             "file": "libs/material/layout/src/lib/layout/base-layout.component.ts",
@@ -26101,6 +25995,152 @@
             "extends": []
         },
         {
+            "name": "FormComponent",
+            "id": "component-FormComponent-c611e0341e52339370ee27f36ac90f54c3dc800a8091cb379a80151120bd75b34ce6ce45dc5f1643c22cd8dadbcf301620b22cec15601acf41dbe7f69093ae4c",
+            "file": "libs/material/form/src/lib/form/form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-form",
+            "styleUrls": [
+                "./form.component.scss"
+            ],
+            "styles": [],
+            "template": "<form [formGroup]=\"resourceFormGroup\" novalidate>\n  <ng-content></ng-content>\n  <div class=\"actions\">\n    <button mat-raised-button color=\"primary\" (click)=\"formSubmit()\">\n      Save Product\n    </button>\n    <button mat-raised-button color=\"accent\" (click)=\"formReset()\">\n      Reset\n    </button>\n  </div>\n</form>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "resourceFormGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "FormGroup",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "submitEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "statusChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "valueChange$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "formReset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "formSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonFormModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n} from '@angular/core';\r\nimport { FormControl, FormGroup } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\nimport { CommonFormModule } from './common-form.module';\r\n\r\n@Component({\r\n  selector: 'mdtx-form',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  template: `\r\n    <form [formGroup]=\"resourceFormGroup\" novalidate>\r\n      <ng-content></ng-content>\r\n      <div class=\"actions\">\r\n        <button mat-raised-button color=\"primary\" (click)=\"formSubmit()\">\r\n          Save Product\r\n        </button>\r\n        <button mat-raised-button color=\"accent\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n\r\n  styleUrls:['./form.component.scss']\r\n})\r\nexport class FormComponent implements AfterViewInit {\r\n  @Input() resourceFormGroup!: FormGroup;\r\n  @Output() submitEvent = new EventEmitter();\r\n\r\n  valueChange$!: Observable<any>;\r\n  statusChange$!: Observable<any>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.valueChange$ = this.resourceFormGroup?.valueChanges.pipe(\r\n      debounceTime(600)\r\n    );\r\n    this.statusChange$ = this.resourceFormGroup?.statusChanges.pipe(\r\n      debounceTime(600)\r\n    );\r\n  }\r\n\r\n  formSubmit() {\r\n    console.log('Form is submitting: ', this.resourceFormGroup.value);\r\n    this.submitEvent.emit(this.resourceFormGroup.value);\r\n  }\r\n\r\n  formReset() {\r\n    this.resourceFormGroup.reset();\r\n  }\r\n\r\n  control(name: string) {\r\n    const formControl = this.resourceFormGroup.get(name) as FormControl;\r\n    if (!formControl) throw new Error(`${name} |  FormControl is not found!`);\r\n    return formControl;\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ]
+        },
+        {
             "name": "FullscreenDirectiveComponent",
             "id": "component-FullscreenDirectiveComponent-e5493a4d69d0413453113a856ae17fcdded0fd369c8419847c8dd0394e8e5c18380893a682a7d66cfaa8596cc970ffbbe6f67bb8919c77af98b334ce6b01a955",
             "file": "libs/material/core/src/lib/directives/fullscreen.component.ts",
@@ -26189,7 +26229,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-ec98b2e8aac4178109c9919d58ec7aa57ce1feba1fe2b8c61983cc835c6f39c42afae2249cf49b258621c19acf9b9daf0b44e592479565e16d2dce92bc973fbd",
+            "id": "component-InputAutocompleteComponent-62fefa3529bba1b7429a5f472e055ab5829da7531f22fc6bf5a42c0c42d3952053416e625c37e0009baec4cd990999768820e2be6b89295dca98384bd13f4014",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26214,23 +26254,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -26436,7 +26476,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    this.filteredOptions$ = this.formControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(600),\r\n      map((e) => {\r\n        return e\r\n          ? this.options.filter((o) =>\r\n              o.name.toLowerCase().startsWith(e.toLowerCase())\r\n            )\r\n          : this.options.filter((e) => e);\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option.name;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(600),\r\n      map((e) => {\r\n        return e\r\n          ? this.options.filter((o) =>\r\n              o.name.toLowerCase().startsWith(e.toLowerCase())\r\n            )\r\n          : this.options.filter((e) => e);\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option.name;\r\n  }\r\n}\r\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -26447,11 +26487,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"formControl\"\r\n    [matAutocomplete]=\"auto\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #auto=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"option\">{{ option.name }}</mat-option>\r\n    }\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matAutocomplete]=\"auto\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #auto=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"option\">{{ option.name }}</mat-option>\r\n    }\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputBaseComponent",
-            "id": "component-InputBaseComponent-98dcdb0cd24b079f1d03d8eacb906727b8affd238c28276f3aeb97a05a7b866f8015f826c61272d37650f636c6c800279594c9c1b25881b341c8d6d2da400724",
+            "id": "component-InputBaseComponent-5fab27c330e3674ee6a77edb408e61819c057baffa303575262f5a193fac0140a0b12204408c7540f8d17ff9de153ee2b73e1d663e06fa6e097c5ebc14aedf9c",
             "file": "libs/material/form/src/lib/input-base/input-base.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -26468,20 +26508,20 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": []
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": []
                 },
                 {
@@ -26607,7 +26647,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\nimport { Icon } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-base',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-base.component.html',\r\n  styleUrl: './input-base.component.scss',\r\n})\r\nexport class InputBaseComponent implements OnInit, AfterViewInit {\r\n  @Input() formControl!: FormControl;\r\n  @Input() label!: string;\r\n  @Input() inputName!: string;\r\n  @Input() hint = '';\r\n  @Input() serverSideError = '';\r\n  @Output() inputEvent = new EventEmitter();\r\n  @Input() prefixIcon?: Icon;\r\n\r\n  $valueChange!: Observable<any>;\r\n  $statusChange!: Observable<any>;\r\n  protected __validateInputs() {\r\n    if (!this.formControl) this.formControl = new FormControl();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.__validateInputs();\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.$valueChange = this.formControl.valueChanges.pipe(debounceTime(600));\r\n    this.$statusChange = this.formControl.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  getErrorMessage() {\r\n    const errors = this.formControl?.errors;\r\n    if (errors) {\r\n      return Object.values(errors).shift();\r\n    }\r\n    return 'Field is not valid!';\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\nimport { Icon } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-base',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-base.component.html',\r\n  styleUrl: './input-base.component.scss',\r\n})\r\nexport class InputBaseComponent implements OnInit, AfterViewInit {\r\n  @Input() inputControl!: FormControl;\r\n  @Input() label!: string;\r\n  @Input() inputName!: string;\r\n  @Input() hint = '';\r\n  @Input() serverSideError = '';\r\n  @Output() inputEvent = new EventEmitter();\r\n  @Input() prefixIcon?: Icon;\r\n\r\n  $valueChange!: Observable<any>;\r\n  $statusChange!: Observable<any>;\r\n  protected __validateInputs() {\r\n    if (!this.inputControl) this.inputControl = new FormControl();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    this.__validateInputs();\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));\r\n    this.$statusChange = this.inputControl.statusChanges.pipe(debounceTime(600));\r\n  }\r\n\r\n  getErrorMessage() {\r\n    const errors = this.inputControl?.errors;\r\n    if (errors) {\r\n      return Object.values(errors).shift();\r\n    }\r\n    return 'Field is not valid!';\r\n  }\r\n}\r\n",
             "styleUrl": "./input-base.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -26646,23 +26686,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -26839,7 +26879,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label }}</h3>\r\n  <mat-button-toggle-group [formControl]=\"formControl\" [name]=\"inputName\">\r\n    @for(o of options; track o){\r\n\r\n    <mat-button-toggle [value]=\"o\">{{ o.name }}</mat-button-toggle>\r\n    }\r\n  </mat-button-toggle-group>\r\n</div>\r\n"
+            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label }}</h3>\r\n  <mat-button-toggle-group [formControl]=\"inputControl\" [name]=\"inputName\">\r\n    @for(o of options; track o){\r\n\r\n    <mat-button-toggle [value]=\"o\">{{ o.name }}</mat-button-toggle>\r\n    }\r\n  </mat-button-toggle-group>\r\n</div>\r\n"
         },
         {
             "name": "InputCheckboxComponent",
@@ -26860,23 +26900,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -27050,7 +27090,7 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mat-checkbox labelPosition=\"before\" [formControl]=\"formControl\">\r\n  {{ label }}\r\n</mat-checkbox>\r\n"
+            "templateData": "<mat-checkbox labelPosition=\"before\" [formControl]=\"inputControl\">\r\n  {{ label }}\r\n</mat-checkbox>\r\n"
         },
         {
             "name": "InputChipSelectComponent",
@@ -27090,23 +27130,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -27326,7 +27366,7 @@
             "extends": [
                 "InputAutocompleteComponent"
             ],
-            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"formControl\"\r\n    [multiple]=\"multiple\"\r\n  >\r\n    @for (o of options; track o) {\r\n    <mat-chip-option>{{ o.name }}</mat-chip-option>\r\n\r\n    }\r\n  </mat-chip-listbox>\r\n</div>\r\n"
+            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"inputControl\"\r\n    [multiple]=\"multiple\"\r\n  >\r\n    @for (o of options; track o) {\r\n    <mat-chip-option>{{ o.name }}</mat-chip-option>\r\n\r\n    }\r\n  </mat-chip-listbox>\r\n</div>\r\n"
         },
         {
             "name": "InputDateComponent",
@@ -27351,23 +27391,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -27541,11 +27581,11 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"formControl\"\r\n    [matDatepicker]=\"picker\"\r\n  />\r\n  <mat-hint>MM/DD/YYYY</mat-hint>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n  <mat-datepicker #picker></mat-datepicker>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matDatepicker]=\"picker\"\r\n  />\r\n  <mat-hint>MM/DD/YYYY</mat-hint>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n  <mat-datepicker #picker></mat-datepicker>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputDateRangeComponent",
-            "id": "component-InputDateRangeComponent-b38c11ed4fe691b1afa57c484b34199bdb95ba499cf37872bffaaf1d03cebe2756913f98087bc27cb32719d45271ca55463e2f4fa7c2e9b8718eb057767f74ce",
+            "id": "component-InputDateRangeComponent-37d580b0781443c87610f76cca2b1331d71a67ce0a3b5ef523ca9677e700a7976516732d361d40808429546394b9b8e376fe7989aa05ca5e847be5050db1abad",
             "file": "libs/material/form/src/lib/input-date-range/input-date-range.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27584,23 +27624,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -27819,7 +27859,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport {\r\n  MatDateRangePicker,\r\n  MatDatepickerModule,\r\n} from '@angular/material/datepicker';\r\nimport { provideNativeDateAdapter } from '@angular/material/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { FormControl, FormGroup } from '@angular/forms';\r\nimport { Subscription, debounceTime } from 'rxjs';\r\n\r\nconst today = new Date();\r\nconst month = today.getMonth();\r\nconst year = today.getFullYear();\r\n\r\n@Component({\r\n  selector: 'mdtx-input-date-range',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatDatepickerModule],\r\n  templateUrl: './input-date-range.component.html',\r\n  styleUrl: './input-date-range.component.scss',\r\n  providers: [provideNativeDateAdapter()],\r\n})\r\nexport class InputDateRangeComponent\r\n  extends InputBaseComponent\r\n  implements OnInit, OnDestroy\r\n{\r\n  @Input() startDateLabel = 'Start Date';\r\n  @Input() endDateLabel = 'End Date';\r\n\r\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\r\n  protected sub!: Subscription;\r\n\r\n  dateRange = new FormGroup({\r\n    start: new FormControl(new Date(year, month, today.getDate())),\r\n    end: new FormControl(new Date(year, month, today.getDate())),\r\n  });\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n    this.sub = this.dateRange.valueChanges\r\n      .pipe(debounceTime(600))\r\n      .subscribe((value) => {\r\n        this.formControl.setValue(value);\r\n      });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport {\r\n  MatDateRangePicker,\r\n  MatDatepickerModule,\r\n} from '@angular/material/datepicker';\r\nimport { provideNativeDateAdapter } from '@angular/material/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { FormControl, FormGroup } from '@angular/forms';\r\nimport { Subscription, debounceTime } from 'rxjs';\r\n\r\nconst today = new Date();\r\nconst month = today.getMonth();\r\nconst year = today.getFullYear();\r\n\r\n@Component({\r\n  selector: 'mdtx-input-date-range',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatDatepickerModule],\r\n  templateUrl: './input-date-range.component.html',\r\n  styleUrl: './input-date-range.component.scss',\r\n  providers: [provideNativeDateAdapter()],\r\n})\r\nexport class InputDateRangeComponent\r\n  extends InputBaseComponent\r\n  implements OnInit, OnDestroy\r\n{\r\n  @Input() startDateLabel = 'Start Date';\r\n  @Input() endDateLabel = 'End Date';\r\n\r\n  @ViewChild('dateRangePicker') dateRangePicker!: MatDateRangePicker<any>;\r\n  protected sub!: Subscription;\r\n\r\n  dateRange = new FormGroup({\r\n    start: new FormControl(new Date(year, month, today.getDate())),\r\n    end: new FormControl(new Date(year, month, today.getDate())),\r\n  });\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n    this.sub = this.dateRange.valueChanges\r\n      .pipe(debounceTime(600))\r\n      .subscribe((value) => {\r\n        this.inputControl.setValue(value);\r\n      });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
             "styleUrl": "./input-date-range.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -27856,23 +27896,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28046,7 +28086,7 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<h1>This component is not ready yet!</h1>\r\n<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    #mdtxInput=\"mdtxInput\"\r\n    type=\"datetime-local\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"formControl\"\r\n    [matDatepicker]=\"picker\"\r\n  />\r\n  <mat-hint>MM/DD/YYYY</mat-hint>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n  <mat-datepicker #picker></mat-datepicker>\r\n</mat-form-field>\r\n"
+            "templateData": "<h1>This component is not ready yet!</h1>\r\n<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    #mdtxInput=\"mdtxInput\"\r\n    type=\"datetime-local\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matDatepicker]=\"picker\"\r\n  />\r\n  <mat-hint>MM/DD/YYYY</mat-hint>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n  <mat-datepicker-toggle matIconSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n  <mat-datepicker #picker></mat-datepicker>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputDirectiveComponent",
@@ -28094,7 +28134,7 @@
         },
         {
             "name": "InputEditorComponent",
-            "id": "component-InputEditorComponent-1da567a073d926136b926827bb38f105835bac39ed0fe6866b538872cdf9eccbc7defa6f0abb344d41160b5e4ddf1ed15bc63270e0e5a05c8b7743838c44a5b6",
+            "id": "component-InputEditorComponent-b4551a4ce6b02524fc1ccfbcb325640066034e7129f34b90236b228ea57d1d10ea6527d93ec1d086aac1b0aead5e536ab693193683a8404ecc3ad115099924fe",
             "file": "libs/material/form/src/lib/input-editor/input-editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28111,23 +28151,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28319,7 +28359,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport Quill  from 'quill';\r\n@Component({\r\n  selector: 'mdtx-input-editor',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-editor.component.html',\r\n  styleUrl: './input-editor.component.scss',\r\n})\r\nexport class InputEditorComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @ViewChild('editor') editorContainer!: ElementRef<HTMLDivElement>;\r\n\r\n  editor: any;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const editor = new Quill(this.editorContainer.nativeElement, {\r\n      theme: 'snow',\r\n    });\r\n\r\n    editor.on('text-change', (value: string) => {\r\n      this.formControl.setValue(value);\r\n    });\r\n\r\n    this.formControl.valueChanges.subscribe((value) => {\r\n      console.table({ controlValue: value });\r\n    });\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport Quill  from 'quill';\r\n@Component({\r\n  selector: 'mdtx-input-editor',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-editor.component.html',\r\n  styleUrl: './input-editor.component.scss',\r\n})\r\nexport class InputEditorComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @ViewChild('editor') editorContainer!: ElementRef<HTMLDivElement>;\r\n\r\n  editor: any;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const editor = new Quill(this.editorContainer.nativeElement, {\r\n      theme: 'snow',\r\n    });\r\n\r\n    editor.on('text-change', (value: string) => {\r\n      this.inputControl.setValue(value);\r\n    });\r\n\r\n    this.inputControl.valueChanges.subscribe((value) => {\r\n      console.table({ controlValue: value });\r\n    });\r\n  }\r\n}\r\n",
             "styleUrl": "./input-editor.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28382,23 +28422,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28648,7 +28688,7 @@
         },
         {
             "name": "InputLikeComponent",
-            "id": "component-InputLikeComponent-3cf00d002311a64481062f433882ae9a5c9c36a7f2d6a384f0fe906fbe59cb947de34d3918d80f714f55f727283aedae4f88be9863b2a5cc76c7ff50840aaae0",
+            "id": "component-InputLikeComponent-09596edb88d5ba303079aca02a8bbf74101a86eac676ceaabfc09ab599d5e4e846bfc34f284ba49e7ded577f114a2d6c627d77d6a20c50f8e67fd40f1c6f8864",
             "file": "libs/material/form/src/lib/input-like/input-like.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28665,23 +28705,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28873,7 +28913,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-like',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-like.component.html',\r\n  styleUrl: './input-like.component.scss',\r\n})\r\nexport class InputLikeComponent extends InputBaseComponent {\r\n  toggleList = [undefined, true, false];\r\n  liked: boolean | undefined = undefined;\r\n\r\n  toggle() {\r\n    const last = this.toggleList.shift();\r\n    this.toggleList = [...this.toggleList, last];\r\n    console.log(this.toggleList);\r\n    this.liked = this.toggleList[0];\r\n    this.formControl.setValue(this.liked);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-like',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-like.component.html',\r\n  styleUrl: './input-like.component.scss',\r\n})\r\nexport class InputLikeComponent extends InputBaseComponent {\r\n  toggleList = [undefined, true, false];\r\n  liked: boolean | undefined = undefined;\r\n\r\n  toggle() {\r\n    const last = this.toggleList.shift();\r\n    this.toggleList = [...this.toggleList, last];\r\n    console.log(this.toggleList);\r\n    this.liked = this.toggleList[0];\r\n    this.inputControl.setValue(this.liked);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-like.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28924,23 +28964,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29160,11 +29200,11 @@
             "extends": [
                 "InputChipSelectComponent"
             ],
-            "templateData": "<mat-selection-list\r\n  #listItems\r\n  [multiple]=\"multiple\"\r\n  [formControl]=\"formControl\"\r\n>\r\n  @for (o of options; track o) {\r\n  <mat-list-option #optionRef [value]=\"o\">\r\n    <span matListItemIcon>\r\n      <mat-icon\r\n        [color]=\"(optionRef.selectedChange | async) ? 'accent' : ''\"\r\n        [class.fill]=\"optionRef.selectedChange | async\"\r\n      >\r\n        {{ o.icon ?? 'info' }}\r\n      </mat-icon>\r\n    </span>\r\n    <span matListItemLine>{{ o.name }}</span>\r\n  </mat-list-option>\r\n  }\r\n</mat-selection-list>\r\n"
+            "templateData": "<mat-selection-list\r\n  #listItems\r\n  [multiple]=\"multiple\"\r\n  [formControl]=\"inputControl\"\r\n>\r\n  @for (o of options; track o) {\r\n  <mat-list-option #optionRef [value]=\"o\">\r\n    <span matListItemIcon>\r\n      <mat-icon\r\n        [color]=\"(optionRef.selectedChange | async) ? 'accent' : ''\"\r\n        [class.fill]=\"optionRef.selectedChange | async\"\r\n      >\r\n        {{ o.icon ?? 'info' }}\r\n      </mat-icon>\r\n    </span>\r\n    <span matListItemLine>{{ o.name }}</span>\r\n  </mat-list-option>\r\n  }\r\n</mat-selection-list>\r\n"
         },
         {
             "name": "InputNumberComponent",
-            "id": "component-InputNumberComponent-ff9c26648414b12febab9b2a3baaf3c4992ba46d903e5c1a97ae696469409adf01656fe71cf3236bcc11dd2564fa678b05e7bcb3c0d58059a89e605f8b9cc8af",
+            "id": "component-InputNumberComponent-2cba75d738f83ca76ec05ef2e6b3029d3edb1f68e86e32180abb6b6bc8ebe1a5e6f98ae0a077c8b232c566754e439fc61bf699f22925a3dccfe334bde20ce920",
             "file": "libs/material/form/src/lib/input-number/input-number.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29213,23 +29253,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29398,7 +29438,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-number',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-number.component.html',\r\n  styleUrl: './input-number.component.scss',\r\n})\r\nexport class InputNumberComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minValue?: number;\r\n  @Input() maxValue?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .min(this.minValue)\r\n      .max(this.maxValue)\r\n      .build();\r\n\r\n    this.formControl.addValidators(validators);\r\n  }\r\n\r\n  \r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-number',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-number.component.html',\r\n  styleUrl: './input-number.component.scss',\r\n})\r\nexport class InputNumberComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minValue?: number;\r\n  @Input() maxValue?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .min(this.minValue)\r\n      .max(this.maxValue)\r\n      .build();\r\n\r\n    this.inputControl.addValidators(validators);\r\n  }\r\n\r\n  \r\n}\r\n",
             "styleUrl": "./input-number.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -29409,7 +29449,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"number\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    \r\n    [formControl]=\"formControl\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"number\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputRadioComponent",
@@ -29441,23 +29481,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29677,7 +29717,7 @@
             "extends": [
                 "InputAutocompleteComponent"
             ],
-            "templateData": "<mat-radio-group #radioGroup  [formControl]=\"formControl\">\r\n  @for(o of options; track o){\r\n  <mat-radio-button #rb [value]=\"o\">{{ o.name }}</mat-radio-button>\r\n  }\r\n</mat-radio-group>\r\n"
+            "templateData": "<mat-radio-group #radioGroup [formControl]=\"inputControl\">\r\n  @for(o of options; track o){\r\n  <mat-radio-button #rb [value]=\"o\">{{ o.name }}</mat-radio-button>\r\n  }\r\n</mat-radio-group>\r\n"
         },
         {
             "name": "InputSelectComponent",
@@ -29720,23 +29760,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29956,11 +29996,11 @@
             "extends": [
                 "InputChipSelectComponent"
             ],
-            "templateData": "<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <mat-select [formControl]=\"formControl\" [multiple]=\"multiple\">\r\n    @for (o of options; track o) {\r\n    <mat-option [value]=\"o\">{{ o.name }}</mat-option>\r\n    }\r\n  </mat-select>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <mat-select [formControl]=\"inputControl\" [multiple]=\"multiple\">\r\n    @for (o of options; track o) {\r\n    <mat-option [value]=\"o\">{{ o.name }}</mat-option>\r\n    }\r\n  </mat-select>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputSliderComponent",
-            "id": "component-InputSliderComponent-25388735340ebc7f768409fc6255120c01eec2a52d0c135e7ad9bba50bb8d6a54f4992406e939ab2801d1943194238da0316528623325abc2cc93b40fdcc4a2b",
+            "id": "component-InputSliderComponent-1ab0859ce9e117379b305fcf68d59f8a84ec7588a2b0101f82b38cc5e43867bf41d5e3039f3f0df6403a03b3e1801d00a1193ffc471c2775a1ccb53ef87f6941",
             "file": "libs/material/form/src/lib/input-slider/input-slider.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29986,23 +30026,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30178,7 +30218,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\r\n@Component({\r\n  selector: 'mdtx-input-slider',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatSlideToggleModule],\r\n  templateUrl: './input-slider.component.html',\r\n  styleUrl: './input-slider.component.scss',\r\n})\r\nexport class InputSliderComponent extends InputBaseComponent {\r\n  @Input() activeLabel?: string | undefined = undefined;\r\n\r\n  getLabel() {\r\n    return this.formControl.value == true\r\n      ? this.activeLabel ?? this.label\r\n      : this.label;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\r\n@Component({\r\n  selector: 'mdtx-input-slider',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatSlideToggleModule],\r\n  templateUrl: './input-slider.component.html',\r\n  styleUrl: './input-slider.component.scss',\r\n})\r\nexport class InputSliderComponent extends InputBaseComponent {\r\n  @Input() activeLabel?: string | undefined = undefined;\r\n\r\n  getLabel() {\r\n    return this.inputControl.value == true\r\n      ? this.activeLabel ?? this.label\r\n      : this.label;\r\n  }\r\n}\r\n",
             "styleUrl": "./input-slider.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -30186,11 +30226,11 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mat-slide-toggle #slideRef [formControl]=\"formControl\" labelPosition=\"before\">\r\n  {{ getLabel() }}\r\n</mat-slide-toggle>\r\n<strong> ({{ formControl.value }}) </strong>\r\n"
+            "templateData": "<mat-slide-toggle #slideRef [formControl]=\"inputControl\" labelPosition=\"before\">\r\n  {{ getLabel() }}\r\n</mat-slide-toggle>\r\n<strong> ({{ inputControl.value }}) </strong>\r\n"
         },
         {
             "name": "InputTextareaComponent",
-            "id": "component-InputTextareaComponent-b63f08655a840ae32ed30a5038908c7f8f4d5b37c4ccd042994b6832913fe0d6500d045140673bf95d1a651482ab5d94e28936c1813a6ecaf00280c9760e09a2",
+            "id": "component-InputTextareaComponent-7eec2cd43ccf25224692a80841b573f0701d76067d71fcf6542a69b6cc07b9e188714a46ace634487b8bfbb1ca7a50721218c8b29042810a9de14b2e33a0c039",
             "file": "libs/material/form/src/lib/input-textarea/input-textarea.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -30210,7 +30250,7 @@
                     "name": "maxLength",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 18,
                     "type": "number",
                     "decorators": []
                 },
@@ -30218,7 +30258,7 @@
                     "name": "minLength",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 17,
                     "type": "number",
                     "decorators": []
                 },
@@ -30226,7 +30266,7 @@
                     "name": "textPrefix",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
@@ -30234,20 +30274,9 @@
                     "name": "textSuffix",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 19,
                     "type": "string",
                     "decorators": []
-                },
-                {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
                 },
                 {
                     "name": "hint",
@@ -30256,6 +30285,17 @@
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30353,7 +30393,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -30415,16 +30455,12 @@
                 {
                     "name": "CommonFormModule",
                     "type": "module"
-                },
-                {
-                    "name": "MatAutocompleteModule",
-                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { InputValidator } from '@mdtx/material/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-textarea',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-textarea.component.html',\r\n  styleUrl: './input-textarea.component.scss',\r\n})\r\nexport class InputTextareaComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minLength?: number;\r\n  @Input() maxLength?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .minLength(this.minLength)\r\n      .maxLength(this.maxLength)\r\n      .build();\r\n\r\n    this.formControl.addValidators(validators);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { InputValidator } from '@mdtx/material/core';\r\nimport { CommonFormModule } from '../form';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-textarea',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-textarea.component.html',\r\n  styleUrl: './input-textarea.component.scss',\r\n})\r\nexport class InputTextareaComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minLength?: number;\r\n  @Input() maxLength?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .minLength(this.minLength)\r\n      .maxLength(this.maxLength)\r\n      .build();\r\n\r\n    this.inputControl.addValidators(validators);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-textarea.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -30435,11 +30471,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <textarea\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    \r\n    [formControl]=\"formControl\"\r\n  ></textarea>\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field>\r\n  <mat-label>{{ label }}</mat-label>\r\n  <textarea\r\n    #mdtxInput=\"mdtxInput\"\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    mdtxInput\r\n    matInput\r\n  ></textarea>\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputTextComponent",
-            "id": "component-InputTextComponent-eb79e100caa68e1da3a4d8e8fced5d4fb880acd5c435094c8c754b1dc8066fbd21c8e77fb0189fbd20857b75b0ba495152e9579a8413cf3c8d4791105c807e98",
+            "id": "component-InputTextComponent-5b3a5c5e943f64ad6569a73f676c3fc86943555fdea7368705f61073632fe75ad145ac5f73116bb4b55ced8c521f35f76bc5d921bc81d7b6c8ab71cfe4718e2a",
             "file": "libs/material/form/src/lib/input-text/input-text.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -30488,23 +30524,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30673,7 +30709,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-text',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-text.component.html',\r\n  styleUrl: './input-text.component.scss',\r\n})\r\nexport class InputTextComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minLength?: number;\r\n  @Input() maxLength?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .minLength(this.minLength)\r\n      .maxLength(this.maxLength)\r\n      .build();\r\n      \r\n    this.formControl.addValidators(validators);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-text',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-text.component.html',\r\n  styleUrl: './input-text.component.scss',\r\n})\r\nexport class InputTextComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() minLength?: number;\r\n  @Input() maxLength?: number;\r\n  @Input() textSuffix?: string;\r\n  @Input() textPrefix?: string;\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName)\r\n      .minLength(this.minLength)\r\n      .maxLength(this.maxLength)\r\n      .build();\r\n\r\n    this.inputControl.addValidators(validators);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-text.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -30684,11 +30720,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"formControl\"\r\n    \r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputTimeComponent",
-            "id": "component-InputTimeComponent-829d8ea9dd2abe095ed251fdfeba71d3f394ebb8436c897dd1c3403f68abdf2a40016d4c21dd35f6b3e746f1f48ee392a41f0d4b41c4e5023397d0146f666be4",
+            "id": "component-InputTimeComponent-a835041bd9ac54c39c892978df207bd4a34190b0a069c051a3d391bb98d9ebc9492dd0f433c53eb66de64b11f0423771e75643b145d1e06754580724fd82c44a",
             "file": "libs/material/form/src/lib/input-time/input-time.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -30721,23 +30757,23 @@
                     "decorators": []
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30969,7 +31005,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { InputBaseComponent } from '../input-base';\r\n\r\nimport { MatChipsModule } from '@angular/material/chips';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n@Component({\r\n  selector: 'mdtx-input-time',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-time.component.html',\r\n  styleUrl: './input-time.component.scss',\r\n})\r\nexport class InputTimeComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() beforeHour?: number;\r\n  @Input() afterHour?: number;\r\n\r\n  getList(start: number, end: number) {\r\n    return ' '\r\n      .repeat(end - start)\r\n      .split(' ')\r\n      .map((e) => start++);\r\n  }\r\n\r\n  d = new Date();\r\n  some = {\r\n    hour: this.d.getHours(),\r\n  };\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName ?? 'some')\r\n      .beforeHour(this.beforeHour)\r\n      .afterHour(this.afterHour)\r\n      .build();\r\n    this.formControl.addValidators(validators);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { InputBaseComponent } from '../input-base';\r\n\r\nimport { MatChipsModule } from '@angular/material/chips';\r\nimport { InputValidator } from '@mdtx/material/core';\r\n@Component({\r\n  selector: 'mdtx-input-time',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-time.component.html',\r\n  styleUrl: './input-time.component.scss',\r\n})\r\nexport class InputTimeComponent\r\n  extends InputBaseComponent\r\n  implements AfterViewInit\r\n{\r\n  @Input() beforeHour?: number;\r\n  @Input() afterHour?: number;\r\n\r\n  getList(start: number, end: number) {\r\n    return ' '\r\n      .repeat(end - start)\r\n      .split(' ')\r\n      .map((e) => start++);\r\n  }\r\n\r\n  d = new Date();\r\n  some = {\r\n    hour: this.d.getHours(),\r\n  };\r\n\r\n  override ngAfterViewInit(): void {\r\n    super.ngAfterViewInit();\r\n\r\n    const validators = InputValidator.create(this.inputName ?? 'some')\r\n      .beforeHour(this.beforeHour)\r\n      .afterHour(this.afterHour)\r\n      .build();\r\n    this.inputControl.addValidators(validators);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-time.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -30980,7 +31016,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"time\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    \r\n    [formControl]=\"formControl\"\r\n  />\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label }}</mat-label>\r\n  <input\r\n    type=\"time\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n  />\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputTreeDayDateRangeComponent",
@@ -31032,23 +31068,23 @@
                     }
                 },
                 {
-                    "name": "formControl",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "FormControl",
-                    "decorators": [],
-                    "inheritance": {
-                        "file": "InputBaseComponent"
-                    }
-                },
-                {
                     "name": "hint",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 26,
                     "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
                     "decorators": [],
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -31915,7 +31951,7 @@
         },
         {
             "name": "SampleFormComponent",
-            "id": "component-SampleFormComponent-e1703601ec871fd36542756fed25843a3ada6f1b7a9bba6beccd4575aa135174b7dcbaf551c26e884bd91d57ec1a5af4eb96c18303989604de073cca3a3868b0",
+            "id": "component-SampleFormComponent-5045edca6b4ccd34a6876d6227fccfb3d648a3da6f55e3780b8c4d0a134ff705aa4762520104bd1330e107f36a2ce871b06af8977c477f17c94db05b12a8d3e9",
             "file": "libs/material/form/src/lib/form/sample-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31933,17 +31969,29 @@
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "resourceFormGroup",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "FormGroup",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "FormComponent"
+                    }
+                }
+            ],
             "outputsClass": [
                 {
                     "name": "submitEvent",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
+                    "line": 34,
                     "type": "EventEmitter",
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 }
             ],
@@ -32066,27 +32114,15 @@
                     "line": 134
                 },
                 {
-                    "name": "formGroup",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FormGroup",
-                    "optional": false,
-                    "description": "",
-                    "line": 11,
-                    "inheritance": {
-                        "file": "BaseFormComponent"
-                    }
-                },
-                {
                     "name": "statusChange$",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 37,
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 },
                 {
@@ -32096,9 +32132,9 @@
                     "type": "Observable<any>",
                     "optional": false,
                     "description": "",
-                    "line": 14,
+                    "line": 36,
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 }
             ],
@@ -32116,7 +32152,7 @@
                         164
                     ],
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 },
                 {
@@ -32130,16 +32166,47 @@
                     "deprecationMessage": ""
                 },
                 {
+                    "name": "control",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ],
+                    "inheritance": {
+                        "file": "FormComponent"
+                    }
+                },
+                {
                     "name": "formReset",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 },
                 {
@@ -32148,11 +32215,11 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 22,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
-                        "file": "BaseFormComponent"
+                        "file": "FormComponent"
                     }
                 }
             ],
@@ -32234,12 +32301,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  OnDestroy,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { BaseFormComponent } from './base-form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\nimport { CommonFormModule } from './common-form.module';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { Subscription } from 'rxjs';\r\nimport { InputButtonToggleComponent } from '../input-button-toggle/input-button-toggle.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    CommonFormModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputButtonToggleComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\r\n      novalidate\r\n    >\r\n      <mdtx-input-text\r\n        #firstName\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        #age\r\n        label=\"How old are you?\"\r\n      ></mdtx-input-number>\r\n\r\n      <mdtx-input-textarea\r\n        inputName=\"desc\"\r\n        #desc\r\n        label=\"About Yourself\"\r\n      ></mdtx-input-textarea>\r\n\r\n      <mdtx-input-date\r\n        inputName=\"dob\"\r\n        #dob\r\n        label=\"Date of birth?\"\r\n      ></mdtx-input-date>\r\n\r\n      <mdtx-input-time\r\n        inputName=\"ctime\"\r\n        #ctime\r\n        label=\"Current time?\"\r\n      ></mdtx-input-time>\r\n\r\n      <mdtx-input-date-range\r\n        inputName=\"adates\"\r\n        #adates\r\n        label=\"Dates\"\r\n      ></mdtx-input-date-range>\r\n\r\n      <mdtx-input-button-toggle\r\n        inputName=\"button\"\r\n        #btoggle\r\n        label=\"Button Toggle\"\r\n        [options]=\"[\r\n          { id: 1, name: 'option 1' },\r\n          { id: 2, name: 'option 2' },\r\n          { id: 3, name: 'option 3' },\r\n          { id: 4, name: 'option 4' }\r\n        ]\"\r\n      ></mdtx-input-button-toggle>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent\r\n  extends BaseFormComponent\r\n  implements AfterViewInit, OnDestroy\r\n{\r\n  @ViewChild('firstName') firstName!: InputBaseComponent;\r\n  @ViewChild('age') age!: InputBaseComponent;\r\n  @ViewChild('desc') desc!: InputBaseComponent;\r\n  @ViewChild('dob') dob!: InputBaseComponent;\r\n  @ViewChild('ctime') ctime!: InputBaseComponent;\r\n  @ViewChild('adates') adates!: InputBaseComponent;\r\n\r\n  sub!: Subscription;\r\n  override ngAfterViewInit(): void {\r\n    this.formGroup = new FormGroup({\r\n      firstName: this.firstName.formControl,\r\n      age: this.age.formControl,\r\n      desc: this.desc.formControl,\r\n      dob: this.dob.formControl,\r\n      ctime: this.ctime.formControl,\r\n      adates: this.adates.formControl,\r\n    });\r\n\r\n    super.ngAfterViewInit();\r\n\r\n    this.sub = this.valueChange$.subscribe(console.log);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  OnDestroy,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { FormComponent } from './form.component';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputNumberComponent } from '../input-number/input-number.component';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';\r\nimport { InputDateComponent } from '../input-date/input-date.component';\r\nimport { InputDateRangeComponent } from '../input-date-range/input-date-range.component';\r\nimport { InputTimeComponent } from '../input-time/input-time.component';\r\nimport { InputRadioComponent } from '../input-radio/input-radio.component';\r\nimport { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';\r\nimport { InputSliderComponent } from '../input-slider/input-slider.component';\r\nimport { InputTextareaComponent } from '../input-textarea/input-textarea.component';\r\nimport { InputEditorComponent } from '../input-editor/input-editor.component';\r\nimport { InputLikeComponent } from '../input-like/input-like.component';\r\nimport { FormGroup } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { provideMatFormFieldOptions } from '@mdtx/material/core';\r\nimport { CommonFormModule } from './common-form.module';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { Subscription } from 'rxjs';\r\nimport { InputButtonToggleComponent } from '../input-button-toggle/input-button-toggle.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-form',\r\n  imports: [\r\n    CommonFormModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    // Input components\r\n    InputTextComponent,\r\n    InputTextareaComponent,\r\n    InputNumberComponent,\r\n    InputAutocompleteComponent,\r\n    InputButtonToggleComponent,\r\n    InputChipSelectComponent,\r\n    InputDateComponent,\r\n    InputDateRangeComponent,\r\n    InputTimeComponent,\r\n    InputRadioComponent,\r\n    InputCheckboxComponent,\r\n    InputSliderComponent,\r\n    InputEditorComponent,\r\n    InputLikeComponent,\r\n  ],\r\n  standalone: true,\r\n  providers: [provideMatFormFieldOptions({ appearance: 'outline' })],\r\n  template: `\r\n    <form\r\n      style=\"padding: 1em; display: flex; flex-direction: column; gap: 1em; padding-bottom: 3em; height: 500px; overflow-y: auto;\"\r\n      novalidate\r\n    >\r\n      <mdtx-input-text\r\n        #firstName\r\n        inputName=\"firstName\"\r\n        label=\"What is your name?\"\r\n      ></mdtx-input-text>\r\n\r\n      <mdtx-input-number\r\n        inputName=\"age\"\r\n        #age\r\n        label=\"How old are you?\"\r\n      ></mdtx-input-number>\r\n\r\n      <mdtx-input-textarea\r\n        inputName=\"desc\"\r\n        #desc\r\n        label=\"About Yourself\"\r\n      ></mdtx-input-textarea>\r\n\r\n      <mdtx-input-date\r\n        inputName=\"dob\"\r\n        #dob\r\n        label=\"Date of birth?\"\r\n      ></mdtx-input-date>\r\n\r\n      <mdtx-input-time\r\n        inputName=\"ctime\"\r\n        #ctime\r\n        label=\"Current time?\"\r\n      ></mdtx-input-time>\r\n\r\n      <mdtx-input-date-range\r\n        inputName=\"adates\"\r\n        #adates\r\n        label=\"Dates\"\r\n      ></mdtx-input-date-range>\r\n\r\n      <mdtx-input-button-toggle\r\n        inputName=\"button\"\r\n        #btoggle\r\n        label=\"Button Toggle\"\r\n        [options]=\"[\r\n          { id: 1, name: 'option 1' },\r\n          { id: 2, name: 'option 2' },\r\n          { id: 3, name: 'option 3' },\r\n          { id: 4, name: 'option 4' }\r\n        ]\"\r\n      ></mdtx-input-button-toggle>\r\n\r\n      <div style=\"display: flex; gap: 1em;\">\r\n        <button\r\n          mat-raised-button\r\n          color=\"primary\"\r\n          type=\"button\"\r\n          (click)=\"formSubmit()\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button mat-stroked-button type=\"button\" (click)=\"formReset()\">\r\n          Reset\r\n        </button>\r\n      </div>\r\n    </form>\r\n  `,\r\n})\r\nexport class SampleFormComponent\r\n  extends FormComponent\r\n  implements AfterViewInit, OnDestroy\r\n{\r\n  @ViewChild('firstName') firstName!: InputBaseComponent;\r\n  @ViewChild('age') age!: InputBaseComponent;\r\n  @ViewChild('desc') desc!: InputBaseComponent;\r\n  @ViewChild('dob') dob!: InputBaseComponent;\r\n  @ViewChild('ctime') ctime!: InputBaseComponent;\r\n  @ViewChild('adates') adates!: InputBaseComponent;\r\n\r\n  sub!: Subscription;\r\n  override ngAfterViewInit(): void {\r\n    this.resourceFormGroup = new FormGroup({\r\n      firstName: this.firstName.inputControl,\r\n      age: this.age.inputControl,\r\n      desc: this.desc.inputControl,\r\n      dob: this.dob.inputControl,\r\n      ctime: this.ctime.inputControl,\r\n      adates: this.adates.inputControl,\r\n    });\r\n\r\n    super.ngAfterViewInit();\r\n\r\n    this.sub = this.valueChange$.subscribe(console.log);\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [
-                "BaseFormComponent"
+                "FormComponent"
             ],
             "implements": [
                 "AfterViewInit",
@@ -32307,7 +32374,7 @@
         },
         {
             "name": "SampleTableComponent",
-            "id": "component-SampleTableComponent-83cd61f42b894689cf63a323a0509b7317886a980c1f95a8b038351042e51091b68010ab59325b506d5b5199796db82cfe8c8aaea89b7e7a198f308162534197",
+            "id": "component-SampleTableComponent-2bd1b681e48ce89b75ef9868b3941acb64238a2fa11f418078a9034b439776e4d5ae140a1740b581cbdac8358451979262bd9c9c56407d1cfd1b6404f33531d1",
             "file": "libs/material/table/src/lib/sample-table/sample-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -32333,7 +32400,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 31
+                    "line": 32
                 },
                 {
                     "name": "filteredData",
@@ -32342,7 +32409,7 @@
                     "type": "Observable<literal type[]>",
                     "optional": false,
                     "description": "",
-                    "line": 52
+                    "line": 53
                 },
                 {
                     "name": "paginator",
@@ -32351,7 +32418,7 @@
                     "type": "MatPaginator",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 28,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -32370,7 +32437,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 30
                 }
             ],
             "methodsClass": [
@@ -32387,7 +32454,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 71,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32445,7 +32512,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 80,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32466,7 +32533,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -32483,7 +32550,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 87,
+                    "line": 88,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32533,7 +32600,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\r\n\r\nimport { TableComponent } from '../table/table.component';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputTextComponent } from '@mdtx/material/form';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime, map, merge, startWith } from 'rxjs';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    TableComponent,\r\n    MatButtonModule,\r\n    MatToolbarModule,\r\n    InputTextComponent,\r\n    MatPaginatorModule,\r\n  ],\r\n  templateUrl: './sample-table.component.html',\r\n  styleUrl: './sample-table.component.scss',\r\n})\r\nexport class SampleTableComponent implements AfterViewInit {\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n\r\n  searchControl = new FormControl('', []);\r\n\r\n  data = [\r\n    { id: 1, name: 'data 1', read: false },\r\n    { id: 2, name: 'data 2', read: true },\r\n    { id: 3, name: 'data 3', read: true },\r\n    { id: 4, name: 'data 4', read: false },\r\n    { id: 5, name: 'data 5', read: false },\r\n    { id: 6, name: 'data 6', read: false },\r\n    { id: 7, name: 'data 7', read: false },\r\n    { id: 8, name: 'data 8', read: false },\r\n    { id: 9, name: 'data 9', read: false },\r\n    { id: 10, name: 'data 10', read: false },\r\n    { id: 11, name: 'data 11', read: false },\r\n    { id: 12, name: 'data 12', read: false },\r\n    { id: 13, name: 'data 13', read: false },\r\n    { id: 14, name: 'data 14', read: false },\r\n    { id: 15, name: 'data 15', read: false },\r\n    { id: 16, name: 'data 16', read: false },\r\n    { id: 17, name: 'data 17', read: false },\r\n    { id: 18, name: 'data 18', read: false },\r\n  ];\r\n\r\n  filteredData!: Observable<{ id: number; name: string }[]>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.filteredData = merge(\r\n      this.searchControl.valueChanges,\r\n      this.paginator.page\r\n    ).pipe(\r\n      debounceTime(600),\r\n      startWith(''),\r\n      map(() => {\r\n        return this.filterData(this.searchControl.value);\r\n      }),\r\n      map((data) => {\r\n        return this.paginateData(data);\r\n      })\r\n    );\r\n  }\r\n\r\n  deleteSelection(items: Map<number, any>) {\r\n    for (const [key, value] of items) {\r\n      if (key) {\r\n        this.data = this.data.filter((e) => e.id != key);\r\n      }\r\n    }\r\n    this.searchControl.setValue('');\r\n  }\r\n\r\n  markAllRead(items: Map<number, any>) {\r\n    for (const [key, value] of items) {\r\n      if (key) {\r\n        this.data.filter((e) => e.id == key).map((e) => (e.read = true));\r\n      }\r\n    }\r\n  }\r\n\r\n  paginateData(data: any[]) {\r\n    const pageSize = this.paginator.pageSize;\r\n    const pageIndex = this.paginator.pageIndex;\r\n    const pageLength = this.paginator.length;\r\n\r\n    if (this.paginator) {\r\n      return data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);\r\n    }\r\n\r\n    return [];\r\n  }\r\n\r\n  filterData(search?: string | null) {\r\n    if (search) {\r\n      return this.data.filter((e) =>\r\n        e.name.toLowerCase().includes(search?.toLowerCase())\r\n      );\r\n    }\r\n    return this.data;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\r\n\r\nimport { TableComponent } from '../table/table.component';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputTextComponent } from '@mdtx/material/form';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime, map, merge, startWith } from 'rxjs';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    TableComponent,\r\n    MatButtonModule,\r\n    MatToolbarModule,\r\n    InputTextComponent,\r\n    MatPaginatorModule,\r\n  ],\r\n  templateUrl: './sample-table.component.html',\r\n  styleUrl: './sample-table.component.scss',\r\n})\r\nexport class SampleTableComponent implements AfterViewInit {\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n\r\n  searchControl = new FormControl('', []);\r\n\r\n  data = [\r\n    { id: 1, name: 'data 1', read: false },\r\n    { id: 2, name: 'data 2', read: true },\r\n    { id: 3, name: 'data 3', read: true },\r\n    { id: 4, name: 'data 4', read: false },\r\n    { id: 5, name: 'data 5', read: false },\r\n    { id: 6, name: 'data 6', read: false },\r\n    { id: 7, name: 'data 7', read: false },\r\n    { id: 8, name: 'data 8', read: false },\r\n    { id: 9, name: 'data 9', read: false },\r\n    { id: 10, name: 'data 10', read: false },\r\n    { id: 11, name: 'data 11', read: false },\r\n    { id: 12, name: 'data 12', read: false },\r\n    { id: 13, name: 'data 13', read: false },\r\n    { id: 14, name: 'data 14', read: false },\r\n    { id: 15, name: 'data 15', read: false },\r\n    { id: 16, name: 'data 16', read: false },\r\n    { id: 17, name: 'data 17', read: false },\r\n    { id: 18, name: 'data 18', read: false },\r\n  ];\r\n\r\n  filteredData!: Observable<{ id: number; name: string }[]>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.filteredData = merge(\r\n      this.searchControl.valueChanges,\r\n      this.paginator.page\r\n    ).pipe(\r\n      debounceTime(600),\r\n      startWith(''),\r\n      map(() => {\r\n        return this.filterData(this.searchControl.value);\r\n      }),\r\n      map((data) => {\r\n        return this.paginateData(data);\r\n      })\r\n    );\r\n  }\r\n\r\n  deleteSelection(items: Map<number, any>) {\r\n    for (const [key] of items) {\r\n      if (key) {\r\n        this.data = this.data.filter((e) => e.id != key);\r\n      }\r\n    }\r\n    this.searchControl.setValue('');\r\n  }\r\n\r\n  markAllRead(items: Map<number, any>) {\r\n    for (const [key] of items) {\r\n      if (key) {\r\n        this.data.filter((e) => e.id == key).map((e) => (e.read = true));\r\n      }\r\n    }\r\n  }\r\n\r\n  paginateData(data: any[]) {\r\n    const pageSize = this.paginator.pageSize;\r\n    const pageIndex = this.paginator.pageIndex;\r\n\r\n    if (this.paginator) {\r\n      return data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);\r\n    }\r\n\r\n    return [];\r\n  }\r\n\r\n  filterData(search?: string | null) {\r\n    if (search) {\r\n      return this.data.filter((e) =>\r\n        e.name.toLowerCase().includes(search?.toLowerCase())\r\n      );\r\n    }\r\n    return this.data;\r\n  }\r\n}\r\n",
             "styleUrl": "./sample-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -32542,11 +32609,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-toolbar>\r\n  <div style=\"display: flex; gap: 1em\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"deleteSelection(table.selectedItems)\"\r\n    >\r\n      Delete Selection\r\n    </button>\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"markAllRead(table.selectedItems)\"\r\n    >\r\n      Mark All Read\r\n    </button>\r\n  </div>\r\n  <div style=\"flex-grow: 1\"></div>\r\n  <mdtx-input-text #search [formControl]=\"searchControl\" prefixIcon=\"search\">\r\n  </mdtx-input-text>\r\n</mat-toolbar>\r\n\r\n<div style=\"max-height: 400px; overflow: auto\">\r\n  <mdtx-table\r\n    #table\r\n    [dataSource]=\"(filteredData | async)!\"\r\n    [columns]=\"['id', 'name', 'read']\"\r\n    [displayedColumns]=\"['id', 'name', 'read']\"\r\n    conditionalColumn=\"read\"\r\n  ></mdtx-table>\r\n  <mat-paginator\r\n    #paginator\r\n    style=\"position: sticky; bottom: 0px\"\r\n    [pageSizeOptions]=\"[2, 5, 7, 10, 12, 20]\"\r\n    [length]=\"data.length\"\r\n    [pageIndex]=\"0\"\r\n    [pageSize]=\"2\"\r\n    [showFirstLastButtons]=\"true\"\r\n  >\r\n  </mat-paginator>\r\n</div>\r\n"
+            "templateData": "<mat-toolbar>\r\n  <div style=\"display: flex; gap: 1em\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"deleteSelection(table.selectedItems)\"\r\n    >\r\n      Delete Selection\r\n    </button>\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"markAllRead(table.selectedItems)\"\r\n    >\r\n      Mark All Read\r\n    </button>\r\n  </div>\r\n  <div style=\"flex-grow: 1\"></div>\r\n  <mdtx-input-text #search [inputControl]=\"searchControl\" prefixIcon=\"search\">\r\n  </mdtx-input-text>\r\n</mat-toolbar>\r\n\r\n<div style=\"max-height: 400px; overflow: auto\">\r\n  <mdtx-table\r\n    #table\r\n    [dataSource]=\"(filteredData | async)!\"\r\n    [columns]=\"['id', 'name', 'read']\"\r\n    [displayedColumns]=\"['id', 'name', 'read']\"\r\n    conditionalColumn=\"read\"\r\n  ></mdtx-table>\r\n  <mat-paginator\r\n    #paginator\r\n    style=\"position: sticky; bottom: 0px\"\r\n    [pageSizeOptions]=\"[2, 5, 7, 10, 12, 20]\"\r\n    [length]=\"data.length\"\r\n    [pageIndex]=\"0\"\r\n    [pageSize]=\"2\"\r\n    [showFirstLastButtons]=\"true\"\r\n  >\r\n  </mat-paginator>\r\n</div>\r\n"
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-bfb325c6f5dacb9f4cb2b04c0aecebbb31589fef5fb2d4a3aa9c12194949f874b8d9fc200b278a977d3c10e0f5f9d0321c550c4a63d79ed6105eeed8a9449d4d",
+            "id": "component-TableComponent-2088a6eb539884f7f0b39ac53dd0f3e7599ee23589d0db8425324b46c7160c3475a2fbdf23feec840fe63dae6064579b81624b5e4c29d979fd77b2d34d86e2f6",
             "file": "libs/material/table/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -32566,7 +32633,7 @@
                     "name": "columns",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 49,
+                    "line": 45,
                     "type": "string[]",
                     "decorators": []
                 },
@@ -32575,7 +32642,7 @@
                     "defaultValue": "'id'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 52,
+                    "line": 48,
                     "type": "string",
                     "decorators": []
                 },
@@ -32583,7 +32650,7 @@
                     "name": "dataSource",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 47,
                     "type": "any[]",
                     "decorators": []
                 },
@@ -32591,7 +32658,7 @@
                     "name": "displayedColumns",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 50,
+                    "line": 46,
                     "type": "string[]",
                     "decorators": []
                 }
@@ -32602,7 +32669,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 49,
                     "type": "EventEmitter"
                 }
             ],
@@ -32615,7 +32682,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 44,
+                    "line": 40,
                     "modifierKind": [
                         148
                     ]
@@ -32628,7 +32695,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 45,
+                    "line": 41,
                     "modifierKind": [
                         148
                     ]
@@ -32641,7 +32708,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 47,
+                    "line": 43,
                     "modifierKind": [
                         148
                     ]
@@ -32661,7 +32728,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 116,
+                    "line": 112,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32689,7 +32756,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 120,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32710,7 +32777,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 95,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -32720,7 +32787,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 108,
+                    "line": 104,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -32730,7 +32797,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 51,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -32747,7 +32814,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 82,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32781,7 +32848,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 77,
+                    "line": 73,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32844,7 +32911,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport {\r\n  MatCheckboxChange,\r\n  MatCheckboxModule,\r\n} from '@angular/material/checkbox';\r\n\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport {\r\n  slideInLeftOnEnterAnimation,\r\n  slideInRightOnEnterAnimation,\r\n  slideInDownOnEnterAnimation,\r\n} from 'angular-animations';\r\n@Component({\r\n  selector: 'mdtx-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSortModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatCheckboxModule,\r\n    MatTableModule,\r\n    MatMenuModule,\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss',\r\n\r\n  animations: [\r\n    slideInDownOnEnterAnimation({\r\n      anchor: 'enter',\r\n      duration: 500,\r\n      delay: 400,\r\n      animateChildren: 'after',\r\n    }),\r\n  ],\r\n})\r\nexport class TableComponent implements OnInit {\r\n  readonly firstColumns = ['first', 'second'];\r\n  readonly lastColumns = ['last'];\r\n\r\n  readonly selectedItems = new Map();\r\n\r\n  @Input() columns!: string[];\r\n  @Input() displayedColumns!: string[];\r\n  @Input() dataSource!: any[];\r\n  @Input() conditionalColumn = 'id';\r\n  @Output() selectionChange = new EventEmitter();\r\n\r\n  ngOnInit(): void {\r\n    if (this.columns) {\r\n      if (!this.displayedColumns) {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.columns,\r\n          ...this.lastColumns,\r\n        ];\r\n      } else {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.displayedColumns,\r\n          ...this.lastColumns,\r\n        ];\r\n      }\r\n    }\r\n\r\n    if (!this.dataSource) {\r\n      this.dataSource = [];\r\n    }\r\n  }\r\n\r\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\r\n    if (event.checked) {\r\n      this.selectedItems.set(item.id, item);\r\n    } else {\r\n      this.selectedItems.delete(item.id);\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  selectAll(event: Partial<MatCheckboxChange>) {\r\n    if (event.checked) {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    } else {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  isAllSelected() {\r\n    for (const a of this.dataSource) {\r\n      if (!this.selectedItems.get(a.id)) {\r\n        return false;\r\n      }\r\n    }\r\n    return true;\r\n  }\r\n\r\n  isPartialSelected() {\r\n    if (this.isAllSelected()) {\r\n      return false;\r\n    }\r\n\r\n    return this.selectedItems.size > 0;\r\n  }\r\n\r\n  colMetCondition(row: any) {\r\n    return row[this.conditionalColumn] == true;\r\n  }\r\n\r\n  colNotMetContion(row: any) {\r\n    return row[this.conditionalColumn] == false;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport {\r\n  MatCheckboxChange,\r\n  MatCheckboxModule,\r\n} from '@angular/material/checkbox';\r\n\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { slideInDownOnEnterAnimation } from 'angular-animations';\r\n@Component({\r\n  selector: 'mdtx-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSortModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatCheckboxModule,\r\n    MatTableModule,\r\n    MatMenuModule,\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss',\r\n\r\n  animations: [\r\n    slideInDownOnEnterAnimation({\r\n      anchor: 'enter',\r\n      duration: 500,\r\n      delay: 400,\r\n      animateChildren: 'after',\r\n    }),\r\n  ],\r\n})\r\nexport class TableComponent implements OnInit {\r\n  readonly firstColumns = ['first', 'second'];\r\n  readonly lastColumns = ['last'];\r\n\r\n  readonly selectedItems = new Map();\r\n\r\n  @Input() columns!: string[];\r\n  @Input() displayedColumns!: string[];\r\n  @Input() dataSource!: any[];\r\n  @Input() conditionalColumn = 'id';\r\n  @Output() selectionChange = new EventEmitter();\r\n\r\n  ngOnInit(): void {\r\n    if (this.columns) {\r\n      if (!this.displayedColumns) {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.columns,\r\n          ...this.lastColumns,\r\n        ];\r\n      } else {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.displayedColumns,\r\n          ...this.lastColumns,\r\n        ];\r\n      }\r\n    }\r\n\r\n    if (!this.dataSource) {\r\n      this.dataSource = [];\r\n    }\r\n  }\r\n\r\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\r\n    if (event.checked) {\r\n      this.selectedItems.set(item.id, item);\r\n    } else {\r\n      this.selectedItems.delete(item.id);\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  selectAll(event: Partial<MatCheckboxChange>) {\r\n    if (event.checked) {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    } else {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  isAllSelected() {\r\n    for (const a of this.dataSource) {\r\n      if (!this.selectedItems.get(a.id)) {\r\n        return false;\r\n      }\r\n    }\r\n    return true;\r\n  }\r\n\r\n  isPartialSelected() {\r\n    if (this.isAllSelected()) {\r\n      return false;\r\n    }\r\n\r\n    return this.selectedItems.size > 0;\r\n  }\r\n\r\n  colMetCondition(row: any) {\r\n    return row[this.conditionalColumn] == true;\r\n  }\r\n\r\n  colNotMetContion(row: any) {\r\n    return row[this.conditionalColumn] == false;\r\n  }\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -33694,8 +33761,8 @@
                 "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<BaseFormComponent>",
-                "defaultValue": "{\r\n  component: BaseFormComponent,\r\n  title: 'BaseFormComponent',\r\n}"
+                "type": "Meta<FormComponent>",
+                "defaultValue": "{\r\n  component: FormComponent,\r\n  title: 'BaseFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -34095,7 +34162,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -34105,7 +34172,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -34115,7 +34182,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -34125,7 +34192,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -34135,7 +34202,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    formControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    inputControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -34767,7 +34834,7 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<BaseFormComponent>",
+                "rawtype": "StoryObj<FormComponent>",
                 "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -35288,7 +35355,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-date-range/input-date-range-variants.component.stories.ts": [
@@ -35330,7 +35397,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-date-range/input-date-range.component.stories.ts": [
@@ -35372,7 +35439,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-datetime/input-datetime.component.stories.ts": [
@@ -35414,7 +35481,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    formControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts": [
@@ -35456,7 +35523,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    formControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    inputControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
                 }
             ],
             "libs/material/core/src/lib/directives/fullscreen.component.stories.ts": [
@@ -35605,8 +35672,8 @@
                     "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<BaseFormComponent>",
-                    "defaultValue": "{\r\n  component: BaseFormComponent,\r\n  title: 'BaseFormComponent',\r\n}"
+                    "type": "Meta<FormComponent>",
+                    "defaultValue": "{\r\n  component: FormComponent,\r\n  title: 'BaseFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -36733,7 +36800,7 @@
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<BaseFormComponent>",
+                    "rawtype": "StoryObj<FormComponent>",
                     "file": "libs/material/form/src/lib/form/base-form.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -37548,15 +37615,6 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/material/form/src/lib/form/base-form.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "BaseFormComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/8",
-                "status": "low"
-            },
-            {
                 "filePath": "libs/material/form/src/lib/form/common-form.module.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -37564,6 +37622,15 @@
                 "name": "modules",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/form/form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -37602,7 +37669,7 @@
                 "linktype": "component",
                 "name": "SampleFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
