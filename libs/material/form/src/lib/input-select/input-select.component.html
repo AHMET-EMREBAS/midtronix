@@ -1,6 +1,10 @@
 <mat-form-field>
   <mat-label>{{ label }}</mat-label>
-  <mat-select [formControl]="inputControl" [multiple]="multiple">
+  <mat-select
+    [formControl]="inputControl"
+    [multiple]="multiple"
+    [attr.data-testid]="testid()"
+  >
     @for (o of options; track o) {
     <mat-option [value]="o">{{ o.name }}</mat-option>
     }

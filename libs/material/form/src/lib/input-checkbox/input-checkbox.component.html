@@ -1,3 +1,7 @@
-<mat-checkbox labelPosition="before" [formControl]="inputControl">
+<mat-checkbox
+  labelPosition="before"
+  [formControl]="inputControl"
+  [attr.data-testid]="testid()"
+>
   {{ label }}
 </mat-checkbox>

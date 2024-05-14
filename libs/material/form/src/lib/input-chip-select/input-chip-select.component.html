@@ -4,6 +4,7 @@
     class="mat-mdc-chip-set-stacked"
     [formControl]="inputControl"
     [multiple]="multiple"
+    [attr.data-testid]="testid()"
   >
     @for (o of options; track o) {
     <mat-chip-option>{{ o.name }}</mat-chip-option>

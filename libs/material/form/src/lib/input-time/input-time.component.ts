@@ -1,9 +1,7 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { CommonFormModule } from '../form';
 import { InputBaseComponent } from '../input-base';
-
 import { MatChipsModule } from '@angular/material/chips';
-import { ValidatorBuilder } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-time',
   standalone: true,
@@ -30,10 +28,5 @@ export class InputTimeComponent
     hour: this.d.getHours(),
   };
 
-  override ngAfterViewInit(): void {
-    super.ngAfterViewInit();
-
-    const validators = new ValidatorBuilder(this.inputName ?? 'some').build();
-    this.inputControl.addValidators(validators);
-  }
+  
 }

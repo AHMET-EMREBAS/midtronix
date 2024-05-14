@@ -14,9 +14,15 @@ import { IFormBuilder } from './form-builder-interface';
 export class ValidatorBuilder<T extends Record<string, any> = any> {
   private readonly validatorList: ValidatorFn[] = [];
   private parentInstance!: IFormBuilder<T>;
-  constructor(private readonly propertyName: keyof T) {}
+  constructor(private readonly propertyName: keyof T) {
+    if (!propertyName) throw new Error('Property name is required!');
+  }
   private __name() {
-    return this.propertyName.toString();
+    return this.propertyName?.toString();
+  }
+
+  setParent(parent: IFormBuilder<T>) {
+    this.parentInstance = parent;
   }
 
   done() {

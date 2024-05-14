@@ -9,8 +9,18 @@
     [comparisonStart]="dateRange.value.start"
     [comparisonEnd]="dateRange.value.end"
   >
-    <input matStartDate [placeholder]="startDateLabel" formControlName="start" />
-    <input matEndDate [placeholder]="endDateLabel" formControlName="end" />
+    <input
+      matStartDate
+      [placeholder]="startDateLabel"
+      formControlName="start"
+      [attr.data-testid]="testid()"
+    />
+    <input
+      matEndDate
+      [placeholder]="endDateLabel"
+      formControlName="end"
+      [attr.data-testid]="testid()"
+    />
   </mat-date-range-input>
 
   <!-- Prefix icon -->

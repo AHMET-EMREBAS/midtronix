@@ -1,4 +1,9 @@
-<mat-slide-toggle #slideRef [formControl]="inputControl" labelPosition="before">
+<mat-slide-toggle
+  #slideRef
+  [formControl]="inputControl"
+  labelPosition="before"
+  [attr.data-testid]="testid()"
+>
   {{ getLabel() }}
 </mat-slide-toggle>
 <strong> ({{ inputControl.value }}) </strong>

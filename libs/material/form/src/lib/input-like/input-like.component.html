@@ -2,6 +2,7 @@
   mat-icon-button
   [color]="liked === true ? 'primary' : liked === false ? 'accent' : ''"
   (click)="toggle()"
+  [attr.data-testid]="testid()"
 >
   <mat-icon [class.fill]="liked !== undefined">{{
     liked === true || liked === undefined

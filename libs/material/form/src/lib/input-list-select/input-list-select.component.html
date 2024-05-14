@@ -4,7 +4,7 @@
   [formControl]="inputControl"
 >
   @for (o of options; track o) {
-  <mat-list-option #optionRef [value]="o">
+  <mat-list-option #optionRef [value]="o" [attr.data-testid]="testid()">
     <span matListItemIcon>
       <mat-icon
         [color]="(optionRef.selectedChange | async) ? 'accent' : ''"

@@ -35,6 +35,7 @@ export class FormGroupBuilder<T extends Record<string, any>>
 
   add(propertyName: keyof T): ValidatorBuilder<T> {
     const fn = new ValidatorBuilder<T>(propertyName.toString());
+    fn.setParent(this);
     this.setValidator(propertyName, fn);
     return fn;
   }

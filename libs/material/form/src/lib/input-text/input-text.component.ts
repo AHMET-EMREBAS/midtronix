@@ -2,7 +2,6 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { CommonFormModule } from '../form';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { InputBaseComponent } from '../input-base';
-import { ValidatorBuilder } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-input-text',
@@ -19,12 +18,4 @@ export class InputTextComponent
   @Input() maxLength?: number;
   @Input() textSuffix?: string;
   @Input() textPrefix?: string;
-
-  override ngAfterViewInit(): void {
-    super.ngAfterViewInit();
-
-    const validators = new ValidatorBuilder(this.inputName).shortText().build();
-
-    this.inputControl.addValidators(validators);
-  }
 }

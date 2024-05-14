@@ -30,17 +30,16 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
 
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
-  protected __validateInputs() {
-    if (!this.inputControl) this.inputControl = new FormControl();
-  }
 
   ngOnInit(): void {
-    this.__validateInputs();
+    if (!this.inputControl) this.inputControl = new FormControl();
   }
 
   ngAfterViewInit(): void {
     this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));
-    this.$statusChange = this.inputControl.statusChanges.pipe(debounceTime(600));
+    this.$statusChange = this.inputControl.statusChanges.pipe(
+      debounceTime(600)
+    );
   }
 
   getErrorMessage() {
@@ -49,5 +48,9 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
       return Object.values(errors).shift();
     }
     return 'Field is not valid!';
+  }
+
+  testid() {
+    return 'input-' + this.inputName;
   }
 }

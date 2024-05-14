@@ -1,0 +1,28 @@
+<form class="form-container" novalidate="true">
+  
+  <!-- Form Inputs  -->
+  <mdtx-input-text
+    inputName="name"
+    label="Category Name"
+    prefixIcon="category"
+    [inputControl]="control('name')"
+  ></mdtx-input-text>
+
+  <!-- Form actions -->
+  <div class="form-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formSubmit()"
+      [disabled]="isFormInvalid()"
+    >
+      Save Category
+    </button>
+    <button mat-stroked-button color="primary" (click)="formReset()">
+      Reset
+    </button>
+  </div>
+</form>
+
+{{ control('name').errors | json }}
+{{ resourceFormGroup.value | json }}

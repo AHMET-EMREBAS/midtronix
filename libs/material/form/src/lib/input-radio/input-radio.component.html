@@ -1,4 +1,8 @@
-<mat-radio-group #radioGroup [formControl]="inputControl">
+<mat-radio-group
+  #radioGroup
+  [formControl]="inputControl"
+  [attr.data-testid]="testid()"
+>
   @for(o of options; track o){
   <mat-radio-button #rb [value]="o">{{ o.name }}</mat-radio-button>
   }
