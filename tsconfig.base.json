@@ -19,6 +19,7 @@
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/database": ["libs/database/src/index.ts"],
+      "@mdtx/forms": ["libs/forms/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
       "@mdtx/material": ["libs/material/src/index.ts"],
       "@mdtx/material/core": ["libs/material/core/src/index.ts"],
