@@ -50,6 +50,7 @@ export const Heading: Story = {
 
     // Form Fields
     const name = findInput('name');
+    const url = findInput('url');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
@@ -57,9 +58,11 @@ export const Heading: Story = {
 
     // Validte input Elements
     expect(name).toBeTruthy();
+    expect(url).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'image name');
+      await type(name, 'Type image name');
+      await type(url, 'https://cdn.com/image.png');
 
       await click(submitButton);
 

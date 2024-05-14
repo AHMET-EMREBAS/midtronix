@@ -49,17 +49,17 @@ export const Heading: Story = {
     const resetButton = findButton('reset');
 
     // Form Fields
-    const name = findInput('name');
+    const email = findInput('email');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
     expect(resetButton).toBeTruthy();
 
     // Validte input Elements
-    expect(name).toBeTruthy();
+    expect(email).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'user-email name');
+      await type(email, 'email@gmail.com');
 
       await click(submitButton);
 

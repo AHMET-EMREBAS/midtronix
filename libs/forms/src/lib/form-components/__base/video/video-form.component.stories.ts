@@ -50,6 +50,7 @@ export const Heading: Story = {
 
     // Form Fields
     const name = findInput('name');
+    const url = findInput('url');
 
     // Valdiate buttons
     expect(submitButton).toBeTruthy();
@@ -57,9 +58,11 @@ export const Heading: Story = {
 
     // Validte input Elements
     expect(name).toBeTruthy();
+    expect(url).toBeTruthy();
 
     const submitForm = async () => {
-      await type(name, 'video name');
+      await type(name, 'Type video name');
+      await type(url, 'https://cdn.com/video.mp4');
 
       await click(submitButton);
 
