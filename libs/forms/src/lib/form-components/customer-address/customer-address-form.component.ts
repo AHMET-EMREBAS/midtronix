@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { CommonFormModule, InputTextComponent } from '@mdtx/material/form';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { BaseFormComponent } from '../../__base';
 import { CustomerAddressFormBuilder } from '../../form-builders';
+import { AddressFormComponent } from '../__base';
 
 @Component({
   selector: 'mdtx-customer-address-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent],
+  imports: [AddressFormComponent],
   templateUrl: './customer-address-form.component.html',
   styleUrl: './customer-address-form.component.scss',
 })

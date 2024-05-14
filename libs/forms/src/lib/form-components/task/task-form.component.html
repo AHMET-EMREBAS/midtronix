@@ -1,4 +1,12 @@
 <form class="form-container" novalidate="true">
+  <mdtx-input-range
+    [min]="0"
+    [max]="10"
+    [step]="1"
+    inputName="difficulty"
+    [inputControl]="control('difficulty')"
+  ></mdtx-input-range>
+
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
@@ -12,7 +20,16 @@
 
   <div class="input-group">
     <mdtx-input-date
+      inputName="due"
+      prefixIcon="pending_actions"
+      label="Due Date"
+      [inputControl]="control('due')"
+    >
+    </mdtx-input-date>
+
+    <mdtx-input-date
       inputName="startDate"
+      prefixIcon="bomb"
       label="Start Date"
       [inputControl]="control('startDate')"
     >
@@ -20,19 +37,12 @@
 
     <mdtx-input-date
       inputName="finishDate"
+      prefixIcon="destruction"
       label="End Date"
       [inputControl]="control('finishDate')"
     >
     </mdtx-input-date>
   </div>
-
-  <mdtx-input-range
-    [min]="0"
-    [max]="10"
-    [step]="1"
-    inputName="difficulty"
-    [inputControl]="control('difficulty')"
-  ></mdtx-input-range>
 
   <!-- Form actions -->
   <div class="form-actions">

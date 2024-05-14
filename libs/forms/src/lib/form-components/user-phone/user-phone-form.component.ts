@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommonFormModule, InputTextComponent } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { UserPhoneFormBuilder } from '../../form-builders';
+import { PhoneFormComponent } from '../__base';
 
 @Component({
   selector: 'mdtx-user-phone-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent],
+  imports: [PhoneFormComponent],
   templateUrl: './user-phone-form.component.html',
   styleUrl: './user-phone-form.component.scss',
 })
