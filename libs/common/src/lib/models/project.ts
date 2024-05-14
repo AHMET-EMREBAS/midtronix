@@ -11,7 +11,7 @@ export interface IProject extends IDescription {}
  * @param name
  * @param description
  */
-export interface ISprint<TProject extends IID> extends IDescription {
+export interface ISprint<TProject extends IID = IID> extends IDescription {
   project: TProject;
 }
 
@@ -25,10 +25,12 @@ export interface ISprint<TProject extends IID> extends IDescription {
  * @param finishDate Date
  * @param assignees TUser[]
  */
-export interface ITask<TUser extends IID, TSprint extends IID>
+export interface ITask<TUser extends IID = IID, TSprint extends IID = IID>
   extends ICommonTask<TUser> {
   sprint?: TSprint;
 }
 
-export interface ITaskComment<TUser extends IID, TTarget extends IID>
-  extends IComment<TUser, TTarget> {}
+export interface ITaskComment<
+  TUser extends IID = IID,
+  TTarget extends IID = IID
+> extends IComment<TUser, TTarget> {}

@@ -4,8 +4,8 @@ import { IAddress, IEmail, IPhone } from './contact';
 
 export interface IStore extends IDescription {}
 
-export interface IStoreAddress<TOwner extends IID> extends IAddress<TOwner> {}
+export interface IStoreAddress<TOwner extends IID = IID> extends IAddress<TOwner> {}
 
-export interface IStoreEmail<TOwner extends IID> extends IEmail<TOwner> {}
+export interface IStoreEmail<TOwner extends IID = IID> extends IEmail<TOwner> {}
 
-export interface IStorePhone<TOwner extends IID> extends IPhone<TOwner> {}
+export interface IStorePhone<TOwner extends IID = IID> extends IPhone<TOwner> {}

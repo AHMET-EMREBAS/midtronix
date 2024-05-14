@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IBaseEntity, IID, IOwner } from './__base';
+import { IID, IOwner } from './__base';
 
-export interface IUserDetail<TOwner extends IID> extends IOwner<TOwner> {
+export interface IUserDetail<TOwner extends IID = IID> extends IOwner<TOwner> {
   firstName?: string;
   lastName?: string;
   middleName?: string;
@@ -10,17 +10,17 @@ export interface IUserDetail<TOwner extends IID> extends IOwner<TOwner> {
   dl?: string;
 }
 
-export interface IAddress<TOwner extends IID> extends IOwner<TOwner> {
+export interface IAddress<TOwner extends IID = IID> extends IOwner<TOwner> {
   street: string;
   city: string;
   state: string;
   zip: string;
 }
 
-export interface IPhone<TOwner extends IID> extends IOwner<TOwner> {
+export interface IPhone<TOwner extends IID = IID> extends IOwner<TOwner> {
   phone: string;
 }
 
-export interface IEmail<TOwner extends IID> extends IOwner<TOwner> {
+export interface IEmail<TOwner extends IID = IID> extends IOwner<TOwner> {
   email: string;
 }

@@ -1,19 +1,19 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nx/devkit';
 
-import { clientResourceGenerator } from './generator';
-import { ClientResourceGeneratorSchema } from './schema';
+import { ngrxServiceGenerator } from './generator';
+import { NgrxServiceGeneratorSchema } from './schema';
 
-describe('client-resource generator', () => {
+describe('ngrx-service generator', () => {
   let tree: Tree;
-  const options: ClientResourceGeneratorSchema = { name: 'test' };
+  const options: NgrxServiceGeneratorSchema = { name: 'test' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
   });
 
   it('should run successfully', async () => {
-    await clientResourceGenerator(tree, options);
+    await ngrxServiceGenerator(tree, options);
     const config = readProjectConfiguration(tree, 'test');
     expect(config).toBeDefined();
   });

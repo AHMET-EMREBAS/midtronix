@@ -20,11 +20,11 @@ export interface IProduct<
 
 export interface IRecord extends IDescription {}
 
-export interface ISku<TProduct extends IID> extends IProductCommon {
+export interface ISku<TProduct extends IID = IID> extends IProductCommon {
   product: TProduct;
 }
 
-export interface IPrice<TSku extends IID, TPriceLevel extends IID>
+export interface IPrice<TSku extends IID = IID, TPriceLevel extends IID = IID>
   extends IBaseEntity {
   price: number;
   cost: number;
@@ -32,13 +32,15 @@ export interface IPrice<TSku extends IID, TPriceLevel extends IID>
   sku: TSku;
 }
 
-export interface IQuantity<TSku extends IID, TStore extends IID>
+export interface IQuantity<TSku extends IID = IID, TStore extends IID = IID>
   extends IBaseEntity {
   quantity: number;
   sku: TSku;
   store: TStore;
 }
 
-export interface IProductImage<TOwner extends IID> extends IImage<TOwner> {}
+export interface IProductImage<TOwner extends IID = IID>
+  extends IImage<TOwner> {}
 
-export interface IProductVideo<TOwner extends IID> extends IImage<TOwner> {}
+export interface IProductVideo<TOwner extends IID = IID>
+  extends IImage<TOwner> {}

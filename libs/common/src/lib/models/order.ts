@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseEntity, IID, IOwner } from './__base';
 
-export interface ICart<TCustomer extends IID, TUser extends IID>
+export interface ICart<TCustomer extends IID = IID, TUser extends IID = IID>
   extends IOwner<TCustomer> {
   user: TUser;
 }

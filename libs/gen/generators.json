@@ -3,17 +3,17 @@
     "resource": {
       "factory": "./src/generators/resource/generator",
       "schema": "./src/generators/resource/schema.json",
-      "description": "resource generator"
-    },
-    "client-resource": {
-      "factory": "./src/generators/client-resource/generator",
-      "schema": "./src/generators/client-resource/schema.json",
-      "description": "client-resource generator"
+      "description": "Generate Api Resources"
     },
     "form-builder": {
       "factory": "./src/generators/form-builder/generator",
       "schema": "./src/generators/form-builder/schema.json",
-      "description": "form-builder generator"
+      "description": "Generate client form builder that provides form specifications"
+    },
+    "ngrx-service": {
+      "factory": "./src/generators/ngrx-service/generator",
+      "schema": "./src/generators/ngrx-service/schema.json",
+      "description": "ngrx-service generator"
     }
   }
 }

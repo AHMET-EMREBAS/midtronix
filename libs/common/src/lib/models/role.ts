@@ -3,6 +3,6 @@ import { IID, IName } from './__base';
 
 export interface IPermission extends IName {}
 
-export interface IRole<TPermission extends IID> extends IName {
+export interface IRole<TPermission extends IID = IID> extends IName {
   permissions?: TPermission[];
 }

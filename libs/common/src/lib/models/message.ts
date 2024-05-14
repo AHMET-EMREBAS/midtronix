@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseEntity, IID } from './__base';
 
-export interface IMessage<TTarget extends IID, TSource extends IID>
+export interface IMessage<TTarget extends IID = IID, TSource extends IID = IID>
   extends IBaseEntity {
   message: string;
   read?: boolean;
@@ -9,5 +9,7 @@ export interface IMessage<TTarget extends IID, TSource extends IID>
   source: TSource;
 }
 
-export interface INotification<TTarget extends IID, TSource extends IID>
-  extends IMessage<TTarget, TSource> {}
+export interface INotification<
+  TTarget extends IID = IID,
+  TSource extends IID = IID
+> extends IMessage<TTarget, TSource> {}

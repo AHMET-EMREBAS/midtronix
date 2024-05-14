@@ -4,11 +4,11 @@ import { IAddress, IEmail, IPhone } from './contact';
 
 export interface IManufacturer extends IDescription {}
 
-export interface IManufacturerAddress<TManufacturer extends IID>
+export interface IManufacturerAddress<TManufacturer extends IID = IID>
   extends IAddress<TManufacturer> {}
 
-export interface IManufacturerEmail<TManufacturer extends IID>
+export interface IManufacturerEmail<TManufacturer extends IID = IID>
   extends IEmail<TManufacturer> {}
 
-export interface IManufacturerPhone<TManufacturer extends IID>
+export interface IManufacturerPhone<TManufacturer extends IID = IID>
   extends IPhone<TManufacturer> {}
