@@ -1,4 +1,4 @@
-// const { execSync } = require('child_process');
+// const { execSync, exec } = require('child_process');
 
 // const rns = [
 //   'category',
@@ -28,5 +28,5 @@
 // ];
 
 // for (const r of rns) {
-//   execSync(`npx nx g @mdtx/gen:form-builder ${r}`);
+//   execSync(`npx nx g @mdtx/gen:form ${r}`);
 // }

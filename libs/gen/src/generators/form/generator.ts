@@ -1,21 +1,15 @@
-import {
-  addProjectConfiguration,
-  formatFiles,
-  generateFiles,
-  Tree,
-} from '@nx/devkit';
+/* eslint-disable @nx/enforce-module-boundaries */
+import { formatFiles, generateFiles, names, Tree } from '@nx/devkit';
 import * as path from 'path';
 import { FormGeneratorSchema } from './schema';
 
 export async function formGenerator(tree: Tree, options: FormGeneratorSchema) {
-  const projectRoot = `libs/${options.name}`;
-  addProjectConfiguration(tree, options.name, {
-    root: projectRoot,
-    projectType: 'library',
-    sourceRoot: `${projectRoot}/src`,
-    targets: {},
+  const projectRoot = `libs/forms/src/lib/form-components`;
+
+  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
+    ...names(options.name),
   });
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
+
   await formatFiles(tree);
 }
 
