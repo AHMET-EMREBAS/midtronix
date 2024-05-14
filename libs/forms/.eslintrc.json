@@ -1,6 +1,6 @@
 {
   "extends": ["../../.eslintrc.base.json"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "storybook-static"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -31,7 +31,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "camelCase"
           }
         ],
@@ -39,7 +39,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "kebab-case"
           }
         ]

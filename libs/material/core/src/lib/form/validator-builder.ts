@@ -6,6 +6,8 @@ import {
   isPhoneNumber,
   isEAN,
   isIn,
+  isURL,
+  isDateString,
 } from 'class-validator';
 import { IFormBuilder } from './form-builder-interface';
 
@@ -36,6 +38,39 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
       c.value?.trim().length > 0
         ? null
         : { required: `${this.__name()} is required!` }
+    );
+  }
+
+  date(value?: number): ValidatorBuilder<T> {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        isDateString(c.value)
+          ? null
+          : {
+              date: `${this.__name()} should be a valid date!`,
+            }
+      );
+    return this;
+  }
+
+  range(start: number, end: number): ValidatorBuilder<T> {
+    return this.push((c: AbstractControl) => {
+      const cValue = parseInt(c.value);
+      if (cValue) {
+        cValue >= start && cValue <= end
+          ? null
+          : {
+              range: `${this.__name()} should be in range of ${start} and ${end}`,
+            };
+      }
+
+      return null;
+    });
+  }
+
+  url(): ValidatorBuilder<T> {
+    return this.push((c: AbstractControl) =>
+      isURL(c.value) ? null : { url: `${this.__name()} should be valid url!` }
     );
   }
 

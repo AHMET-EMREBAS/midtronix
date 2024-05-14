@@ -27,7 +27,7 @@ import { CommonFormModule } from './common-form.module';
     </form>
   `,
 
-  styleUrls:['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements AfterViewInit {
   @Input() resourceFormGroup!: FormGroup;
@@ -54,6 +54,11 @@ export class FormComponent implements AfterViewInit {
     this.resourceFormGroup.reset();
   }
 
+  /**
+   * Get the formControl from the formGroup
+   * @param name formControlName
+   * @returns
+   */
   control(name: string) {
     const formControl = this.resourceFormGroup.get(name) as FormControl;
     if (!formControl) throw new Error(`${name} |  FormControl is not found!`);

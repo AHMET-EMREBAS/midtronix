@@ -11,14 +11,14 @@ import {
 export interface ICreateUserDto
   extends Omit<IUser<IID, IID>, keyof IBaseEntity> {}
 
-export interface ICreateUserImage
+export interface ICreateUserImageDto
   extends Omit<IUserImage<IID>, keyof IBaseEntity> {}
 
-export interface ICreateUserAddress
+export interface ICreateUserAddressDto
   extends Omit<IUserAddress<IID>, keyof IBaseEntity> {}
 
-export interface ICreateUserEmail
+export interface ICreateUserEmailDto
   extends Omit<IUserEmail<IID>, keyof IBaseEntity> {}
 
-export interface ICreateUserPhone
+export interface ICreateUserPhoneDto
   extends Omit<IUserPhone<IID>, keyof IBaseEntity> {}

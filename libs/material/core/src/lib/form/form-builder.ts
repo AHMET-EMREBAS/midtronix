@@ -52,12 +52,10 @@ export class FormGroupBuilder<T extends Record<string, any>>
    * @param properties
    * @returns
    */
-  controls(
-    properties: (keyof T)[] = []
-  ): Partial<Record<keyof T, FormControl>> {
+  controls(properties?: (keyof T)[]): Partial<Record<keyof T, FormControl>> {
     const form: Partial<Record<keyof T, FormControl>> = {};
     for (const [pn, vb] of this.validatorsMap.entries()) {
-      if (properties.length > 0 && !properties.includes(pn)) {
+      if (properties && properties.length > 0 && !properties.includes(pn)) {
         continue;
       }
       const control = new FormControl(null, vb?.build() ?? []);

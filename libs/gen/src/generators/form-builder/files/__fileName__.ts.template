@@ -1,0 +1,11 @@
+import { ICreate<%- className %>Dto } from '@mdtx/common';
+import { FormGroupBuilder } from '@mdtx/material/core';
+
+export const <%- className %>FormBuilder = new FormGroupBuilder<ICreate<%- className %>Dto>(
+  '<%- className %> Form'
+)
+  .add('name')
+  .required()
+  .shortText()
+  .done()
+  .lock();

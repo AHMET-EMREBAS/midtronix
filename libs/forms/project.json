@@ -2,7 +2,7 @@
   "name": "forms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/forms/src",
-  "prefix": "lib",
+  "prefix": "mdtx",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -31,6 +31,56 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "libs/forms/.storybook",
+        "browserTarget": "forms:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/forms/.storybook",
+          "-p",
+          "libs/forms/tsconfig.json"
+        ],
+        "assets": ["libs/forms/src/assets", "libs/forms/src/favicon.svg"],
+        "styles": ["libs/forms/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/forms",
+        "configDir": "libs/forms/forms/.storybook",
+        "browserTarget": "forms:build-storybook",
+        "compodoc": true,
+        "compodocArgs": [
+          "-e",
+          "json",
+          "-d",
+          "libs/forms/.storybook",
+          "-p",
+          "libs/forms/tsconfig.json"
+        ],
+        "assets": ["libs/forms/src/assets", "libs/forms/src/favicon.svg"],
+        "styles": ["libs/forms/src/style.css"]
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
     }
   }
 }

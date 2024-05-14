@@ -9,6 +9,11 @@
       "factory": "./src/generators/client-resource/generator",
       "schema": "./src/generators/client-resource/schema.json",
       "description": "client-resource generator"
+    },
+    "form-builder": {
+      "factory": "./src/generators/form-builder/generator",
+      "schema": "./src/generators/form-builder/schema.json",
+      "description": "form-builder generator"
     }
   }
 }
