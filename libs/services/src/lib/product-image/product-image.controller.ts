@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('ProductImage');
 export class ProductImageController {
   constructor(protected readonly service: ProductImageService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateProductImageDto) {
     return this.service.save(body);

@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('Notification');
 export class NotificationController {
   constructor(protected readonly service: NotificationService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateNotificationDto) {
     return this.service.save(body);

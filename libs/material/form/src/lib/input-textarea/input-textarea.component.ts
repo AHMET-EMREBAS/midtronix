@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { InputBaseComponent } from '../input-base';
-import { InputValidator } from '@mdtx/material/core';
+import { ValidatorBuilder } from '@mdtx/material/core';
 import { CommonFormModule } from '../form';
 
 @Component({
@@ -22,10 +22,7 @@ export class InputTextareaComponent
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
 
-    const validators = InputValidator.create(this.inputName)
-      .minLength(this.minLength)
-      .maxLength(this.maxLength)
-      .build();
+    const validators = new ValidatorBuilder(this.inputName).longText().build();
 
     this.inputControl.addValidators(validators);
   }

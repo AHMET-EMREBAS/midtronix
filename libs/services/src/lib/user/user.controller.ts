@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('User');
 export class UserController {
   constructor(protected readonly service: UserService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateUserDto) {
     return this.service.save(body);

@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Sprint');
 export class SprintController {
   constructor(protected readonly service: SprintService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateSprintDto) {
     return this.service.save(body);

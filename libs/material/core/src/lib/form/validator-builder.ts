@@ -50,44 +50,53 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
     return this;
   }
 
-  minLength(value: number): ValidatorBuilder<T> {
-    return this.push((c: AbstractControl) =>
-      c.value?.length < value
-        ? {
-            minLength: `${this.__name()} should be longer than ${value}!`,
-          }
-        : null
-    );
+  minLength(value?: number): ValidatorBuilder<T> {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        c.value?.length < value
+          ? {
+              minLength: `${this.__name()} should be longer than ${value}!`,
+            }
+          : null
+      );
+
+    return this;
   }
 
-  maxLength(value: number): ValidatorBuilder<T> {
-    return this.push((c: AbstractControl) =>
-      c.value?.length > value
-        ? {
-            maxLength: `${this.__name()} should be shorter than ${value}!`,
-          }
-        : null
-    );
+  maxLength(value?: number): ValidatorBuilder<T> {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        c.value?.length > value
+          ? {
+              maxLength: `${this.__name()} should be shorter than ${value}!`,
+            }
+          : null
+      );
+    return this;
   }
 
-  min(value: number): ValidatorBuilder<T> {
-    return this.push((c: AbstractControl) =>
-      c.value?.length < value
-        ? {
-            min: `${this.__name()} should be more than ${value}!`,
-          }
-        : null
-    );
+  min(value?: number): ValidatorBuilder<T> {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        c.value?.length < value
+          ? {
+              min: `${this.__name()} should be more than ${value}!`,
+            }
+          : null
+      );
+    return this;
   }
 
-  max(value: number): ValidatorBuilder<T> {
-    return this.push((c: AbstractControl) =>
-      c.value?.length > value
-        ? {
-            max: `${this.__name()} should be less than ${value}!`,
-          }
-        : null
-    );
+  max(value?: number): ValidatorBuilder<T> {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        c.value?.length > value
+          ? {
+              max: `${this.__name()} should be less than ${value}!`,
+            }
+          : null
+      );
+    return this;
   }
 
   email(): ValidatorBuilder<T> {
@@ -125,20 +134,24 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
     );
   }
 
-  isIn(list: any[]) {
-    return this.push((c: AbstractControl) =>
-      isIn(c.value, list)
-        ? null
-        : { isIn: `${this.__name()} should be one of ${list}` }
-    );
+  isIn(value?: any[]) {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        isIn(c.value, value)
+          ? null
+          : { isIn: `${this.__name()} should be one of ${value}` }
+      );
+    return this;
   }
 
-  isNotIn(list: any[]) {
-    return this.push((c: AbstractControl) =>
-      isIn(c.value, list)
-        ? { isNotIn: `${this.__name()} should be none of ${list}` }
-        : null
-    );
+  isNotIn(value?: any[]) {
+    if (value != undefined)
+      return this.push((c: AbstractControl) =>
+        isIn(c.value, value)
+          ? { isNotIn: `${this.__name()} should be none of ${value}` }
+          : null
+      );
+    return this;
   }
 
   build(): ValidatorFn[] {

@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { InputBaseComponent } from '../input-base';
 import { CommonFormModule } from '../form';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { InputValidator } from '@mdtx/material/core';
+import { ValidatorBuilder } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-input-number',
@@ -23,13 +23,11 @@ export class InputNumberComponent
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
 
-    const validators = InputValidator.create(this.inputName)
+    const validators = new ValidatorBuilder(this.inputName)
       .min(this.minValue)
       .max(this.maxValue)
       .build();
 
     this.inputControl.addValidators(validators);
   }
-
-  
 }

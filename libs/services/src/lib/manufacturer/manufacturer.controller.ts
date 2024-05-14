@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('Manufacturer');
 export class ManufacturerController {
   constructor(protected readonly service: ManufacturerService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateManufacturerDto) {
     return this.service.save(body);

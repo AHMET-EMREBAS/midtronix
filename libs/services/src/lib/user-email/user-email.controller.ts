@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('UserEmail');
 export class UserEmailController {
   constructor(protected readonly service: UserEmailService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateUserEmailDto) {
     return this.service.save(body);

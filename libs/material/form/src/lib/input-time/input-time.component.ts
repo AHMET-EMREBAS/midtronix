@@ -3,7 +3,7 @@ import { CommonFormModule } from '../form';
 import { InputBaseComponent } from '../input-base';
 
 import { MatChipsModule } from '@angular/material/chips';
-import { InputValidator } from '@mdtx/material/core';
+import { ValidatorBuilder } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-time',
   standalone: true,
@@ -33,10 +33,7 @@ export class InputTimeComponent
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();
 
-    const validators = InputValidator.create(this.inputName ?? 'some')
-      .beforeHour(this.beforeHour)
-      .afterHour(this.afterHour)
-      .build();
+    const validators = new ValidatorBuilder(this.inputName ?? 'some').build();
     this.inputControl.addValidators(validators);
   }
 }

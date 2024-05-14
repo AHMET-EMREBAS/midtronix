@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Store');
 export class StoreController {
   constructor(protected readonly service: StoreService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateStoreDto) {
     return this.service.save(body);

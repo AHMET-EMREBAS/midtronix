@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('Department');
 export class DepartmentController {
   constructor(protected readonly service: DepartmentService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateDepartmentDto) {
     return this.service.save(body);

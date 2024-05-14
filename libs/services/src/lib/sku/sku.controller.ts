@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Sku');
 export class SkuController {
   constructor(protected readonly service: SkuService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateSkuDto) {
     return this.service.save(body);

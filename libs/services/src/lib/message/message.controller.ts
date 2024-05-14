@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Message');
 export class MessageController {
   constructor(protected readonly service: MessageService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateMessageDto) {
     return this.service.save(body);

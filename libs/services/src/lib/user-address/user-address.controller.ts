@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('UserAddress');
 export class UserAddressController {
   constructor(protected readonly service: UserAddressService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateUserAddressDto) {
     return this.service.save(body);

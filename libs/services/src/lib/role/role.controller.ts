@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Role');
 export class RoleController {
   constructor(protected readonly service: RoleService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateRoleDto) {
     return this.service.save(body);

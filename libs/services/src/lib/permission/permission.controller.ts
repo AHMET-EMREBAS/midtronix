@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('Permission');
 export class PermissionController {
   constructor(protected readonly service: PermissionService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreatePermissionDto) {
     return this.service.save(body);

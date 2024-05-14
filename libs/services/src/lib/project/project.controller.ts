@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Project');
 export class ProjectController {
   constructor(protected readonly service: ProjectService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateProjectDto) {
     return this.service.save(body);

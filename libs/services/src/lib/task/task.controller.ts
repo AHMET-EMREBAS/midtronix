@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Task');
 export class TaskController {
   constructor(protected readonly service: TaskService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateTaskDto) {
     return this.service.save(body);

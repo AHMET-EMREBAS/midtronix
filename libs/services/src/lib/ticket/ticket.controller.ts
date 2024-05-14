@@ -13,6 +13,11 @@ const R = RestRouteBuilder.get('Ticket');
 export class TicketController {
   constructor(protected readonly service: TicketService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateTicketDto) {
     return this.service.save(body);

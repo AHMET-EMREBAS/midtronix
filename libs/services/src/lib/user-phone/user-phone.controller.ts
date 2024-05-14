@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('UserPhone');
 export class UserPhoneController {
   constructor(protected readonly service: UserPhoneService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateUserPhoneDto) {
     return this.service.save(body);

@@ -17,6 +17,11 @@ const R = RestRouteBuilder.get('ProductVideo');
 export class ProductVideoController {
   constructor(protected readonly service: ProductVideoService) {}
 
+  @R.Metadata()
+  metadata() {
+    return this.service.metadata();
+  }
+
   @R.SaveOne()
   save(@R.Body() body: CreateProductVideoDto) {
     return this.service.save(body);
