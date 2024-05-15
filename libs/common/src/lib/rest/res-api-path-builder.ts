@@ -75,7 +75,7 @@ export class RestApiPathBuilder {
   private readonly BY_ID_PATH = `${this.SINGULAR_PATH}/:${this.ID_KEY}`;
   private readonly RELATION_NAME_PATH = `${this.SINGULAR_PATH}/:${this.ID_KEY}/:${this.RELATION_NAME_KEY}`;
   private readonly RELATION_NAME_AND_ID_PATH = `${this.RELATION_NAME_PATH}/:${this.RELATION_ID_KEY}`;
-  private readonly METADATA_PATH = `${this.PLURAL_PATH}/:${this.METADATA_KEY}`;
+  private readonly METADATA_PATH = `${this.PLURAL_PATH}/${this.METADATA_KEY}`;
   private constructor(protected readonly resourceName: string) {}
 
   private create(): RestApiPaths {

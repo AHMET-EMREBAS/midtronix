@@ -6,6 +6,7 @@ import {
 import { CustomerAddressTableComponent } from './customer-address-table.component';
 
 import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEntityData, withEffects } from '@ngrx/data';

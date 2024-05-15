@@ -171,7 +171,7 @@
         },
         {
             "name": "CategoryTableComponent",
-            "id": "component-CategoryTableComponent-3be73c18c46228f18625a9c93df231f451b38deb12f712eef739c16e50d2cef1d268e182cfcea26e62a4eac1187a29bd66f83e956acc514c9b41d676a64a465e",
+            "id": "component-CategoryTableComponent-299ac24adb5262fbc2c7c217dfe9a0f58e79eda9df7b4ee88d9a05b3692368e082eccd2fa9293512fa4373fa7873c8000e02e89a61a2679544491b00cab4597f",
             "file": "libs/tables/src/lib/tables/category-table/category-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -373,6 +373,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -463,7 +491,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CategoryService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICategory>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CategoryService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICategory>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./category-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -512,7 +540,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-category-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-category-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-category-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-category-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "CategoryToolbarComponent",
@@ -666,7 +694,7 @@
         },
         {
             "name": "CustomerAddressTableComponent",
-            "id": "component-CustomerAddressTableComponent-f9562cc014b81b0bdfce659498986e9d95bcd64ddb582aaa68b1bbab36a9d20d879a7d92570f8d79833adeaae4fbc191ffb54078d3cf771aba7baef64662838a",
+            "id": "component-CustomerAddressTableComponent-e674c2faecc49486b5248052e2f21a0fc89f68b9efb8269ebfdcda5fb65640623a65dc20f00757e3311cb092f688f7b707834c59a7426f05ae22270e8c82c2b4",
             "file": "libs/tables/src/lib/tables/customer-address-table/customer-address-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -868,6 +896,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -958,7 +1014,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerAddressService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerAddressToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_ADDRESS_COLUMNS,\n  CUSTOMER_ADDRESS_DISPLAY_COLUMNS,\n  CUSTOMER_ADDRESS_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerAddress } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-address-table',\n  standalone: true,\n  imports: [...TableModules, CustomerAddressToolbarComponent],\n  templateUrl: './customer-address-table.component.html',\n  styleUrl: './customer-address-table.component.scss',\n  providers: [CustomerAddressService],\n})\nexport class CustomerAddressTableComponent extends BaseTableComponent<ICustomerAddress> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;\n  override columns = CUSTOMER_ADDRESS_COLUMNS;\n  override displayedColumns = CUSTOMER_ADDRESS_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerAddressService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerAddress>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerAddressService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerAddressToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_ADDRESS_COLUMNS,\n  CUSTOMER_ADDRESS_DISPLAY_COLUMNS,\n  CUSTOMER_ADDRESS_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerAddress } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-address-table',\n  standalone: true,\n  imports: [...TableModules, CustomerAddressToolbarComponent],\n  templateUrl: './customer-address-table.component.html',\n  styleUrl: './customer-address-table.component.scss',\n  providers: [CustomerAddressService],\n})\nexport class CustomerAddressTableComponent extends BaseTableComponent<ICustomerAddress> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;\n  override columns = CUSTOMER_ADDRESS_COLUMNS;\n  override displayedColumns = CUSTOMER_ADDRESS_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerAddressService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerAddress>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./customer-address-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1007,7 +1063,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-customer-address-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-address-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-customer-address-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-address-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "CustomerAddressToolbarComponent",
@@ -1161,7 +1217,7 @@
         },
         {
             "name": "CustomerEmailTableComponent",
-            "id": "component-CustomerEmailTableComponent-7cdc3a8ea79aca434605d256ae7412b258305a0ef88393e48a518c69b908325328730732a4be9370535572575ebc47b3172c912a0bcb50a0a748a3b2fd048e24",
+            "id": "component-CustomerEmailTableComponent-ced74b42b92871b4fc60506ee19675a42c3224b621cb0bbf70d0aab9efb8a87f05e444ffc510b011637cd65d1d3106bdcfef4d96b6ab502990de4b0294eeaa62",
             "file": "libs/tables/src/lib/tables/customer-email-table/customer-email-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1363,6 +1419,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -1453,7 +1537,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerEmailService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerEmailToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_EMAIL_COLUMNS,\n  CUSTOMER_EMAIL_DISPLAY_COLUMNS,\n  CUSTOMER_EMAIL_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerEmail } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-email-table',\n  standalone: true,\n  imports: [...TableModules, CustomerEmailToolbarComponent],\n  templateUrl: './customer-email-table.component.html',\n  styleUrl: './customer-email-table.component.scss',\n  providers: [CustomerEmailService],\n})\nexport class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEmail> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;\n  override columns = CUSTOMER_EMAIL_COLUMNS;\n  override displayedColumns = CUSTOMER_EMAIL_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerEmailService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerEmail>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerEmailService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerEmailToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_EMAIL_COLUMNS,\n  CUSTOMER_EMAIL_DISPLAY_COLUMNS,\n  CUSTOMER_EMAIL_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerEmail } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-email-table',\n  standalone: true,\n  imports: [...TableModules, CustomerEmailToolbarComponent],\n  templateUrl: './customer-email-table.component.html',\n  styleUrl: './customer-email-table.component.scss',\n  providers: [CustomerEmailService],\n})\nexport class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEmail> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;\n  override columns = CUSTOMER_EMAIL_COLUMNS;\n  override displayedColumns = CUSTOMER_EMAIL_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerEmailService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerEmail>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./customer-email-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1502,7 +1586,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-customer-email-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-email-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-customer-email-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-email-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "CustomerEmailToolbarComponent",
@@ -1656,7 +1740,7 @@
         },
         {
             "name": "CustomerPhoneTableComponent",
-            "id": "component-CustomerPhoneTableComponent-30fe7490f7fde1ff836f65f35650d698c684128da07c118826e04393de4ca6da889a43750d90406e5d31971697de401f05f977d098db5e8bb03a377917a9aba8",
+            "id": "component-CustomerPhoneTableComponent-e7bd96e5b1e90211d8e86230159a7173b66b9c26cd7c72cc762bdb19b6f39c6cbe6e4bab1fea97a736d0d31be9a8b7afb5bb0a926ccc336af1e62c9beaf0e945",
             "file": "libs/tables/src/lib/tables/customer-phone-table/customer-phone-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1858,6 +1942,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -1948,7 +2060,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerPhoneService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerPhoneToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_PHONE_COLUMNS,\n  CUSTOMER_PHONE_DISPLAY_COLUMNS,\n  CUSTOMER_PHONE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerPhone } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-phone-table',\n  standalone: true,\n  imports: [...TableModules, CustomerPhoneToolbarComponent],\n  templateUrl: './customer-phone-table.component.html',\n  styleUrl: './customer-phone-table.component.scss',\n  providers: [CustomerPhoneService],\n})\nexport class CustomerPhoneTableComponent extends BaseTableComponent<ICustomerPhone> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_PHONE_PAGE_SIZE;\n  override columns = CUSTOMER_PHONE_COLUMNS;\n  override displayedColumns = CUSTOMER_PHONE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerPhoneService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerPhone>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerPhoneService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerPhoneToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_PHONE_COLUMNS,\n  CUSTOMER_PHONE_DISPLAY_COLUMNS,\n  CUSTOMER_PHONE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomerPhone } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-phone-table',\n  standalone: true,\n  imports: [...TableModules, CustomerPhoneToolbarComponent],\n  templateUrl: './customer-phone-table.component.html',\n  styleUrl: './customer-phone-table.component.scss',\n  providers: [CustomerPhoneService],\n})\nexport class CustomerPhoneTableComponent extends BaseTableComponent<ICustomerPhone> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_PHONE_PAGE_SIZE;\n  override columns = CUSTOMER_PHONE_COLUMNS;\n  override displayedColumns = CUSTOMER_PHONE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(\n    service: CustomerPhoneService,\n    protected readonly router: Router\n  ) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomerPhone>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./customer-phone-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1997,7 +2109,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-customer-phone-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-phone-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-customer-phone-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-phone-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "CustomerPhoneToolbarComponent",
@@ -2151,7 +2263,7 @@
         },
         {
             "name": "CustomerTableComponent",
-            "id": "component-CustomerTableComponent-58bb58c04d324322990316a7ce62e21e8b34483d595b4247f98ce5c6a15fdc78747274aef858d854e74dc42589846d448967fb90986e20d5e4ef7ee505d1158c",
+            "id": "component-CustomerTableComponent-fe78cbab6750fb2569c9ac9e9fce21332b6c6166c15d73616ebf2541afff5aa72aa87a61f11cd23ac87c1e84b098c4078bd220f5d7c8f45dd5d1a0020354a28c",
             "file": "libs/tables/src/lib/tables/customer-table/customer-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2353,6 +2465,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -2443,7 +2583,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_COLUMNS,\n  CUSTOMER_DISPLAY_COLUMNS,\n  CUSTOMER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomer } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-table',\n  standalone: true,\n  imports: [...TableModules, CustomerToolbarComponent],\n  templateUrl: './customer-table.component.html',\n  styleUrl: './customer-table.component.scss',\n  providers: [CustomerService],\n})\nexport class CustomerTableComponent extends BaseTableComponent<ICustomer> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_PAGE_SIZE;\n  override columns = CUSTOMER_COLUMNS;\n  override displayedColumns = CUSTOMER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CustomerService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomer>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CustomerService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CustomerToolbarComponent } from '../../toolbars';\nimport {\n  CUSTOMER_COLUMNS,\n  CUSTOMER_DISPLAY_COLUMNS,\n  CUSTOMER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICustomer } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-customer-table',\n  standalone: true,\n  imports: [...TableModules, CustomerToolbarComponent],\n  templateUrl: './customer-table.component.html',\n  styleUrl: './customer-table.component.scss',\n  providers: [CustomerService],\n})\nexport class CustomerTableComponent extends BaseTableComponent<ICustomer> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = CUSTOMER_PAGE_SIZE;\n  override columns = CUSTOMER_COLUMNS;\n  override displayedColumns = CUSTOMER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CustomerService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICustomer>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./customer-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2492,7 +2632,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-customer-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-customer-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-customer-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "CustomerToolbarComponent",
@@ -2646,7 +2786,7 @@
         },
         {
             "name": "DepartmentTableComponent",
-            "id": "component-DepartmentTableComponent-2f96f0914a9a1c170a2d384ecfe4629a9199e6707a0aa4b17670ff74ec027aaa6d74d6a7e491da12c2085d670d3842dd1fa760106866cce29331f2b572ec5210",
+            "id": "component-DepartmentTableComponent-055f586e6eb52cdb336fa4f5954bfca7158481612f997a15da014682e31361352b5ac10c9c768b4a477b3684707b5687a617c0e9aaa8a1cabee9e15783276db5",
             "file": "libs/tables/src/lib/tables/department-table/department-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2848,6 +2988,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -2938,7 +3106,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { DepartmentService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { DepartmentToolbarComponent } from '../../toolbars';\nimport {\n  DEPARTMENT_COLUMNS,\n  DEPARTMENT_DISPLAY_COLUMNS,\n  DEPARTMENT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IDepartment } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-department-table',\n  standalone: true,\n  imports: [...TableModules, DepartmentToolbarComponent],\n  templateUrl: './department-table.component.html',\n  styleUrl: './department-table.component.scss',\n  providers: [DepartmentService],\n})\nexport class DepartmentTableComponent extends BaseTableComponent<IDepartment> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = DEPARTMENT_PAGE_SIZE;\n  override columns = DEPARTMENT_COLUMNS;\n  override displayedColumns = DEPARTMENT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: DepartmentService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IDepartment>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { DepartmentService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { DepartmentToolbarComponent } from '../../toolbars';\nimport {\n  DEPARTMENT_COLUMNS,\n  DEPARTMENT_DISPLAY_COLUMNS,\n  DEPARTMENT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IDepartment } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-department-table',\n  standalone: true,\n  imports: [...TableModules, DepartmentToolbarComponent],\n  templateUrl: './department-table.component.html',\n  styleUrl: './department-table.component.scss',\n  providers: [DepartmentService],\n})\nexport class DepartmentTableComponent extends BaseTableComponent<IDepartment> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = DEPARTMENT_PAGE_SIZE;\n  override columns = DEPARTMENT_COLUMNS;\n  override displayedColumns = DEPARTMENT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: DepartmentService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IDepartment>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./department-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -2987,7 +3155,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-department-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-department-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-department-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-department-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "DepartmentToolbarComponent",
@@ -3141,7 +3309,7 @@
         },
         {
             "name": "ManufacturerTableComponent",
-            "id": "component-ManufacturerTableComponent-3991e89f6057be531dcb6c8f1a392c9652e4d213870d52cc8f6b03086c07faa983d0edba596d09b91119d54317c2d1ab1bd7b63f0e218bdfe18ce89b5269ecf4",
+            "id": "component-ManufacturerTableComponent-bdf883ccd4662f7706924a0a1236c28dedd1413c75a91bbccd31713fb194f2bd413b88134b92011a30dcbbac3d4351451ff4f1b71531fc98578f035afddc4cfa",
             "file": "libs/tables/src/lib/tables/manufacturer-table/manufacturer-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3343,6 +3511,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -3433,7 +3629,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ManufacturerService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ManufacturerToolbarComponent } from '../../toolbars';\nimport {\n  MANUFACTURER_COLUMNS,\n  MANUFACTURER_DISPLAY_COLUMNS,\n  MANUFACTURER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IManufacturer } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-manufacturer-table',\n  standalone: true,\n  imports: [...TableModules, ManufacturerToolbarComponent],\n  templateUrl: './manufacturer-table.component.html',\n  styleUrl: './manufacturer-table.component.scss',\n  providers: [ManufacturerService],\n})\nexport class ManufacturerTableComponent extends BaseTableComponent<IManufacturer> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = MANUFACTURER_PAGE_SIZE;\n  override columns = MANUFACTURER_COLUMNS;\n  override displayedColumns = MANUFACTURER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ManufacturerService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IManufacturer>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ManufacturerService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ManufacturerToolbarComponent } from '../../toolbars';\nimport {\n  MANUFACTURER_COLUMNS,\n  MANUFACTURER_DISPLAY_COLUMNS,\n  MANUFACTURER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IManufacturer } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-manufacturer-table',\n  standalone: true,\n  imports: [...TableModules, ManufacturerToolbarComponent],\n  templateUrl: './manufacturer-table.component.html',\n  styleUrl: './manufacturer-table.component.scss',\n  providers: [ManufacturerService],\n})\nexport class ManufacturerTableComponent extends BaseTableComponent<IManufacturer> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = MANUFACTURER_PAGE_SIZE;\n  override columns = MANUFACTURER_COLUMNS;\n  override displayedColumns = MANUFACTURER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ManufacturerService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IManufacturer>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./manufacturer-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3482,7 +3678,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-manufacturer-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-manufacturer-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-manufacturer-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-manufacturer-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "ManufacturerToolbarComponent",
@@ -3636,7 +3832,7 @@
         },
         {
             "name": "MessageTableComponent",
-            "id": "component-MessageTableComponent-4101c4db58b9f4e5738f8dd5104909b01cf1b7460ecbabe956cdb1fa8fed48f344ee4b3e3ac87e6f4a1ef24e7e887b574d28e7d483652c26908b24118efcde0f",
+            "id": "component-MessageTableComponent-6d2b1f1424480b8ad0aed1e868d320a046b542176f91f1cb7b08d44278aa8b76cbe7a15d17bc6e358ce0aa2318c59c2ad7aeb03678f49a9191e04aae61d6017f",
             "file": "libs/tables/src/lib/tables/message-table/message-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3838,6 +4034,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -3928,7 +4152,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { MessageService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { MessageToolbarComponent } from '../../toolbars';\nimport {\n  MESSAGE_COLUMNS,\n  MESSAGE_DISPLAY_COLUMNS,\n  MESSAGE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IMessage } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-message-table',\n  standalone: true,\n  imports: [...TableModules, MessageToolbarComponent],\n  templateUrl: './message-table.component.html',\n  styleUrl: './message-table.component.scss',\n  providers: [MessageService],\n})\nexport class MessageTableComponent extends BaseTableComponent<IMessage> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = MESSAGE_PAGE_SIZE;\n  override columns = MESSAGE_COLUMNS;\n  override displayedColumns = MESSAGE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: MessageService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IMessage>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { MessageService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { MessageToolbarComponent } from '../../toolbars';\nimport {\n  MESSAGE_COLUMNS,\n  MESSAGE_DISPLAY_COLUMNS,\n  MESSAGE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IMessage } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-message-table',\n  standalone: true,\n  imports: [...TableModules, MessageToolbarComponent],\n  templateUrl: './message-table.component.html',\n  styleUrl: './message-table.component.scss',\n  providers: [MessageService],\n})\nexport class MessageTableComponent extends BaseTableComponent<IMessage> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = MESSAGE_PAGE_SIZE;\n  override columns = MESSAGE_COLUMNS;\n  override displayedColumns = MESSAGE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: MessageService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IMessage>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./message-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -3977,7 +4201,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-message-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-message-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-message-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-message-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "MessageToolbarComponent",
@@ -4131,7 +4355,7 @@
         },
         {
             "name": "NotificationTableComponent",
-            "id": "component-NotificationTableComponent-ece73d27d66dd63a142da5ca03dbc71919abc3af3467787c255923ca2fe466aa8d706cb47364393aac0612dd983c7a5e1eb9c0ff57745645ed5d6d7528f2f40d",
+            "id": "component-NotificationTableComponent-bb7e4f11a3a88031ec69b373f0d82e8878403b94396e46f981d033d64e42ae4812171aa900394b608cbb83d8ead87791551481241d7b50bc3135d0675d93651c",
             "file": "libs/tables/src/lib/tables/notification-table/notification-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4333,6 +4557,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -4423,7 +4675,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { NotificationService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { NotificationToolbarComponent } from '../../toolbars';\nimport {\n  NOTIFICATION_COLUMNS,\n  NOTIFICATION_DISPLAY_COLUMNS,\n  NOTIFICATION_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { INotification } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-notification-table',\n  standalone: true,\n  imports: [...TableModules, NotificationToolbarComponent],\n  templateUrl: './notification-table.component.html',\n  styleUrl: './notification-table.component.scss',\n  providers: [NotificationService],\n})\nexport class NotificationTableComponent extends BaseTableComponent<INotification> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = NOTIFICATION_PAGE_SIZE;\n  override columns = NOTIFICATION_COLUMNS;\n  override displayedColumns = NOTIFICATION_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: NotificationService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, INotification>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { NotificationService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { NotificationToolbarComponent } from '../../toolbars';\nimport {\n  NOTIFICATION_COLUMNS,\n  NOTIFICATION_DISPLAY_COLUMNS,\n  NOTIFICATION_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { INotification } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-notification-table',\n  standalone: true,\n  imports: [...TableModules, NotificationToolbarComponent],\n  templateUrl: './notification-table.component.html',\n  styleUrl: './notification-table.component.scss',\n  providers: [NotificationService],\n})\nexport class NotificationTableComponent extends BaseTableComponent<INotification> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = NOTIFICATION_PAGE_SIZE;\n  override columns = NOTIFICATION_COLUMNS;\n  override displayedColumns = NOTIFICATION_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: NotificationService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, INotification>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./notification-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4472,7 +4724,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-notification-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-notification-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-notification-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-notification-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "NotificationToolbarComponent",
@@ -4626,7 +4878,7 @@
         },
         {
             "name": "PermissionTableComponent",
-            "id": "component-PermissionTableComponent-db1bfa22ab392995894c6284ab57cec18ab99d85102dab095b0501853d109a56ea70f6cbb1afaede3cb85db4f4121d481cc63eba9fafad4f4af170ff776b9860",
+            "id": "component-PermissionTableComponent-c53ae9e7515a8c1eea37b79d748b01c2c195b5499770418677a19aa1ccb8148a08cd768d53eafa846478eda5113dbc9bcefdc5c75bd969f749724d0fe67bbc3e",
             "file": "libs/tables/src/lib/tables/permission-table/permission-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4828,6 +5080,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -4918,7 +5198,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { PermissionService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { PermissionToolbarComponent } from '../../toolbars';\nimport {\n  PERMISSION_COLUMNS,\n  PERMISSION_DISPLAY_COLUMNS,\n  PERMISSION_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IPermission } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-permission-table',\n  standalone: true,\n  imports: [...TableModules, PermissionToolbarComponent],\n  templateUrl: './permission-table.component.html',\n  styleUrl: './permission-table.component.scss',\n  providers: [PermissionService],\n})\nexport class PermissionTableComponent extends BaseTableComponent<IPermission> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PERMISSION_PAGE_SIZE;\n  override columns = PERMISSION_COLUMNS;\n  override displayedColumns = PERMISSION_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: PermissionService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IPermission>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { PermissionService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { PermissionToolbarComponent } from '../../toolbars';\nimport {\n  PERMISSION_COLUMNS,\n  PERMISSION_DISPLAY_COLUMNS,\n  PERMISSION_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IPermission } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-permission-table',\n  standalone: true,\n  imports: [...TableModules, PermissionToolbarComponent],\n  templateUrl: './permission-table.component.html',\n  styleUrl: './permission-table.component.scss',\n  providers: [PermissionService],\n})\nexport class PermissionTableComponent extends BaseTableComponent<IPermission> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PERMISSION_PAGE_SIZE;\n  override columns = PERMISSION_COLUMNS;\n  override displayedColumns = PERMISSION_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: PermissionService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IPermission>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./permission-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4967,7 +5247,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-permission-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-permission-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-permission-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-permission-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "PermissionToolbarComponent",
@@ -5121,7 +5401,7 @@
         },
         {
             "name": "ProductImageTableComponent",
-            "id": "component-ProductImageTableComponent-724fb1a31e425ca0ed68af8c6f6ca54cc3abb11ab60bd032c855e0c56d420d1b03a75ead6ae381a0ff73677413f0a176068ca57b170c894199b9efaf22182358",
+            "id": "component-ProductImageTableComponent-6d4b0f1b9670e09758039f2534981df3148c5af85cde251438ae5123eb40caa381b557828d05750aa44065be4ca9c2418f62bbba6fe50c3caf0ebe54f8ce11cc",
             "file": "libs/tables/src/lib/tables/product-image-table/product-image-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5323,6 +5603,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -5413,7 +5721,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductImageService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductImageToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_IMAGE_COLUMNS,\n  PRODUCT_IMAGE_DISPLAY_COLUMNS,\n  PRODUCT_IMAGE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProductImage } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-image-table',\n  standalone: true,\n  imports: [...TableModules, ProductImageToolbarComponent],\n  templateUrl: './product-image-table.component.html',\n  styleUrl: './product-image-table.component.scss',\n  providers: [ProductImageService],\n})\nexport class ProductImageTableComponent extends BaseTableComponent<IProductImage> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_IMAGE_PAGE_SIZE;\n  override columns = PRODUCT_IMAGE_COLUMNS;\n  override displayedColumns = PRODUCT_IMAGE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductImageService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProductImage>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductImageService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductImageToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_IMAGE_COLUMNS,\n  PRODUCT_IMAGE_DISPLAY_COLUMNS,\n  PRODUCT_IMAGE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProductImage } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-image-table',\n  standalone: true,\n  imports: [...TableModules, ProductImageToolbarComponent],\n  templateUrl: './product-image-table.component.html',\n  styleUrl: './product-image-table.component.scss',\n  providers: [ProductImageService],\n})\nexport class ProductImageTableComponent extends BaseTableComponent<IProductImage> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_IMAGE_PAGE_SIZE;\n  override columns = PRODUCT_IMAGE_COLUMNS;\n  override displayedColumns = PRODUCT_IMAGE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductImageService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProductImage>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./product-image-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5462,7 +5770,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-product-image-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-image-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-product-image-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-image-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "ProductImageToolbarComponent",
@@ -5616,7 +5924,7 @@
         },
         {
             "name": "ProductTableComponent",
-            "id": "component-ProductTableComponent-b0fd001089cd8e9495945d520c93fe030aca63c1dbcf726352e5125b8187d1a9d53f8c942a6490be23857777afb42021ed13fd522b6dfb548c47d768bcf2201b",
+            "id": "component-ProductTableComponent-f1d8661faabbfdee3566e2fa9081d0b6e707b8f0507dc5c5bce914ffe0335154dbc140223208304165376b94be42e8bd4f01029a523e619204f00c7ee3e30494",
             "file": "libs/tables/src/lib/tables/product-table/product-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5818,6 +6126,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -5908,7 +6244,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_COLUMNS,\n  PRODUCT_DISPLAY_COLUMNS,\n  PRODUCT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProduct } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-table',\n  standalone: true,\n  imports: [...TableModules, ProductToolbarComponent],\n  templateUrl: './product-table.component.html',\n  styleUrl: './product-table.component.scss',\n  providers: [ProductService],\n})\nexport class ProductTableComponent extends BaseTableComponent<IProduct> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_PAGE_SIZE;\n  override columns = PRODUCT_COLUMNS;\n  override displayedColumns = PRODUCT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProduct>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_COLUMNS,\n  PRODUCT_DISPLAY_COLUMNS,\n  PRODUCT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProduct } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-table',\n  standalone: true,\n  imports: [...TableModules, ProductToolbarComponent],\n  templateUrl: './product-table.component.html',\n  styleUrl: './product-table.component.scss',\n  providers: [ProductService],\n})\nexport class ProductTableComponent extends BaseTableComponent<IProduct> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_PAGE_SIZE;\n  override columns = PRODUCT_COLUMNS;\n  override displayedColumns = PRODUCT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProduct>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./product-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -5957,7 +6293,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-product-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-product-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "ProductToolbarComponent",
@@ -6111,7 +6447,7 @@
         },
         {
             "name": "ProductVideoTableComponent",
-            "id": "component-ProductVideoTableComponent-46e4e5fe694e9f32fff48619b3607c93374fc4e452fc56402c018493a5b068c7a204c3d6343d0fd4b8dcc48eb8256f2d2dcbafa81ca1322bb6a85babbb915d53",
+            "id": "component-ProductVideoTableComponent-68d1e1ecc479181dba08c20044b68f026fefbcd4258ad39a6cdfbe2cd57a4621ed75ee2e4cdd689a70dc1327992ee13928ff825ec4c3cc5ff5727858f3c256c6",
             "file": "libs/tables/src/lib/tables/product-video-table/product-video-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6313,6 +6649,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -6403,7 +6767,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductVideoService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductVideoToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_VIDEO_COLUMNS,\n  PRODUCT_VIDEO_DISPLAY_COLUMNS,\n  PRODUCT_VIDEO_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProductVideo } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-video-table',\n  standalone: true,\n  imports: [...TableModules, ProductVideoToolbarComponent],\n  templateUrl: './product-video-table.component.html',\n  styleUrl: './product-video-table.component.scss',\n  providers: [ProductVideoService],\n})\nexport class ProductVideoTableComponent extends BaseTableComponent<IProductVideo> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_VIDEO_PAGE_SIZE;\n  override columns = PRODUCT_VIDEO_COLUMNS;\n  override displayedColumns = PRODUCT_VIDEO_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductVideoService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProductVideo>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProductVideoService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProductVideoToolbarComponent } from '../../toolbars';\nimport {\n  PRODUCT_VIDEO_COLUMNS,\n  PRODUCT_VIDEO_DISPLAY_COLUMNS,\n  PRODUCT_VIDEO_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProductVideo } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-product-video-table',\n  standalone: true,\n  imports: [...TableModules, ProductVideoToolbarComponent],\n  templateUrl: './product-video-table.component.html',\n  styleUrl: './product-video-table.component.scss',\n  providers: [ProductVideoService],\n})\nexport class ProductVideoTableComponent extends BaseTableComponent<IProductVideo> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PRODUCT_VIDEO_PAGE_SIZE;\n  override columns = PRODUCT_VIDEO_COLUMNS;\n  override displayedColumns = PRODUCT_VIDEO_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProductVideoService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProductVideo>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./product-video-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -6452,7 +6816,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-product-video-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-video-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-product-video-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-product-video-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "ProductVideoToolbarComponent",
@@ -6606,7 +6970,7 @@
         },
         {
             "name": "ProjectTableComponent",
-            "id": "component-ProjectTableComponent-5033b3a21c32e0b93fe7ab70e1214ad7386456df09c5dc927f706e0f8969c1c9883083a35bee6fe5ba3e22341d4b4647bd949d7bb7b970b2c0147af23887738e",
+            "id": "component-ProjectTableComponent-59b4c863235af08b8942b6e1534084bbb5f7c3ed69707633c092e5037d26de4642489dbaaf4e38d2bb2427174899d96aaaad8ce9af6982d31280382e46ac52c7",
             "file": "libs/tables/src/lib/tables/project-table/project-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6808,6 +7172,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -6898,7 +7290,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProjectService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProjectToolbarComponent } from '../../toolbars';\nimport {\n  PROJECT_COLUMNS,\n  PROJECT_DISPLAY_COLUMNS,\n  PROJECT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProject } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-project-table',\n  standalone: true,\n  imports: [...TableModules, ProjectToolbarComponent],\n  templateUrl: './project-table.component.html',\n  styleUrl: './project-table.component.scss',\n  providers: [ProjectService],\n})\nexport class ProjectTableComponent extends BaseTableComponent<IProject> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PROJECT_PAGE_SIZE;\n  override columns = PROJECT_COLUMNS;\n  override displayedColumns = PROJECT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProjectService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProject>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { ProjectService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { ProjectToolbarComponent } from '../../toolbars';\nimport {\n  PROJECT_COLUMNS,\n  PROJECT_DISPLAY_COLUMNS,\n  PROJECT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IProject } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-project-table',\n  standalone: true,\n  imports: [...TableModules, ProjectToolbarComponent],\n  templateUrl: './project-table.component.html',\n  styleUrl: './project-table.component.scss',\n  providers: [ProjectService],\n})\nexport class ProjectTableComponent extends BaseTableComponent<IProject> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = PROJECT_PAGE_SIZE;\n  override columns = PROJECT_COLUMNS;\n  override displayedColumns = PROJECT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: ProjectService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IProject>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./project-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -6947,7 +7339,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-project-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-project-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-project-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-project-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "ProjectToolbarComponent",
@@ -7101,7 +7493,7 @@
         },
         {
             "name": "RoleTableComponent",
-            "id": "component-RoleTableComponent-aa1ce848921159f6946f2a4d70f43a69db6ab528d4a527e04466305eeedfa40a62afb3facf157a8578e330ebcded46d0ec8b8fe61709c23c77ad4855cb964482",
+            "id": "component-RoleTableComponent-433da6234b235b3187b6109d2956a2461526fa26261166814011fefbe1ac556f31d249c94e27db0eab707e3caf0a62575d78b3a3ba175467606fb3bb749a2bf5",
             "file": "libs/tables/src/lib/tables/role-table/role-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7303,6 +7695,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -7393,7 +7813,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { RoleService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { RoleToolbarComponent } from '../../toolbars';\nimport {\n  ROLE_COLUMNS,\n  ROLE_DISPLAY_COLUMNS,\n  ROLE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IRole } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-role-table',\n  standalone: true,\n  imports: [...TableModules, RoleToolbarComponent],\n  templateUrl: './role-table.component.html',\n  styleUrl: './role-table.component.scss',\n  providers: [RoleService],\n})\nexport class RoleTableComponent extends BaseTableComponent<IRole> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = ROLE_PAGE_SIZE;\n  override columns = ROLE_COLUMNS;\n  override displayedColumns = ROLE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: RoleService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IRole>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { RoleService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { RoleToolbarComponent } from '../../toolbars';\nimport {\n  ROLE_COLUMNS,\n  ROLE_DISPLAY_COLUMNS,\n  ROLE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IRole } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-role-table',\n  standalone: true,\n  imports: [...TableModules, RoleToolbarComponent],\n  templateUrl: './role-table.component.html',\n  styleUrl: './role-table.component.scss',\n  providers: [RoleService],\n})\nexport class RoleTableComponent extends BaseTableComponent<IRole> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = ROLE_PAGE_SIZE;\n  override columns = ROLE_COLUMNS;\n  override displayedColumns = ROLE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: RoleService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IRole>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./role-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -7442,7 +7862,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-role-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-role-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-role-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-role-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "RoleToolbarComponent",
@@ -7596,7 +8016,7 @@
         },
         {
             "name": "SkuTableComponent",
-            "id": "component-SkuTableComponent-9c44f1db549e3b55baa490ae96cc37fb7b043d24182e87c1700532abd09006b9baf4957dd358236d8f2fa683a7b45b19f8ee01cecc9a2568036520ef735ae8ec",
+            "id": "component-SkuTableComponent-65bee060307edcdb01cdbdd096506f1d40623e3cedfaa957f0923726956bb8308ad3f913377a3bff2353cdb7076a384319107f6f4c1fd04e4d6fcaa86a47c96b",
             "file": "libs/tables/src/lib/tables/sku-table/sku-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7798,6 +8218,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -7888,7 +8336,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { SkuService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { SkuToolbarComponent } from '../../toolbars';\nimport {\n  SKU_COLUMNS,\n  SKU_DISPLAY_COLUMNS,\n  SKU_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ISku } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-sku-table',\n  standalone: true,\n  imports: [...TableModules, SkuToolbarComponent],\n  templateUrl: './sku-table.component.html',\n  styleUrl: './sku-table.component.scss',\n  providers: [SkuService],\n})\nexport class SkuTableComponent extends BaseTableComponent<ISku> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = SKU_PAGE_SIZE;\n  override columns = SKU_COLUMNS;\n  override displayedColumns = SKU_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: SkuService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ISku>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { SkuService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { SkuToolbarComponent } from '../../toolbars';\nimport {\n  SKU_COLUMNS,\n  SKU_DISPLAY_COLUMNS,\n  SKU_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ISku } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-sku-table',\n  standalone: true,\n  imports: [...TableModules, SkuToolbarComponent],\n  templateUrl: './sku-table.component.html',\n  styleUrl: './sku-table.component.scss',\n  providers: [SkuService],\n})\nexport class SkuTableComponent extends BaseTableComponent<ISku> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = SKU_PAGE_SIZE;\n  override columns = SKU_COLUMNS;\n  override displayedColumns = SKU_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: SkuService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ISku>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./sku-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -7937,7 +8385,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-sku-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-sku-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-sku-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-sku-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "SkuToolbarComponent",
@@ -8091,7 +8539,7 @@
         },
         {
             "name": "SprintTableComponent",
-            "id": "component-SprintTableComponent-b94f3e4f8c68d66c8200cf2e9801124f32c8894dd2ae3a449f19a2fb2b62d8ca2023edc3e505be276148e60e0b38874854a48fe9c436bf6ab2f470a770abb9ed",
+            "id": "component-SprintTableComponent-f2918a7f44fcaa79a0d47c50cdbee1825bd16267e923ab02cf332293d2d56ee4d68936508a970fdac528a8b7db2259872e8b54af1de86247147a6c04cd2168e2",
             "file": "libs/tables/src/lib/tables/sprint-table/sprint-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8293,6 +8741,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -8383,7 +8859,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { SprintService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { SprintToolbarComponent } from '../../toolbars';\nimport {\n  SPRINT_COLUMNS,\n  SPRINT_DISPLAY_COLUMNS,\n  SPRINT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ISprint } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-sprint-table',\n  standalone: true,\n  imports: [...TableModules, SprintToolbarComponent],\n  templateUrl: './sprint-table.component.html',\n  styleUrl: './sprint-table.component.scss',\n  providers: [SprintService],\n})\nexport class SprintTableComponent extends BaseTableComponent<ISprint> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = SPRINT_PAGE_SIZE;\n  override columns = SPRINT_COLUMNS;\n  override displayedColumns = SPRINT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: SprintService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ISprint>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { SprintService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { SprintToolbarComponent } from '../../toolbars';\nimport {\n  SPRINT_COLUMNS,\n  SPRINT_DISPLAY_COLUMNS,\n  SPRINT_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ISprint } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-sprint-table',\n  standalone: true,\n  imports: [...TableModules, SprintToolbarComponent],\n  templateUrl: './sprint-table.component.html',\n  styleUrl: './sprint-table.component.scss',\n  providers: [SprintService],\n})\nexport class SprintTableComponent extends BaseTableComponent<ISprint> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = SPRINT_PAGE_SIZE;\n  override columns = SPRINT_COLUMNS;\n  override displayedColumns = SPRINT_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: SprintService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ISprint>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./sprint-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -8432,7 +8908,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-sprint-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-sprint-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-sprint-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-sprint-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "SprintToolbarComponent",
@@ -8586,7 +9062,7 @@
         },
         {
             "name": "StoreTableComponent",
-            "id": "component-StoreTableComponent-ef60cc89cbe9a8e23081987319ab6bdbb1c7d49443e3b27e3969b1bc36020dd182d820526c457b9f2921eecbaf2d4565ebc8d35774837914350440768e5523be",
+            "id": "component-StoreTableComponent-892cefa73fd9d8fc7802583a3a3686827ba226f0bacc351ba57795cf53819e3f69de1afc86ad9f87fe2deaa98435b0a37439750180287e738d14d8aea0f235b4",
             "file": "libs/tables/src/lib/tables/store-table/store-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8788,6 +9264,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -8878,7 +9382,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { StoreService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { StoreToolbarComponent } from '../../toolbars';\nimport {\n  STORE_COLUMNS,\n  STORE_DISPLAY_COLUMNS,\n  STORE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IStore } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-store-table',\n  standalone: true,\n  imports: [...TableModules, StoreToolbarComponent],\n  templateUrl: './store-table.component.html',\n  styleUrl: './store-table.component.scss',\n  providers: [StoreService],\n})\nexport class StoreTableComponent extends BaseTableComponent<IStore> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = STORE_PAGE_SIZE;\n  override columns = STORE_COLUMNS;\n  override displayedColumns = STORE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: StoreService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IStore>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { StoreService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { StoreToolbarComponent } from '../../toolbars';\nimport {\n  STORE_COLUMNS,\n  STORE_DISPLAY_COLUMNS,\n  STORE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IStore } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-store-table',\n  standalone: true,\n  imports: [...TableModules, StoreToolbarComponent],\n  templateUrl: './store-table.component.html',\n  styleUrl: './store-table.component.scss',\n  providers: [StoreService],\n})\nexport class StoreTableComponent extends BaseTableComponent<IStore> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = STORE_PAGE_SIZE;\n  override columns = STORE_COLUMNS;\n  override displayedColumns = STORE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: StoreService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IStore>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./store-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -8927,7 +9431,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-store-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-store-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-store-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-store-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "StoreToolbarComponent",
@@ -9081,7 +9585,7 @@
         },
         {
             "name": "TaskTableComponent",
-            "id": "component-TaskTableComponent-dcd1bb8b95b63930e3ac528f6cacaf8818a5e1d03dc61f0e7b0c85cdb369a8984f5bac00839258acd4fdbc84142888e147a2a51b938a916d822ad01de7bd8528",
+            "id": "component-TaskTableComponent-c479fab588471483c9d5294ae25a8af0fd7edb6597fa84be57757cf50628bb38e451fd2f10890282e2760b113bf432cc540d84c3cbacc281f0ac6ea821cc5200",
             "file": "libs/tables/src/lib/tables/task-table/task-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9283,6 +9787,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -9373,7 +9905,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { TaskService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { TaskToolbarComponent } from '../../toolbars';\nimport {\n  TASK_COLUMNS,\n  TASK_DISPLAY_COLUMNS,\n  TASK_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ITask } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-task-table',\n  standalone: true,\n  imports: [...TableModules, TaskToolbarComponent],\n  templateUrl: './task-table.component.html',\n  styleUrl: './task-table.component.scss',\n  providers: [TaskService],\n})\nexport class TaskTableComponent extends BaseTableComponent<ITask> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = TASK_PAGE_SIZE;\n  override columns = TASK_COLUMNS;\n  override displayedColumns = TASK_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: TaskService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ITask>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { TaskService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { TaskToolbarComponent } from '../../toolbars';\nimport {\n  TASK_COLUMNS,\n  TASK_DISPLAY_COLUMNS,\n  TASK_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ITask } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-task-table',\n  standalone: true,\n  imports: [...TableModules, TaskToolbarComponent],\n  templateUrl: './task-table.component.html',\n  styleUrl: './task-table.component.scss',\n  providers: [TaskService],\n})\nexport class TaskTableComponent extends BaseTableComponent<ITask> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = TASK_PAGE_SIZE;\n  override columns = TASK_COLUMNS;\n  override displayedColumns = TASK_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: TaskService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ITask>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./task-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -9422,7 +9954,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-task-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-task-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-task-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-task-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "TaskToolbarComponent",
@@ -9576,7 +10108,7 @@
         },
         {
             "name": "TicketTableComponent",
-            "id": "component-TicketTableComponent-29e13542614af5628e3f7ddaf625f214cbbeb1c2c36c77dd1a6fbf6b416aa1514d677abc68dfd477aa8cd4deee6626e32eef2db747e368d973a2362ef8c855d7",
+            "id": "component-TicketTableComponent-b70b0a3d47a264707e0be3cc2fbf83497854019bcaec3a29d57834d5722a42681b27cf650a3880a777b9e4ae7a3e9462537b3399ebb9ba42d94c59b476e78caa",
             "file": "libs/tables/src/lib/tables/ticket-table/ticket-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -9778,6 +10310,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -9868,7 +10428,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { TicketService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { TicketToolbarComponent } from '../../toolbars';\nimport {\n  TICKET_COLUMNS,\n  TICKET_DISPLAY_COLUMNS,\n  TICKET_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ITicket } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-ticket-table',\n  standalone: true,\n  imports: [...TableModules, TicketToolbarComponent],\n  templateUrl: './ticket-table.component.html',\n  styleUrl: './ticket-table.component.scss',\n  providers: [TicketService],\n})\nexport class TicketTableComponent extends BaseTableComponent<ITicket> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = TICKET_PAGE_SIZE;\n  override columns = TICKET_COLUMNS;\n  override displayedColumns = TICKET_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: TicketService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ITicket>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { TicketService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { TicketToolbarComponent } from '../../toolbars';\nimport {\n  TICKET_COLUMNS,\n  TICKET_DISPLAY_COLUMNS,\n  TICKET_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ITicket } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-ticket-table',\n  standalone: true,\n  imports: [...TableModules, TicketToolbarComponent],\n  templateUrl: './ticket-table.component.html',\n  styleUrl: './ticket-table.component.scss',\n  providers: [TicketService],\n})\nexport class TicketTableComponent extends BaseTableComponent<ITicket> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = TICKET_PAGE_SIZE;\n  override columns = TICKET_COLUMNS;\n  override displayedColumns = TICKET_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: TicketService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ITicket>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./ticket-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -9917,7 +10477,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-ticket-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-ticket-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-ticket-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-ticket-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "TicketToolbarComponent",
@@ -10071,7 +10631,7 @@
         },
         {
             "name": "UserAddressTableComponent",
-            "id": "component-UserAddressTableComponent-a2263e099a74ba3020acd3987ecfebf44e03d9f57ace3cd079b0e93e9677fa90c69f5287b4391cc088528f76443780a4cc26ac5b9dd676c236a199b8d45264ce",
+            "id": "component-UserAddressTableComponent-8bfc06d8cd3b4e66374b59def73cbb928b64382a205d54bee6a6e29f89ed176129dc30d1dcf23a7ef800d647c6941fe6bab5f2e9bb4471e78381e9e6856ba600",
             "file": "libs/tables/src/lib/tables/user-address-table/user-address-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10273,6 +10833,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -10363,7 +10951,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserAddressService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserAddressToolbarComponent } from '../../toolbars';\nimport {\n  USER_ADDRESS_COLUMNS,\n  USER_ADDRESS_DISPLAY_COLUMNS,\n  USER_ADDRESS_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserAddress } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-address-table',\n  standalone: true,\n  imports: [...TableModules, UserAddressToolbarComponent],\n  templateUrl: './user-address-table.component.html',\n  styleUrl: './user-address-table.component.scss',\n  providers: [UserAddressService],\n})\nexport class UserAddressTableComponent extends BaseTableComponent<IUserAddress> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_ADDRESS_PAGE_SIZE;\n  override columns = USER_ADDRESS_COLUMNS;\n  override displayedColumns = USER_ADDRESS_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserAddressService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserAddress>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserAddressService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserAddressToolbarComponent } from '../../toolbars';\nimport {\n  USER_ADDRESS_COLUMNS,\n  USER_ADDRESS_DISPLAY_COLUMNS,\n  USER_ADDRESS_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserAddress } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-address-table',\n  standalone: true,\n  imports: [...TableModules, UserAddressToolbarComponent],\n  templateUrl: './user-address-table.component.html',\n  styleUrl: './user-address-table.component.scss',\n  providers: [UserAddressService],\n})\nexport class UserAddressTableComponent extends BaseTableComponent<IUserAddress> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_ADDRESS_PAGE_SIZE;\n  override columns = USER_ADDRESS_COLUMNS;\n  override displayedColumns = USER_ADDRESS_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserAddressService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserAddress>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./user-address-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -10412,7 +11000,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-user-address-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-address-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-user-address-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-address-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "UserAddressToolbarComponent",
@@ -10566,7 +11154,7 @@
         },
         {
             "name": "UserEmailTableComponent",
-            "id": "component-UserEmailTableComponent-58c5f3e084fd72da42f54989cc1e2b12927a76b8cfa955a00351de8abf3dcb264930809bdcd92269de6cb54aacb4ec4989ec7a4383236cebcbf1a620fb3f96b6",
+            "id": "component-UserEmailTableComponent-dff74b847b796252c367535f91803e31176047348f37603fe05d136f9ee9f9860877b3d8f805940cf4cf6f987448c325fbf45626a627f9c28791d1c31ed3c79c",
             "file": "libs/tables/src/lib/tables/user-email-table/user-email-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -10768,6 +11356,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -10858,7 +11474,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserEmailService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserEmailToolbarComponent } from '../../toolbars';\nimport {\n  USER_EMAIL_COLUMNS,\n  USER_EMAIL_DISPLAY_COLUMNS,\n  USER_EMAIL_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserEmail } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-email-table',\n  standalone: true,\n  imports: [...TableModules, UserEmailToolbarComponent],\n  templateUrl: './user-email-table.component.html',\n  styleUrl: './user-email-table.component.scss',\n  providers: [UserEmailService],\n})\nexport class UserEmailTableComponent extends BaseTableComponent<IUserEmail> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_EMAIL_PAGE_SIZE;\n  override columns = USER_EMAIL_COLUMNS;\n  override displayedColumns = USER_EMAIL_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserEmailService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserEmail>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserEmailService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserEmailToolbarComponent } from '../../toolbars';\nimport {\n  USER_EMAIL_COLUMNS,\n  USER_EMAIL_DISPLAY_COLUMNS,\n  USER_EMAIL_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserEmail } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-email-table',\n  standalone: true,\n  imports: [...TableModules, UserEmailToolbarComponent],\n  templateUrl: './user-email-table.component.html',\n  styleUrl: './user-email-table.component.scss',\n  providers: [UserEmailService],\n})\nexport class UserEmailTableComponent extends BaseTableComponent<IUserEmail> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_EMAIL_PAGE_SIZE;\n  override columns = USER_EMAIL_COLUMNS;\n  override displayedColumns = USER_EMAIL_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserEmailService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserEmail>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./user-email-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -10907,7 +11523,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-user-email-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-email-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-user-email-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-email-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "UserEmailToolbarComponent",
@@ -11061,7 +11677,7 @@
         },
         {
             "name": "UserPhoneTableComponent",
-            "id": "component-UserPhoneTableComponent-b4a58fe92453d134429d35ac8b7564b486235011b92467de77a3f943d5adc207fe114b3ef69acdf77cefa8c6d622c3bf09fb3d68d3bdf8e1263bd45d0dd5d9ee",
+            "id": "component-UserPhoneTableComponent-555e73fec640a5cc1c5b074e606d8f6ed8f1037da24f9a6f0241d6161545f80addacad9df54712c38f4d27c70c2ec050822553e0ded708563908e3de758c750c",
             "file": "libs/tables/src/lib/tables/user-phone-table/user-phone-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11263,6 +11879,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -11353,7 +11997,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserPhoneService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserPhoneToolbarComponent } from '../../toolbars';\nimport {\n  USER_PHONE_COLUMNS,\n  USER_PHONE_DISPLAY_COLUMNS,\n  USER_PHONE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserPhone } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-phone-table',\n  standalone: true,\n  imports: [...TableModules, UserPhoneToolbarComponent],\n  templateUrl: './user-phone-table.component.html',\n  styleUrl: './user-phone-table.component.scss',\n  providers: [UserPhoneService],\n})\nexport class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_PHONE_PAGE_SIZE;\n  override columns = USER_PHONE_COLUMNS;\n  override displayedColumns = USER_PHONE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserPhoneService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserPhone>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserPhoneService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserPhoneToolbarComponent } from '../../toolbars';\nimport {\n  USER_PHONE_COLUMNS,\n  USER_PHONE_DISPLAY_COLUMNS,\n  USER_PHONE_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUserPhone } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-phone-table',\n  standalone: true,\n  imports: [...TableModules, UserPhoneToolbarComponent],\n  templateUrl: './user-phone-table.component.html',\n  styleUrl: './user-phone-table.component.scss',\n  providers: [UserPhoneService],\n})\nexport class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_PHONE_PAGE_SIZE;\n  override columns = USER_PHONE_COLUMNS;\n  override displayedColumns = USER_PHONE_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserPhoneService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUserPhone>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./user-phone-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -11402,7 +12046,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-user-phone-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-phone-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-user-phone-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-phone-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "UserPhoneToolbarComponent",
@@ -11556,7 +12200,7 @@
         },
         {
             "name": "UserTableComponent",
-            "id": "component-UserTableComponent-f6668c79d31fa4fed3e3a8d989167223d8e464513ef578f02cbcd998841e06b7f4b7129a8a593e8798b8facc487b423d849f9a35814e0b279b2acb52dfb66b9e",
+            "id": "component-UserTableComponent-b0402e38515d2d310b64718ebf591d3d5e554085945c809d9b0e9f5a0131e0768da985f7a1fdc09012ec63bceab3db0cd2bffedab70480a1dbdd33a41ba64fbd",
             "file": "libs/tables/src/lib/tables/user-table/user-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11758,6 +12402,34 @@
                     ]
                 },
                 {
+                    "name": "pageHander",
+                    "args": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -11848,7 +12520,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserToolbarComponent } from '../../toolbars';\nimport {\n  USER_COLUMNS,\n  USER_DISPLAY_COLUMNS,\n  USER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUser } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-table',\n  standalone: true,\n  imports: [...TableModules, UserToolbarComponent],\n  templateUrl: './user-table.component.html',\n  styleUrl: './user-table.component.scss',\n  providers: [UserService],\n})\nexport class UserTableComponent extends BaseTableComponent<IUser> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_PAGE_SIZE;\n  override columns = USER_COLUMNS;\n  override displayedColumns = USER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUser>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { UserService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { UserToolbarComponent } from '../../toolbars';\nimport {\n  USER_COLUMNS,\n  USER_DISPLAY_COLUMNS,\n  USER_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { IUser } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\nimport { MatPaginator, PageEvent } from '@angular/material/paginator';\n\n@Component({\n  selector: 'mdtx-user-table',\n  standalone: true,\n  imports: [...TableModules, UserToolbarComponent],\n  templateUrl: './user-table.component.html',\n  styleUrl: './user-table.component.scss',\n  providers: [UserService],\n})\nexport class UserTableComponent extends BaseTableComponent<IUser> {\n  @ViewChild('tableRef') table!: TableComponent;\n  @ViewChild('paginator') paginator!: MatPaginator;\n\n  override pageIndex = 0;\n  override pageSize = USER_PAGE_SIZE;\n  override columns = USER_COLUMNS;\n  override displayedColumns = USER_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: UserService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, IUser>) {\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    console.log('Searching : ', searchString);\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n\n  pageHander(page: PageEvent) {\n    this.service.clearCache();\n    this.service.getWithQuery({\n      take: page.pageSize,\n      skip: page.pageIndex * page.pageSize,\n    });\n  }\n}\n",
             "styleUrl": "./user-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -11897,7 +12569,7 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-user-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n>\n</mat-paginator>\n"
+            "templateData": "<mdtx-user-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-user-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  #paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n  [showFirstLastButtons]=\"true\"\n  (page)=\"pageHander($event)\"\n>\n</mat-paginator>\n"
         },
         {
             "name": "UserToolbarComponent",
@@ -18611,7 +19283,7 @@
                 "linktype": "component",
                 "name": "CategoryTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18650,7 +19322,7 @@
                 "linktype": "component",
                 "name": "CustomerAddressTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18689,7 +19361,7 @@
                 "linktype": "component",
                 "name": "CustomerEmailTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18728,7 +19400,7 @@
                 "linktype": "component",
                 "name": "CustomerPhoneTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18767,7 +19439,7 @@
                 "linktype": "component",
                 "name": "CustomerTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18806,7 +19478,7 @@
                 "linktype": "component",
                 "name": "DepartmentTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18845,7 +19517,7 @@
                 "linktype": "component",
                 "name": "ManufacturerTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18884,7 +19556,7 @@
                 "linktype": "component",
                 "name": "MessageTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18923,7 +19595,7 @@
                 "linktype": "component",
                 "name": "NotificationTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -18962,7 +19634,7 @@
                 "linktype": "component",
                 "name": "PermissionTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19001,7 +19673,7 @@
                 "linktype": "component",
                 "name": "ProductImageTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19040,7 +19712,7 @@
                 "linktype": "component",
                 "name": "ProductTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19079,7 +19751,7 @@
                 "linktype": "component",
                 "name": "ProductVideoTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19118,7 +19790,7 @@
                 "linktype": "component",
                 "name": "ProjectTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19157,7 +19829,7 @@
                 "linktype": "component",
                 "name": "RoleTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19196,7 +19868,7 @@
                 "linktype": "component",
                 "name": "SkuTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19235,7 +19907,7 @@
                 "linktype": "component",
                 "name": "SprintTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19274,7 +19946,7 @@
                 "linktype": "component",
                 "name": "StoreTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19313,7 +19985,7 @@
                 "linktype": "component",
                 "name": "TaskTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19352,7 +20024,7 @@
                 "linktype": "component",
                 "name": "TicketTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19391,7 +20063,7 @@
                 "linktype": "component",
                 "name": "UserAddressTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19430,7 +20102,7 @@
                 "linktype": "component",
                 "name": "UserEmailTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19469,7 +20141,7 @@
                 "linktype": "component",
                 "name": "UserPhoneTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -19508,7 +20180,7 @@
                 "linktype": "component",
                 "name": "UserTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {

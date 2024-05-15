@@ -28,7 +28,7 @@ export class CollectionBaseService<
     this.apiPaths = RestApiPathBuilder.get(entity);
 
     this.metadata$ = this.httpClient.get<ResourceMetadata>(
-      this.apiPaths.METADATA_PATH
+      'api/' + this.apiPaths.METADATA_PATH
     );
 
     this.asOptions$ = this.httpClient

@@ -11,7 +11,7 @@ import {
 import { INotification } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'mdtx-notification-table',
@@ -58,6 +58,14 @@ export class NotificationTableComponent extends BaseTableComponent<INotification
       take: this.pageSize,
       skip: this.pageIndex * this.pageSize,
       search: searchString,
+    });
+  }
+
+  pageHander(page: PageEvent) {
+    this.service.clearCache();
+    this.service.getWithQuery({
+      take: page.pageSize,
+      skip: page.pageIndex * page.pageSize,
     });
   }
 }
