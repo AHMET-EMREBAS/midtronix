@@ -30,7 +30,7 @@ const meta: Meta<ProductImageTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              ProductImage: 'Categories',
+              ProductImage: 's',
             },
             entityMetadata: {
               ProductImage: {},

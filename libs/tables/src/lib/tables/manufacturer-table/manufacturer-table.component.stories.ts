@@ -30,7 +30,7 @@ const meta: Meta<ManufacturerTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Manufacturer: 'Categories',
+              Manufacturer: 's',
             },
             entityMetadata: {
               Manufacturer: {},

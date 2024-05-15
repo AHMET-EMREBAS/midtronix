@@ -30,7 +30,7 @@ const meta: Meta<DepartmentTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Department: 'Categories',
+              Department: 's',
             },
             entityMetadata: {
               Department: {},

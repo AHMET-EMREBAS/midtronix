@@ -30,7 +30,7 @@ const meta: Meta<ProductVideoTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              ProductVideo: 'Categories',
+              ProductVideo: 'ProductVideoes',
             },
             entityMetadata: {
               ProductVideo: {},

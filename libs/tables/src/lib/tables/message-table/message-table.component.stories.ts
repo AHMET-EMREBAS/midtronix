@@ -30,7 +30,7 @@ const meta: Meta<MessageTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Message: 'Categories',
+              Message: 's',
             },
             entityMetadata: {
               Message: {},

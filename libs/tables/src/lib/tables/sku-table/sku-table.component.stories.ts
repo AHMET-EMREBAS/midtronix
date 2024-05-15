@@ -30,7 +30,7 @@ const meta: Meta<SkuTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Sku: 'Categories',
+              Sku: 's',
             },
             entityMetadata: {
               Sku: {},

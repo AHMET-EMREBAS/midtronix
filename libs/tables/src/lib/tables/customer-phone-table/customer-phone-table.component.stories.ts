@@ -30,7 +30,7 @@ const meta: Meta<CustomerPhoneTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              CustomerPhone: 'Categories',
+              CustomerPhone: 's',
             },
             entityMetadata: {
               CustomerPhone: {},

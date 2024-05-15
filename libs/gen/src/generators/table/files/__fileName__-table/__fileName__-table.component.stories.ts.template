@@ -30,7 +30,7 @@ const meta: Meta<<%- className %>TableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              <%- className %>: 'Categories',
+              <%- className %>: '<%- pluralClassName %>',
             },
             entityMetadata: {
               <%- className %>: {},

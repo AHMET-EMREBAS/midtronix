@@ -30,7 +30,7 @@ const meta: Meta<UserAddressTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              UserAddress: 'Categories',
+              UserAddress: 'UserAddresses',
             },
             entityMetadata: {
               UserAddress: {},

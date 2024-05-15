@@ -13,6 +13,8 @@ export function plural(value: string) {
       return value.slice(0, -1) + 'ies';
     } else if (lowerName.endsWith('o')) {
       return value + 'es';
+    } else if (lowerName.endsWith('ss')) {
+      return value + 'es';
     }
     return value + 's';
   }
