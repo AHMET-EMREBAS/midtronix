@@ -449,6 +449,80 @@
             ]
         },
         {
+            "name": "BaseSearchComponent",
+            "id": "component-BaseSearchComponent-b9ad3ad247827265b5a0fb3d75d0501c1713bb47b8e962ae953062e661f45f6a7ed56298e3db6b28f3506ea9c8dd559a462a7fe481faf915c5a6143d415dcd81",
+            "file": "libs/forms/src/lib/search-inputs/__base/base-search.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [],
+            "styles": [],
+            "template": "",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { IID } from '@mdtx/common';\r\nimport { CollectionBaseService } from '@mdtx/ngrx';\r\n\r\n@Component({ template: '' })\r\nexport class BaseSearchComponent<T extends IID> implements OnInit {\r\n  constructor(protected readonly service: CollectionBaseService<T>) {}\r\n  ngOnInit(): void {\r\n    this.service.getAsOptions();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "service",
+                        "type": "CollectionBaseService<T>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 6,
+                "jsdoctags": [
+                    {
+                        "name": "service",
+                        "type": "CollectionBaseService<T>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
             "name": "CategoryFormComponent",
             "id": "component-CategoryFormComponent-11c9681cbf0b5265f9921dc7e95500f80781c38f6e94722ea4b0f0546e437f791cf412d4820cb4ba365779bdfd810aaa68cbd309918ccc3b423e93294612e4ff",
             "file": "libs/forms/src/lib/form-components/category/category-form.component.ts",
@@ -688,8 +762,8 @@
         },
         {
             "name": "CategorySearchComponent",
-            "id": "component-CategorySearchComponent-5df5a23c796b05e377767f4f7eb6603ac6ac1fac012f4dcf7f5bc73d4a63cbaae6f9191f8b49d58797661c3a4b976b29b7040c4adf9ff1bc4937507ff82680a8",
-            "file": "libs/forms/src/lib/search-inputs/category-search.component.ts",
+            "id": "component-CategorySearchComponent-aa0b64a35b9fa238e177e6ac35ee14da64b2b284b178836d10a64902e33156cb123eae1ce1cab506f16dc63844f33ae4178e0a783e460138d0e909c9a1558505",
+            "file": "libs/forms/src/lib/search-inputs/category/category-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -703,61 +777,26 @@
             "selector": "mdtx-category-search",
             "styleUrls": [],
             "styles": [],
-            "template": "<mdtx-input-autocomplete\n  #inputRef\n  [options]=\"(service.entities$ | async) ?? []\"\n  label=\"Search Category\"\n  prefixIcon=\"category\"\n></mdtx-input-autocomplete>\n",
+            "template": "<mdtx-input-autocomplete\n  *ngIf=\"service.entities$ | async as options\"\n  [options]=\"options\"\n  label=\"Search Category\"\n  prefixIcon=\"search\"\n></mdtx-input-autocomplete>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "inputRef",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "InputAutocompleteComponent",
-                    "optional": false,
-                    "description": "",
-                    "line": 23,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'inputRef'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
-                },
-                {
-                    "name": "sub",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Subscription",
-                    "optional": false,
-                    "description": "",
-                    "line": 26
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "ngAfterViewInit",
+                    "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 8,
                     "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "ngOnDestroy",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "BaseSearchComponent"
+                    }
                 }
             ],
             "deprecated": false,
@@ -767,8 +806,11 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "CommonModule",
-                    "type": "module"
+                    "name": "NgIf"
+                },
+                {
+                    "name": "AsyncPipe",
+                    "type": "pipe"
                 },
                 {
                     "name": "InputAutocompleteComponent",
@@ -778,7 +820,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\n\r\nimport { CategoryService } from '@mdtx/ngrx';\r\nimport { Subscription, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-category-search',\r\n  standalone: true,\r\n  imports: [CommonModule, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      #inputRef\r\n      [options]=\"(service.entities$ | async) ?? []\"\r\n      label=\"Search Category\"\r\n      prefixIcon=\"category\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CategoryService],\r\n})\r\nexport class CategorySearchComponent implements AfterViewInit, OnDestroy {\r\n  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;\r\n  constructor(protected readonly service: CategoryService) {}\r\n\r\n  sub!: Subscription;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.sub = this.inputRef.$valueChange\r\n      .pipe(debounceTime(600))\r\n      .subscribe((search) => {\r\n        this.service.getWithQuery({ search });\r\n      });\r\n  }\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AsyncPipe, CommonModule, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { CategoryService } from '@mdtx/ngrx';\r\nimport { BaseSearchComponent } from '../__base';\r\nimport { ICategory } from '@mdtx/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-category-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.entities$ | async as options\"\r\n      [options]=\"options\"\r\n      label=\"Search Category\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CategoryService],\r\n})\r\nexport class CategorySearchComponent extends BaseSearchComponent<ICategory> {\r\n  constructor(service: CategoryService) {\r\n    super(service);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -795,7 +837,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 23,
+                "line": 22,
                 "jsdoctags": [
                     {
                         "name": "service",
@@ -808,10 +850,8 @@
                     }
                 ]
             },
-            "extends": [],
-            "implements": [
-                "AfterViewInit",
-                "OnDestroy"
+            "extends": [
+                "BaseSearchComponent"
             ]
         },
         {
@@ -7300,6 +7340,16 @@
                 "defaultValue": "new FormGroupBuilder<ICreateAddressDto>(\r\n  'Address Form'\r\n)\r\n  .add('street')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('city')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('state')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('country')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('zip')\r\n  .required()\r\n  .shortText()\r\n  \r\n  .done()\r\n  .lock()"
             },
             {
+                "name": "API_BASEURL_FOR_STORYBOOK",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/__base/base-url.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'http://localhost:3000'"
+            },
+            {
                 "name": "CategoryFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -7373,16 +7423,6 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/category-search works!/gi)).toBeTruthy();\n  },\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7393,21 +7433,21 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n\r\n    const findButton = (testid: string) => canvas.getByTestId(testid);\r\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\r\n\r\n    const type = async (element: any, value: any) =>\r\n      await userEvent.type(element, value, { delay: 100 });\r\n\r\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\r\n\r\n    // Form Buttons\r\n    const submitButton = findButton('submit');\r\n    const resetButton = findButton('reset');\r\n    const passwordToggle = findButton('password-toggle');\r\n    \r\n    // Form Fields\r\n    const username = findInput('username');\r\n    const password = findInput('password');\r\n\r\n    // Valdiate buttons\r\n    expect(submitButton).toBeTruthy();\r\n    expect(resetButton).toBeTruthy();\r\n\r\n    // Validte input Elements\r\n    expect(username).toBeTruthy();\r\n    expect(password).toBeTruthy();\r\n\r\n    const submitForm = async () => {\r\n      await type(username, 'user@domain.com');\r\n      await type(password, 'Password123.!');\r\n\r\n      await click(passwordToggle);\r\n\r\n      await click(submitButton);\r\n\r\n      await click(resetButton);\r\n    };\r\n\r\n    await submitForm();\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n\r\n    const findButton = (testid: string) => canvas.getByTestId(testid);\r\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\r\n\r\n    const type = async (element: any, value: any) =>\r\n      await userEvent.type(element, value, { delay: 100 });\r\n\r\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\r\n\r\n    // Form Buttons\r\n    const submitButton = findButton('submit');\r\n    const resetButton = findButton('reset');\r\n\r\n    // Form Fields\r\n    const street = findInput('street');\r\n    const city = findInput('city');\r\n    const state = findInput('state');\r\n    const country = findInput('country');\r\n    const zip = findInput('zip');\r\n\r\n    // Valdiate buttons\r\n    expect(street).toBeTruthy();\r\n    expect(city).toBeTruthy();\r\n    expect(state).toBeTruthy();\r\n    expect(country).toBeTruthy();\r\n    expect(zip).toBeTruthy();\r\n\r\n    const submitForm = async () => {\r\n      await type(street, 'N Damen');\r\n      await type(city, 'Chicago');\r\n      await type(state, 'IL');\r\n      await type(country, 'US');\r\n      await type(zip, '60645');\r\n\r\n      await click(submitButton);\r\n\r\n      await click(resetButton);\r\n    };\r\n\r\n    await submitForm();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n\r\n    const findButton = (testid: string) => canvas.getByTestId(testid);\r\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\r\n\r\n    const type = async (element: any, value: any) =>\r\n      await userEvent.type(element, value, { delay: 100 });\r\n\r\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\r\n\r\n    // Form Buttons\r\n    const submitButton = findButton('submit');\r\n    const resetButton = findButton('reset');\r\n    const passwordToggle = findButton('password-toggle');\r\n    \r\n    // Form Fields\r\n    const username = findInput('username');\r\n    const password = findInput('password');\r\n\r\n    // Valdiate buttons\r\n    expect(submitButton).toBeTruthy();\r\n    expect(resetButton).toBeTruthy();\r\n\r\n    // Validte input Elements\r\n    expect(username).toBeTruthy();\r\n    expect(password).toBeTruthy();\r\n\r\n    const submitForm = async () => {\r\n      await type(username, 'user@domain.com');\r\n      await type(password, 'Password123.!');\r\n\r\n      await click(passwordToggle);\r\n\r\n      await click(submitButton);\r\n\r\n      await click(resetButton);\r\n    };\r\n\r\n    await submitForm();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -7623,6 +7663,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Search Category/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7703,16 +7753,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CategorySearchComponent>",
-                "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7723,21 +7763,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CustomerFormComponent>",
-                "defaultValue": "{\r\n  component: CustomerFormComponent,\r\n  title: 'CustomerFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideErrorStateMatcher(),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerAddressFormComponent>",
                 "defaultValue": "{\r\n  component: CustomerAddressFormComponent,\r\n  title: 'CustomerAddressFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideErrorStateMatcher(),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CustomerFormComponent>",
+                "defaultValue": "{\r\n  component: CustomerFormComponent,\r\n  title: 'CustomerFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideErrorStateMatcher(),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -7953,6 +7993,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CategorySearchComponent>",
+                "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Category: 'Categories',\n            },\n            entityMetadata: {\n              Category: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8033,16 +8083,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8053,7 +8093,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -8063,7 +8103,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
+                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -8283,6 +8323,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -8410,6 +8460,16 @@
                 "defaultValue": "new FormGroupBuilder<ICreateStoreDto>(\r\n  'Store Form'\r\n)\r\n  .add('name')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('description')\r\n  .longText()\r\n  \r\n  .done()\r\n  .lock()"
             },
             {
+                "name": "storyBookHttpInterceptor",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/__base/interceptor.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "HttpInterceptorFn[]",
+                "defaultValue": "[\r\n  (req, next) => {\r\n    if (req.url) {\r\n      req = req.clone({ url: `${API_BASEURL_FOR_STORYBOOK}/${req.url}` });\r\n      return next(req);\r\n    }\r\n    return next(req);\r\n  },\r\n]"
+            },
+            {
                 "name": "TaskFormBuilder",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -8497,17 +8557,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CategorySearchComponent>",
-                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<CategoryFormComponent>",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
@@ -8519,8 +8568,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CustomerFormComponent>",
-                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                "rawtype": "StoryObj<CustomerAddressFormComponent>",
+                "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8530,8 +8579,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CustomerAddressFormComponent>",
-                "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
+                "rawtype": "StoryObj<CustomerFormComponent>",
+                "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8772,6 +8821,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<CategorySearchComponent>",
+                "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<AddressFormComponent>",
                 "file": "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts",
                 "deprecated": false,
@@ -8836,6 +8896,18 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "new FormGroupBuilder<ICreateAddressDto>(\r\n  'Address Form'\r\n)\r\n  .add('street')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('city')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('state')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('country')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('zip')\r\n  .required()\r\n  .shortText()\r\n  \r\n  .done()\r\n  .lock()"
+                }
+            ],
+            "libs/forms/src/lib/__base/base-url.ts": [
+                {
+                    "name": "API_BASEURL_FOR_STORYBOOK",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/__base/base-url.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'http://localhost:3000'"
                 }
             ],
             "libs/forms/src/lib/form-builders/category.ts": [
@@ -8922,38 +8994,6 @@
                     "defaultValue": "new FormGroupBuilder<ICreateEmailDto>(\r\n  'Email Form'\r\n)\r\n  .add('email')\r\n  .email()\r\n  .required()\r\n\r\n  .done()\r\n  .lock()"
                 }
             ],
-            "libs/forms/src/lib/search-inputs/category-search.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/category-search works!/gi)).toBeTruthy();\n  },\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CategorySearchComponent>",
-                    "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
-                }
-            ],
             "libs/forms/src/lib/form-components/category/category-form.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -8986,38 +9026,6 @@
                     "defaultValue": "{}"
                 }
             ],
-            "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n\r\n    const findButton = (testid: string) => canvas.getByTestId(testid);\r\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\r\n\r\n    const type = async (element: any, value: any) =>\r\n      await userEvent.type(element, value, { delay: 100 });\r\n\r\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\r\n\r\n    // Form Buttons\r\n    const submitButton = findButton('submit');\r\n    const resetButton = findButton('reset');\r\n    const passwordToggle = findButton('password-toggle');\r\n    \r\n    // Form Fields\r\n    const username = findInput('username');\r\n    const password = findInput('password');\r\n\r\n    // Valdiate buttons\r\n    expect(submitButton).toBeTruthy();\r\n    expect(resetButton).toBeTruthy();\r\n\r\n    // Validte input Elements\r\n    expect(username).toBeTruthy();\r\n    expect(password).toBeTruthy();\r\n\r\n    const submitForm = async () => {\r\n      await type(username, 'user@domain.com');\r\n      await type(password, 'Password123.!');\r\n\r\n      await click(passwordToggle);\r\n\r\n      await click(submitButton);\r\n\r\n      await click(resetButton);\r\n    };\r\n\r\n    await submitForm();\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CustomerFormComponent>",
-                    "defaultValue": "{\r\n  component: CustomerFormComponent,\r\n  title: 'CustomerFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideErrorStateMatcher(),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{}"
-                }
-            ],
             "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -9044,6 +9052,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n\r\n    const findButton = (testid: string) => canvas.getByTestId(testid);\r\n    const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);\r\n\r\n    const type = async (element: any, value: any) =>\r\n      await userEvent.type(element, value, { delay: 100 });\r\n\r\n    const click = (element: any) => userEvent.click(element, { delay: 1000 });\r\n\r\n    // Form Buttons\r\n    const submitButton = findButton('submit');\r\n    const resetButton = findButton('reset');\r\n    const passwordToggle = findButton('password-toggle');\r\n    \r\n    // Form Fields\r\n    const username = findInput('username');\r\n    const password = findInput('password');\r\n\r\n    // Valdiate buttons\r\n    expect(submitButton).toBeTruthy();\r\n    expect(resetButton).toBeTruthy();\r\n\r\n    // Validte input Elements\r\n    expect(username).toBeTruthy();\r\n    expect(password).toBeTruthy();\r\n\r\n    const submitForm = async () => {\r\n      await type(username, 'user@domain.com');\r\n      await type(password, 'Password123.!');\r\n\r\n      await click(passwordToggle);\r\n\r\n      await click(submitButton);\r\n\r\n      await click(resetButton);\r\n    };\r\n\r\n    await submitForm();\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CustomerFormComponent>",
+                    "defaultValue": "{\r\n  component: CustomerFormComponent,\r\n  title: 'CustomerFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideErrorStateMatcher(),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -9722,6 +9762,38 @@
                     "defaultValue": "{}"
                 }
             ],
+            "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/Search Category/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CategorySearchComponent>",
+                    "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Category: 'Categories',\n            },\n            entityMetadata: {\n              Category: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -10050,6 +10122,18 @@
                     "defaultValue": "new FormGroupBuilder<ICreateStoreDto>(\r\n  'Store Form'\r\n)\r\n  .add('name')\r\n  .required()\r\n  .shortText()\r\n\r\n  .add('description')\r\n  .longText()\r\n  \r\n  .done()\r\n  .lock()"
                 }
             ],
+            "libs/forms/src/lib/__base/interceptor.ts": [
+                {
+                    "name": "storyBookHttpInterceptor",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/__base/interceptor.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HttpInterceptorFn[]",
+                    "defaultValue": "[\r\n  (req, next) => {\r\n    if (req.url) {\r\n      req = req.clone({ url: `${API_BASEURL_FOR_STORYBOOK}/${req.url}` });\r\n      return next(req);\r\n    }\r\n    return next(req);\r\n  },\r\n]"
+                }
+            ],
             "libs/forms/src/lib/form-builders/task.ts": [
                 {
                     "name": "TaskFormBuilder",
@@ -10151,19 +10235,6 @@
                     "kind": 183
                 }
             ],
-            "libs/forms/src/lib/search-inputs/category-search.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CategorySearchComponent>",
-                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/forms/src/lib/form-components/category/category-form.component.stories.ts": [
                 {
                     "name": "Story",
@@ -10177,19 +10248,6 @@
                     "kind": 183
                 }
             ],
-            "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CustomerFormComponent>",
-                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts": [
                 {
                     "name": "Story",
@@ -10197,6 +10255,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CustomerAddressFormComponent>",
                     "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CustomerFormComponent>",
+                    "file": "libs/forms/src/lib/form-components/customer/customer-form.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -10476,6 +10547,19 @@
                     "kind": 183
                 }
             ],
+            "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CategorySearchComponent>",
+                    "file": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/forms/src/lib/form-components/__base/address/address-form.component.stories.ts": [
                 {
                     "name": "Story",
@@ -10556,6 +10640,26 @@
                 "coveragePercent": 63,
                 "coverageCount": "7/11",
                 "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/__base/base-url.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "API_BASEURL_FOR_STORYBOOK",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/__base/interceptor.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "storyBookHttpInterceptor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
             },
             {
                 "filePath": "libs/forms/src/lib/form-builders/__base/address.ts",
@@ -11979,7 +12083,16 @@
                 "status": "good"
             },
             {
-                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "filePath": "libs/forms/src/lib/search-inputs/__base/base-search.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BaseSearchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -11989,7 +12102,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "filePath": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -11999,7 +12112,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "filePath": "libs/forms/src/lib/search-inputs/category/category-search.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -12009,12 +12122,12 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.ts",
+                "filePath": "libs/forms/src/lib/search-inputs/category/category-search.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CategorySearchComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/3",
                 "status": "low"
             }
         ]

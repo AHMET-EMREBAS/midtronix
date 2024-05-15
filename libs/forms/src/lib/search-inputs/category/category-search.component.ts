@@ -1,24 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AsyncPipe, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { CategoryService } from '@mdtx/ngrx';
 
 @Component({
   selector: 'mdtx-category-search',
   standalone: true,
-  imports: [CommonModule, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
     <mdtx-input-autocomplete
-      [options]="(service.entities$ | async)"
+      *ngIf="service.asOptions$ | async as options"
+      [options]="options"
+      inputName="category"
       label="Search Category"
-      prefixIcon="category"
+      prefixIcon="search"
     ></mdtx-input-autocomplete>
   `,
   providers: [CategoryService],
 })
-export class CategorySearchComponent implements OnInit {
+export class CategorySearchComponent {
   constructor(protected readonly service: CategoryService) {}
-  ngOnInit(): void {
-    this.service.getAsOptions();
-  }
 }

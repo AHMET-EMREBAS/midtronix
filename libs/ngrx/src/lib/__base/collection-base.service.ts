@@ -9,13 +9,15 @@ import {
   RestApiPathBuilder,
   RestApiPaths,
 } from '@mdtx/common';
-import { Observable } from 'rxjs';
-
+import { Observable, map } from 'rxjs';
+import { IInputOption } from '@mdtx/material/core';
 export class CollectionBaseService<
   T extends IID
 > extends EntityCollectionServiceBase<T> {
   readonly apiPaths!: RestApiPaths;
   readonly metadata$!: Observable<ResourceMetadata>;
+  readonly asOptions$!: Observable<IInputOption[]>;
+  protected optionColumn: keyof T = 'id';
   constructor(
     entity: string,
     factory: EntityCollectionServiceElementsFactory,
@@ -27,9 +29,18 @@ export class CollectionBaseService<
     this.metadata$ = this.httpClient.get<ResourceMetadata>(
       this.apiPaths.METADATA_PATH
     );
-  }
 
-  getAsOptions(): void {
-    this.getWithQuery({ take: 200, select: ['id', 'name'] });
+    this.asOptions$ = this.httpClient
+      .get<T[]>(this.apiPaths.PLURAL_PATH + '?take=10000')
+      .pipe(
+        map((data) => {
+          return data.map((d) => {
+            return {
+              id: d.id,
+              name: d[this.optionColumn] + '',
+            };
+          });
+        })
+      );
   }
 }

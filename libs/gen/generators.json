@@ -19,6 +19,11 @@
       "factory": "./src/generators/form/generator",
       "schema": "./src/generators/form/schema.json",
       "description": "form generator"
+    },
+    "search-input": {
+      "factory": "./src/generators/search-input/generator",
+      "schema": "./src/generators/search-input/schema.json",
+      "description": "search-input generator"
     }
   }
 }
