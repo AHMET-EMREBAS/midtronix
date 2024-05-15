@@ -37,7 +37,6 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   }
 
   selectItems(items: Map<string, ICategory>) {
-    console.log('Selected: ', items);
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
