@@ -10,6 +10,6 @@ export class CategoryService extends CollectionBaseService<ICategory> {
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
   ) {
-    super('Category', factory, httpClient);
+    super('Category', factory, httpClient, 'id');
   }
 }

@@ -24,6 +24,11 @@
       "factory": "./src/generators/search-input/generator",
       "schema": "./src/generators/search-input/schema.json",
       "description": "search-input generator"
+    },
+    "option-column": {
+      "factory": "./src/generators/option-column/generator",
+      "schema": "./src/generators/option-column/schema.json",
+      "description": "option-column generator"
     }
   }
 }

@@ -17,11 +17,11 @@ export class CollectionBaseService<
   readonly apiPaths!: RestApiPaths;
   readonly metadata$!: Observable<ResourceMetadata>;
   readonly asOptions$!: Observable<IInputOption[]>;
-  protected optionColumn: keyof T = 'id';
   constructor(
     entity: string,
     factory: EntityCollectionServiceElementsFactory,
-    public readonly httpClient: HttpClient
+    protected readonly httpClient: HttpClient,
+    public readonly optionColumn: keyof T = 'id'
   ) {
     super(entity, factory);
     this.apiPaths = RestApiPathBuilder.get(entity);

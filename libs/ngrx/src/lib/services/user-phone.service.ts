@@ -10,6 +10,6 @@ export class UserPhoneService extends CollectionBaseService<IUserPhone> {
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
   ) {
-    super('UserPhone', factory, httpClient);
+    super('UserPhone', factory, httpClient, 'phone');
   }
 }

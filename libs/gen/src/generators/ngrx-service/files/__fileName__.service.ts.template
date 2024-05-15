@@ -14,6 +14,6 @@ export class <%- className %>Service extends CollectionBaseService<I<%- classNam
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
   ) {
-    super('<%- className %>', factory, httpClient);
+    super('<%- className %>', factory, httpClient, 'id');
   }
 }
