@@ -3,6 +3,7 @@ import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { HttpClient } from '@angular/common/http';
+import { DEPARTMENT_OPTION_COLUMN } from '../option-columns';
 
 @Injectable()
 export class DepartmentService extends CollectionBaseService<IDepartment> {
@@ -13,6 +14,6 @@ export class DepartmentService extends CollectionBaseService<IDepartment> {
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
   ) {
-    super('Department', factory, httpClient);
+    super('Department', factory, httpClient, DEPARTMENT_OPTION_COLUMN);
   }
 }
