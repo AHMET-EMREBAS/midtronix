@@ -1,1 +1,1 @@
-export * from './lib/tables/tables.component';
+export * from './lib';
