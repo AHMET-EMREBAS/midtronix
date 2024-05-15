@@ -171,7 +171,7 @@
         },
         {
             "name": "CategoryTableComponent",
-            "id": "component-CategoryTableComponent-c30c8a81571a966d4fac4e1288d82cf1887ce9bfbe075493cac49da27ecad94b192e8e184fbf471f531889a43e473bde60fa1cec67fe9c1f58ce90e386f58fe2",
+            "id": "component-CategoryTableComponent-feab4e139e292bbee50046433258a6e40ae2dc22354f62436ff3fd29ba343ad0a5a6f8c38384a0807620f5be336c17c5e4b957554d75fdf84be5f0f9a14fc3e6",
             "file": "libs/tables/src/lib/tables/category-table/category-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -327,6 +327,34 @@
                     "deprecationMessage": ""
                 },
                 {
+                    "name": "filterItems",
+                    "args": [
+                        {
+                            "name": "searchString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "searchString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
@@ -417,7 +445,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  @ViewChild('tableRef') table!: TableComponent;\n\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CategoryService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICategory>) {\n    console.log('Selected: ', items);\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  @ViewChild('tableRef') table!: TableComponent;\n\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CategoryService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICategory>) {\n    console.log('Selected: ', items);\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n\n  filterItems(searchString: string) {\n    this.service.getWithQuery({\n      take: this.pageSize,\n      skip: this.pageIndex * this.pageSize,\n      search: searchString,\n    });\n  }\n}\n",
             "styleUrl": "./category-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -466,22 +494,17 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-category-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n></mdtx-category-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n></mat-paginator>\n"
+            "templateData": "<mdtx-category-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n  (searchEvent)=\"filterItems($event)\"\n></mdtx-category-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n></mat-paginator>\n"
         },
         {
             "name": "CategoryToolbarComponent",
-            "id": "component-CategoryToolbarComponent-38fddb9ccb8e17096a0e36f0d220050a33dcd755df91928110b199ae5084115ba2f1e600b6c3ee586f1e2e592827adaf4cb28de68f87011429164df5ddfa2d4f",
+            "id": "component-CategoryToolbarComponent-56102e8ad7772681912fba4cb22f38b93ea0449be761af8ecb9fdae46c9bf2d6c10508fd9821f14918d1639352c624f57d5a28ffe7198a02168c85e07a434353",
             "file": "libs/tables/src/lib/toolbars/category-toolbar/category-toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [
-                {
-                    "name": "CategoryService",
-                    "type": "injectable"
-                }
-            ],
+            "providers": [],
             "selector": "mdtx-category-toolbar",
             "styleUrls": [],
             "styles": [],
@@ -497,11 +520,19 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 17,
                     "type": "EventEmitter"
                 },
                 {
                     "name": "deleteEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "searchEvent",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -518,7 +549,7 @@
                     "type": "MenuItem[]",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 13
                 },
                 {
                     "name": "rightToolbarItems",
@@ -528,7 +559,7 @@
                     "type": "MenuItem[]",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 14
                 }
             ],
             "methodsClass": [
@@ -545,13 +576,41 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 20,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "event",
                             "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "searchHandler",
+                    "args": [
+                        {
+                            "name": "searchString",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "searchString",
+                            "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -570,18 +629,22 @@
                 {
                     "name": "ToolbarComponent",
                     "type": "component"
+                },
+                {
+                    "name": "InputSearchComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { ToolbarComponent } from '@mdtx/material/toolbar';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-category-toolbar',\n  standalone: true,\n  imports: [ToolbarComponent],\n  templateUrl: './category-toolbar.component.html',\n  styleUrl: './category-toolbar.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryToolbarComponent {\n  leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];\n  rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];\n\n  @Output() deleteEvent = new EventEmitter();\n  @Output() addEvent = new EventEmitter();\n\n  handleToolbarClick(event: MenuItem) {\n    switch (event.title) {\n      case 'Add':\n        this.addEvent.emit();\n        return;\n      case 'Delete':\n        this.deleteEvent.emit();\n        return;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { ToolbarComponent } from '@mdtx/material/toolbar';\nimport { MenuItem } from '@mdtx/material/core';\nimport { InputSearchComponent } from '@mdtx/material/form';\n@Component({\n  selector: 'mdtx-category-toolbar',\n  standalone: true,\n  imports: [ToolbarComponent, InputSearchComponent],\n  templateUrl: './category-toolbar.component.html',\n  styleUrl: './category-toolbar.component.scss',\n})\nexport class CategoryToolbarComponent {\n  leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];\n  rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];\n\n  @Output() deleteEvent = new EventEmitter();\n  @Output() addEvent = new EventEmitter();\n  @Output() searchEvent = new EventEmitter();\n\n  handleToolbarClick(event: MenuItem) {\n    switch (event.title) {\n      case 'Add':\n        this.addEvent.emit();\n        return;\n      case 'Delete':\n        this.deleteEvent.emit();\n        return;\n    }\n  }\n\n  searchHandler(searchString: string) {\n    this.searchEvent.emit(searchString);\n  }\n}\n",
             "styleUrl": "./category-toolbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mdtx-toolbar\n  [leftToolbarItems]=\"leftToolbarItems\"\n  [rightToolbarItems]=\"rightToolbarItems\"\n  (toolbarItemClickEvent)=\"handleToolbarClick($event)\"\n>\n</mdtx-toolbar>\n"
+            "templateData": "<mdtx-toolbar\n  [leftToolbarItems]=\"leftToolbarItems\"\n  [rightToolbarItems]=\"rightToolbarItems\"\n  (toolbarItemClickEvent)=\"handleToolbarClick($event)\"\n>\n  <mdtx-input-search\n    toolbarRightContent\n    (searchEvent)=\"searchHandler($event)\"\n  ></mdtx-input-search>\n</mdtx-toolbar>\n"
         }
     ],
     "modules": [],
@@ -1073,7 +1136,7 @@
                 "linktype": "component",
                 "name": "CategoryTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/14",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -1112,7 +1175,7 @@
                 "linktype": "component",
                 "name": "CategoryToolbarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/8",
                 "status": "low"
             }
         ]

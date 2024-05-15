@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CategoryService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CategoryToolbarComponent } from '../../toolbars';
@@ -11,6 +11,7 @@ import {
 import { ICategory } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'mdtx-category-table',
@@ -22,6 +23,7 @@ import { Router } from '@angular/router';
 })
 export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   @ViewChild('tableRef') table!: TableComponent;
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   override pageIndex = 0;
   override pageSize = CATEGORY_PAGE_SIZE;
@@ -51,6 +53,8 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   }
 
   filterItems(searchString: string) {
+    console.log('Searching : ', searchString);
+    this.service.clearCache();
     this.service.getWithQuery({
       take: this.pageSize,
       skip: this.pageIndex * this.pageSize,

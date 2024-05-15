@@ -9,12 +9,11 @@
   </div>
 
   <div class="toolbar-right-container">
-    <ng-content select="[toolbarRigthtContent]"></ng-content>
-
     @for(item of rightToolbarItems; track item){
     <button mat-icon-button (click)="toolbarItemClickEvent.emit(item)">
       <mat-icon>{{ item.icon }}</mat-icon>
     </button>
     }
+    <ng-content select="[toolbarRigthtContent]"></ng-content>
   </div>
 </mat-toolbar>

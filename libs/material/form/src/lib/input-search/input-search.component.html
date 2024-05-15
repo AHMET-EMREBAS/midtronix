@@ -1,4 +1,16 @@
-<mat-form-field>
-  <input matInput type="search" autocomplete="off" [formControl]="searchControl" />
-  <mat-icon matIconPrefix>search</mat-icon>
-</mat-form-field>
+<ng-container *ngIf="closeAfter3000$ | async"></ng-container>
+
+<button mat-icon-button (click)="openSearch()">
+  <mat-icon>search</mat-icon>
+</button>
+
+<div class="search-input-container" *ngIf="open$ | async">
+  <mat-icon color="primary">search</mat-icon>
+  <input
+    #searchInput
+    type="search"
+    [formControl]="searchControl"
+    (input)="openSearch()"
+    [autofocus]="true"
+  />
+</div>

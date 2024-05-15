@@ -12,8 +12,12 @@
   (selectionChange)="selectItems($event)"
 ></mdtx-table>
 
+<!-- mat-mdc-paginator-container -->
 <mat-paginator
+  #paginator
   [pageSizeOptions]="pageSizeOptions"
   [pageIndex]="pageIndex"
   [pageSize]="pageSize"
-></mat-paginator>
+  [showFirstLastButtons]="true"
+>
+</mat-paginator>

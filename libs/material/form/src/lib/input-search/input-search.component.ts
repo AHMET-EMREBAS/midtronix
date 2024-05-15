@@ -7,7 +7,14 @@ import {
 } from '@angular/core';
 import { CommonFormModule } from '../form';
 import { FormControl } from '@angular/forms';
-import { Subscription, debounce, debounceTime } from 'rxjs';
+import {
+  BehaviorSubject,
+  Subscription,
+  debounce,
+  debounceTime,
+  startWith,
+  tap,
+} from 'rxjs';
 
 @Component({
   selector: 'mdtx-input-search',
@@ -19,21 +26,34 @@ import { Subscription, debounce, debounceTime } from 'rxjs';
 export class InputSearchComponent implements OnInit, OnDestroy {
   searchControl = new FormControl('');
 
+  open$ = new BehaviorSubject(false);
+  closeAfter3000$ = this.open$.pipe(
+    debounceTime(5000),
+    tap(() => {
+      this.open$.next(false);
+    })
+  );
   @Output() searchEvent = new EventEmitter<string>();
 
   sub!: Subscription;
 
   ngOnInit(): void {
     this.sub = this.searchControl.valueChanges
-      .pipe(debounceTime(1000))
+
+      .pipe(startWith(''), debounceTime(1000))
       .subscribe((searchString) => {
         if (searchString) {
           this.searchEvent.emit(searchString);
+          this.open$.next(true);
         }
       });
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  openSearch() {
+    this.open$.next(true);
   }
 }
