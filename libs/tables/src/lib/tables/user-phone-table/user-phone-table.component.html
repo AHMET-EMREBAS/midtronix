@@ -1,0 +1,22 @@
+<mdtx-user-phone-toolbar
+  (addEvent)="addItem()"
+  (deleteEvent)="deleteSelection()"
+  (searchEvent)="filterItems($event)"
+></mdtx-user-phone-toolbar>
+
+<mdtx-table
+  #tableRef
+  [columns]="columns"
+  [displayedColumns]="displayedColumns"
+  [dataSource]="(service.entities$ | async) || []"
+  (selectionChange)="selectItems($event)"
+></mdtx-table>
+
+<mat-paginator
+  #paginator
+  [pageSizeOptions]="pageSizeOptions"
+  [pageIndex]="pageIndex"
+  [pageSize]="pageSize"
+  [showFirstLastButtons]="true"
+>
+</mat-paginator>

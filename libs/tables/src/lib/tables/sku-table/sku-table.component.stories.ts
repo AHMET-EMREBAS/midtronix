@@ -3,7 +3,7 @@ import {
   type Meta,
   type StoryObj,
 } from '@storybook/angular';
-import { CategoryTableComponent } from './category-table.component';
+import { SkuTableComponent } from './sku-table.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
@@ -15,9 +15,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { storyBookHttpInterceptor } from '../../__base';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
-const meta: Meta<CategoryTableComponent> = {
-  component: CategoryTableComponent,
-  title: 'CategoryTableComponent',
+const meta: Meta<SkuTableComponent> = {
+  component: SkuTableComponent,
+  title: 'SkuTableComponent',
 
   decorators: [
     applicationConfig({
@@ -30,10 +30,10 @@ const meta: Meta<CategoryTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Category: 'Categories',
+              Sku: 'Categories',
             },
             entityMetadata: {
-              Category: {},
+              Sku: {},
             },
           },
           withEffects()
@@ -43,7 +43,7 @@ const meta: Meta<CategoryTableComponent> = {
   ],
 };
 export default meta;
-type Story = StoryObj<CategoryTableComponent>;
+type Story = StoryObj<SkuTableComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -53,6 +53,6 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    // expect(canvas.getByText(/category-table works!/gi)).toBeTruthy();
+    // expect(canvas.getByText(/sku-table works!/gi)).toBeTruthy();
   },
 };

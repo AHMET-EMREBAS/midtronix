@@ -1,0 +1,63 @@
+import { Component, ViewChild } from '@angular/core';
+import { NotificationService } from '@mdtx/ngrx';
+import { BaseTableComponent, TableModules } from '../../__base';
+import { NotificationToolbarComponent } from '../../toolbars';
+import {
+  NOTIFICATION_COLUMNS,
+  NOTIFICATION_DISPLAY_COLUMNS,
+  NOTIFICATION_PAGE_SIZE,
+  PAGE_SIZE_OPTIONS,
+} from '../../table-options';
+import { INotification } from '@mdtx/common';
+import { TableComponent } from '@mdtx/material/table';
+import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+
+@Component({
+  selector: 'mdtx-notification-table',
+  standalone: true,
+  imports: [...TableModules, NotificationToolbarComponent],
+  templateUrl: './notification-table.component.html',
+  styleUrl: './notification-table.component.scss',
+  providers: [NotificationService],
+})
+export class NotificationTableComponent extends BaseTableComponent<INotification> {
+  @ViewChild('tableRef') table!: TableComponent;
+  @ViewChild('paginator') paginator!: MatPaginator;
+
+  override pageIndex = 0;
+  override pageSize = NOTIFICATION_PAGE_SIZE;
+  override columns = NOTIFICATION_COLUMNS;
+  override displayedColumns = NOTIFICATION_DISPLAY_COLUMNS;
+
+  override pageSizeOptions = PAGE_SIZE_OPTIONS;
+
+  constructor(service: NotificationService, protected readonly router: Router) {
+    super(service);
+  }
+
+  selectItems(items: Map<string, INotification>) {
+    this.selectedItems = [...items.entries()].map(([, value]) => value);
+  }
+
+  addItem() {
+    this.router.navigate(['create']);
+  }
+
+  deleteSelection() {
+    for (const [key] of this.table.selectedItems) {
+      this.service.delete(key);
+    }
+    this.table.selectedItems.clear();
+  }
+
+  filterItems(searchString: string) {
+    console.log('Searching : ', searchString);
+    this.service.clearCache();
+    this.service.getWithQuery({
+      take: this.pageSize,
+      skip: this.pageIndex * this.pageSize,
+      search: searchString,
+    });
+  }
+}
