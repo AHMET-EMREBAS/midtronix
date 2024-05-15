@@ -12801,7 +12801,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerAddressTableComponent>",
-                "defaultValue": "{\n  component: CustomerAddressTableComponent,\n  title: 'CustomerAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'Categories',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerAddressTableComponent,\n  title: 'CustomerAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'CustomerAddresses',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12811,7 +12811,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerEmailTableComponent>",
-                "defaultValue": "{\n  component: CustomerEmailTableComponent,\n  title: 'CustomerEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'Categories',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerEmailTableComponent,\n  title: 'CustomerEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'CustomerEmails',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12821,7 +12821,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerPhoneTableComponent>",
-                "defaultValue": "{\n  component: CustomerPhoneTableComponent,\n  title: 'CustomerPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'Categories',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerPhoneTableComponent,\n  title: 'CustomerPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'CustomerPhones',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12831,7 +12831,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerTableComponent>",
-                "defaultValue": "{\n  component: CustomerTableComponent,\n  title: 'CustomerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Categories',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerTableComponent,\n  title: 'CustomerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12841,7 +12841,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DepartmentTableComponent>",
-                "defaultValue": "{\n  component: DepartmentTableComponent,\n  title: 'DepartmentTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Categories',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: DepartmentTableComponent,\n  title: 'DepartmentTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12851,7 +12851,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ManufacturerTableComponent>",
-                "defaultValue": "{\n  component: ManufacturerTableComponent,\n  title: 'ManufacturerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Categories',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ManufacturerTableComponent,\n  title: 'ManufacturerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Manufacturers',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12861,7 +12861,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<MessageTableComponent>",
-                "defaultValue": "{\n  component: MessageTableComponent,\n  title: 'MessageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Categories',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: MessageTableComponent,\n  title: 'MessageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Messages',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12871,7 +12871,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<NotificationTableComponent>",
-                "defaultValue": "{\n  component: NotificationTableComponent,\n  title: 'NotificationTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Categories',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: NotificationTableComponent,\n  title: 'NotificationTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Notifications',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12881,7 +12881,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PermissionTableComponent>",
-                "defaultValue": "{\n  component: PermissionTableComponent,\n  title: 'PermissionTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Categories',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: PermissionTableComponent,\n  title: 'PermissionTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Permissions',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12891,7 +12891,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductImageTableComponent>",
-                "defaultValue": "{\n  component: ProductImageTableComponent,\n  title: 'ProductImageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'Categories',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductImageTableComponent,\n  title: 'ProductImageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'ProductImages',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12901,7 +12901,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductTableComponent>",
-                "defaultValue": "{\n  component: ProductTableComponent,\n  title: 'ProductTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Categories',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductTableComponent,\n  title: 'ProductTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12911,7 +12911,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductVideoTableComponent>",
-                "defaultValue": "{\n  component: ProductVideoTableComponent,\n  title: 'ProductVideoTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'Categories',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductVideoTableComponent,\n  title: 'ProductVideoTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'ProductVideoes',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12921,7 +12921,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProjectTableComponent>",
-                "defaultValue": "{\n  component: ProjectTableComponent,\n  title: 'ProjectTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Categories',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProjectTableComponent,\n  title: 'ProjectTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Projects',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12931,7 +12931,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<RoleTableComponent>",
-                "defaultValue": "{\n  component: RoleTableComponent,\n  title: 'RoleTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Categories',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: RoleTableComponent,\n  title: 'RoleTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Roles',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12941,7 +12941,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SkuTableComponent>",
-                "defaultValue": "{\n  component: SkuTableComponent,\n  title: 'SkuTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Categories',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: SkuTableComponent,\n  title: 'SkuTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12951,7 +12951,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SprintTableComponent>",
-                "defaultValue": "{\n  component: SprintTableComponent,\n  title: 'SprintTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Categories',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: SprintTableComponent,\n  title: 'SprintTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Sprints',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12961,7 +12961,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<StoreTableComponent>",
-                "defaultValue": "{\n  component: StoreTableComponent,\n  title: 'StoreTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Categories',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: StoreTableComponent,\n  title: 'StoreTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Stores',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12971,7 +12971,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TaskTableComponent>",
-                "defaultValue": "{\n  component: TaskTableComponent,\n  title: 'TaskTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Categories',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: TaskTableComponent,\n  title: 'TaskTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Tasks',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12981,7 +12981,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TicketTableComponent>",
-                "defaultValue": "{\n  component: TicketTableComponent,\n  title: 'TicketTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Categories',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: TicketTableComponent,\n  title: 'TicketTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Tickets',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12991,7 +12991,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserAddressTableComponent>",
-                "defaultValue": "{\n  component: UserAddressTableComponent,\n  title: 'UserAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'Categories',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserAddressTableComponent,\n  title: 'UserAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'UserAddresses',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -13001,7 +13001,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserEmailTableComponent>",
-                "defaultValue": "{\n  component: UserEmailTableComponent,\n  title: 'UserEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'Categories',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserEmailTableComponent,\n  title: 'UserEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'UserEmails',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -13011,7 +13011,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserPhoneTableComponent>",
-                "defaultValue": "{\n  component: UserPhoneTableComponent,\n  title: 'UserPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'Categories',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserPhoneTableComponent,\n  title: 'UserPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'UserPhones',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -13021,7 +13021,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserTableComponent>",
-                "defaultValue": "{\n  component: UserTableComponent,\n  title: 'UserTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Categories',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserTableComponent,\n  title: 'UserTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Users',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -15052,7 +15052,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerAddressTableComponent>",
-                    "defaultValue": "{\n  component: CustomerAddressTableComponent,\n  title: 'CustomerAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'Categories',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerAddressTableComponent,\n  title: 'CustomerAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'CustomerAddresses',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15084,7 +15084,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerEmailTableComponent>",
-                    "defaultValue": "{\n  component: CustomerEmailTableComponent,\n  title: 'CustomerEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'Categories',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerEmailTableComponent,\n  title: 'CustomerEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'CustomerEmails',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15116,7 +15116,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerPhoneTableComponent>",
-                    "defaultValue": "{\n  component: CustomerPhoneTableComponent,\n  title: 'CustomerPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'Categories',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerPhoneTableComponent,\n  title: 'CustomerPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'CustomerPhones',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15148,7 +15148,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerTableComponent>",
-                    "defaultValue": "{\n  component: CustomerTableComponent,\n  title: 'CustomerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Categories',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerTableComponent,\n  title: 'CustomerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15180,7 +15180,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DepartmentTableComponent>",
-                    "defaultValue": "{\n  component: DepartmentTableComponent,\n  title: 'DepartmentTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Categories',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: DepartmentTableComponent,\n  title: 'DepartmentTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15212,7 +15212,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ManufacturerTableComponent>",
-                    "defaultValue": "{\n  component: ManufacturerTableComponent,\n  title: 'ManufacturerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Categories',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ManufacturerTableComponent,\n  title: 'ManufacturerTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Manufacturers',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15244,7 +15244,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<MessageTableComponent>",
-                    "defaultValue": "{\n  component: MessageTableComponent,\n  title: 'MessageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Categories',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: MessageTableComponent,\n  title: 'MessageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Messages',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15276,7 +15276,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<NotificationTableComponent>",
-                    "defaultValue": "{\n  component: NotificationTableComponent,\n  title: 'NotificationTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Categories',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: NotificationTableComponent,\n  title: 'NotificationTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Notifications',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15308,7 +15308,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PermissionTableComponent>",
-                    "defaultValue": "{\n  component: PermissionTableComponent,\n  title: 'PermissionTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Categories',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: PermissionTableComponent,\n  title: 'PermissionTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Permissions',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15340,7 +15340,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductImageTableComponent>",
-                    "defaultValue": "{\n  component: ProductImageTableComponent,\n  title: 'ProductImageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'Categories',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductImageTableComponent,\n  title: 'ProductImageTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'ProductImages',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15372,7 +15372,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductTableComponent>",
-                    "defaultValue": "{\n  component: ProductTableComponent,\n  title: 'ProductTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Categories',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductTableComponent,\n  title: 'ProductTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15404,7 +15404,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductVideoTableComponent>",
-                    "defaultValue": "{\n  component: ProductVideoTableComponent,\n  title: 'ProductVideoTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'Categories',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductVideoTableComponent,\n  title: 'ProductVideoTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'ProductVideoes',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15436,7 +15436,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProjectTableComponent>",
-                    "defaultValue": "{\n  component: ProjectTableComponent,\n  title: 'ProjectTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Categories',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProjectTableComponent,\n  title: 'ProjectTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Projects',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15468,7 +15468,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<RoleTableComponent>",
-                    "defaultValue": "{\n  component: RoleTableComponent,\n  title: 'RoleTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Categories',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: RoleTableComponent,\n  title: 'RoleTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Roles',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15500,7 +15500,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SkuTableComponent>",
-                    "defaultValue": "{\n  component: SkuTableComponent,\n  title: 'SkuTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Categories',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: SkuTableComponent,\n  title: 'SkuTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15532,7 +15532,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SprintTableComponent>",
-                    "defaultValue": "{\n  component: SprintTableComponent,\n  title: 'SprintTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Categories',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: SprintTableComponent,\n  title: 'SprintTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Sprints',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15564,7 +15564,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<StoreTableComponent>",
-                    "defaultValue": "{\n  component: StoreTableComponent,\n  title: 'StoreTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Categories',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: StoreTableComponent,\n  title: 'StoreTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Stores',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15596,7 +15596,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TaskTableComponent>",
-                    "defaultValue": "{\n  component: TaskTableComponent,\n  title: 'TaskTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Categories',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: TaskTableComponent,\n  title: 'TaskTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Tasks',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15628,7 +15628,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TicketTableComponent>",
-                    "defaultValue": "{\n  component: TicketTableComponent,\n  title: 'TicketTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Categories',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: TicketTableComponent,\n  title: 'TicketTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Tickets',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15660,7 +15660,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserAddressTableComponent>",
-                    "defaultValue": "{\n  component: UserAddressTableComponent,\n  title: 'UserAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'Categories',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserAddressTableComponent,\n  title: 'UserAddressTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'UserAddresses',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15692,7 +15692,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserEmailTableComponent>",
-                    "defaultValue": "{\n  component: UserEmailTableComponent,\n  title: 'UserEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'Categories',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserEmailTableComponent,\n  title: 'UserEmailTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'UserEmails',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15724,7 +15724,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserPhoneTableComponent>",
-                    "defaultValue": "{\n  component: UserPhoneTableComponent,\n  title: 'UserPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'Categories',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserPhoneTableComponent,\n  title: 'UserPhoneTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'UserPhones',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -15756,7 +15756,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserTableComponent>",
-                    "defaultValue": "{\n  component: UserTableComponent,\n  title: 'UserTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Categories',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserTableComponent,\n  title: 'UserTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Users',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",

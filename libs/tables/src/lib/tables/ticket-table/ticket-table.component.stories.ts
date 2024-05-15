@@ -30,7 +30,7 @@ const meta: Meta<TicketTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Ticket: 's',
+              Ticket: 'Tickets',
             },
             entityMetadata: {
               Ticket: {},

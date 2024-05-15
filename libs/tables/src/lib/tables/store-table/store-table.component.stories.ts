@@ -30,7 +30,7 @@ const meta: Meta<StoreTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Store: 's',
+              Store: 'Stores',
             },
             entityMetadata: {
               Store: {},

@@ -10,7 +10,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@nx/devkit": "19.0.0",
     "@mdtx/utils": "0.0.1"
   },
   "type": "commonjs",

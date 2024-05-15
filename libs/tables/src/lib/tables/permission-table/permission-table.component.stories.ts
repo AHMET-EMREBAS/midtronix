@@ -30,7 +30,7 @@ const meta: Meta<PermissionTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Permission: 's',
+              Permission: 'Permissions',
             },
             entityMetadata: {
               Permission: {},

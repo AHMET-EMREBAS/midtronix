@@ -30,7 +30,7 @@ const meta: Meta<RoleTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Role: 's',
+              Role: 'Roles',
             },
             entityMetadata: {
               Role: {},

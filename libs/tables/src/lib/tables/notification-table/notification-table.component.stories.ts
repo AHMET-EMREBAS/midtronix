@@ -30,7 +30,7 @@ const meta: Meta<NotificationTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Notification: 's',
+              Notification: 'Notifications',
             },
             entityMetadata: {
               Notification: {},

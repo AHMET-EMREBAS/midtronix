@@ -30,7 +30,7 @@ const meta: Meta<TaskTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Task: 's',
+              Task: 'Tasks',
             },
             entityMetadata: {
               Task: {},

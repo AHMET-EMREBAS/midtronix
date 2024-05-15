@@ -30,7 +30,7 @@ const meta: Meta<SprintTableComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Sprint: 's',
+              Sprint: 'Sprints',
             },
             entityMetadata: {
               Sprint: {},
