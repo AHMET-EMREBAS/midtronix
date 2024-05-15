@@ -39,6 +39,11 @@
       "factory": "./src/generators/table/generator",
       "schema": "./src/generators/table/schema.json",
       "description": "table generator"
+    },
+    "table-option": {
+      "factory": "./src/generators/table-option/generator",
+      "schema": "./src/generators/table-option/schema.json",
+      "description": "table-option generator"
     }
   }
 }

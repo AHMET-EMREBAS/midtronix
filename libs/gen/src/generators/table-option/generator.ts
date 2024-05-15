@@ -1,12 +1,12 @@
 import { formatFiles, generateFiles, names, Tree } from '@nx/devkit';
 import * as path from 'path';
-import { TableGeneratorSchema } from './schema';
+import { TableOptionGeneratorSchema } from './schema';
 
-export async function tableGenerator(
+export async function tableOptionGenerator(
   tree: Tree,
-  options: TableGeneratorSchema
+  options: TableOptionGeneratorSchema
 ) {
-  const projectRoot = `libs/tables/src/lib/tables`;
+  const projectRoot = `libs/tables/src/lib/table-options`;
   const allNames = names(options.name);
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     ...allNames,
@@ -14,4 +14,4 @@ export async function tableGenerator(
   await formatFiles(tree);
 }
 
-export default tableGenerator;
+export default tableOptionGenerator;

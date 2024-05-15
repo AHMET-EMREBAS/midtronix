@@ -1,0 +1,5 @@
+import { I<%- className %> } from '@mdtx/common';
+
+export const <%- constantName %>_COLUMNS: (keyof I<%- className %>)[] = ['id', 'name'];
+export const <%- constantName %>_DISPLAY_COLUMNS: (keyof I<%- className %>)[] = ['id', 'name'];
+export const <%- constantName %>_PAGE_SIZE = 500;
