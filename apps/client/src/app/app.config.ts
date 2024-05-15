@@ -14,9 +14,9 @@ import { httpInterceptors } from './app.interceptors';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
+    provideRouter(appRoutes, withHashLocation()),
     provideClientHydration(),
     provideHttpClient(withInterceptors(httpInterceptors)),
-    provideRouter(appRoutes, withHashLocation()),
     provideStore([]),
     provideEffects([]),
     provideEntityData(

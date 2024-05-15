@@ -5,8 +5,8 @@ import {
   DefaultValueTransformer,
   IntegerTransformer,
 } from './transformers';
-import { isAlpha } from 'class-validator';
 import { ILike } from 'typeorm';
+import { isArray, isString } from 'class-validator';
 
 @Exclude()
 export class PaginatorDto {
@@ -19,6 +19,17 @@ export class PaginatorDto {
   @DefaultValueTransformer(0)
   @IntegerTransformer()
   skip?: number;
+
+  @Property({ type: 'string', isArray: true, noValidate: true })
+  @Transform(({ value }) => {
+    if (isArray(value)) {
+      return value;
+    } else if (isString(value)) {
+      return [value];
+    }
+    return undefined;
+  })
+  select?: string[];
 
   @Property({ type: 'boolean', noValidate: true })
   @DefaultValueTransformer(false)

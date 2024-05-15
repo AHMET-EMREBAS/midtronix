@@ -28,4 +28,8 @@ export class CollectionBaseService<
       this.apiPaths.METADATA_PATH
     );
   }
+
+  getAsOptions(): void {
+    this.getWithQuery({ take: 200, select: ['id', 'name'] });
+  }
 }

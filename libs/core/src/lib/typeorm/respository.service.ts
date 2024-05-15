@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DeepPartial,
   Equal,
@@ -14,9 +15,19 @@ import {
 } from '../dto';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { IID, ResourceMetadata } from '@mdtx/common';
+import { UnprocessableEntityException } from '@nestjs/common';
 
 export class RepositoryService<T extends IID> {
   protected readonly __md = this.repository.metadata;
+
+  protected readonly __entityName = this.__md.targetName;
+  protected readonly __columns = this.__md.columns.map((e) => e.propertyName);
+  protected readonly __relations = this.__md.relations.map(
+    (e) => e.propertyName
+  );
+  protected readonly __uniques = this.__md.uniques.map(
+    (e) => e.columns[0].propertyName
+  );
 
   protected readonly __searchables = this.__md.columns
     .filter((e) => e.type === 'varchar')
@@ -35,12 +46,22 @@ export class RepositoryService<T extends IID> {
   }
 
   async findAll(paginator: PaginatorDto) {
-    const { take, skip, withDeleted, search } = paginator;
+    const { take, skip, withDeleted, search, select } = paginator;
+
+    if (select)
+      select.forEach((e) => {
+        if (!this.__columns.includes(e)) {
+          throw new UnprocessableEntityException(
+            `${this.__entityName} does not have ${e} field!`
+          );
+        }
+      });
 
     return await this.repository.find({
       take,
       skip,
       withDeleted,
+      select: select as any,
       where: this.__where(search),
     });
   }

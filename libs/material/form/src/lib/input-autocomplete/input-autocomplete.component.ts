@@ -24,26 +24,30 @@ export class InputAutocompleteComponent
   override ngOnInit(): void {
     super.ngOnInit();
 
+    if (!this.options) throw new Error('Options is required!');
+
     this.filteredOptions$ = this.inputControl.valueChanges.pipe(
       startWith(''),
-      debounceTime(600),
-      map((e) => {
-        return e
-          ? this.options.filter((o) =>
-              o.name.toLowerCase().startsWith(e.toLowerCase())
-            )
-          : this.options.filter((e) => e);
+      debounceTime(1000),
+      map((search: string) => {
+        if (search && this.options) {
+          const result = this.options.filter((option) => {
+            return option.name?.toLowerCase().includes(search?.toLowerCase());
+          });
+          return result;
+        }
+        return this.options;
       })
     );
   }
 
   displayWith(option: IInputOption) {
-    return option.name;
+    return option && option.name;
   }
 
   valueWith(option: IInputOption) {
     if (this.optionNameAsValue) {
-      return option.name;
+      return option && option.name;
     }
     return option;
   }
