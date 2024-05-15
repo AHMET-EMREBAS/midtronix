@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "BaseTableComponent",
-            "id": "component-BaseTableComponent-f252e1daae6a063ddcf1a7e516cb32029054b304f39957ef9211d5028bcc8fb1356157aff541df65789b873bdaf794885e87f14eba59407c06933942beefb8b0",
+            "id": "component-BaseTableComponent-e77aad519ae6a7142eecb15533ab9e6430a4a650a5318d924c52b1fd6ae1cae4bfe61571818c50574cc069bcfe3e0cad30c885a80f923edab1316b81b132b6a7",
             "file": "libs/tables/src/lib/__base/base-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -66,13 +66,23 @@
                     "line": 8
                 },
                 {
+                    "name": "pageSizeOptions",
+                    "defaultValue": "[4, 8, 10, 20, 50, 100, 200, 500]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
                     "name": "selectedItems",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "T[]",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 13
                 }
             ],
             "methodsClass": [
@@ -82,7 +92,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -99,7 +109,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -124,7 +134,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { IID } from '@mdtx/common';\r\nimport { CollectionBaseService } from '@mdtx/ngrx';\r\n\r\n@Component({ template: '' })\r\nexport class BaseTableComponent<T extends IID> implements OnInit {\r\n  pageIndex = 0;\r\n  pageSize = 20;\r\n  columns = ['id'];\r\n  displayedColumns = ['id'];\r\n\r\n  selectedItems?: T[];\r\n\r\n  constructor(protected readonly service: CollectionBaseService<T>) {}\r\n\r\n  ngOnInit(): void {\r\n    this.service.getWithQuery({\r\n      take: this.pageSize,\r\n      skip: this.pageIndex * this.pageSize,\r\n    });\r\n  }\r\n\r\n  select(items: T[]) {\r\n    this.selectedItems = items;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { IID } from '@mdtx/common';\r\nimport { CollectionBaseService } from '@mdtx/ngrx';\r\n\r\n@Component({ template: '' })\r\nexport class BaseTableComponent<T extends IID> implements OnInit {\r\n  pageIndex = 0;\r\n  pageSize = 20;\r\n  columns = ['id'];\r\n  displayedColumns = ['id'];\r\n\r\n  pageSizeOptions = [4, 8, 10, 20, 50, 100, 200, 500];\r\n  selectedItems?: T[];\r\n\r\n  constructor(protected readonly service: CollectionBaseService<T>) {}\r\n\r\n  ngOnInit(): void {\r\n    this.service.getWithQuery({\r\n      take: this.pageSize,\r\n      skip: this.pageIndex * this.pageSize,\r\n    });\r\n  }\r\n\r\n  select(items: T[]) {\r\n    this.selectedItems = items;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -141,7 +151,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 12,
+                "line": 13,
                 "jsdoctags": [
                     {
                         "name": "service",
@@ -161,7 +171,7 @@
         },
         {
             "name": "CategoryTableComponent",
-            "id": "component-CategoryTableComponent-b57e2bf7c0bc91edad783be7bafbe1b7cd4298f8a164868c8bc58b0beb1f1e826d59a0902c1f998823e3e5d64646b82f7ecdd795d1b589359dad5b2bd42d0912",
+            "id": "component-CategoryTableComponent-c30c8a81571a966d4fac4e1288d82cf1887ce9bfbe075493cac49da27ecad94b192e8e184fbf471f531889a43e473bde60fa1cec67fe9c1f58ce90e386f58fe2",
             "file": "libs/tables/src/lib/tables/category-table/category-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -192,7 +202,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 28,
                     "modifierKind": [
                         164
                     ],
@@ -208,7 +218,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 29,
                     "modifierKind": [
                         164
                     ],
@@ -224,7 +234,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 26,
                     "modifierKind": [
                         164
                     ],
@@ -240,7 +250,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 27,
                     "modifierKind": [
                         164
                     ],
@@ -249,13 +259,47 @@
                     }
                 },
                 {
+                    "name": "pageSizeOptions",
+                    "defaultValue": "PAGE_SIZE_OPTIONS",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        164
+                    ],
+                    "inheritance": {
+                        "file": "BaseTableComponent"
+                    }
+                },
+                {
+                    "name": "table",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TableComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tableRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
                     "name": "selectedItems",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "T[]",
                     "optional": true,
                     "description": "",
-                    "line": 12,
+                    "line": 13,
                     "inheritance": {
                         "file": "BaseTableComponent"
                     }
@@ -263,11 +307,31 @@
             ],
             "methodsClass": [
                 {
+                    "name": "addItem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "deleteSelection",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "selectItems",
                     "args": [
                         {
                             "name": "items",
-                            "type": "ICategory[]",
+                            "type": "Map<string | ICategory>",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -275,13 +339,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 37,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "items",
-                            "type": "ICategory[]",
+                            "type": "Map<string | ICategory>",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -296,7 +360,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 16,
+                    "line": 17,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "inheritance": {
@@ -316,7 +380,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 24,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -353,7 +417,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  constructor(service: CategoryService) {\n    super(service);\n  }\n\n  selectItems(items: ICategory[]) {\n    this.selectedItems = items;\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { BaseTableComponent, TableModules } from '../../__base';\nimport { CategoryToolbarComponent } from '../../toolbars';\nimport {\n  CATEGORY_COLUMNS,\n  CATEGORY_DISPLAY_COLUMNS,\n  CATEGORY_PAGE_SIZE,\n  PAGE_SIZE_OPTIONS,\n} from '../../table-options';\nimport { ICategory } from '@mdtx/common';\nimport { TableComponent } from '@mdtx/material/table';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'mdtx-category-table',\n  standalone: true,\n  imports: [...TableModules, CategoryToolbarComponent],\n  templateUrl: './category-table.component.html',\n  styleUrl: './category-table.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryTableComponent extends BaseTableComponent<ICategory> {\n  @ViewChild('tableRef') table!: TableComponent;\n\n  override pageIndex = 0;\n  override pageSize = CATEGORY_PAGE_SIZE;\n  override columns = CATEGORY_COLUMNS;\n  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;\n\n  override pageSizeOptions = PAGE_SIZE_OPTIONS;\n\n  constructor(service: CategoryService, protected readonly router: Router) {\n    super(service);\n  }\n\n  selectItems(items: Map<string, ICategory>) {\n    console.log('Selected: ', items);\n    this.selectedItems = [...items.entries()].map(([, value]) => value);\n  }\n\n  addItem() {\n    this.router.navigate(['create']);\n  }\n\n  deleteSelection() {\n    for (const [key] of this.table.selectedItems) {\n      this.service.delete(key);\n    }\n    this.table.selectedItems.clear();\n  }\n}\n",
             "styleUrl": "./category-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -369,13 +433,28 @@
                         "type": "CategoryService",
                         "deprecated": false,
                         "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
                 ],
-                "line": 24,
+                "line": 31,
                 "jsdoctags": [
                     {
                         "name": "service",
                         "type": "CategoryService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -387,11 +466,11 @@
             "extends": [
                 "BaseTableComponent"
             ],
-            "templateData": "<mdtx-category-toolbar [selectedItems]=\"selectedItems\"></mdtx-category-toolbar>\n\n<mdtx-table\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  [pageSizeOptions]=\"[4, 8, 10, 20, 50, 100, 200, 500]\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n></mat-paginator>\n"
+            "templateData": "<mdtx-category-toolbar\n  (addEvent)=\"addItem()\"\n  (deleteEvent)=\"deleteSelection()\"\n></mdtx-category-toolbar>\n\n<mdtx-table\n  #tableRef\n  [columns]=\"columns\"\n  [displayedColumns]=\"displayedColumns\"\n  [dataSource]=\"(service.entities$ | async) || []\"\n  (selectionChange)=\"selectItems($event)\"\n></mdtx-table>\n\n<mat-paginator\n  [pageSizeOptions]=\"pageSizeOptions\"\n  [pageIndex]=\"pageIndex\"\n  [pageSize]=\"pageSize\"\n></mat-paginator>\n"
         },
         {
             "name": "CategoryToolbarComponent",
-            "id": "component-CategoryToolbarComponent-ceab2a872c4bdbaedb5cc9dd616a77421fdf0c4c484117f941e019c4200cbaa4db2668efd187ecdc2dd169c50c9422c5025b968695bc9b171d7322cdc2470dd9",
+            "id": "component-CategoryToolbarComponent-38fddb9ccb8e17096a0e36f0d220050a33dcd755df91928110b199ae5084115ba2f1e600b6c3ee586f1e2e592827adaf4cb28de68f87011429164df5ddfa2d4f",
             "file": "libs/tables/src/lib/toolbars/category-toolbar/category-toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -411,28 +490,75 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
+            "inputsClass": [],
+            "outputsClass": [
                 {
-                    "name": "selectedItems",
+                    "name": "addEvent",
+                    "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
-                    "type": "ICategory[]",
-                    "decorators": []
+                    "line": 19,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "deleteEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "leftToolbarItems",
+                    "defaultValue": "[{ id: 1, title: `Add`, icon: 'add' }]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "rightToolbarItems",
+                    "defaultValue": "[{ id: 1, title: `Delete`, icon: 'delete' }]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
             "methodsClass": [
                 {
-                    "name": "deleteSelection",
-                    "args": [],
+                    "name": "handleToolbarClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 21,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -442,46 +568,20 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "ToolbarModules",
-                    "type": "module"
+                    "name": "ToolbarComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { ToolbarModules } from '../../__base';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { ICategory } from '@mdtx/common';\n\n@Component({\n  selector: 'mdtx-category-toolbar',\n  standalone: true,\n  imports: [...ToolbarModules],\n  templateUrl: './category-toolbar.component.html',\n  styleUrl: './category-toolbar.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryToolbarComponent {\n  @Input() selectedItems?: ICategory[];\n  constructor(protected readonly service: CategoryService) {}\n\n  deleteSelection() {\n    this.selectedItems?.forEach((e) => {\n      this.service.delete(e.id);\n    });\n    this.selectedItems = undefined;\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\nimport { CategoryService } from '@mdtx/ngrx';\nimport { ToolbarComponent } from '@mdtx/material/toolbar';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-category-toolbar',\n  standalone: true,\n  imports: [ToolbarComponent],\n  templateUrl: './category-toolbar.component.html',\n  styleUrl: './category-toolbar.component.scss',\n  providers: [CategoryService],\n})\nexport class CategoryToolbarComponent {\n  leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];\n  rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];\n\n  @Output() deleteEvent = new EventEmitter();\n  @Output() addEvent = new EventEmitter();\n\n  handleToolbarClick(event: MenuItem) {\n    switch (event.title) {\n      case 'Add':\n        this.addEvent.emit();\n        return;\n      case 'Delete':\n        this.deleteEvent.emit();\n        return;\n    }\n  }\n}\n",
             "styleUrl": "./category-toolbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "service",
-                        "type": "CategoryService",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 15,
-                "jsdoctags": [
-                    {
-                        "name": "service",
-                        "type": "CategoryService",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
-            "templateData": "<mat-toolbar>\n  <button mat-icon-button>\n    <mat-icon>add</mat-icon>\n  </button>\n\n  <div style=\"flex-grow: 1\"></div>\n  <button\n    mat-icon-button\n    color=\"accent\"\n    [disabled]=\"!(selectedItems && selectedItems.length > 0)\"\n  >\n    <mat-icon>delete</mat-icon>\n  </button>\n</mat-toolbar>\n"
+            "templateData": "<mdtx-toolbar\n  [leftToolbarItems]=\"leftToolbarItems\"\n  [rightToolbarItems]=\"rightToolbarItems\"\n  (toolbarItemClickEvent)=\"handleToolbarClick($event)\"\n>\n</mdtx-toolbar>\n"
         }
     ],
     "modules": [],
@@ -566,6 +666,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<CategoryToolbarComponent>",
                 "defaultValue": "{\n  component: CategoryToolbarComponent,\n  title: 'CategoryToolbarComponent',\n}"
+            },
+            {
+                "name": "PAGE_SIZE_OPTIONS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/tables/src/lib/table-options/__common.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[4, 8, 10, 20, 50, 100, 200, 500]"
             },
             {
                 "name": "Primary",
@@ -753,6 +863,18 @@
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
+            "libs/tables/src/lib/table-options/__common.ts": [
+                {
+                    "name": "PAGE_SIZE_OPTIONS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/tables/src/lib/table-options/__common.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[4, 8, 10, 20, 50, 100, 200, 500]"
+                }
+            ],
             "libs/tables/src/lib/__base/interceptor.ts": [
                 {
                     "name": "storyBookHttpInterceptor",
@@ -832,7 +954,7 @@
                 "linktype": "component",
                 "name": "BaseTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -871,6 +993,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "ToolbarModules",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/tables/src/lib/table-options/__common.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PAGE_SIZE_OPTIONS",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -941,7 +1073,7 @@
                 "linktype": "component",
                 "name": "CategoryTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/14",
                 "status": "low"
             },
             {
@@ -980,7 +1112,7 @@
                 "linktype": "component",
                 "name": "CategoryToolbarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/6",
                 "status": "low"
             }
         ]

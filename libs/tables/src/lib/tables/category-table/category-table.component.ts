@@ -6,6 +6,7 @@ import {
   CATEGORY_COLUMNS,
   CATEGORY_DISPLAY_COLUMNS,
   CATEGORY_PAGE_SIZE,
+  PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { ICategory } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
@@ -27,6 +28,8 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   override columns = CATEGORY_COLUMNS;
   override displayedColumns = CATEGORY_DISPLAY_COLUMNS;
 
+  override pageSizeOptions = PAGE_SIZE_OPTIONS;
+
   constructor(service: CategoryService, protected readonly router: Router) {
     super(service);
   }
@@ -36,7 +39,7 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
-  addNewItem() {
+  addItem() {
     this.router.navigate(['create']);
   }
 

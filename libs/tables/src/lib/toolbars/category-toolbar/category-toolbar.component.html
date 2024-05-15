@@ -1,10 +1,6 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="addNewItem()">
-    <mat-icon>add</mat-icon>
-  </button>
-
-  <div style="flex-grow: 1"></div>
-  <button mat-icon-button color="accent" (click)="deleteSelection()">
-    <mat-icon>delete</mat-icon>
-  </button>
-</mat-toolbar>
+<mdtx-toolbar
+  [leftToolbarItems]="leftToolbarItems"
+  [rightToolbarItems]="rightToolbarItems"
+  (toolbarItemClickEvent)="handleToolbarClick($event)"
+>
+</mdtx-toolbar>

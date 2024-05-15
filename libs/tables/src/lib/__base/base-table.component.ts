@@ -9,6 +9,7 @@ export class BaseTableComponent<T extends IID> implements OnInit {
   columns = ['id'];
   displayedColumns = ['id'];
 
+  pageSizeOptions = [4, 8, 10, 20, 50, 100, 200, 500];
   selectedItems?: T[];
 
   constructor(protected readonly service: CollectionBaseService<T>) {}

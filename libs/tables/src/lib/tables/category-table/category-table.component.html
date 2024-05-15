@@ -1,4 +1,7 @@
-<mdtx-category-toolbar (addNewItemEvent)="addNewItem()" (deleteSelectionEvent)="deleteSelection()"></mdtx-category-toolbar>
+<mdtx-category-toolbar
+  (addEvent)="addItem()"
+  (deleteEvent)="deleteSelection()"
+></mdtx-category-toolbar>
 
 <mdtx-table
   #tableRef
@@ -9,7 +12,7 @@
 ></mdtx-table>
 
 <mat-paginator
-  [pageSizeOptions]="[4, 8, 10, 20, 50, 100, 200, 500]"
+  [pageSizeOptions]="pageSizeOptions"
   [pageIndex]="pageIndex"
   [pageSize]="pageSize"
 ></mat-paginator>
