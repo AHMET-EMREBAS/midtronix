@@ -8,6 +8,7 @@ import { TableComponent } from './table.component';
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
+
 const meta: Meta<TableComponent> = {
   component: TableComponent,
   title: 'TableComponent',

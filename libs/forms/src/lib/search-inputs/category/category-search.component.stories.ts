@@ -4,8 +4,7 @@ import {
   type StoryObj,
 } from '@storybook/angular';
 import { CategorySearchComponent } from './category-search.component';
-import { userEvent, waitFor, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, within } from '@storybook/testing-library';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEntityData, withEffects } from '@ngrx/data';

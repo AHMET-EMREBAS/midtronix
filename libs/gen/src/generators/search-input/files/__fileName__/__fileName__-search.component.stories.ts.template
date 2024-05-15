@@ -28,11 +28,11 @@ const meta: Meta<<%- className %>SearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              <%- className %>: 'Categories',
+              <%- className %>: '<%- pluralClassName %>',
             },
             entityMetadata: {
-              <%- className %>: {},
-            },
+              <%- className %>: {}
+            }
           },
           withEffects()
         ),

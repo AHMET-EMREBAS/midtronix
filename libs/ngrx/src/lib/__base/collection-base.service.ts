@@ -14,6 +14,7 @@ import { IInputOption } from '@mdtx/material/core';
 export class CollectionBaseService<
   T extends IID
 > extends EntityCollectionServiceBase<T> {
+  readonly selectedItems = new Map<number, T>();
   readonly apiPaths!: RestApiPaths;
   readonly metadata$!: Observable<ResourceMetadata>;
   readonly asOptions$!: Observable<IInputOption[]>;
@@ -42,5 +43,31 @@ export class CollectionBaseService<
           });
         })
       );
+  }
+
+  select(entity: T) {
+    this.selectedItems.set(entity.id, entity);
+  }
+
+  selectMany(entities: T[]) {
+    entities.forEach((e) => this.select(e));
+  }
+
+  deselect(id: number) {
+    this.selectedItems.delete(id);
+  }
+
+  clearSelection() {
+    this.selectedItems.clear();
+  }
+
+  getSelection() {
+    return [...this.selectedItems.entries()].map(([, value]) => value);
+  }
+
+  deleteSelection() {
+    this.selectedItems.forEach((e) => {
+      this.delete(e.id);
+    });
   }
 }

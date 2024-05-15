@@ -2,14 +2,19 @@
 import { formatFiles, generateFiles, names, Tree } from '@nx/devkit';
 import * as path from 'path';
 import { SearchInputGeneratorSchema } from './schema';
+import { plural } from '@mdtx/utils';
 
 export async function searchInputGenerator(
   tree: Tree,
   options: SearchInputGeneratorSchema
 ) {
   const projectRoot = `libs/forms/src/lib/search-inputs`;
+
+  const allNames = names(options.name);
+
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
-    ...names(options.name),
+    ...allNames,
+    pluralClassName: plural(allNames.className),
   });
   await formatFiles(tree);
 }
