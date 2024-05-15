@@ -1,12 +1,18 @@
 {
   "name": "@mdtx/ngrx",
   "version": "0.0.1",
+  "author": {
+    "email": "aemrebas.dev@gmail.com",
+    "name": "Ahmet Emrebas",
+    "url": "https://ahmet-emrebas.github.io"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0"
+    "@mdtx/common": "0.0.1",
+    "@mdtx/material/core": "0.0.1"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
+  "dependencies": {},
   "sideEffects": false
 }

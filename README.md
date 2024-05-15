@@ -1,4 +1,4 @@
 # Midtronix
 
-Midtronix Offial RepositoryF
+Midtronix Offial Repository
 
