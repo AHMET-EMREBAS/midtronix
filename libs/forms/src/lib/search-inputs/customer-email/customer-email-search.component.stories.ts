@@ -28,7 +28,7 @@ const meta: Meta<CustomerEmailSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              CustomerEmail: 'Categories',
+              CustomerEmail: 'CustomerEmails',
             },
             entityMetadata: {
               CustomerEmail: {},

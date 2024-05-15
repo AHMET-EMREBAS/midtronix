@@ -28,7 +28,7 @@ const meta: Meta<DepartmentSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Department: 'Categories',
+              Department: 'Departments',
             },
             entityMetadata: {
               Department: {},

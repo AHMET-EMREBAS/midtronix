@@ -28,7 +28,7 @@ const meta: Meta<NotificationSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Notification: 'Categories',
+              Notification: 'Notifications',
             },
             entityMetadata: {
               Notification: {},

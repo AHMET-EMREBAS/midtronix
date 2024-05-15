@@ -28,7 +28,7 @@ const meta: Meta<SkuSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Sku: 'Categories',
+              Sku: 'Skus',
             },
             entityMetadata: {
               Sku: {},

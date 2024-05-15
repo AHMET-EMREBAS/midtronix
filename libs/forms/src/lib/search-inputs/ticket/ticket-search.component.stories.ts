@@ -28,7 +28,7 @@ const meta: Meta<TicketSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Ticket: 'Categories',
+              Ticket: 'Tickets',
             },
             entityMetadata: {
               Ticket: {},

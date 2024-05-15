@@ -28,7 +28,7 @@ const meta: Meta<SprintSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Sprint: 'Categories',
+              Sprint: 'Sprints',
             },
             entityMetadata: {
               Sprint: {},

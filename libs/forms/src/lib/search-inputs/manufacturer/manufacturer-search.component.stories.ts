@@ -28,7 +28,7 @@ const meta: Meta<ManufacturerSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Manufacturer: 'Categories',
+              Manufacturer: 'Manufacturers',
             },
             entityMetadata: {
               Manufacturer: {},

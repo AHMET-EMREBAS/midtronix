@@ -28,7 +28,7 @@ const meta: Meta<PermissionSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Permission: 'Categories',
+              Permission: 'Permissions',
             },
             entityMetadata: {
               Permission: {},

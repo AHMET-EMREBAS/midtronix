@@ -28,7 +28,7 @@ const meta: Meta<ProductVideoSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              ProductVideo: 'Categories',
+              ProductVideo: 'ProductVideoes',
             },
             entityMetadata: {
               ProductVideo: {},

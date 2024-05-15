@@ -28,7 +28,7 @@ const meta: Meta<MessageSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Message: 'Categories',
+              Message: 'Messages',
             },
             entityMetadata: {
               Message: {},

@@ -28,7 +28,7 @@ const meta: Meta<RoleSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Role: 'Categories',
+              Role: 'Roles',
             },
             entityMetadata: {
               Role: {},

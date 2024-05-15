@@ -28,7 +28,7 @@ const meta: Meta<TaskSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Task: 'Categories',
+              Task: 'Tasks',
             },
             entityMetadata: {
               Task: {},

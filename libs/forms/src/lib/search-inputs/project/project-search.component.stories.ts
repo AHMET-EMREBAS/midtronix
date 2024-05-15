@@ -28,7 +28,7 @@ const meta: Meta<ProjectSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Project: 'Categories',
+              Project: 'Projects',
             },
             entityMetadata: {
               Project: {},
