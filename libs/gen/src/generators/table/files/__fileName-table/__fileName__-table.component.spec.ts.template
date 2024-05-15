@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { <%- className %>TableComponent } from './<%- fileName %>-table.component';
+
+describe('<%- className %>TableComponent', () => {
+  let component: <%- className %>TableComponent;
+  let fixture: ComponentFixture<<%- className %>TableComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [<%- className %>TableComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(<%- className %>TableComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

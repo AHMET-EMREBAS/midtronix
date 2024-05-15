@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { <%- className %>ToolbarComponent } from './<%- fileName %>-toolbar.component';
+
+describe('<%- className %>ToolbarComponent', () => {
+  let component: <%- className %>ToolbarComponent;
+  let fixture: ComponentFixture<<%- className %>ToolbarComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [<%- className %>ToolbarComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(<%- className %>ToolbarComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
