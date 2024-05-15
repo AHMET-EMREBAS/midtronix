@@ -3,4 +3,8 @@
   [rightToolbarItems]="rightToolbarItems"
   (toolbarItemClickEvent)="handleToolbarClick($event)"
 >
+  <mdtx-input-search
+    toolbarRightContent
+    (searchEvent)="searchHandler($event)"
+  ></mdtx-input-search>
 </mdtx-toolbar>

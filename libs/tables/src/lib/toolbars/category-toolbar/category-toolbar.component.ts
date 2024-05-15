@@ -1,15 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CategoryService } from '@mdtx/ngrx';
 import { ToolbarComponent } from '@mdtx/material/toolbar';
 import { MenuItem } from '@mdtx/material/core';
-
+import { InputSearchComponent } from '@mdtx/material/form';
 @Component({
   selector: 'mdtx-category-toolbar',
   standalone: true,
-  imports: [ToolbarComponent],
+  imports: [ToolbarComponent, InputSearchComponent],
   templateUrl: './category-toolbar.component.html',
   styleUrl: './category-toolbar.component.scss',
-  providers: [CategoryService],
 })
 export class CategoryToolbarComponent {
   leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];
@@ -17,6 +15,7 @@ export class CategoryToolbarComponent {
 
   @Output() deleteEvent = new EventEmitter();
   @Output() addEvent = new EventEmitter();
+  @Output() searchEvent = new EventEmitter();
 
   handleToolbarClick(event: MenuItem) {
     switch (event.title) {
@@ -27,5 +26,9 @@ export class CategoryToolbarComponent {
         this.deleteEvent.emit();
         return;
     }
+  }
+
+  searchHandler(searchString: string) {
+    this.searchEvent.emit(searchString);
   }
 }

@@ -49,4 +49,12 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
     }
     this.table.selectedItems.clear();
   }
+
+  filterItems(searchString: string) {
+    this.service.getWithQuery({
+      take: this.pageSize,
+      skip: this.pageIndex * this.pageSize,
+      search: searchString,
+    });
+  }
 }
