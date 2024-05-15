@@ -61,7 +61,7 @@ export class UserEmailTableComponent extends BaseTableComponent<IUserEmail> {
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

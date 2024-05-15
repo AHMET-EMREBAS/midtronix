@@ -61,7 +61,7 @@ export class NotificationTableComponent extends BaseTableComponent<INotification
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

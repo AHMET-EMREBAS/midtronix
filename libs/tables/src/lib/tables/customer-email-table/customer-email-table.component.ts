@@ -64,7 +64,7 @@ export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEma
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

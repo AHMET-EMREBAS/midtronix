@@ -61,7 +61,7 @@ export class ProjectTableComponent extends BaseTableComponent<IProject> {
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

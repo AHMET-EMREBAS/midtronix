@@ -61,7 +61,7 @@ export class DepartmentTableComponent extends BaseTableComponent<IDepartment> {
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

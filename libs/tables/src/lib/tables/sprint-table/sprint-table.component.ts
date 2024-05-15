@@ -61,7 +61,7 @@ export class SprintTableComponent extends BaseTableComponent<ISprint> {
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,

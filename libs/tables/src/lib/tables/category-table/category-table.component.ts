@@ -24,10 +24,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
+
   override pageIndex = 0;
   override pageSize = CATEGORY_PAGE_SIZE;
   override columns = CATEGORY_COLUMNS;
   override displayedColumns = CATEGORY_DISPLAY_COLUMNS;
+
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   constructor(service: CategoryService, protected readonly router: Router) {

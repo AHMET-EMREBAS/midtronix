@@ -17,7 +17,8 @@
   [pageSizeOptions]="pageSizeOptions"
   [pageIndex]="pageIndex"
   [pageSize]="pageSize"
+  [length]="count$ | async"
   [showFirstLastButtons]="true"
-  (page)="pageHander($event)"
+  (page)="pageHandler($event)"
 >
 </mat-paginator>

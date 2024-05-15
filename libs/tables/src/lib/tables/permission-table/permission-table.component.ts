@@ -61,7 +61,7 @@ export class PermissionTableComponent extends BaseTableComponent<IPermission> {
     });
   }
 
-  pageHander(page: PageEvent) {
+  pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
       take: page.pageSize,
