@@ -7,7 +7,7 @@ import {
   ViewColumn,
   ViewEntity,
 } from 'typeorm';
-import { ManyRelation, OneRelation, OwnerRelation } from './typeorm';
+import { ManyRelation, OwnerRelation } from './typeorm';
 import { RepositoryService } from './respository.service';
 class BaseEntity {
   @PrimaryGeneratedColumn()

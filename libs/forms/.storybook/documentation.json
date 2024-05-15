@@ -687,6 +687,134 @@
             "templateData": "<form class=\"form-container\" novalidate=\"true\">\r\n  <!-- Form Inputs  -->\r\n  <mdtx-input-text\r\n    inputName=\"name\"\r\n    prefixIcon=\"category\"\r\n    [inputControl]=\"control('name')\"\r\n  ></mdtx-input-text>\r\n\r\n  <!-- Form actions -->\r\n  <div class=\"form-actions\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"formSubmit()\"\r\n      [disabled]=\"isFormInvalid()\"\r\n      [attr.data-testid]=\"'submit'\"\r\n    >\r\n      Save Category\r\n    </button>\r\n    <button\r\n      mat-stroked-button\r\n      color=\"primary\"\r\n      (click)=\"formReset()\"\r\n      [attr.data-testid]=\"'reset'\"\r\n    >\r\n      Reset\r\n    </button>\r\n  </div>\r\n</form>\r\n"
         },
         {
+            "name": "CategorySearchComponent",
+            "id": "component-CategorySearchComponent-5df5a23c796b05e377767f4f7eb6603ac6ac1fac012f4dcf7f5bc73d4a63cbaae6f9191f8b49d58797661c3a4b976b29b7040c4adf9ff1bc4937507ff82680a8",
+            "file": "libs/forms/src/lib/search-inputs/category-search.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "CategoryService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-category-search",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<mdtx-input-autocomplete\n  #inputRef\n  [options]=\"(service.entities$ | async) ?? []\"\n  label=\"Search Category\"\n  prefixIcon=\"category\"\n></mdtx-input-autocomplete>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "InputAutocompleteComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "sub",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputAutocompleteComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\n\r\nimport { CategoryService } from '@mdtx/ngrx';\r\nimport { Subscription, debounceTime } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-category-search',\r\n  standalone: true,\r\n  imports: [CommonModule, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      #inputRef\r\n      [options]=\"(service.entities$ | async) ?? []\"\r\n      label=\"Search Category\"\r\n      prefixIcon=\"category\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CategoryService],\r\n})\r\nexport class CategorySearchComponent implements AfterViewInit, OnDestroy {\r\n  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;\r\n  constructor(protected readonly service: CategoryService) {}\r\n\r\n  sub!: Subscription;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.sub = this.inputRef.$valueChange\r\n      .pipe(debounceTime(600))\r\n      .subscribe((search) => {\r\n        this.service.getWithQuery({ search });\r\n      });\r\n  }\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "service",
+                        "type": "CategoryService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "service",
+                        "type": "CategoryService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "AfterViewInit",
+                "OnDestroy"
+            ]
+        },
+        {
             "name": "CustomerAddressFormComponent",
             "id": "component-CustomerAddressFormComponent-a3efe43ab510ea9196d09b3e0688d80fad1c288657a9ede39d1d03ddcc4c36200f34fb9eade4560525f8b16bc3acce88954ce93b4134eedb19a539a06c5e28fa",
             "file": "libs/forms/src/lib/form-components/customer-address/customer-address-form.component.ts",
@@ -7245,6 +7373,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/category-search works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7565,6 +7703,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CategorySearchComponent>",
+                "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -7880,6 +8028,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new FormGroupBuilder<ICreatePhoneDto>(\r\n  'Phone Form'\r\n)\r\n  .add('phone')\r\n  .phone()\r\n  .required()\r\n\r\n  .done()\r\n  .lock()"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -8339,6 +8497,17 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<CategorySearchComponent>",
+                "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<CategoryFormComponent>",
                 "file": "libs/forms/src/lib/form-components/category/category-form.component.stories.ts",
                 "deprecated": false,
@@ -8751,6 +8920,38 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "new FormGroupBuilder<ICreateEmailDto>(\r\n  'Email Form'\r\n)\r\n  .add('email')\r\n  .email()\r\n  .required()\r\n\r\n  .done()\r\n  .lock()"
+                }
+            ],
+            "libs/forms/src/lib/search-inputs/category-search.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/category-search works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CategorySearchComponent>",
+                    "defaultValue": "{\n  component: CategorySearchComponent,\n  title: 'CategorySearchComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/forms/src/lib/form-components/category/category-form.component.stories.ts": [
@@ -9944,6 +10145,19 @@
                     "subtype": "typealias",
                     "rawtype": "Partial<Record<T, FormControl>>",
                     "file": "libs/forms/src/lib/__base/form-type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/forms/src/lib/search-inputs/category-search.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CategorySearchComponent>",
+                    "file": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -11763,6 +11977,45 @@
                 "coveragePercent": 63,
                 "coverageCount": "7/11",
                 "status": "good"
+            },
+            {
+                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/forms/src/lib/search-inputs/category-search.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CategorySearchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
             }
         ]
     }

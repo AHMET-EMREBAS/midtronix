@@ -16,10 +16,33 @@ import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity
 import { IID, ResourceMetadata } from '@mdtx/common';
 
 export class RepositoryService<T extends IID> {
+  protected readonly __md = this.repository.metadata;
+
+  protected readonly __searchables = this.__md.columns
+    .filter((e) => e.type === 'varchar')
+    .map((e) => e.propertyName);
+
   constructor(protected repository: Repository<T>) {}
 
-  async findAll(paginator: PaginatorDto, where?: FindOptionsWhere<T>) {
-    return await this.repository.find({ ...paginator, where });
+  protected __where(
+    search: string | undefined
+  ): FindOptionsWhere<T> | undefined {
+    return search
+      ? (this.__searchables.map((e) => ({
+          [e]: search,
+        })) as FindOptionsWhere<any>)
+      : undefined;
+  }
+
+  async findAll(paginator: PaginatorDto) {
+    const { take, skip, withDeleted, search } = paginator;
+
+    return await this.repository.find({
+      take,
+      skip,
+      withDeleted,
+      where: this.__where(search),
+    });
   }
 
   async findOneById(id: T['id']) {
@@ -141,17 +164,20 @@ export class RepositoryService<T extends IID> {
   }
 
   async metadata(): Promise<ResourceMetadata> {
-    const m = this.repository.metadata;
     return {
       count: await this.repository.count(),
-      columns: m.columns.map((e) => e.propertyName),
-      relations: m.relations.map((e) => e.propertyName),
+      columns: this.__md.columns.map((e) => e.propertyName),
+      relations: this.__md.relations.map((e) => e.propertyName),
       nullables: [
-        ...m.columns.filter((e) => e.isNullable).map((e) => e.propertyName),
-        ...m.relations.filter((e) => e.isNullable).map((e) => e.propertyName),
+        ...this.__md.columns
+          .filter((e) => e.isNullable)
+          .map((e) => e.propertyName),
+        ...this.__md.relations
+          .filter((e) => e.isNullable)
+          .map((e) => e.propertyName),
       ],
       uniques: [
-        ...m.uniques
+        ...this.__md.uniques
           .map((e) => e.columns.map((e) => e.propertyName).flat())
           .flat(),
       ],
