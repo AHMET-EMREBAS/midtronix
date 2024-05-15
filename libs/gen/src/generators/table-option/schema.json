@@ -12,7 +12,16 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "fields": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What fields would you like to use?"
     }
   },
-  "required": ["name"]
+  "required": ["name", "fields"]
 }

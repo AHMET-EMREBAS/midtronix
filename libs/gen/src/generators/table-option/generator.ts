@@ -10,6 +10,7 @@ export async function tableOptionGenerator(
   const allNames = names(options.name);
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     ...allNames,
+    fields: options.fields,
   });
   await formatFiles(tree);
 }
