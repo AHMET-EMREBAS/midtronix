@@ -9,6 +9,8 @@ export class BaseTableComponent<T extends IID> implements OnInit {
   columns = ['id'];
   displayedColumns = ['id'];
 
+  selectedItems?: T[];
+
   constructor(protected readonly service: CollectionBaseService<T>) {}
 
   ngOnInit(): void {
@@ -16,5 +18,9 @@ export class BaseTableComponent<T extends IID> implements OnInit {
       take: this.pageSize,
       skip: this.pageIndex * this.pageSize,
     });
+  }
+
+  select(items: T[]) {
+    this.selectedItems = items;
   }
 }

@@ -14,7 +14,7 @@ export function OneRelation<T extends IID>(target: Type<T>) {
     ManyToOne(
       () => target,
       (t) => t.id,
-      { eager: true, nullable: true }
+      { eager: true, nullable: true, onDelete: 'SET NULL' }
     ),
     JoinColumn()
   );
@@ -28,7 +28,7 @@ export function ManyRelation<T extends IID>(
     ManyToMany(
       () => target,
       (t) => t.id,
-      { ...options, nullable: true }
+      { ...options, nullable: true, onDelete: 'SET NULL' }
     ),
     JoinTable()
   );

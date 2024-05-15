@@ -1060,7 +1060,7 @@
         },
         {
             "name": "CustomerAddressSearchComponent",
-            "id": "component-CustomerAddressSearchComponent-9c0ed0f9145ce61fbe8fd510a449687d805ce152bd12cab3db5af4a2cb83fa1827e0a2d9d86b07d5995983f7476d246baa6d5622078207cfa579618566f56118",
+            "id": "component-CustomerAddressSearchComponent-ebb27068ddad908511542e618709b5ff4d320a4c680600c15e734a24bc0623cdd0673d16241abce6709a7ee46c77e2db331f660ac87b6c36ef1637fc510b9a14",
             "file": "libs/forms/src/lib/search-inputs/customer-address/customer-address-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1104,7 +1104,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { CustomerAddressService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-customer-address-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"customer-address\"\n      label=\"Search CustomerAddress\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [CustomerAddressService],\n})\nexport class CustomerAddressSearchComponent {\n  constructor(protected readonly service: CustomerAddressService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { CustomerAddressService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-customer-address-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"customer-address\"\r\n      label=\"Search CustomerAddress\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CustomerAddressService],\r\n})\r\nexport class CustomerAddressSearchComponent {\r\n  constructor(protected readonly service: CustomerAddressService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1384,7 +1384,7 @@
         },
         {
             "name": "CustomerEmailSearchComponent",
-            "id": "component-CustomerEmailSearchComponent-3dabc3edaf16c54d8588abd53cfe223479a4b6eedae0f9b3b438654480f361639ce526248fd3e7265a08c26b4039436af48b62b07513e9fdad010daec26c1c57",
+            "id": "component-CustomerEmailSearchComponent-64e9e3e9e107dbc55345d8f9df3985b855b0d74cd87e579fe1efbf1c632bbb7f3a4e4c604886f593119d741acebab69acb4907c88089667560e7c3ac2541fa38",
             "file": "libs/forms/src/lib/search-inputs/customer-email/customer-email-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1428,7 +1428,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { CustomerEmailService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-customer-email-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"customer-email\"\n      label=\"Search CustomerEmail\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [CustomerEmailService],\n})\nexport class CustomerEmailSearchComponent {\n  constructor(protected readonly service: CustomerEmailService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { CustomerEmailService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-customer-email-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"customer-email\"\r\n      label=\"Search CustomerEmail\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CustomerEmailService],\r\n})\r\nexport class CustomerEmailSearchComponent {\r\n  constructor(protected readonly service: CustomerEmailService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -1942,7 +1942,7 @@
         },
         {
             "name": "CustomerPhoneSearchComponent",
-            "id": "component-CustomerPhoneSearchComponent-10efefb620fd01dee0e0d1aac6a6192bf7512150b0a2d9f110e9c67d31f91895afd2f4dda49438905939b80d5fe5d6ada64fd8249ca74474dd4ce72462684eb5",
+            "id": "component-CustomerPhoneSearchComponent-cf48d17c69fc69953bffca0ecedc18e6791a4dc64c4d515fb78ed8a52ba84d3f64288cef9c35b67668202917fe47b53801f4874533c644ab5c9bf00b0fa379fe",
             "file": "libs/forms/src/lib/search-inputs/customer-phone/customer-phone-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1986,7 +1986,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { CustomerPhoneService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-customer-phone-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"customer-phone\"\n      label=\"Search CustomerPhone\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [CustomerPhoneService],\n})\nexport class CustomerPhoneSearchComponent {\n  constructor(protected readonly service: CustomerPhoneService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { CustomerPhoneService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-customer-phone-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"customer-phone\"\r\n      label=\"Search CustomerPhone\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CustomerPhoneService],\r\n})\r\nexport class CustomerPhoneSearchComponent {\r\n  constructor(protected readonly service: CustomerPhoneService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2020,7 +2020,7 @@
         },
         {
             "name": "CustomerSearchComponent",
-            "id": "component-CustomerSearchComponent-27ae30585e6a19e62ab49d8ed7ab3b1ea91fd3e960f6380eb9967fc3f6a3d6923059b2c9c3d671fa3b071706f1e1f8edb0001d3b008d6fd8cb5fbc8182c467e2",
+            "id": "component-CustomerSearchComponent-489118b38d78859f117894431b69f854712ef2eb5028c6a40893397d9628d8c344c39adcd274cb87a0653d48d46640a166f05a8bc5cabf1078c88a9925a3e8a0",
             "file": "libs/forms/src/lib/search-inputs/customer/customer-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2064,7 +2064,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { CustomerService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-customer-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"customer\"\n      label=\"Search Customer\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [CustomerService],\n})\nexport class CustomerSearchComponent {\n  constructor(protected readonly service: CustomerService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { CustomerService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-customer-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"customer\"\r\n      label=\"Search Customer\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [CustomerService],\r\n})\r\nexport class CustomerSearchComponent {\r\n  constructor(protected readonly service: CustomerService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -2336,7 +2336,7 @@
         },
         {
             "name": "DepartmentSearchComponent",
-            "id": "component-DepartmentSearchComponent-5355ec524fcd2cd64a9c89532daac71cac7231bae3ac9e5dd3049dfaa0b4b99489e82a65a0ca1c5197807c2934d3c4666a97b65f4a4b192381dee76b509e55cf",
+            "id": "component-DepartmentSearchComponent-a12996ae6b3d60ecdcdc52027618a0f2f656304341f30d7e8c5fa825edce3274fa6be59abfd53f8c6d0ca3fa4259b1009ccd20465e8211e0c03416d93626efc1",
             "file": "libs/forms/src/lib/search-inputs/department/department-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2380,7 +2380,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { DepartmentService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-department-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"department\"\n      label=\"Search Department\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [DepartmentService],\n})\nexport class DepartmentSearchComponent {\n  constructor(protected readonly service: DepartmentService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { DepartmentService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-department-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"department\"\r\n      label=\"Search Department\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [DepartmentService],\r\n})\r\nexport class DepartmentSearchComponent {\r\n  constructor(protected readonly service: DepartmentService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3141,7 +3141,7 @@
         },
         {
             "name": "ManufacturerSearchComponent",
-            "id": "component-ManufacturerSearchComponent-d2cd9aafa7775cc45b419e0e5dd580e1885273690fa83d53f6cfbb6dbd505a72b890904e074acbd640dd9f720cf485ce7c35a9087d119b5ad2b15ee89f8618ab",
+            "id": "component-ManufacturerSearchComponent-4becb6c01bce82518f30c403a13e35bdc410fe37045982b7fe312473048723fb946406e369d7de1e7d4b762aff5111d7adbf710e76d2aa11b6a2e9c82a2969bc",
             "file": "libs/forms/src/lib/search-inputs/manufacturer/manufacturer-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3185,7 +3185,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { ManufacturerService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-manufacturer-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"manufacturer\"\n      label=\"Search Manufacturer\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [ManufacturerService],\n})\nexport class ManufacturerSearchComponent {\n  constructor(protected readonly service: ManufacturerService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { ManufacturerService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-manufacturer-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"manufacturer\"\r\n      label=\"Search Manufacturer\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [ManufacturerService],\r\n})\r\nexport class ManufacturerSearchComponent {\r\n  constructor(protected readonly service: ManufacturerService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3461,7 +3461,7 @@
         },
         {
             "name": "MessageSearchComponent",
-            "id": "component-MessageSearchComponent-60230e8ca4ff3945a5148307ec3352c49b240d56d868bb3423ec82bd8c9260f3792c4815a9b8f0374c4e47ed7048d97232c58d86771385f420a6db72bc91c8d3",
+            "id": "component-MessageSearchComponent-31d807ef3f31679434a2a07bd5296adeba999c3eaae50e6c619d9e0922f71341b199c26b01a198d9da913a0a20c064a77aa4c7d11f6b91d2789c8fc397bd96e4",
             "file": "libs/forms/src/lib/search-inputs/message/message-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3505,7 +3505,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { MessageService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-message-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"message\"\n      label=\"Search Message\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [MessageService],\n})\nexport class MessageSearchComponent {\n  constructor(protected readonly service: MessageService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { MessageService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-message-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"message\"\r\n      label=\"Search Message\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [MessageService],\r\n})\r\nexport class MessageSearchComponent {\r\n  constructor(protected readonly service: MessageService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -3777,7 +3777,7 @@
         },
         {
             "name": "NotificationSearchComponent",
-            "id": "component-NotificationSearchComponent-91fb18d7e5c8e1054ca18c88df6b6c9ca089c8c80934011053420fde11d01a681ddc29fcca281bf43b072d474a0be667e006fd2fc091f3a5437d4cbe941048cc",
+            "id": "component-NotificationSearchComponent-037ec6e8895a3048285a4723082bafc733ddfd37894c37e2ead2d515fa5b70be929e4909f1318800a8b85b0caeb1651ea60b8d23caece92358fa2a41d12dd8b7",
             "file": "libs/forms/src/lib/search-inputs/notification/notification-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3821,7 +3821,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { NotificationService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-notification-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"notification\"\n      label=\"Search Notification\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [NotificationService],\n})\nexport class NotificationSearchComponent {\n  constructor(protected readonly service: NotificationService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { NotificationService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-notification-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"notification\"\r\n      label=\"Search Notification\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [NotificationService],\r\n})\r\nexport class NotificationSearchComponent {\r\n  constructor(protected readonly service: NotificationService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4093,7 +4093,7 @@
         },
         {
             "name": "PermissionSearchComponent",
-            "id": "component-PermissionSearchComponent-451f1a61e279afd170735f413958f113feb799b1b625f27d905be66068bc37eb6957d6507768c850619acd772506d120a4ae7de0612b19834db1706536d370fe",
+            "id": "component-PermissionSearchComponent-441e4f078ac8cb4682f9385ad9f9fc23597d0712874927bb7a76968cd0cab387daaea75edc6ee737e256cf45d747bac2e1a2d6dea75fddbce51d2fb37d0be220",
             "file": "libs/forms/src/lib/search-inputs/permission/permission-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4137,7 +4137,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { PermissionService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-permission-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"permission\"\n      label=\"Search Permission\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [PermissionService],\n})\nexport class PermissionSearchComponent {\n  constructor(protected readonly service: PermissionService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { PermissionService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-permission-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"permission\"\r\n      label=\"Search Permission\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [PermissionService],\r\n})\r\nexport class PermissionSearchComponent {\r\n  constructor(protected readonly service: PermissionService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4885,7 +4885,7 @@
         },
         {
             "name": "ProductImageSearchComponent",
-            "id": "component-ProductImageSearchComponent-348991b257fa5c258b5114e04d5f312f2dbc6170f6aed5a47a4f73a37a6683ced74bb08068a7f678571a562091200898fd07ec93b8de97522aa98f05a5f83a08",
+            "id": "component-ProductImageSearchComponent-633777f10c5081c4cfcaabb444b91285af2254badddb5fb64837c86529c412abaa02bc61ecabe7f0af4c6096e74ea12108e7d65a0339e3c3587327ad739791fe",
             "file": "libs/forms/src/lib/search-inputs/product-image/product-image-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4929,7 +4929,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { ProductImageService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-product-image-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"product-image\"\n      label=\"Search ProductImage\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [ProductImageService],\n})\nexport class ProductImageSearchComponent {\n  constructor(protected readonly service: ProductImageService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { ProductImageService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-image-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"product-image\"\r\n      label=\"Search ProductImage\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [ProductImageService],\r\n})\r\nexport class ProductImageSearchComponent {\r\n  constructor(protected readonly service: ProductImageService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -4963,7 +4963,7 @@
         },
         {
             "name": "ProductSearchComponent",
-            "id": "component-ProductSearchComponent-395d88211337b1739cc9bd2254cc82a642ab052591710b8ef1186bde843aca8cdd10477f2b9d7aaf2a3723112c28be1235a1b21db4ca72183d92a01623dfee69",
+            "id": "component-ProductSearchComponent-a05a46d16d96cc7ed03416aebdcaef4b74d6d9c221cf1f490e9d611f085384b8f5d587e4d8dca3811fec145b754c4607ac1580df9925a5537b4a81e36694da30",
             "file": "libs/forms/src/lib/search-inputs/product/product-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5007,7 +5007,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { ProductService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-product-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"product\"\n      label=\"Search Product\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [ProductService],\n})\nexport class ProductSearchComponent {\n  constructor(protected readonly service: ProductService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { ProductService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"product\"\r\n      label=\"Search Product\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [ProductService],\r\n})\r\nexport class ProductSearchComponent {\r\n  constructor(protected readonly service: ProductService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5275,7 +5275,7 @@
         },
         {
             "name": "ProductVideoSearchComponent",
-            "id": "component-ProductVideoSearchComponent-6508bbd3353d4c45d2316c258ddf5e8584906182bbe9b9461d29ceb98b3beac12447804a4ce65376f64c81b8c03601b85dc0c75d44e7d4135b249d6a2b7fd5f0",
+            "id": "component-ProductVideoSearchComponent-5b5709569a1b4d64d203828b430aa3dac1aec6d85526ba7fdf909e7c11197a88922dbd34380f8a65b38f06af52343a4ec82a4ea286db753010e6e8bfdf207c60",
             "file": "libs/forms/src/lib/search-inputs/product-video/product-video-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5319,7 +5319,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { ProductVideoService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-product-video-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"product-video\"\n      label=\"Search ProductVideo\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [ProductVideoService],\n})\nexport class ProductVideoSearchComponent {\n  constructor(protected readonly service: ProductVideoService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { ProductVideoService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-video-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"product-video\"\r\n      label=\"Search ProductVideo\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [ProductVideoService],\r\n})\r\nexport class ProductVideoSearchComponent {\r\n  constructor(protected readonly service: ProductVideoService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5595,7 +5595,7 @@
         },
         {
             "name": "ProjectSearchComponent",
-            "id": "component-ProjectSearchComponent-6cfcbca00f917571cabbd385c94ee0c4c1f21b5867c10d9c3bd42cf870dfdd55574376e9d5b67936de813cc09744aac54f52512707d6af59067241837f2473dc",
+            "id": "component-ProjectSearchComponent-8c9d9370632ddfb3afe2810891596ed5e74d1ff9509473a7d30eabfd280b27a6265344e38a50baa4b0b44448c61ee6e38094b71ba30bc8042943dbae9376920f",
             "file": "libs/forms/src/lib/search-inputs/project/project-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5639,7 +5639,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { ProjectService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-project-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"project\"\n      label=\"Search Project\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [ProjectService],\n})\nexport class ProjectSearchComponent {\n  constructor(protected readonly service: ProjectService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { ProjectService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-project-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"project\"\r\n      label=\"Search Project\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [ProjectService],\r\n})\r\nexport class ProjectSearchComponent {\r\n  constructor(protected readonly service: ProjectService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -5911,7 +5911,7 @@
         },
         {
             "name": "RoleSearchComponent",
-            "id": "component-RoleSearchComponent-0dada8e05a9d71ca2e054c08da8bfb916343add3faf42fbf1be8f74686f3405572d1557e3af83c1378b147682517eb055fa189eadd797915b845569b12b8f182",
+            "id": "component-RoleSearchComponent-4eb207ecd00f234c4cac642b7ccdfe71f5ec7f42fef31eb7e93b616232c3e22ff45b198139a5140d141351503d9fc2d5d65bae6609fae70aa002142653ef72ca",
             "file": "libs/forms/src/lib/search-inputs/role/role-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5955,7 +5955,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { RoleService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-role-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"role\"\n      label=\"Search Role\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [RoleService],\n})\nexport class RoleSearchComponent {\n  constructor(protected readonly service: RoleService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { RoleService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-role-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"role\"\r\n      label=\"Search Role\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [RoleService],\r\n})\r\nexport class RoleSearchComponent {\r\n  constructor(protected readonly service: RoleService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6231,7 +6231,7 @@
         },
         {
             "name": "SkuSearchComponent",
-            "id": "component-SkuSearchComponent-00b7ed707acf1f9c981f06c6a5a7f585f0332343e542280af502b9709eebc5a261995e6c1f69c8c669c182ca0463aeb83e2ece80b6c38020a432e69441132a66",
+            "id": "component-SkuSearchComponent-dd289a326ab7a4daa9ed92455d052978c5a36632e27d7a8eeddbceca1256de43888c1da8f1b9761ef50438f745f6c46a9c519fc61a3b89b67c570aeb28cf9bd0",
             "file": "libs/forms/src/lib/search-inputs/sku/sku-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6275,7 +6275,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { SkuService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-sku-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"sku\"\n      label=\"Search Sku\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [SkuService],\n})\nexport class SkuSearchComponent {\n  constructor(protected readonly service: SkuService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { SkuService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-sku-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"sku\"\r\n      label=\"Search Sku\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [SkuService],\r\n})\r\nexport class SkuSearchComponent {\r\n  constructor(protected readonly service: SkuService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6551,7 +6551,7 @@
         },
         {
             "name": "SprintSearchComponent",
-            "id": "component-SprintSearchComponent-7edf864cd4fc66fcc3c3e76e989aa9c2696799ab0804942b4cbeb215c9710601453ea4f3dd2202d7e6d5ab17ca14c40f586eca58656a0e4d3db279ed756f904d",
+            "id": "component-SprintSearchComponent-4dbb5300158188b40124045b90e2652cc14cf42885fa544d935b4e330d845640ff23a38ba3b32d49fa4bcce64dbc1d24336a96a5f550da05d09aebb92359ea52",
             "file": "libs/forms/src/lib/search-inputs/sprint/sprint-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6595,7 +6595,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { SprintService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-sprint-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"sprint\"\n      label=\"Search Sprint\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [SprintService],\n})\nexport class SprintSearchComponent {\n  constructor(protected readonly service: SprintService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { SprintService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-sprint-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"sprint\"\r\n      label=\"Search Sprint\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [SprintService],\r\n})\r\nexport class SprintSearchComponent {\r\n  constructor(protected readonly service: SprintService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -6871,7 +6871,7 @@
         },
         {
             "name": "StoreSearchComponent",
-            "id": "component-StoreSearchComponent-354d8db866e8920ed3167b332b089a0a25d7e028bd1756efddf67412a8418c9a231651b6c995277feee2c244a5b15507da67dda5d6ab98ee9698fb0e0fcfe55d",
+            "id": "component-StoreSearchComponent-9cd90617070279c998ca9d2c7ddeb6333623dd09434dfb4da000da34918785b6695d71540b5c59e63b346815273a06a989a2a11f411508b29c92a83283ec095c",
             "file": "libs/forms/src/lib/search-inputs/store/store-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6915,7 +6915,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { StoreService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-store-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"store\"\n      label=\"Search Store\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [StoreService],\n})\nexport class StoreSearchComponent {\n  constructor(protected readonly service: StoreService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { StoreService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-store-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"store\"\r\n      label=\"Search Store\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [StoreService],\r\n})\r\nexport class StoreSearchComponent {\r\n  constructor(protected readonly service: StoreService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -7203,7 +7203,7 @@
         },
         {
             "name": "TaskSearchComponent",
-            "id": "component-TaskSearchComponent-4c9f3ad15d6d5c3692f164b6b5a380f6207b6acc62d195398db7b0c16898932cea53ad5ed18b838d3fa4c984b9b45312222200c342ce8a2cdf46ad51883194a5",
+            "id": "component-TaskSearchComponent-0cc2353700abbbe7ad9456c128cf2620715dff8573ff81bc82a923cca7fca28313932b1f7ac19220d9ae4fdbad7b2d0b3a8acdde47dbc5b5704f23b47f147e75",
             "file": "libs/forms/src/lib/search-inputs/task/task-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7247,7 +7247,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { TaskService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-task-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"task\"\n      label=\"Search Task\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [TaskService],\n})\nexport class TaskSearchComponent {\n  constructor(protected readonly service: TaskService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { TaskService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-task-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"task\"\r\n      label=\"Search Task\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [TaskService],\r\n})\r\nexport class TaskSearchComponent {\r\n  constructor(protected readonly service: TaskService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -7515,7 +7515,7 @@
         },
         {
             "name": "TicketSearchComponent",
-            "id": "component-TicketSearchComponent-7dd209c28ce98316cf015137c25f6ffc85a282287446b0083fe629b7312e52f190e3d8b0bfd96b53a780a7fcf5fcaa28a8a882faed9a7efa2c1a097901b46a96",
+            "id": "component-TicketSearchComponent-8fd4c38a555c2b7f1e0a2949a94e7a927d39a360192d6d1b23e8010bed3ccd9a48c1dc9e6a28e20ced427b267680373a9b398d34dcb4352f3563a2fe551b1273",
             "file": "libs/forms/src/lib/search-inputs/ticket/ticket-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7559,7 +7559,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { TicketService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-ticket-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"ticket\"\n      label=\"Search Ticket\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [TicketService],\n})\nexport class TicketSearchComponent {\n  constructor(protected readonly service: TicketService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { TicketService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-ticket-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"ticket\"\r\n      label=\"Search Ticket\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [TicketService],\r\n})\r\nexport class TicketSearchComponent {\r\n  constructor(protected readonly service: TicketService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -7827,7 +7827,7 @@
         },
         {
             "name": "UserAddressSearchComponent",
-            "id": "component-UserAddressSearchComponent-590c18e20ef73c4dcd8db776d8c14364f4e48fff95cd8dc8df68199c8510a70d1a7a2bb909807508d942a80006ad77002cfe79b8f818eb745433c7a3c4bf8c8b",
+            "id": "component-UserAddressSearchComponent-884581d8303156d318cf790f9a722161246337768dad879fffb02aae11393ad622c63fc4ce69893522e79e112f783915508c9a7e672323d072f3a119deda2a69",
             "file": "libs/forms/src/lib/search-inputs/user-address/user-address-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7871,7 +7871,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { UserAddressService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-user-address-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"user-address\"\n      label=\"Search UserAddress\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [UserAddressService],\n})\nexport class UserAddressSearchComponent {\n  constructor(protected readonly service: UserAddressService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { UserAddressService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-user-address-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"user-address\"\r\n      label=\"Search UserAddress\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [UserAddressService],\r\n})\r\nexport class UserAddressSearchComponent {\r\n  constructor(protected readonly service: UserAddressService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8139,7 +8139,7 @@
         },
         {
             "name": "UserEmailSearchComponent",
-            "id": "component-UserEmailSearchComponent-c3415fd2a6a56cfd1e28588371a56f5334e4db6be526e8a2bde749db301e4c13aff63569f6871c4bf97f811824dc5be6bbbc180ac823a1f4f900c09425512927",
+            "id": "component-UserEmailSearchComponent-94c50c21f04a5278edd0012c3ac81148e0035867eb3e15fd172a6b5918a5027fa97927909c7033f40c95ea416cd9debedea8a26ab0082276797b0c321ad2208f",
             "file": "libs/forms/src/lib/search-inputs/user-email/user-email-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8183,7 +8183,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { UserEmailService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-user-email-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"user-email\"\n      label=\"Search UserEmail\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [UserEmailService],\n})\nexport class UserEmailSearchComponent {\n  constructor(protected readonly service: UserEmailService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { UserEmailService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-user-email-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"user-email\"\r\n      label=\"Search UserEmail\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [UserEmailService],\r\n})\r\nexport class UserEmailSearchComponent {\r\n  constructor(protected readonly service: UserEmailService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8693,7 +8693,7 @@
         },
         {
             "name": "UserPhoneSearchComponent",
-            "id": "component-UserPhoneSearchComponent-d602dbb30f1e6798bd76659b81a718c07f7f331bf514b51b80699d96beea43f26531295965955b9788a66cdd8da6bd3e62cb15bb1a35353437966d4f3d59bee8",
+            "id": "component-UserPhoneSearchComponent-e4fee96588f592915249b56e5c0aba28c7c5f8713b6d1388ce3b7578596cc545748d46bce64f5216425882428eace488be7c3a5cca30d10d9bc3e44d4815dbd3",
             "file": "libs/forms/src/lib/search-inputs/user-phone/user-phone-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8737,7 +8737,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { UserPhoneService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-user-phone-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"user-phone\"\n      label=\"Search UserPhone\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [UserPhoneService],\n})\nexport class UserPhoneSearchComponent {\n  constructor(protected readonly service: UserPhoneService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { UserPhoneService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-user-phone-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"user-phone\"\r\n      label=\"Search UserPhone\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [UserPhoneService],\r\n})\r\nexport class UserPhoneSearchComponent {\r\n  constructor(protected readonly service: UserPhoneService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -8771,7 +8771,7 @@
         },
         {
             "name": "UserSearchComponent",
-            "id": "component-UserSearchComponent-93b009824df3d01e2d5ecbcddd1d336cc7dd774b23b6c9ee13de7a700a89b69a761b5bb7b46b58f36485a85431c873c011fd472dc2efb056627c0bab5a59e6c0",
+            "id": "component-UserSearchComponent-68f266012b14be1f638b9a3b36304b430a338461112c0fea552fc40be7537d713411618113a471c7b6b07fb68fba5ae77b7418f656d2401b2397d0b5ba0261ae",
             "file": "libs/forms/src/lib/search-inputs/user/user-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -8815,7 +8815,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\nimport { Component } from '@angular/core';\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\nimport { UserService } from '@mdtx/ngrx';\n\n@Component({\n  selector: 'mdtx-user-search',\n  standalone: true,\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\n  template: `\n    <mdtx-input-autocomplete\n      *ngIf=\"service.asOptions$ | async as options\"\n      [options]=\"options\"\n      inputName=\"user\"\n      label=\"Search User\"\n      prefixIcon=\"search\"\n    ></mdtx-input-autocomplete>\n  `,\n  providers: [UserService],\n})\nexport class UserSearchComponent {\n  constructor(protected readonly service: UserService) {}\n}\n",
+            "sourceCode": "import { AsyncPipe, NgIf } from '@angular/common';\r\nimport { Component } from '@angular/core';\r\nimport { InputAutocompleteComponent } from '@mdtx/material/form';\r\nimport { UserService } from '@mdtx/ngrx';\r\n\r\n@Component({\r\n  selector: 'mdtx-user-search',\r\n  standalone: true,\r\n  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],\r\n  template: `\r\n    <mdtx-input-autocomplete\r\n      *ngIf=\"service.asOptions$ | async as options\"\r\n      [options]=\"options\"\r\n      inputName=\"user\"\r\n      label=\"Search User\"\r\n      prefixIcon=\"search\"\r\n    ></mdtx-input-autocomplete>\r\n  `,\r\n  providers: [UserService],\r\n})\r\nexport class UserSearchComponent {\r\n  constructor(protected readonly service: UserService) {}\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -10001,7 +10001,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerSearchComponent>",
-                "defaultValue": "{\n  component: CustomerSearchComponent,\n  title: 'CustomerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Categories',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerSearchComponent,\n  title: 'CustomerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10011,7 +10011,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerAddressSearchComponent>",
-                "defaultValue": "{\n  component: CustomerAddressSearchComponent,\n  title: 'CustomerAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'Categories',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerAddressSearchComponent,\n  title: 'CustomerAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'CustomerAddresss',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10021,7 +10021,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerEmailSearchComponent>",
-                "defaultValue": "{\n  component: CustomerEmailSearchComponent,\n  title: 'CustomerEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'Categories',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerEmailSearchComponent,\n  title: 'CustomerEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'CustomerEmails',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10031,7 +10031,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CustomerPhoneSearchComponent>",
-                "defaultValue": "{\n  component: CustomerPhoneSearchComponent,\n  title: 'CustomerPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'Categories',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CustomerPhoneSearchComponent,\n  title: 'CustomerPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'CustomerPhones',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10041,7 +10041,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DepartmentSearchComponent>",
-                "defaultValue": "{\n  component: DepartmentSearchComponent,\n  title: 'DepartmentSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Categories',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: DepartmentSearchComponent,\n  title: 'DepartmentSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10051,7 +10051,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ManufacturerSearchComponent>",
-                "defaultValue": "{\n  component: ManufacturerSearchComponent,\n  title: 'ManufacturerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Categories',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ManufacturerSearchComponent,\n  title: 'ManufacturerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Manufacturers',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10061,7 +10061,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<MessageSearchComponent>",
-                "defaultValue": "{\n  component: MessageSearchComponent,\n  title: 'MessageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Categories',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: MessageSearchComponent,\n  title: 'MessageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Messages',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10071,7 +10071,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<NotificationSearchComponent>",
-                "defaultValue": "{\n  component: NotificationSearchComponent,\n  title: 'NotificationSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Categories',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: NotificationSearchComponent,\n  title: 'NotificationSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Notifications',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10081,7 +10081,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PermissionSearchComponent>",
-                "defaultValue": "{\n  component: PermissionSearchComponent,\n  title: 'PermissionSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Categories',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: PermissionSearchComponent,\n  title: 'PermissionSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Permissions',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10091,7 +10091,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductSearchComponent>",
-                "defaultValue": "{\n  component: ProductSearchComponent,\n  title: 'ProductSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Categories',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductSearchComponent,\n  title: 'ProductSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10101,7 +10101,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductImageSearchComponent>",
-                "defaultValue": "{\n  component: ProductImageSearchComponent,\n  title: 'ProductImageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'Categories',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductImageSearchComponent,\n  title: 'ProductImageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'ProductImages',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10111,7 +10111,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductVideoSearchComponent>",
-                "defaultValue": "{\n  component: ProductVideoSearchComponent,\n  title: 'ProductVideoSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'Categories',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProductVideoSearchComponent,\n  title: 'ProductVideoSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'ProductVideoes',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10121,7 +10121,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProjectSearchComponent>",
-                "defaultValue": "{\n  component: ProjectSearchComponent,\n  title: 'ProjectSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Categories',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: ProjectSearchComponent,\n  title: 'ProjectSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Projects',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10131,7 +10131,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<RoleSearchComponent>",
-                "defaultValue": "{\n  component: RoleSearchComponent,\n  title: 'RoleSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Categories',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: RoleSearchComponent,\n  title: 'RoleSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Roles',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10141,7 +10141,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SkuSearchComponent>",
-                "defaultValue": "{\n  component: SkuSearchComponent,\n  title: 'SkuSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Categories',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: SkuSearchComponent,\n  title: 'SkuSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10151,7 +10151,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SprintSearchComponent>",
-                "defaultValue": "{\n  component: SprintSearchComponent,\n  title: 'SprintSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Categories',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: SprintSearchComponent,\n  title: 'SprintSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Sprints',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10161,7 +10161,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<StoreSearchComponent>",
-                "defaultValue": "{\n  component: StoreSearchComponent,\n  title: 'StoreSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Categories',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: StoreSearchComponent,\n  title: 'StoreSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Stores',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10171,7 +10171,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TaskSearchComponent>",
-                "defaultValue": "{\n  component: TaskSearchComponent,\n  title: 'TaskSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Categories',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: TaskSearchComponent,\n  title: 'TaskSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Tasks',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10181,7 +10181,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<TicketSearchComponent>",
-                "defaultValue": "{\n  component: TicketSearchComponent,\n  title: 'TicketSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Categories',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: TicketSearchComponent,\n  title: 'TicketSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Tickets',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10191,7 +10191,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserSearchComponent>",
-                "defaultValue": "{\n  component: UserSearchComponent,\n  title: 'UserSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Categories',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserSearchComponent,\n  title: 'UserSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Users',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10201,7 +10201,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserAddressSearchComponent>",
-                "defaultValue": "{\n  component: UserAddressSearchComponent,\n  title: 'UserAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'Categories',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserAddressSearchComponent,\n  title: 'UserAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'UserAddresss',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10211,7 +10211,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserEmailSearchComponent>",
-                "defaultValue": "{\n  component: UserEmailSearchComponent,\n  title: 'UserEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'Categories',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserEmailSearchComponent,\n  title: 'UserEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'UserEmails',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -10221,7 +10221,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UserPhoneSearchComponent>",
-                "defaultValue": "{\n  component: UserPhoneSearchComponent,\n  title: 'UserPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'Categories',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: UserPhoneSearchComponent,\n  title: 'UserPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'UserPhones',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -12520,7 +12520,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerSearchComponent>",
-                    "defaultValue": "{\n  component: CustomerSearchComponent,\n  title: 'CustomerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Categories',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerSearchComponent,\n  title: 'CustomerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12552,7 +12552,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerAddressSearchComponent>",
-                    "defaultValue": "{\n  component: CustomerAddressSearchComponent,\n  title: 'CustomerAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'Categories',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerAddressSearchComponent,\n  title: 'CustomerAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerAddress: 'CustomerAddresss',\n            },\n            entityMetadata: {\n              CustomerAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12584,7 +12584,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerEmailSearchComponent>",
-                    "defaultValue": "{\n  component: CustomerEmailSearchComponent,\n  title: 'CustomerEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'Categories',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerEmailSearchComponent,\n  title: 'CustomerEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerEmail: 'CustomerEmails',\n            },\n            entityMetadata: {\n              CustomerEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12616,7 +12616,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CustomerPhoneSearchComponent>",
-                    "defaultValue": "{\n  component: CustomerPhoneSearchComponent,\n  title: 'CustomerPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'Categories',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CustomerPhoneSearchComponent,\n  title: 'CustomerPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              CustomerPhone: 'CustomerPhones',\n            },\n            entityMetadata: {\n              CustomerPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12648,7 +12648,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DepartmentSearchComponent>",
-                    "defaultValue": "{\n  component: DepartmentSearchComponent,\n  title: 'DepartmentSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Categories',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: DepartmentSearchComponent,\n  title: 'DepartmentSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12680,7 +12680,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ManufacturerSearchComponent>",
-                    "defaultValue": "{\n  component: ManufacturerSearchComponent,\n  title: 'ManufacturerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Categories',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ManufacturerSearchComponent,\n  title: 'ManufacturerSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Manufacturer: 'Manufacturers',\n            },\n            entityMetadata: {\n              Manufacturer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12712,7 +12712,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<MessageSearchComponent>",
-                    "defaultValue": "{\n  component: MessageSearchComponent,\n  title: 'MessageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Categories',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: MessageSearchComponent,\n  title: 'MessageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Message: 'Messages',\n            },\n            entityMetadata: {\n              Message: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12744,7 +12744,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<NotificationSearchComponent>",
-                    "defaultValue": "{\n  component: NotificationSearchComponent,\n  title: 'NotificationSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Categories',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: NotificationSearchComponent,\n  title: 'NotificationSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Notification: 'Notifications',\n            },\n            entityMetadata: {\n              Notification: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12776,7 +12776,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PermissionSearchComponent>",
-                    "defaultValue": "{\n  component: PermissionSearchComponent,\n  title: 'PermissionSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Categories',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: PermissionSearchComponent,\n  title: 'PermissionSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Permission: 'Permissions',\n            },\n            entityMetadata: {\n              Permission: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12808,7 +12808,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductSearchComponent>",
-                    "defaultValue": "{\n  component: ProductSearchComponent,\n  title: 'ProductSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Categories',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductSearchComponent,\n  title: 'ProductSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n            },\n            entityMetadata: {\n              Product: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12840,7 +12840,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductImageSearchComponent>",
-                    "defaultValue": "{\n  component: ProductImageSearchComponent,\n  title: 'ProductImageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'Categories',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductImageSearchComponent,\n  title: 'ProductImageSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductImage: 'ProductImages',\n            },\n            entityMetadata: {\n              ProductImage: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12872,7 +12872,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductVideoSearchComponent>",
-                    "defaultValue": "{\n  component: ProductVideoSearchComponent,\n  title: 'ProductVideoSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'Categories',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProductVideoSearchComponent,\n  title: 'ProductVideoSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              ProductVideo: 'ProductVideoes',\n            },\n            entityMetadata: {\n              ProductVideo: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12904,7 +12904,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProjectSearchComponent>",
-                    "defaultValue": "{\n  component: ProjectSearchComponent,\n  title: 'ProjectSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Categories',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: ProjectSearchComponent,\n  title: 'ProjectSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Project: 'Projects',\n            },\n            entityMetadata: {\n              Project: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12936,7 +12936,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<RoleSearchComponent>",
-                    "defaultValue": "{\n  component: RoleSearchComponent,\n  title: 'RoleSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Categories',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: RoleSearchComponent,\n  title: 'RoleSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Role: 'Roles',\n            },\n            entityMetadata: {\n              Role: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -12968,7 +12968,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SkuSearchComponent>",
-                    "defaultValue": "{\n  component: SkuSearchComponent,\n  title: 'SkuSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Categories',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: SkuSearchComponent,\n  title: 'SkuSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13000,7 +13000,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SprintSearchComponent>",
-                    "defaultValue": "{\n  component: SprintSearchComponent,\n  title: 'SprintSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Categories',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: SprintSearchComponent,\n  title: 'SprintSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Sprint: 'Sprints',\n            },\n            entityMetadata: {\n              Sprint: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13032,7 +13032,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<StoreSearchComponent>",
-                    "defaultValue": "{\n  component: StoreSearchComponent,\n  title: 'StoreSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Categories',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: StoreSearchComponent,\n  title: 'StoreSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Store: 'Stores',\n            },\n            entityMetadata: {\n              Store: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13064,7 +13064,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TaskSearchComponent>",
-                    "defaultValue": "{\n  component: TaskSearchComponent,\n  title: 'TaskSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Categories',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: TaskSearchComponent,\n  title: 'TaskSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Task: 'Tasks',\n            },\n            entityMetadata: {\n              Task: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13096,7 +13096,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<TicketSearchComponent>",
-                    "defaultValue": "{\n  component: TicketSearchComponent,\n  title: 'TicketSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Categories',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: TicketSearchComponent,\n  title: 'TicketSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Ticket: 'Tickets',\n            },\n            entityMetadata: {\n              Ticket: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13128,7 +13128,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserSearchComponent>",
-                    "defaultValue": "{\n  component: UserSearchComponent,\n  title: 'UserSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Categories',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserSearchComponent,\n  title: 'UserSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              User: 'Users',\n            },\n            entityMetadata: {\n              User: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13160,7 +13160,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserAddressSearchComponent>",
-                    "defaultValue": "{\n  component: UserAddressSearchComponent,\n  title: 'UserAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'Categories',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserAddressSearchComponent,\n  title: 'UserAddressSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserAddress: 'UserAddresss',\n            },\n            entityMetadata: {\n              UserAddress: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13192,7 +13192,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserEmailSearchComponent>",
-                    "defaultValue": "{\n  component: UserEmailSearchComponent,\n  title: 'UserEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'Categories',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserEmailSearchComponent,\n  title: 'UserEmailSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserEmail: 'UserEmails',\n            },\n            entityMetadata: {\n              UserEmail: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -13224,7 +13224,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UserPhoneSearchComponent>",
-                    "defaultValue": "{\n  component: UserPhoneSearchComponent,\n  title: 'UserPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'Categories',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: UserPhoneSearchComponent,\n  title: 'UserPhoneSearchComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideStore([]),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              UserPhone: 'UserPhones',\n            },\n            entityMetadata: {\n              UserPhone: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",

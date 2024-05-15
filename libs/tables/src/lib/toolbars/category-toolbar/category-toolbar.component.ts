@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ToolbarModules } from '../../__base';
 import { CategoryService } from '@mdtx/ngrx';
-import { ICategory } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-category-toolbar',
@@ -12,6 +11,14 @@ import { ICategory } from '@mdtx/common';
   providers: [CategoryService],
 })
 export class CategoryToolbarComponent {
+  @Output() deleteSelectionEvent = new EventEmitter();
+  @Output() addNewItemEvent = new EventEmitter();
 
-  constructor(protected readonly service: CategoryService) {}
+  deleteSelection() {
+    this.deleteSelectionEvent.emit();
+  }
+
+  addNewItem() {
+    this.addNewItemEvent.emit();
+  }
 }

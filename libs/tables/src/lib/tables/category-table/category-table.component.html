@@ -1,9 +1,11 @@
-<mdtx-category-toolbar></mdtx-category-toolbar>
+<mdtx-category-toolbar (addNewItemEvent)="addNewItem()" (deleteSelectionEvent)="deleteSelection()"></mdtx-category-toolbar>
 
 <mdtx-table
+  #tableRef
   [columns]="columns"
   [displayedColumns]="displayedColumns"
   [dataSource]="(service.entities$ | async) || []"
+  (selectionChange)="selectItems($event)"
 ></mdtx-table>
 
 <mat-paginator

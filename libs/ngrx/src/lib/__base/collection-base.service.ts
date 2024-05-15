@@ -9,11 +9,12 @@ import {
   RestApiPathBuilder,
   RestApiPaths,
 } from '@mdtx/common';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { IInputOption } from '@mdtx/material/core';
 export class CollectionBaseService<
   T extends IID
 > extends EntityCollectionServiceBase<T> {
+  readonly errorMessages$ = new BehaviorSubject('');
   readonly apiPaths!: RestApiPaths;
   readonly metadata$!: Observable<ResourceMetadata>;
   readonly asOptions$!: Observable<IInputOption[]>;
@@ -42,5 +43,15 @@ export class CollectionBaseService<
           });
         })
       );
+  }
+
+  deleteItem(id: number) {
+    return super.delete(id, { isOptimistic: false }).pipe(
+      catchError((err, caught) => {
+        console.log(err);
+        this.errorMessages$.next(err);
+        return caught;
+      })
+    );
   }
 }
