@@ -27099,7 +27099,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-80a4bc025083e7346e0d8930e76bf4bbe6448238229780cef95b0600752a5dbe2d2461d08306e970a7e1b9b7e1d513c3de653cd1f9ddff3c312bf739136d3416",
+            "id": "component-InputAutocompleteComponent-a79f0960fa26388e4e92b5456ec60178f23d310f2625ba6cda3aad7ccfaf68dadf9288adc586f6d8dd8ebf8d2a0101c746cf0d384f4719b188932aa2b608fe6b",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27264,7 +27264,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -27308,7 +27308,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -27381,7 +27381,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(600),\r\n      map((e) => {\r\n        return e\r\n          ? this.options.filter((o) =>\r\n              o.name.toLowerCase().startsWith(e.toLowerCase())\r\n            )\r\n          : this.options.filter((e) => e);\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    if (!this.options) throw new Error('Options is required!');\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(1000),\r\n      map((search: string) => {\r\n        if (search && this.options) {\r\n          const result = this.options.filter((option) => {\r\n            return option.name?.toLowerCase().includes(search?.toLowerCase());\r\n          });\r\n          return result;\r\n        }\r\n        return this.options;\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option && option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option && option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -27392,7 +27392,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label> {{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matAutocomplete]=\"auto\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #auto=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"valueWith(option)\">{{ option.name }}</mat-option>\r\n    }\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label> {{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matAutocomplete]=\"auto\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #auto=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"valueWith(option)\">{{ option.name }}</mat-option>\r\n    }\r\n    <mat-option [value]=\"null\">None</mat-option>\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix>\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputBaseComponent",
@@ -28172,7 +28172,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28219,7 +28219,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -30032,7 +30032,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -30079,7 +30079,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31130,7 +31130,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31177,7 +31177,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31685,7 +31685,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 44,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31732,7 +31732,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 44,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -34931,6 +34931,92 @@
             "templateData": "<mat-toolbar>\r\n  <div style=\"display: flex; gap: 1em\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"deleteSelection(table.selectedItems)\"\r\n    >\r\n      Delete Selection\r\n    </button>\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"markAllRead(table.selectedItems)\"\r\n    >\r\n      Mark All Read\r\n    </button>\r\n  </div>\r\n  <div style=\"flex-grow: 1\"></div>\r\n  <mdtx-input-text #search [inputControl]=\"searchControl\" prefixIcon=\"search\">\r\n  </mdtx-input-text>\r\n</mat-toolbar>\r\n\r\n<div style=\"max-height: 400px; overflow: auto\">\r\n  <mdtx-table\r\n    #table\r\n    [dataSource]=\"(filteredData | async)!\"\r\n    [columns]=\"['id', 'name', 'read']\"\r\n    [displayedColumns]=\"['id', 'name', 'read']\"\r\n    conditionalColumn=\"read\"\r\n  ></mdtx-table>\r\n  <mat-paginator\r\n    #paginator\r\n    style=\"position: sticky; bottom: 0px\"\r\n    [pageSizeOptions]=\"[2, 5, 7, 10, 12, 20]\"\r\n    [length]=\"data.length\"\r\n    [pageIndex]=\"0\"\r\n    [pageSize]=\"2\"\r\n    [showFirstLastButtons]=\"true\"\r\n  >\r\n  </mat-paginator>\r\n</div>\r\n"
         },
         {
+            "name": "SidebarComponent",
+            "id": "component-SidebarComponent-e5088a94ddc5cc6ccc39ba3a5a2f7acf5ada00dbb8f34bab4e97a42527ef2817a443630c5dcd8d475ac6df2afbd41c7a281c1dc729b986546c992b569116c2ce",
+            "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-sidebar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sidebar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-sidebar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './sidebar.component.html',\n  styleUrl: './sidebar.component.scss',\n})\nexport class SidebarComponent {}\n",
+            "styleUrl": "./sidebar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>sidebar works!</p>\n"
+        },
+        {
+            "name": "StatusbarComponent",
+            "id": "component-StatusbarComponent-3bf874c4a5fdbbff356a2e3b01308ee94ac1b48441c8e3f527d7f1d6582b304514ef1d2ef20d83ffe45e32bc691cf85edb2b1d52a8eaacd2de6d9a7711e28d6f",
+            "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-statusbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./statusbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-statusbar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './statusbar.component.html',\n  styleUrl: './statusbar.component.scss',\n})\nexport class StatusbarComponent {}\n",
+            "styleUrl": "./statusbar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>statusbar works!</p>\n"
+        },
+        {
             "name": "TableComponent",
             "id": "component-TableComponent-2088a6eb539884f7f0b39ac53dd0f3e7599ee23589d0db8425324b46c7160c3475a2fbdf23feec840fe63dae6064579b81624b5e4c29d979fd77b2d34d86e2f6",
             "file": "libs/material/table/src/lib/table/table.component.ts",
@@ -35239,7 +35325,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ row[col] }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n  </table>\r\n</div>\r\n"
+            "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n          [attr.data-testid]=\"'select-all'\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n          [attr.data-testid]=\"'select-' + row.id\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ row[col] }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n  </table>\r\n</div>\r\n"
         },
         {
             "name": "TemplateOutletComponent",
@@ -35292,6 +35378,49 @@
             "stylesData": "",
             "extends": [],
             "templateData": "@if(items){ @for(item of items; track item){\r\n<ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n} }\r\n"
+        },
+        {
+            "name": "ToolbarComponent",
+            "id": "component-ToolbarComponent-c33610c799eb055072e2385142a174fab59b1fcd8dc09e6a6c988c164a023c5352c18da168609718a6fb29bbdbe49d235f377a40136e2ba8e6d7b5530a6cb0a4",
+            "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-toolbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./toolbar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-toolbar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './toolbar.component.html',\n  styleUrl: './toolbar.component.scss',\n})\nexport class ToolbarComponent {}\n",
+            "styleUrl": "./toolbar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>toolbar works!</p>\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -35907,11 +36036,31 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select Option/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -35962,6 +36111,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/Select Time/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -36042,6 +36201,36 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sidebar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -36327,11 +36516,31 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputPhoneComponent>",
+                "defaultValue": "{\n  component: InputPhoneComponent,\n  title: 'InputPhoneComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputRadioComponent>",
                 "defaultValue": "{\r\n  component: InputRadioComponent,\r\n  title: 'InputRadioComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputRangeComponent>",
+                "defaultValue": "{\n  component: InputRangeComponent,\n  title: 'InputRangeComponent',\n}"
             },
             {
                 "name": "meta",
@@ -36382,6 +36591,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<InputTimeComponent>",
                 "defaultValue": "{\r\n  component: InputTimeComponent,\r\n  title: 'InputTimeComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputUrlComponent>",
+                "defaultValue": "{\n  component: InputUrlComponent,\n  title: 'InputUrlComponent',\n}"
             },
             {
                 "name": "meta",
@@ -36462,6 +36681,36 @@
                 "deprecationMessage": "",
                 "type": "Meta<TableComponent>",
                 "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SidebarComponent>",
+                "defaultValue": "{\n  component: SidebarComponent,\n  title: 'SidebarComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<StatusbarComponent>",
+                "defaultValue": "{\n  component: StatusbarComponent,\n  title: 'StatusbarComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ToolbarComponent>",
+                "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
             },
             {
                 "name": "meta",
@@ -36737,11 +36986,31 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -36792,6 +37061,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -36872,6 +37151,36 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    columns: ['id', 'name'],\r\n    displayedColumns: ['id', 'name'],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1' },\r\n      { id: 2, name: 'item 2' },\r\n      { id: 3, name: 'item 3' },\r\n      { id: 4, name: 'item 4' },\r\n      { id: 5, name: 'item 5' },\r\n      { id: 6, name: 'item 6' },\r\n      { id: 7, name: 'item 7' },\r\n      { id: 8, name: 'item 8' },\r\n      { id: 9, name: 'item 9' },\r\n      { id: 10, name: 'item 10' },\r\n    ],\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -37580,8 +37889,30 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<InputPhoneComponent>",
+                "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<InputRadioComponent>",
                 "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputRangeComponent>",
+                "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -37637,6 +37968,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputTimeComponent>",
                 "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputUrlComponent>",
+                "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -37725,6 +38067,39 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<TableComponent>",
                 "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SidebarComponent>",
+                "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<StatusbarComponent>",
+                "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ToolbarComponent>",
+                "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -38685,6 +39060,38 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
+            "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputPhoneComponent>",
+                    "defaultValue": "{\n  component: InputPhoneComponent,\n  title: 'InputPhoneComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n}"
+                }
+            ],
             "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -38715,6 +39122,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n  },\r\n}"
+                }
+            ],
+            "libs/material/form/src/lib/input-range/input-range.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputRangeComponent>",
+                    "defaultValue": "{\n  component: InputRangeComponent,\n  title: 'InputRangeComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-select/input-select.component.stories.ts": [
@@ -38875,6 +39314,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select Time',\r\n  },\r\n}"
+                }
+            ],
+            "libs/material/form/src/lib/input-url/input-url.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputUrlComponent>",
+                    "defaultValue": "{\n  component: InputUrlComponent,\n  title: 'InputUrlComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n}"
                 }
             ],
             "libs/material/form/src/lib/input-username/input-username.component.stories.ts": [
@@ -39131,6 +39602,102 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    columns: ['id', 'name'],\r\n    displayedColumns: ['id', 'name'],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1' },\r\n      { id: 2, name: 'item 2' },\r\n      { id: 3, name: 'item 3' },\r\n      { id: 4, name: 'item 4' },\r\n      { id: 5, name: 'item 5' },\r\n      { id: 6, name: 'item 6' },\r\n      { id: 7, name: 'item 7' },\r\n      { id: 8, name: 'item 8' },\r\n      { id: 9, name: 'item 9' },\r\n      { id: 10, name: 'item 10' },\r\n    ],\r\n  },\r\n}"
+                }
+            ],
+            "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sidebar works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SidebarComponent>",
+                    "defaultValue": "{\n  component: SidebarComponent,\n  title: 'SidebarComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<StatusbarComponent>",
+                    "defaultValue": "{\n  component: StatusbarComponent,\n  title: 'StatusbarComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ToolbarComponent>",
+                    "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/material/layout/src/lib/sample-layout/about/about.component.stories.ts": [
@@ -39919,6 +40486,19 @@
                     "kind": 183
                 }
             ],
+            "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputPhoneComponent>",
+                    "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts": [
                 {
                     "name": "Story",
@@ -39926,6 +40506,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputRadioComponent>",
                     "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/form/src/lib/input-range/input-range.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputRangeComponent>",
+                    "file": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -39991,6 +40584,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputTimeComponent>",
                     "file": "libs/material/form/src/lib/input-time/input-time.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/form/src/lib/input-url/input-url.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputUrlComponent>",
+                    "file": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -40095,6 +40701,45 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<TableComponent>",
                     "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SidebarComponent>",
+                    "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<StatusbarComponent>",
+                    "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ToolbarComponent>",
+                    "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -41392,6 +42037,36 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/form/src/lib/input-phone/input-phone.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -41437,6 +42112,36 @@
                 "name": "InputRadioComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/19",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-range/input-range.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -41641,6 +42346,36 @@
                 "name": "InputTimeComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/19",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-url/input-url.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -42364,6 +43099,123 @@
                 "name": "TableComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/16",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/sidebar/sidebar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SidebarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/statusbar/statusbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "StatusbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/toolbar/src/lib/toolbar/toolbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToolbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]
