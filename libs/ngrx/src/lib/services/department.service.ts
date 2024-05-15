@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DepartmentService extends CollectionBaseService<IDepartment> {
+  static readonly ENTITY_NAME = 'Department';
+  static readonly ENTITY_PLURAL_NAME = 'Departments';
+
   constructor(
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
