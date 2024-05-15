@@ -3,6 +3,23 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": false,
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "files": ["*.ts"],
       "extends": [
         "plugin:@nx/angular",
@@ -13,7 +30,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "camelCase"
           }
         ],
@@ -21,7 +38,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "kebab-case"
           }
         ]

@@ -1,0 +1,14 @@
+.toolbar-left-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-start;
+}
+.toolbar-right-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: flex-end;
+}

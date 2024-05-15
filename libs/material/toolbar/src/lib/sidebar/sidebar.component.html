@@ -1,1 +1,17 @@
-<p>sidebar works!</p>
+<mat-toolbar color="primary" [style.backgroundColor]="bgColor">
+  <div class="toolbar-top-container">
+    @for(item of topToolbarItems; track item){
+    <button mat-icon-button (click)="toolbarItemClickEvent.emit(item)">
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </button>
+    }
+  </div>
+
+  <div class="toolbar-bottom-container">
+    @for(item of bottomToolbarItems; track item){
+    <button mat-icon-button (click)="toolbarItemClickEvent.emit(item)">
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </button>
+    }
+  </div>
+</mat-toolbar>
