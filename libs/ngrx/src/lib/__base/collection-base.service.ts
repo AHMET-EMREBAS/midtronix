@@ -31,7 +31,7 @@ export class CollectionBaseService<
     );
 
     this.asOptions$ = this.httpClient
-      .get<T[]>(this.apiPaths.PLURAL_PATH + '?take=10000')
+      .get<T[]>('api/' + this.apiPaths.PLURAL_PATH + '?take=10000')
       .pipe(
         map((data) => {
           return data.map((d) => {
