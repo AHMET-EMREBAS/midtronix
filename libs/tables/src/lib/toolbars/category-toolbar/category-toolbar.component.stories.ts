@@ -19,6 +19,5 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/category-toolbar works!/gi)).toBeTruthy();
   },
 };

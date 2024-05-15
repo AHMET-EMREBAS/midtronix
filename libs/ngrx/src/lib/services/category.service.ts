@@ -5,7 +5,10 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { HttpClient } from '@angular/common/http';
 import { CATEGORY_OPTION_COLUMN } from '../option-columns';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+  useExisting: true,
+})
 export class CategoryService extends CollectionBaseService<ICategory> {
   static readonly ENTITY_NAME = 'Category';
   static readonly ENTITY_PLURAL_NAME = 'Categories';

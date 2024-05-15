@@ -18,10 +18,10 @@ import { ICategory } from '@mdtx/common';
   providers: [CategoryService],
 })
 export class CategoryTableComponent extends BaseTableComponent<ICategory> {
-  pageIndex = 0;
-  pageSize = CATEGORY_PAGE_SIZE;
-  columns = CATEGORY_COLUMNS;
-  displayedColumns = CATEGORY_DISPLAY_COLUMNS;
+  override pageIndex = 0;
+  override pageSize = CATEGORY_PAGE_SIZE;
+  override columns = CATEGORY_COLUMNS;
+  override displayedColumns = CATEGORY_DISPLAY_COLUMNS;
 
   constructor(service: CategoryService) {
     super(service);

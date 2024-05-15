@@ -4,7 +4,6 @@
   [columns]="columns"
   [displayedColumns]="displayedColumns"
   [dataSource]="(service.entities$ | async) || []"
-  (selectionChange)="handleSelection($event)"
 ></mdtx-table>
 
 <mat-paginator
