@@ -1,8 +1,11 @@
 mat-toolbar {
-  width: 50px;
+  width: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .toolbar-top-container {

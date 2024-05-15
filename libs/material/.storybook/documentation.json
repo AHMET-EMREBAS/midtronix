@@ -34932,7 +34932,7 @@
         },
         {
             "name": "SidebarComponent",
-            "id": "component-SidebarComponent-e5088a94ddc5cc6ccc39ba3a5a2f7acf5ada00dbb8f34bab4e97a42527ef2817a443630c5dcd8d475ac6df2afbd41c7a281c1dc729b986546c992b569116c2ce",
+            "id": "component-SidebarComponent-ad4b9428cf4d6f33cbca6652a3776f545e2ccd8d7f3d559e671cd04644f970e905873b7265d58c43b78ecc8de32fec3e6eb0c75c3983c9102f3b404e6ca2910d",
             "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -34947,8 +34947,42 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "bgColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "bottomToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "topToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "toolbarItemClickEvent",
+                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
@@ -34960,22 +34994,34 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-sidebar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './sidebar.component.html',\n  styleUrl: './sidebar.component.scss',\n})\nexport class SidebarComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-sidebar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './sidebar.component.html',\n  styleUrl: './sidebar.component.scss',\n})\nexport class SidebarComponent {\n  @Input() bgColor?: string;\n  @Input() topToolbarItems?: MenuItem[];\n  @Input() bottomToolbarItems?: MenuItem[];\n\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
             "styleUrl": "./sidebar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>sidebar works!</p>\n"
+            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-top-container\">\n    @for(item of topToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n\n  <div class=\"toolbar-bottom-container\">\n    @for(item of bottomToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
         },
         {
             "name": "StatusbarComponent",
-            "id": "component-StatusbarComponent-3bf874c4a5fdbbff356a2e3b01308ee94ac1b48441c8e3f527d7f1d6582b304514ef1d2ef20d83ffe45e32bc691cf85edb2b1d52a8eaacd2de6d9a7711e28d6f",
+            "id": "component-StatusbarComponent-8e4f0b51f8d9840c0a01f9350de790dab16cf769e5ac2e95f35e788220d50201dc8698f27025493e9d427d3b20abc93d5222be728c90c819edbc08abcb94f755",
             "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -34990,8 +35036,42 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "bgColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "leftToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "rightToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "toolbarItemClickEvent",
+                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
@@ -35003,18 +35083,30 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-statusbar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './statusbar.component.html',\n  styleUrl: './statusbar.component.scss',\n})\nexport class StatusbarComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-statusbar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './statusbar.component.html',\n  styleUrl: './statusbar.component.scss',\n})\nexport class StatusbarComponent {\n  @Input() bgColor?: string;\n  @Input() leftToolbarItems?: MenuItem[];\n  @Input() rightToolbarItems?: MenuItem[];\n\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
             "styleUrl": "./statusbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>statusbar works!</p>\n"
+            "templateData": "<mat-toolbar color=\"accent\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-left-container\">\n    @for(item of leftToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n\n  <div class=\"toolbar-right-container\">\n    @for(item of rightToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
         },
         {
             "name": "TableComponent",
@@ -35381,7 +35473,7 @@
         },
         {
             "name": "ToolbarComponent",
-            "id": "component-ToolbarComponent-c33610c799eb055072e2385142a174fab59b1fcd8dc09e6a6c988c164a023c5352c18da168609718a6fb29bbdbe49d235f377a40136e2ba8e6d7b5530a6cb0a4",
+            "id": "component-ToolbarComponent-b6af704cd32faeefd9359f17634dd82cb12b0d586ecbafab81b42d7bb325e6cb0b6fdc04fe27dd67d9c5dc7703a6c70037dd0399695bcc8f23d92ee6e1dba7f6",
             "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -35396,8 +35488,42 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "bgColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "leftToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "rightToolbarItems",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "MenuItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "toolbarItemClickEvent",
+                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
@@ -35409,18 +35535,30 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-toolbar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './toolbar.component.html',\n  styleUrl: './toolbar.component.scss',\n})\nexport class ToolbarComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n@Component({\n  selector: 'mdtx-toolbar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './toolbar.component.html',\n  styleUrl: './toolbar.component.scss',\n})\nexport class ToolbarComponent {\n  @Input() bgColor?: string;\n  @Input() leftToolbarItems?: MenuItem[];\n  @Input() rightToolbarItems?: MenuItem[];\n\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
             "styleUrl": "./toolbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>toolbar works!</p>\n"
+            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-left-container\">\n    @for(item of leftToolbarItems; track item){\n        <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n          <mat-icon>{{ item.icon }}</mat-icon>\n        </button>\n        }\n  </div>\n\n  <div class=\"toolbar-right-container\">\n    @for(item of rightToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -36230,7 +36368,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -37180,7 +37318,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -39677,7 +39815,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -39697,7 +39835,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
                 }
             ],
             "libs/material/layout/src/lib/sample-layout/about/about.component.stories.ts": [
@@ -43137,7 +43275,7 @@
                 "linktype": "component",
                 "name": "SidebarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -43176,7 +43314,7 @@
                 "linktype": "component",
                 "name": "StatusbarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -43215,7 +43353,7 @@
                 "linktype": "component",
                 "name": "ToolbarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/5",
                 "status": "low"
             }
         ]

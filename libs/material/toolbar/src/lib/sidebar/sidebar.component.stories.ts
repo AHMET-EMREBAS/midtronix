@@ -12,13 +12,21 @@ export default meta;
 type Story = StoryObj<SidebarComponent>;
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    topToolbarItems: [
+      { id: 1, title: 'Home', icon: 'home' },
+      { id: 2, title: 'About', icon: 'info' },
+    ],
+    bottomToolbarItems: [
+      { id: 3, title: 'Home', icon: 'home' },
+      { id: 4, title: 'About', icon: 'info' },
+    ],
+  },
 };
 
 export const Heading: Story = {
-  args: {},
+  args: Primary.args,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/sidebar works!/gi)).toBeTruthy();
   },
 };

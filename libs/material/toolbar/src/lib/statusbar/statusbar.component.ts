@@ -17,5 +17,5 @@ export class StatusbarComponent {
   @Input() leftToolbarItems?: MenuItem[];
   @Input() rightToolbarItems?: MenuItem[];
 
-  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();
+  @Output() statusbarItemClickEvent = new EventEmitter<MenuItem>();
 }
