@@ -3,6 +3,7 @@ import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import { HttpClient } from '@angular/common/http';
+import { <%- constantName %>_OPTION_COLUMN } from '../option-columns';
 
 @Injectable()
 export class <%- className %>Service extends CollectionBaseService<I<%- className %>> {
@@ -14,6 +15,6 @@ export class <%- className %>Service extends CollectionBaseService<I<%- classNam
     factory: EntityCollectionServiceElementsFactory,
     httpClient: HttpClient
   ) {
-    super('<%- className %>', factory, httpClient, 'id');
+    super('<%- className %>', factory, httpClient, <%- constantName %>_OPTION_COLUMN);
   }
 }
