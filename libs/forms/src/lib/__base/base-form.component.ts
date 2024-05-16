@@ -44,7 +44,6 @@ export class BaseFormComponent implements FormComponent, AfterViewInit {
    * Submit form
    */
   formSubmit() {
-    console.log('Form is submitting: ', this.resourceFormGroup.value);
     this.submitEvent.emit(this.resourceFormGroup.value);
   }
 
