@@ -32,6 +32,9 @@ import {
   UserEmailRoutes,
   UserPhoneRoutes,
   UserRoutes,
+  PriceLevelRoutes,
+  PriceRoutes,
+  QuantityRoutes,
 } from '@mdtx/modules/sub-modules';
 export const InventoryRoutes: Routes = [
   {
@@ -65,6 +68,10 @@ export const InventoryRoutes: Routes = [
             UserEmail: 'UserEmails',
             UserPhone: 'UserPhones',
             User: 'Users',
+
+            PriceLevel: 'PriceLevels',
+            Price: 'Prices',
+            Quantity: 'Quantitys',
           },
           entityMetadata: {
             Product: {},
@@ -91,6 +98,9 @@ export const InventoryRoutes: Routes = [
             UserEmail: {},
             UserPhone: {},
             User: {},
+            PriceLevel: {},
+            Price: {},
+            Quantity: {},
           },
         },
         withEffects()
@@ -150,6 +160,11 @@ export const InventoryRoutes: Routes = [
           { path: 'useremail', loadChildren: () => UserEmailRoutes },
           { path: 'userphone', loadChildren: () => UserPhoneRoutes },
           { path: 'user', loadChildren: () => UserRoutes },
+
+          { path: 'pricelevel', loadChildren: () => PriceLevelRoutes },
+          { path: 'price', loadChildren: () => PriceRoutes },
+          { path: 'quantity', loadChildren: () => QuantityRoutes },
+          
         ],
       },
     ],
