@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Home<%- className %>Component } from './home-<%- fileName %>.component';
+
+describe('Home<%- className %>Component', () => {
+  let component: Home<%- className %>Component;
+  let fixture: ComponentFixture<Home<%- className %>Component>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Home<%- className %>Component],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Home<%- className %>Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

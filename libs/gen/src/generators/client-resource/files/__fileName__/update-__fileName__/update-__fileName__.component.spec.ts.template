@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Update<%- className %>Component } from './update-<%- fileName %>.component';
+
+describe('Update<%- className %>Component', () => {
+  let component: Update<%- className %>Component;
+  let fixture: ComponentFixture<Update<%- className %>Component>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [Update<%- className %>Component],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(Update<%- className %>Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

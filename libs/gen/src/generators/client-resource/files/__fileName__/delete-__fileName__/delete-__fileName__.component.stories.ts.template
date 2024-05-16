@@ -1,0 +1,23 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { Delete<%- className %>Component } from './delete-<%- fileName %>.component';
+
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+const meta: Meta<Delete<%- className %>Component> = {
+  component: Delete<%- className %>Component,
+  title: 'Delete<%- className %>Component',
+};
+export default meta;
+type Story = StoryObj<Delete<%- className %>Component>;
+
+export const Primary: Story = {
+  args: {},
+};
+
+export const Heading: Story = {
+  args: {},
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+  },
+};

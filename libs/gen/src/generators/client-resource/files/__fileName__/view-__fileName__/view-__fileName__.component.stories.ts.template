@@ -1,0 +1,23 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { View<%- className %>Component } from './view-<%- fileName %>s.component';
+
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+const meta: Meta<View<%- className %>Component> = {
+  component: View<%- className %>Component,
+  title: 'View<%- className %>Component',
+};
+export default meta;
+type Story = StoryObj<View<%- className %>Component>;
+
+export const Primary: Story = {
+  args: {},
+};
+
+export const Heading: Story = {
+  args: {},
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+  },
+};

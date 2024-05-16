@@ -1,0 +1,48 @@
+import { Component, Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  MatDialog,
+  MatDialogClose,
+  MatDialogModule,
+} from '@angular/material/dialog';
+import { I<%- className %> } from '@mdtx/common';
+import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { <%- className %>Service } from '@mdtx/ngrx';
+import { MatCardModule } from '@angular/material/card';
+@Component({
+  selector: 'mdtx-delete-<%- fileName %>',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
+  templateUrl: './delete-<%- fileName %>.component.html',
+  styleUrl: './delete-<%- fileName %>.component.scss',
+  providers: [<%- className %>Service],
+})
+export class Delete<%- className %>Component {
+  deletedItems: number[] = [];
+
+  constructor(
+    protected readonly service: <%- className %>Service,
+    @Inject(DIALOG_DATA) public readonly items: I<%- className %>[]
+  ) {}
+
+  deleteItem(id: number) {
+    this.deletedItems.push(id);
+    this.service.delete(id);
+  }
+
+  deleteAll() {
+    this.items.forEach((e) => {
+      if (!this.deletedItems.includes(e.id)) {
+        this.service.delete(e.id);
+      }
+    });
+  }
+}

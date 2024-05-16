@@ -1,0 +1,59 @@
+import { Routes } from '@angular/router';
+import { Create<%- className %>Component } from './create-<%- fileName %>/create-<%- fileName %>.component';
+import { Update<%- className %>Component } from './update-<%- fileName %>/update-<%- fileName %>.component';
+import { View<%- className %>Component } from './view-<%- fileName %>s/view-<%- fileName %>.component';
+import {
+  ContentCenterLeftProvider,
+  ModuleLayoutComponent,
+} from '@mdtx/material/layout';
+import { Home<%- className %>Component } from './home-<%- fileName %>/home-<%- fileName %>.component';
+import { Dashboard<%- className %>Component } from './dashboard-<%- fileName %>/dashboard-<%- fileName %>.component';
+export const <%- className %>Routes: Routes = [
+  {
+    title: '<%- className %> Management',
+    path: '',
+    loadComponent: () => ModuleLayoutComponent,
+    providers: [
+      ContentCenterLeftProvider.provide([
+        { label: 'Home', route: 'home', icon: 'home' },
+        { label: 'Dashboard', route: 'dashboard', icon: 'dashboard' },
+        { divider: true },
+        { label: 'Create <%- className %>', route: 'create', icon: 'add' },
+        { label: 'View <%- className %>s', route: 'view', icon: 'table' },
+      ]),
+    ],
+    children: [
+      {
+        title: '<%- className %> Dashboard',
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        title: '<%- className %> Management',
+        path: 'home',
+        loadComponent: () => Home<%- className %>Component,
+      },
+      {
+        title: '<%- className %> Dashboard',
+        path: 'dashboard',
+        loadComponent: () => Dashboard<%- className %>Component,
+      },
+      {
+        title: 'New <%- className %>',
+        path: 'create',
+        loadComponent: () => Create<%- className %>Component,
+      },
+      {
+        title: 'View <%- className %>s',
+        path: 'view',
+        loadComponent: () => View<%- className %>Component,
+      },
+      {
+        title: 'Update <%- className %>',
+        path: 'update/:id',
+        loadComponent: () => Update<%- className %>Component,
+      },
+    ],
+  },
+];

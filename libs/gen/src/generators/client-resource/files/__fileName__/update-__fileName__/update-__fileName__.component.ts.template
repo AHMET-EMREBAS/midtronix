@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'mdtx-update-<%- fileName %>',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './update-<%- fileName %>.component.html',
+  styleUrl: './update-<%- fileName %>.component.scss',
+})
+export class Update<%- className %>Component {}

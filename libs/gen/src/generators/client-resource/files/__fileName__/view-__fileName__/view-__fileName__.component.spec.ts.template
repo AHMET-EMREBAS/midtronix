@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { View<%- className %>Component } from './view-<%- fileName %>s.component';
+
+describe('View<%- className %>Component', () => {
+  let component: View<%- className %>Component;
+  let fixture: ComponentFixture<View<%- className %>Component>;
+
+  beforeEach(async () => {      
+    await TestBed.configureTestingModule({
+      imports: [View<%- className %>Component],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(View<%- className %>Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

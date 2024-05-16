@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { <%- className %>FormComponent } from '@mdtx/forms';
+import { I<%- className %> } from '@mdtx/common';
+import { <%- className %>Service } from '@mdtx/ngrx';
+@Component({
+  selector: 'mdtx-create-<%- fileName %>',
+  standalone: true,
+  imports: [CommonModule, <%- className %>FormComponent],
+  templateUrl: './create-<%- fileName %>.component.html',
+  styleUrl: './create-<%- fileName %>.component.scss',
+  providers: [<%- className %>Service],
+})
+export class Create<%- className %>Component {
+  constructor(protected readonly service: <%- className %>Service) {}
+  handleSubmit(<%- propertyName %>: I<%- className %>) {
+    this.service.add(<%- propertyName %>);
+  }
+}
