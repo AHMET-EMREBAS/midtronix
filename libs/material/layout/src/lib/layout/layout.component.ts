@@ -42,12 +42,4 @@ import { BaseLayoutComponent } from './base-layout.component';
   providers: [...LayoutDirectives],
 })
 export class LayoutComponent extends BaseLayoutComponent {
-  @Input() isSidenavLayout = true;
-  @Input() showProgressbar = true;
-  @Input() showToolbar = true;
-  @Input() showStatusbar = true;
-  @Input() showLeftSidenav = true;
-  @Input() showRightSidenav = true;
-  @Input() progressValue = 100;
-  @Input() rightSidenavIcon?: Icon = 'settings';
 }

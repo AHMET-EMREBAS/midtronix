@@ -1,32 +1,64 @@
 import { Routes } from '@angular/router';
-import { ProductComponent } from './product.component';
 import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
 import { ViewProductComponent } from './view-product/view-product.component';
-import { ContentCenterLeftProvider } from '@mdtx/material/layout';
+import {
+  ContentCenterLeftProvider,
+  ModuleLayoutComponent,
+} from '@mdtx/material/layout';
 
 export const ProductRoutes: Routes = [
   {
+    title: 'Product Management',
     path: '',
-    component: ProductComponent,
+    loadComponent: () => ModuleLayoutComponent,
     providers: [
       ContentCenterLeftProvider.provide([
-        { label: 'Add', route: 'create', icon: 'add' },
-        { label: 'Delete', route: 'delete', icon: 'delete' },
-        { label: 'Dashboard', route: 'dashbaord', icon: 'dashboard' },
+        { label: 'Dashboard', route: 'dashboard', icon: 'dashboard' },
+        { label: 'Create Product', route: 'create', icon: 'add' },
+        { label: 'View Products', route: 'view', icon: 'table' },
       ]),
     ],
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', loadComponent: () => ProductDashboardComponent },
-      { path: 'create', loadComponent: () => CreateProductComponent },
-      { path: 'view', loadComponent: () => ViewProductsComponent },
-      { path: 'view/:id', loadComponent: () => ViewProductComponent },
-      { path: 'update/:id', loadComponent: () => UpdateProductComponent },
-      { path: 'delete/:id', loadComponent: () => DeleteProductComponent },
+      {
+        title: 'Product Dashboard',
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        title: 'Product Dashboard',
+        path: 'dashboard',
+        loadComponent: () => ProductDashboardComponent,
+      },
+      {
+        title: 'New Product',
+        path: 'create',
+        loadComponent: () => CreateProductComponent,
+      },
+      {
+        title: 'View Products',
+        path: 'view',
+        loadComponent: () => ViewProductsComponent,
+      },
+      {
+        title: 'View Product',
+        path: 'view/:id',
+        loadComponent: () => ViewProductComponent,
+      },
+      {
+        title: 'Update Product',
+        path: 'update/:id',
+        loadComponent: () => UpdateProductComponent,
+      },
+      {
+        title: 'Delete Product',
+        path: 'delete/:id',
+        loadComponent: () => DeleteProductComponent,
+      },
     ],
   },
 ];

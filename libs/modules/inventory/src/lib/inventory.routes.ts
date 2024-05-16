@@ -2,9 +2,7 @@
 import { Routes } from '@angular/router';
 import {
   AppLayoutComponent,
-  ContentCenterLeftProvider,
   SidenavLeftBottomProvider,
-  SidenavLeftCenterProvider,
   SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
 import { ProductRoutes } from './product';
@@ -15,11 +13,6 @@ export const InventoryRoutes: Routes = [
     path: '',
     loadComponent: () => AppLayoutComponent,
     providers: [
-      ContentCenterLeftProvider.provide([
-        { label: 'Add', route: 'create', icon: 'add' },
-        { label: 'Delete', route: 'delete', icon: 'delete' },
-        { label: 'Dashboard', route: 'dashbaord', icon: 'dashboard' },
-      ]),
       SidenavLeftTopProvider.provide([
         { label: 'Product', icon: 'inventory_2', route: 'product' },
         { label: 'Sku', icon: 'track_changes', route: 'sku' },
@@ -34,8 +27,6 @@ export const InventoryRoutes: Routes = [
         { divider: true },
         { label: 'Store', icon: 'store', route: 'store' },
       ]),
-
-      SidenavLeftCenterProvider.provide([]),
 
       SidenavLeftBottomProvider.provide([
         { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },

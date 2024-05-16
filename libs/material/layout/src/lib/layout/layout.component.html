@@ -2,26 +2,30 @@
   <!-- ################### TOOLBAR START -->
   <mat-toolbar color="primary" *ngIf="showToolbar">
     <div class="row-container">
+      <!-- Left sidenav toggle -->
       <button
         mat-icon-button
         (click)="sidenavLeftRef.toggle()"
         aria-label="Toggle Left Sidenav"
-        *ngIf="showLeftSidenav"
+        *ngIf="showLeftSidenavToggle"
       >
         <mat-icon>menu</mat-icon>
       </button>
       <mdtx-template-outlet [items]="toolbarLeft"></mdtx-template-outlet>
     </div>
+    <!-- Toolbar center -->
     <div class="row-container center">
       <mdtx-template-outlet [items]="toolbarCenter"></mdtx-template-outlet>
     </div>
+
+    <!-- Toolbar right -->
     <div class="row-container right">
       <mdtx-template-outlet [items]="toolbarRight"></mdtx-template-outlet>
       <button
         mat-icon-button
         (click)="sidenavRightRef.toggle()"
         aria-label="Toggle Right Sidenav"
-        *ngIf="showRightSidenav"
+        *ngIf="showRightSidenavToggle"
       >
         <mat-icon>{{ rightSidenavIcon }}</mat-icon>
       </button>
@@ -45,7 +49,7 @@
     <mat-sidenav
       #sidenavLeftRef
       position="start"
-      [opened]="screen.isNotHandset()"
+      [opened]="screen.isNotHandset() && showLeftSidenav"
       [mode]="screen.toggleValue('side', 'over')"
     >
       <div class="column-container full padding-1">
@@ -109,7 +113,7 @@
       </div>
 
       <!-- Center Content  -->
-      <div class="row-container full full-height flex-grow-1 flex-start">
+      <div class="row-container no-gap full full-height flex-grow-1 flex-start">
         <!-- Center left  -->
         <div class="column-container full" *ngIf="contentCenterLeft.length > 0">
           <mdtx-template-outlet
@@ -119,7 +123,8 @@
 
         <!-- CENTER -->
         <div
-          class="column-container flex-grow-1"
+          class="column-container full flex-grow-1"
+          style="overflow: hidden; overflow-y: auto"
           *ngIf="contentCenter.length > 0"
         >
           <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>

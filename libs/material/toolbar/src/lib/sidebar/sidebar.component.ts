@@ -6,11 +6,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavlistItem } from '@mdtx/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'mdtx-sidebar',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -25,6 +28,13 @@ export class SidebarComponent {
   @Input() topToolbarItems?: NavlistItem[];
   @Input() bottomToolbarItems?: NavlistItem[];
   @Input() tooltipPosition: TooltipPosition = 'right';
-  
   @Output() toolbarItemClickEvent = new EventEmitter<NavlistItem>();
+
+  handleClick(item: NavlistItem) {
+    this.topToolbarItems?.forEach((e) => (e.isActive = false));
+    this.bottomToolbarItems?.forEach((e) => (e.isActive = false));
+
+    item.isActive = true;
+    this.toolbarItemClickEvent.emit(item);
+  }
 }

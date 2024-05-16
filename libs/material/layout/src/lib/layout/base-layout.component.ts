@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList } from '@angular/core';
+import { Component, ContentChildren, Input, QueryList } from '@angular/core';
 import {
   LayoutContentBottomDirective,
   LayoutContentCenterDirective,
@@ -18,9 +18,51 @@ import {
   LayoutToolbarLeftDirective,
   LayoutToolbarRightDirective,
 } from './layout.directive';
+import { Icon } from '@mdtx/material/core';
 
 @Component({ template: '' })
 export class BaseLayoutComponent {
+  /**
+   * Enable or disable the component
+   */
+  @Input() showProgressbar = true;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() showToolbar = true;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() showStatusbar = true;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() showLeftSidenav = true;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() showRightSidenav = true;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() progressValue = 100;
+
+  /**
+   * Enable or disable the component
+   */
+  @Input() showLeftSidenavToggle = true;
+  /**
+   * Enable or disable the component
+   */
+  @Input() showRightSidenavToggle = true;
+
+  @Input() rightSidenavIcon?: Icon = 'settings';
+
   @ContentChildren(LayoutToolbarLeftDirective)
   toolbarLeft!: QueryList<LayoutToolbarLeftDirective>;
   @ContentChildren(LayoutToolbarRightDirective)
@@ -42,7 +84,7 @@ export class BaseLayoutComponent {
 
   @ContentChildren(LayoutContentCenterRightDirective)
   contentCenterRight!: QueryList<LayoutContentCenterDirective>;
-  
+
   @ContentChildren(LayoutContentCenterLeftDirective)
   contentCenterLeft!: QueryList<LayoutContentCenterDirective>;
 

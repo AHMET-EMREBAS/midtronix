@@ -1,4 +1,14 @@
-<mdtx-layout [progressValue]="100" [rightSidenavIcon]="rightSidenavIcon">
+<mdtx-layout
+  [progressValue]="100"
+  [rightSidenavIcon]="rightSidenavIcon"
+  [showLeftSidenavToggle]="false"
+  [showRightSidenavToggle]="false"
+  [showLeftSidenav]="false"
+  [showRightSidenav]="false"
+  [showProgressbar]="false"
+  [showStatusbar]="false"
+  [showToolbar]="false"
+>
   <!-- Toolbar Left-->
   <ng-template mdtxToolbarLeft>
     {{ title.getTitle() }}
@@ -31,48 +41,42 @@
   ></ng-template>
 
   <!-- Sidenav Left Top -->
-  <ng-template mdtxSidenavLeftTop
+  <!-- <ng-template mdtxSidenavLeftTop
     ><mdtx-navlist [items]="sidenavLeftTop"></mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Sidenav Left Center -->
-  <ng-template mdtxSidenavLeftCenter
+  <!-- <ng-template mdtxSidenavLeftCenter
     ><mdtx-navlist [items]="sidenavLeftCenter"></mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Sidenav Left Bottom -->
-  <ng-template mdtxSidenavLeftBottom
+  <!-- <ng-template mdtxSidenavLeftBottom
     ><mdtx-navlist [items]="sidenavLeftBottom"></mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Sidenav Right Top -->
-  <ng-template mdtxSidenavRightTop
+  <!-- <ng-template mdtxSidenavRightTop
     ><mdtx-navlist [items]="sidenavRightTop"></mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Sidenav Right Center -->
-  <ng-template mdtxSidenavRightCenter
+  <!-- <ng-template mdtxSidenavRightCenter
     ><mdtx-navlist [items]="sidenavRightCenter"></mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Sidenav Right Right -->
-  <ng-template mdtxSidenavRightBottom>
+  <!-- <ng-template mdtxSidenavRightBottom>
     <mdtx-navlist [items]="sidenavRightBottom"> </mdtx-navlist
-  ></ng-template>
+  ></ng-template> -->
 
   <!-- Content Center Left -->
-  <ng-template
-    mdtxContentCenterLeft
-    *ngIf="contentCenterLeft && contentCenterLeft.length > 0"
-  >
+  <ng-template mdtxContentCenterLeft>
     <mdtx-sidebar [topToolbarItems]="contentCenterLeft"></mdtx-sidebar>
   </ng-template>
 
   <!-- Content Center Right -->
-  <ng-template
-    mdtxContentCenterRight
-    *ngIf="contentCenterRight && contentCenterRight.length > 0"
-  >
+  <ng-template mdtxContentCenterRight>
     <mdtx-sidebar [topToolbarItems]="contentCenterRight"></mdtx-sidebar>
   </ng-template>
 

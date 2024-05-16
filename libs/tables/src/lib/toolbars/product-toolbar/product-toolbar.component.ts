@@ -10,7 +10,7 @@ import { InputSearchComponent } from '@mdtx/material/form';
   styleUrl: './product-toolbar.component.scss',
 })
 export class ProductToolbarComponent {
-  leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];
+  leftToolbarItems: MenuItem[] = [];
   rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];
 
   @Output() deleteEvent = new EventEmitter();

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BaseAppLayoutComponent } from '../common';
 import { LayoutModule } from '../layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { NavlistComponent } from '../navlist/navlist.component';
 import { SidebarComponent } from '@mdtx/material/toolbar';
-import { BaseAppLayoutComponent } from '../common';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'mdtx-app-layout',
+  selector: 'mdtx-module-layout',
   standalone: true,
   imports: [
     CommonModule,
@@ -16,7 +16,7 @@ import { BaseAppLayoutComponent } from '../common';
     NavlistComponent,
     SidebarComponent,
   ],
-  templateUrl: './app-layout.component.html',
-  styleUrl: './app-layout.component.scss',
+  templateUrl: './module-layout.component.html',
+  styleUrl: './module-layout.component.scss',
 })
-export class AppLayoutComponent extends BaseAppLayoutComponent {}
+export class ModuleLayoutComponent extends BaseAppLayoutComponent {}

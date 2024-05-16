@@ -8,6 +8,11 @@ import {
   isIn,
   isURL,
   isDateString,
+  isNumber,
+  min,
+  minLength,
+  maxLength,
+  isNumberString,
 } from 'class-validator';
 import { IFormBuilder } from './form-builder-interface';
 
@@ -157,9 +162,12 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
           }
     );
   }
+
   ean(): ValidatorBuilder<T> {
     return this.push((c: AbstractControl) =>
-      isEAN(c.value)
+      (isNumberString(c.value) || isNumber(c.value)) &&
+      minLength(c.value, 10) &&
+      maxLength(c.value, 13)
         ? null
         : { ean: `${this.__name()} should be a valid barcode!` }
     );

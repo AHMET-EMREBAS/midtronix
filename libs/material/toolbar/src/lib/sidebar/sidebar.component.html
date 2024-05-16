@@ -5,9 +5,10 @@
     } @else {
     <button
       mat-icon-button
-      (click)="toolbarItemClickEvent.emit(item)"
-      [matTooltip]="item.label ?? ''"
+      (click)="handleClick(item)"
+      [matTooltip]="item.label ?? 'None'"
       [matTooltipPosition]="tooltipPosition"
+      [routerLink]="[item.route]"
     >
       <mat-icon [class.fill]="item.isActive">{{ item.icon }}</mat-icon>
     </button>
@@ -20,7 +21,7 @@
     } @else {
     <button
       mat-icon-button
-      (click)="toolbarItemClickEvent.emit(item)"
+      (click)="handleClick(item)"
       [matTooltip]="item.label ?? ''"
       [matTooltipPosition]="tooltipPosition"
     >
