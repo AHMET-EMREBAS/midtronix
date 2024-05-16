@@ -7,7 +7,7 @@ export async function formBuilderGenerator(
   tree: Tree,
   options: FormBuilderGeneratorSchema
 ) {
-  const projectRoot = `libs/forms/src/lib/form-builder`;
+  const projectRoot = `libs/forms/src/lib/form-builders`;
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
     ...names(options.name),
   });
