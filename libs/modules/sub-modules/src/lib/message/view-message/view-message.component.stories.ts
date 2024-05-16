@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewMessageComponent } from './view-messages.component';
+import { ViewMessageComponent } from './view-message.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

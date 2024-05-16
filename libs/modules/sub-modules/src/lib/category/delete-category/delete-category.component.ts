@@ -45,4 +45,8 @@ export class DeleteCategoryComponent {
       }
     });
   }
+
+  value(item: ICategory) {
+    return Object.values(item).join(', ');
+  }
 }

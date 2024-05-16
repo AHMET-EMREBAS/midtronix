@@ -45,4 +45,8 @@ export class DeleteProductImageComponent {
       }
     });
   }
+
+  value(item: IProductImage) {
+    return Object.values(item).join(', ');
+  }
 }

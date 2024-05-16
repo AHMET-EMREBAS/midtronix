@@ -1,0 +1,23 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { CreatePriceLevelComponent } from './create-price-level.component';
+
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+const meta: Meta<CreatePriceLevelComponent> = {
+  component: CreatePriceLevelComponent,
+  title: 'CreatePriceLevelComponent',
+};
+export default meta;
+type Story = StoryObj<CreatePriceLevelComponent>;
+
+export const Primary: Story = {
+  args: {},
+};
+
+export const Heading: Story = {
+  args: {},
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+  },
+};

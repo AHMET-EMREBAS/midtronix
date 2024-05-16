@@ -45,4 +45,8 @@ export class DeleteUserPhoneComponent {
       }
     });
   }
+
+  value(item: IUserPhone) {
+    return Object.values(item).join(', ');
+  }
 }

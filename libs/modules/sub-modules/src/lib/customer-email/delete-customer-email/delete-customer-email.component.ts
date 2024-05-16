@@ -45,4 +45,8 @@ export class DeleteCustomerEmailComponent {
       }
     });
   }
+
+  value(item: ICustomerEmail) {
+    return Object.values(item).join(', ');
+  }
 }

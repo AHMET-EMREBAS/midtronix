@@ -8,7 +8,7 @@
     <hr />
     @for(item of items; track item){
     <div style="display: flex; gap: 1em; width: 100%">
-      <p>{{ item.username }}</p>
+      <p>{{ value(item) }}</p>
       <button
         #button
         mat-icon-button

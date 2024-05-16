@@ -45,4 +45,8 @@ export class DeleteTaskComponent {
       }
     });
   }
+
+  value(item: ITask) {
+    return Object.values(item).join(', ');
+  }
 }

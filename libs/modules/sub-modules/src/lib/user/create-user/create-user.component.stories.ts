@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CreateProductComponent } from './create-user.component';
+import { CreateUserComponent } from './create-user.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
-const meta: Meta<CreateProductComponent> = {
-  component: CreateProductComponent,
-  title: 'CreateProductComponent',
+const meta: Meta<CreateUserComponent> = {
+  component: CreateUserComponent,
+  title: 'CreateUserComponent',
 };
 export default meta;
-type Story = StoryObj<CreateProductComponent>;
+type Story = StoryObj<CreateUserComponent>;
 
 export const Primary: Story = {
   args: {},

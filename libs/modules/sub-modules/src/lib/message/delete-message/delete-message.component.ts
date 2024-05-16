@@ -45,4 +45,8 @@ export class DeleteMessageComponent {
       }
     });
   }
+
+  value(item: IMessage) {
+    return Object.values(item).join(', ');
+  }
 }

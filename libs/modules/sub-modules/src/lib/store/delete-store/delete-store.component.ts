@@ -45,4 +45,8 @@ export class DeleteStoreComponent {
       }
     });
   }
+
+  value(item: IStore) {
+    return Object.values(item).join(', ');
+  }
 }

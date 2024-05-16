@@ -45,4 +45,8 @@ export class DeleteCustomerComponent {
       }
     });
   }
+
+  value(item: ICustomer) {
+    return Object.values(item).join(', ');
+  }
 }

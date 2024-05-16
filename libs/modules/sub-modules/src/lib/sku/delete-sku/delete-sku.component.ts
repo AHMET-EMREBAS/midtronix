@@ -45,4 +45,8 @@ export class DeleteSkuComponent {
       }
     });
   }
+
+  value(item: ISku) {
+    return Object.values(item).join(', ');
+  }
 }

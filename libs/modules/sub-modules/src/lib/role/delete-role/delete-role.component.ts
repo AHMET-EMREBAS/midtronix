@@ -45,4 +45,8 @@ export class DeleteRoleComponent {
       }
     });
   }
+
+  value(item: IRole) {
+    return Object.values(item).join(', ');
+  }
 }

@@ -45,4 +45,8 @@ export class DeleteDepartmentComponent {
       }
     });
   }
+
+  value(item: IDepartment) {
+    return Object.values(item).join(', ');
+  }
 }

@@ -45,4 +45,8 @@ export class DeleteNotificationComponent {
       }
     });
   }
+
+  value(item: INotification) {
+    return Object.values(item).join(', ');
+  }
 }

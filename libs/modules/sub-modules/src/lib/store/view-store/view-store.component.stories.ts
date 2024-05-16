@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewStoreComponent } from './view-stores.component';
+import { ViewStoreComponent } from './view-store.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

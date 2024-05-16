@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewSkuComponent } from './view-skus.component';
+import { ViewSkuComponent } from './view-sku.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

@@ -45,4 +45,8 @@ export class DeleteUserEmailComponent {
       }
     });
   }
+
+  value(item: IUserEmail) {
+    return Object.values(item).join(', ');
+  }
 }

@@ -45,4 +45,8 @@ export class DeletePermissionComponent {
       }
     });
   }
+
+  value(item: IPermission) {
+    return Object.values(item).join(', ');
+  }
 }

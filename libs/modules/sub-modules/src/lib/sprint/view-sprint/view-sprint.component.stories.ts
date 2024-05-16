@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewSprintComponent } from './view-sprints.component';
+import { ViewSprintComponent } from './view-sprint.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

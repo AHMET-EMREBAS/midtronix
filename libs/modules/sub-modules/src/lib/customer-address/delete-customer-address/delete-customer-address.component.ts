@@ -45,4 +45,8 @@ export class DeleteCustomerAddressComponent {
       }
     });
   }
+
+  value(item: ICustomerAddress) {
+    return Object.values(item).join(', ');
+  }
 }

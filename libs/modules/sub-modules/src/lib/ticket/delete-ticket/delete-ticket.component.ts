@@ -45,4 +45,8 @@ export class DeleteTicketComponent {
       }
     });
   }
+
+  value(item: ITicket) {
+    return Object.values(item).join(', ');
+  }
 }

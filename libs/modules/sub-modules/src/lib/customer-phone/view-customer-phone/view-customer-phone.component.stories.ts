@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { ViewCustomerPhoneComponent } from './view-customer-phones.component';
+import { ViewCustomerPhoneComponent } from './view-customer-phone.component';
 
 import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';

@@ -45,4 +45,8 @@ export class DeleteProductComponent {
       }
     });
   }
+
+  value(item: IProduct) {
+    return Object.values(item).join(', ');
+  }
 }

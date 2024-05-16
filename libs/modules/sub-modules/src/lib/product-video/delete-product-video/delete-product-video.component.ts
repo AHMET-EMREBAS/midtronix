@@ -45,4 +45,8 @@ export class DeleteProductVideoComponent {
       }
     });
   }
+
+  value(item: IProductVideo) {
+    return Object.values(item).join(', ');
+  }
 }

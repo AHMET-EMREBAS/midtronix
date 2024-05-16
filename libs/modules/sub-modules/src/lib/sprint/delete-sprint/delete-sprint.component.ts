@@ -45,4 +45,8 @@ export class DeleteSprintComponent {
       }
     });
   }
+
+  value(item: ISprint) {
+    return Object.values(item).join(', ');
+  }
 }

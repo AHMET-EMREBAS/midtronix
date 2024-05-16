@@ -45,4 +45,8 @@ export class DeleteUserAddressComponent {
       }
     });
   }
+
+  value(item: IUserAddress) {
+    return Object.values(item).join(', ');
+  }
 }

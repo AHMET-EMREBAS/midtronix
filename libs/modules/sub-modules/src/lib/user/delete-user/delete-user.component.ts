@@ -45,4 +45,8 @@ export class DeleteUserComponent {
       }
     });
   }
+
+  value(item: IUser) {
+    return Object.values(item).join(', ');
+  }
 }

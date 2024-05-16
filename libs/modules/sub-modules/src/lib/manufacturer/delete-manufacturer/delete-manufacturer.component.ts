@@ -45,4 +45,8 @@ export class DeleteManufacturerComponent {
       }
     });
   }
+
+  value(item: IManufacturer) {
+    return Object.values(item).join(', ');
+  }
 }

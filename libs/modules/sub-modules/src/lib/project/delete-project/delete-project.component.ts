@@ -45,4 +45,8 @@ export class DeleteProjectComponent {
       }
     });
   }
+
+  value(item: IProject) {
+    return Object.values(item).join(', ');
+  }
 }
