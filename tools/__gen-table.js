@@ -11,10 +11,13 @@ const rns = [
   'message',
   'notification',
   'permission',
+  'price-level',
+  'price',
   'product-image',
   'product-video',
   'product',
   'project',
+  'quantity',
   'role',
   'sku',
   'sprint',
@@ -25,9 +28,6 @@ const rns = [
   'user-email',
   'user-phone',
   'user',
-  'price-level',
-  'price',
-  'quantity',
 ];
 
 for (const r of rns) {
