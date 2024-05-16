@@ -1,87 +1,98 @@
-.flex {
-  display: flex;
-}
-.row {
-  display: flex;
-  flex-direction: row;
-}
-.col {
-  display: flex;
-  flex-direction: column;
-}
-.flex-wrap {
-  flex-wrap: wrap;
-}
 .gap-1em {
   gap: 1em;
+}
+.grow-1 {
+  flex-grow: 1;
 }
 .gap-2em {
   gap: 2em;
 }
+.grow-2 {
+  flex-grow: 2;
+}
 .gap-3em {
   gap: 3em;
+}
+.grow-3 {
+  flex-grow: 3;
 }
 .gap-4em {
   gap: 4em;
 }
+.grow-4 {
+  flex-grow: 4;
+}
 .gap-5em {
   gap: 5em;
+}
+.grow-5 {
+  flex-grow: 5;
 }
 .gap-6em {
   gap: 6em;
 }
+.grow-6 {
+  flex-grow: 6;
+}
 .gap-7em {
   gap: 7em;
+}
+.grow-7 {
+  flex-grow: 7;
 }
 .gap-8em {
   gap: 8em;
 }
+.grow-8 {
+  flex-grow: 8;
+}
 .gap-9em {
   gap: 9em;
+}
+.grow-9 {
+  flex-grow: 9;
 }
 .gap-10em {
   gap: 10em;
 }
-.space-between {
-  justify-content: space-between;
-}
-.space-around {
-  justify-content: space-around;
+.grow-10 {
+  flex-grow: 10;
 }
 * {
   box-sizing: border-box;
 }
-button,
-a {
-  -webkit-user-select: none;
-  user-select: none;
-}
 html,
 body {
-  padding: 0;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
-  color: #464646;
-  overflow: hidden;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 body {
   font-family: Roboto, Helvetica Neue, sans-serif;
   font-size: 16px;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  letter-spacing: 1px;
+mat-form-field {
+  width: 100%;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+.form-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.form-actions button {
+  width: 100%;
 }
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-  /* width: 6px;
-  height: 6px; */
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-thumb {
   background: #dc143c;
@@ -104,6 +115,22 @@ h6 {
 }
 ::-webkit-scrollbar-corner {
   background: #dc143c;
+}
+
+:root {
+  --font-roboto: $value;
+  --font-comfortaa: $value;
+  --font-josefin-sans: $value;
+  --font-concert-one: $value;
+  --font-special-elite: $value;
+  --font-tourney: $value;
+  --font-rubik-iso: $value;
+  --font-rubik-dirt: $value;
+  --font-lobster: $value;
+  --font-dancing-script: $value;
+  --font-black-ops-one: $value;
+  --font-handjet: $value;
+  --font-icon: $value;
 }
 .font-roboto {
   font-family: 'Roboto,  Verdana';
@@ -3855,163 +3882,7 @@ html {
     --mat-tree-container-background-color: #424242;
     --mat-tree-node-text-color: white;
   }
-}
-@font-face {
-  font-family: Material Icons;
-  font-style: normal;
-  font-weight: 100 700;
-  src: url(./assets/fonts/material-symbols.woff2) format('woff2');
-}
-@font-face {
-  font-family: Handjet;
-  src: url(./assets/fonts/Handjet/Handjet-VariableFont.ttf);
-}
-@font-face {
-  font-family: Roboto;
-  src: url(./assets/fonts/Roboto_Flex/RobotoFlex.ttf);
-}
-@font-face {
-  font-family: Special Elite;
-  src: url(./assets/fonts/Special_Elite/SpecialElite-Regular.ttf);
-}
-@font-face {
-  font-family: Josefin Sans;
-  src: url(./assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
-}
-@font-face {
-  font-family: Josefin Sans;
-  font-style: italic;
-  src: url(./assets/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
-}
-@font-face {
-  font-family: Lobster;
-  src: url(./assets/fonts/Lobster/Lobster-Regular.ttf);
-}
-@font-face {
-  font-family: Comfortaa;
-  src: url(./assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
-}
-@font-face {
-  font-family: Rubik Dirt;
-  src: url(./assets/fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
-}
-@font-face {
-  font-family: Rubik Iso;
-  src: url(./assets/fonts/Rubik_Iso/RubikIso-Regular.ttf);
-}
-@font-face {
-  font-family: Black Ops One;
-  src: url(./assets/fonts/Black_Ops_One/BlackOpsOne-Regular.ttf);
-}
-@font-face {
-  font-family: Concert One;
-  src: url(./assets/fonts/Concert_One/ConcertOne-Regular.ttf);
-}
-@font-face {
-  font-family: Tourney;
-  src: url(./assets/fonts/Tourney/Tourney-VariableFont_wdth.ttf);
-}
-@font-face {
-  font-family: Tourney;
-  font-style: italic;
-  src: url(./assets/fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
-}
-@font-face {
-  font-family: Dancing Script;
-  src: url(./assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf);
-}
-/** Fonts */
-:root {
-  --font-roboto: Roboto, Verdana;
-  --font-comfortaa: Comfortaa, Verdana;
-  --font-josefin-sans: Josefin Sans, Verdana;
-  --font-concert-one: Concert One, Verdana;
-  --font-special-elite: Special Elite, Verdana;
-  --font-tourney: Tourney, Verdana;
-  --font-rubik-iso: Rubik Iso, Verdana;
-  --font-rubik-dirt: Rubik Dirt, Verdana;
-  --font-lobster: Lobster, Verdana;
-  --font-dancing-script: Dancing Script, Verdana;
-  --font-black-ops-one: Black Ops One, Verdana;
-  --font-handjet: Handjet, Verdana;
-  --font-icon: Material Icons, Verdana;
-}
-
-.font-roboto {
-  font-family: Roboto, Verdana;
-}
-
-.font-comfortaa {
-  font-family: Comfortaa, Verdana;
-}
-
-.font-josefin-sans {
-  font-family: Josefin Sans, Verdana;
-}
-
-.font-concert-one {
-  font-family: Concert One, Verdana;
-}
-
-.font-special-elite {
-  font-family: Special Elite, Verdana;
-}
-
-.font-tourney {
-  font-family: Tourney, Verdana;
-}
-
-.font-rubik-iso {
-  font-family: Rubik Iso, Verdana;
-}
-
-.font-rubik-dirt {
-  font-family: Rubik Dirt, Verdana;
-}
-
-.font-lobster {
-  font-family: Lobster, Verdana;
-}
-
-.font-dancing-script {
-  font-family: Dancing Script, Verdana;
-}
-
-.font-black-ops-one {
-  font-family: Black Ops One, Verdana;
-}
-
-.font-handjet {
-  font-family: Handjet, Verdana;
-}
-
-.font-icon {
-  font-family: Material Icons, Verdana;
-}
-
-.material-icons {
-  font-family: Material Icons;
-  font-weight: normal;
-  font-style: normal;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
-}
-
-.material-icons.fill {
-  font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
-} /*# sourceMappingURL=style.css.map */
-
-/* Quill*/
-
-/*!
+} /*!
  * Quill Editor v2.0.1
  * https://quilljs.com
  * Copyright (c) 2017-2024, Slab
@@ -4495,8 +4366,8 @@ html {
 .ql-editor .ql-ui {
   position: absolute;
 }
-.ql-editor.ql-blank::before {
-  color: rgba(0, 0, 0, 0.6);
+.ql-editor.ql-blank:before {
+  color: #0009;
   content: attr(data-placeholder);
   font-style: italic;
   left: 15px;
@@ -4628,9 +4499,7 @@ html {
     stroke: #444;
   }
 }
-.ql-snow {
-  box-sizing: border-box;
-}
+.ql-snow,
 .ql-snow * {
   box-sizing: border-box;
 }
@@ -4768,7 +4637,7 @@ html {
   position: relative;
   width: 100%;
 }
-.ql-snow .ql-picker-label::before {
+.ql-snow .ql-picker-label:before {
   display: inline-block;
   line-height: 22px;
 }
@@ -4843,120 +4712,120 @@ html {
 }
 .ql-snow
   .ql-picker.ql-header
-  .ql-picker-label[data-label]:not([data-label=''])::before,
+  .ql-picker-label[data-label]:not([data-label='']):before,
 .ql-snow
   .ql-picker.ql-font
-  .ql-picker-label[data-label]:not([data-label=''])::before,
+  .ql-picker-label[data-label]:not([data-label='']):before,
 .ql-snow
   .ql-picker.ql-size
-  .ql-picker-label[data-label]:not([data-label=''])::before,
+  .ql-picker-label[data-label]:not([data-label='']):before,
 .ql-snow
   .ql-picker.ql-header
-  .ql-picker-item[data-label]:not([data-label=''])::before,
+  .ql-picker-item[data-label]:not([data-label='']):before,
 .ql-snow
   .ql-picker.ql-font
-  .ql-picker-item[data-label]:not([data-label=''])::before,
+  .ql-picker-item[data-label]:not([data-label='']):before,
 .ql-snow
   .ql-picker.ql-size
-  .ql-picker-item[data-label]:not([data-label=''])::before {
+  .ql-picker-item[data-label]:not([data-label='']):before {
   content: attr(data-label);
 }
 .ql-snow .ql-picker.ql-header {
   width: 98px;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item:before {
   content: 'Normal';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='1']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='1']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']:before {
   content: 'Heading 1';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='2']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='2']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']:before {
   content: 'Heading 2';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='3']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='3']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']:before {
   content: 'Heading 3';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='4']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='4']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']:before {
   content: 'Heading 4';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='5']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='5']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']:before {
   content: 'Heading 5';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='6']::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='6']:before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']:before {
   content: 'Heading 6';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']:before {
   font-size: 2em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']:before {
   font-size: 1.5em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']:before {
   font-size: 1.17em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']:before {
   font-size: 1em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']:before {
   font-size: 0.83em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']:before {
   font-size: 0.67em;
 }
 .ql-snow .ql-picker.ql-font {
   width: 108px;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item::before {
+.ql-snow .ql-picker.ql-font .ql-picker-label:before,
+.ql-snow .ql-picker.ql-font .ql-picker-item:before {
   content: 'Sans Serif';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before {
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']:before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']:before {
   content: 'Serif';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='monospace']::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']::before {
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='monospace']:before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']:before {
   content: 'Monospace';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before {
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']:before {
   font-family: Georgia, Times New Roman, serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']::before {
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']:before {
   font-family: Monaco, Courier New, monospace;
 }
 .ql-snow .ql-picker.ql-size {
   width: 98px;
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label:before,
+.ql-snow .ql-picker.ql-size .ql-picker-item:before {
   content: 'Normal';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='small']::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='small']:before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']:before {
   content: 'Small';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='large']::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='large']:before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']:before {
   content: 'Large';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='huge']::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='huge']:before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']:before {
   content: 'Huge';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']:before {
   font-size: 10px;
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']:before {
   font-size: 18px;
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']:before {
   font-size: 32px;
 }
 .ql-snow .ql-color-picker.ql-background .ql-picker-item {
@@ -4975,7 +4844,7 @@ html {
 .ql-toolbar.ql-snow {
   border: 1px solid #ccc;
   box-sizing: border-box;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   padding: 8px;
 }
 .ql-toolbar.ql-snow .ql-formats {
@@ -4986,11 +4855,9 @@ html {
 }
 .ql-toolbar.ql-snow .ql-picker-options {
   border: 1px solid transparent;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
+  box-shadow: #0003 0 2px 8px;
 }
-.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
-  border-color: #ccc;
-}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label,
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
   border-color: #ccc;
 }
@@ -5009,7 +4876,7 @@ html {
   padding: 5px 12px;
   white-space: nowrap;
 }
-.ql-snow .ql-tooltip::before {
+.ql-snow .ql-tooltip:before {
   content: 'Visit URL:';
   line-height: 26px;
   margin-right: 8px;
@@ -5030,13 +4897,13 @@ html {
   text-overflow: ellipsis;
   vertical-align: top;
 }
-.ql-snow .ql-tooltip a.ql-action::after {
+.ql-snow .ql-tooltip a.ql-action:after {
   border-right: 1px solid #ccc;
   content: 'Edit';
   margin-left: 16px;
   padding-right: 8px;
 }
-.ql-snow .ql-tooltip a.ql-remove::before {
+.ql-snow .ql-tooltip a.ql-remove:before {
   content: 'Remove';
   margin-left: 8px;
 }
@@ -5050,18 +4917,18 @@ html {
 .ql-snow .ql-tooltip.ql-editing input[type='text'] {
   display: inline-block;
 }
-.ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+.ql-snow .ql-tooltip.ql-editing a.ql-action:after {
   border-right: 0;
   content: 'Save';
   padding-right: 0;
 }
-.ql-snow .ql-tooltip[data-mode='link']::before {
+.ql-snow .ql-tooltip[data-mode='link']:before {
   content: 'Enter link:';
 }
-.ql-snow .ql-tooltip[data-mode='formula']::before {
+.ql-snow .ql-tooltip[data-mode='formula']:before {
   content: 'Enter formula:';
 }
-.ql-snow .ql-tooltip[data-mode='video']::before {
+.ql-snow .ql-tooltip[data-mode='video']:before {
   content: 'Enter video:';
 }
 .ql-snow a {
@@ -5071,10 +4938,83 @@ html {
   border: 1px solid #ccc;
 }
 
-/*# sourceMappingURL=quill.snow.css.map*/
-
-/* material */
-
-mat-form-field {
-  width: 100%;
+@font-face {
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: 100 700;
+  src: url(./assets/fonts/material-symbols.woff2) format('woff2');
+}
+@font-face {
+  font-family: Handjet;
+  src: url(./assets/fonts/Handjet/Handjet-VariableFont.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(./assets/fonts/Roboto_Flex/RobotoFlex.ttf);
+}
+@font-face {
+  font-family: Special Elite;
+  src: url(./assets/fonts/Special_Elite/SpecialElite-Regular.ttf);
+}
+@font-face {
+  font-family: Josefin Sans;
+  src: url(./assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Josefin Sans;
+  font-style: italic;
+  src: url(./assets/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Lobster;
+  src: url(./assets/fonts/Lobster/Lobster-Regular.ttf);
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url(./assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Rubik Dirt;
+  src: url(./assets/fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
+}
+@font-face {
+  font-family: Rubik Iso;
+  src: url(./assets/fonts/Rubik_Iso/RubikIso-Regular.ttf);
+}
+@font-face {
+  font-family: Black Ops One;
+  src: url(./assets/fonts/Black_Ops_One/BlackOpsOne-Regular.ttf);
+}
+@font-face {
+  font-family: Concert One;
+  src: url(./assets/fonts/Concert_One/ConcertOne-Regular.ttf);
+}
+@font-face {
+  font-family: Tourney;
+  src: url(./assets/fonts/Tourney/Tourney-VariableFont_wdth.ttf);
+}
+@font-face {
+  font-family: Tourney;
+  font-style: italic;
+  src: url(./assets/fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
+}
+@font-face {
+  font-family: Dancing Script;
+  src: url(./assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf);
+}
+/** Fonts */
+:root {
+  --font-roboto: Roboto, Verdana;
+  --font-comfortaa: Comfortaa, Verdana;
+  --font-josefin-sans: Josefin Sans, Verdana;
+  --font-concert-one: Concert One, Verdana;
+  --font-special-elite: Special Elite, Verdana;
+  --font-tourney: Tourney, Verdana;
+  --font-rubik-iso: Rubik Iso, Verdana;
+  --font-rubik-dirt: Rubik Dirt, Verdana;
+  --font-lobster: Lobster, Verdana;
+  --font-dancing-script: Dancing Script, Verdana;
+  --font-black-ops-one: Black Ops One, Verdana;
+  --font-handjet: Handjet, Verdana;
+  --font-icon: Material Icons, Verdana;
 }

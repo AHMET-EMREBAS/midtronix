@@ -51,49 +51,6 @@
             "templateData": "<p>auth works!</p>\n"
         },
         {
-            "name": "CmsComponent",
-            "id": "component-CmsComponent-215489ac903e3fa1e834f0d0e425e63bbba17e3c4b8b6257765c7a93edb4c4f7fcf2db3058068a9279b7a0fb423c826a079a5ea2d3fd7f98a49800f1cdbc6e09",
-            "file": "libs/modules/cms/src/lib/cms/cms.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "mdtx-cms",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./cms.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-cms',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './cms.component.html',\n  styleUrl: './cms.component.scss',\n})\nexport class CmsComponent {}\n",
-            "styleUrl": "./cms.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<p>cms works!</p>\n"
-        },
-        {
             "name": "CreatePermissionFormComponent",
             "id": "component-CreatePermissionFormComponent-6b7d1618b2758c2d5fd625efddd09e1ff4d3c8efcc184a51d7e5b0df5f3b9628131acf49f18e27f42f029d435d9b3a6fc3aba3467c9125524f444ac372b605e0",
             "file": "libs/modules/auth/src/lib/create-permission-form/create-permission-form.component.ts",
@@ -135,6 +92,113 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>create-permission-form works!</p>\n"
+        },
+        {
+            "name": "CreateProductComponent",
+            "id": "component-CreateProductComponent-6bc77926effa15fbd6470ad90122a9f55a1e5534822a94b7c10aac9e08077ab6a8ee73aec1199c79debd3c5265056ffc19da6d916f3d4f34df8d9adc1b7bb294",
+            "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "ProductService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-create-product",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./create-product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleSubmit",
+                    "args": [
+                        {
+                            "name": "product",
+                            "type": "IProduct",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "product",
+                            "type": "IProduct",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ProductFormComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductFormComponent } from '@mdtx/forms';\r\nimport { IProduct } from '@mdtx/common';\r\nimport { ProductService } from '@mdtx/ngrx';\r\n@Component({\r\n  selector: 'mdtx-create-product',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductFormComponent],\r\n  templateUrl: './create-product.component.html',\r\n  styleUrl: './create-product.component.scss',\r\n  providers: [ProductService],\r\n})\r\nexport class CreateProductComponent {\r\n  constructor(protected readonly service: ProductService) {}\r\n  handleSubmit(product: IProduct) {\r\n    this.service.add(product);\r\n  }\r\n}\r\n",
+            "styleUrl": "./create-product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "service",
+                        "type": "ProductService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "service",
+                        "type": "ProductService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mdtx-product-form (submitEvent)=\"handleSubmit($event)\"></mdtx-product-form>\r\n"
         },
         {
             "name": "CreateRoleFormComponent",
@@ -223,6 +287,178 @@
             "templateData": "<p>create-user-form works!</p>\n"
         },
         {
+            "name": "CrudComponent",
+            "id": "component-CrudComponent-d5a96fd16b1993f3c062a69ece397c7ea85b06ac8d314fc4eca73e039031c8318aea64e83cdfecc4297ee780a3c5757b9051699a1f8c91e2eadd9e0325f9a25a",
+            "file": "libs/modules/common/src/lib/crud/crud.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-crud",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./crud.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-crud',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './crud.component.html',\r\n  styleUrl: './crud.component.scss',\r\n})\r\nexport class CrudComponent {}\r\n",
+            "styleUrl": "./crud.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>crud works!</p>\r\n"
+        },
+        {
+            "name": "DashboardComponent",
+            "id": "component-DashboardComponent-d8198b3d58d40c6bda5258825f1aa1323219d76f7cab903f7e5cac25a7eaf0a0382c5bdacf4bedb02d900e52c0f7f50f12f630873a93db0085e73ae4d356078c",
+            "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-dashboard",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-dashboard',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './dashboard.component.html',\r\n  styleUrl: './dashboard.component.scss',\r\n})\r\nexport class DashboardComponent {}\r\n",
+            "styleUrl": "./dashboard.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>dashboard works!</p>\r\n"
+        },
+        {
+            "name": "DashboardProductComponent",
+            "id": "component-DashboardProductComponent-9618368725e14cabd9a097b8500c6b04be7ce14d479244ff9195b50e6b3b08b1c7b061a566242c7c057eaeb0d6c02692ba24b0fec8a0fdd535af4f73a68f5272",
+            "file": "libs/modules/inventory/src/lib/product/dashboard-product/dashboard-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-dashboard-product",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard-product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-dashboard-product',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './dashboard-product.component.html',\n  styleUrl: './dashboard-product.component.scss',\n})\nexport class DashboardProductComponent {}\n",
+            "styleUrl": "./dashboard-product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>dashboard-product works!</p>\n"
+        },
+        {
+            "name": "DeleteProductComponent",
+            "id": "component-DeleteProductComponent-32ebd9654d6d6de4d0aeac31fa10913beeb68561d53985226ef5cf19e13d42ed538aac0da1dd76c0d87e96c365402875b9dfd8be1eb15570b260bc276530030b",
+            "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-delete-product",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./delete-product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-delete-product',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './delete-product.component.html',\r\n  styleUrl: './delete-product.component.scss',\r\n})\r\nexport class DeleteProductComponent {}\r\n",
+            "styleUrl": "./delete-product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<button>Are you sure to delete the product?</button>\r\n"
+        },
+        {
             "name": "EmsComponent",
             "id": "component-EmsComponent-494cbccd1d769e552ada52b81ac63352192732d5e19b63e39b2f488822962216012c9f4193030838c52ed006e101dbf9abd9bc26f6d3070a24f3bada702c7d79",
             "file": "libs/modules/ems/src/lib/ems/ems.component.ts",
@@ -267,7 +503,7 @@
         },
         {
             "name": "ForgotPasswordFormComponent",
-            "id": "component-ForgotPasswordFormComponent-0b3dc909ae7b84d5797e44d3616707758dee17172012f440e72f41165383e4cc5650c70c93a88f932a1c71608136416b4b20ad08fc5e19ac83d735dde960c666",
+            "id": "component-ForgotPasswordFormComponent-7b193f6856920a1839d08f5c461a2a0c2f1ad73ec832769323fb56d079c4fd2a7693e8a41d47e9fa69c64133210394148a9f33d0c0f8aec03863cf5e4c125f66",
             "file": "libs/modules/auth/src/lib/forgot-password-form/forgot-password-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -300,7 +536,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '@mdtx/material/form';\n\n@Component({\n  selector: 'mdtx-forgot-password-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './forgot-password-form.component.html',\n  styleUrl: './forgot-password-form.component.scss',\n})\nexport class ForgotPasswordFormComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonFormModule } from '@mdtx/material/form';\r\n\r\n@Component({\r\n  selector: 'mdtx-forgot-password-form',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './forgot-password-form.component.html',\r\n  styleUrl: './forgot-password-form.component.scss',\r\n})\r\nexport class ForgotPasswordFormComponent {}\r\n",
             "styleUrl": "./forgot-password-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -309,19 +545,19 @@
             "templateData": "<p>forgot-password-form works!</p>\n"
         },
         {
-            "name": "InventoryComponent",
-            "id": "component-InventoryComponent-2557728a51d1d9abb747c3e25675888ae2edfa44fe15296199d952e9c092f320d15566596a78ad7a92a830a4b4848bf21d324c3696b321432d99fedb25978ba8",
-            "file": "libs/modules/inventory/src/lib/inventory/inventory.component.ts",
+            "name": "HelpComponent",
+            "id": "component-HelpComponent-0dac25d75877b9e8c5c71b83583b1e8c3f0ed9f4f6e134149221d56d56cad3ed843402e388a8dfbdc89fe7f253117732cd1fbd836c4de71ea2d57d05c6dbe35b",
+            "file": "libs/modules/cms/src/lib/help/help.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-inventory",
+            "selector": "mdtx-help",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./inventory.component.html"
+                "./help.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -343,17 +579,99 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-inventory',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './inventory.component.html',\n  styleUrl: './inventory.component.scss',\n})\nexport class InventoryComponent {}\n",
-            "styleUrl": "./inventory.component.scss",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-help',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './help.component.html',\r\n  styleUrl: './help.component.scss',\r\n})\r\nexport class HelpComponent {}\r\n",
+            "styleUrl": "./help.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>inventory works!</p>\n"
+            "templateData": "<p>help works!</p>\r\n"
+        },
+        {
+            "name": "HomeProductComponent",
+            "id": "component-HomeProductComponent-42b4bea4d1d5c0487b757211777d738e0b3fc938caeca4d1b9d3a07247c0ad596ad26982b23212a2f4377777136eb5c6993753aa2c5dff6c6f98bcbe2b5c0edd",
+            "file": "libs/modules/inventory/src/lib/product/home-product/home-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-home-product",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./home-product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-home-product',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './home-product.component.html',\n  styleUrl: './home-product.component.scss',\n})\nexport class HomeProductComponent {}\n",
+            "styleUrl": "./home-product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>home-product works!</p>\n"
+        },
+        {
+            "name": "InventoryComponent",
+            "id": "component-InventoryComponent-6abf5cc6ca9c4cb841f8f401f130f1c162276a4175b75976cf68a21cbc0ff004626a19aaefbde044be2dabd69d007597ea2df17e850291bee203d4b1c814d3a1",
+            "file": "libs/modules/inventory/src/lib/inventory.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [],
+            "styles": [],
+            "template": "<router-outlet></router-outlet>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  imports: [RouterModule],\r\n  standalone: true,\r\n  template: '<router-outlet></router-outlet>',\r\n})\r\nexport class InventoryComponent {}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
         },
         {
             "name": "LandingPageComponent",
-            "id": "component-LandingPageComponent-b2f7f7b9589ae56afad3d02d00fca07cb4f41c5b3385c0995597ee987f5fb6f10821c55a22d7572947ee8c4ad85c636a463868d08e9bb86e0c66f0ff50362105",
+            "id": "component-LandingPageComponent-9e64c97448031ffc6df001acb314e9bf7685d075cc0d18bf5f967f5110abe38fb9bbd898582a45db1d9b55b7b96881cf39da3cb2a23a18206227eb1777f7d125",
             "file": "libs/modules/landing-page/src/lib/landing-page/landing-page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -371,7 +689,18 @@
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -381,22 +710,55 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "RouterModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-landing-page',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './landing-page.component.html',\n  styleUrl: './landing-page.component.scss',\n})\nexport class LandingPageComponent {}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { Router, RouterModule } from '@angular/router';\r\n@Component({\r\n  selector: 'mdtx-landing-page',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './landing-page.component.html',\r\n  styleUrl: './landing-page.component.scss',\r\n})\r\nexport class LandingPageComponent implements OnInit {\r\n  constructor(protected readonly router: Router) {}\r\n\r\n  ngOnInit(): void {\r\n    setTimeout(() => {\r\n      this.router.navigate(['website']);\r\n    });\r\n  }\r\n}\r\n",
             "styleUrl": "./landing-page.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
-            "templateData": ""
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"landing-page\">\r\n  <img src=\"/assets/icons/icon-72x72.png\" alt=\"App Logo\" />\r\n</div>\r\n"
         },
         {
             "name": "LoginFormComponent",
-            "id": "component-LoginFormComponent-898f3126535d62cb543e7793980194be4dc69640d8245ef1061b5fa5710b39a09e2cdd998d7c6d3b651be37195e60c9c059c2c156009156d45c21603542f328c",
+            "id": "component-LoginFormComponent-5b711afe411022644a528de99082d137753873119fe77a6b9f8ad43172393955cf27d6f864898c434450fc15f9a066cdaea43291eb5e80b5cc7152ee9ceb8a79",
             "file": "libs/modules/auth/src/lib/login-form/login-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -419,20 +781,130 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "loginEvent",
+                    "defaultValue": "new EventEmitter<ILogin>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
                 {
                     "name": "formGroup",
-                    "defaultValue": "this.builder.nonNullable.group({\n    username: [\n      '',\n      InputValidator.create('username').required().email().build(),\n    ],\n    password: [\n      '',\n      InputValidator.create('password').required().password().build(),\n    ],\n  })",
+                    "defaultValue": "this.builder.nonNullable.group({\r\n    username: ['', new ValidatorBuilder('username').required().email().build()],\r\n    password: [\r\n      '',\r\n      new ValidatorBuilder('password').required().password().build(),\r\n    ],\r\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 23
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "errorMessage",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "errors",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getControl",
+                    "args": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "FormControl",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "login",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -447,7 +919,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { AbstractControl, FormBuilder, Validators } from '@angular/forms';\nimport {\n  InputValidator,\n  provideErrorStateMatcher,\n  provideMatFormFieldOptions,\n} from '@mdtx/material/core';\nimport { isStrongPassword } from 'class-validator';\n\nimport { CommonFormModule } from '@mdtx/material/form';\n@Component({\n  selector: 'mdtx-login-form',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './login-form.component.html',\n  styleUrl: './login-form.component.scss',\n  providers: [provideMatFormFieldOptions(), provideErrorStateMatcher()],\n})\nexport class LoginFormComponent {\n  formGroup = this.builder.nonNullable.group({\n    username: [\n      '',\n      InputValidator.create('username').required().email().build(),\n    ],\n    password: [\n      '',\n      InputValidator.create('password').required().password().build(),\n    ],\n  });\n  constructor(protected readonly builder: FormBuilder) {}\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Output } from '@angular/core';\r\nimport { FormBuilder, FormControl } from '@angular/forms';\r\nimport {\r\n  ValidatorBuilder,\r\n  provideErrorStateMatcher,\r\n  provideMatFormFieldOptions,\r\n} from '@mdtx/material/core';\r\nimport { CommonFormModule } from '@mdtx/material/form';\r\nimport { ILogin } from '@mdtx/common';\r\n\r\nimport '@angular/localize/init';\r\n@Component({\r\n  selector: 'mdtx-login-form',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './login-form.component.html',\r\n  styleUrl: './login-form.component.scss',\r\n  providers: [provideMatFormFieldOptions(), provideErrorStateMatcher()],\r\n})\r\nexport class LoginFormComponent {\r\n  @Output() loginEvent = new EventEmitter<ILogin>();\r\n\r\n  formGroup = this.builder.nonNullable.group({\r\n    username: ['', new ValidatorBuilder('username').required().email().build()],\r\n    password: [\r\n      '',\r\n      new ValidatorBuilder('password').required().password().build(),\r\n    ],\r\n  });\r\n\r\n  constructor(protected readonly builder: FormBuilder) {}\r\n\r\n  private getControl(name: string) {\r\n    return this.formGroup.get(name) as FormControl;\r\n  }\r\n\r\n  private errors(name: string): any {\r\n    return this.getControl(name)?.errors ?? {};\r\n  }\r\n\r\n  errorMessage(name: string) {\r\n    return Object.values(this.errors(name)).pop();\r\n  }\r\n\r\n  login() {\r\n    this.loginEvent.emit(this.formGroup.value as ILogin);\r\n  }\r\n}\r\n",
             "styleUrl": "./login-form.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -479,7 +951,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<form [formGroup]=\"formGroup\" novalidate>\n  <mdtx-input [options]=\"{ type: 'email', autocomplete: 'off' }\"></mdtx-input>\n  <mdtx-input\n    [options]=\"{ type: 'password', autocomplete: 'off' }\"\n  ></mdtx-input>\n  <div class=\"actions\">\n    <button type=\"button\" mat-raised-button color=\"primary\" i18n>Login</button>\n    <button\n      type=\"button\"\n      mat-stroked-button\n      color=\"primary\"\n      (click)=\"formGroup.reset()\"\n      i18n\n    >\n      Reset\n    </button>\n    <button type=\"button\" mat-stroked-button color=\"primary\" i18n>\n      Forgot Password\n    </button>\n  </div>\n</form>\n"
+            "templateData": "<form [formGroup]=\"formGroup\" novalidate>\r\n  <mat-form-field>\r\n    <mat-label>Username</mat-label>\r\n    <input matInput type=\"email\" formControlName=\"username\" required />\r\n    <mat-icon color=\"primary\" matPrefix> email</mat-icon>\r\n    <mat-error>{{ errorMessage('username') }}</mat-error>\r\n  </mat-form-field>\r\n\r\n  <mat-form-field>\r\n    <mat-label>Password</mat-label>\r\n    <input matInput type=\"password\" formControlName=\"password\" required />\r\n    <mat-icon color=\"primary\" matPrefix>password</mat-icon>\r\n    <mat-error>{{ errorMessage('password') }}</mat-error>\r\n  </mat-form-field>\r\n\r\n  <div class=\"actions\">\r\n    <button\r\n      type=\"button\"\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      [disabled]=\"formGroup.invalid\"\r\n      i18n\r\n    >\r\n      Login\r\n    </button>\r\n    <button type=\"button\" mat-raised-button (click)=\"formGroup.reset()\" i18n>\r\n      Reset Form\r\n    </button>\r\n    <button type=\"button\" mat-stroked-button color=\"accent\" i18n>\r\n      Forgot Password\r\n    </button>\r\n  </div>\r\n</form>\r\n"
         },
         {
             "name": "LoginWithCodeFormComponent",
@@ -525,49 +997,6 @@
             "templateData": "<p>login-with-code-form works!</p>\n"
         },
         {
-            "name": "ModulesComponent",
-            "id": "component-ModulesComponent-c14b4d40b494b0bdc9a4194df37f6b7832fa18a6122b97e33117a4fc849063f99466a3f18c26e303113d030113baa4907aa506ea3e5f3ecfa82e357c807a6951",
-            "file": "libs/modules/src/lib/modules/modules.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "lib-modules",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./modules.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-modules',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './modules.component.html',\n  styleUrl: './modules.component.css',\n})\nexport class ModulesComponent {}\n",
-            "styleUrl": "./modules.component.css",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<p>modules works!</p>\n"
-        },
-        {
             "name": "PmsComponent",
             "id": "component-PmsComponent-1d3d1db745f01a3febe9b21d0bc60dbe4b6b01287b24f0ba81fae935568dae0f2d550b1bb0e89b8d3aeedb022c483db6847ea944ab3516a7d8a3b7a27788bf6c",
             "file": "libs/modules/pms/src/lib/pms/pms.component.ts",
@@ -611,19 +1040,62 @@
             "templateData": "<p>pms works!</p>\n"
         },
         {
-            "name": "PosComponent",
-            "id": "component-PosComponent-fbbac1024936f5c3a66bffb1ca271edfcfb16c4b0127aa7fdae8714cc2778eae0ad4abb2f65fbded46a57fc1c61871c6bf0f0fa25ccc47c353aa86addf870b70",
-            "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
+            "name": "ProductComponent",
+            "id": "component-ProductComponent-becd02bf0e9e97e590603b65a5670093117bc2697e95fe2bbf112723cfe89eece98a89c72ed631ff81965018df529e88a68d9b20a30e7745e0f7b157cc53c9b7",
+            "file": "libs/modules/inventory/src/lib/product/product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-pos",
+            "selector": "mdtx-product",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./pos.component.html"
+                "./product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ModuleLayoutComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ModuleLayoutComponent } from '@mdtx/material/layout';\r\n\r\n@Component({\r\n  selector: 'mdtx-product',\r\n  standalone: true,\r\n  imports: [ModuleLayoutComponent],\r\n  templateUrl: './product.component.html',\r\n  styleUrl: './product.component.scss',\r\n})\r\nexport class ProductComponent {}\r\n",
+            "styleUrl": "./product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>product works!</p>\r\n"
+        },
+        {
+            "name": "ReportComponent",
+            "id": "component-ReportComponent-8f463dfa4341ba50a1797f49f12938709142553931602a25f5a0005574566179f40662f17e527ff1278f1a8690aa4fae328b04c7742c05b5aade203e0714c3c5",
+            "file": "libs/modules/cms/src/lib/report/report.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-report",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./report.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -645,13 +1117,95 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-pos',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './pos.component.html',\n  styleUrl: './pos.component.scss',\n})\nexport class PosComponent {}\n",
-            "styleUrl": "./pos.component.scss",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-report',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './report.component.html',\r\n  styleUrl: './report.component.scss',\r\n})\r\nexport class ReportComponent {}\r\n",
+            "styleUrl": "./report.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>pos works!</p>\n"
+            "templateData": "<p>report works!</p>\r\n"
+        },
+        {
+            "name": "RouterComponent",
+            "id": "component-RouterComponent-30e222b63ead5fe9f51b8ec3987162b607c289d2933fa38c96d596b6b88591c58ff9d780f7d9ecefbe5ff3fdf644814935df7265b65586dfd915ea18b4838a7f",
+            "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "styleUrls": [],
+            "styles": [],
+            "template": "<router-outlet></router-outlet>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  applicationConfig,\n  type Meta,\n  type StoryObj,\n} from '@storybook/angular';\nimport { InventoryComponent } from './inventory.component';\n\nimport { within } from '@storybook/testing-library';\nimport { RouterModule } from '@angular/router';\nimport { Component, importProvidersFrom } from '@angular/core';\nimport { InventoryRoutes } from './inventory.routes';\nimport { provideStore } from '@ngrx/store';\nimport { provideEffects } from '@ngrx/effects';\nimport { provideHttpClient, withInterceptors } from '@angular/common/http';\nimport { storyBookHttpInterceptor } from '@mdtx/forms';\nimport { provideAnimations } from '@angular/platform-browser/animations';\nimport { provideEntityData, withEffects } from '@ngrx/data';\nimport {\n  SidenavLeftBottomProvider,\n  SidenavLeftTopProvider,\n} from '@mdtx/material/layout';\n\n@Component({\n  imports: [RouterModule],\n  standalone: true,\n  template: `<router-outlet></router-outlet>`,\n})\nclass RouterComponent {}\nconst meta: Meta<InventoryComponent> = {\n  component: RouterComponent,\n  title: 'InventoryComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        importProvidersFrom(RouterModule.forRoot(InventoryRoutes)),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Category: 'Categories',\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Product: {},\n              Category: {},\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n\n        SidenavLeftTopProvider.provide([\n          { label: 'Product', icon: 'inventory_2', route: 'product' },\n          { label: 'Sku', icon: 'track_changes', route: 'sku' },\n          { divider: true },\n          { label: 'Price', icon: 'attach_money', route: 'price' },\n          { label: 'Price Level', icon: 'groups_3', route: 'price-level' },\n          { divider: true },\n          { label: 'Quantity', icon: 'numbers', route: 'quantity' },\n          { divider: true },\n          { label: 'Category', icon: 'category', route: 'category' },\n          { label: 'Department', icon: 'group_work', route: 'department' },\n          { divider: true },\n          { label: 'Store', icon: 'store', route: 'store' },\n        ]),\n\n        SidenavLeftBottomProvider.provide([\n          { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },\n        ]),\n      ],\n    }),\n  ],\n};\nexport default meta;\ntype Story = StoryObj<InventoryComponent>;\n\nexport const Primary: Story = {};\n\nexport const Heading: Story = {\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n};\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "SettingsComponent",
+            "id": "component-SettingsComponent-b4e6d532b7a6c33e7cdb3e38c1d6632adcc5410ba56525566b7c5d29ed9307d2879f7e2ee6b39477e22af675c819194148a6e266d1e7f968af8f729c9c8a3430",
+            "file": "libs/modules/cms/src/lib/settings/settings.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-settings",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./settings.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-settings',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './settings.component.html',\r\n  styleUrl: './settings.component.scss',\r\n})\r\nexport class SettingsComponent {}\r\n",
+            "styleUrl": "./settings.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>settings works!</p>\r\n"
         },
         {
             "name": "UpdatePasswordFormComponent",
@@ -697,19 +1251,19 @@
             "templateData": "<p>update-password-form works!</p>\n"
         },
         {
-            "name": "WebsiteComponent",
-            "id": "component-WebsiteComponent-e103820eb48257a75c5180fb1b25aefce11ae4a828fd9d4c15ed6431502d85fad57ba05970ab1b69ef0fdbf33abee10caace1bbad60c3a2a0e3bf7429c13c186",
-            "file": "libs/modules/website/src/lib/website/website.component.ts",
+            "name": "UpdateProductComponent",
+            "id": "component-UpdateProductComponent-9076ba0697e03158a9b2d6f43133ee1a7856ed8118dece35fa1c5a2a39a7956837110cffa7c61ed5822f27457cb54da2ba492066e2f0933e748530ed92dbb99f",
+            "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "mdtx-website",
+            "selector": "mdtx-update-product",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./website.component.html"
+                "./update-product.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
@@ -731,27 +1285,256 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-website',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './website.component.html',\n  styleUrl: './website.component.scss',\n})\nexport class WebsiteComponent {}\n",
-            "styleUrl": "./website.component.scss",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-update-product',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './update-product.component.html',\r\n  styleUrl: './update-product.component.scss',\r\n})\r\nexport class UpdateProductComponent {}\r\n",
+            "styleUrl": "./update-product.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<h1>Website route works</h1>\n"
+            "templateData": "<p>update-product works!</p>\r\n"
+        },
+        {
+            "name": "ViewProductComponent",
+            "id": "component-ViewProductComponent-9ba4b39188deff8e4846d9229d14ecd74b62efeb273bb2eb2faa61c7163706b490a08c84694075087c65933877a8b62e096940f27650ab3298f40bb492a38e35",
+            "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-view-product",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./view-product.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-view-product',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './view-product.component.html',\r\n  styleUrl: './view-product.component.scss',\r\n})\r\nexport class ViewProductComponent {}\r\n",
+            "styleUrl": "./view-product.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<h1>product card</h1>\r\n"
+        },
+        {
+            "name": "ViewProductsComponent",
+            "id": "component-ViewProductsComponent-5ae853a56e711b6c7fa17cfa50f87984a8e0a0b93b4f4b5822f72f7f1234720277578d6cf41afdc45df79ce06583116b167e41ca463fb454a61e02f6e913be3f",
+            "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-view-products",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./view-products.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "goToForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ProductTableComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductTableComponent } from '@mdtx/tables';\r\nimport { ActivatedRoute, Router } from '@angular/router';\r\n@Component({\r\n  selector: 'mdtx-view-products',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductTableComponent],\r\n  templateUrl: './view-products.component.html',\r\n  styleUrl: './view-products.component.scss',\r\n})\r\nexport class ViewProductsComponent {\r\n  constructor(\r\n    protected readonly router: Router,\r\n    protected readonly route: ActivatedRoute\r\n  ) {}\r\n\r\n  goToForm() {\r\n    this.router.navigate(['..','create'], { relativeTo: this.route });\r\n  }\r\n}\r\n",
+            "styleUrl": "./view-products.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mdtx-product-table (addEvent)=\"goToForm()\"></mdtx-product-table>\r\n"
         }
     ],
-    "modules": [],
+    "modules": [
+        {
+            "name": "CrudModule",
+            "id": "module-CrudModule-a332fad2b4f1f4db0a2cc2c6790e895c4a25e9586356174c00305a9186da422ce70ad6c27e7696dc364af490b167e9a5a87cb6769046812a5ca725a9f11f507d",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "libs/modules/common/src/lib/crud/crud.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule\r\n  ]\r\n})\r\nexport class CrudModule { }\r\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
     "miscellaneous": {
         "variables": [
+            {
+                "name": "____modules_module___",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/src/index.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "''"
+            },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/modules works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/dashboard works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/help works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/report works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/settings works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -761,7 +1544,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/auth works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/auth works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -771,7 +1554,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-permission-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-permission-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -781,7 +1564,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-role-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-role-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -791,7 +1574,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-user-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-user-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -801,7 +1584,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/forgot-password-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/forgot-password-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -811,7 +1594,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/login-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/login-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -821,7 +1604,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/login-with-code-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/login-with-code-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -831,17 +1614,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/update-password-form works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/update-password-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/cms works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/crud works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -851,17 +1634,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/ems works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/ems works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/inventory works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/product works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -871,7 +1654,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/landing-page works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/landing-page works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -881,37 +1664,107 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pms works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pms works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-product works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/website works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/delete-product works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/update-product works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/view-product works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/view-products works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<ModulesComponent>",
-                "defaultValue": "{\n  component: ModulesComponent,\n  title: 'ModulesComponent',\n}"
+                "type": "Meta<InventoryComponent>",
+                "defaultValue": "{\n  component: RouterComponent,\n  title: 'InventoryComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        importProvidersFrom(RouterModule.forRoot(InventoryRoutes)),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Category: 'Categories',\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Product: {},\n              Category: {},\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n\n        SidenavLeftTopProvider.provide([\n          { label: 'Product', icon: 'inventory_2', route: 'product' },\n          { label: 'Sku', icon: 'track_changes', route: 'sku' },\n          { divider: true },\n          { label: 'Price', icon: 'attach_money', route: 'price' },\n          { label: 'Price Level', icon: 'groups_3', route: 'price-level' },\n          { divider: true },\n          { label: 'Quantity', icon: 'numbers', route: 'quantity' },\n          { divider: true },\n          { label: 'Category', icon: 'category', route: 'category' },\n          { label: 'Department', icon: 'group_work', route: 'department' },\n          { divider: true },\n          { label: 'Store', icon: 'store', route: 'store' },\n        ]),\n\n        SidenavLeftBottomProvider.provide([\n          { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },\n        ]),\n      ],\n    }),\n  ],\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DashboardComponent>",
+                "defaultValue": "{\n  component: DashboardComponent,\n  title: 'DashboardComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<HelpComponent>",
+                "defaultValue": "{\n  component: HelpComponent,\n  title: 'HelpComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ReportComponent>",
+                "defaultValue": "{\n  component: ReportComponent,\n  title: 'ReportComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SettingsComponent>",
+                "defaultValue": "{\n  component: SettingsComponent,\n  title: 'SettingsComponent',\n}"
             },
             {
                 "name": "meta",
@@ -921,7 +1774,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AuthComponent>",
-                "defaultValue": "{\n  component: AuthComponent,\n  title: 'AuthComponent',\n}"
+                "defaultValue": "{\r\n  component: AuthComponent,\r\n  title: 'AuthComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -931,7 +1784,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CreatePermissionFormComponent>",
-                "defaultValue": "{\n  component: CreatePermissionFormComponent,\n  title: 'CreatePermissionFormComponent',\n}"
+                "defaultValue": "{\r\n  component: CreatePermissionFormComponent,\r\n  title: 'CreatePermissionFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -941,7 +1794,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CreateRoleFormComponent>",
-                "defaultValue": "{\n  component: CreateRoleFormComponent,\n  title: 'CreateRoleFormComponent',\n}"
+                "defaultValue": "{\r\n  component: CreateRoleFormComponent,\r\n  title: 'CreateRoleFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -951,7 +1804,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CreateUserFormComponent>",
-                "defaultValue": "{\n  component: CreateUserFormComponent,\n  title: 'CreateUserFormComponent',\n}"
+                "defaultValue": "{\r\n  component: CreateUserFormComponent,\r\n  title: 'CreateUserFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -961,7 +1814,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ForgotPasswordFormComponent>",
-                "defaultValue": "{\n  component: ForgotPasswordFormComponent,\n  title: 'ForgotPasswordFormComponent',\n}"
+                "defaultValue": "{\r\n  component: ForgotPasswordFormComponent,\r\n  title: 'ForgotPasswordFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -971,7 +1824,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LoginFormComponent>",
-                "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideNoopAnimations()],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: LoginFormComponent,\r\n  title: 'LoginFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideNoopAnimations()],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -981,7 +1834,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LoginWithCodeFormComponent>",
-                "defaultValue": "{\n  component: LoginWithCodeFormComponent,\n  title: 'LoginWithCodeFormComponent',\n}"
+                "defaultValue": "{\r\n  component: LoginWithCodeFormComponent,\r\n  title: 'LoginWithCodeFormComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -991,17 +1844,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UpdatePasswordFormComponent>",
-                "defaultValue": "{\n  component: UpdatePasswordFormComponent,\n  title: 'UpdatePasswordFormComponent',\n}"
+                "defaultValue": "{\r\n  component: UpdatePasswordFormComponent,\r\n  title: 'UpdatePasswordFormComponent',\r\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<CmsComponent>",
-                "defaultValue": "{\n  component: CmsComponent,\n  title: 'CmsComponent',\n}"
+                "type": "Meta<CrudComponent>",
+                "defaultValue": "{\n  component: CrudComponent,\n  title: 'CrudComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1011,17 +1864,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<EmsComponent>",
-                "defaultValue": "{\n  component: EmsComponent,\n  title: 'EmsComponent',\n}"
+                "defaultValue": "{\r\n  component: EmsComponent,\r\n  title: 'EmsComponent',\r\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<InventoryComponent>",
-                "defaultValue": "{\n  component: InventoryComponent,\n  title: 'InventoryComponent',\n}"
+                "type": "Meta<ProductComponent>",
+                "defaultValue": "{\n  component: ProductComponent,\n  title: 'ProductComponent',\n}"
             },
             {
                 "name": "meta",
@@ -1031,7 +1884,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<LandingPageComponent>",
-                "defaultValue": "{\n  component: LandingPageComponent,\n  title: 'LandingPageComponent',\n}"
+                "defaultValue": "{\r\n  component: LandingPageComponent,\r\n  title: 'LandingPageComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -1041,33 +1894,103 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PmsComponent>",
-                "defaultValue": "{\n  component: PmsComponent,\n  title: 'PmsComponent',\n}"
+                "defaultValue": "{\r\n  component: PmsComponent,\r\n  title: 'PmsComponent',\r\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<PosComponent>",
-                "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n}"
+                "type": "Meta<CreateProductComponent>",
+                "defaultValue": "{\n  component: CreateProductComponent,\n  title: 'CreateProductComponent',\n}"
             },
             {
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<WebsiteComponent>",
-                "defaultValue": "{\n  component: WebsiteComponent,\n  title: 'WebsiteComponent',\n}"
+                "type": "Meta<DeleteProductComponent>",
+                "defaultValue": "{\n  component: DeleteProductComponent,\n  title: 'DeleteProductComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<UpdateProductComponent>",
+                "defaultValue": "{\n  component: UpdateProductComponent,\n  title: 'UpdateProductComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewProductComponent>",
+                "defaultValue": "{\n  component: ViewProductComponent,\n  title: 'ViewProductComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewProductsComponent>",
+                "defaultValue": "{\n  component: ViewProductsComponent,\n  title: 'ViewProductsComponent',\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1081,7 +2004,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1091,7 +2014,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1101,7 +2024,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1111,7 +2034,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1121,7 +2044,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1131,7 +2054,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1141,7 +2064,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1151,13 +2074,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1171,13 +2094,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1191,7 +2114,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -1201,13 +2124,13 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1217,7 +2140,37 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -1230,8 +2183,52 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ModulesComponent>",
-                "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                "rawtype": "StoryObj<InventoryComponent>",
+                "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DashboardComponent>",
+                "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<HelpComponent>",
+                "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ReportComponent>",
+                "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SettingsComponent>",
+                "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1329,8 +2326,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CmsComponent>",
-                "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "rawtype": "StoryObj<CrudComponent>",
+                "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1351,8 +2348,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<InventoryComponent>",
-                "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "rawtype": "StoryObj<ProductComponent>",
+                "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1384,8 +2381,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<PosComponent>",
-                "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "rawtype": "StoryObj<CreateProductComponent>",
+                "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1395,8 +2392,41 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<WebsiteComponent>",
-                "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                "rawtype": "StoryObj<DeleteProductComponent>",
+                "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<UpdateProductComponent>",
+                "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewProductComponent>",
+                "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewProductsComponent>",
+                "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1405,32 +2435,172 @@
         ],
         "enumerations": [],
         "groupedVariables": {
-            "libs/modules/src/lib/modules/modules.component.stories.ts": [
+            "libs/modules/src/index.ts": [
+                {
+                    "name": "____modules_module___",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/src/index.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "''"
+                }
+            ],
+            "libs/modules/inventory/src/lib/inventory.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/modules works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<ModulesComponent>",
-                    "defaultValue": "{\n  component: ModulesComponent,\n  title: 'ModulesComponent',\n}"
+                    "type": "Meta<InventoryComponent>",
+                    "defaultValue": "{\n  component: RouterComponent,\n  title: 'InventoryComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        importProvidersFrom(RouterModule.forRoot(InventoryRoutes)),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Category: 'Categories',\n              Department: 'Departments',\n            },\n            entityMetadata: {\n              Product: {},\n              Category: {},\n              Department: {},\n            },\n          },\n          withEffects()\n        ),\n\n        SidenavLeftTopProvider.provide([\n          { label: 'Product', icon: 'inventory_2', route: 'product' },\n          { label: 'Sku', icon: 'track_changes', route: 'sku' },\n          { divider: true },\n          { label: 'Price', icon: 'attach_money', route: 'price' },\n          { label: 'Price Level', icon: 'groups_3', route: 'price-level' },\n          { divider: true },\n          { label: 'Quantity', icon: 'numbers', route: 'quantity' },\n          { divider: true },\n          { label: 'Category', icon: 'category', route: 'category' },\n          { label: 'Department', icon: 'group_work', route: 'department' },\n          { divider: true },\n          { label: 'Store', icon: 'store', route: 'store' },\n        ]),\n\n        SidenavLeftBottomProvider.provide([\n          { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },\n        ]),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{}"
+                }
+            ],
+            "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/dashboard works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DashboardComponent>",
+                    "defaultValue": "{\n  component: DashboardComponent,\n  title: 'DashboardComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/cms/src/lib/help/help.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/help works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<HelpComponent>",
+                    "defaultValue": "{\n  component: HelpComponent,\n  title: 'HelpComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/cms/src/lib/report/report.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/report works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ReportComponent>",
+                    "defaultValue": "{\n  component: ReportComponent,\n  title: 'ReportComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/cms/src/lib/settings/settings.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/settings works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SettingsComponent>",
+                    "defaultValue": "{\n  component: SettingsComponent,\n  title: 'SettingsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1446,7 +2616,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/auth works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/auth works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1456,7 +2626,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AuthComponent>",
-                    "defaultValue": "{\n  component: AuthComponent,\n  title: 'AuthComponent',\n}"
+                    "defaultValue": "{\r\n  component: AuthComponent,\r\n  title: 'AuthComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1466,7 +2636,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/create-permission-form/create-permission-form.component.stories.ts": [
@@ -1478,7 +2648,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-permission-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-permission-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1488,7 +2658,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CreatePermissionFormComponent>",
-                    "defaultValue": "{\n  component: CreatePermissionFormComponent,\n  title: 'CreatePermissionFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: CreatePermissionFormComponent,\r\n  title: 'CreatePermissionFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1498,7 +2668,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/create-role-form/create-role-form.component.stories.ts": [
@@ -1510,7 +2680,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-role-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-role-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1520,7 +2690,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CreateRoleFormComponent>",
-                    "defaultValue": "{\n  component: CreateRoleFormComponent,\n  title: 'CreateRoleFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: CreateRoleFormComponent,\r\n  title: 'CreateRoleFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1530,7 +2700,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/create-user-form/create-user-form.component.stories.ts": [
@@ -1542,7 +2712,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-user-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/create-user-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1552,7 +2722,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CreateUserFormComponent>",
-                    "defaultValue": "{\n  component: CreateUserFormComponent,\n  title: 'CreateUserFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: CreateUserFormComponent,\r\n  title: 'CreateUserFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1562,7 +2732,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/forgot-password-form/forgot-password-form.component.stories.ts": [
@@ -1574,7 +2744,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/forgot-password-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/forgot-password-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1584,7 +2754,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ForgotPasswordFormComponent>",
-                    "defaultValue": "{\n  component: ForgotPasswordFormComponent,\n  title: 'ForgotPasswordFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: ForgotPasswordFormComponent,\r\n  title: 'ForgotPasswordFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1594,7 +2764,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/login-form/login-form.component.stories.ts": [
@@ -1606,7 +2776,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/login-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/login-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1616,7 +2786,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LoginFormComponent>",
-                    "defaultValue": "{\n  component: LoginFormComponent,\n  title: 'LoginFormComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideNoopAnimations()],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: LoginFormComponent,\r\n  title: 'LoginFormComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideNoopAnimations()],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1626,7 +2796,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/login-with-code-form/login-with-code-form.component.stories.ts": [
@@ -1638,7 +2808,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/login-with-code-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/login-with-code-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1648,7 +2818,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LoginWithCodeFormComponent>",
-                    "defaultValue": "{\n  component: LoginWithCodeFormComponent,\n  title: 'LoginWithCodeFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: LoginWithCodeFormComponent,\r\n  title: 'LoginWithCodeFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1658,7 +2828,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/auth/src/lib/update-password-form/update-password-form.component.stories.ts": [
@@ -1670,7 +2840,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/update-password-form works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/update-password-form works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1680,7 +2850,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UpdatePasswordFormComponent>",
-                    "defaultValue": "{\n  component: UpdatePasswordFormComponent,\n  title: 'UpdatePasswordFormComponent',\n}"
+                    "defaultValue": "{\r\n  component: UpdatePasswordFormComponent,\r\n  title: 'UpdatePasswordFormComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1690,35 +2860,35 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/modules/cms/src/lib/cms/cms.component.stories.ts": [
+            "libs/modules/common/src/lib/crud/crud.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                    "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/cms works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/crud works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                    "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<CmsComponent>",
-                    "defaultValue": "{\n  component: CmsComponent,\n  title: 'CmsComponent',\n}"
+                    "type": "Meta<CrudComponent>",
+                    "defaultValue": "{\n  component: CrudComponent,\n  title: 'CrudComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                    "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1734,7 +2904,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/ems works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/ems works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1744,7 +2914,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<EmsComponent>",
-                    "defaultValue": "{\n  component: EmsComponent,\n  title: 'EmsComponent',\n}"
+                    "defaultValue": "{\r\n  component: EmsComponent,\r\n  title: 'EmsComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1754,35 +2924,35 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/product.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/inventory works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/product works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<InventoryComponent>",
-                    "defaultValue": "{\n  component: InventoryComponent,\n  title: 'InventoryComponent',\n}"
+                    "type": "Meta<ProductComponent>",
+                    "defaultValue": "{\n  component: ProductComponent,\n  title: 'ProductComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1798,7 +2968,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/landing-page works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/landing-page works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1808,7 +2978,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<LandingPageComponent>",
-                    "defaultValue": "{\n  component: LandingPageComponent,\n  title: 'LandingPageComponent',\n}"
+                    "defaultValue": "{\r\n  component: LandingPageComponent,\r\n  title: 'LandingPageComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1818,7 +2988,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/pms/src/lib/pms/pms.component.stories.ts": [
@@ -1830,7 +3000,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pms works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pms works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -1840,7 +3010,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PmsComponent>",
-                    "defaultValue": "{\n  component: PmsComponent,\n  title: 'PmsComponent',\n}"
+                    "defaultValue": "{\r\n  component: PmsComponent,\r\n  title: 'PmsComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -1850,67 +3020,163 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/modules/pos/src/lib/pos/pos.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/create-product works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<PosComponent>",
-                    "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n}"
+                    "type": "Meta<CreateProductComponent>",
+                    "defaultValue": "{\n  component: CreateProductComponent,\n  title: 'CreateProductComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
                 }
             ],
-            "libs/modules/website/src/lib/website/website.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts": [
                 {
                     "name": "Heading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/website works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/delete-product works!/gi)).toBeTruthy();\n  },\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<WebsiteComponent>",
-                    "defaultValue": "{\n  component: WebsiteComponent,\n  title: 'WebsiteComponent',\n}"
+                    "type": "Meta<DeleteProductComponent>",
+                    "defaultValue": "{\n  component: DeleteProductComponent,\n  title: 'DeleteProductComponent',\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                    "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/update-product works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<UpdateProductComponent>",
+                    "defaultValue": "{\n  component: UpdateProductComponent,\n  title: 'UpdateProductComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/view-product works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewProductComponent>",
+                    "defaultValue": "{\n  component: ViewProductComponent,\n  title: 'ViewProductComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/view-products works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewProductsComponent>",
+                    "defaultValue": "{\n  component: ViewProductsComponent,\n  title: 'ViewProductsComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -1921,13 +3187,65 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "libs/modules/src/lib/modules/modules.component.stories.ts": [
+            "libs/modules/inventory/src/lib/inventory.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<ModulesComponent>",
-                    "file": "libs/modules/src/lib/modules/modules.component.stories.ts",
+                    "rawtype": "StoryObj<InventoryComponent>",
+                    "file": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DashboardComponent>",
+                    "file": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/cms/src/lib/help/help.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<HelpComponent>",
+                    "file": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/cms/src/lib/report/report.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ReportComponent>",
+                    "file": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/cms/src/lib/settings/settings.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SettingsComponent>",
+                    "file": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2038,13 +3356,13 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/cms/src/lib/cms/cms.component.stories.ts": [
+            "libs/modules/common/src/lib/crud/crud.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<CmsComponent>",
-                    "file": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                    "rawtype": "StoryObj<CrudComponent>",
+                    "file": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2064,13 +3382,13 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/product.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<InventoryComponent>",
-                    "file": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                    "rawtype": "StoryObj<ProductComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2103,26 +3421,65 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/pos/src/lib/pos/pos.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<PosComponent>",
-                    "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                    "rawtype": "StoryObj<CreateProductComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
                     "kind": 183
                 }
             ],
-            "libs/modules/website/src/lib/website/website.component.stories.ts": [
+            "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<WebsiteComponent>",
-                    "file": "libs/modules/website/src/lib/website/website.component.stories.ts",
+                    "rawtype": "StoryObj<DeleteProductComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<UpdateProductComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewProductComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewProductsComponent>",
+                    "file": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -2367,7 +3724,7 @@
                 "linktype": "component",
                 "name": "LoginFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -2449,7 +3806,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "filePath": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2459,7 +3816,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "filePath": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2469,7 +3826,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/cms/src/lib/cms/cms.component.stories.ts",
+                "filePath": "libs/modules/cms/src/lib/dashboard/dashboard.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2479,10 +3836,166 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/cms/src/lib/cms/cms.component.ts",
+                "filePath": "libs/modules/cms/src/lib/dashboard/dashboard.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "CmsComponent",
+                "name": "DashboardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/help/help.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/help/help.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HelpComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/report/report.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/report/report.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ReportComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/settings/settings.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/cms/src/lib/settings/settings.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SettingsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/common/src/lib/crud/crud.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/common/src/lib/crud/crud.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CrudComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -2527,7 +4040,16 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "filePath": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RouterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2537,7 +4059,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "filePath": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2547,7 +4069,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/inventory/src/lib/inventory/inventory.component.stories.ts",
+                "filePath": "libs/modules/inventory/src/lib/inventory.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2557,12 +4079,264 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/inventory/src/lib/inventory/inventory.component.ts",
+                "filePath": "libs/modules/inventory/src/lib/inventory.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "InventoryComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/create-product/create-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/create-product/create-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CreateProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/dashboard-product/dashboard-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DashboardProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/delete-product/delete-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DeleteProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/home-product/home-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/update-product/update-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/update-product/update-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UpdateProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-product/view-product.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-product/view-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ViewProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-products/view-products.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/inventory/src/lib/product/view-products/view-products.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ViewProductsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -2601,7 +4375,7 @@
                 "linktype": "component",
                 "name": "LandingPageComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -2644,118 +4418,11 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "filePath": "libs/modules/src/index.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/pos/src/lib/pos/pos.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PosComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/src/lib/modules/modules.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/src/lib/modules/modules.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/src/lib/modules/modules.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/src/lib/modules/modules.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "ModulesComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/website/src/lib/website/website.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Heading",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/website/src/lib/website/website.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "meta",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/website/src/lib/website/website.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/modules/website/src/lib/website/website.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "WebsiteComponent",
+                "name": "____modules_module___",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

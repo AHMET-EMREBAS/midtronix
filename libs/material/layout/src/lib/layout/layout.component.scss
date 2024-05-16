@@ -8,11 +8,11 @@
 mat-sidenav-container {
   position: relative;
   flex-grow: 1;
+  min-height: 200px;
 }
 
 mat-sidenav-content {
   flex-grow: 1;
-  max-height: 100vh;
   overflow: auto;
 }
 .column-container.full {

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
@@ -9,6 +8,8 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
+import { HomeProductComponent } from './home-product/home-product.component';
+import { DashboardProductComponent } from './dashboard-product/dashboard-product.component';
 export const ProductRoutes: Routes = [
   {
     title: 'Product Management',
@@ -16,7 +17,9 @@ export const ProductRoutes: Routes = [
     loadComponent: () => ModuleLayoutComponent,
     providers: [
       ContentCenterLeftProvider.provide([
+        { label: 'Home', route: 'home', icon: 'home' },
         { label: 'Dashboard', route: 'dashboard', icon: 'dashboard' },
+        { divider: true },
         { label: 'Create Product', route: 'create', icon: 'add' },
         { label: 'View Products', route: 'view', icon: 'table' },
       ]),
@@ -25,13 +28,18 @@ export const ProductRoutes: Routes = [
       {
         title: 'Product Dashboard',
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'home',
         pathMatch: 'full',
+      },
+      {
+        title: 'Product Management',
+        path: 'home',
+        loadComponent: () => HomeProductComponent,
       },
       {
         title: 'Product Dashboard',
         path: 'dashboard',
-        loadComponent: () => ProductDashboardComponent,
+        loadComponent: () => DashboardProductComponent,
       },
       {
         title: 'New Product',
