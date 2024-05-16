@@ -11,6 +11,7 @@ import {
   CategoryRoutes,
   DepartmentRoutes,
   ProductRoutes,
+  
 } from '@mdtx/modules/sub-modules';
 export const InventoryRoutes: Routes = [
   {

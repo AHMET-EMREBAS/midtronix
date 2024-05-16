@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CustomerAddressService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CustomerAddressToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerA
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<ICustomerAddress[]>();
+
   override pageIndex = 0;
   override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;
   override columns = CUSTOMER_ADDRESS_COLUMNS;
@@ -44,13 +47,13 @@ export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerA
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

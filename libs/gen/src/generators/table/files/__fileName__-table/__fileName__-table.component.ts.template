@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { <%- className %>Service } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { <%- className %>ToolbarComponent } from '../../toolbars';
@@ -26,7 +26,7 @@ export class <%- className %>TableComponent extends BaseTableComponent<I<%- clas
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<I<%- className %>>[]>();
+  @Output() deleteEvent = new EventEmitter<I<%- className %>[]>();
 
   override pageIndex = 0;
   override pageSize = <%- constantName %>_PAGE_SIZE;

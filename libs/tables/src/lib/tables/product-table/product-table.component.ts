@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ProductToolbarComponent } from '../../toolbars';
@@ -27,6 +27,7 @@ export class ProductTableComponent extends BaseTableComponent<IProduct> {
 
   @Output() addEvent = new EventEmitter();
   @Output() deleteEvent = new EventEmitter<IProduct[]>();
+
   override pageIndex = 0;
   override pageSize = PRODUCT_PAGE_SIZE;
   override columns = PRODUCT_COLUMNS;

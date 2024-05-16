@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { PermissionService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { PermissionToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class PermissionTableComponent extends BaseTableComponent<IPermission> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<IPermission[]>();
+
   override pageIndex = 0;
   override pageSize = PERMISSION_PAGE_SIZE;
   override columns = PERMISSION_COLUMNS;
@@ -41,13 +44,13 @@ export class PermissionTableComponent extends BaseTableComponent<IPermission> {
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

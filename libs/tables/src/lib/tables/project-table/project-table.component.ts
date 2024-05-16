@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ProjectService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ProjectToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class ProjectTableComponent extends BaseTableComponent<IProject> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<IProject[]>();
+
   override pageIndex = 0;
   override pageSize = PROJECT_PAGE_SIZE;
   override columns = PROJECT_COLUMNS;
@@ -41,13 +44,13 @@ export class ProjectTableComponent extends BaseTableComponent<IProject> {
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

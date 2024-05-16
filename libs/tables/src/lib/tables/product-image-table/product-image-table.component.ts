@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ProductImageService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ProductImageToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class ProductImageTableComponent extends BaseTableComponent<IProductImage
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<IProductImage[]>();
+
   override pageIndex = 0;
   override pageSize = PRODUCT_IMAGE_PAGE_SIZE;
   override columns = PRODUCT_IMAGE_COLUMNS;
@@ -41,13 +44,13 @@ export class ProductImageTableComponent extends BaseTableComponent<IProductImage
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

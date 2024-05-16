@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CustomerEmailService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CustomerEmailToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEma
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<ICustomerEmail[]>();
+
   override pageIndex = 0;
   override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;
   override columns = CUSTOMER_EMAIL_COLUMNS;
@@ -44,13 +47,13 @@ export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEma
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

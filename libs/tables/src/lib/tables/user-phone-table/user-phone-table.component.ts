@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { UserPhoneService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { UserPhoneToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<IUserPhone[]>();
+
   override pageIndex = 0;
   override pageSize = USER_PHONE_PAGE_SIZE;
   override columns = USER_PHONE_COLUMNS;
@@ -41,13 +44,13 @@ export class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

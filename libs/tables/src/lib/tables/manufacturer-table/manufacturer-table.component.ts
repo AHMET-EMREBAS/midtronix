@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ManufacturerService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ManufacturerToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class ManufacturerTableComponent extends BaseTableComponent<IManufacturer
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<IManufacturer[]>();
+
   override pageIndex = 0;
   override pageSize = MANUFACTURER_PAGE_SIZE;
   override columns = MANUFACTURER_COLUMNS;
@@ -41,13 +44,13 @@ export class ManufacturerTableComponent extends BaseTableComponent<IManufacturer
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

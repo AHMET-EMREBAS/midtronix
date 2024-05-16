@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CategoryToolbarComponent } from '../../toolbars';
@@ -43,6 +43,7 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
+ 
   addItem() {
     this.addEvent.emit();
   }
@@ -63,7 +64,7 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
       search: searchString,
     });
   }
-
+  
   pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({
