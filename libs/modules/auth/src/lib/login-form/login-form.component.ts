@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import {
-  InputValidator,
+  ValidatorBuilder,
   provideErrorStateMatcher,
   provideMatFormFieldOptions,
 } from '@mdtx/material/core';
@@ -21,13 +21,10 @@ export class LoginFormComponent {
   @Output() loginEvent = new EventEmitter<ILogin>();
 
   formGroup = this.builder.nonNullable.group({
-    username: [
-      '',
-      InputValidator.create('username').required().email().build(),
-    ],
+    username: ['', new ValidatorBuilder('username').required().email().build()],
     password: [
       '',
-      InputValidator.create('password').required().password().build(),
+      new ValidatorBuilder('password').required().password().build(),
     ],
   });
 

@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
-import { InventoryRoutes } from '@mdtx/modules/inventory';
+
+import { WebsiteRoutes } from '@mdtx/modules/website';
 
 export const appRoutes: Route[] = [
-  { path: '', loadChildren: () => InventoryRoutes },
+  { path: '', loadChildren: () => WebsiteRoutes },
 ];
