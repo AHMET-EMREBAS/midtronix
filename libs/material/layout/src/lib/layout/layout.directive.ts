@@ -39,6 +39,15 @@ export class LayoutContentBottomDirective implements ITemplateRef<any> {
 export class LayoutContentCenterDirective implements ITemplateRef<any> {
   constructor(public readonly templateRef: TemplateRef<any>) {}
 }
+@Directive({ selector: '[mdtxContentCenterRight]' })
+export class LayoutContentCenterRightDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
+
+@Directive({ selector: '[mdtxContentCenterLeft]' })
+export class LayoutContentCenterLeftDirective implements ITemplateRef<any> {
+  constructor(public readonly templateRef: TemplateRef<any>) {}
+}
 @Directive({ selector: '[mdtxSidenavLeftTop]' })
 export class LayoutSidenavLeftTopDirective implements ITemplateRef<any> {
   constructor(public readonly templateRef: TemplateRef<any>) {}
@@ -74,8 +83,11 @@ export const LayoutDirectives = [
   LayoutContentTopDirective,
   LayoutContentBottomDirective,
   LayoutContentCenterDirective,
+  LayoutContentCenterRightDirective,
+  LayoutContentCenterLeftDirective,
   LayoutSidenavLeftTopDirective,
   LayoutSidenavLeftBottomDirective,
+  LayoutSidenavLeftCenterDirective,
   LayoutSidenavLeftCenterDirective,
   LayoutSidenavRightTopDirective,
   LayoutSidenavRightBottomDirective,

@@ -8,6 +8,8 @@ export type NavlistItem = {
   color?: Color;
   handler?: (...args: any) => void;
   divider?: boolean;
+  isActive?: boolean;
+  children?: NavlistItem[];
 };
 
 export type Navlist = NavlistItem[];

@@ -4,6 +4,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { MatIconModule } from '@angular/material/icon';
 import { NavlistComponent } from '../navlist/navlist.component';
 import { RouterModule } from '@angular/router';
+import { Navlist } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-sample-layout',
@@ -18,4 +19,39 @@ import { RouterModule } from '@angular/router';
   templateUrl: './sample-layout.component.html',
   styleUrl: './sample-layout.component.scss',
 })
-export class SampleLayoutComponent {}
+export class SampleLayoutComponent {
+  sidenavLeftItems: Navlist = [
+    {
+      label: 'Home',
+      icon: 'home',
+      route: 'home',
+      color: 'primary',
+      children: [
+        {
+          label: 'Add',
+          icon: 'add',
+          route: 'create',
+        },
+        {
+          divider: true,
+        },
+      ],
+    },
+    {
+      label: 'About',
+      icon: 'info',
+      route: 'about',
+      color: 'primary',
+      children: [
+        {
+          label: 'Delete',
+          icon: 'delete',
+          route: 'delete',
+        },
+        {
+          divider: true,
+        },
+      ],
+    },
+  ];
+}

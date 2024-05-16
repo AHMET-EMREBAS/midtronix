@@ -1,11 +1,12 @@
 <div #screen="mdtxViewport" mdtxViewport class="main-container">
   <!-- ################### TOOLBAR START -->
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" *ngIf="showToolbar">
     <div class="row-container">
       <button
         mat-icon-button
         (click)="sidenavLeftRef.toggle()"
         aria-label="Toggle Left Sidenav"
+        *ngIf="showLeftSidenav"
       >
         <mat-icon>menu</mat-icon>
       </button>
@@ -20,6 +21,7 @@
         mat-icon-button
         (click)="sidenavRightRef.toggle()"
         aria-label="Toggle Right Sidenav"
+        *ngIf="showRightSidenav"
       >
         <mat-icon>{{ rightSidenavIcon }}</mat-icon>
       </button>
@@ -33,6 +35,7 @@
     [value]="progressValue"
     color="accent"
     aria-label="Progressbar"
+    *ngIf="showProgressbar"
   ></mat-progress-bar>
   <!-- ################### PROGRESSBAR END -->
 
@@ -46,17 +49,23 @@
       [mode]="screen.toggleValue('side', 'over')"
     >
       <div class="column-container full padding-1">
-        <div class="column-container">
+        <div class="column-container" *ngIf="sidenavLeftTop.length > 0">
           <mdtx-template-outlet [items]="sidenavLeftTop"></mdtx-template-outlet>
         </div>
 
-        <div class="column-container center">
+        <div
+          class="column-container center"
+          *ngIf="sidenavLeftCenter.length > 0"
+        >
           <mdtx-template-outlet
             [items]="sidenavLeftCenter"
           ></mdtx-template-outlet>
         </div>
 
-        <div class="column-container bottom">
+        <div
+          class="column-container bottom"
+          *ngIf="sidenavLeftBottom.length > 0"
+        >
           <mdtx-template-outlet
             [items]="sidenavLeftBottom"
           ></mdtx-template-outlet>
@@ -95,17 +104,38 @@
     <!-- ###################### SIDENAV CONTENT START  -->
     <mat-sidenav-content>
       <!-- TOP -->
-      <div class="column-container">
+      <div class="column-container" *ngIf="contentTop.length > 0">
         <mdtx-template-outlet [items]="contentTop"></mdtx-template-outlet>
       </div>
 
-      <!-- CENTER -->
-      <div class="column-container">
-        <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>
+      <!-- Center Content  -->
+      <div class="row-container full full-height flex-grow-1 flex-start">
+        <!-- Center left  -->
+        <div class="column-container full" *ngIf="contentCenterLeft.length > 0">
+          <mdtx-template-outlet
+            [items]="contentCenterLeft"
+          ></mdtx-template-outlet>
+        </div>
+
+        <!-- CENTER -->
+        <div
+          class="column-container flex-grow-1"
+          *ngIf="contentCenter.length > 0"
+        >
+          <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>
+        </div>
+
+        <!-- Center Right  -->
+        <div class="column-container full" *ngIf="contentTop.length > 0">
+          <mdtx-template-outlet
+            [items]="contentCenterRight"
+          ></mdtx-template-outlet>
+        </div>
       </div>
 
       <!-- BOTTOM -->
-      <div class="column-container">
+      <div class="column-container" *ngIf="contentBottom.length > 0">
+        {{ contentBottom.length }}
         <mdtx-template-outlet [items]="contentBottom"></mdtx-template-outlet>
       </div>
     </mat-sidenav-content>
@@ -114,14 +144,17 @@
   <!-- ######################### SIDENAV CONTAINER END -->
 
   <!-- ################################ STATUSBAR START -->
-  <mat-toolbar color="accent">
-    <div class="row-container">
+  <mat-toolbar color="accent" *ngIf="showStatusbar">
+    <div class="row-container" *ngIf="statusbarLeft.length > 0">
       <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>
-    <div class="row-container flex-grow-1 center">
+    <div
+      class="row-container flex-grow-1 center"
+      *ngIf="statusbarCenter.length > 0"
+    >
       <mdtx-template-outlet [items]="statusbarCenter"></mdtx-template-outlet>
     </div>
-    <div class="row-container right">
+    <div class="row-container right" *ngIf="statusbarRight.length > 0">
       <mdtx-template-outlet [items]="statusbarRight"></mdtx-template-outlet>
     </div>
   </mat-toolbar>

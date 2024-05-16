@@ -31496,11 +31496,11 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mat-slider\r\n  [min]=\"min\"\r\n  [max]=\"max\"\r\n  [step]=\"step\"\r\n  showTickMarks\r\n  discrete\r\n  color=\"accent\"\r\n  [attr.data-testid]=\"testid()\"\r\n>\r\n  <mat-label>{{ label ?? inputName | titlecase }}</mat-label>\r\n  <input\r\n    matSliderThumb\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n</mat-slider>\r\n"
+            "templateData": "<mat-slider\r\n  [min]=\"min\"\r\n  [max]=\"max\"\r\n  [step]=\"step\"\r\n  showTickMarks\r\n  discrete\r\n  color=\"accent\"\r\n  [attr.data-testid]=\"testid()\"\r\n>\r\n  <mat-label>{{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    matSliderThumb\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n</mat-slider>\r\n"
         },
         {
             "name": "InputSearchComponent",
-            "id": "component-InputSearchComponent-9e21a8388d2aa2feb3daf050677a97de254fd22aad18bcaeb3fbefecfcc42b6d12098dbdeda491d821e3452f59c0605437dddc2a3ac5d23d06fd93525c7d631e",
+            "id": "component-InputSearchComponent-17044dce22d251bcec23d29e4294dc2d7b6f2579c06d350bb9b62d4e14453992bf4558b6f9f8292e0258f50a1342967dfc453ced1657c64b7a6210612d8b2c31",
             "file": "libs/material/form/src/lib/input-search/input-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31516,8 +31516,37 @@
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "searchEvent",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [
+                {
+                    "name": "closeAfter3000$",
+                    "defaultValue": "this.open$.pipe(\r\n    debounceTime(5000),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "open$",
+                    "defaultValue": "new BehaviorSubject(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
                 {
                     "name": "searchControl",
                     "defaultValue": "new FormControl('')",
@@ -31526,10 +31555,50 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 27
+                },
+                {
+                    "name": "sub",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Subscription",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openSearch",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -31544,13 +31613,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonFormModule } from '../form';\nimport { FormControl } from '@angular/forms';\n\n@Component({\n  selector: 'mdtx-input-search',\n  standalone: true,\n  imports: [CommonFormModule],\n  templateUrl: './input-search.component.html',\n  styleUrl: './input-search.component.scss',\n})\nexport class InputSearchComponent {\n  searchControl = new FormControl('');\n}\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  OnDestroy,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { FormControl } from '@angular/forms';\r\nimport {\r\n  BehaviorSubject,\r\n  Subscription,\r\n  debounce,\r\n  debounceTime,\r\n  startWith,\r\n  tap,\r\n} from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-search',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-search.component.html',\r\n  styleUrl: './input-search.component.scss',\r\n})\r\nexport class InputSearchComponent implements OnInit, OnDestroy {\r\n  searchControl = new FormControl('');\r\n\r\n  open$ = new BehaviorSubject(false);\r\n  closeAfter3000$ = this.open$.pipe(\r\n    debounceTime(5000),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  );\r\n  @Output() searchEvent = new EventEmitter<string>();\r\n\r\n  sub!: Subscription;\r\n\r\n  ngOnInit(): void {\r\n    this.sub = this.searchControl.valueChanges\r\n      .pipe(debounceTime(1000))\r\n      .subscribe((searchString) => {\r\n        this.searchEvent.emit(searchString ?? '');\r\n      });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n\r\n  openSearch() {\r\n    this.open$.next(true);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-search.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-form-field>\n  <input matInput type=\"search\" autocomplete=\"off\" [formControl]=\"searchControl\" />\n  <mat-icon matIconPrefix>search</mat-icon>\n</mat-form-field>\n"
+            "implements": [
+                "OnInit",
+                "OnDestroy"
+            ],
+            "templateData": "<ng-container *ngIf=\"closeAfter3000$ | async\"></ng-container>\r\n\r\n<button mat-icon-button (click)=\"openSearch(); searchInput.focus()\">\r\n  <mat-icon>search</mat-icon>\r\n</button>\r\n\r\n<button mat-icon-button (click)=\"searchControl.setValue('')\">\r\n  <mat-icon>filter_alt_off</mat-icon>\r\n</button>\r\n\r\n<div\r\n  [class.hide-search-input]=\"(open$ | async) === false\"\r\n  [class.search-input-container]=\"(open$ | async) === true\"\r\n>\r\n  <mat-icon color=\"primary\">search</mat-icon>\r\n  <input\r\n    #searchInput\r\n    type=\"search\"\r\n    [formControl]=\"searchControl\"\r\n    (input)=\"openSearch()\"\r\n    [autofocus]=\"true\"\r\n  />\r\n</div>\r\n"
         },
         {
             "name": "InputSelectComponent",
@@ -34986,7 +35059,7 @@
         },
         {
             "name": "SidebarComponent",
-            "id": "component-SidebarComponent-ad4b9428cf4d6f33cbca6652a3776f545e2ccd8d7f3d559e671cd04644f970e905873b7265d58c43b78ecc8de32fec3e6eb0c75c3983c9102f3b404e6ca2910d",
+            "id": "component-SidebarComponent-630ae001432cd76f764dfece2b1f2b4936c63c19f7ab6f8b3139ff8b9c0670e0081afe929b57115b2a4f6461b52fc5f5053140e62f6ab9ec9566bd1450e8a509",
             "file": "libs/material/toolbar/src/lib/sidebar/sidebar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -35006,7 +35079,7 @@
                     "name": "bgColor",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 24,
                     "type": "string",
                     "decorators": []
                 },
@@ -35014,26 +35087,35 @@
                     "name": "bottomToolbarItems",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
-                    "type": "MenuItem[]",
+                    "line": 26,
+                    "type": "NavlistItem[]",
+                    "decorators": []
+                },
+                {
+                    "name": "tooltipPosition",
+                    "defaultValue": "'right'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "TooltipPosition",
                     "decorators": []
                 },
                 {
                     "name": "topToolbarItems",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
-                    "type": "MenuItem[]",
+                    "line": 25,
+                    "type": "NavlistItem[]",
                     "decorators": []
                 }
             ],
             "outputsClass": [
                 {
                     "name": "toolbarItemClickEvent",
-                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "defaultValue": "new EventEmitter<NavlistItem>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 29,
                     "type": "EventEmitter"
                 }
             ],
@@ -35060,22 +35142,30 @@
                 {
                     "name": "MatIconModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatDividerModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-sidebar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './sidebar.component.html',\n  styleUrl: './sidebar.component.scss',\n})\nexport class SidebarComponent {\n  @Input() bgColor?: string;\n  @Input() topToolbarItems?: MenuItem[];\n  @Input() bottomToolbarItems?: MenuItem[];\n\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { NavlistItem } from '@mdtx/material/core';\r\nimport { MatDividerModule } from '@angular/material/divider';\r\nimport { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';\r\n@Component({\r\n  selector: 'mdtx-sidebar',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatToolbarModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatDividerModule,\r\n    MatTooltipModule,\r\n  ],\r\n  templateUrl: './sidebar.component.html',\r\n  styleUrl: './sidebar.component.scss',\r\n})\r\nexport class SidebarComponent {\r\n  @Input() bgColor?: string;\r\n  @Input() topToolbarItems?: NavlistItem[];\r\n  @Input() bottomToolbarItems?: NavlistItem[];\r\n  @Input() tooltipPosition: TooltipPosition = 'right';\r\n  \r\n  @Output() toolbarItemClickEvent = new EventEmitter<NavlistItem>();\r\n}\r\n",
             "styleUrl": "./sidebar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-top-container\">\n    @for(item of topToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n\n  <div class=\"toolbar-bottom-container\">\n    @for(item of bottomToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
+            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\r\n  <div class=\"toolbar-top-container\">\r\n    @for(item of topToolbarItems; track item){ @if(item.divider){\r\n    <mat-divider></mat-divider>\r\n    } @else {\r\n    <button\r\n      mat-icon-button\r\n      (click)=\"toolbarItemClickEvent.emit(item)\"\r\n      [matTooltip]=\"item.label ?? ''\"\r\n      [matTooltipPosition]=\"tooltipPosition\"\r\n    >\r\n      <mat-icon [class.fill]=\"item.isActive\">{{ item.icon }}</mat-icon>\r\n    </button>\r\n    } }\r\n  </div>\r\n\r\n  <div class=\"toolbar-bottom-container\">\r\n    @for(item of bottomToolbarItems; track item){ @if(item.divider){\r\n    <mat-divider></mat-divider>\r\n    } @else {\r\n    <button\r\n      mat-icon-button\r\n      (click)=\"toolbarItemClickEvent.emit(item)\"\r\n      [matTooltip]=\"item.label ?? ''\"\r\n      [matTooltipPosition]=\"tooltipPosition\"\r\n    >\r\n      <mat-icon>{{ item.icon }}</mat-icon></button\r\n    >} }\r\n  </div>\r\n</mat-toolbar>\r\n"
         },
         {
             "name": "StatusbarComponent",
-            "id": "component-StatusbarComponent-3dff49becb7d6bb672758ff40fd12441a6a2a84360d976d591651d627a6b1671e4711df0626fb8a420e6b854ce8bd4e967f564e1bae15a34a8e28aedc422af9c",
+            "id": "component-StatusbarComponent-15eb47ae6df01607979aa69b8947947f4787bee74c086cdac36c46a7fcf92fa9ae6f483769a0b7d312877478f3e9a106f12153337c09db2fb15931199a3e50a7",
             "file": "libs/material/toolbar/src/lib/statusbar/statusbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -35154,13 +35244,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n\n@Component({\n  selector: 'mdtx-statusbar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './statusbar.component.html',\n  styleUrl: './statusbar.component.scss',\n})\nexport class StatusbarComponent {\n  @Input() bgColor?: string;\n  @Input() leftToolbarItems?: MenuItem[];\n  @Input() rightToolbarItems?: MenuItem[];\n\n  @Output() statusbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MenuItem } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-statusbar',\r\n  standalone: true,\r\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\r\n  templateUrl: './statusbar.component.html',\r\n  styleUrl: './statusbar.component.scss',\r\n})\r\nexport class StatusbarComponent {\r\n  @Input() bgColor?: string;\r\n  @Input() leftToolbarItems?: MenuItem[];\r\n  @Input() rightToolbarItems?: MenuItem[];\r\n\r\n  @Output() statusbarItemClickEvent = new EventEmitter<MenuItem>();\r\n}\r\n",
             "styleUrl": "./statusbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-left-container\">\n    @for(item of leftToolbarItems; track item){\n    <button mat-icon-button (click)=\"statusbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n\n  <div class=\"toolbar-right-container\">\n    @for(item of rightToolbarItems; track item){\n    <button mat-icon-button (click)=\"statusbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
+            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\r\n  <div class=\"toolbar-left-container\">\r\n    @for(item of leftToolbarItems; track item){\r\n    <button mat-icon-button (click)=\"statusbarItemClickEvent.emit(item)\">\r\n      <mat-icon>{{ item.icon }}</mat-icon>\r\n    </button>\r\n    }\r\n  </div>\r\n\r\n  <div class=\"toolbar-right-container\">\r\n    @for(item of rightToolbarItems; track item){\r\n    <button mat-icon-button (click)=\"statusbarItemClickEvent.emit(item)\">\r\n      <mat-icon>{{ item.icon }}</mat-icon>\r\n    </button>\r\n    }\r\n  </div>\r\n</mat-toolbar>\r\n"
         },
         {
             "name": "TableComponent",
@@ -35527,7 +35617,7 @@
         },
         {
             "name": "ToolbarComponent",
-            "id": "component-ToolbarComponent-b6af704cd32faeefd9359f17634dd82cb12b0d586ecbafab81b42d7bb325e6cb0b6fdc04fe27dd67d9c5dc7703a6c70037dd0399695bcc8f23d92ee6e1dba7f6",
+            "id": "component-ToolbarComponent-76db662ad845960c053c55760828f3203917623887e1d06b6bc81e8a6b472897549cf3ad523e8d90effb631454e971b47f7f32b516402665437e533041426b61",
             "file": "libs/material/toolbar/src/lib/toolbar/toolbar.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -35606,13 +35696,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MenuItem } from '@mdtx/material/core';\n@Component({\n  selector: 'mdtx-toolbar',\n  standalone: true,\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\n  templateUrl: './toolbar.component.html',\n  styleUrl: './toolbar.component.scss',\n})\nexport class ToolbarComponent {\n  @Input() bgColor?: string;\n  @Input() leftToolbarItems?: MenuItem[];\n  @Input() rightToolbarItems?: MenuItem[];\n\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MenuItem } from '@mdtx/material/core';\r\n@Component({\r\n  selector: 'mdtx-toolbar',\r\n  standalone: true,\r\n  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],\r\n  templateUrl: './toolbar.component.html',\r\n  styleUrl: './toolbar.component.scss',\r\n})\r\nexport class ToolbarComponent {\r\n  @Input() bgColor?: string;\r\n  @Input() leftToolbarItems?: MenuItem[];\r\n  @Input() rightToolbarItems?: MenuItem[];\r\n\r\n  @Output() toolbarItemClickEvent = new EventEmitter<MenuItem>();\r\n}\r\n",
             "styleUrl": "./toolbar.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\n  <div class=\"toolbar-left-container\">\n    @for(item of leftToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n    <ng-content select=\"[toolbarLeftContent]\"></ng-content>\n  </div>\n\n  <div class=\"toolbar-right-container\">\n    <ng-content select=\"[toolbarRigthtContent]\"></ng-content>\n\n    @for(item of rightToolbarItems; track item){\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\n      <mat-icon>{{ item.icon }}</mat-icon>\n    </button>\n    }\n  </div>\n</mat-toolbar>\n"
+            "templateData": "<mat-toolbar color=\"primary\" [style.backgroundColor]=\"bgColor\">\r\n  <div class=\"toolbar-left-container\">\r\n    @for(item of leftToolbarItems; track item){\r\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\r\n      <mat-icon>{{ item.icon }}</mat-icon>\r\n    </button>\r\n    }\r\n    <ng-content select=\"[toolbarLeftContent]\"></ng-content>\r\n  </div>\r\n\r\n  <div class=\"toolbar-right-container\">\r\n    @for(item of rightToolbarItems; track item){\r\n    <button mat-icon-button (click)=\"toolbarItemClickEvent.emit(item)\">\r\n      <mat-icon>{{ item.icon }}</mat-icon>\r\n    </button>\r\n    }\r\n    <ng-content select=\"[toolbarRigthtContent]\"></ng-content>\r\n  </div>\r\n</mat-toolbar>\r\n"
         },
         {
             "name": "ViewportDirectiveComponent",
@@ -36232,7 +36322,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36252,7 +36342,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    min: 0,\r\n    max: 10,\r\n    step: 1,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36262,7 +36352,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-search works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-search works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36322,7 +36412,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'link',\r\n    textSuffix: '',\r\n    textPrefix: '',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36412,7 +36502,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36422,7 +36512,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36432,7 +36522,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -36722,7 +36812,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputPhoneComponent>",
-                "defaultValue": "{\n  component: InputPhoneComponent,\n  title: 'InputPhoneComponent',\n}"
+                "defaultValue": "{\r\n  component: InputPhoneComponent,\r\n  title: 'InputPhoneComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36742,7 +36832,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputRangeComponent>",
-                "defaultValue": "{\n  component: InputRangeComponent,\n  title: 'InputRangeComponent',\n}"
+                "defaultValue": "{\r\n  component: InputRangeComponent,\r\n  title: 'InputRangeComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36752,7 +36842,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputSearchComponent>",
-                "defaultValue": "{\n  component: InputSearchComponent,\n  title: 'InputSearchComponent',\n}"
+                "defaultValue": "{\r\n  component: InputSearchComponent,\r\n  title: 'InputSearchComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36812,7 +36902,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<InputUrlComponent>",
-                "defaultValue": "{\n  component: InputUrlComponent,\n  title: 'InputUrlComponent',\n}"
+                "defaultValue": "{\r\n  component: InputUrlComponent,\r\n  title: 'InputUrlComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36902,7 +36992,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SidebarComponent>",
-                "defaultValue": "{\n  component: SidebarComponent,\n  title: 'SidebarComponent',\n}"
+                "defaultValue": "{\r\n  component: SidebarComponent,\r\n  title: 'SidebarComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36912,7 +37002,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<StatusbarComponent>",
-                "defaultValue": "{\n  component: StatusbarComponent,\n  title: 'StatusbarComponent',\n}"
+                "defaultValue": "{\r\n  component: StatusbarComponent,\r\n  title: 'StatusbarComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -36922,7 +37012,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ToolbarComponent>",
-                "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+                "defaultValue": "{\r\n  component: ToolbarComponent,\r\n  title: 'ToolbarComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -37202,7 +37292,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -37222,7 +37312,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    min: 0,\r\n    max: 10,\r\n    step: 1,\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -37232,7 +37322,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -37292,7 +37382,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'link',\r\n    textSuffix: '',\r\n    textPrefix: '',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -37382,7 +37472,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    topToolbarItems: [\n      { id: 1, title: 'Home', icon: 'home' },\n      { id: 2, title: 'About', icon: 'info' },\n    ],\n    bottomToolbarItems: [\n      { id: 3, title: 'Home', icon: 'home' },\n      { id: 4, title: 'About', icon: 'info' },\n    ],\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    topToolbarItems: [\r\n      { label: 'Home', icon: 'home' },\r\n      { label: 'About', icon: 'info' },\r\n    ],\r\n    bottomToolbarItems: [\r\n      { label: 'Home', icon: 'home' },\r\n      { label: 'About', icon: 'info' },\r\n    ],\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -37392,7 +37482,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\r\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -37402,7 +37492,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\r\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -39302,7 +39392,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39312,7 +39402,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputPhoneComponent>",
-                    "defaultValue": "{\n  component: InputPhoneComponent,\n  title: 'InputPhoneComponent',\n}"
+                    "defaultValue": "{\r\n  component: InputPhoneComponent,\r\n  title: 'InputPhoneComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39322,7 +39412,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    prefixIcon: 'call',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts": [
@@ -39366,7 +39456,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    min: 0,\r\n    max: 10,\r\n    step: 1,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-range works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39376,7 +39466,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputRangeComponent>",
-                    "defaultValue": "{\n  component: InputRangeComponent,\n  title: 'InputRangeComponent',\n}"
+                    "defaultValue": "{\r\n  component: InputRangeComponent,\r\n  title: 'InputRangeComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39386,7 +39476,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    min: 0,\n    max: 10,\n    step: 1,\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    min: 0,\r\n    max: 10,\r\n    step: 1,\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-search/input-search.component.stories.ts": [
@@ -39398,7 +39488,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-search works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-search works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39408,7 +39498,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputSearchComponent>",
-                    "defaultValue": "{\n  component: InputSearchComponent,\n  title: 'InputSearchComponent',\n}"
+                    "defaultValue": "{\r\n  component: InputSearchComponent,\r\n  title: 'InputSearchComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39418,7 +39508,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-select/input-select.component.stories.ts": [
@@ -39590,7 +39680,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'link',\r\n    textSuffix: '',\r\n    textPrefix: '',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-url works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39600,7 +39690,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<InputUrlComponent>",
-                    "defaultValue": "{\n  component: InputUrlComponent,\n  title: 'InputUrlComponent',\n}"
+                    "defaultValue": "{\r\n  component: InputUrlComponent,\r\n  title: 'InputUrlComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39610,7 +39700,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    prefixIcon: 'link',\n    textSuffix: '',\n    textPrefix: '',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'link',\r\n    textSuffix: '',\r\n    textPrefix: '',\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-username/input-username.component.stories.ts": [
@@ -39878,7 +39968,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39888,7 +39978,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SidebarComponent>",
-                    "defaultValue": "{\n  component: SidebarComponent,\n  title: 'SidebarComponent',\n}"
+                    "defaultValue": "{\r\n  component: SidebarComponent,\r\n  title: 'SidebarComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39898,7 +39988,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    topToolbarItems: [\n      { id: 1, title: 'Home', icon: 'home' },\n      { id: 2, title: 'About', icon: 'info' },\n    ],\n    bottomToolbarItems: [\n      { id: 3, title: 'Home', icon: 'home' },\n      { id: 4, title: 'About', icon: 'info' },\n    ],\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    topToolbarItems: [\r\n      { label: 'Home', icon: 'home' },\r\n      { label: 'About', icon: 'info' },\r\n    ],\r\n    bottomToolbarItems: [\r\n      { label: 'Home', icon: 'home' },\r\n      { label: 'About', icon: 'info' },\r\n    ],\r\n  },\r\n}"
                 }
             ],
             "libs/material/toolbar/src/lib/statusbar/statusbar.component.stories.ts": [
@@ -39910,7 +40000,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/statusbar works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39920,7 +40010,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<StatusbarComponent>",
-                    "defaultValue": "{\n  component: StatusbarComponent,\n  title: 'StatusbarComponent',\n}"
+                    "defaultValue": "{\r\n  component: StatusbarComponent,\r\n  title: 'StatusbarComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39930,7 +40020,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\r\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\r\n  },\r\n}"
                 }
             ],
             "libs/material/toolbar/src/lib/toolbar/toolbar.component.stories.ts": [
@@ -39942,7 +40032,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: Primary.args,\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/toolbar works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -39952,7 +40042,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ToolbarComponent>",
-                    "defaultValue": "{\n  component: ToolbarComponent,\n  title: 'ToolbarComponent',\n}"
+                    "defaultValue": "{\r\n  component: ToolbarComponent,\r\n  title: 'ToolbarComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -39962,7 +40052,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    leftToolbarItems: [{ id: 1, title: 'Info', icon: 'info' }],\r\n    rightToolbarItems: [{ id: 2, title: 'Some', icon: 'date_range' }],\r\n  },\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/sample-layout/about/about.component.stories.ts": [
@@ -42467,7 +42557,7 @@
                 "linktype": "component",
                 "name": "InputSearchComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -43454,7 +43544,7 @@
                 "linktype": "component",
                 "name": "SidebarComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {

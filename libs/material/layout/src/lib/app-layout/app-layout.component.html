@@ -13,9 +13,9 @@
   <ng-template mdtxStatusbarLeft
     ><mdtx-navlist [items]="statusbarLeft" [inToolbar]="true"></mdtx-navlist
   ></ng-template>
-  <ng-template mdtxStatusbarRight
-    ><mdtx-navlist [items]="statusbarRight" [inToolbar]="true"></mdtx-navlist
-  ></ng-template>
+  <ng-template mdtxStatusbarRight>
+    <mdtx-navlist [items]="statusbarRight" [inToolbar]="true"></mdtx-navlist>
+  </ng-template>
   <ng-template mdtxStatusbarCenter
     ><mdtx-navlist [items]="statusbarCenter" [inToolbar]="true"></mdtx-navlist
   ></ng-template>
@@ -23,9 +23,11 @@
   <ng-template mdtxSidenavLeftTop
     ><mdtx-navlist [items]="sidenavLeftTop"></mdtx-navlist
   ></ng-template>
+
   <ng-template mdtxSidenavLeftCenter
     ><mdtx-navlist [items]="sidenavLeftCenter"></mdtx-navlist
   ></ng-template>
+
   <ng-template mdtxSidenavLeftBottom
     ><mdtx-navlist [items]="sidenavLeftBottom"></mdtx-navlist
   ></ng-template>
@@ -36,9 +38,18 @@
   <ng-template mdtxSidenavRightCenter
     ><mdtx-navlist [items]="sidenavRightCenter"></mdtx-navlist
   ></ng-template>
-  <ng-template mdtxSidenavRightBottom
-    ><mdtx-navlist [items]="sidenavRightBottom"></mdtx-navlist
+
+  <ng-template mdtxSidenavRightBottom>
+    <mdtx-navlist [items]="sidenavRightBottom"> </mdtx-navlist
   ></ng-template>
+
+  <ng-template mdtxContentCenterLeft>
+    <mdtx-sidebar [topToolbarItems]="contentCenterLeft"></mdtx-sidebar>
+  </ng-template>
+
+  <ng-template mdtxContentCenterRight>
+    <mdtx-sidebar [topToolbarItems]="contentCenterRight"></mdtx-sidebar>
+  </ng-template>
 
   <ng-template mdtxContentCenter>
     <router-outlet></router-outlet>

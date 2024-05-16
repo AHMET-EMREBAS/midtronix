@@ -1,3 +1,3 @@
 # TODO
 
-- Develop a good item selection strategy.
+- Working on inventory impl

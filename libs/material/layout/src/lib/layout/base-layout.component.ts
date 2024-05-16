@@ -2,6 +2,8 @@ import { Component, ContentChildren, QueryList } from '@angular/core';
 import {
   LayoutContentBottomDirective,
   LayoutContentCenterDirective,
+  LayoutContentCenterLeftDirective,
+  LayoutContentCenterRightDirective,
   LayoutContentTopDirective,
   LayoutSidenavLeftBottomDirective,
   LayoutSidenavLeftCenterDirective,
@@ -37,6 +39,13 @@ export class BaseLayoutComponent {
   contentBottom!: QueryList<LayoutContentBottomDirective>;
   @ContentChildren(LayoutContentCenterDirective)
   contentCenter!: QueryList<LayoutContentCenterDirective>;
+
+  @ContentChildren(LayoutContentCenterRightDirective)
+  contentCenterRight!: QueryList<LayoutContentCenterDirective>;
+  
+  @ContentChildren(LayoutContentCenterLeftDirective)
+  contentCenterLeft!: QueryList<LayoutContentCenterDirective>;
+
   @ContentChildren(LayoutSidenavRightTopDirective)
   sidenavRightTop!: QueryList<LayoutSidenavRightTopDirective>;
   @ContentChildren(LayoutSidenavRightBottomDirective)

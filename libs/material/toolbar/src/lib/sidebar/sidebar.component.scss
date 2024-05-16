@@ -1,9 +1,10 @@
 mat-toolbar {
+  position: relative;
   width: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
   padding-top: 1em;
   padding-bottom: 1em;
 }

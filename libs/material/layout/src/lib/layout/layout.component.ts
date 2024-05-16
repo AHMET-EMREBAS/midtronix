@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatMenuModule, MenuPositionY } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,6 +17,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutDirectives } from './layout.directive';
 import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
 import { BaseLayoutComponent } from './base-layout.component';
+
 @Component({
   selector: 'mdtx-layout',
   standalone: true,
@@ -41,6 +42,12 @@ import { BaseLayoutComponent } from './base-layout.component';
   providers: [...LayoutDirectives],
 })
 export class LayoutComponent extends BaseLayoutComponent {
+  @Input() isSidenavLayout = true;
+  @Input() showProgressbar = true;
+  @Input() showToolbar = true;
+  @Input() showStatusbar = true;
+  @Input() showLeftSidenav = true;
+  @Input() showRightSidenav = true;
   @Input() progressValue = 100;
   @Input() rightSidenavIcon?: Icon = 'settings';
 }

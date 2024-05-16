@@ -29,6 +29,7 @@
       "@mdtx/modules": ["libs/modules/src/index.ts"],
       "@mdtx/modules/auth": ["libs/modules/auth/src/index.ts"],
       "@mdtx/modules/cms": ["libs/modules/cms/src/index.ts"],
+      "@mdtx/modules/common": ["libs/modules/common/src/index.ts"],
       "@mdtx/modules/ems": ["libs/modules/ems/src/index.ts"],
       "@mdtx/modules/inventory": ["libs/modules/inventory/src/index.ts"],
       "@mdtx/modules/landing-page": ["libs/modules/landing-page/src/index.ts"],

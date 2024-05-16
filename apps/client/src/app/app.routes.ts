@@ -1,2 +1,6 @@
 import { Route } from '@angular/router';
-export const appRoutes: Route[] = [];
+import { InventoryRoutes } from '@mdtx/modules/inventory';
+
+export const appRoutes: Route[] = [
+  { path: '', loadChildren: () => InventoryRoutes },
+];

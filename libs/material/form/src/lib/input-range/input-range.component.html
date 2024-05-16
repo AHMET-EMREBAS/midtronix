@@ -7,7 +7,7 @@
   color="accent"
   [attr.data-testid]="testid()"
 >
-  <mat-label>{{ label ?? inputName | titlecase }}</mat-label>
+  <mat-label>{{ label || inputName | titlecase }}</mat-label>
   <input
     matSliderThumb
     [name]="inputName"

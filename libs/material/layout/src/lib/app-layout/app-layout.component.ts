@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { Icon, Navlist, createValueProvider } from '@mdtx/material/core';
 import { NavlistComponent } from '../navlist/navlist.component';
 import { Title } from '@angular/platform-browser';
+import { SidebarComponent } from '@mdtx/material/toolbar';
 
 export const ToolbarLeftProvider = createValueProvider<Navlist>('toolbarLeft');
 export const ToolbarRightProvider =
@@ -22,6 +23,12 @@ export const ContentBottomProvider =
   createValueProvider<Navlist>('contentBottom');
 export const ContentCenterProvider =
   createValueProvider<Navlist>('contentCenter');
+export const ContentCenterLeftProvider =
+  createValueProvider<Navlist>('contentCenterLeft');
+
+export const ContentCenterRightProvider =
+  createValueProvider<Navlist>('contentCenterRight');
+
 export const SidenavRightTopProvider =
   createValueProvider<Navlist>('sidenavRightTop');
 export const SidenavRightBottomProvider =
@@ -37,12 +44,18 @@ export const SidenavLeftCenterProvider =
 @Component({
   selector: 'mdtx-app-layout',
   standalone: true,
-  imports: [CommonModule, LayoutModule, RouterModule, NavlistComponent],
+  imports: [
+    CommonModule,
+    LayoutModule,
+    RouterModule,
+    NavlistComponent,
+    SidebarComponent,
+  ],
   templateUrl: './app-layout.component.html',
   styleUrl: './app-layout.component.scss',
 })
 export class AppLayoutComponent {
-  @Input() rightSidenavIcon?:Icon = 'settings';
+  @Input() rightSidenavIcon?: Icon = 'settings';
   @Input() progressValue = 100;
   @Input() toolbarLeft?: Navlist;
   @Input() toolbarRight?: Navlist;
@@ -53,6 +66,8 @@ export class AppLayoutComponent {
   @Input() contentTop?: Navlist;
   @Input() contentBottom?: Navlist;
   @Input() contentCenter?: Navlist;
+  @Input() contentCenterLeft?: Navlist;
+  @Input() contentCenterRight?: Navlist;
   @Input() sidenavRightTop?: Navlist;
   @Input() sidenavRightBottom?: Navlist;
   @Input() sidenavRightCenter?: Navlist;
@@ -83,6 +98,15 @@ export class AppLayoutComponent {
     @Optional()
     @Inject(ContentCenterProvider.token())
     contentCenter?: Navlist,
+
+    @Optional()
+    @Inject(ContentCenterLeftProvider.token())
+    contentCenterLeft?: Navlist,
+
+    @Optional()
+    @Inject(ContentCenterRightProvider.token())
+    contentCenterRight?: Navlist,
+
     @Optional()
     @Inject(SidenavRightTopProvider.token())
     sidenavRightTop?: Navlist,
@@ -111,6 +135,10 @@ export class AppLayoutComponent {
     if (contentTop) this.contentTop = contentTop;
     if (contentBottom) this.contentBottom = contentBottom;
     if (contentCenter) this.contentCenter = contentCenter;
+
+    if (contentCenterLeft) this.contentCenterLeft = contentCenterLeft;
+    if (contentCenterRight) this.contentCenterRight = contentCenterRight;
+
     if (sidenavRightTop) this.sidenavRightTop = sidenavRightTop;
     if (sidenavRightBottom) this.sidenavRightBottom = sidenavRightBottom;
     if (sidenavRightCenter) this.sidenavRightCenter = sidenavRightCenter;

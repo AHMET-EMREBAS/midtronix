@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ProductService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ProductToolbarComponent } from '../../toolbars';
@@ -25,6 +25,8 @@ export class ProductTableComponent extends BaseTableComponent<IProduct> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+
   override pageIndex = 0;
   override pageSize = PRODUCT_PAGE_SIZE;
   override columns = PRODUCT_COLUMNS;
@@ -41,7 +43,7 @@ export class ProductTableComponent extends BaseTableComponent<IProduct> {
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
