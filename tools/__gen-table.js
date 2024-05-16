@@ -25,6 +25,9 @@ const rns = [
   'user-email',
   'user-phone',
   'user',
+  'price-level',
+  'price',
+  'quantity',
 ];
 
 for (const r of rns) {

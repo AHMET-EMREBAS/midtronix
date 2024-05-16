@@ -45,4 +45,8 @@ export class Delete<%- className %>Component {
       }
     });
   }
+
+  value(item:I<%- className %>){ 
+    return Object.values(item).join(', ');
+  }
 }

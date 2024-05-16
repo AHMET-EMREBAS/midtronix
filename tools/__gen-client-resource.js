@@ -25,8 +25,11 @@ const rns = [
   'user-email',
   'user-phone',
   'user',
+  'price-level',
+  'price', 
+  'quantity'
 ];
 
 for (const r of rns) {
-  execSync(`npx nx g @mdtx/gen:sub-module ${r}`);
+  execSync(`npx nx g @mdtx/gen:client-resource ${r}`);
 }
