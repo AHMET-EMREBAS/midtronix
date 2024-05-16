@@ -160,7 +160,6 @@ export const InventoryRoutes: Routes = [
           { path: 'useremail', loadChildren: () => UserEmailRoutes },
           { path: 'userphone', loadChildren: () => UserPhoneRoutes },
           { path: 'user', loadChildren: () => UserRoutes },
-
           { path: 'pricelevel', loadChildren: () => PriceLevelRoutes },
           { path: 'price', loadChildren: () => PriceRoutes },
           { path: 'quantity', loadChildren: () => QuantityRoutes },
