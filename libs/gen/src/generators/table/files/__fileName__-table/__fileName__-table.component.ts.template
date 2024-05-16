@@ -25,6 +25,9 @@ export class <%- className %>TableComponent extends BaseTableComponent<I<%- clas
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<I<%- className %>>[]>();
+
   override pageIndex = 0;
   override pageSize = <%- constantName %>_PAGE_SIZE;
   override columns = <%- constantName %>_COLUMNS;
@@ -40,14 +43,15 @@ export class <%- className %>TableComponent extends BaseTableComponent<I<%- clas
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
+ 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

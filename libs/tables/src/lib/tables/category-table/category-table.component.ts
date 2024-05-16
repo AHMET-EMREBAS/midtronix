@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CategoryService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CategoryToolbarComponent } from '../../toolbars';
@@ -25,6 +25,9 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
+  @Output() addEvent = new EventEmitter();
+  @Output() deleteEvent = new EventEmitter<ICategory[]>();
+
   override pageIndex = 0;
   override pageSize = CATEGORY_PAGE_SIZE;
   override columns = CATEGORY_COLUMNS;
@@ -41,13 +44,13 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
   }
 
   addItem() {
-    this.router.navigate(['create']);
+    this.addEvent.emit();
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 
