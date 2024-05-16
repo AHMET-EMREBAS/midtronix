@@ -39,3 +39,8 @@ tr:has(td.condition-not-met) td:first-child {
 tr:has(td.condition-not-met) td:last-child {
   border-right: 10px solid $darkGray;
 }
+.table-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}

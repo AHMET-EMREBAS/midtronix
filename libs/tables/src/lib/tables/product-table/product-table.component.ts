@@ -26,7 +26,7 @@ export class ProductTableComponent extends BaseTableComponent<IProduct> {
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-
+  @Output() deleteEvent = new EventEmitter<IProduct[]>();
   override pageIndex = 0;
   override pageSize = PRODUCT_PAGE_SIZE;
   override columns = PRODUCT_COLUMNS;
@@ -47,9 +47,9 @@ export class ProductTableComponent extends BaseTableComponent<IProduct> {
   }
 
   deleteSelection() {
-    for (const [key] of this.table.selectedItems) {
-      this.service.delete(key);
-    }
+    this.deleteEvent.emit(
+      [...this.table.selectedItems.entries()].map(([, v]) => v)
+    );
     this.table.selectedItems.clear();
   }
 

@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
 import { CreateProductComponent } from './create-product/create-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
-import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
-import { ViewProductComponent } from './view-product/view-product.component';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
@@ -52,19 +50,9 @@ export const ProductRoutes: Routes = [
         loadComponent: () => ViewProductsComponent,
       },
       {
-        title: 'View Product',
-        path: 'view/:id',
-        loadComponent: () => ViewProductComponent,
-      },
-      {
         title: 'Update Product',
         path: 'update/:id',
         loadComponent: () => UpdateProductComponent,
-      },
-      {
-        title: 'Delete Product',
-        path: 'delete/:id',
-        loadComponent: () => DeleteProductComponent,
       },
     ],
   },

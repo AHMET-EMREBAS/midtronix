@@ -50,10 +50,12 @@ export class AppSeedModule implements OnModuleInit {
       await this.PriceLevelRepo.save({ name: `PriceLevel ${i}` });
     }
 
-    for (const i of [1, 2, 3, 4, 5]) {
+    for (const i of [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    ]) {
       await this.ProductRepo.save({
         name: `Product ${i}`,
-        category: { id: i },
+        category: { id: (i % 5) + 1 },
         upc: `123456789011${i}`,
       });
     }

@@ -13,7 +13,6 @@ body {
 body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   font-size: 16px;
-  // border: 3px solid royalblue;
 }
 
 mat-form-field {
@@ -35,4 +34,10 @@ mat-form-field {
   button {
     width: 100%;
   }
+}
+
+mat-toolbar {
+  min-height: 60px;
+  overflow: hidden;
+  overflow-y: auto;
 }
