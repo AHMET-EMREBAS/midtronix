@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { ViewCategoryComponent } from './view-categorys/view-category.component';
+import { ViewCategoryComponent } from './view-category/view-category.component';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,

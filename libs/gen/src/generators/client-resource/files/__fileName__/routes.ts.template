@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Create<%- className %>Component } from './create-<%- fileName %>/create-<%- fileName %>.component';
 import { Update<%- className %>Component } from './update-<%- fileName %>/update-<%- fileName %>.component';
-import { View<%- className %>Component } from './view-<%- fileName %>s/view-<%- fileName %>.component';
+import { View<%- className %>Component } from './view-<%- fileName %>/view-<%- fileName %>.component';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
