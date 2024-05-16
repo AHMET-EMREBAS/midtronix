@@ -3,13 +3,13 @@ import { ToolbarComponent } from '@mdtx/material/toolbar';
 import { MenuItem } from '@mdtx/material/core';
 import { InputSearchComponent } from '@mdtx/material/form';
 @Component({
-  selector: 'mdtx-message-toolbar',
+  selector: 'mdtx-price-toolbar',
   standalone: true,
   imports: [ToolbarComponent, InputSearchComponent],
-  templateUrl: './message-toolbar.component.html',
-  styleUrl: './message-toolbar.component.scss',
+  templateUrl: './price-toolbar.component.html',
+  styleUrl: './price-toolbar.component.scss',
 })
-export class MessageToolbarComponent {
+export class PriceToolbarComponent {
   leftToolbarItems: MenuItem[] = [];
   rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];
 

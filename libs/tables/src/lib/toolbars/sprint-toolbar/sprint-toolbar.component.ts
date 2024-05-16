@@ -10,18 +10,14 @@ import { InputSearchComponent } from '@mdtx/material/form';
   styleUrl: './sprint-toolbar.component.scss',
 })
 export class SprintToolbarComponent {
-  leftToolbarItems: MenuItem[] = [{ id: 1, title: `Add`, icon: 'add' }];
+  leftToolbarItems: MenuItem[] = [];
   rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];
 
   @Output() deleteEvent = new EventEmitter();
-  @Output() addEvent = new EventEmitter();
   @Output() searchEvent = new EventEmitter();
 
   handleToolbarClick(event: MenuItem) {
     switch (event.title) {
-      case 'Add':
-        this.addEvent.emit();
-        return;
       case 'Delete':
         this.deleteEvent.emit();
         return;

@@ -14,14 +14,10 @@ export class ProductToolbarComponent {
   rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];
 
   @Output() deleteEvent = new EventEmitter();
-  @Output() addEvent = new EventEmitter();
   @Output() searchEvent = new EventEmitter();
 
   handleToolbarClick(event: MenuItem) {
     switch (event.title) {
-      case 'Add':
-        this.addEvent.emit();
-        return;
       case 'Delete':
         this.deleteEvent.emit();
         return;
