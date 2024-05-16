@@ -5,10 +5,9 @@ import {
   SidenavLeftBottomProvider,
   SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
-import { ProductRoutes } from './product';
 import { provideEntityData, withEffects } from '@ngrx/data';
 import { InventoryComponent } from './inventory.component';
-
+import { CategoryRoutes, ProductRoutes } from '@mdtx/modules/sub-modules';
 export const InventoryRoutes: Routes = [
   {
     path: '',
@@ -55,7 +54,10 @@ export const InventoryRoutes: Routes = [
           ]),
         ],
 
-        children: [{ path: 'product', loadChildren: () => ProductRoutes }],
+        children: [
+          { path: 'product', loadChildren: () => ProductRoutes },
+          { path: 'category', loadChildren: () => CategoryRoutes },
+        ],
       },
     ],
   },

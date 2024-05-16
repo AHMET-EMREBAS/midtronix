@@ -1,0 +1,36 @@
+{
+  "name": "modules-sub-modules",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sub-modules/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/modules/sub-modules/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/modules/sub-modules/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/modules/sub-modules/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/modules/sub-modules/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
