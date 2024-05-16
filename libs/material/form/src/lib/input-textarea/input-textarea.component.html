@@ -1,5 +1,24 @@
 <mat-form-field>
-  <mat-label>{{ label || inputName | titlecase }}</mat-label>
+  <mat-label>
+    <div class="label-row-center">
+      <!-- Prefix icon -->
+      @if(prefixIcon){
+      <mat-icon [color]="iconColor()">{{ prefixIcon }}</mat-icon>
+      }
+
+      {{ label || inputName | titlecase }}
+
+      <!-- Typing indicator -->
+      <mat-icon [color]="iconColor()">
+        @if(mdtxInput.isTyping()){
+        <mat-progress-spinner
+          [diameter]="15"
+          mode="indeterminate"
+        ></mat-progress-spinner>
+        }
+      </mat-icon>
+    </div>
+  </mat-label>
   <textarea
     #mdtxInput="mdtxInput"
     [name]="inputName"
@@ -17,21 +36,6 @@
   <!-- Text suffix -->
   @if(textSuffix){
   <span matTextSuffix> {{ textSuffix }}</span>
-  }
-
-  <!-- Typing indicator -->
-  <mat-icon matIconSuffix>
-    @if(mdtxInput.isTyping()){
-    <mat-progress-spinner
-      [diameter]="22"
-      mode="indeterminate"
-    ></mat-progress-spinner>
-    }
-  </mat-icon>
-
-  <!-- Prefix icon -->
-  @if(prefixIcon){
-  <mat-icon matIconPrefix>{{ prefixIcon }}</mat-icon>
   }
 
   <mat-error>{{ getErrorMessage() }}</mat-error>

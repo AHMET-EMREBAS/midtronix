@@ -9,7 +9,6 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-
 export const ProductRoutes: Routes = [
   {
     title: 'Product Management',

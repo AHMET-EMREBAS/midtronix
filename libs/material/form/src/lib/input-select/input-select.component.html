@@ -9,4 +9,11 @@
     <mat-option [value]="o">{{ o.name }}</mat-option>
     }
   </mat-select>
+
+  <!-- Prefix icon -->
+  @if(prefixIcon){
+  <mat-icon matIconPrefix [color]="iconColor()">
+    {{ prefixIcon }}
+  </mat-icon>
+  }
 </mat-form-field>

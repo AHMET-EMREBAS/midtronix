@@ -22,11 +22,11 @@
 
   <!-- Prefix icon -->
   @if(prefixIcon){
-  <mat-icon matPrefix>{{ prefixIcon }}</mat-icon>
+  <mat-icon matPrefix [color]="iconColor()">{{ prefixIcon }}</mat-icon>
   }
 
   <!-- Typing indicator -->
-  <mat-icon matSuffix>
+  <mat-icon matSuffix [color]="iconColor()">
     @if(mdtxInput.isTyping()){
     <mat-progress-spinner
       [diameter]="22"

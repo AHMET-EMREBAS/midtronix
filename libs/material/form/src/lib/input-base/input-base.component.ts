@@ -53,4 +53,10 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   testid() {
     return 'input-' + this.inputName;
   }
+
+  iconColor() {
+    return this.inputControl?.invalid && this.inputControl.touched
+      ? 'warn'
+      : 'primary';
+  }
 }

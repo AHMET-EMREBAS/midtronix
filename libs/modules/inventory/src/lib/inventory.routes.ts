@@ -6,13 +6,31 @@ import {
   SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
 import { ProductRoutes } from './product';
+import { provideEntityData, withEffects } from '@ngrx/data';
 
 export const InventoryRoutes: Routes = [
   {
     title: 'Inventory Management',
     path: '',
     loadComponent: () => AppLayoutComponent,
+
     providers: [
+      provideEntityData(
+        {
+          pluralNames: {
+            Product: 'Products',
+            Category: 'Categories',
+            Department: 'Departments',
+          },
+          entityMetadata: {
+            Product: {},
+            Category: {},
+            Department: {},
+          },
+        },
+        withEffects()
+      ),
+
       SidenavLeftTopProvider.provide([
         { label: 'Product', icon: 'inventory_2', route: 'product' },
         { label: 'Sku', icon: 'track_changes', route: 'sku' },

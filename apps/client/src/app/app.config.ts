@@ -5,35 +5,19 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideStore } from '@ngrx/store';
-import { provideEntityData, withEffects } from '@ngrx/data';
-import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 import { httpInterceptors } from './app.interceptors';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideStore(),
+    provideEffects([]),
     provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
     provideRouter(appRoutes, withHashLocation()),
     provideClientHydration(),
     provideHttpClient(withInterceptors(httpInterceptors)),
-    provideStore([]),
-    provideEffects([]),
-    provideEntityData(
-      {
-        pluralNames: {
-          Product: 'Products',
-          Category: 'Categories',
-          Department: 'Departments',
-        },
-        entityMetadata: {
-          Product: {},
-          Category: {},
-          Department: {},
-        },
-      },
-      withEffects()
-    ),
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),
