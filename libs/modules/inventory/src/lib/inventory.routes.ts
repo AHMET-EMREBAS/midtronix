@@ -71,7 +71,7 @@ export const InventoryRoutes: Routes = [
 
             PriceLevel: 'PriceLevels',
             Price: 'Prices',
-            Quantity: 'Quantitys',
+            Quantity: 'Quantities',
           },
           entityMetadata: {
             Product: {},
@@ -116,7 +116,7 @@ export const InventoryRoutes: Routes = [
             { label: 'Sku', icon: 'track_changes', route: 'sku' },
             { divider: true },
             { label: 'Price', icon: 'attach_money', route: 'price' },
-            { label: 'Price Level', icon: 'groups_3', route: 'price-level' },
+            { label: 'Price Level', icon: 'groups_3', route: 'pricelevel' },
             { divider: true },
             { label: 'Quantity', icon: 'numbers', route: 'quantity' },
             { divider: true },

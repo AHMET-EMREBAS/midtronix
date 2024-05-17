@@ -15,6 +15,8 @@ export function plural(value: string) {
       return value + 'es';
     } else if (lowerName.endsWith('ss')) {
       return value + 'es';
+    } else if (lowerName.endsWith('y')) {
+      return value.slice(0, value.length - 2) + 'ies';
     }
     return value + 's';
   }
