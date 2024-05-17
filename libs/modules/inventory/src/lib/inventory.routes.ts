@@ -19,6 +19,7 @@ import {
   PriceRoutes,
   QuantityRoutes,
 } from '@mdtx/modules/sub-modules';
+
 export const InventoryRoutes: Routes = [
   {
     path: '',

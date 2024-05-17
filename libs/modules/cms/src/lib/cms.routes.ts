@@ -14,6 +14,8 @@ import {
   CustomerAddressRoutes,
   CustomerEmailRoutes,
   CustomerPhoneRoutes,
+  CustomerRoleRoutes,
+  CustomerPermissionRoutes,
 } from '@mdtx/modules/sub-modules';
 
 export const CmsRoutes: Routes = [
@@ -25,16 +27,16 @@ export const CmsRoutes: Routes = [
         {
           pluralNames: {
             Customer: 'Customers',
-            Role: 'Role',
-            Permission: 'Permissions',
+            CustomerRole: 'CustomerRoles',
+            CustomerPermission: 'CustomerPermissions',
             CustomerAddress: 'CustomerAddresses',
             CustomerEmail: 'CustomerEmails',
             CustomerPhone: 'CustomerPhones',
           },
           entityMetadata: {
             Customer: {},
-            Role: {},
-            Permission: {},
+            CustomerRole: {},
+            CustomerPermission: {},
             CustomerAddress: {},
             CustomerEmail: {},
             CustomerPhone: {},
@@ -66,8 +68,8 @@ export const CmsRoutes: Routes = [
 
         children: [
           { path: 'customer', loadChildren: () => CustomerRoutes },
-          { path: 'role', loadChildren: () => RoleRoutes },
-          { path: 'permission', loadChildren: () => PermissionRoutes },
+          { path: 'role', loadChildren: () => CustomerRoleRoutes },
+          { path: 'permission', loadChildren: () => CustomerPermissionRoutes },
           {
             path: 'customeraddress',
             loadChildren: () => CustomerAddressRoutes,

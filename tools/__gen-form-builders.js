@@ -2,10 +2,12 @@ const { execSync } = require('child_process');
 
 const rns = [
   'category',
+  'customer',
   'customer-address',
   'customer-email',
   'customer-phone',
-  'customer',
+  'customer-role',
+  'customer-permission',
   'department',
   'manufacturer',
   'message',
