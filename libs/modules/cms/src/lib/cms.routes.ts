@@ -4,39 +4,78 @@ import {
   AppLayoutComponent,
   SidenavLeftBottomProvider,
   SidenavLeftTopProvider,
-  StatusbarRightProvider,
-  ToolbarRightProvider,
 } from '@mdtx/material/layout';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ReportComponent } from './report/report.component';
-import { HelpComponent } from './help/help.component';
-import { SettingsComponent } from './settings/settings.component';
+import { provideEntityData, withEffects } from '@ngrx/data';
+import { CmsComponent } from './cms.component';
+import {
+  CustomerRoutes,
+  RoleRoutes,
+  PermissionRoutes,
+  CustomerAddressRoutes,
+  CustomerEmailRoutes,
+  CustomerPhoneRoutes,
+} from '@mdtx/modules/sub-modules';
 
 export const CmsRoutes: Routes = [
   {
-    title: 'Customer Management',
     path: '',
-    loadComponent: () => AppLayoutComponent,
+    component: CmsComponent,
     providers: [
-      SidenavLeftTopProvider.provide([
-        { label: 'Dashboard', route: 'dashboard', icon: 'dashboard' },
-        { label: 'Report', route: 'report', icon: 'report' },
-      ]),
-      ToolbarRightProvider.provide([]),
-
-      StatusbarRightProvider.provide([
-        { label: 'Help', route: 'help', icon: 'help' },
-      ]),
-
-      SidenavLeftBottomProvider.provide([
-        { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
-      ]),
+      provideEntityData(
+        {
+          pluralNames: {
+            Customer: 'Customers',
+            Role: 'Role',
+            Permission: 'Permissions',
+            CustomerAddress: 'CustomerAddresses',
+            CustomerEmail: 'CustomerEmails',
+            CustomerPhone: 'CustomerPhones',
+          },
+          entityMetadata: {
+            Customer: {},
+            Role: {},
+            Permission: {},
+            CustomerAddress: {},
+            CustomerEmail: {},
+            CustomerPhone: {},
+          },
+        },
+        withEffects()
+      ),
     ],
     children: [
-      { path: 'dashboard', loadComponent: () => DashboardComponent },
-      { path: 'report', loadComponent: () => ReportComponent },
-      { path: 'help', loadComponent: () => HelpComponent },
-      { path: 'settings', loadComponent: () => SettingsComponent },
+      {
+        path: '',
+        loadComponent: () => AppLayoutComponent,
+        providers: [
+          SidenavLeftTopProvider.provide([
+            { label: 'Customer', icon: 'person', route: 'customer' },
+            { label: 'Role', icon: 'badge', route: 'role' },
+            { label: 'Permission', icon: 'security', route: 'permission' },
+            { divider: true },
+
+            { label: 'Address', icon: 'map', route: 'customeraddress' },
+            { label: 'Email', icon: 'email', route: 'customeremail' },
+            { label: 'Phone', icon: 'phone', route: 'customerphone' },
+          ]),
+
+          SidenavLeftBottomProvider.provide([
+            { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
+          ]),
+        ],
+
+        children: [
+          { path: 'customer', loadChildren: () => CustomerRoutes },
+          { path: 'role', loadChildren: () => RoleRoutes },
+          { path: 'permission', loadChildren: () => PermissionRoutes },
+          {
+            path: 'customeraddress',
+            loadChildren: () => CustomerAddressRoutes,
+          },
+          { path: 'customeremail', loadChildren: () => CustomerEmailRoutes },
+          { path: 'customerphone', loadChildren: () => CustomerPhoneRoutes },
+        ],
+      },
     ],
   },
 ];

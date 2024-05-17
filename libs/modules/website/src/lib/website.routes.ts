@@ -11,6 +11,7 @@ import { EmsRoutes } from '@mdtx/modules/ems';
 import { AuthRoutes } from '@mdtx/modules/auth';
 import { PosRoutes } from '@mdtx/modules/pos';
 import { LandingPageComponent } from '@mdtx/modules/landing-page';
+
 export const WebsiteRoutes: Routes = [
   {
     path: '',

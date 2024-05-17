@@ -90,6 +90,7 @@ export {
   MinLength,
   IsUUID,
   IsPhoneNumber,
+  isDateString,
 } from 'class-validator';
 export {
   Transform,

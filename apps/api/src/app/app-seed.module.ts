@@ -1,12 +1,16 @@
 import {
   Category,
+  Customer,
   Department,
+  Permission,
   Price,
   PriceLevel,
   Product,
   Quantity,
+  Role,
   Sku,
   Store,
+  User,
 } from '@mdtx/database';
 import { Module, OnModuleInit } from '@nestjs/common';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
@@ -23,6 +27,10 @@ import { Repository } from 'typeorm';
       Price,
       Quantity,
       PriceLevel,
+      Permission,
+      Role,
+      User,
+      Customer,
     ]),
   ],
 })
@@ -40,7 +48,15 @@ export class AppSeedModule implements OnModuleInit {
     @InjectRepository(Quantity)
     protected readonly QuantityRepo: Repository<Quantity>,
     @InjectRepository(PriceLevel)
-    protected readonly PriceLevelRepo: Repository<PriceLevel>
+    protected readonly PriceLevelRepo: Repository<PriceLevel>,
+    @InjectRepository(Permission)
+    protected readonly PermissionRepo: Repository<Permission>,
+    @InjectRepository(Role)
+    protected readonly RoleRepo: Repository<Role>,
+    @InjectRepository(User)
+    protected readonly UserRepo: Repository<User>,
+    @InjectRepository(Customer)
+    protected readonly CustomerRepo: Repository<Customer>
   ) {}
   async onModuleInit() {
     for (const i of [1, 2, 3, 4, 5]) {
@@ -79,6 +95,29 @@ export class AppSeedModule implements OnModuleInit {
         cost: 1,
         sku: { id: i },
         priceLevel: { id: i },
+      });
+    }
+
+    for (const i of [1, 2, 3, 4, 5, 6, 7]) {
+      await this.PermissionRepo.save({ name: `Permission ${i}` });
+    }
+
+    for (const i of [1, 2, 3, 4, 5, 6, 7]) {
+      await this.RoleRepo.save({
+        name: `Role ${i}`,
+        permissions: [{ id: (i % 3) + 1 }],
+      });
+    }
+
+    for (const i of [1, 2, 3, 4, 6, 7]) {
+      await this.UserRepo.save({
+        username: `user${i}@gmail.com`,
+        password: `Password!${i}`,
+        roles: [{ id: (i % 3) + 1 }],
+      });
+      await this.CustomerRepo.save({
+        username: `customer${i}@gmail.com`,
+        password: `Password!${i}`,
       });
     }
   }

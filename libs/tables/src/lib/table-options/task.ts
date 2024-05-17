@@ -5,25 +5,45 @@ export const TASK_COLUMNS: TableRow<ITaskRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'description' },
-  { name: 'due' },
-  { name: 'startDate' },
-  { name: 'finishDate' },
+  {
+    name: 'due',
+    map: (v: ITaskRaw) =>
+      v.due && new Date(parseFloat(v.due + '')).toDateString(),
+  },
+
+  {
+    name: 'startDate',
+    map: (v: ITaskRaw) =>
+      v.startDate && new Date(parseFloat(v.startDate + '')).toDateString(),
+  },
+
+  {
+    name: 'finishDate',
+    map: (v: ITaskRaw) =>
+      v.finishDate && new Date(parseFloat(v.finishDate + '')).toDateString(),
+  },
+
   { name: 'difficulty' },
+
   { name: 'status' },
+
   {
     name: 'assignees',
     map: (v: ITaskRaw) => v.assignees?.map((e) => e.username).join(', '),
   },
+
   {
     name: 'createdAt',
     label: 'Created At',
     map: (v: ITaskRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
   },
+
   {
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: ITaskRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
+
   {
     name: 'deletedAt',
     label: 'Deleted At',

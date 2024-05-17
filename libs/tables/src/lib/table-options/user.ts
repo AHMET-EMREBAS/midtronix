@@ -4,6 +4,7 @@ import { TableRow } from '@mdtx/material/table';
 export const USER_COLUMNS: TableRow<IUserRaw>[] = [
   { name: 'id' },
   { name: 'username' },
+  { name: 'password' },
   {
     name: 'roles',
     map: (v: IUserRaw) => v.roles?.map((e) => e.name).join(','),

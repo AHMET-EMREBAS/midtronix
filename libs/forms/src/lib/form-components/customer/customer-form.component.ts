@@ -24,7 +24,7 @@ import { CustomerFormBuilder } from '../../form-builders';
 export class CustomerFormComponent extends BaseFormComponent {
   override createFormGroup(): FormGroup {
     return new FormGroup({
-      ...CustomerFormBuilder.controls(undefined, ['supervisor', 'roles']),
+      ...CustomerFormBuilder.controls(),
     });
   }
 }

@@ -24,7 +24,7 @@ export const EmsRoutes: Routes = [
         {
           pluralNames: {
             User: 'Users',
-            Role: 'Role',
+            Role: 'Roles',
             Permission: 'Permissions',
             UserAddress: 'UserAddresses',
             UserEmail: 'UserEmails',

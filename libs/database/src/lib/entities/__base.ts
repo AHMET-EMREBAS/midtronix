@@ -110,11 +110,11 @@ export function CreateCommonTaskEntity<TUser extends IID>(
     extends DescriptionEntity
     implements ICommonTask<TUser>
   {
-    @Column({ type: 'integer' }) due!: number;
-    @Column({ type: 'integer' }) difficulty!: number;
-    @Column({ type: 'integer' }) status!: number;
-    @Column({ type: 'integer' }) startDate!: number;
-    @Column({ type: 'integer' }) finishDate!: number;
+    @Column({ type: 'numeric' }) due!: number;
+    @Column({ type: 'numeric' }) difficulty!: number;
+    @Column({ type: 'numeric', nullable: true }) status!: number;
+    @Column({ type: 'numeric' }) startDate!: number;
+    @Column({ type: 'numeric' }) finishDate!: number;
     @ManyRelation(assignee, { eager: false }) assignees!: TUser[];
   }
 

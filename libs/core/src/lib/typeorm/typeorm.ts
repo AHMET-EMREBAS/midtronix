@@ -28,7 +28,7 @@ export function ManyRelation<T extends IID>(
     ManyToMany(
       () => target,
       (t) => t.id,
-      { ...options, nullable: true, onDelete: 'SET NULL' }
+      { ...options, nullable: true }
     ),
     JoinTable()
   );

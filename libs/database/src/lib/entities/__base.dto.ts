@@ -19,6 +19,7 @@ import {
   IDObjectProperty,
   PartialType,
   Property,
+  Transform,isDateString
 } from '@mdtx/core';
 
 @Exclude()
@@ -137,9 +138,21 @@ export class CreateCommonTaskDto
   extends CreateDescriptionDto
   implements Omit<ICommonTask<IDDto>, keyof IBaseEntity>
 {
-  @Property({ type: 'number' }) due?: number;
-  @Property({ type: 'number' }) startDate?: number;
-  @Property({ type: 'number' }) finishDate?: number;
+  @Property({ type: 'number' })
+  @Transform(({ value }) => {
+    return isDateString(value) ? new Date(value).getTime() : value;
+  })
+  due?: number;
+  @Property({ type: 'number' })
+  @Transform(({ value }) => {
+    return isDateString(value) ? new Date(value).getTime() : value;
+  })
+  startDate?: number;
+  @Property({ type: 'number' })
+  @Transform(({ value }) => {
+    return isDateString(value) ? new Date(value).getTime() : value;
+  })
+  finishDate?: number;
   @Property({ type: 'number' }) status?: number;
   @Property({ type: 'number' }) difficulty?: number;
   @Property({ type: 'number' }) assignees?: IDDto[];
