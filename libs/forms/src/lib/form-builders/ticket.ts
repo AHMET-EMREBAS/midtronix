@@ -25,7 +25,12 @@ export const TicketFormBuilder = new FormGroupBuilder<ICreateTicketDto>(
   .date()
 
   .add('status')
-  .shortText()
+  .range(1, 5)
+
+  .add('assignees')
+
+  .add('customer')
+  .required()
 
   .done()
   .lock();

@@ -9,5 +9,10 @@ export const MessageFormBuilder = new FormGroupBuilder<ICreateMessageDto>(
   .required()
   .longText()
 
+  .add('source')
+  .required()
+
+  .add('target')
+
   .done()
   .lock();

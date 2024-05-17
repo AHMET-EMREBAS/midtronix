@@ -10,6 +10,6 @@ export const StoreFormBuilder = new FormGroupBuilder<ICreateStoreDto>(
 
   .add('description')
   .longText()
-  
+
   .done()
   .lock();

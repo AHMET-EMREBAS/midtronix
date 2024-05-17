@@ -12,5 +12,8 @@ export const ImageFormBuilder = new FormGroupBuilder<ICreateImageDto>(
   .url()
   .required()
 
+  .add('owner')
+  .required()
+
   .done()
   .lock();

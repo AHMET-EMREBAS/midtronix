@@ -23,9 +23,16 @@ export const TaskFormBuilder = new FormGroupBuilder<ICreateTaskDto>('Task Form')
   .date()
 
   .add('status')
+
+  .range(1, 4)
+
   .shortText()
 
   .add('assignees')
+
+  .add('sprint')
+
+  
 
   .done()
   .lock();

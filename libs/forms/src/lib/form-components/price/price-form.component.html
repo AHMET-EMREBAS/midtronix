@@ -1,11 +1,19 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-input-text
-    inputName="name"
-    label="Price Name"
-    prefixIcon="category"
-    [inputControl]="control('name')"
-  ></mdtx-input-text>
+  <mdtx-input-number
+    inputName="price"
+    label="Price"
+    prefixIcon="payments"
+    [inputControl]="control('price')"
+  ></mdtx-input-number>
+
+  <!-- Form Inputs  -->
+  <mdtx-input-number
+    inputName="cost"
+    label="Cost"
+    prefixIcon="finance_chip"
+    [inputControl]="control('cost')"
+  ></mdtx-input-number>
 
   <!-- Form actions -->
   <div class="form-actions">

@@ -7,6 +7,9 @@ export const PhoneFormBuilder = new FormGroupBuilder<ICreatePhoneDto>(
   .add('phone')
   .phone()
   .required()
+  
+  .add('owner')
+  .required()
 
   .done()
   .lock();

@@ -8,7 +8,11 @@ export const QuantityFormBuilder = new FormGroupBuilder<ICreateQuantityDto>(
   .required()
   .min(0)
 
+  .add('sku')
   .required()
-  .shortText()
+  
+  .add('store')
+  .required()
+
   .done()
   .lock();

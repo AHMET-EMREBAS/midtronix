@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { CommonFormModule, InputTextComponent } from '@mdtx/material/form';
+import {
+  CommonFormModule,
+  InputTextComponent,
+  InputNumberComponent,
+} from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { PriceFormBuilder } from '../../form-builders';
 
 @Component({
   selector: 'mdtx-price-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent],
+  imports: [CommonFormModule, InputTextComponent, InputNumberComponent],
   templateUrl: './price-form.component.html',
   styleUrl: './price-form.component.scss',
 })

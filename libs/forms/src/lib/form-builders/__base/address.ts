@@ -23,6 +23,9 @@ export const AddressFormBuilder = new FormGroupBuilder<ICreateAddressDto>(
   .add('zip')
   .required()
   .shortText()
-  
+
+  .add('owner')
+  .required()
+
   .done()
   .lock();

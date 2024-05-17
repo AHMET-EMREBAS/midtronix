@@ -6,6 +6,9 @@ export const CustomerPhoneFormBuilder =
     .add('phone')
     .required()
     .phone()
-
+    
+    .add('owner')
+    .required()
+  
     .done()
     .lock();

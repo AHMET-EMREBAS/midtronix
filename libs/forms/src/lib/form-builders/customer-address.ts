@@ -22,6 +22,9 @@ export const CustomerAddressFormBuilder =
     .add('zip')
     .required()
     .shortText()
-
+    
+    .add('owner')
+    .required()
+  
     .done()
     .lock();

@@ -12,7 +12,11 @@ export const PriceFormBuilder = new FormGroupBuilder<ICreatePriceDto>(
   .required()
   .min(0)
 
+  .add('priceLevel')
   .required()
-  .shortText()
+
+  .add('sku')
+  .required()
+
   .done()
   .lock();

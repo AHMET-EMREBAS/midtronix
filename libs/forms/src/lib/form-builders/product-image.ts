@@ -11,5 +11,8 @@ export const ProductImageFormBuilder =
     .required()
     .url()
 
+    .add('owner')
+    .required()
+
     .done()
     .lock();

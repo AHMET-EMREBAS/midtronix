@@ -13,5 +13,8 @@ export const SkuFormBuilder = new FormGroupBuilder<ICreateSkuDto>('Sku Form')
   .add('description')
   .longText()
 
+  .add('product')
+  .required()
+
   .done()
   .lock();

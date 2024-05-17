@@ -13,5 +13,9 @@ export const CustomerFormBuilder = new FormGroupBuilder<ICreateCustomerDto>(
   .required()
   .password()
 
+  .add('roles')
+
+  .add('supervisor')
+
   .done()
   .lock();
