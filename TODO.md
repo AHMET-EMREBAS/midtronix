@@ -1,3 +1,3 @@
 # TODO
 
-- Working on inventory impl
+- Working on POS
