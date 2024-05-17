@@ -31,7 +31,7 @@ export interface ICustomerPhone<TOwner extends IID = IID>
 export type ICustomerRaw = ICustomer<IRole, IUser>;
 
 export type ICustomerRoleRaw = ICustomerRole<IPermission>;
-export type ICustomerImageRaw = ICustomerImage<IImage>;
-export type ICustomerAddressRaw = ICustomerAddress<IAddress>;
-export type ICustomerEmailRaw = ICustomerEmail<IEmail>;
-export type ICustomerPhoneRaw = ICustomerPhone<IPhone>;
+export type ICustomerImageRaw = ICustomerImage<ICustomer>;
+export type ICustomerAddressRaw = ICustomerAddress<ICustomer>;
+export type ICustomerEmailRaw = ICustomerEmail<ICustomer>;
+export type ICustomerPhoneRaw = ICustomerPhone<ICustomer>;

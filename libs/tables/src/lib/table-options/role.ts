@@ -1,7 +1,7 @@
-import { IRole } from '@mdtx/common';
+import { IRoleRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const ROLE_COLUMNS: TableRow<IRole>[] = [
+export const ROLE_COLUMNS: TableRow<IRoleRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   {
@@ -13,6 +13,6 @@ export const ROLE_COLUMNS: TableRow<IRole>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const ROLE_DISPLAY_COLUMNS: TableRow<IRole>[] = [...ROLE_COLUMNS];
+export const ROLE_DISPLAY_COLUMNS: TableRow<IRoleRaw>[] = [...ROLE_COLUMNS];
 
 export const ROLE_PAGE_SIZE = 4;

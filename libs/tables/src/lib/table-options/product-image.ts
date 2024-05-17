@@ -1,7 +1,7 @@
-import { IProductImage } from '@mdtx/common';
+import { IProductImageRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImage>[] = [
+export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImageRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'url' },
@@ -10,7 +10,7 @@ export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImage>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const PRODUCT_IMAGE_DISPLAY_COLUMNS: TableRow<IProductImage>[] = [
+export const PRODUCT_IMAGE_DISPLAY_COLUMNS: TableRow<IProductImageRaw>[] = [
   ...PRODUCT_IMAGE_COLUMNS,
 ];
 

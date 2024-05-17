@@ -1,7 +1,7 @@
-import { IStore } from '@mdtx/common';
+import { IStoreRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const STORE_COLUMNS: TableRow<IStore>[] = [
+export const STORE_COLUMNS: TableRow<IStoreRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'createdAt', label: 'Created At' },
@@ -9,6 +9,6 @@ export const STORE_COLUMNS: TableRow<IStore>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const STORE_DISPLAY_COLUMNS: TableRow<IStore>[] = [...STORE_COLUMNS];
+export const STORE_DISPLAY_COLUMNS: TableRow<IStoreRaw>[] = [...STORE_COLUMNS];
 
 export const STORE_PAGE_SIZE = 4;

@@ -6,7 +6,7 @@ export type TableRow<
 > = {
   name: P;
   label?: string;
-  map?: (t: T[P]) => any;
+  map?: (t: T) => any;
   prefix?: string;
   suffix?: string;
   transform?: (value: any) => any;

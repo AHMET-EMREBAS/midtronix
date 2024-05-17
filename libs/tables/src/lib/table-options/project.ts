@@ -1,7 +1,7 @@
-import { IProject } from '@mdtx/common';
+import { IProjectRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const PROJECT_COLUMNS: TableRow<IProject>[] = [
+export const PROJECT_COLUMNS: TableRow<IProjectRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'description' },
@@ -10,7 +10,7 @@ export const PROJECT_COLUMNS: TableRow<IProject>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const PROJECT_DISPLAY_COLUMNS: TableRow<IProject>[] = [
+export const PROJECT_DISPLAY_COLUMNS: TableRow<IProjectRaw>[] = [
   ...PROJECT_COLUMNS,
 ];
 

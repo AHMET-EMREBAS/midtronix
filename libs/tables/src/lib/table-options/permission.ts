@@ -1,7 +1,7 @@
-import { IPermission } from '@mdtx/common';
+import { IPermissionRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const PERMISSION_COLUMNS: TableRow<IPermission>[] = [
+export const PERMISSION_COLUMNS: TableRow<IPermissionRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'createdAt', label: 'Created At' },
@@ -9,7 +9,7 @@ export const PERMISSION_COLUMNS: TableRow<IPermission>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const PERMISSION_DISPLAY_COLUMNS: TableRow<IPermission>[] = [
+export const PERMISSION_DISPLAY_COLUMNS: TableRow<IPermissionRaw>[] = [
   ...PERMISSION_COLUMNS,
 ];
 

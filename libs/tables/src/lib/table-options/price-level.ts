@@ -1,7 +1,7 @@
-import { IPriceLevel } from '@mdtx/common';
+import { IPriceLevelRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const PRICE_LEVEL_COLUMNS: TableRow<IPriceLevel>[] = [
+export const PRICE_LEVEL_COLUMNS: TableRow<IPriceLevelRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'createdAt', label: 'Created At' },
@@ -9,7 +9,7 @@ export const PRICE_LEVEL_COLUMNS: TableRow<IPriceLevel>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const PRICE_LEVEL_DISPLAY_COLUMNS: TableRow<IPriceLevel>[] = [
+export const PRICE_LEVEL_DISPLAY_COLUMNS: TableRow<IPriceLevelRaw>[] = [
   ...PRICE_LEVEL_COLUMNS,
 ];
 

@@ -4,7 +4,11 @@ import { TableRow } from '@mdtx/material/table';
 export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmailRaw>[] = [
   { name: 'id' },
   { name: 'email' },
-  { name: 'customer', map: (v: ICustomerEmail) => v.owner.username },
+  {
+    name: 'owner',
+    label: 'Customer',
+    map: (v: ICustomerEmailRaw) => v.owner.username,
+  },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
   { name: 'deletedAt', label: 'Deleted At' },

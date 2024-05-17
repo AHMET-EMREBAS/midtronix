@@ -40,16 +40,16 @@ const rns = [
     'message',
     [
       __format(['message']),
-      `{name:'source', label:"From", map:(v:IMessageRaw)=>v.source?.username}`,
-      `{name:'target', label:"To", map:(v:IMessageRaw)=>v.target?.username}`,
+      `{name:'source', label:'From', map:(v:IMessageRaw)=>v.source?.username}`,
+      `{name:'target', label:'To', map:(v:IMessageRaw)=>v.target?.username}`,
     ].join(','),
   ],
   [
     'notification',
     [
       __format(['message']),
-      `{name:'source', label:"From", map:(v:IMessageRaw)=>v.source?.username}`,
-      `{name:'target', label:"To", map:(v:IMessageRaw)=>v.target?.username}`,
+      `{name:'source', label:'From', map:(v:IMessageRaw)=>v.source?.username}`,
+      `{name:'target', label:'To', map:(v:IMessageRaw)=>v.target?.username}`,
     ].join(','),
   ],
   ['permission', __format(['name'])],
@@ -59,8 +59,8 @@ const rns = [
     'product',
     [
       __format(['name', 'description']),
-      `{name:'category', label:"category", map: (v:IProductRaw)=>v.category.name }`,
-      `{name:'department', label:"department", map: (v:IProductRaw)=>v.department.name }`,
+      `{name:'category', label:'category', map: (v:IProductRaw)=>v.category.name }`,
+      `{name:'department', label:'department', map: (v:IProductRaw)=>v.department.name }`,
     ].join(','),
   ],
   ['project', __format(['name', 'description'])],
@@ -85,7 +85,7 @@ const rns = [
     'sprint',
     [
       __format(['name']),
-      `{name:'project', map:(v:ISprintRaw)=>v.project?.name}`,
+      `{name:'project', map:(v:ISprintRaw)=>v.project?.name }`,
     ].join(','),
   ],
   ['store', __format(['name'])],
@@ -101,8 +101,7 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITaskRaw)=>v.assignees?.map(e=>e.username).join(', ')
-  }`,
+      `{name:'assignees', map:(v:ITaskRaw)=>v.assignees?.map(e=>e.username).join(', ') }`,
     ].join(','),
   ],
   [
