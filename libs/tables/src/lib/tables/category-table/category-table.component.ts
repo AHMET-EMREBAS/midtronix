@@ -8,7 +8,7 @@ import {
   CATEGORY_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICategory } from '@mdtx/common';
+import { ICategoryRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './category-table.component.scss',
   providers: [CategoryService],
 })
-export class CategoryTableComponent extends BaseTableComponent<ICategory> {
+export class CategoryTableComponent extends BaseTableComponent<ICategoryRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICategory[]>();
+  @Output() deleteEvent = new EventEmitter<ICategoryRaw[]>();
 
   override pageIndex = 0;
   override pageSize = CATEGORY_PAGE_SIZE;
@@ -39,11 +39,10 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
     super(service);
   }
 
-  selectItems(items: Map<string, ICategory>) {
+  selectItems(items: Map<string, ICategoryRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
- 
   addItem() {
     this.addEvent.emit();
   }
@@ -64,7 +63,7 @@ export class CategoryTableComponent extends BaseTableComponent<ICategory> {
       search: searchString,
     });
   }
-  
+
   pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({

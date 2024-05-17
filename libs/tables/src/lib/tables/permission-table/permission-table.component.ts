@@ -8,7 +8,7 @@ import {
   PERMISSION_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPermission } from '@mdtx/common';
+import { IPermissionRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './permission-table.component.scss',
   providers: [PermissionService],
 })
-export class PermissionTableComponent extends BaseTableComponent<IPermission> {
+export class PermissionTableComponent extends BaseTableComponent<IPermissionRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IPermission[]>();
+  @Output() deleteEvent = new EventEmitter<IPermissionRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PERMISSION_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class PermissionTableComponent extends BaseTableComponent<IPermission> {
     super(service);
   }
 
-  selectItems(items: Map<string, IPermission>) {
+  selectItems(items: Map<string, IPermissionRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

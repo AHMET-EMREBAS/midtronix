@@ -8,7 +8,7 @@ import {
   SKU_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ISku } from '@mdtx/common';
+import { ISkuRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './sku-table.component.scss',
   providers: [SkuService],
 })
-export class SkuTableComponent extends BaseTableComponent<ISku> {
+export class SkuTableComponent extends BaseTableComponent<ISkuRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ISku[]>();
+  @Output() deleteEvent = new EventEmitter<ISkuRaw[]>();
 
   override pageIndex = 0;
   override pageSize = SKU_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class SkuTableComponent extends BaseTableComponent<ISku> {
     super(service);
   }
 
-  selectItems(items: Map<string, ISku>) {
+  selectItems(items: Map<string, ISkuRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

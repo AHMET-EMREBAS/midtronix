@@ -8,7 +8,7 @@ import {
   CUSTOMER_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomer } from '@mdtx/common';
+import { ICustomerRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './customer-table.component.scss',
   providers: [CustomerService],
 })
-export class CustomerTableComponent extends BaseTableComponent<ICustomer> {
+export class CustomerTableComponent extends BaseTableComponent<ICustomerRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomer[]>();
+  @Output() deleteEvent = new EventEmitter<ICustomerRaw[]>();
 
   override pageIndex = 0;
   override pageSize = CUSTOMER_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class CustomerTableComponent extends BaseTableComponent<ICustomer> {
     super(service);
   }
 
-  selectItems(items: Map<string, ICustomer>) {
+  selectItems(items: Map<string, ICustomerRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

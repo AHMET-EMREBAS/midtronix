@@ -1,4 +1,4 @@
-import { INotification } from '@mdtx/common';
+import { INotificationRaw } from '@mdtx/common';
 import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NOTIFICATION_OPTION_COLUMN } from '../option-columns';
 
 @Injectable()
-export class NotificationService extends CollectionBaseService<INotification> {
+export class NotificationService extends CollectionBaseService<INotificationRaw> {
   static readonly ENTITY_NAME = 'Notification';
   static readonly ENTITY_PLURAL_NAME = 'Notifications';
 

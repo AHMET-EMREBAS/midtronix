@@ -8,7 +8,7 @@ import {
   USER_ADDRESS_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IUserAddress } from '@mdtx/common';
+import { IUserAddressRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './user-address-table.component.scss',
   providers: [UserAddressService],
 })
-export class UserAddressTableComponent extends BaseTableComponent<IUserAddress> {
+export class UserAddressTableComponent extends BaseTableComponent<IUserAddressRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IUserAddress[]>();
+  @Output() deleteEvent = new EventEmitter<IUserAddressRaw[]>();
 
   override pageIndex = 0;
   override pageSize = USER_ADDRESS_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class UserAddressTableComponent extends BaseTableComponent<IUserAddress> 
     super(service);
   }
 
-  selectItems(items: Map<string, IUserAddress>) {
+  selectItems(items: Map<string, IUserAddressRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

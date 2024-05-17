@@ -8,7 +8,7 @@ import {
   PRODUCT_VIDEO_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProductVideo } from '@mdtx/common';
+import { IProductVideoRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './product-video-table.component.scss',
   providers: [ProductVideoService],
 })
-export class ProductVideoTableComponent extends BaseTableComponent<IProductVideo> {
+export class ProductVideoTableComponent extends BaseTableComponent<IProductVideoRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IProductVideo[]>();
+  @Output() deleteEvent = new EventEmitter<IProductVideoRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PRODUCT_VIDEO_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class ProductVideoTableComponent extends BaseTableComponent<IProductVideo
     super(service);
   }
 
-  selectItems(items: Map<string, IProductVideo>) {
+  selectItems(items: Map<string, IProductVideoRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

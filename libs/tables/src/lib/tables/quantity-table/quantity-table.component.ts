@@ -8,7 +8,7 @@ import {
   QUANTITY_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IQuantity } from '@mdtx/common';
+import { IQuantityRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './quantity-table.component.scss',
   providers: [QuantityService],
 })
-export class QuantityTableComponent extends BaseTableComponent<IQuantity> {
+export class QuantityTableComponent extends BaseTableComponent<IQuantityRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IQuantity[]>();
+  @Output() deleteEvent = new EventEmitter<IQuantityRaw[]>();
 
   override pageIndex = 0;
   override pageSize = QUANTITY_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class QuantityTableComponent extends BaseTableComponent<IQuantity> {
     super(service);
   }
 
-  selectItems(items: Map<string, IQuantity>) {
+  selectItems(items: Map<string, IQuantityRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

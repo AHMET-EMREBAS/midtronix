@@ -8,7 +8,7 @@ import {
   DEPARTMENT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IDepartment } from '@mdtx/common';
+import { IDepartmentRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './department-table.component.scss',
   providers: [DepartmentService],
 })
-export class DepartmentTableComponent extends BaseTableComponent<IDepartment> {
+export class DepartmentTableComponent extends BaseTableComponent<IDepartmentRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IDepartment[]>();
+  @Output() deleteEvent = new EventEmitter<IDepartmentRaw[]>();
 
   override pageIndex = 0;
   override pageSize = DEPARTMENT_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class DepartmentTableComponent extends BaseTableComponent<IDepartment> {
     super(service);
   }
 
-  selectItems(items: Map<string, IDepartment>) {
+  selectItems(items: Map<string, IDepartmentRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

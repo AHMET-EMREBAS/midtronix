@@ -8,7 +8,7 @@ import {
   PRICE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPrice } from '@mdtx/common';
+import { IPriceRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './price-table.component.scss',
   providers: [PriceService],
 })
-export class PriceTableComponent extends BaseTableComponent<IPrice> {
+export class PriceTableComponent extends BaseTableComponent<IPriceRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IPrice[]>();
+  @Output() deleteEvent = new EventEmitter<IPriceRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PRICE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class PriceTableComponent extends BaseTableComponent<IPrice> {
     super(service);
   }
 
-  selectItems(items: Map<string, IPrice>) {
+  selectItems(items: Map<string, IPriceRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

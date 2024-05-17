@@ -8,7 +8,7 @@ import {
   PRODUCT_IMAGE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProductImage } from '@mdtx/common';
+import { IProductImageRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './product-image-table.component.scss',
   providers: [ProductImageService],
 })
-export class ProductImageTableComponent extends BaseTableComponent<IProductImage> {
+export class ProductImageTableComponent extends BaseTableComponent<IProductImageRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IProductImage[]>();
+  @Output() deleteEvent = new EventEmitter<IProductImageRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PRODUCT_IMAGE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class ProductImageTableComponent extends BaseTableComponent<IProductImage
     super(service);
   }
 
-  selectItems(items: Map<string, IProductImage>) {
+  selectItems(items: Map<string, IProductImageRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

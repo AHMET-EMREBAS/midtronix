@@ -8,7 +8,7 @@ import {
   CUSTOMER_PHONE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerPhone } from '@mdtx/common';
+import { ICustomerPhoneRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './customer-phone-table.component.scss',
   providers: [CustomerPhoneService],
 })
-export class CustomerPhoneTableComponent extends BaseTableComponent<ICustomerPhone> {
+export class CustomerPhoneTableComponent extends BaseTableComponent<ICustomerPhoneRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomerPhone[]>();
+  @Output() deleteEvent = new EventEmitter<ICustomerPhoneRaw[]>();
 
   override pageIndex = 0;
   override pageSize = CUSTOMER_PHONE_PAGE_SIZE;
@@ -42,7 +42,7 @@ export class CustomerPhoneTableComponent extends BaseTableComponent<ICustomerPho
     super(service);
   }
 
-  selectItems(items: Map<string, ICustomerPhone>) {
+  selectItems(items: Map<string, ICustomerPhoneRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

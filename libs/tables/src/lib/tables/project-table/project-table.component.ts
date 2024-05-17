@@ -8,7 +8,7 @@ import {
   PROJECT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProject } from '@mdtx/common';
+import { IProjectRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './project-table.component.scss',
   providers: [ProjectService],
 })
-export class ProjectTableComponent extends BaseTableComponent<IProject> {
+export class ProjectTableComponent extends BaseTableComponent<IProjectRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IProject[]>();
+  @Output() deleteEvent = new EventEmitter<IProjectRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PROJECT_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class ProjectTableComponent extends BaseTableComponent<IProject> {
     super(service);
   }
 
-  selectItems(items: Map<string, IProject>) {
+  selectItems(items: Map<string, IProjectRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

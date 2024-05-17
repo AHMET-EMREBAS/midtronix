@@ -8,7 +8,7 @@ import {
   TASK_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ITask } from '@mdtx/common';
+import { ITaskRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './task-table.component.scss',
   providers: [TaskService],
 })
-export class TaskTableComponent extends BaseTableComponent<ITask> {
+export class TaskTableComponent extends BaseTableComponent<ITaskRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ITask[]>();
+  @Output() deleteEvent = new EventEmitter<ITaskRaw[]>();
 
   override pageIndex = 0;
   override pageSize = TASK_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class TaskTableComponent extends BaseTableComponent<ITask> {
     super(service);
   }
 
-  selectItems(items: Map<string, ITask>) {
+  selectItems(items: Map<string, ITaskRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

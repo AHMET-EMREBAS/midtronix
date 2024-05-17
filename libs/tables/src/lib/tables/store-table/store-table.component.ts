@@ -8,7 +8,7 @@ import {
   STORE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IStore } from '@mdtx/common';
+import { IStoreRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './store-table.component.scss',
   providers: [StoreService],
 })
-export class StoreTableComponent extends BaseTableComponent<IStore> {
+export class StoreTableComponent extends BaseTableComponent<IStoreRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IStore[]>();
+  @Output() deleteEvent = new EventEmitter<IStoreRaw[]>();
 
   override pageIndex = 0;
   override pageSize = STORE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class StoreTableComponent extends BaseTableComponent<IStore> {
     super(service);
   }
 
-  selectItems(items: Map<string, IStore>) {
+  selectItems(items: Map<string, IStoreRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

@@ -8,7 +8,7 @@ import {
   TICKET_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ITicket } from '@mdtx/common';
+import { ITicketRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './ticket-table.component.scss',
   providers: [TicketService],
 })
-export class TicketTableComponent extends BaseTableComponent<ITicket> {
+export class TicketTableComponent extends BaseTableComponent<ITicketRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ITicket[]>();
+  @Output() deleteEvent = new EventEmitter<ITicketRaw[]>();
 
   override pageIndex = 0;
   override pageSize = TICKET_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class TicketTableComponent extends BaseTableComponent<ITicket> {
     super(service);
   }
 
-  selectItems(items: Map<string, ITicket>) {
+  selectItems(items: Map<string, ITicketRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

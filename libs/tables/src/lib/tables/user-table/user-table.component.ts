@@ -39,7 +39,7 @@ export class UserTableComponent extends BaseTableComponent<IUserRaw> {
     super(service);
   }
 
-  selectItems(items: Map<string, IUser>) {
+  selectItems(items: Map<string, IUserRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

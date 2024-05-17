@@ -8,7 +8,7 @@ import {
   MESSAGE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IMessage } from '@mdtx/common';
+import { IMessageRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './message-table.component.scss',
   providers: [MessageService],
 })
-export class MessageTableComponent extends BaseTableComponent<IMessage> {
+export class MessageTableComponent extends BaseTableComponent<IMessageRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IMessage[]>();
+  @Output() deleteEvent = new EventEmitter<IMessageRaw[]>();
 
   override pageIndex = 0;
   override pageSize = MESSAGE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class MessageTableComponent extends BaseTableComponent<IMessage> {
     super(service);
   }
 
-  selectItems(items: Map<string, IMessage>) {
+  selectItems(items: Map<string, IMessageRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

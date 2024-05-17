@@ -8,7 +8,7 @@ import {
   NOTIFICATION_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { INotification } from '@mdtx/common';
+import { INotificationRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './notification-table.component.scss',
   providers: [NotificationService],
 })
-export class NotificationTableComponent extends BaseTableComponent<INotification> {
+export class NotificationTableComponent extends BaseTableComponent<INotificationRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<INotification[]>();
+  @Output() deleteEvent = new EventEmitter<INotificationRaw[]>();
 
   override pageIndex = 0;
   override pageSize = NOTIFICATION_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class NotificationTableComponent extends BaseTableComponent<INotification
     super(service);
   }
 
-  selectItems(items: Map<string, INotification>) {
+  selectItems(items: Map<string, INotificationRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

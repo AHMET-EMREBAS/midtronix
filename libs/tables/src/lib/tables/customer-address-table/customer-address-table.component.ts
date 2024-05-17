@@ -8,7 +8,7 @@ import {
   CUSTOMER_ADDRESS_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerAddress } from '@mdtx/common';
+import { ICustomerAddressRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './customer-address-table.component.scss',
   providers: [CustomerAddressService],
 })
-export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerAddress> {
+export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerAddressRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomerAddress[]>();
+  @Output() deleteEvent = new EventEmitter<ICustomerAddressRaw[]>();
 
   override pageIndex = 0;
   override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;
@@ -42,7 +42,7 @@ export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerA
     super(service);
   }
 
-  selectItems(items: Map<string, ICustomerAddress>) {
+  selectItems(items: Map<string, ICustomerAddressRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

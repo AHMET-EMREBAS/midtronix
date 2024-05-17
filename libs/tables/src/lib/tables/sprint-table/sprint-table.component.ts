@@ -8,7 +8,7 @@ import {
   SPRINT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ISprint } from '@mdtx/common';
+import { ISprintRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './sprint-table.component.scss',
   providers: [SprintService],
 })
-export class SprintTableComponent extends BaseTableComponent<ISprint> {
+export class SprintTableComponent extends BaseTableComponent<ISprintRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ISprint[]>();
+  @Output() deleteEvent = new EventEmitter<ISprintRaw[]>();
 
   override pageIndex = 0;
   override pageSize = SPRINT_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class SprintTableComponent extends BaseTableComponent<ISprint> {
     super(service);
   }
 
-  selectItems(items: Map<string, ISprint>) {
+  selectItems(items: Map<string, ISprintRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

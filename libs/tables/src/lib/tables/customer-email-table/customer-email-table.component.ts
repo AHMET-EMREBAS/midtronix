@@ -8,7 +8,7 @@ import {
   CUSTOMER_EMAIL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerEmail } from '@mdtx/common';
+import { ICustomerEmailRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './customer-email-table.component.scss',
   providers: [CustomerEmailService],
 })
-export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEmail> {
+export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEmailRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomerEmail[]>();
+  @Output() deleteEvent = new EventEmitter<ICustomerEmailRaw[]>();
 
   override pageIndex = 0;
   override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;
@@ -42,7 +42,7 @@ export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEma
     super(service);
   }
 
-  selectItems(items: Map<string, ICustomerEmail>) {
+  selectItems(items: Map<string, ICustomerEmailRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

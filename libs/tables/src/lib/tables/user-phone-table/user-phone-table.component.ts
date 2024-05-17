@@ -8,7 +8,7 @@ import {
   USER_PHONE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IUserPhone } from '@mdtx/common';
+import { IUserPhoneRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './user-phone-table.component.scss',
   providers: [UserPhoneService],
 })
-export class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {
+export class UserPhoneTableComponent extends BaseTableComponent<IUserPhoneRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IUserPhone[]>();
+  @Output() deleteEvent = new EventEmitter<IUserPhoneRaw[]>();
 
   override pageIndex = 0;
   override pageSize = USER_PHONE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class UserPhoneTableComponent extends BaseTableComponent<IUserPhone> {
     super(service);
   }
 
-  selectItems(items: Map<string, IUserPhone>) {
+  selectItems(items: Map<string, IUserPhoneRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

@@ -8,7 +8,7 @@ import {
   ROLE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IRole } from '@mdtx/common';
+import { IRoleRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './role-table.component.scss',
   providers: [RoleService],
 })
-export class RoleTableComponent extends BaseTableComponent<IRole> {
+export class RoleTableComponent extends BaseTableComponent<IRoleRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IRole[]>();
+  @Output() deleteEvent = new EventEmitter<IRoleRaw[]>();
 
   override pageIndex = 0;
   override pageSize = ROLE_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class RoleTableComponent extends BaseTableComponent<IRole> {
     super(service);
   }
 
-  selectItems(items: Map<string, IRole>) {
+  selectItems(items: Map<string, IRoleRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

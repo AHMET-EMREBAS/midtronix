@@ -8,7 +8,7 @@ import {
   MANUFACTURER_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IManufacturer } from '@mdtx/common';
+import { IManufacturerRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './manufacturer-table.component.scss',
   providers: [ManufacturerService],
 })
-export class ManufacturerTableComponent extends BaseTableComponent<IManufacturer> {
+export class ManufacturerTableComponent extends BaseTableComponent<IManufacturerRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IManufacturer[]>();
+  @Output() deleteEvent = new EventEmitter<IManufacturerRaw[]>();
 
   override pageIndex = 0;
   override pageSize = MANUFACTURER_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class ManufacturerTableComponent extends BaseTableComponent<IManufacturer
     super(service);
   }
 
-  selectItems(items: Map<string, IManufacturer>) {
+  selectItems(items: Map<string, IManufacturerRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

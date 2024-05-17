@@ -1,4 +1,4 @@
-import { IRole } from '@mdtx/common';
+import { IRoleRaw } from '@mdtx/common';
 import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ROLE_OPTION_COLUMN } from '../option-columns';
 
 @Injectable()
-export class RoleService extends CollectionBaseService<IRole> {
+export class RoleService extends CollectionBaseService<IRoleRaw> {
   static readonly ENTITY_NAME = 'Role';
   static readonly ENTITY_PLURAL_NAME = 'Roles';
 

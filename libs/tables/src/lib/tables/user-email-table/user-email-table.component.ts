@@ -8,7 +8,7 @@ import {
   USER_EMAIL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IUserEmail } from '@mdtx/common';
+import { IUserEmailRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './user-email-table.component.scss',
   providers: [UserEmailService],
 })
-export class UserEmailTableComponent extends BaseTableComponent<IUserEmail> {
+export class UserEmailTableComponent extends BaseTableComponent<IUserEmailRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IUserEmail[]>();
+  @Output() deleteEvent = new EventEmitter<IUserEmailRaw[]>();
 
   override pageIndex = 0;
   override pageSize = USER_EMAIL_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class UserEmailTableComponent extends BaseTableComponent<IUserEmail> {
     super(service);
   }
 
-  selectItems(items: Map<string, IUserEmail>) {
+  selectItems(items: Map<string, IUserEmailRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

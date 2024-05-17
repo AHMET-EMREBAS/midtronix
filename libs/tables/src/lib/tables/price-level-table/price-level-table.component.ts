@@ -8,7 +8,7 @@ import {
   PRICE_LEVEL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPriceLevel } from '@mdtx/common';
+import { IPriceLevelRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './price-level-table.component.scss',
   providers: [PriceLevelService],
 })
-export class PriceLevelTableComponent extends BaseTableComponent<IPriceLevel> {
+export class PriceLevelTableComponent extends BaseTableComponent<IPriceLevelRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IPriceLevel[]>();
+  @Output() deleteEvent = new EventEmitter<IPriceLevelRaw[]>();
 
   override pageIndex = 0;
   override pageSize = PRICE_LEVEL_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class PriceLevelTableComponent extends BaseTableComponent<IPriceLevel> {
     super(service);
   }
 
-  selectItems(items: Map<string, IPriceLevel>) {
+  selectItems(items: Map<string, IPriceLevelRaw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
