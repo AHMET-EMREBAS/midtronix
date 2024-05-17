@@ -2,6 +2,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { CustomerAddressService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-customer-address-search',
@@ -14,10 +15,13 @@ import { CustomerAddressService } from '@mdtx/ngrx';
       inputName="customer-address"
       label="Search CustomerAddress"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [CustomerAddressService],
 })
 export class CustomerAddressSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: CustomerAddressService) {}
 }
