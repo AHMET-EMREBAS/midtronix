@@ -164,9 +164,10 @@ const rns = [
     'price',
     [
       `{name:'name',map:(v:IPriceRaw)=>v.sku.name}`,
-      `{name:'description',map:(v:IPriceRaw)=>v.sku.description}`,
       `{name:'barcode',map:(v:IPriceRaw)=>v.sku.upc}`,
       __format(['price', 'cost']),
+      `{name:'priceLevel', label:'Price Level' , map:(v:IPriceRaw)=>v.priceLevel.name }`,
+      `{name:'description',map:(v:IPriceRaw)=>v.sku.description}`,
     ].join(', '),
   ],
   [

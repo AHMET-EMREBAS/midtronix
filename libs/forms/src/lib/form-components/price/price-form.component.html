@@ -7,13 +7,17 @@
     [inputControl]="control('price')"
   ></mdtx-input-number>
 
-  <!-- Form Inputs  -->
   <mdtx-input-number
     inputName="cost"
     label="Cost"
     prefixIcon="finance_chip"
     [inputControl]="control('cost')"
   ></mdtx-input-number>
+
+  <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
+  <mdtx-price-level-search
+    [inputControl]="control('priceLevel')"
+  ></mdtx-price-level-search>
 
   <!-- Form actions -->
   <div class="form-actions">

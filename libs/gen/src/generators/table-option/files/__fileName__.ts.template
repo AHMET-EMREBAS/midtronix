@@ -5,8 +5,8 @@ export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>Raw>[] = [
   { name:'id'},
   <%- fields %>,
   { name: 'createdAt', label: 'Created At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.updatedAt).toDateString() },
-  { name: 'updatedAt', label: 'Updated At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.updatedAt).toDateString()  },
-  { name: 'deletedAt', label: 'Deleted At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.deletedAt).toDateString()  }
+  { name: 'updatedAt', label: 'Updated At', map: (v: I<%- className %>Raw) => v.updatedAt && new Date(v.updatedAt).toDateString()  },
+  { name: 'deletedAt', label: 'Deleted At', map: (v: I<%- className %>Raw) => v.deletedAt && new Date(v.deletedAt).toDateString()  }
 ];
 
 export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<I<%- className %>Raw>[] = [ ...<%- constantName %>_COLUMNS ];

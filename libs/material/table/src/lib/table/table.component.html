@@ -36,7 +36,8 @@
         [class.condition-not-met]="colNotMetContion(row)"
         [@enter]
       >
-        {{ col.map ? col.map(row) : row[col.name] }}
+        {{ col.prefix || '' }} {{ col.map ? col.map(row) : row[col.name] }}
+        {{ col.suffix || '' }}
       </td>
     </ng-container>
     }

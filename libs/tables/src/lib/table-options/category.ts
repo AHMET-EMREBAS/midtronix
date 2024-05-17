@@ -14,13 +14,13 @@ export const CATEGORY_COLUMNS: TableRow<ICategoryRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: ICategoryRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: ICategoryRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

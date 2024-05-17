@@ -6,8 +6,8 @@ export const PRICE_COLUMNS: TableRow<IPriceRaw>[] = [
   { name: 'name', map: (v: IPriceRaw) => v.sku.name },
   { name: 'description', map: (v: IPriceRaw) => v.sku.description },
   { name: 'barcode', map: (v: IPriceRaw) => v.sku.upc },
-  { name: 'price' },
-  { name: 'cost' },
+  { name: 'price', prefix: '$' },
+  { name: 'cost', prefix: '$' },
   {
     name: 'createdAt',
     label: 'Created At',

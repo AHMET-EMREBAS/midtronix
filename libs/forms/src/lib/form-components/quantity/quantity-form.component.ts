@@ -6,11 +6,12 @@ import {
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { QuantityFormBuilder } from '../../form-builders';
+import { SkuSearchComponent, StoreSearchComponent } from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-quantity-form',
   standalone: true,
-  imports: [CommonFormModule, InputNumberComponent],
+  imports: [CommonFormModule, InputNumberComponent, SkuSearchComponent, StoreSearchComponent],
   templateUrl: './quantity-form.component.html',
   styleUrl: './quantity-form.component.scss',
 })

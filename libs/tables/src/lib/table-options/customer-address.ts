@@ -19,13 +19,13 @@ export const CUSTOMER_ADDRESS_COLUMNS: TableRow<ICustomerAddressRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: ICustomerAddressRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: ICustomerAddressRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

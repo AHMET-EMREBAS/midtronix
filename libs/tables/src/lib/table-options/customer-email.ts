@@ -15,13 +15,13 @@ export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmailRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: ICustomerEmailRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: ICustomerEmailRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

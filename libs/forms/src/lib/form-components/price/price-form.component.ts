@@ -7,11 +7,21 @@ import {
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { PriceFormBuilder } from '../../form-builders';
+import {
+  PriceLevelSearchComponent,
+  SkuSearchComponent,
+} from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-price-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent, InputNumberComponent],
+  imports: [
+    CommonFormModule,
+    InputTextComponent,
+    InputNumberComponent,
+    SkuSearchComponent,
+    PriceLevelSearchComponent,
+  ],
   templateUrl: './price-form.component.html',
   styleUrl: './price-form.component.scss',
 })
