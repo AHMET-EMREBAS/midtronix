@@ -1,4 +1,6 @@
 <mdtx-address-form
   [resourceFormGroup]="resourceFormGroup"
   (submitEvent)="formSubmit()"
-></mdtx-address-form>
+>
+  <mdtx-user-search [inputControl]="control('owner')"></mdtx-user-search>
+</mdtx-address-form>

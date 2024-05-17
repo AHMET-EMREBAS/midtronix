@@ -19,7 +19,8 @@ import {
   IDObjectProperty,
   PartialType,
   Property,
-  Transform,isDateString
+  Transform,
+  isDateString,
 } from '@mdtx/core';
 
 @Exclude()
@@ -116,7 +117,7 @@ export class CreatePermissionDto
 
 @Exclude()
 export class CreateRoleDto extends CreateNameDto implements ICreateRoleDto {
-  @IDObjectProperty() permissions?: IID[];
+  @IDObjectProperty({ isArray: true }) permissions?: IID[];
 }
 
 @Exclude()

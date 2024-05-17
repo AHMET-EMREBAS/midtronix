@@ -6,7 +6,7 @@ export const ROLE_COLUMNS: TableRow<IRoleRaw>[] = [
   { name: 'name' },
   {
     name: 'permissions',
-    map: (e: IRoleRaw) => e.permissions?.map((e) => e.name).join(', '),
+    map: (e: IRoleRaw) => e.permissions?.map((p) => p.name).join(', '),
   },
   {
     name: 'createdAt',

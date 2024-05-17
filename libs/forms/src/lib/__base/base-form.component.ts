@@ -45,6 +45,7 @@ export class BaseFormComponent implements FormComponent, AfterViewInit {
    */
   formSubmit() {
     this.submitEvent.emit(this.resourceFormGroup.value);
+    this.resourceFormGroup.reset();
   }
 
   /**

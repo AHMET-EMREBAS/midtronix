@@ -1,4 +1,6 @@
 <mdtx-phone-form
   [resourceFormGroup]="resourceFormGroup"
   (submitEvent)="formSubmit()"
-></mdtx-phone-form>
+>
+  <mdtx-user-search [inputControl]="control('owner')"></mdtx-user-search>
+</mdtx-phone-form>
