@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { ProductVideoService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-product-video-search',
@@ -14,10 +15,13 @@ import { ProductVideoService } from '@mdtx/ngrx';
       inputName="product-video"
       label="Search ProductVideo"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [ProductVideoService],
 })
 export class ProductVideoSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: ProductVideoService) {}
 }

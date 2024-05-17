@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { QuantityService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-quantity-search',
@@ -14,10 +15,13 @@ import { QuantityService } from '@mdtx/ngrx';
       inputName="quantity"
       label="Search Quantity"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [QuantityService],
 })
 export class QuantitySearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: QuantityService) {}
 }

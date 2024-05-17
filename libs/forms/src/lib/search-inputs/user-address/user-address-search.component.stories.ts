@@ -28,7 +28,7 @@ const meta: Meta<UserAddressSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              UserAddress: 'UserAddresss',
+              UserAddress: 'UserAddresses',
             },
             entityMetadata: {
               UserAddress: {},

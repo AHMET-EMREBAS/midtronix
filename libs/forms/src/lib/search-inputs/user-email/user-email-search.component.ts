@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { UserEmailService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-user-email-search',
@@ -14,10 +15,13 @@ import { UserEmailService } from '@mdtx/ngrx';
       inputName="user-email"
       label="Search UserEmail"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [UserEmailService],
 })
 export class UserEmailSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: UserEmailService) {}
 }

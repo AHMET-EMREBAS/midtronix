@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PermissionService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-permission-search',
@@ -14,10 +15,13 @@ import { PermissionService } from '@mdtx/ngrx';
       inputName="permission"
       label="Search Permission"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [PermissionService],
 })
 export class PermissionSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: PermissionService) {}
 }

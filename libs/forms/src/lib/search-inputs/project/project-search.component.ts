@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { ProjectService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-project-search',
@@ -14,10 +15,13 @@ import { ProjectService } from '@mdtx/ngrx';
       inputName="project"
       label="Search Project"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [ProjectService],
 })
 export class ProjectSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: ProjectService) {}
 }

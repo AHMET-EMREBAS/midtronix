@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { SprintService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-sprint-search',
@@ -14,10 +15,13 @@ import { SprintService } from '@mdtx/ngrx';
       inputName="sprint"
       label="Search Sprint"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [SprintService],
 })
 export class SprintSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: SprintService) {}
 }

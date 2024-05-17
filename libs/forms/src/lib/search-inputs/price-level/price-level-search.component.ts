@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PriceLevelService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-price-level-search',
@@ -14,10 +15,13 @@ import { PriceLevelService } from '@mdtx/ngrx';
       inputName="price-level"
       label="Search PriceLevel"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [PriceLevelService],
 })
 export class PriceLevelSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: PriceLevelService) {}
 }

@@ -1,7 +1,8 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { TicketService } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-ticket-search',
@@ -14,10 +15,13 @@ import { TicketService } from '@mdtx/ngrx';
       inputName="ticket"
       label="Search Ticket"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [TicketService],
 })
 export class TicketSearchComponent {
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: TicketService) {}
 }
