@@ -9,15 +9,15 @@ const rns = [
   [
     'customer-address',
     [
+      `{ name: 'username', map:(v:ICustomerAddressRaw)=>v.owner?.username}`,
       __format(['street', 'city', 'state', 'country', 'zip']),
-      `{ name:'owner', map:(v:ICustomerAddressRaw)=>v.owner?.username}`,
     ].join(', '),
   ],
   [
     'customer-email',
     [
+      `{name: 'username', map:(v:ICustomerEmailRaw)=>v.owner?.username }`,
       __format(['email']),
-      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner?.username }`,
     ].join(','),
   ],
   [

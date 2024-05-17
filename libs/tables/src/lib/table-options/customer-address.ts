@@ -3,12 +3,12 @@ import { TableRow } from '@mdtx/material/table';
 
 export const CUSTOMER_ADDRESS_COLUMNS: TableRow<ICustomerAddressRaw>[] = [
   { name: 'id' },
+  { name: 'username', map: (v: ICustomerAddressRaw) => v.owner?.username },
   { name: 'street' },
   { name: 'city' },
   { name: 'state' },
   { name: 'country' },
   { name: 'zip' },
-  { name: 'owner', map: (v: ICustomerAddressRaw) => v.owner?.username },
   {
     name: 'createdAt',
     label: 'Created At',

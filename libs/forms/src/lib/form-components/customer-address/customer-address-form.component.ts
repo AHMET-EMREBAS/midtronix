@@ -3,11 +3,12 @@ import { FormGroup } from '@angular/forms';
 import { BaseFormComponent } from '../../__base';
 import { CustomerAddressFormBuilder } from '../../form-builders';
 import { AddressFormComponent } from '../__base';
+import { CustomerSearchComponent } from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-customer-address-form',
   standalone: true,
-  imports: [AddressFormComponent],
+  imports: [AddressFormComponent, CustomerSearchComponent],
   templateUrl: './customer-address-form.component.html',
   styleUrl: './customer-address-form.component.scss',
 })

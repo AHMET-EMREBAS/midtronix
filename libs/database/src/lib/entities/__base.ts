@@ -129,7 +129,7 @@ export function CreateCommonTaskEntity<TUser extends IID>(
  */
 export function OwnerEntity<T extends IID>(owner: Type<T>) {
   class Owner extends BaseEntity implements IOwner<T> {
-    @OwnerRelation(owner)
+    @OwnerRelation(owner, { eager: true })
     owner!: T;
   }
   return Owner;

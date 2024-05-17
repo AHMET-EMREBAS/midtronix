@@ -1,4 +1,8 @@
 <mdtx-email-form
   [resourceFormGroup]="resourceFormGroup"
   (submitEvent)="formSubmit()"
-></mdtx-email-form>
+>
+  <mdtx-customer-search
+    [inputControl]="control('owner')"
+  ></mdtx-customer-search>
+</mdtx-email-form>

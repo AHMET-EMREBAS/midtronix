@@ -3,8 +3,8 @@ import { TableRow } from '@mdtx/material/table';
 
 export const CUSTOMER_PHONE_COLUMNS: TableRow<ICustomerPhoneRaw>[] = [
   { name: 'id' },
+  { name: 'username', map: (v: ICustomerPhoneRaw) => v.owner?.username },
   { name: 'phone' },
-  { name: 'owner', map: (v: ICustomerPhoneRaw) => v.owner?.username },
   {
     name: 'createdAt',
     label: 'Created At',

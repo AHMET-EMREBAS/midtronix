@@ -29,7 +29,7 @@ export interface ICustomerPhone<TOwner extends IID = IID>
   extends IPhone<TOwner> {}
 
 export type ICustomerRaw = ICustomer<IRole, IUser>;
-
+export type ICustomerPermissionRaw = ICustomerPermission;
 export type ICustomerRoleRaw = ICustomerRole<IPermission>;
 export type ICustomerImageRaw = ICustomerImage<ICustomer>;
 export type ICustomerAddressRaw = ICustomerAddress<ICustomer>;

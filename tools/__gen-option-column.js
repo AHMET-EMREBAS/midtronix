@@ -5,6 +5,8 @@ const rns = [
   ['customer-address', 'street'],
   ['customer-email', 'email'],
   ['customer-phone', 'phone'],
+  ['customer-role', 'name'],
+  ['customer-permission', 'name'],
   ['customer', 'username'],
   ['department', 'name'],
   ['manufacturer', 'name'],

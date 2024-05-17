@@ -6,7 +6,7 @@ import { OptionColumnGeneratorSchema } from './schema';
 
 describe('option-column generator', () => {
   let tree: Tree;
-  const options: OptionColumnGeneratorSchema = { name: 'test' };
+  const options: OptionColumnGeneratorSchema = { name: 'test',columnName:'some' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
