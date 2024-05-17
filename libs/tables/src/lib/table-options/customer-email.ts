@@ -1,8 +1,16 @@
 import { ICustomerEmail } from '@mdtx/common';
+import { TableRow } from '@mdtx/material/table';
 
-export const CUSTOMER_EMAIL_COLUMNS: (keyof ICustomerEmail)[] = [`id`, `email`];
-export const CUSTOMER_EMAIL_DISPLAY_COLUMNS: (keyof ICustomerEmail)[] = [
-  `id`,
-  `email`,
+export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmail>[] = [
+  { name:'id'},
+  {,
+  { name: 'createdAt', label: 'Created At' },
+  { name: 'updatedAt', label: 'Updated At' },
+  { name: 'deletedAt', label: 'Deleted At' }
 ];
-export const CUSTOMER_EMAIL_PAGE_SIZE = 500;
+
+export const CUSTOMER_EMAIL_DISPLAY_COLUMNS: TableRow<ICustomerEmail>[] = [ ...CUSTOMER_EMAIL_COLUMNS ];
+
+
+
+export const CUSTOMER_EMAIL_PAGE_SIZE = 4;

@@ -2,7 +2,7 @@ import { I<%- className %> } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
 export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>>[] = [
-  {name:'id'},
+  { name:'id'},
   <%- fields %>,
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },

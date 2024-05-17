@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 
 function __format(fields = []) {
-  return fields.map((e) => `{ name: '${e}' }`).join(',');
+  return fields.map((e) => `{ name: '${e}' }`).join(', ');
 }
 
 const rns = [
@@ -165,5 +165,5 @@ const rns = [
 ];
 
 for (const [r, f] of rns) {
-  execSync(`npx nx g @mdtx/gen:table-option ${r} ${f}`);
+  execSync(`npx nx g @mdtx/gen:table-option ${r} "${f}"`);
 }
