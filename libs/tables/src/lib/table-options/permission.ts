@@ -14,13 +14,13 @@ export const PERMISSION_COLUMNS: TableRow<IPermissionRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IPermissionRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IPermissionRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

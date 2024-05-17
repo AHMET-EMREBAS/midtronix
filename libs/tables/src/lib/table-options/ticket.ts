@@ -22,12 +22,12 @@ export const TICKET_COLUMNS: TableRow<ITicketRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: ITicketRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: ITicketRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: ITicketRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: ITicketRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

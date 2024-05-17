@@ -16,12 +16,12 @@ export const ROLE_COLUMNS: TableRow<IRoleRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: IRoleRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: IRoleRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: IRoleRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: IRoleRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

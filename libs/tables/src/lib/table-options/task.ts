@@ -22,12 +22,12 @@ export const TASK_COLUMNS: TableRow<ITaskRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: ITaskRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: ITaskRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: ITaskRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: ITaskRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

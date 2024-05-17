@@ -25,13 +25,13 @@ export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IProductRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IProductRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

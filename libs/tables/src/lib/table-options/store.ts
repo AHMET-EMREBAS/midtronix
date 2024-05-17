@@ -12,12 +12,12 @@ export const STORE_COLUMNS: TableRow<IStoreRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: IStoreRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: IStoreRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: IStoreRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: IStoreRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

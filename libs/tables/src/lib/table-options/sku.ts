@@ -17,12 +17,12 @@ export const SKU_COLUMNS: TableRow<ISkuRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: ISkuRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: ISkuRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: ISkuRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: ISkuRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

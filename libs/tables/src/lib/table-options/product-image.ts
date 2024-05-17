@@ -16,13 +16,13 @@ export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImageRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IProductImageRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IProductImageRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

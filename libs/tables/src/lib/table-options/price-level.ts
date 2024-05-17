@@ -14,13 +14,13 @@ export const PRICE_LEVEL_COLUMNS: TableRow<IPriceLevelRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IPriceLevelRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IPriceLevelRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

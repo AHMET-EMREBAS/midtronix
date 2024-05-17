@@ -15,13 +15,13 @@ export const MANUFACTURER_COLUMNS: TableRow<IManufacturerRaw>[] = [
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IManufacturerRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IManufacturerRaw) =>
-      v.createdAt && new Date(v.deletedAt).toDateString(),
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

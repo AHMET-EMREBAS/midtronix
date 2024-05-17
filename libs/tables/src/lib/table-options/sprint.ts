@@ -13,12 +13,12 @@ export const SPRINT_COLUMNS: TableRow<ISprintRaw>[] = [
   {
     name: 'updatedAt',
     label: 'Updated At',
-    map: (v: ISprintRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+    map: (v: ISprintRaw) => v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
-    map: (v: ISprintRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+    map: (v: ISprintRaw) => v.deletedAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 
