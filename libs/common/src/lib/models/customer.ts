@@ -32,6 +32,6 @@ export type ICustomerRaw = ICustomer<IRole, IUser>;
 
 export type ICustomerRoleRaw = ICustomerRole<IPermission>;
 export type ICustomerImageRaw = ICustomerImage<IImage>;
-export type ICustomerAddreRaw = ICustomerAddress<IAddress>;
+export type ICustomerAddressRaw = ICustomerAddress<IAddress>;
 export type ICustomerEmailRaw = ICustomerEmail<IEmail>;
 export type ICustomerPhoneRaw = ICustomerPhone<IPhone>;

@@ -10,28 +10,28 @@ const rns = [
     'customer-address',
     [
       __format(['street', 'city', 'state', 'country', 'zip']),
-      `{name:'owner', map:(v:ICustomerAddress)=>v.owner.username}`,
+      `{name:'owner', map:(v:ICustomerAddressRaw)=>v.owner.username}`,
     ].join(', '),
   ],
   [
     'customer-email',
     [
       __format(['email']),
-      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username }`,
+      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
     ].join(','),
   ],
   [
     'customer-phone',
     [
       __format(['phone']),
-      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username}`,
+      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
     ].join(','),
   ],
   [
     'customer',
     [
       __format(['username']),
-      `{name:'roles', map:(v:ICustomer)=>v.roles?.map(e=>e.name).join(',')}`,
+      `{name:'roles', map:(v:ICustomerRaw)=>v.roles?.map(e=>e.name).join(',')}`,
     ].join(', '),
   ],
   ['department', __format(['name'])],
@@ -40,16 +40,16 @@ const rns = [
     'message',
     [
       __format(['message']),
-      `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
-      `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
+      `{name:'source', label:"From", map:(v:IMessageRaw)=>v.source?.username}`,
+      `{name:'target', label:"To", map:(v:IMessageRaw)=>v.target?.username}`,
     ].join(','),
   ],
   [
     'notification',
     [
       __format(['message']),
-      `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
-      `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
+      `{name:'source', label:"From", map:(v:IMessageRaw)=>v.source?.username}`,
+      `{name:'target', label:"To", map:(v:IMessageRaw)=>v.target?.username}`,
     ].join(','),
   ],
   ['permission', __format(['name'])],
@@ -59,8 +59,8 @@ const rns = [
     'product',
     [
       __format(['name', 'description']),
-      `{name:'category', label:"category", map: (v:IProduct)=>v.category.name }`,
-      `{name:'department', label:"department", map: (v:IProduct)=>v.department.name }`,
+      `{name:'category', label:"category", map: (v:IProductRaw)=>v.category.name }`,
+      `{name:'department', label:"department", map: (v:IProductRaw)=>v.department.name }`,
     ].join(','),
   ],
   ['project', __format(['name', 'description'])],
@@ -75,17 +75,17 @@ const rns = [
     'sku',
     [
       __format(['name', 'description']),
-      `{name:'product', map:(v:ISku)=>v.product.name}`,
-      `{name:'productUpc', map:(v:ISku)=>v.product.upc}`,
-      `{name:'category', map:(v:ISku)=>v.product.category.name}`,
-      `{name:'department', map:(v:ISku)=>v.product.department.name}`,
+      `{name:'product', map:(v:ISkuRaw)=>v.product.name}`,
+      `{name:'productUpc', map:(v:ISkuRaw)=>v.product.upc}`,
+      `{name:'category', map:(v:ISkuRaw)=>v.product.category.name}`,
+      `{name:'department', map:(v:ISkuRaw)=>v.product.department.name}`,
     ].join(', '),
   ],
   [
     'sprint',
     [
       __format(['name']),
-      `{name:'project', map:(v:ISprint)=>v.project?.name}`,
+      `{name:'project', map:(v:ISprintRaw)=>v.project?.name}`,
     ].join(','),
   ],
   ['store', __format(['name'])],
@@ -101,7 +101,7 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITask)=>v.assignees?.map(e=>e.username).join(', ')
+      `{name:'assignees', map:(v:ITaskRaw)=>v.assignees?.map(e=>e.username).join(', ')
   }`,
     ].join(','),
   ],
@@ -117,28 +117,28 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITask)=> v.assignees?.map(e=>e.username).join(', ') }`,
+      `{name:'assignees', map:(v:ITaskRaw)=> v.assignees?.map(e=>e.username).join(', ') }`,
     ].join(','),
   ],
   [
     'user-address',
     [
       __format(['street', 'city', 'state', 'country', 'zip']),
-      `{name:'owner', map:(v:ICustomerAddress)=>v.owner.username}`,
+      `{name:'owner', map:(v:ICustomerAddressRaw)=>v.owner.username}`,
     ].join(', '),
   ],
   [
     'user-email',
     [
       __format(['email']),
-      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username }`,
+      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
     ].join(','),
   ],
   [
     'user-phone',
     [
       __format(['phone']),
-      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username}`,
+      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
     ].join(','),
   ],
   ['user', `'username'`],
@@ -146,19 +146,19 @@ const rns = [
   [
     'price',
     [
-      `{name:'name',map:(v:IPrice)=>v.sku.name}`,
-      `{name:'description',map:(v:IPrice)=>v.sku.description}`,
-      `{name:'barcode',map:(v:IPrice)=>v.sku.upc}`,
+      `{name:'name',map:(v:IPriceRaw)=>v.sku.name}`,
+      `{name:'description',map:(v:IPriceRaw)=>v.sku.description}`,
+      `{name:'barcode',map:(v:IPriceRaw)=>v.sku.upc}`,
       __format(['price', 'cost']),
     ].join(', '),
   ],
   [
     'quantity',
     [
-      `{name:'name',map:(v:IPrice)=>v.sku.name}`,
-      `{name:'description',map:(v:IPrice)=>v.sku?.description}`,
-      `{name:'barcode', map:(v:IPrice)=>v.sku?.upc}`,
-      `{name:'store', map:(v:IPrice)=>v.store?.name}`,
+      `{name:'name',map:(v:IPriceRaw)=>v.sku.name}`,
+      `{name:'description',map:(v:IPriceRaw)=>v.sku?.description}`,
+      `{name:'barcode', map:(v:IPriceRaw)=>v.sku?.upc}`,
+      `{name:'store', map:(v:IPriceRaw)=>v.store?.name}`,
       __format(['quantity']),
     ].join(', '),
   ],

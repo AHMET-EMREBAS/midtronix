@@ -1,7 +1,7 @@
-import { ICustomerEmail } from '@mdtx/common';
+import { ICustomerEmailRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmail>[] = [
+export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmailRaw>[] = [
   { name: 'id' },
   { name: 'email' },
   { name: 'customer', map: (v: ICustomerEmail) => v.owner.username },
@@ -10,7 +10,7 @@ export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmail>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const CUSTOMER_EMAIL_DISPLAY_COLUMNS: TableRow<ICustomerEmail>[] = [
+export const CUSTOMER_EMAIL_DISPLAY_COLUMNS: TableRow<ICustomerEmailRaw>[] = [
   ...CUSTOMER_EMAIL_COLUMNS,
 ];
 

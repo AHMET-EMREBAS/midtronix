@@ -1,7 +1,7 @@
-import { ICategory } from '@mdtx/common';
+import { ICategoryRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const CATEGORY_COLUMNS: TableRow<ICategory>[] = [
+export const CATEGORY_COLUMNS: TableRow<ICategoryRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'createdAt', label: 'Created At' },
@@ -9,7 +9,7 @@ export const CATEGORY_COLUMNS: TableRow<ICategory>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const CATEGORY_DISPLAY_COLUMNS: TableRow<ICategory>[] = [
+export const CATEGORY_DISPLAY_COLUMNS: TableRow<ICategoryRaw>[] = [
   ...CATEGORY_COLUMNS,
 ];
 

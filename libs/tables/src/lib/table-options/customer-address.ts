@@ -1,7 +1,7 @@
-import { ICustomerAddress } from '@mdtx/common';
+import { ICustomerAddressRaw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const CUSTOMER_ADDRESS_COLUMNS: TableRow<ICustomerAddress>[] = [
+export const CUSTOMER_ADDRESS_COLUMNS: TableRow<ICustomerAddressRaw>[] = [
   { name: 'id' },
   { name: 'street' },
   { name: 'city' },
@@ -14,8 +14,7 @@ export const CUSTOMER_ADDRESS_COLUMNS: TableRow<ICustomerAddress>[] = [
   { name: 'deletedAt', label: 'Deleted At' },
 ];
 
-export const CUSTOMER_ADDRESS_DISPLAY_COLUMNS: TableRow<ICustomerAddress>[] = [
-  ...CUSTOMER_ADDRESS_COLUMNS,
-];
+export const CUSTOMER_ADDRESS_DISPLAY_COLUMNS: TableRow<ICustomerAddressRaw>[] =
+  [...CUSTOMER_ADDRESS_COLUMNS];
 
 export const CUSTOMER_ADDRESS_PAGE_SIZE = 4;
