@@ -24,7 +24,7 @@ const rns = [
     'customer-phone',
     [
       __format(['phone']),
-      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
+      `{name: 'owner', map:(v:ICustomerPhoneRaw)=>v.owner.username}`,
     ].join(','),
   ],
   [
@@ -48,8 +48,8 @@ const rns = [
     'notification',
     [
       __format(['message']),
-      `{name:'source', label:'From', map:(v:IMessageRaw)=>v.source?.username}`,
-      `{name:'target', label:'To', map:(v:IMessageRaw)=>v.target?.username}`,
+      `{name:'source', label:'From', map:(v:INotificationRaw)=>v.source?.username}`,
+      `{name:'target', label:'To', map:(v:INotificationRaw)=>v.target?.username}`,
     ].join(','),
   ],
   ['permission', __format(['name'])],
@@ -57,22 +57,22 @@ const rns = [
     'product-image',
     [
       __format(['name', 'url']),
-      `{ name:'product', map:(v:IProductImageRaw)=> v.product.name}`,
+      `{ name:'product', map:(v:IProductImageRaw)=> v.owner.name}`,
     ],
   ],
   [
     'product-video',
     [
       __format(['name', 'url']),
-      `{ name:'product', map:(v:IProductVideoRaw)=> v.product.name}`,
+      `{ name:'product', map:(v:IProductVideoRaw)=> v.owner.name}`,
     ],
   ],
   [
     'product',
     [
       __format(['name', 'description']),
-      `{name:'category', label:'category', map: (v:IProductRaw)=>v.category.name }`,
-      `{name:'department', label:'department', map: (v:IProductRaw)=>v.department.name }`,
+      `{name:'category', label:'category', map: (v:IProductRaw)=>v.category?.name }`,
+      `{name:'department', label:'department', map: (v:IProductRaw)=>v.department?.name }`,
     ].join(','),
   ],
   ['project', __format(['name', 'description'])],
@@ -80,7 +80,7 @@ const rns = [
     'role',
     [
       __format(['name']),
-      `{name:'permissions', map:(e:IRole)=>e.permissions?.map(e=>e.name).join(', ')}`,
+      `{name:'permissions', map:(e:IRoleRaw)=>e.permissions?.map(e=>e.name).join(', ')}`,
     ].join(','),
   ],
   [
@@ -152,7 +152,13 @@ const rns = [
       `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
     ].join(','),
   ],
-  ['user', `'username'`],
+  [
+    'user',
+    [
+      __format(['username']),
+      `{name:'roles', map:(v:IUserRaw)=>v.roles?.map(e=>e.name).join(',')}`,
+    ].join(', '),
+  ],
   ['price-level', __format(['name'])],
   [
     'price',
@@ -166,10 +172,10 @@ const rns = [
   [
     'quantity',
     [
-      `{name:'name',map:(v:IPriceRaw)=>v.sku.name}`,
-      `{name:'description',map:(v:IPriceRaw)=>v.sku?.description}`,
-      `{name:'barcode', map:(v:IPriceRaw)=>v.sku?.upc}`,
-      `{name:'store', map:(v:IPriceRaw)=>v.store?.name}`,
+      `{name:'name',map:(v:IQuantityRaw)=>v.sku.name}`,
+      `{name:'description',map:(v:IQuantityRaw)=>v.sku?.description}`,
+      `{name:'barcode', map:(v:IQuantityRaw)=>v.sku?.upc}`,
+      `{name:'store', map:(v:IQuantityRaw)=>v.store?.name}`,
       __format(['quantity']),
     ].join(', '),
   ],

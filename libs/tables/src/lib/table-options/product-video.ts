@@ -5,6 +5,7 @@ export const PRODUCT_VIDEO_COLUMNS: TableRow<IProductVideoRaw>[] = [
   { name: 'id' },
   { name: 'name' },
   { name: 'url' },
+  { name: 'product', map: (v: IProductVideoRaw) => v.owner.name },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
   { name: 'deletedAt', label: 'Deleted At' },

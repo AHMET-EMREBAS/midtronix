@@ -2,7 +2,7 @@
 import { ICredential, IID } from './__base';
 import { IAddress, IEmail, IPhone } from './contact';
 import { IImage } from './media';
-import { IRole } from './role';
+import { IRoleRaw } from './role';
 
 export interface IUser<TRole extends IID = IID, TUser extends IID = IID>
   extends ICredential {
@@ -19,8 +19,8 @@ export interface IUserEmail<TOwner extends IID = IID> extends IEmail<TOwner> {}
 
 export interface IUserPhone<TOwner extends IID = IID> extends IPhone<TOwner> {}
 
-export type IUserRaw = IUser<IRole, IUser>;
-export type IUserImageRaw = IUserImage<IUser>;
-export type IUserAddressRaw = IUserAddress<IUser>;
-export type IUserEmailRaw = IUserEmail<IUser>;
-export type IUserPhoneRaw = IUserPhone<IUser>;
+export type IUserRaw = IUser<IRoleRaw, IUserRaw>;
+export type IUserImageRaw = IUserImage<IUserRaw>;
+export type IUserAddressRaw = IUserAddress<IUserRaw>;
+export type IUserEmailRaw = IUserEmail<IUserRaw>;
+export type IUserPhoneRaw = IUserPhone<IUserRaw>;

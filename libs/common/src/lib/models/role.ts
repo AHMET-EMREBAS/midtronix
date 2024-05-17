@@ -8,4 +8,4 @@ export interface IRole<TPermission extends IID = IID> extends IName {
 }
 
 export type IPermissionRaw = IPermission;
-export type IRoleRaw = IRole<IPermission>;
+export type IRoleRaw = IRole<IPermissionRaw>;

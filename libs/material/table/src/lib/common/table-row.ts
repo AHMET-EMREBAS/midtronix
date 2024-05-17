@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export type TableRow<
-  T extends { [key: string]: any },
-  P extends keyof T & string = keyof T & string
-> = {
-  name: P;
+export type TableRow<T extends { [key: string]: any }> = {
+  name: string;
   label?: string;
   map?: (t: T) => any;
   prefix?: string;

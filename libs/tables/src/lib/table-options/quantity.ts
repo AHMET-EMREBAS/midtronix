@@ -3,10 +3,10 @@ import { TableRow } from '@mdtx/material/table';
 
 export const QUANTITY_COLUMNS: TableRow<IQuantityRaw>[] = [
   { name: 'id' },
-  { name: 'name', map: (v: IPriceRaw) => v.sku.name },
-  { name: 'description', map: (v: IPriceRaw) => v.sku?.description },
-  { name: 'barcode', map: (v: IPriceRaw) => v.sku?.upc },
-  { name: 'store', map: (v: IPriceRaw) => v.store?.name },
+  { name: 'name', map: (v: IQuantityRaw) => v.sku.name },
+  { name: 'description', map: (v: IQuantityRaw) => v.sku?.description },
+  { name: 'barcode', map: (v: IQuantityRaw) => v.sku?.upc },
+  { name: 'store', map: (v: IQuantityRaw) => v.store?.name },
   { name: 'quantity' },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
