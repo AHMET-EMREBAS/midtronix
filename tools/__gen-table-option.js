@@ -86,9 +86,8 @@ const rns = [
   [
     'sku',
     [
-      __format(['name', 'description']),
+      __format(['name', 'description', 'upc']),
       `{name:'product', map:(v:ISkuRaw)=>v.product?.name}`,
-      `{name:'productUpc', map:(v:ISkuRaw)=>v.product?.upc}`,
       `{name:'category', map:(v:ISkuRaw)=>v.product?.category?.name}`,
       `{name:'department', map:(v:ISkuRaw)=>v.product?.department?.name}`,
     ].join(', '),
