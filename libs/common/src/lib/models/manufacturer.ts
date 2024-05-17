@@ -12,3 +12,9 @@ export interface IManufacturerEmail<TManufacturer extends IID = IID>
 
 export interface IManufacturerPhone<TManufacturer extends IID = IID>
   extends IPhone<TManufacturer> {}
+
+export type IManufacturerRaw = IManufacturer;
+
+export type IManufacturerAddressRaw = IManufacturerAddress<IAddress>;
+export type IManufacturerEmailRaw = IManufacturerEmail<IEmail>;
+export type IManufacturerPhoneRaw = IManufacturerPhone<IPhone>;

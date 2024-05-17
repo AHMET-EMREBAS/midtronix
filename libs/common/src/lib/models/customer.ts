@@ -3,11 +3,12 @@ import { ICredential, IID } from './__base';
 import { IAddress, IEmail, IPhone } from './contact';
 import { IImage } from './media';
 import { IPermission, IRole } from './role';
+import { IUser } from './user';
 
-export interface ICustomer<TRole extends IID = IID, TCustomer extends IID = IID>
+export interface ICustomer<TRole extends IID = IID, TUser extends IID = IID>
   extends ICredential {
   roles?: TRole[];
-  supervisor?: TCustomer;
+  supervisor?: TUser;
 }
 
 export interface ICustomerPermission extends IPermission {}
@@ -26,3 +27,11 @@ export interface ICustomerEmail<TOwner extends IID = IID>
 
 export interface ICustomerPhone<TOwner extends IID = IID>
   extends IPhone<TOwner> {}
+
+export type ICustomerRaw = ICustomer<IRole, IUser>;
+
+export type ICustomerRoleRaw = ICustomerRole<IPermission>;
+export type ICustomerImageRaw = ICustomerImage<IImage>;
+export type ICustomerAddreRaw = ICustomerAddress<IAddress>;
+export type ICustomerEmailRaw = ICustomerEmail<IEmail>;
+export type ICustomerPhoneRaw = ICustomerPhone<IPhone>;

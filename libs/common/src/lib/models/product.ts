@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseEntity, IDescription, IID } from './__base';
+import { IManufacturer } from './manufacturer';
 import { IImage } from './media';
+import { ICategory, IDepartment } from './meta';
+import { IStore } from './store';
 
 export interface IPriceLevel extends IDescription {}
 
@@ -44,3 +47,11 @@ export interface IProductImage<TOwner extends IID = IID>
 
 export interface IProductVideo<TOwner extends IID = IID>
   extends IImage<TOwner> {}
+
+export type IPriceLevelRaw = IPriceLevel;
+export type IProductRaw = IProduct<ICategory, IDepartment, IManufacturer>;
+export type ISkuRaw = ISku<IProduct>;
+export type IPriceRaw = IPrice<ISku, IPriceLevel>;
+export type IQuantityRaw = IQuantity<ISku, IStore>;
+export type IProductImageRaw = IProductImage<IProduct>;
+export type IProductVideoRaw = IProductVideo<IProduct>;

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IComment, ICommonTask, IDescription, IID } from './__base';
+import { IUser } from './user';
 
 /**
  * @param name
@@ -34,3 +35,9 @@ export interface ITaskComment<
   TUser extends IID = IID,
   TTarget extends IID = IID
 > extends IComment<TUser, TTarget> {}
+
+export type IProjectRaw = IProject;
+
+export type ISprintRaw = ISprint<IProject>;
+export type ITaskRaw = ITask<IUser, ISprint>;
+export type ITaskCommentRaw = ITaskComment<ITask>;

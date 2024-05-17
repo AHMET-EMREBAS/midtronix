@@ -1,13 +1,17 @@
 import { IProductImage } from '@mdtx/common';
+import { TableRow } from '@mdtx/material/table';
 
-export const PRODUCT_IMAGE_COLUMNS: (keyof IProductImage)[] = [
-  'id',
-  'name',
-  'url',
+export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImage>[] = [
+  { name: 'id' },
+  { name: 'name' },
+  { name: 'url' },
+  { name: 'createdAt', label: 'Created At' },
+  { name: 'updatedAt', label: 'Updated At' },
+  { name: 'deletedAt', label: 'Deleted At' },
 ];
-export const PRODUCT_IMAGE_DISPLAY_COLUMNS: (keyof IProductImage)[] = [
-  'id',
-  'name',
-  'url',
+
+export const PRODUCT_IMAGE_DISPLAY_COLUMNS: TableRow<IProductImage>[] = [
+  ...PRODUCT_IMAGE_COLUMNS,
 ];
-export const PRODUCT_IMAGE_PAGE_SIZE = 500;
+
+export const PRODUCT_IMAGE_PAGE_SIZE = 4;

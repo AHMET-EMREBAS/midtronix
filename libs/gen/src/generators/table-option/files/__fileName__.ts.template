@@ -1,7 +1,7 @@
-import { I<%- className %> } from '@mdtx/common';
+import { I<%- className %>Raw } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>>[] = [
+export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>Raw>[] = [
   { name:'id'},
   <%- fields %>,
   { name: 'createdAt', label: 'Created At' },
@@ -9,7 +9,7 @@ export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>>[] = [
   { name: 'deletedAt', label: 'Deleted At' }
 ];
 
-export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<I<%- className %>>[] = [ ...<%- constantName %>_COLUMNS ];
+export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<I<%- className %>Raw>[] = [ ...<%- constantName %>_COLUMNS ];
 
 
 
