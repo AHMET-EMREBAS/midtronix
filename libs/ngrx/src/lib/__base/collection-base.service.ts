@@ -1,4 +1,5 @@
 import {
+  EntityActionOptions,
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
 } from '@ngrx/data';
@@ -53,5 +54,9 @@ export class CollectionBaseService<
         return caught;
       })
     );
+  }
+
+  override add(entity: any): Observable<T> {
+    return super.add(entity, { isOptimistic: false });
   }
 }

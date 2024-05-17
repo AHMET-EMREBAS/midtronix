@@ -15,9 +15,24 @@ export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
     label: 'department',
     map: (v: IProductRaw) => v.department?.name,
   },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IProductRaw) =>
+      v.createdAt && new Date(v.createdAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IProductRaw) =>
+      v.updatedAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IProductRaw) =>
+      v.deletedAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const PRODUCT_DISPLAY_COLUMNS: TableRow<IProductRaw>[] = [
