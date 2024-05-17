@@ -2,6 +2,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { <%- className %>Service } from '@mdtx/ngrx';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'mdtx-<%- fileName %>-search',
@@ -14,10 +15,14 @@ import { <%- className %>Service } from '@mdtx/ngrx';
       inputName="<%- fileName %>"
       label="Search <%- className %>"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [<%- className %>Service],
 })
 export class <%- className %>SearchComponent {
+
+  @Input() inputControl = new FormControl('', []);
+
   constructor(protected readonly service: <%- className %>Service) {}
 }

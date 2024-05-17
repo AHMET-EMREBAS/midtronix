@@ -7,11 +7,21 @@ import {
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { ProductFormBuilder } from '../../form-builders';
+import {
+  CategorySearchComponent,
+  DepartmentSearchComponent,
+} from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-product-form',
   standalone: true,
-  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],
+  imports: [
+    CommonFormModule,
+    InputTextComponent,
+    InputTextareaComponent,
+    CategorySearchComponent,
+    DepartmentSearchComponent,
+  ],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss',
 })

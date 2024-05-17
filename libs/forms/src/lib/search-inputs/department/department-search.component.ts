@@ -1,5 +1,6 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { DepartmentService } from '@mdtx/ngrx';
 
@@ -14,10 +15,12 @@ import { DepartmentService } from '@mdtx/ngrx';
       inputName="department"
       label="Search Department"
       prefixIcon="search"
+      [inputControl]="inputControl"
     ></mdtx-input-autocomplete>
   `,
   providers: [DepartmentService],
 })
 export class DepartmentSearchComponent {
+  @Input() inputControl = new FormControl('', []);
   constructor(protected readonly service: DepartmentService) {}
 }
