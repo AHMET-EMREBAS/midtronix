@@ -1,4 +1,4 @@
-import { I<%- className %> } from '@mdtx/common';
+import { I<%- className %>Raw } from '@mdtx/common';
 import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { <%- constantName %>_OPTION_COLUMN } from '../option-columns';
 
 @Injectable()
-export class <%- className %>Service extends CollectionBaseService<I<%- className %>> {
+export class <%- className %>Service extends CollectionBaseService<I<%- className %>Raw> {
 
   static readonly ENTITY_NAME = '<%- className %>';
   static readonly ENTITY_PLURAL_NAME = '<%- pluralClassName %>';

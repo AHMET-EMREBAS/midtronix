@@ -8,7 +8,7 @@ import {
   USER_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IUser } from '@mdtx/common';
+import { IUserRaw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './user-table.component.scss',
   providers: [UserService],
 })
-export class UserTableComponent extends BaseTableComponent<IUser> {
+export class UserTableComponent extends BaseTableComponent<IUserRaw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IUser[]>();
+  @Output() deleteEvent = new EventEmitter<IUserRaw[]>();
 
   override pageIndex = 0;
   override pageSize = USER_PAGE_SIZE;

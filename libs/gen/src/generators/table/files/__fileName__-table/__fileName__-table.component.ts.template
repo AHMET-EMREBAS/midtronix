@@ -8,7 +8,7 @@ import {
   <%- constantName %>_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { I<%- className %> } from '@mdtx/common';
+import { I<%- className %>Raw } from '@mdtx/common';
 import { TableComponent } from '@mdtx/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -21,12 +21,12 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './<%- fileName %>-table.component.scss',
   providers: [<%- className %>Service],
 })
-export class <%- className %>TableComponent extends BaseTableComponent<I<%- className %>> {
+export class <%- className %>TableComponent extends BaseTableComponent<I<%- className %>Raw> {
   @ViewChild('tableRef') table!: TableComponent;
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<I<%- className %>[]>();
+  @Output() deleteEvent = new EventEmitter<I<%- className %>Raw[]>();
 
   override pageIndex = 0;
   override pageSize = <%- constantName %>_PAGE_SIZE;
@@ -39,7 +39,7 @@ export class <%- className %>TableComponent extends BaseTableComponent<I<%- clas
     super(service);
   }
 
-  selectItems(items: Map<string, I<%- className %>>) {
+  selectItems(items: Map<string, I<%- className %>Raw>) {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 

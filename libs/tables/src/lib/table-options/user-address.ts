@@ -8,7 +8,7 @@ export const USER_ADDRESS_COLUMNS: TableRow<IUserAddressRaw>[] = [
   { name: 'state' },
   { name: 'country' },
   { name: 'zip' },
-  { name: 'owner', map: (v: IUserAddressRaw) => v.owner.username },
+  { name: 'owner', map: (v: IUserAddressRaw) => v.owner?.username },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
   { name: 'deletedAt', label: 'Deleted At' },
