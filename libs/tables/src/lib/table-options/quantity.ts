@@ -8,9 +8,24 @@ export const QUANTITY_COLUMNS: TableRow<IQuantityRaw>[] = [
   { name: 'barcode', map: (v: IQuantityRaw) => v.sku?.upc },
   { name: 'store', map: (v: IQuantityRaw) => v.store?.name },
   { name: 'quantity' },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IQuantityRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IQuantityRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IQuantityRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const QUANTITY_DISPLAY_COLUMNS: TableRow<IQuantityRaw>[] = [

@@ -65,8 +65,8 @@ export class Sku extends ProductCommonEntity implements ISku<Product> {
 export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
   @Column({ type: 'numeric', nullable: true }) price!: number;
   @Column({ type: 'numeric', nullable: true }) cost!: number;
-  @OwnerRelation(PriceLevel) priceLevel!: PriceLevel;
-  @OwnerRelation(Sku) sku!: Sku;
+  @OwnerRelation(PriceLevel, { eager: true }) priceLevel!: PriceLevel;
+  @OwnerRelation(Sku, { eager: true }) sku!: Sku;
 }
 /**
  * @param quantity
@@ -76,8 +76,8 @@ export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
 @Entity()
 export class Quantity extends BaseEntity implements IQuantity<Sku, Store> {
   @Column({ type: 'numeric', nullable: true }) quantity!: number;
-  @OwnerRelation(Sku) sku!: Sku;
-  @OwnerRelation(Store) store!: Store;
+  @OwnerRelation(Sku, { eager: true }) sku!: Sku;
+  @OwnerRelation(Store, { eager: true }) store!: Store;
 }
 
 @Entity()

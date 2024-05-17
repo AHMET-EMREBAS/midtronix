@@ -4,9 +4,24 @@ import { TableRow } from '@mdtx/material/table';
 export const PRICE_LEVEL_COLUMNS: TableRow<IPriceLevelRaw>[] = [
   { name: 'id' },
   { name: 'name' },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IPriceLevelRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IPriceLevelRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IPriceLevelRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const PRICE_LEVEL_DISPLAY_COLUMNS: TableRow<IPriceLevelRaw>[] = [

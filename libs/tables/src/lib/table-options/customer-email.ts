@@ -5,9 +5,24 @@ export const CUSTOMER_EMAIL_COLUMNS: TableRow<ICustomerEmailRaw>[] = [
   { name: 'id' },
   { name: 'email' },
   { name: 'owner', map: (v: ICustomerEmailRaw) => v.owner?.username },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: ICustomerEmailRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: ICustomerEmailRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: ICustomerEmailRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const CUSTOMER_EMAIL_DISPLAY_COLUMNS: TableRow<ICustomerEmailRaw>[] = [

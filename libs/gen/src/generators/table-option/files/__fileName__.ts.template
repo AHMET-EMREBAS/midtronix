@@ -4,13 +4,11 @@ import { TableRow } from '@mdtx/material/table';
 export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>Raw>[] = [
   { name:'id'},
   <%- fields %>,
-  { name: 'createdAt', label: 'Created At', map: (v: IProductRaw) => v.createdAt && new Date(v.updatedAt).toDateString() },
-  { name: 'updatedAt', label: 'Updated At', map: (v: IProductRaw) => v.createdAt && new Date(v.updatedAt).toDateString()  },
-  { name: 'deletedAt', label: 'Deleted At', map: (v: IProductRaw) => v.createdAt && new Date(v.deletedAt).toDateString()  }
+  { name: 'createdAt', label: 'Created At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.updatedAt).toDateString() },
+  { name: 'updatedAt', label: 'Updated At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.updatedAt).toDateString()  },
+  { name: 'deletedAt', label: 'Deleted At', map: (v: I<%- className %>Raw) => v.createdAt && new Date(v.deletedAt).toDateString()  }
 ];
 
 export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<I<%- className %>Raw>[] = [ ...<%- constantName %>_COLUMNS ];
-
-
 
 export const <%- constantName %>_PAGE_SIZE = 4;

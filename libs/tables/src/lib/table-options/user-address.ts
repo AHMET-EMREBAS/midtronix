@@ -9,9 +9,24 @@ export const USER_ADDRESS_COLUMNS: TableRow<IUserAddressRaw>[] = [
   { name: 'country' },
   { name: 'zip' },
   { name: 'owner', map: (v: IUserAddressRaw) => v.owner?.username },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IUserAddressRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IUserAddressRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IUserAddressRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const USER_ADDRESS_DISPLAY_COLUMNS: TableRow<IUserAddressRaw>[] = [

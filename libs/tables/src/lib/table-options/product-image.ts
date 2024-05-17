@@ -6,9 +6,24 @@ export const PRODUCT_IMAGE_COLUMNS: TableRow<IProductImageRaw>[] = [
   { name: 'name' },
   { name: 'url' },
   { name: 'product', map: (v: IProductImageRaw) => v.owner?.name },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IProductImageRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IProductImageRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IProductImageRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const PRODUCT_IMAGE_DISPLAY_COLUMNS: TableRow<IProductImageRaw>[] = [

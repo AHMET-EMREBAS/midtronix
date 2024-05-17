@@ -19,19 +19,19 @@ export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
     name: 'createdAt',
     label: 'Created At',
     map: (v: IProductRaw) =>
-      v.createdAt && new Date(v.createdAt).toDateString(),
+      v.createdAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IProductRaw) =>
-      v.updatedAt && new Date(v.updatedAt).toDateString(),
+      v.createdAt && new Date(v.updatedAt).toDateString(),
   },
   {
     name: 'deletedAt',
     label: 'Deleted At',
     map: (v: IProductRaw) =>
-      v.deletedAt && new Date(v.deletedAt).toDateString(),
+      v.createdAt && new Date(v.deletedAt).toDateString(),
   },
 ];
 

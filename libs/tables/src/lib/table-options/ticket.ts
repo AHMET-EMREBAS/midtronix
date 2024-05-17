@@ -14,9 +14,21 @@ export const TICKET_COLUMNS: TableRow<ITicketRaw>[] = [
     name: 'assignees',
     map: (v: ITicketRaw) => v.assignees?.map((e) => e.username).join(', '),
   },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: ITicketRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: ITicketRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: ITicketRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const TICKET_DISPLAY_COLUMNS: TableRow<ITicketRaw>[] = [

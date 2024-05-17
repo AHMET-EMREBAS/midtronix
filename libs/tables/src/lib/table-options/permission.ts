@@ -4,9 +4,24 @@ import { TableRow } from '@mdtx/material/table';
 export const PERMISSION_COLUMNS: TableRow<IPermissionRaw>[] = [
   { name: 'id' },
   { name: 'name' },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IPermissionRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IPermissionRaw) =>
+      v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IPermissionRaw) =>
+      v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const PERMISSION_DISPLAY_COLUMNS: TableRow<IPermissionRaw>[] = [

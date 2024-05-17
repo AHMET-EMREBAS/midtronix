@@ -8,9 +8,21 @@ export const ROLE_COLUMNS: TableRow<IRoleRaw>[] = [
     name: 'permissions',
     map: (e: IRoleRaw) => e.permissions?.map((e) => e.name).join(', '),
   },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IRoleRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IRoleRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IRoleRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const ROLE_DISPLAY_COLUMNS: TableRow<IRoleRaw>[] = [...ROLE_COLUMNS];

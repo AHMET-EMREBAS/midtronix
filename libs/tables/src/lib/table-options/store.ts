@@ -4,9 +4,21 @@ import { TableRow } from '@mdtx/material/table';
 export const STORE_COLUMNS: TableRow<IStoreRaw>[] = [
   { name: 'id' },
   { name: 'name' },
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
+  {
+    name: 'createdAt',
+    label: 'Created At',
+    map: (v: IStoreRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'updatedAt',
+    label: 'Updated At',
+    map: (v: IStoreRaw) => v.createdAt && new Date(v.updatedAt).toDateString(),
+  },
+  {
+    name: 'deletedAt',
+    label: 'Deleted At',
+    map: (v: IStoreRaw) => v.createdAt && new Date(v.deletedAt).toDateString(),
+  },
 ];
 
 export const STORE_DISPLAY_COLUMNS: TableRow<IStoreRaw>[] = [...STORE_COLUMNS];
