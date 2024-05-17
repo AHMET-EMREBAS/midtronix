@@ -1,8 +1,8 @@
-<form class="form-container" novalidate="true">
+<form class="form-container" autocomplete="off" novalidate="true">
   <!-- Form Inputs  -->
   <mdtx-input-text
     inputName="name"
-    label="CustomerRole Name"
+    label="Name"
     prefixIcon="category"
     [inputControl]="control('name')"
   ></mdtx-input-text>
@@ -16,7 +16,7 @@
       [disabled]="isFormInvalid()"
       [attr.data-testid]="'submit'"
     >
-      Save CustomerRole
+      Save Role
     </button>
     <button
       mat-stroked-button

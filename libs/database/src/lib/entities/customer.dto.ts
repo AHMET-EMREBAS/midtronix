@@ -1,7 +1,13 @@
 import { ICreateCustomerDto } from '@mdtx/common';
 import { CreateUserDto } from './user.dto';
 import { Exclude, PartialType } from '@mdtx/core';
-import { CreateAddressDto, CreateEmailDto, CreatePhoneDto } from './__base.dto';
+import {
+  CreateAddressDto,
+  CreateEmailDto,
+  CreatePermissionDto,
+  CreatePhoneDto,
+  CreateRoleDto,
+} from './__base.dto';
 
 @Exclude()
 export class CreateCustomerDto
@@ -30,4 +36,18 @@ export class CreateCustomerPhoneDto extends CreatePhoneDto {}
 @Exclude()
 export class UpdateCustomerPhoneDto extends PartialType(
   CreateCustomerPhoneDto
+) {}
+
+@Exclude()
+export class CreateCustomerRoleDto extends CreateRoleDto {}
+
+@Exclude()
+export class UpdateCustomerRoleDto extends PartialType(CreateCustomerRoleDto) {}
+
+@Exclude()
+export class CreateCustomerPermissionDto extends CreatePermissionDto {}
+
+@Exclude()
+export class UpdateCustomerPermissionDto extends PartialType(
+  CreateCustomerPermissionDto
 ) {}
