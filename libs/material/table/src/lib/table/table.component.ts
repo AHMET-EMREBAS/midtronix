@@ -26,7 +26,6 @@ import { slideInDownOnEnterAnimation } from 'angular-animations';
   ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
-
   animations: [
     slideInDownOnEnterAnimation({
       anchor: 'enter',

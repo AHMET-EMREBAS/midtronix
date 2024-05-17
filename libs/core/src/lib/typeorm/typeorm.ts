@@ -34,12 +34,15 @@ export function ManyRelation<T extends IID>(
   );
 }
 
-export function OwnerRelation<T extends IID>(target: Type<T>) {
+export function OwnerRelation<T extends IID>(
+  target: Type<T>,
+  options: Pick<RelationOptions, 'eager'> = {}
+) {
   return applyDecorators(
     ManyToOne(
       () => target,
       (t) => t.id,
-      { onDelete: 'CASCADE', nullable: true }
+      { onDelete: 'CASCADE', nullable: true, ...options }
     ),
     JoinColumn()
   );

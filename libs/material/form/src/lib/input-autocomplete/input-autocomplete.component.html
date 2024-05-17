@@ -13,6 +13,7 @@
     autoActiveFirstOption
     #auto="matAutocomplete"
     [displayWith]="displayWith"
+    [autoSelectActiveOption]="true"
   >
     @for (option of filteredOptions$ | async ; track option) {
     <mat-option [value]="valueWith(option)">{{ option.name }}</mat-option>

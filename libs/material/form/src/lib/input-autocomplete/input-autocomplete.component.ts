@@ -30,10 +30,14 @@ export class InputAutocompleteComponent
       startWith(''),
       debounceTime(1000),
       map((search: string) => {
-        if (search && this.options) {
+        if (typeof search === 'string' && this.options) {
           const result = this.options.filter((option) => {
             return option.name?.toLowerCase().includes(search?.toLowerCase());
           });
+
+          if (result && result.length > 0)
+            this.inputControl.setValue(result[0]);
+
           return result;
         }
         return this.options;

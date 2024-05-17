@@ -52,7 +52,7 @@ export class Product
  */
 @Entity()
 export class Sku extends ProductCommonEntity implements ISku<Product> {
-  @OwnerRelation(Product)
+  @OwnerRelation(Product, { eager: true })
   product!: Product;
 }
 
