@@ -1,5 +1,11 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
+  <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
+
+  <mdtx-price-level-search
+    [inputControl]="control('priceLevel')"
+  ></mdtx-price-level-search>
+
   <mdtx-input-number
     inputName="price"
     label="Price"
@@ -13,11 +19,6 @@
     prefixIcon="finance_chip"
     [inputControl]="control('cost')"
   ></mdtx-input-number>
-
-  <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
-  <mdtx-price-level-search
-    [inputControl]="control('priceLevel')"
-  ></mdtx-price-level-search>
 
   <!-- Form actions -->
   <div class="form-actions">

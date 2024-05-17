@@ -42,12 +42,16 @@ export function __StringProperty(options?: PropertyOptions) {
     if (format === 'email') push(IsEmail(undefined, validationOptions));
     else if (format === 'password')
       push(IsStrongPassword(undefined, validationOptions));
-    else if (format === 'barcode') push(IsEAN(validationOptions));
-    else if (format === 'date') push(IsDate(validationOptions));
-    else if (format === 'uuid') push(IsUUID(undefined, validationOptions));
+    else if (format === 'barcode') {
+      push(MinLength(10));
+      push(MaxLength(13));
+    } else if (format === 'date') push(IsDate(validationOptions));
+    else if (format === 'uuid') push(IsUUID('4', validationOptions));
     else if (format === 'url') push(IsUrl(undefined, validationOptions));
-    else if (format === 'phone')
-      push(IsPhoneNumber(undefined, validationOptions));
+    else if (format === 'phone') {
+      push(MinLength(10));
+      push(MaxLength(20));
+    }
   }
 
   return applyDecorators(...decorators);
