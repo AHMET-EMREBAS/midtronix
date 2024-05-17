@@ -4,6 +4,9 @@ import {
   AppLayoutComponent,
   SidenavLeftBottomProvider,
 } from '@mdtx/material/layout';
+import { PosComponent } from './pos/pos.component';
+
+import { provideEntityData, withEffects } from '@ngrx/data';
 
 export const PosRoutes: Routes = [
   {
@@ -11,9 +14,33 @@ export const PosRoutes: Routes = [
     path: '',
     loadComponent: () => AppLayoutComponent,
     providers: [
+      provideEntityData(
+        {
+          pluralNames: {
+            Product: 'Products',
+            Sku: 'Skus',
+            Price: 'Prices',
+            PriceLevel: 'PriceLevels',
+            Store: 'Stores',
+            Quantity: 'Quantities',
+          },
+          entityMetadata: {
+            Sku: {},
+            Product: {},
+            Price: {},
+            PriceLevel: {},
+            Store: {},
+            Quantity: {},
+          },
+        },
+        withEffects()
+      ),
+
       SidenavLeftBottomProvider.provide([
         { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
       ]),
     ],
+
+    children: [{ path: '', loadComponent: () => PosComponent }],
   },
 ];

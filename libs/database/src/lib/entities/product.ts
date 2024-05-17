@@ -60,6 +60,7 @@ export class Sku extends ProductCommonEntity implements ISku<Product> {
  * @param price
  * @param cost
  * @param sku
+ * @param priceLevel
  */
 @Entity()
 export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
