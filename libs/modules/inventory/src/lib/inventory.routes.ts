@@ -163,7 +163,6 @@ export const InventoryRoutes: Routes = [
           { path: 'pricelevel', loadChildren: () => PriceLevelRoutes },
           { path: 'price', loadChildren: () => PriceRoutes },
           { path: 'quantity', loadChildren: () => QuantityRoutes },
-          
         ],
       },
     ],
