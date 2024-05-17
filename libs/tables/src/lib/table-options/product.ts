@@ -7,12 +7,12 @@ export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
   { name: 'description' },
   {
     name: 'category',
-    label: category,
+    label: 'category',
     map: (v: IProductRaw) => v.category.name,
   },
   {
     name: 'department',
-    label: department,
+    label: 'department',
     map: (v: IProductRaw) => v.department.name,
   },
   { name: 'createdAt', label: 'Created At' },

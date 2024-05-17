@@ -17,14 +17,14 @@ const rns = [
     'customer-email',
     [
       __format(['email']),
-      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
+      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
     ].join(','),
   ],
   [
     'customer-phone',
     [
       __format(['phone']),
-      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
+      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
     ].join(','),
   ],
   [
@@ -53,8 +53,20 @@ const rns = [
     ].join(','),
   ],
   ['permission', __format(['name'])],
-  ['product-image', [__format(['name', 'url'])]],
-  ['product-video', [__format(['name', 'url'])]],
+  [
+    'product-image',
+    [
+      __format(['name', 'url']),
+      `{ name:'product', map:(v:IProductImageRaw)=> v.product.name}`,
+    ],
+  ],
+  [
+    'product-video',
+    [
+      __format(['name', 'url']),
+      `{ name:'product', map:(v:IProductVideoRaw)=> v.product.name}`,
+    ],
+  ],
   [
     'product',
     [
