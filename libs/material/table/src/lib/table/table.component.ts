@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { slideInDownOnEnterAnimation } from 'angular-animations';
+import { TableRow } from '../common';
+import { IID } from '@mdtx/common';
 @Component({
   selector: 'mdtx-table',
   standalone: true,
@@ -35,14 +37,17 @@ import { slideInDownOnEnterAnimation } from 'angular-animations';
     }),
   ],
 })
-export class TableComponent implements OnInit {
-  readonly firstColumns = ['first', 'second'];
-  readonly lastColumns = ['last'];
+export class TableComponent<T extends IID> implements OnInit {
+  readonly firstColumns: TableRow<any>[] = [
+    { name: 'first' },
+    { name: 'second' },
+  ];
+  readonly lastColumns: TableRow<any>[] = [{ name: 'last' }];
 
   readonly selectedItems = new Map();
 
-  @Input() columns!: string[];
-  @Input() displayedColumns!: string[];
+  @Input() columns!: TableRow<T>[];
+  @Input() displayedColumns!: TableRow<T>[];
   @Input() dataSource!: any[];
   @Input() conditionalColumn = 'id';
   @Output() selectionChange = new EventEmitter();

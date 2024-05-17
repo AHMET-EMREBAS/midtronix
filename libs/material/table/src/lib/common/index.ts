@@ -1,2 +1,2 @@
 // @index('./*', f => `export * from '${f.path}'`)
-export * from './row-option';
+export * from './table-row';
