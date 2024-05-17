@@ -1,15 +1,7 @@
 import { I<%- className %> } from '@mdtx/common';
-
-export const <%- constantName %>_COLUMNS: (keyof I<%- className %>)[] = [<%- fields %>];
-export const <%- constantName %>_DISPLAY_COLUMNS: (keyof I<%- className %>)[] = [<%- fields %>];
-export const <%- constantName %>_PAGE_SIZE = 500;
-
-
-
-import { ICategory } from '@mdtx/common';
 import { TableRow } from '@mdtx/material/table';
 
-export const <%- constantName %>_COLUMNS: TableRow<ICategory>[] = [
+export const <%- constantName %>_COLUMNS: TableRow<I<%- className %>>[] = [
   {name:'id'},
   <%- fields %>,
   { name: 'createdAt', label: 'Created At' },
@@ -17,12 +9,8 @@ export const <%- constantName %>_COLUMNS: TableRow<ICategory>[] = [
   { name: 'deletedAt', label: 'Deleted At' }
 ];
 
-export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<ICategory>[] = [
-   {name:'id'},
-   <%- fields %>,
-  { name: 'createdAt', label: 'Created At' },
-  { name: 'updatedAt', label: 'Updated At' },
-  { name: 'deletedAt', label: 'Deleted At' },
-];
+export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<I<%- className %>>[] = [ ...<%- constantName %>_COLUMNS ];
+
+
 
 export const <%- constantName %>_PAGE_SIZE = 4;
