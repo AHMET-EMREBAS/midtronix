@@ -30,16 +30,16 @@ const rns = [
   [
     'customer',
     [
-      __format('username'),
+      __format(['username']),
       `{name:'roles', map:(v:ICustomer)=>v.roles?.map(e=>e.name).join(',')}`,
-    ],
+    ].join(', '),
   ],
   ['department', __format(['name'])],
-  ['manufacturer', __format('name', 'description')],
+  ['manufacturer', __format(['name', 'description'])],
   [
     'message',
     [
-      __format('message'),
+      __format(['message']),
       `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
       `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
     ].join(','),
@@ -47,7 +47,7 @@ const rns = [
   [
     'notification',
     [
-      __format('message'),
+      __format(['message']),
       `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
       `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
     ].join(','),
@@ -74,7 +74,7 @@ const rns = [
   [
     'sku',
     [
-      __format('name', 'description'),
+      __format(['name', 'description']),
       `{name:'product', map:(v:ISku)=>v.product.name}`,
       `{name:'productUpc', map:(v:ISku)=>v.product.upc}`,
       `{name:'category', map:(v:ISku)=>v.product.category.name}`,
@@ -88,7 +88,7 @@ const rns = [
       `{name:'project', map:(v:ISprint)=>v.project?.name}`,
     ].join(','),
   ],
-  ['store', [__format(['name'])].join(',')],
+  ['store', __format(['name'])],
   [
     'task',
     [
@@ -117,8 +117,7 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITask)=>v.assignees?.map(e=>e.username).join(', ')
-  }`,
+      `{name:'assignees', map:(v:ITask)=> v.assignees?.map(e=>e.username).join(', ') }`,
     ].join(','),
   ],
   [
@@ -143,14 +142,14 @@ const rns = [
     ].join(','),
   ],
   ['user', `'username'`],
-  ['price-level', __format('name')],
+  ['price-level', __format(['name'])],
   [
     'price',
     [
       `{name:'name',map:(v:IPrice)=>v.sku.name}`,
       `{name:'description',map:(v:IPrice)=>v.sku.description}`,
       `{name:'barcode',map:(v:IPrice)=>v.sku.upc}`,
-      __format('price', 'cost'),
+      __format(['price', 'cost']),
     ].join(', '),
   ],
   [
@@ -160,8 +159,8 @@ const rns = [
       `{name:'description',map:(v:IPrice)=>v.sku?.description}`,
       `{name:'barcode', map:(v:IPrice)=>v.sku?.upc}`,
       `{name:'store', map:(v:IPrice)=>v.store?.name}`,
-      __format('quantity'),
-    ],
+      __format(['quantity']),
+    ].join(', '),
   ],
 ];
 
