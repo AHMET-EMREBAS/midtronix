@@ -1,0 +1,21 @@
+$borderColor: rgb(194, 194, 194);
+
+.chip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  max-width: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.chip-list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  flex-wrap: wrap;
+}
+
+mat-chip-option {
+  max-width: 150px;
+}

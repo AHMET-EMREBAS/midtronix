@@ -429,12 +429,12 @@
         },
         {
             "name": "IInputOption",
-            "id": "interface-IInputOption-61e6a629d1108dcb56af3629cc4911339f2df15bdcbd2ce06e0a0e7b99781dfc46d2dd83b25df5a0ee8e1b7ae1417f2a90700362d7ee3440bb09326bac8ccf4e",
+            "id": "interface-IInputOption-f7094e59ab8cac51d5381e70280fad150656b020549c753a84f38a5cfd665c2446d1fec413efdb7187d9e4927fc813107f85354369a937c06890a1edf365fa89",
             "file": "libs/material/core/src/lib/types/input-option.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface IInputOption {\r\n  id: number;\r\n  name: string;\r\n  icon?: string;\r\n}\r\n",
+            "sourceCode": "export interface IInputOption {\r\n  id: number;\r\n  name: string;\r\n  icon?: string;\r\n  items?: IInputOption[];\r\n}\r\n",
             "properties": [
                 {
                     "name": "icon",
@@ -453,6 +453,15 @@
                     "optional": false,
                     "description": "",
                     "line": 5
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IInputOption[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
                 },
                 {
                     "name": "name",
@@ -23638,12 +23647,12 @@
         },
         {
             "name": "ValidatorBuilder",
-            "id": "class-ValidatorBuilder-2bcd1b27c533bedb111bea24cf22a8b45b5da0c6abe63c9bbf785713f251e30d626974450850d628de475a5b17a35e3a34b3574201e36e1d5d1577ef5ffd1296",
+            "id": "class-ValidatorBuilder-330373afba30ae8b8b286d39e3213fd797de9e50476fcbc78126c0ef7561a959739b1279509de834d1800fd50a592e74bfb4ecdf6fad2b328820d4ea7518523b",
             "file": "libs/material/core/src/lib/form/validator-builder.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { AbstractControl, ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n  isIn,\r\n  isURL,\r\n  isDateString,\r\n  isNumber,\r\n  min,\r\n  minLength,\r\n  maxLength,\r\n  isNumberString,\r\n} from 'class-validator';\r\nimport { IFormBuilder } from './form-builder-interface';\r\n\r\nexport class ValidatorBuilder<T extends Record<string, any> = any> {\r\n  private readonly validatorList: ValidatorFn[] = [];\r\n  private parentInstance!: IFormBuilder<T>;\r\n  constructor(private readonly propertyName: keyof T) {\r\n    if (!propertyName) throw new Error('Property name is required!');\r\n  }\r\n  private __name() {\r\n    return this.propertyName?.toString();\r\n  }\r\n\r\n  setParent(parent: IFormBuilder<T>) {\r\n    this.parentInstance = parent;\r\n  }\r\n\r\n  done() {\r\n    return this.parentInstance;\r\n  }\r\n\r\n  add(propertyName: keyof T) {\r\n    if (!this.parentInstance) throw new Error('Parent is not set!');\r\n    return this.parentInstance.add(propertyName);\r\n  }\r\n\r\n  private push(fn: ValidatorFn) {\r\n    this.validatorList.push(fn);\r\n    return this;\r\n  }\r\n\r\n  required(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      c.value?.trim().length > 0\r\n        ? null\r\n        : { required: `${this.__name()} is required!` }\r\n    );\r\n  }\r\n\r\n  date(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isDateString(c.value)\r\n          ? null\r\n          : {\r\n              date: `${this.__name()} should be a valid date!`,\r\n            }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  range(start: number, end: number): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      const cValue = parseInt(c.value);\r\n      if (cValue) {\r\n        cValue >= start && cValue <= end\r\n          ? null\r\n          : {\r\n              range: `${this.__name()} should be in range of ${start} and ${end}`,\r\n            };\r\n      }\r\n\r\n      return null;\r\n    });\r\n  }\r\n\r\n  url(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isURL(c.value) ? null : { url: `${this.__name()} should be valid url!` }\r\n    );\r\n  }\r\n\r\n  shortText() {\r\n    this.minLength(1);\r\n    this.maxLength(60);\r\n    return this;\r\n  }\r\n\r\n  longText() {\r\n    this.maxLength(600);\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              minLength: `${this.__name()} should be longer than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              maxLength: `${this.__name()} should be shorter than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  min(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              min: `${this.__name()} should be more than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  max(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              max: `${this.__name()} should be less than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  email(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.__name()} should be a valid email!` }\r\n    );\r\n  }\r\n\r\n  password(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isStrongPassword(c.value)\r\n        ? null\r\n        : {\r\n            password: `${this.__name()} should be a strong password!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  ean(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      (isNumberString(c.value) || isNumber(c.value)) &&\r\n      minLength(c.value, 10) &&\r\n      maxLength(c.value, 13)\r\n        ? null\r\n        : { ean: `${this.__name()} should be a valid barcode!` }\r\n    );\r\n  }\r\n\r\n  phone(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isPhoneNumber(c.value)\r\n        ? null\r\n        : {\r\n            phone: `${this.__name()} should be a valid phone number!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  isIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? null\r\n          : { isIn: `${this.__name()} should be one of ${value}` }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  isNotIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? { isNotIn: `${this.__name()} should be none of ${value}` }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  build(): ValidatorFn[] {\r\n    return [...this.validatorList];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AbstractControl, ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n  isIn,\r\n  isURL,\r\n  isDateString,\r\n  isNumber,\r\n  min,\r\n  minLength,\r\n  maxLength,\r\n  isNumberString,\r\n} from 'class-validator';\r\nimport { IFormBuilder } from './form-builder-interface';\r\n\r\nexport class ValidatorBuilder<T extends Record<string, any> = any> {\r\n  private readonly validatorList: ValidatorFn[] = [];\r\n  private parentInstance!: IFormBuilder<T>;\r\n  constructor(private readonly propertyName: keyof T) {\r\n    if (!propertyName) throw new Error('Property name is required!');\r\n  }\r\n  private __name() {\r\n    return this.propertyName?.toString();\r\n  }\r\n\r\n  setParent(parent: IFormBuilder<T>) {\r\n    this.parentInstance = parent;\r\n  }\r\n\r\n  done() {\r\n    return this.parentInstance;\r\n  }\r\n\r\n  add(propertyName: keyof T) {\r\n    if (!this.parentInstance) throw new Error('Parent is not set!');\r\n    return this.parentInstance.add(propertyName);\r\n  }\r\n\r\n  private push(fn: ValidatorFn) {\r\n    this.validatorList.push(fn);\r\n    return this;\r\n  }\r\n\r\n  required(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      return c.value ? null : { required: `${this.__name()} is required!` };\r\n    });\r\n  }\r\n\r\n  date(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isDateString(c.value)\r\n          ? null\r\n          : {\r\n              date: `${this.__name()} should be a valid date!`,\r\n            }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  range(start: number, end: number): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      const cValue = parseInt(c.value);\r\n      if (cValue) {\r\n        cValue >= start && cValue <= end\r\n          ? null\r\n          : {\r\n              range: `${this.__name()} should be in range of ${start} and ${end}`,\r\n            };\r\n      }\r\n\r\n      return null;\r\n    });\r\n  }\r\n\r\n  url(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isURL(c.value) ? null : { url: `${this.__name()} should be valid url!` }\r\n    );\r\n  }\r\n\r\n  shortText() {\r\n    this.minLength(1);\r\n    this.maxLength(60);\r\n    return this;\r\n  }\r\n\r\n  longText() {\r\n    this.maxLength(600);\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              minLength: `${this.__name()} should be longer than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              maxLength: `${this.__name()} should be shorter than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  min(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              min: `${this.__name()} should be more than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  max(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              max: `${this.__name()} should be less than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  email(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.__name()} should be a valid email!` }\r\n    );\r\n  }\r\n\r\n  password(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isStrongPassword(c.value)\r\n        ? null\r\n        : {\r\n            password: `${this.__name()} should be a strong password!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  ean(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      (isNumberString(c.value) || isNumber(c.value)) &&\r\n      minLength(c.value, 10) &&\r\n      maxLength(c.value, 13)\r\n        ? null\r\n        : { ean: `${this.__name()} should be a valid barcode!` }\r\n    );\r\n  }\r\n\r\n  phone(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isPhoneNumber(c.value)\r\n        ? null\r\n        : {\r\n            phone: `${this.__name()} should be a valid phone number!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  isIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? null\r\n          : { isIn: `${this.__name()} should be one of ${value}` }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  isNotIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? { isNotIn: `${this.__name()} should be none of ${value}` }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  build(): ValidatorFn[] {\r\n    return [...this.validatorList];\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -23748,7 +23757,7 @@
                     "optional": false,
                     "returnType": "ValidatorFn[]",
                     "typeParameters": [],
-                    "line": 206,
+                    "line": 204,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23766,7 +23775,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 53,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23798,7 +23807,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 166,
+                    "line": 164,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23808,7 +23817,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 146,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23826,7 +23835,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 186,
+                    "line": 184,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23856,7 +23865,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 196,
+                    "line": 194,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23878,7 +23887,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 94,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23896,7 +23905,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 134,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23926,7 +23935,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 112,
+                    "line": 110,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23956,7 +23965,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 124,
+                    "line": 122,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23986,7 +23995,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 97,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24008,7 +24017,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 156,
+                    "line": 154,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24018,7 +24027,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 176,
+                    "line": 174,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24072,7 +24081,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24140,7 +24149,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 88,
+                    "line": 86,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24150,7 +24159,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 82,
+                    "line": 80,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -27704,7 +27713,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-86055c45bfa5baefee18c2d3c3abbc8a8f0101601679746dc2524cd3420acf543c43d0b5b654ad0589f96feade7d0807a5e0214919bc90acb11323e6d813f1d9",
+            "id": "component-InputAutocompleteComponent-74b4dba38653d3dbdc03e0c4d2612a7938fa7dcf7ba1aacb27ccdf13fae77cefe95903387e4d65a4a0183430864e89d58eca2ead6c2820be5de15c1505817c40",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27869,7 +27878,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -27913,7 +27922,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -27999,7 +28008,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    if (!this.options) throw new Error('Options is required!');\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(1000),\r\n      map((search: string) => {\r\n        if (typeof search === 'string' && this.options) {\r\n          const result = this.options.filter((option) => {\r\n            return option.name?.toLowerCase().includes(search?.toLowerCase());\r\n          });\r\n\r\n          if (result && result.length > 0)\r\n            this.inputControl.setValue(result[0]);\r\n\r\n          return result;\r\n        }\r\n        return this.options;\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option && option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option && option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    if (!this.options) throw new Error('Options is required!');\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(1000),\r\n      map((search: string) => {\r\n        if (\r\n          typeof search === 'string' &&\r\n          search.trim().length > 0 &&\r\n          this.options\r\n        ) {\r\n          const result = this.options.filter((option) => {\r\n            return option.name?.toLowerCase().includes(search?.toLowerCase());\r\n          });\r\n\r\n          if (result && result.length > 0)\r\n            this.inputControl.setValue(result[0]);\r\n\r\n          return result;\r\n        }\r\n        return this.options;\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option && option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option && option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28826,7 +28835,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28873,7 +28882,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28970,7 +28979,7 @@
             "extends": [
                 "InputAutocompleteComponent"
             ],
-            "templateData": "<div class=\"form-field\">\r\n  <h3> {{ label || inputName | titlecase }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"inputControl\"\r\n    [multiple]=\"multiple\"\r\n    [attr.data-testid]=\"testid()\"\r\n  >\r\n    @for (o of options; track o) {\r\n    <mat-chip-option>{{ o.name }}</mat-chip-option>\r\n\r\n    }\r\n  </mat-chip-listbox>\r\n</div>\r\n"
+            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label || inputName | titlecase }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"inputControl\"\r\n    [multiple]=\"multiple\"\r\n    [attr.data-testid]=\"testid()\"\r\n  >\r\n    @for (o of options; track o) {\r\n    <div class=\"chi-list-group\">\r\n      <mat-chip-option color=\"primary\" [value]=\"o\">\r\n        {{ o.name }}\r\n      </mat-chip-option>\r\n\r\n      @for(so of o.items; track so){\r\n      <div class=\"chip-list\">\r\n        <mat-chip-option color=\"accent\" [value]=\"so\">{{\r\n          so.name\r\n        }}</mat-chip-option>\r\n      </div>\r\n      }\r\n    </div>\r\n    }\r\n  </mat-chip-listbox>\r\n</div>\r\n"
         },
         {
             "name": "InputDateComponent",
@@ -30777,7 +30786,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -30824,7 +30833,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31927,7 +31936,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31974,7 +31983,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32635,7 +32644,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -32682,7 +32691,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36663,7 +36672,7 @@
         },
         {
             "name": "TableComponent",
-            "id": "component-TableComponent-18af1cf98ce884be12341f6bbbba824889c9cb05c084e5a54cfd3d2ce1c50b43856731d91557c6cf200795b7cd52f3241116255da33dd1b5cdfeeae7ba88e09a",
+            "id": "component-TableComponent-d897c01e759dc0f2038de7635f1f7e3ca1db0d712595c78a1d61b16f5c6687ab4b6d3d09fa7bcd950d5c427e20f4f405c1e641a07fc04233c19d80822a641fe0",
             "file": "libs/material/table/src/lib/table/table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36683,7 +36692,7 @@
                     "name": "columns",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 51,
+                    "line": 49,
                     "type": "TableRow<T>[]",
                     "decorators": []
                 },
@@ -36692,7 +36701,7 @@
                     "defaultValue": "'id'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 54,
+                    "line": 52,
                     "type": "string",
                     "decorators": []
                 },
@@ -36700,7 +36709,7 @@
                     "name": "dataSource",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 53,
+                    "line": 51,
                     "type": "any[]",
                     "decorators": []
                 },
@@ -36708,7 +36717,7 @@
                     "name": "displayedColumns",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 52,
+                    "line": 50,
                     "type": "TableRow<T>[]",
                     "decorators": []
                 }
@@ -36719,7 +36728,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 55,
+                    "line": 53,
                     "type": "EventEmitter"
                 }
             ],
@@ -36732,7 +36741,7 @@
                     "type": "TableRow<any>[]",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 42,
                     "modifierKind": [
                         148
                     ]
@@ -36745,7 +36754,7 @@
                     "type": "TableRow<any>[]",
                     "optional": false,
                     "description": "",
-                    "line": 47,
+                    "line": 46,
                     "modifierKind": [
                         148
                     ]
@@ -36758,7 +36767,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 49,
+                    "line": 47,
                     "modifierKind": [
                         148
                     ]
@@ -36778,7 +36787,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 118,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36806,7 +36815,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 120,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36822,12 +36831,22 @@
                     ]
                 },
                 {
+                    "name": "getDisplayedColumns",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 124,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "isAllSelected",
                     "args": [],
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 101,
+                    "line": 99,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -36837,7 +36856,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 108,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -36847,7 +36866,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 57,
+                    "line": 55,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -36864,7 +36883,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 88,
+                    "line": 86,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36898,7 +36917,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 79,
+                    "line": 77,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36961,7 +36980,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport {\r\n  MatCheckboxChange,\r\n  MatCheckboxModule,\r\n} from '@angular/material/checkbox';\r\n\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { slideInDownOnEnterAnimation } from 'angular-animations';\r\nimport { TableRow } from '../common';\r\nimport { IID } from '@mdtx/common';\r\n@Component({\r\n  selector: 'mdtx-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSortModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatCheckboxModule,\r\n    MatTableModule,\r\n    MatMenuModule,\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss',\r\n  animations: [\r\n    slideInDownOnEnterAnimation({\r\n      anchor: 'enter',\r\n      duration: 500,\r\n      delay: 400,\r\n      animateChildren: 'after',\r\n    }),\r\n  ],\r\n})\r\nexport class TableComponent<T extends Record<string, any> = any>\r\n  implements OnInit\r\n{\r\n  readonly firstColumns: TableRow<any>[] = [\r\n    { name: 'first' },\r\n    { name: 'second' },\r\n  ];\r\n  readonly lastColumns: TableRow<any>[] = [{ name: 'last' }];\r\n\r\n  readonly selectedItems = new Map();\r\n\r\n  @Input() columns!: TableRow<T>[];\r\n  @Input() displayedColumns!: TableRow<T>[];\r\n  @Input() dataSource!: any[];\r\n  @Input() conditionalColumn = 'id';\r\n  @Output() selectionChange = new EventEmitter();\r\n\r\n  ngOnInit(): void {\r\n    if (this.columns) {\r\n      if (!this.displayedColumns) {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.columns,\r\n          ...this.lastColumns,\r\n        ];\r\n      } else {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.displayedColumns,\r\n          ...this.lastColumns,\r\n        ];\r\n      }\r\n    }\r\n\r\n    if (!this.dataSource) {\r\n      this.dataSource = [];\r\n    }\r\n  }\r\n\r\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\r\n    if (event.checked) {\r\n      this.selectedItems.set(item.id, item);\r\n    } else {\r\n      this.selectedItems.delete(item.id);\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  selectAll(event: Partial<MatCheckboxChange>) {\r\n    if (event.checked) {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    } else {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  isAllSelected() {\r\n    for (const a of this.dataSource) {\r\n      if (!this.selectedItems.get(a.id)) {\r\n        return false;\r\n      }\r\n    }\r\n    return true;\r\n  }\r\n\r\n  isPartialSelected() {\r\n    if (this.isAllSelected()) {\r\n      return false;\r\n    }\r\n\r\n    return this.selectedItems.size > 0;\r\n  }\r\n\r\n  colMetCondition(row: any) {\r\n    return row[this.conditionalColumn] == true;\r\n  }\r\n\r\n  colNotMetContion(row: any) {\r\n    return row[this.conditionalColumn] == false;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport {\r\n  MatCheckboxChange,\r\n  MatCheckboxModule,\r\n} from '@angular/material/checkbox';\r\n\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { slideInDownOnEnterAnimation } from 'angular-animations';\r\nimport { TableRow } from '../common';\r\n@Component({\r\n  selector: 'mdtx-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSortModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatCheckboxModule,\r\n    MatTableModule,\r\n    MatMenuModule,\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss',\r\n  animations: [\r\n    slideInDownOnEnterAnimation({\r\n      anchor: 'enter',\r\n      duration: 500,\r\n      delay: 400,\r\n      animateChildren: 'after',\r\n    }),\r\n  ],\r\n})\r\nexport class TableComponent<T extends Record<string, any> = any>\r\n  implements OnInit\r\n{\r\n  readonly firstColumns: TableRow<any>[] = [\r\n    { name: 'first' },\r\n    { name: 'second' },\r\n  ];\r\n  readonly lastColumns: TableRow<any>[] = [{ name: 'last' }];\r\n  readonly selectedItems = new Map();\r\n\r\n  @Input() columns!: TableRow<T>[];\r\n  @Input() displayedColumns!: TableRow<T>[];\r\n  @Input() dataSource!: any[];\r\n  @Input() conditionalColumn = 'id';\r\n  @Output() selectionChange = new EventEmitter();\r\n\r\n  ngOnInit(): void {\r\n    if (this.columns) {\r\n      if (!this.displayedColumns) {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.columns,\r\n          ...this.lastColumns,\r\n        ];\r\n      } else {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.displayedColumns,\r\n          ...this.lastColumns,\r\n        ];\r\n      }\r\n    }\r\n\r\n    if (!this.dataSource) {\r\n      this.dataSource = [];\r\n    }\r\n  }\r\n\r\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\r\n    if (event.checked) {\r\n      this.selectedItems.set(item.id, item);\r\n    } else {\r\n      this.selectedItems.delete(item.id);\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  selectAll(event: Partial<MatCheckboxChange>) {\r\n    if (event.checked) {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    } else {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  isAllSelected() {\r\n    for (const a of this.dataSource) {\r\n      if (!this.selectedItems.get(a.id)) {\r\n        return false;\r\n      }\r\n    }\r\n    return true;\r\n  }\r\n\r\n  isPartialSelected() {\r\n    if (this.isAllSelected()) {\r\n      return false;\r\n    }\r\n\r\n    return this.selectedItems.size > 0;\r\n  }\r\n\r\n  colMetCondition(row: any) {\r\n    return row[this.conditionalColumn] == true;\r\n  }\r\n\r\n  colNotMetContion(row: any) {\r\n    return row[this.conditionalColumn] == false;\r\n  }\r\n\r\n  getDisplayedColumns() {\r\n    return this.displayedColumns.map((e) => e.name);\r\n  }\r\n}\r\n",
             "styleUrl": "./table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -36970,7 +36989,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n          [attr.data-testid]=\"'select-all'\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n          [attr.data-testid]=\"'select-' + row.id\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col.name\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ row[col.name] }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr mat-header-row *matHeaderRowDef=\"displayedColumns; sticky: true\"></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n  </table>\r\n</div>\r\n"
+            "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n          [attr.data-testid]=\"'select-all'\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n          [attr.data-testid]=\"'select-' + row.id\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col.name\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col.label || col.name }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ col.prefix || '' }} {{ col.map ? col.map(row) : row[col.name] }}\r\n        {{ col.suffix || '' }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr\r\n      mat-header-row\r\n      *matHeaderRowDef=\"getDisplayedColumns(); sticky: true\"\r\n    ></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: getDisplayedColumns()\"></tr>\r\n  </table>\r\n</div>\r\n"
         },
         {
             "name": "TemplateOutletComponent",
@@ -38633,7 +38652,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n    multiple: false,\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -38903,7 +38922,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    columns: [{ name: 'id' }, { name: 'name' }],\r\n    displayedColumns: [{ name: 'id' }, { name: 'name' }],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1' },\r\n      { id: 2, name: 'item 2' },\r\n      { id: 3, name: 'item 3' },\r\n      { id: 4, name: 'item 4' },\r\n      { id: 5, name: 'item 5' },\r\n      { id: 6, name: 'item 6' },\r\n      { id: 7, name: 'item 7' },\r\n      { id: 8, name: 'item 8' },\r\n      { id: 9, name: 'item 9' },\r\n      { id: 10, name: 'item 10' },\r\n    ],\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    columns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    displayedColumns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1', category: { name: 'Cat 1' } },\r\n      { id: 2, name: 'item 2', category: { name: 'Cat 2' } },\r\n      { id: 3, name: 'item 3', category: { name: 'Cat 3' } },\r\n      { id: 4, name: 'item 4', category: { name: 'Cat 4' } },\r\n      { id: 5, name: 'item 5', category: { name: 'Cat 5' } },\r\n      { id: 6, name: 'item 6', category: { name: 'Cat 6' } },\r\n      { id: 7, name: 'item 7', category: { name: 'Cat 7' } },\r\n      { id: 8, name: 'item 8', category: { name: 'Cat 8' } },\r\n      { id: 9, name: 'item 9', category: { name: 'Cat 9' } },\r\n      { id: 10, name: 'item 10', category: { name: 'Cat 10' } },\r\n    ],\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -40724,7 +40743,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      { id: 1, name: 'Option 1' },\r\n      { id: 2, name: 'Option 2' },\r\n      { id: 3, name: 'Option 3' },\r\n      { id: 4, name: 'Option 4' },\r\n    ],\r\n    multiple: false,\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
@@ -41428,7 +41447,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    columns: [{ name: 'id' }, { name: 'name' }],\r\n    displayedColumns: [{ name: 'id' }, { name: 'name' }],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1' },\r\n      { id: 2, name: 'item 2' },\r\n      { id: 3, name: 'item 3' },\r\n      { id: 4, name: 'item 4' },\r\n      { id: 5, name: 'item 5' },\r\n      { id: 6, name: 'item 6' },\r\n      { id: 7, name: 'item 7' },\r\n      { id: 8, name: 'item 8' },\r\n      { id: 9, name: 'item 9' },\r\n      { id: 10, name: 'item 10' },\r\n    ],\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    columns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    displayedColumns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1', category: { name: 'Cat 1' } },\r\n      { id: 2, name: 'item 2', category: { name: 'Cat 2' } },\r\n      { id: 3, name: 'item 3', category: { name: 'Cat 3' } },\r\n      { id: 4, name: 'item 4', category: { name: 'Cat 4' } },\r\n      { id: 5, name: 'item 5', category: { name: 'Cat 5' } },\r\n      { id: 6, name: 'item 6', category: { name: 'Cat 6' } },\r\n      { id: 7, name: 'item 7', category: { name: 'Cat 7' } },\r\n      { id: 8, name: 'item 8', category: { name: 'Cat 8' } },\r\n      { id: 9, name: 'item 9', category: { name: 'Cat 9' } },\r\n      { id: 10, name: 'item 10', category: { name: 'Cat 10' } },\r\n    ],\r\n  },\r\n}"
                 }
             ],
             "libs/material/toolbar/src/lib/sidebar/sidebar.component.stories.ts": [
@@ -43074,8 +43093,8 @@
                 "type": "interface",
                 "linktype": "interface",
                 "name": "IInputOption",
-                "coveragePercent": 25,
-                "coverageCount": "1/4",
+                "coveragePercent": 20,
+                "coverageCount": "1/5",
                 "status": "low"
             },
             {
@@ -45046,7 +45065,7 @@
                 "linktype": "component",
                 "name": "TableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {

@@ -1,14 +1,31 @@
 <div class="form-field">
-  <h3> {{ label || inputName | titlecase }}</h3>
+  <h3>{{ label || inputName | titlecase }}</h3>
   <mat-chip-listbox
     class="mat-mdc-chip-set-stacked"
     [formControl]="inputControl"
     [multiple]="multiple"
     [attr.data-testid]="testid()"
   >
-    @for (o of options; track o) {
-    <mat-chip-option>{{ o.name }}</mat-chip-option>
+    <div style="display: flex; flex-direction: row; gap: 2em">
+      @for (o of options; track o) {
+      <div class="chip-list-group">
+        @if(o.items){
 
-    }
+        <h4 style="text-align: center">{{ o.name }}</h4>
+        @for(so of o.items; track so){
+        <div class="chip-list">
+          <mat-chip-option #sub color="accent" [value]="so">
+            {{ so.name }}
+          </mat-chip-option>
+        </div>
+        } } @else {
+        <mat-chip-option #main color="primary" [value]="o">
+          {{ o.name }}
+        </mat-chip-option>
+        }
+      </div>
+      }
+    </div>
   </mat-chip-listbox>
 </div>
+{{ inputControl.value | json }}

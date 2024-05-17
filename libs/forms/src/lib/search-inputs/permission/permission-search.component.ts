@@ -17,14 +17,15 @@ import { FormControl } from '@angular/forms';
     InputChipSelectComponent,
   ],
   template: `
-    <mdtx-input-autocomplete
+    <mdtx-input-chip-select
       *ngIf="service.asOptions$ | async as options"
       [options]="options"
       inputName="permissions"
       label="Search Permissions"
       prefixIcon="search"
       [inputControl]="inputControl"
-    ></mdtx-input-autocomplete>
+      [multiple]="true"
+    ></mdtx-input-chip-select>
   `,
   providers: [PermissionService],
 })
