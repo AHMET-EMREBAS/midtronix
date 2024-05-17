@@ -3,3 +3,24 @@ import { I<%- className %> } from '@mdtx/common';
 export const <%- constantName %>_COLUMNS: (keyof I<%- className %>)[] = [<%- fields %>];
 export const <%- constantName %>_DISPLAY_COLUMNS: (keyof I<%- className %>)[] = [<%- fields %>];
 export const <%- constantName %>_PAGE_SIZE = 500;
+
+
+
+import { ICategory } from '@mdtx/common';
+import { TableRow } from '@mdtx/material/table';
+
+export const <%- constantName %>_COLUMNS: TableRow<ICategory>[] = [
+  <%- fields %>,
+  { name: 'createdAt', label: 'Created At' },
+  { name: 'updatedAt', label: 'Updated At' },
+  { name: 'deletedAt', label: 'Deleted At' }
+];
+
+export const <%- constantName %>_DISPLAY_COLUMNS: TableRow<ICategory>[] = [
+   <%- fields %>,
+  { name: 'createdAt', label: 'Created At' },
+  { name: 'updatedAt', label: 'Updated At' },
+  { name: 'deletedAt', label: 'Deleted At' },
+];
+
+export const <%- constantName %>_PAGE_SIZE = 4;

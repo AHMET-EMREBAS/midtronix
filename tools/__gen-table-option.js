@@ -1,39 +1,168 @@
 const { execSync } = require('child_process');
 
+function __format(fields = []) {
+  return fields.map((e) => `{ name: '${e}' }`).join(',');
+}
+
 const rns = [
-  ['category', `'id','name'`],
-  ['customer-address', `'id','street','city','state','country','zip'`],
-  ['customer-email', '`id`,`email`'],
-  ['customer-phone', `'id','phone'`],
-  ['customer', `'id','username'`],
-  ['department', `'id','name'`],
-  ['manufacturer', `'id','name','description'`],
-  ['message', `'id','message'`],
-  ['notification', `'id','message'`],
-  ['permission', `'id','name'`],
-  ['product-image', `'id','name','url'`],
-  ['product-video', `'id','name','url'`],
-  ['product', `'id','name','description','upc'`],
-  ['project', `'id','name','description'`],
-  ['role', `'id','name'`],
-  ['sku', `'id','name','description','upc'`],
-  ['sprint', `'id','name'`],
-  ['store', `'id','name'`],
+  ['category', __format(['name'])],
+  [
+    'customer-address',
+    [
+      __format(['street', 'city', 'state', 'country', 'zip']),
+      `{name:'owner', map:(v:ICustomerAddress)=>v.owner.username}`,
+    ].join(', '),
+  ],
+  [
+    'customer-email',
+    [
+      __format(['email']),
+      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username }`,
+    ].join(','),
+  ],
+  [
+    'customer-phone',
+    [
+      __format(['phone']),
+      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username}`,
+    ].join(','),
+  ],
+  [
+    'customer',
+    [
+      __format('username'),
+      `{name:'roles', map:(v:ICustomer)=>v.roles?.map(e=>e.name).join(',')}`,
+    ],
+  ],
+  ['department', __format(['name'])],
+  ['manufacturer', __format('name', 'description')],
+  [
+    'message',
+    [
+      __format('message'),
+      `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
+      `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
+    ].join(','),
+  ],
+  [
+    'notification',
+    [
+      __format('message'),
+      `{name:'source', label:"From", map:(v:IMessage)=>v.source?.username}`,
+      `{name:'target', label:"To", map:(v:IMessage)=>v.target?.username}`,
+    ].join(','),
+  ],
+  ['permission', __format(['name'])],
+  ['product-image', [__format(['name', 'url'])]],
+  ['product-video', [__format(['name', 'url'])]],
+  [
+    'product',
+    [
+      __format(['name', 'description']),
+      `{name:'category', label:"category", map: (v:IProduct)=>v.category.name }`,
+      `{name:'department', label:"department", map: (v:IProduct)=>v.department.name }`,
+    ].join(','),
+  ],
+  ['project', __format(['name', 'description'])],
+  [
+    'role',
+    [
+      __format(['name']),
+      `{name:'permissions', map:(e:IRole)=>e.permissions?.map(e=>e.name).join(', ')}`,
+    ].join(','),
+  ],
+  [
+    'sku',
+    [
+      __format('name', 'description'),
+      `{name:'product', map:(v:ISku)=>v.product.name}`,
+      `{name:'productUpc', map:(v:ISku)=>v.product.upc}`,
+      `{name:'category', map:(v:ISku)=>v.product.category.name}`,
+      `{name:'department', map:(v:ISku)=>v.product.department.name}`,
+    ].join(', '),
+  ],
+  [
+    'sprint',
+    [
+      __format(['name']),
+      `{name:'project', map:(v:ISprint)=>v.project?.name}`,
+    ].join(','),
+  ],
+  ['store', [__format(['name'])].join(',')],
   [
     'task',
-    `'id','name','description','due','startDate','finishDate','difficulty','status'`,
+    [
+      __format([
+        'name',
+        'description',
+        'due',
+        'startDate',
+        'finishDate',
+        'difficulty',
+        'status',
+      ]),
+      `{name:'assignees', map:(v:ITask)=>v.assignees?.map(e=>e.username).join(', ')
+  }`,
+    ].join(','),
   ],
   [
     'ticket',
-    `'id','name','description','due','startDate','finishDate','difficulty','status'`,
+    [
+      __format([
+        'name',
+        'description',
+        'due',
+        'startDate',
+        'finishDate',
+        'difficulty',
+        'status',
+      ]),
+      `{name:'assignees', map:(v:ITask)=>v.assignees?.map(e=>e.username).join(', ')
+  }`,
+    ].join(','),
   ],
-  ['user-address', `'id','street','city','state','country','zip'`],
-  ['user-email', `'id','email'`],
-  ['user-phone', `'id','phone'`],
-  ['user', `'id','username'`],
-  ['price-level', `'id', 'name'`],
-  ['price', `'id', 'price', 'cost'`],
-  ['quantity', `'id', 'quantity'`],
+  [
+    'user-address',
+    [
+      __format(['street', 'city', 'state', 'country', 'zip']),
+      `{name:'owner', map:(v:ICustomerAddress)=>v.owner.username}`,
+    ].join(', '),
+  ],
+  [
+    'user-email',
+    [
+      __format(['email']),
+      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username }`,
+    ].join(','),
+  ],
+  [
+    'user-phone',
+    [
+      __format(['phone']),
+      `{name: 'customer', map:(v:ICustomerEmail)=>v.owner.username}`,
+    ].join(','),
+  ],
+  ['user', `'username'`],
+  ['price-level', __format('name')],
+  [
+    'price',
+    [
+      `{name:'name',map:(v:IPrice)=>v.sku.name}`,
+      `{name:'description',map:(v:IPrice)=>v.sku.description}`,
+      `{name:'barcode',map:(v:IPrice)=>v.sku.upc}`,
+      __format('price', 'cost'),
+    ].join(', '),
+  ],
+  [
+    'quantity',
+    [
+      `{name:'name',map:(v:IPrice)=>v.sku.name}`,
+      `{name:'description',map:(v:IPrice)=>v.sku?.description}`,
+      `{name:'barcode', map:(v:IPrice)=>v.sku?.upc}`,
+      `{name:'store', map:(v:IPrice)=>v.store?.name}`,
+      __format('quantity'),
+    ],
+  ],
 ];
 
 for (const [r, f] of rns) {

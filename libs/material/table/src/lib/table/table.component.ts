@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { slideInDownOnEnterAnimation } from 'angular-animations';
 import { TableRow } from '../common';
-import { IID } from '@mdtx/common';
 @Component({
   selector: 'mdtx-table',
   standalone: true,
@@ -37,13 +36,14 @@ import { IID } from '@mdtx/common';
     }),
   ],
 })
-export class TableComponent<T extends IID> implements OnInit {
+export class TableComponent<T extends Record<string, any> = any>
+  implements OnInit
+{
   readonly firstColumns: TableRow<any>[] = [
     { name: 'first' },
     { name: 'second' },
   ];
   readonly lastColumns: TableRow<any>[] = [{ name: 'last' }];
-
   readonly selectedItems = new Map();
 
   @Input() columns!: TableRow<T>[];
@@ -119,5 +119,9 @@ export class TableComponent<T extends IID> implements OnInit {
 
   colNotMetContion(row: any) {
     return row[this.conditionalColumn] == false;
+  }
+
+  getDisplayedColumns() {
+    return this.displayedColumns.map((e) => e.name);
   }
 }

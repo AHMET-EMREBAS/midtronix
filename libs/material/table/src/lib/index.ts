@@ -1,1 +1,3 @@
-export * from './table/table.component';
+// @index('./*', f => `export * from '${f.path}'`)
+export * from './common';
+export * from './table';
