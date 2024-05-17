@@ -3,7 +3,11 @@ import { TableRow } from '@mdtx/material/table';
 
 export const USER_COLUMNS: TableRow<IUserRaw>[] = [
   { name: 'id' },
-  'username',
+  { name: 'username' },
+  {
+    name: 'roles',
+    map: (v: IUserRaw) => v.roles?.map((e) => e.name).join(','),
+  },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
   { name: 'deletedAt', label: 'Deleted At' },

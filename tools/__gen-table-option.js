@@ -10,21 +10,21 @@ const rns = [
     'customer-address',
     [
       __format(['street', 'city', 'state', 'country', 'zip']),
-      `{name:'owner', map:(v:ICustomerAddressRaw)=>v.owner.username}`,
+      `{ name:'owner', map:(v:ICustomerAddressRaw)=>v.owner?.username}`,
     ].join(', '),
   ],
   [
     'customer-email',
     [
       __format(['email']),
-      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
+      `{name: 'owner', map:(v:ICustomerEmailRaw)=>v.owner?.username }`,
     ].join(','),
   ],
   [
     'customer-phone',
     [
       __format(['phone']),
-      `{name: 'owner', map:(v:ICustomerPhoneRaw)=>v.owner.username}`,
+      `{name: 'owner', map:(v:ICustomerPhoneRaw)=>v.owner?.username}`,
     ].join(','),
   ],
   [
@@ -57,14 +57,14 @@ const rns = [
     'product-image',
     [
       __format(['name', 'url']),
-      `{ name:'product', map:(v:IProductImageRaw)=> v.owner.name}`,
+      `{ name:'product', map:(v:IProductImageRaw)=> v.owner?.name}`,
     ],
   ],
   [
     'product-video',
     [
       __format(['name', 'url']),
-      `{ name:'product', map:(v:IProductVideoRaw)=> v.owner.name}`,
+      `{ name:'product', map:(v:IProductVideoRaw)=> v.owner?.name}`,
     ],
   ],
   [
@@ -87,17 +87,17 @@ const rns = [
     'sku',
     [
       __format(['name', 'description']),
-      `{name:'product', map:(v:ISkuRaw)=>v.product.name}`,
-      `{name:'productUpc', map:(v:ISkuRaw)=>v.product.upc}`,
-      `{name:'category', map:(v:ISkuRaw)=>v.product.category.name}`,
-      `{name:'department', map:(v:ISkuRaw)=>v.product.department.name}`,
+      `{name:'product', map:(v:ISkuRaw)=>v.product?.name}`,
+      `{name:'productUpc', map:(v:ISkuRaw)=>v.product?.upc}`,
+      `{name:'category', map:(v:ISkuRaw)=>v.product?.category?.name}`,
+      `{name:'department', map:(v:ISkuRaw)=>v.product?.department?.name}`,
     ].join(', '),
   ],
   [
     'sprint',
     [
       __format(['name']),
-      `{name:'project', map:(v:ISprintRaw)=>v.project?.name }`,
+      `{ name:'project', map:(v:ISprintRaw)=>v.project?.name }`,
     ].join(','),
   ],
   ['store', __format(['name'])],
@@ -113,7 +113,7 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITaskRaw)=>v.assignees?.map(e=>e.username).join(', ') }`,
+      `{ name: 'assignees', map:(v:ITaskRaw)=>v.assignees?.map(e=>e.username).join(', ') }`,
     ].join(','),
   ],
   [
@@ -128,28 +128,28 @@ const rns = [
         'difficulty',
         'status',
       ]),
-      `{name:'assignees', map:(v:ITaskRaw)=> v.assignees?.map(e=>e.username).join(', ') }`,
+      `{ name: 'assignees', map:(v:ITicketRaw)=> v.assignees?.map(e=>e.username).join(', ') }`,
     ].join(','),
   ],
   [
     'user-address',
     [
       __format(['street', 'city', 'state', 'country', 'zip']),
-      `{name:'owner', map:(v:ICustomerAddressRaw)=>v.owner.username}`,
+      `{ name:'owner', map:(v:IUserAddressRaw)=>v.owner?.username}`,
     ].join(', '),
   ],
   [
     'user-email',
     [
       __format(['email']),
-      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username }`,
+      `{name: 'owner', map:(v:IUserEmailRaw)=>v.owner?.username }`,
     ].join(','),
   ],
   [
     'user-phone',
     [
       __format(['phone']),
-      `{name: 'customer', map:(v:ICustomerEmailRaw)=>v.owner.username}`,
+      `{name: 'owner', map:(v:IUserPhoneRaw)=>v.owner?.username}`,
     ].join(','),
   ],
   [

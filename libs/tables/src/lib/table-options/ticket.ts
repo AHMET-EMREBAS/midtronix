@@ -12,7 +12,7 @@ export const TICKET_COLUMNS: TableRow<ITicketRaw>[] = [
   { name: 'status' },
   {
     name: 'assignees',
-    map: (v: ITaskRaw) => v.assignees?.map((e) => e.username).join(', '),
+    map: (v: ITicketRaw) => v.assignees?.map((e) => e.username).join(', '),
   },
   { name: 'createdAt', label: 'Created At' },
   { name: 'updatedAt', label: 'Updated At' },
