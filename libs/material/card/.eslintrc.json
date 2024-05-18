@@ -3,6 +3,12 @@
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nx/enforce-module-boundaries": []
+      }
+    },
+    {
       "files": ["*.ts"],
       "extends": [
         "plugin:@nx/angular",
