@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +21,9 @@ import { InputFilterDirective } from '@mdtx/material/core';
 })
 export class InputQuantityComponent {
   readonly inputFilter = /[0-9]/;
-
   readonly inputValueFilter = /^[1-9]\d{0,3}$/;
-  layoutDirection: 'horizontal' | 'verticle' = 'verticle';
+
+  @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';
   value = 0;
 
   @Output() quantityValueChange = new EventEmitter<number>();
