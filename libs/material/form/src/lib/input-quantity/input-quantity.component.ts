@@ -23,7 +23,7 @@ export class InputQuantityComponent {
   readonly inputFilter = /[0-9]/;
 
   readonly inputValueFilter = /^[1-9]\d{0,3}$/;
-  layoutDirection: 'horizontal' | 'verticle' = 'horizontal';
+  layoutDirection: 'horizontal' | 'verticle' = 'verticle';
   value = 0;
 
   @Output() quantityValueChange = new EventEmitter<number>();
