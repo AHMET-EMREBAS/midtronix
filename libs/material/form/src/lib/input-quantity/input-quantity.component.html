@@ -1,9 +1,5 @@
 <div [class]="layoutDirection">
-  <button
-    mat-icon-button
-    style="background-color: crimson; color: white"
-    (click)="descrement()"
-  >
+  <button mat-mini-fab color="accent" (click)="descrement()">
     <mat-icon class="fill">remove</mat-icon>
   </button>
   <input
@@ -14,11 +10,7 @@
     [(ngModel)]="value"
   />
 
-  <button
-    mat-icon-button
-    style="background-color: greenyellow; color: black"
-    (click)="increment()"
-  >
+  <button mat-mini-fab color="primary" (click)="increment()">
     <mat-icon class="fill">add</mat-icon>
   </button>
 </div>

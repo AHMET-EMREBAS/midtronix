@@ -9,7 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { catchError, debounceTime, forkJoin, of, switchMap, tap } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
-
+import { CardAvatarComponent } from '@mdtx/material/card';
+import { InputQuantityComponent } from '@mdtx/material/form';
 import {
   StoreSearchComponent,
   PriceLevelSearchComponent,
@@ -30,6 +31,8 @@ import {
     StoreSearchComponent,
     PriceLevelSearchComponent,
     SkuSearchComponent,
+    CardAvatarComponent,
+    InputQuantityComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
@@ -53,9 +56,7 @@ export class PosComponent {
           tap((data: ISkuViewRaw) => {
             const found = this.__items.get(data.barcode);
             if (found) {
-              const quantity = ++found.quantity;
-              const total = quantity * data.price;
-              this.setItemToCart({ ...data, quantity, total });
+              this.updateQuantity(found.quantity + 1, found);
             } else {
               this.setItemToCart({
                 ...data,
@@ -103,7 +104,7 @@ export class PosComponent {
 
   constructor(protected readonly httpClient: HttpClient) {}
 
-  getItems() {
+  getItems(): ISkuViewRaw[] {
     return [...this.__items.entries()].map(([, value]) => value);
   }
 
@@ -124,16 +125,19 @@ export class PosComponent {
   }
 
   getTotal() {
-    const items = this.getItems();
+    const items = this.getItems().filter((e) => e.total);
+    if (items.length == 0) return 0.0;
 
-    if (items.length == 0) {
-      return 0.0;
-    }
     return items
-      .filter((e) => e.total)
       .map((e) => e.total ?? 0)
       .reduce((p, c) => {
         return p + c;
       });
+  }
+
+  updateQuantity(quantity: number, data: ISkuViewRaw) {
+    console.log('Uupdating value');
+    const total = quantity * data.price;
+    this.setItemToCart({ ...data, quantity, total });
   }
 }

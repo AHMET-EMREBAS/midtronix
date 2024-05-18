@@ -24,22 +24,24 @@ export class InputQuantityComponent {
   readonly inputValueFilter = /^[1-9]\d{0,3}$/;
 
   @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';
-  
-  value = 0;
+
+  @Input() value = 0;
 
   @Output() quantityValueChange = new EventEmitter<number>();
 
-  changeHandler() {
+  emitChange() {
     this.quantityValueChange.emit(this.value);
   }
 
   increment() {
     this.value++;
+    this.emitChange();
   }
 
   descrement() {
     if (this.value > 0) {
       this.value--;
+      this.emitChange();
     }
   }
 }

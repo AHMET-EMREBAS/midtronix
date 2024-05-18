@@ -13,3 +13,18 @@ mdtx-price-level-search {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+.order-item {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
