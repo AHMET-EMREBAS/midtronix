@@ -2,6 +2,7 @@
 import {
   DeepPartial,
   Equal,
+  FindOneOptions,
   FindOptionsWhere,
   ILike,
   Repository,
@@ -64,6 +65,10 @@ export class RepositoryService<T extends IID> {
       select: select as any,
       where: this.__where(search),
     });
+  }
+
+  async findOne(options: FindOneOptions<T>) {
+    return this.repository.findOne(options);
   }
 
   async findOneById(id: T['id']) {

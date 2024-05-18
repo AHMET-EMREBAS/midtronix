@@ -9,6 +9,8 @@ import {
 } from './../__external';
 import { RelationOptions } from 'typeorm';
 
+export { FindOperator, Equal, Like, ILike, MoreThan, LessThan } from 'typeorm';
+
 export function OneRelation<T extends IID>(target: Type<T>) {
   return applyDecorators(
     ManyToOne(

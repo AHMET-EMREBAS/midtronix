@@ -11,6 +11,6 @@ export interface ISkuView {
   storeName: string;
   category: string;
   department: string;
-  pid: number;
-  pupc: string;
+  productId: number;
+  productUpc: string;
 }

@@ -119,7 +119,7 @@ export class PriceView implements IPriceView {
       .addSelect('qv.storeName', 'storeName')
       .addSelect('p.category', 'category')
       .addSelect('p.department', 'department')
-      .addSelect('p.id', 'pid')
+      .addSelect('p.id', 'productId')
       .addSelect('p.upc', 'pupc')
       .from(Sku, 'm')
       .leftJoin(ProductView, 'p', 'p.id = m.productId')
@@ -140,6 +140,6 @@ export class SkuView implements ISkuView {
   @ViewColumn() storeName!: string;
   @ViewColumn() category!: string;
   @ViewColumn() department!: string;
-  @ViewColumn() pid!: number;
-  @ViewColumn() pupc!: string;
+  @ViewColumn() productId!: number;
+  @ViewColumn() productUpc!: string;
 }

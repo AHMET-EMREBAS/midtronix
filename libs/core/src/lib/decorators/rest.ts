@@ -84,10 +84,19 @@ export class RestRouteBuilder {
     );
   }
 
+  FindOne() {
+    return applyDecorators(
+      Get(this.AP.SINGULAR_PATH),
+      ApiOperation({ summary: `Find one ${this.className} by query` }),
+      ApiOkResponse({ description: 'Success' }),
+      this.RP.CanRead(),
+      this.__common()
+    );
+  }
+
   SaveOne() {
     return applyDecorators(
       Post(this.AP.SINGULAR_PATH),
-      this.__common(),
       ApiOperation({ summary: `Save one ${this.className} ` }),
       ApiCreatedResponse({ description: 'Success' }),
       this.RP.CanWrite(),

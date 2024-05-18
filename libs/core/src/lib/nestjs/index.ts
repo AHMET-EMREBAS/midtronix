@@ -15,6 +15,9 @@ export {
   Delete,
   Put,
   Type,
+  UnprocessableEntityException,
+  NotFoundException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 export { Exclude } from 'class-transformer';
 export { ApiTags, SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
