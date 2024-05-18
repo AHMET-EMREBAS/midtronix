@@ -28653,7 +28653,7 @@
         },
         {
             "name": "InputChipSelectComponent",
-            "id": "component-InputChipSelectComponent-45fbeca9c4317fde1b615ca05d34b97b1460b5e0fab767f44f5520797f0e81fcffe1f72b86335207aa676667965b496f06054f1f3ecd25701794620acb4c46ae",
+            "id": "component-InputChipSelectComponent-0e09b5d235ddc2710e786aeb66f62d7ccf19a703f40de0b347e23ef3e1833c5d9ad69f631f69eb95c00f9f4fd806ad35dc049ee4693d6607318756aed9fc69d5",
             "file": "libs/material/form/src/lib/input-chip-select/input-chip-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28673,7 +28673,7 @@
                     "name": "multiple",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -28971,7 +28971,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatChipsModule } from '@angular/material/chips';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-chip-select',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-chip-select.component.html',\r\n  styleUrl: './input-chip-select.component.scss',\r\n})\r\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\r\n  @Input() multiple?: boolean;\r\n}\r\n",
+            "sourceCode": "import { Component, Input, InputOptions } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { IInputOption } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-chip-select',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-chip-select.component.html',\r\n  styleUrl: './input-chip-select.component.scss',\r\n})\r\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\r\n  @Input() multiple?: boolean;\r\n\r\n}\r\n",
             "styleUrl": "./input-chip-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28979,7 +28979,7 @@
             "extends": [
                 "InputAutocompleteComponent"
             ],
-            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label || inputName | titlecase }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"inputControl\"\r\n    [multiple]=\"multiple\"\r\n    [attr.data-testid]=\"testid()\"\r\n  >\r\n    @for (o of options; track o) {\r\n    <div class=\"chi-list-group\">\r\n      <mat-chip-option color=\"primary\" [value]=\"o\">\r\n        {{ o.name }}\r\n      </mat-chip-option>\r\n\r\n      @for(so of o.items; track so){\r\n      <div class=\"chip-list\">\r\n        <mat-chip-option color=\"accent\" [value]=\"so\">{{\r\n          so.name\r\n        }}</mat-chip-option>\r\n      </div>\r\n      }\r\n    </div>\r\n    }\r\n  </mat-chip-listbox>\r\n</div>\r\n"
+            "templateData": "<div class=\"form-field\">\r\n  <h3>{{ label || inputName | titlecase }}</h3>\r\n  <mat-chip-listbox\r\n    class=\"mat-mdc-chip-set-stacked\"\r\n    [formControl]=\"inputControl\"\r\n    [multiple]=\"multiple\"\r\n    [attr.data-testid]=\"testid()\"\r\n  >\r\n    <div style=\"display: flex; flex-direction: row; gap: 1em; flex-wrap: wrap\">\r\n      @for (o of options; track o) {\r\n      <div class=\"chip-list-group\">\r\n        @if(o.items){\r\n\r\n        <h4 style=\"text-align: center\">{{ o.name }}</h4>\r\n        @for(so of o.items; track so){\r\n        <div class=\"chip-list\">\r\n          <mat-chip-option #sub color=\"accent\" [value]=\"so\">\r\n            {{ so.name }}\r\n          </mat-chip-option>\r\n        </div>\r\n        } } @else {\r\n        <mat-chip-option #main color=\"primary\" [value]=\"o\">\r\n          {{ o.name }}\r\n        </mat-chip-option>\r\n        }\r\n      </div>\r\n      }\r\n    </div>\r\n  </mat-chip-listbox>\r\n</div>\r\n"
         },
         {
             "name": "InputDateComponent",
@@ -30621,7 +30621,7 @@
                     "name": "multiple",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -31761,6 +31761,49 @@
             "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"tel\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix [color]=\"iconColor()\">{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
+            "name": "InputQuantityComponent",
+            "id": "component-InputQuantityComponent-e00de1c6388f8da71252f523ac7abdfa3ab6e47c305bca49888bbbd82f887f09648030d140b5bde607899ac08276463915964e5404d2bcf42879b29ec9fb821c",
+            "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-input-quantity",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input-quantity.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-quantity',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-quantity.component.html',\r\n  styleUrl: './input-quantity.component.scss',\r\n})\r\nexport class InputQuantityComponent {}\r\n",
+            "styleUrl": "./input-quantity.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>input-quantity works!</p>\r\n"
+        },
+        {
             "name": "InputRadioComponent",
             "id": "component-InputRadioComponent-c59d13e7c8c117dd26465fe1cdfb567606ae93184d9d40639e0abc6923af87303ced55b072379534d8236a143acd0694aebeab63c18b61fd21d70f337a77f4ab",
             "file": "libs/material/form/src/lib/input-radio/input-radio.component.ts",
@@ -32479,7 +32522,7 @@
                     "name": "multiple",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -37682,7 +37725,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-chip-select works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -37783,6 +37826,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-phone works!/gi)).toBeTruthy();\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-quantity works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -38278,6 +38331,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<InputQuantityComponent>",
+                "defaultValue": "{\n  component: InputQuantityComponent,\n  title: 'InputQuantityComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -38652,7 +38715,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 14, name: 'Sub 14' },\r\n          { id: 15, name: 'Sub 15' },\r\n          { id: 16, name: 'Sub 16' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -38753,6 +38816,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -39663,6 +39736,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<InputPhoneComponent>",
                 "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<InputQuantityComponent>",
+                "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -40723,7 +40807,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input-chip-select works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -40743,7 +40827,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n          { id: 5, name: 'Sub 1' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    label: 'Select Option',\r\n    inputName: 'option',\r\n    prefixIcon: 'category',\r\n    options: [\r\n      {\r\n        id: 1,\r\n        name: 'Option 1',\r\n        items: [\r\n          { id: 5, name: 'Sub 5' },\r\n          { id: 6, name: 'Sub 6' },\r\n          { id: 7, name: 'Sub 7' },\r\n        ],\r\n      },\r\n      {\r\n        id: 2,\r\n        name: 'Option 2',\r\n        items: [\r\n          { id: 8, name: 'Sub 8' },\r\n          { id: 9, name: 'Sub 9' },\r\n          { id: 10, name: 'Sub 10' },\r\n        ],\r\n      },\r\n      {\r\n        id: 3,\r\n        name: 'Option 3',\r\n        items: [\r\n          { id: 11, name: 'Sub 11' },\r\n          { id: 12, name: 'Sub 12' },\r\n          { id: 13, name: 'Sub 13' },\r\n        ],\r\n      },\r\n      {\r\n        id: 4,\r\n        name: 'Option 4',\r\n        items: [\r\n          { id: 14, name: 'Sub 14' },\r\n          { id: 15, name: 'Sub 15' },\r\n          { id: 16, name: 'Sub 16' },\r\n        ],\r\n      },\r\n    ],\r\n    multiple: true,\r\n  },\r\n}"
                 }
             ],
             "libs/material/form/src/lib/input-like/input-like.component.stories.ts": [
@@ -40904,6 +40988,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    prefixIcon: 'call',\r\n  },\r\n}"
+                }
+            ],
+            "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-quantity works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<InputQuantityComponent>",
+                    "defaultValue": "{\n  component: InputQuantityComponent,\n  title: 'InputQuantityComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/material/form/src/lib/input-radio/input-radio.component.stories.ts": [
@@ -42339,6 +42455,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<InputPhoneComponent>",
                     "file": "libs/material/form/src/lib/input-phone/input-phone.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<InputQuantityComponent>",
+                    "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -43945,6 +44074,45 @@
                 "name": "InputPhoneComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-quantity/input-quantity.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-quantity/input-quantity.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputQuantityComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
