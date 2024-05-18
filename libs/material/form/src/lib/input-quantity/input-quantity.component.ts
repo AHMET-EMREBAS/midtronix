@@ -24,6 +24,7 @@ export class InputQuantityComponent {
   readonly inputValueFilter = /^[1-9]\d{0,3}$/;
 
   @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';
+  
   value = 0;
 
   @Output() quantityValueChange = new EventEmitter<number>();
