@@ -23,9 +23,11 @@ export const PosRoutes: Routes = [
             PriceLevel: 'PriceLevels',
             Store: 'Stores',
             Quantity: 'Quantities',
+            SkuView: 'SkuViews',
           },
           entityMetadata: {
             Sku: {},
+            SkuView: {},
             Product: {},
             Price: {},
             PriceLevel: {},

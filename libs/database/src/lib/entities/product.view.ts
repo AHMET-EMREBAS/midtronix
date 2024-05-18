@@ -1,9 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ViewColumn, ViewEntity } from '@mdtx/core';
-import { Price, PriceLevel, Product, Quantity, Sku } from './product';
+import { Type, ViewColumn, ViewEntity } from '@mdtx/core';
+import {
+  Price,
+  PriceLevel,
+  Product,
+  ProductEntities,
+  ProductImage,
+  ProductVideo,
+  Quantity,
+  Sku,
+} from './product';
 import { Store } from './store';
 import { IPriceView, IQuantityView, ISkuView } from '@mdtx/common';
 import { Category, Department } from './meta';
+import { Manufacturer } from './manufacturer';
 
 @ViewEntity({
   expression(ds) {
@@ -120,7 +130,7 @@ export class PriceView implements IPriceView {
       .addSelect('p.category', 'category')
       .addSelect('p.department', 'department')
       .addSelect('p.id', 'productId')
-      .addSelect('p.upc', 'pupc')
+      .addSelect('p.upc', 'productUpc')
       .from(Sku, 'm')
       .leftJoin(ProductView, 'p', 'p.id = m.productId')
       .leftJoin(PriceView, 'pv', 'pv.skuId = m.id')
@@ -143,3 +153,20 @@ export class SkuView implements ISkuView {
   @ViewColumn() productId!: number;
   @ViewColumn() productUpc!: string;
 }
+
+export const SkuViewEntities: Readonly<Type<any>[]> = [
+  ProductView,
+  SkuView,
+  PriceView,
+  QuantityView,
+  Product,
+  Sku,
+  Price,
+  Quantity,
+
+  PriceLevel,
+  Category,
+  Department,
+  Manufacturer,
+  Store,
+];

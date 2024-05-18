@@ -1,4 +1,4 @@
-import { PaginatorDto, Query, RestRouteBuilder } from '@mdtx/core';
+import { NotFoundException, PaginatorDto, RestRouteBuilder } from '@mdtx/core';
 import { SkuViewService } from './sku-view.service';
 import { QueryPosItemDto } from '@mdtx/database';
 
@@ -14,13 +14,20 @@ export class SkuViewController {
   }
 
   @R.FindOne()
-  findOne(@Query() query: QueryPosItemDto) {
-    return this.service.findOne({ where: query });
+  async findOne(@R.Query() query: QueryPosItemDto) {
+    const found = await this.service.findOne({ where: query });
+
+    if (!found) {
+      console.log(query);
+      throw new NotFoundException(`Item not found by the query!`);
+    }
+
+    return found;
   }
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.service.findAll({ ...paginator });
+    return this.service.findAll({ ...paginator,  });
   }
 
   @R.FindOneById()

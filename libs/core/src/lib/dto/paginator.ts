@@ -5,7 +5,6 @@ import {
   DefaultValueTransformer,
   IntegerTransformer,
 } from './transformers';
-import { ILike } from 'typeorm';
 import { isArray, isString } from 'class-validator';
 
 @Exclude()
@@ -36,12 +35,6 @@ export class PaginatorDto {
   @BooleanTransformer()
   withDeleted?: boolean;
 
-  @Property({ type: 'string', noValidate: true })
-  @Transform(({ value }) => {
-    if (value && value.length > 0 && value.length < 50) {
-      return ILike(`%${value}%`);
-    }
-    return undefined;
-  })
+  @Property({ type: 'string', maxLength: 200 })
   search?: string;
 }

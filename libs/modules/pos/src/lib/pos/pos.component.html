@@ -1,1 +1,51 @@
-<div class="pos-container"></div>
+<ng-container *ngIf="findItemByBarcode$ | async"></ng-container>
+
+<div class="pos-container">
+  <mat-form-field appearance="outline" style="max-width: 200px">
+    <input
+      matInput
+      type="text"
+      placeholder="Barcode"
+      [formControl]="barcodeControl"
+    />
+
+    <mat-icon matIconPrefix color="primary">barcode</mat-icon>
+
+    <button mat-icon-button matIconSuffix color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <br />
+  <hr />
+
+  <table mat-table [dataSource]="getItems()" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    @for( col of ['id', 'barcode', 'price', 'quantity', 'total'] ; track col){
+
+    <ng-container [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{ col }}</th>
+      <td mat-cell *matCellDef="let row">{{ row[col] }}</td>
+    </ng-container>
+
+    }
+
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['id', 'barcode', 'price', 'quantity', 'total']"
+    ></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: ['id', 'barcode', 'price', 'quantity', 'total']"
+    ></tr>
+  </table>
+</div>
+
+<!-- 
+100000000011
+100000000011 ...
+100000000012
+100000000013
+ -->

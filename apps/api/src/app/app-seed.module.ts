@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Category,
   Customer,
@@ -59,66 +60,152 @@ export class AppSeedModule implements OnModuleInit {
     protected readonly CustomerRepo: Repository<Customer>
   ) {}
   async onModuleInit() {
-    for (const i of [1, 2, 3, 4, 5]) {
-      await this.CategoryRepo.save({ name: `category ${i}` });
-      await this.DepartmentRepo.save({ name: `Department ${i}` });
-      await this.StoreRepo.save({ name: `Store ${i}` });
-      await this.PriceLevelRepo.save({ name: `PriceLevel ${i}` });
-    }
+    let priceLevelCount = 0;
+    let productCount = 0;
+    let skuCount = 0;
+    let priceCount = 0;
+    let quantityCount = 0;
+    let storeCount = 0;
 
-    for (const i of [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    ]) {
+    const category = await this.CategoryRepo.save({ name: 'Default Category' });
+    const department = await this.DepartmentRepo.save({
+      name: 'Default Department',
+    });
+
+    const createStore = async (count = ++storeCount) =>
+      await this.StoreRepo.save({ name: `STORE_${count}` });
+
+    const createPriceLevel = async (count = ++priceLevelCount) =>
+      await this.PriceLevelRepo.save({ name: `PL_${count}` });
+
+    const createProduct = async (count = ++productCount) =>
       await this.ProductRepo.save({
-        name: `Product ${i}`,
-        category: { id: (i % 5) + 1 },
-        upc: `123456789011${i}`,
+        name: `PRODUCT_${count}`,
+        upc: `10000000000${count}`,
+        category,
+        department,
       });
-    }
 
-    for (const i of [1, 2, 3, 4, 5]) {
+    const createSku = async (product: Product, count = ++skuCount) =>
       await this.SkuRepo.save({
-        name: `Sku ${i}`,
-        upc: `123456789011${i}`,
-        product: { id: i },
+        name: `SKU_${count}`,
+        upc: `1000000000${product.id}${count}`,
+        product,
       });
-      await this.QuantityRepo.save({
-        quantity: 1,
-        store: { id: i },
-        sku: { id: i },
-      });
-    }
 
-    for (const i of [1, 2, 3, 4, 5]) {
+    const createPrice = async (
+      sku: Sku,
+      priceLevel: PriceLevel,
+      count = ++priceCount
+    ) =>
       await this.PriceRepo.save({
-        price: 1,
-        cost: 1,
-        sku: { id: i },
-        priceLevel: { id: i },
+        price: count * 100,
+        cost: count * 100,
+        sku,
+        priceLevel,
       });
-    }
 
-    for (const i of [1, 2, 3, 4, 5, 6, 7]) {
-      await this.PermissionRepo.save({ name: `Permission ${i}` });
-    }
+    const createQuantity = async (
+      sku: Sku,
+      store: Store,
+      count = ++quantityCount
+    ) => await this.QuantityRepo.save({ quantity: count * 10, sku, store });
 
-    for (const i of [1, 2, 3, 4, 5, 6, 7]) {
-      await this.RoleRepo.save({
-        name: `Role ${i}`,
-        permissions: [{ id: (i % 3) + 1 }],
-      });
-    }
+    const store1 = await createStore();
+    const store2 = await createStore();
+    const store3 = await createStore();
 
-    for (const i of [1, 2, 3, 4, 6, 7]) {
-      await this.UserRepo.save({
-        username: `user${i}@gmail.com`,
-        password: `Password!${i}`,
-        roles: [{ id: (i % 3) + 1 }],
-      });
-      await this.CustomerRepo.save({
-        username: `customer${i}@gmail.com`,
-        password: `Password!${i}`,
-      });
-    }
+    const pl1 = await createPriceLevel();
+    const pl2 = await createPriceLevel();
+    const pl3 = await createPriceLevel();
+
+    const p1 = await createProduct();
+    const p2 = await createProduct();
+    const p3 = await createProduct();
+
+    const s1p1 = await createSku(p1);
+    const s2p1 = await createSku(p1);
+    const s3p1 = await createSku(p1);
+
+    const s1p2 = await createSku(p2);
+    const s2p2 = await createSku(p2);
+    const s3p2 = await createSku(p2);
+
+    const s1p3 = await createSku(p3);
+    const s2p3 = await createSku(p3);
+    const s3p3 = await createSku(p3);
+
+    const s1p1pl1 = await createPrice(s1p1, pl1);
+    const s1p1pl2 = await createPrice(s1p1, pl2);
+    const s1p1pl3 = await createPrice(s1p1, pl3);
+
+    const s2p1pl1 = await createPrice(s2p1, pl1);
+    const s2p1pl2 = await createPrice(s2p1, pl2);
+    const s2p1pl3 = await createPrice(s2p1, pl3);
+
+    const s3p1pl1 = await createPrice(s3p1, pl1);
+    const s3p1pl2 = await createPrice(s3p1, pl2);
+    const s3p1pl3 = await createPrice(s3p1, pl3);
+
+    const s1p2pl1 = await createPrice(s1p2, pl1);
+    const s1p2pl2 = await createPrice(s1p2, pl2);
+    const s1p2pl3 = await createPrice(s1p2, pl3);
+
+    const s2p2pl1 = await createPrice(s2p2, pl1);
+    const s2p2pl2 = await createPrice(s2p2, pl2);
+    const s2p2pl3 = await createPrice(s2p2, pl3);
+
+    const s3p2pl1 = await createPrice(s3p2, pl1);
+    const s3p2pl2 = await createPrice(s3p2, pl2);
+    const s3p2pl3 = await createPrice(s3p2, pl3);
+
+    const s1p3pl1 = await createPrice(s1p3, pl1);
+    const s1p3pl2 = await createPrice(s1p3, pl2);
+    const s1p3pl3 = await createPrice(s1p3, pl3);
+
+    const s2p3pl1 = await createPrice(s2p3, pl1);
+    const s2p3pl2 = await createPrice(s2p3, pl2);
+    const s2p3pl3 = await createPrice(s2p3, pl3);
+
+    const s3p3pl1 = await createPrice(s3p3, pl1);
+    const s3p3pl2 = await createPrice(s3p3, pl2);
+    const s3p3pl3 = await createPrice(s3p3, pl3);
+
+    // Quantities
+    const qs1p1pl1 = await createQuantity(s1p1, store1);
+    const qs1p1pl2 = await createQuantity(s1p1, store2);
+    const qs1p1pl3 = await createQuantity(s1p1, store3);
+
+    const qs2p1pl1 = await createQuantity(s2p1, store1);
+    const qs2p1pl2 = await createQuantity(s2p1, store2);
+    const qs2p1pl3 = await createQuantity(s2p1, store3);
+
+    const qs3p1pl1 = await createQuantity(s3p1, store1);
+    const qs3p1pl2 = await createQuantity(s3p1, store2);
+    const qs3p1pl3 = await createQuantity(s3p1, store3);
+
+    const qs1p2pl1 = await createQuantity(s1p2, store1);
+    const qs1p2pl2 = await createQuantity(s1p2, store2);
+    const qs1p2pl3 = await createQuantity(s1p2, store3);
+
+    const qs2p2pl1 = await createQuantity(s2p2, store1);
+    const qs2p2pl2 = await createQuantity(s2p2, store2);
+    const qs2p2pl3 = await createQuantity(s2p2, store3);
+
+    const qs3p2pl1 = await createQuantity(s3p2, store1);
+    const qs3p2pl2 = await createQuantity(s3p2, store2);
+    const qs3p2pl3 = await createQuantity(s3p2, store3);
+
+    const qs1p3pl1 = await createQuantity(s1p3, store1);
+    const qs1p3pl2 = await createQuantity(s1p3, store2);
+    const qs1p3pl3 = await createQuantity(s1p3, store3);
+
+    const qs2p3pl1 = await createQuantity(s2p3, store1);
+    const qs2p3pl2 = await createQuantity(s2p3, store2);
+    const qs2p3pl3 = await createQuantity(s2p3, store3);
+
+    const qs3p3pl1 = await createQuantity(s3p3, store1);
+    const qs3p3pl2 = await createQuantity(s3p3, store2);
+    const qs3p3pl3 = await createQuantity(s3p3, store3);
   }
 }

@@ -13,4 +13,8 @@ export interface ISkuView {
   department: string;
   productId: number;
   productUpc: string;
+  total?: number;
+  tax?: number;
 }
+
+export type ISkuViewRaw = ISkuView;

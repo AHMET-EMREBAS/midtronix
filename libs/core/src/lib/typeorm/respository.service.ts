@@ -31,7 +31,7 @@ export class RepositoryService<T extends IID> {
   );
 
   protected readonly __searchables = this.__md.columns
-    .filter((e) => e.type === 'varchar')
+    .filter((e) => e.type === 'varchar' || e.type === 'numeric')
     .map((e) => e.propertyName);
 
   constructor(protected repository: Repository<T>) {}
