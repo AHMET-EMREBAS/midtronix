@@ -1,0 +1,30 @@
+.verticle {
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.count-input {
+  border: none;
+  font-size: 1em;
+  outline: none;
+  min-width: 100px;
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: Comfortaa;
+  resize: both;
+  overflow: auto;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

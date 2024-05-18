@@ -1,1 +1,24 @@
-<p>input-quantity works!</p>
+<div [class]="layoutDirection">
+  <button
+    mat-icon-button
+    style="background-color: crimson; color: white"
+    (click)="descrement()"
+  >
+    <mat-icon class="fill">remove</mat-icon>
+  </button>
+  <input
+    class="count-input"
+    type="text"
+    [mdtxInputFilter]="inputFilter"
+    [mdtxInputValueFilter]="inputValueFilter"
+    [(ngModel)]="value"
+  />
+
+  <button
+    mat-icon-button
+    style="background-color: greenyellow; color: black"
+    (click)="increment()"
+  >
+    <mat-icon class="fill">add</mat-icon>
+  </button>
+</div>
