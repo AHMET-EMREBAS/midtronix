@@ -85,9 +85,9 @@ export class PriceView implements IPriceView {
       .addSelect('pv.price', 'price')
       .addSelect('pv.priceLevelId', 'priceLevelId')
       .addSelect('pv.priceLevelName', 'priceLevelName')
-      .addSelect('pv.storeId', 'storeId')
-      .addSelect('pv.quantity', 'quantity')
-      .addSelect('pv.storeName', 'storeName')
+      .addSelect('qv.storeId', 'storeId')
+      .addSelect('qv.quantity', 'quantity')
+      .addSelect('qv.storeName', 'storeName')
       .from(Sku, 'm')
       .leftJoin(PriceView, 'pv', 'pv.skuId = m.id')
       .leftJoin(QuantityView, 'qv', 'qv.skuId = m.id');
