@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { StoreService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
+import { IStoreRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-store-search',
@@ -21,7 +22,7 @@ import { FormControl } from '@angular/forms';
   providers: [StoreService],
 })
 export class StoreSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<IStoreRaw | null>(null, []);
 
   constructor(protected readonly service: StoreService) {}
 }

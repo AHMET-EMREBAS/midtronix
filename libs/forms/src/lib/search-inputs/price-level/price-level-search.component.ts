@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PriceLevelService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
+import { IPriceLevelRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-price-level-search',
@@ -21,7 +22,7 @@ import { FormControl } from '@angular/forms';
   providers: [PriceLevelService],
 })
 export class PriceLevelSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<IPriceLevelRaw | null>(null, []);
 
   constructor(protected readonly service: PriceLevelService) {}
 }

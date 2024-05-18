@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { SkuService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
+import { ISkuRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-sku-search',
@@ -21,7 +22,7 @@ import { FormControl } from '@angular/forms';
   providers: [SkuService],
 })
 export class SkuSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<ISkuRaw | null>(null, []);
 
   constructor(protected readonly service: SkuService) {}
 }

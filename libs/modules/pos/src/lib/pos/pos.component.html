@@ -1,24 +1,32 @@
-<ng-container *ngIf="findItemByBarcode$ | async"></ng-container>
+<ng-container *ngIf="barcodeInputEvent$ | async"></ng-container>
+<ng-container *ngIf="priceLevelInputEvent$ | async"></ng-container>
 
+<h1>100000000011</h1>
 <div class="pos-container">
-  <mat-form-field appearance="outline" style="max-width: 200px">
-    <input
-      matInput
-      type="text"
-      placeholder="Barcode"
-      [formControl]="barcodeControl"
-    />
+  <div class="search-fields">
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        type="text"
+        placeholder="Barcode"
+        [formControl]="barcodeControl"
+      />
 
-    <mat-icon matIconPrefix color="primary">barcode</mat-icon>
+      <mat-icon matIconPrefix color="primary">barcode</mat-icon>
 
-    <button mat-icon-button matIconSuffix color="primary">
-      <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
-  <br />
-  <hr />
+      <button mat-icon-button matIconSuffix color="primary">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
 
-  <table mat-table [dataSource]="getItems()" class="mat-elevation-z8">
+    <!-- <mdtx-sku-search [inputControl]="skuControl"></mdtx-sku-search> -->
+    <mdtx-store-search [inputControl]="storeControl"></mdtx-store-search>
+    <mdtx-price-level-search
+      [inputControl]="priceLevelControl"
+    ></mdtx-price-level-search>
+  </div>
+
+  <table mat-table [dataSource]="getItems()">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
@@ -38,14 +46,14 @@
     ></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: ['id', 'barcode', 'price', 'quantity', 'total']"
+      *matRowDef="
+        let row;
+        columns: ['id', 'barcode', 'price', 'quantity', 'total']
+      "
     ></tr>
   </table>
-</div>
 
-<!-- 
-100000000011
-100000000011 ...
-100000000012
-100000000013
- -->
+  <div class="summary">
+    <strong>Total: {{ getTotal() }}</strong>
+  </div>
+</div>
