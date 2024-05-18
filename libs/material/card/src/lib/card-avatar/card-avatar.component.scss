@@ -1,0 +1,38 @@
+.card-avatar {
+  display: flex;
+  flex-direction: row;
+  max-width: 250px;
+  padding: 1em;
+  gap: 1em;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  border-radius: 0.5em;
+}
+
+.card-avatar-image {
+  max-width: 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.card-avatar-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  width: fit-content;
+}
+
+.card-avatar-title {
+  letter-spacing: 0.2em;
+  font-size: 1.5em;
+}
+
+.card-avatar-subtitle {
+  letter-spacing: 0.3em;
+
+  font-size: 0.8em;
+}

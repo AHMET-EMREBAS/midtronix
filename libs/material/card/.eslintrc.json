@@ -5,7 +5,18 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@nx/enforce-module-boundaries": []
+        "@nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": false,
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -19,7 +30,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "camelCase"
           }
         ],
@@ -27,7 +38,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "lib",
+            "prefix": "mdtx",
             "style": "kebab-case"
           }
         ]

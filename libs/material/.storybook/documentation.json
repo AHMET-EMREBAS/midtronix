@@ -24559,6 +24559,335 @@
             }
         },
         {
+            "name": "InputFilterDirective",
+            "id": "directive-InputFilterDirective-f1f166ef0696309dc9cfcdccdfd3e14c741f312f863df1a7d888b7a3974863e11ba2482be662d14f570e26f4788db2f343b8f01db607f8aebb61687c80788bc1",
+            "file": "libs/material/core/src/lib/directives/input-filter.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, ElementRef, HostListener, Input } from '@angular/core';\n\n@Directive({\n  selector: '[mdtxInputFilter]',\n  standalone: true,\n})\nexport class InputFilterDirective {\n  @Input() mdtxInputFilter!: RegExp;\n  @Input() mdtxInputValueFilter!: RegExp;\n\n  private previousValue?: any;\n  private actaulValue?: any;\n\n  protected isKeyValid(key: string) {\n    return this.mdtxInputFilter.test(key);\n  }\n  protected isActualValueValid(actualValue: string) {\n    return this.mdtxInputValueFilter.test(actualValue);\n  }\n\n  @HostListener('keydown', ['$event'])\n  keydown(event: KeyboardEvent) {\n    // Not required for now!\n  }\n\n  @HostListener('keypress', ['$event'])\n  keypress(event: KeyboardEvent) {\n    const inputKey = event.key;\n\n    if (!this.isKeyValid(inputKey)) {\n      event.preventDefault();\n      return;\n    }\n    const actualValue = this.elementRef.nativeElement.value;\n\n    if (this.isActualValueValid(actualValue)) {\n      this.previousValue = this.elementRef.nativeElement.value;\n    }\n  }\n\n  @HostListener('keyup', ['$event'])\n  keyup(event: KeyboardEvent) {\n    const actualValue = this.elementRef.nativeElement.value;\n\n    if (actualValue)\n      if (!this.isActualValueValid(actualValue)) {\n        this.elementRef.nativeElement.value = this.previousValue;\n        event.preventDefault();\n        return;\n      }\n  }\n  constructor(public readonly elementRef: ElementRef<HTMLInputElement>) {}\n}\n",
+            "selector": "[mdtxInputFilter]",
+            "providers": [],
+            "hostDirectives": [],
+            "standalone": true,
+            "inputsClass": [
+                {
+                    "name": "mdtxInputFilter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "RegExp",
+                    "decorators": []
+                },
+                {
+                    "name": "mdtxInputValueFilter",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "RegExp",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "keydown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22
+                },
+                {
+                    "name": "keypress",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27
+                },
+                {
+                    "name": "keyup",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 42
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "actaulValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLInputElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "previousValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "isActualValueValid",
+                    "args": [
+                        {
+                            "name": "actualValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "actualValue",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isKeyValid",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "keydown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'keydown', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "keypress",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'keypress', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "keyup",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'keyup', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLInputElement>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 51,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef<HTMLInputElement>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        },
+        {
             "name": "LayoutContentBottomDirective",
             "id": "directive-LayoutContentBottomDirective-250d5c83c8e8b4f709bba242ae6cce9c3dc14a28589426c62a6922b672748df7168f11e9c661ac80bf6b0fc7dcc7c20b3f9bfbb14603f27db729308a5f5f0faa",
             "file": "libs/material/layout/src/lib/layout/layout.directive.ts",
@@ -27448,6 +27777,66 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": []
+        },
+        {
+            "name": "CardAvatarComponent",
+            "id": "component-CardAvatarComponent-99756cc7f3f9444408458e9755a272fba7b2aab723e0a23359467b8b9424c22c998562e4192a657cf8e543df941d5e08315d815eefc32cc6b9a64c3f9decac3a",
+            "file": "libs/material/card/src/lib/card-avatar/card-avatar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-card-avatar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./card-avatar.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "subtitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-card-avatar',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './card-avatar.component.html',\n  styleUrl: './card-avatar.component.scss',\n})\nexport class CardAvatarComponent {\n  @Input() title!: string;\n  @Input() subtitle!: string;\n}\n",
+            "styleUrl": "./card-avatar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"card-avatar\">\n  <div class=\"card-avatar-title\">{{ title }}</div>\n  <div class=\"card-avatar-subtitle\">{{ subtitle }}</div>\n</div>\n"
         },
         {
             "name": "FormComponent",
@@ -31762,7 +32151,7 @@
         },
         {
             "name": "InputQuantityComponent",
-            "id": "component-InputQuantityComponent-e00de1c6388f8da71252f523ac7abdfa3ab6e47c305bca49888bbbd82f887f09648030d140b5bde607899ac08276463915964e5404d2bcf42879b29ec9fb821c",
+            "id": "component-InputQuantityComponent-e5e0920bc9ae3e0ed3f1160ddcf0e4061c2843f6497285a9ac7b36821f6f06bedc229b65d1f13cd2f999bebd948c4253e38094a6d5e02965dc6f9cb881f4ed6c",
             "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -31777,10 +32166,97 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "layoutDirection",
+                    "defaultValue": "'horizontal'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "\"horizontal\" | \"verticle\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "quantityValueChange",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "inputFilter",
+                    "defaultValue": "/[0-9]/",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "inputValueFilter",
+                    "defaultValue": "/^[1-9]\\d{0,3}$/",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "changeHandler",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "descrement",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "increment",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -31790,18 +32266,38 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputFilterDirective",
+                    "type": "directive"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-quantity',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-quantity.component.html',\r\n  styleUrl: './input-quantity.component.scss',\r\n})\r\nexport class InputQuantityComponent {}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFilterDirective } from '@mdtx/material/core';\r\n@Component({\r\n  selector: 'mdtx-input-quantity',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    InputFilterDirective,\r\n  ],\r\n  templateUrl: './input-quantity.component.html',\r\n  styleUrl: './input-quantity.component.scss',\r\n})\r\nexport class InputQuantityComponent {\r\n  readonly inputFilter = /[0-9]/;\r\n  readonly inputValueFilter = /^[1-9]\\d{0,3}$/;\r\n\r\n  @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';\r\n  \r\n  value = 0;\r\n\r\n  @Output() quantityValueChange = new EventEmitter<number>();\r\n\r\n  changeHandler() {\r\n    this.quantityValueChange.emit(this.value);\r\n  }\r\n\r\n  increment() {\r\n    this.value++;\r\n  }\r\n\r\n  descrement() {\r\n    if (this.value > 0) {\r\n      this.value--;\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./input-quantity.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>input-quantity works!</p>\r\n"
+            "templateData": "<div [class]=\"layoutDirection\">\r\n  <button\r\n    mat-icon-button\r\n    style=\"background-color: crimson; color: white\"\r\n    (click)=\"descrement()\"\r\n  >\r\n    <mat-icon class=\"fill\">remove</mat-icon>\r\n  </button>\r\n  <input\r\n    class=\"count-input\"\r\n    type=\"text\"\r\n    [mdtxInputFilter]=\"inputFilter\"\r\n    [mdtxInputValueFilter]=\"inputValueFilter\"\r\n    [(ngModel)]=\"value\"\r\n  />\r\n\r\n  <button\r\n    mat-icon-button\r\n    style=\"background-color: greenyellow; color: black\"\r\n    (click)=\"increment()\"\r\n  >\r\n    <mat-icon class=\"fill\">add</mat-icon>\r\n  </button>\r\n</div>\r\n"
         },
         {
             "name": "InputRadioComponent",
@@ -37625,7 +38121,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -37835,7 +38331,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-quantity works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -40487,7 +40983,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/input works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -40999,7 +41495,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/input-quantity works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -42781,6 +43277,15 @@
         "status": "low",
         "files": [
             {
+                "filePath": "libs/material/card/src/lib/card-avatar/card-avatar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardAvatarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/core/src/lib/directives/fullscreen.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -42865,6 +43370,15 @@
                 "name": "InputDirectiveComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/directives/input-filter.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "InputFilterDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
@@ -44112,7 +44626,7 @@
                 "linktype": "component",
                 "name": "InputQuantityComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {

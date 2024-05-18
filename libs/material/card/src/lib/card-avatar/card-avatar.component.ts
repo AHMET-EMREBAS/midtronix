@@ -11,4 +11,5 @@ import { CommonModule } from '@angular/common';
 export class CardAvatarComponent {
   @Input() title!: string;
   @Input() subtitle!: string;
+  @Input() imageUrl = './assets/imgs/placeholder.svg'
 }
