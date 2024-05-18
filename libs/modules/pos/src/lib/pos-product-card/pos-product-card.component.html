@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <mdtx-card-avatar
+      [title]="product.name"
+      [subtitle]="product.barcode"
+    ></mdtx-card-avatar>
+
+    <div>
+      <div>{{ product.price }} X {{ product.quantity }}</div>
+      <div>
+        <strong> Total: {{ product.total }}</strong>
+      </div>
+    </div>
+  </div>
+  <mdtx-input-quantity
+    [value]="product.quantity"
+    (quantityValueChange)="updateQuantity($event)"
+  ></mdtx-input-quantity>
+</div>

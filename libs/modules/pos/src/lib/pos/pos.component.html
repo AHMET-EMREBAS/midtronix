@@ -53,30 +53,7 @@
     ></tr>
   </table>
 
-  <div class="card-container">
-    @for(item of getItems(); track item){
-
-    <div class="order-item">
-      <div style="display: flex; gap: 1em">
-        <mdtx-card-avatar
-          [title]="item.name"
-          [subtitle]="item.barcode"
-        ></mdtx-card-avatar>
-
-        <div style="display: flex; flex-direction: column; gap: 0.2em">
-          <div>{{ item.price }} X {{ item.quantity }}</div>
-          <div>
-            <strong> Total: {{ item.total }}</strong>
-          </div>
-        </div>
-      </div>
-      <mdtx-input-quantity
-        [value]="item.quantity"
-        (quantityValueChange)="updateQuantity($event, item)"
-      ></mdtx-input-quantity>
-    </div>
-    }
-  </div>
+  <div class="card-container">@for(item of getItems(); track item){ }</div>
   <div class="summary">
     <strong>Total: {{ getTotal() }}</strong>
   </div>

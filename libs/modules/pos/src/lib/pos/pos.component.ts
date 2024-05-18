@@ -31,8 +31,7 @@ import {
     StoreSearchComponent,
     PriceLevelSearchComponent,
     SkuSearchComponent,
-    CardAvatarComponent,
-    InputQuantityComponent,
+
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
