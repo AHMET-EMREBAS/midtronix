@@ -4,7 +4,7 @@ import {
   ICreateTaskDto,
   IID,
 } from '@mdtx/common';
-import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
+import { Exclude, IDObjectProperty, PartialType } from '@mdtx/core';
 import { CreateCommonTaskDto, CreateDescriptionDto } from './__base.dto';
 
 @Exclude()

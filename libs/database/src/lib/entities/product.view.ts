@@ -1,7 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ViewColumn, ViewEntity } from '@mdtx/core';
-import { Price, PriceLevel, Quantity, Sku } from './product';
+import { Price, PriceLevel, Product, Quantity, Sku } from './product';
 import { Store } from './store';
-import { IPriceView, IQuantityView } from '@mdtx/common';
+import { IPriceView, IQuantityView, ISkuView } from '@mdtx/common';
+import { Category, Department } from './meta';
+
+@ViewEntity({
+  expression(ds) {
+    return ds
+      .createQueryBuilder()
+      .select('m.id', 'id')
+      .addSelect('m.name', 'name')
+      .addSelect('m.description', 'description')
+      .addSelect('m.upc', 'upc')
+      .addSelect('c.name', 'category')
+      .addSelect('d.name', 'department')
+
+      .from(Product, 'm')
+      .leftJoin(Category, 'c', 'c.id = m.categoryId')
+      .leftJoin(Department, 'd', 'd.id = m.departmentId');
+  },
+})
+export class ProductView {
+  @ViewColumn() id: any;
+  @ViewColumn() name: any;
+  @ViewColumn() description: any;
+  @ViewColumn() upc: any;
+  @ViewColumn() category: any;
+  @ViewColumn() department: any;
+}
 
 /**
  * @param id
@@ -82,15 +109,37 @@ export class PriceView implements IPriceView {
       .select('m.id', 'id')
       .addSelect('m.upc', 'barcode')
       .addSelect('m.name', 'name')
+      .addSelect('m.description', 'description')
       .addSelect('pv.price', 'price')
+      .addSelect('pv.cost', 'cost')
       .addSelect('pv.priceLevelId', 'priceLevelId')
       .addSelect('pv.priceLevelName', 'priceLevelName')
       .addSelect('qv.storeId', 'storeId')
       .addSelect('qv.quantity', 'quantity')
       .addSelect('qv.storeName', 'storeName')
+      .addSelect('p.category', 'category')
+      .addSelect('p.department', 'department')
+      .addSelect('p.id', 'pid')
+      .addSelect('p.upc', 'pupc')
       .from(Sku, 'm')
+      .leftJoin(ProductView, 'p', 'p.id = m.productId')
       .leftJoin(PriceView, 'pv', 'pv.skuId = m.id')
       .leftJoin(QuantityView, 'qv', 'qv.skuId = m.id');
   },
 })
-export class SkuView {}
+export class SkuView implements ISkuView {
+  @ViewColumn() id!: number;
+  @ViewColumn() barcode!: string;
+  @ViewColumn() name!: string;
+  @ViewColumn() price!: number;
+  @ViewColumn() cost!: number;
+  @ViewColumn() priceLevelId!: number;
+  @ViewColumn() priceLevelName!: string;
+  @ViewColumn() storeId!: number;
+  @ViewColumn() quantity!: number;
+  @ViewColumn() storeName!: string;
+  @ViewColumn() category!: string;
+  @ViewColumn() department!: string;
+  @ViewColumn() pid!: number;
+  @ViewColumn() pupc!: string;
+}
