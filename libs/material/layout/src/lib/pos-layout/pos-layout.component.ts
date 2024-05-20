@@ -5,9 +5,13 @@ import {
   PosLayoutProductListDirective,
   PosLayoutToolbarDirective,
 } from './pos-layout.directive';
+import { CommonModule } from '@angular/common';
+import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
 
 @Component({
   selector: 'mdtx-pos-layout',
+  standalone: true,
+  imports: [CommonModule, TemplateOutletComponent],
   templateUrl: './pos-layout.component.html',
   styleUrl: './pos-layout.component.scss',
 })

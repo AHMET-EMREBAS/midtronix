@@ -13,7 +13,6 @@ import {
   ScrollDirective,
 } from '@mdtx/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { LayoutDirectives } from './layout.directive';
 import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
 import { BaseLayoutComponent } from './base-layout.component';
 
@@ -38,6 +37,5 @@ import { BaseLayoutComponent } from './base-layout.component';
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
-  // providers: [...LayoutDirectives],
 })
 export class LayoutComponent extends BaseLayoutComponent {}
