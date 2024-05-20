@@ -4,5 +4,14 @@
     <div class="total">{{ total }}</div>
   </div>
 
-  <button mat-rasied-button color="primary">{{ label }}</button>
+  <button
+    mat-fab
+    color="accent"
+    [attr.role]="label"
+    [matTooltip]="label"
+    matTooltipPosition="above"
+    (click)="checkoutButtonClickEvent.emit()"
+  >
+    <mat-icon>shopping_cart_checkout</mat-icon>
+  </button>
 </div>

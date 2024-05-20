@@ -13,3 +13,21 @@
 
   gap: 0.3em;
 }
+
+.checkout-button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: flex-end;
+  align-items: center;
+  border: 3px dashed gray;
+  padding: 1em;
+}
+
+.checkout-button {
+  height: 100px;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 1em;
+}

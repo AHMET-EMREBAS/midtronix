@@ -1,1 +1,2 @@
-// @index('./*', f => `export * from '${f.path}'`)
+// @index('./*/*.component.ts', f => `export * from '${f.path}'`)
+export * from './checkout-button/checkout-button.component';

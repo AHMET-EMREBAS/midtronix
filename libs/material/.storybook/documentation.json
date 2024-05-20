@@ -27060,6 +27060,72 @@
             "templateData": "<mdtx-layout [progressValue]=\"100\" [rightSidenavIcon]=\"rightSidenavIcon\">\r\n  <!-- Toolbar Left-->\r\n  <ng-template mdtxToolbarLeft>\r\n    {{ title.getTitle() }}\r\n    <mdtx-navlist [items]=\"toolbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Toolbar Right -->\r\n  <ng-template mdtxToolbarRight\r\n    ><mdtx-navlist [items]=\"toolbarRight\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Toolbar Center -->\r\n  <ng-template mdtxToolbarCenter\r\n    ><mdtx-navlist [items]=\"toolbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Statubar Left  -->\r\n  <ng-template mdtxStatusbarLeft\r\n    ><mdtx-navlist [items]=\"statusbarLeft\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Statubar Rigth  -->\r\n  <ng-template mdtxStatusbarRight>\r\n    <mdtx-navlist [items]=\"statusbarRight\" [inToolbar]=\"true\"></mdtx-navlist>\r\n  </ng-template>\r\n\r\n  <!-- Statubar Center  -->\r\n  <ng-template mdtxStatusbarCenter\r\n    ><mdtx-navlist [items]=\"statusbarCenter\" [inToolbar]=\"true\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Left Top -->\r\n  <ng-template mdtxSidenavLeftTop\r\n    ><mdtx-navlist [items]=\"sidenavLeftTop\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Left Center -->\r\n  <ng-template mdtxSidenavLeftCenter\r\n    ><mdtx-navlist [items]=\"sidenavLeftCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Left Bottom -->\r\n  <ng-template mdtxSidenavLeftBottom\r\n    ><mdtx-navlist [items]=\"sidenavLeftBottom\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Right Top -->\r\n  <ng-template mdtxSidenavRightTop\r\n    ><mdtx-navlist [items]=\"sidenavRightTop\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Right Center -->\r\n  <ng-template mdtxSidenavRightCenter\r\n    ><mdtx-navlist [items]=\"sidenavRightCenter\"></mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Sidenav Right Right -->\r\n  <ng-template mdtxSidenavRightBottom>\r\n    <mdtx-navlist [items]=\"sidenavRightBottom\"> </mdtx-navlist\r\n  ></ng-template>\r\n\r\n  <!-- Content Center Left -->\r\n  <ng-template\r\n    mdtxContentCenterLeft\r\n    *ngIf=\"contentCenterLeft && contentCenterLeft.length > 0\"\r\n  >\r\n    <mdtx-sidebar [topToolbarItems]=\"contentCenterLeft\"></mdtx-sidebar>\r\n  </ng-template>\r\n\r\n  <!-- Content Center Right -->\r\n  <ng-template\r\n    mdtxContentCenterRight\r\n    *ngIf=\"contentCenterRight && contentCenterRight.length > 0\"\r\n  >\r\n    <mdtx-sidebar [topToolbarItems]=\"contentCenterRight\"></mdtx-sidebar>\r\n  </ng-template>\r\n\r\n  <!-- Content Center  -->\r\n  <ng-template mdtxContentCenter>\r\n    <router-outlet></router-outlet>\r\n  </ng-template>\r\n</mdtx-layout>\r\n"
         },
         {
+            "name": "BarcodeViewComponent",
+            "id": "component-BarcodeViewComponent-33a23d3b3f4b7874c5516ea370d620d76b796a9be8f7744f35dae19c386c191e68ffe53f6e1979c8e1b334e5c03008d9bad31a2c9212f6027cec06b4e90540e9",
+            "file": "libs/material/barcode/src/lib/barcode-view/barcode-view.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-barcode-view",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./barcode-view.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "barcode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport * as JsBarcode from 'jsbarcode';\n@Component({\n  selector: 'mdtx-barcode-view',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './barcode-view.component.html',\n  styleUrl: './barcode-view.component.scss',\n})\nexport class BarcodeViewComponent implements AfterViewInit {\n  @Input() barcode!: string;\n\n  ngAfterViewInit(): void {\n    JsBarcode(`#b${this.barcode}`, this.barcode);\n  }\n}\n",
+            "styleUrl": "./barcode-view.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<svg [attr.id]=\"'b' + barcode\" *ngIf=\"barcode\"></svg>\n"
+        },
+        {
             "name": "BaseAppLayoutComponent",
             "id": "component-BaseAppLayoutComponent-4c9613c7c276d842b0aa1e6f0b8b8126cc28259bdd95d4a341bf02caa588a9d80f1009c4d1ca5e3cb7cc5a4c0ca6a148f976221cafb5a35f441721efb7ab3215",
             "file": "libs/material/layout/src/lib/common/base-app-layout.component.ts",
@@ -28106,6 +28172,81 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div class=\"card-avatar\">\r\n  <div class=\"card-avatar-image\" *ngIf=\"imageUrl\">\r\n    <img [src]=\"imageUrl\" [alt]=\"title + ' Avatar Image'\" />\r\n  </div>\r\n  <div class=\"card-avatar-text-container\">\r\n    <div class=\"card-avatar-title\">{{ title }}</div>\r\n    <div class=\"card-avatar-subtitle\">{{ subtitle }}</div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "CheckoutButtonComponent",
+            "id": "component-CheckoutButtonComponent-1839c494065e8d87a41ae9dd609bcddaaa7331633941c74bf8159c0016c08701ad8f40aa8ca5b5251d38603b8bdcc34c971659ebec574688595d70f2917048c2",
+            "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-checkout-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./checkout-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "defaultValue": "'Checkout'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "subtotal",
+                    "defaultValue": "'Subtotal Value'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "total",
+                    "defaultValue": "'Total Value'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'mdtx-checkout-button',\n  standalone: true,\n  imports: [CommonModule, MatButtonModule],\n  templateUrl: './checkout-button.component.html',\n  styleUrl: './checkout-button.component.scss',\n})\nexport class CheckoutButtonComponent {\n  @Input() subtotal = 'Subtotal Value';\n  @Input() total = 'Total Value';\n  @Input() label = 'Checkout';\n}\n",
+            "styleUrl": "./checkout-button.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"checkout-button-container\">\n  <div class=\"checkout-price\">\n    <div class=\"subtotal\">{{ subtotal }}</div>\n    <div class=\"total\">{{ total }}</div>\n  </div>\n\n  <button mat-rasied-button color=\"primary\">{{ label }}</button>\n</div>\n"
         },
         {
             "name": "FormComponent",
@@ -36706,6 +36847,49 @@
             ]
         },
         {
+            "name": "MaterialBarcodeComponent",
+            "id": "component-MaterialBarcodeComponent-b4a37bfb35cf64a1575bd8945124a63ddf4bd5089a8d0ed6a531fa1e97c650ab6c68a3451ddd72b58588451fdcad24643106699ce036ee282f33d2e5d0527bcc",
+            "file": "libs/material/barcode/src/lib/material-barcode/material-barcode.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-material-barcode",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./material-barcode.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-material-barcode',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './material-barcode.component.html',\n  styleUrl: './material-barcode.component.css',\n})\nexport class MaterialBarcodeComponent {}\n",
+            "styleUrl": "./material-barcode.component.css",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>material-barcode works!</p>\n"
+        },
+        {
             "name": "ModuleLayoutComponent",
             "id": "component-ModuleLayoutComponent-91f29bf2030abd64e550dfe86f078040d17f1cc37f866e5567386bccbd31cfdefa42f257582c70e603c21c23f6a3db6995ca0337a42e759d4eb466e18fbdc8eb",
             "file": "libs/material/layout/src/lib/module-layout/module-layout.component.ts",
@@ -38084,7 +38268,7 @@
         },
         {
             "name": "SamplePosLayoutComponent",
-            "id": "component-SamplePosLayoutComponent-ebeef2b4546440f4f09745e4622342d590c86318a2df8fe3478dcb861c2f9865ad0c06aed2ac339c70f0cec4b2f1a1f825c5705435348df4137ac9d110ff5082",
+            "id": "component-SamplePosLayoutComponent-d766595e14e3f36e419933c751616848362ac278fd90b527d8e2625260e5d53c27717bfea284fde79fc30fb57342a44421219f8e347d74dc046f993f32c4e9ef",
             "file": "libs/material/layout/src/lib/sample-pos-layout/sample-pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -38109,7 +38293,7 @@
                     "type": "InputPosSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 43,
+                    "line": 45,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -38128,17 +38312,17 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 48
                 },
                 {
                     "name": "products",
-                    "defaultValue": "[\n    {\n      barcode: '100000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000010',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000011',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ]",
+                    "defaultValue": "[\n    {\n      barcode: '1000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000000',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000001',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Partial<ISkuViewRaw>[]",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 50
                 },
                 {
                     "name": "totalPrice$",
@@ -38148,7 +38332,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
+                    "line": 46
                 }
             ],
             "methodsClass": [
@@ -38165,7 +38349,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 117,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38186,7 +38370,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 130,
+                    "line": 132,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -38203,7 +38387,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 136,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38231,7 +38415,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 144,
+                    "line": 146,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38265,7 +38449,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 139,
+                    "line": 141,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38295,7 +38479,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 157,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -38361,18 +38545,22 @@
                 {
                     "name": "InputPosSearchComponent",
                     "type": "component"
+                },
+                {
+                    "name": "BarcodeViewComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\nimport {\n  CardAvatarComponent,\n  ProductCardComponent,\n  ProductSmallCardComponent,\n} from '@mdtx/material/card';\nimport {\n  InputPosSearchComponent,\n  InputSearchComponent,\n} from '@mdtx/material/form';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\nimport { BehaviorSubject } from 'rxjs';\n@Component({\n  selector: 'mdtx-sample-pos-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    PosLayoutModule,\n    CardAvatarComponent,\n    ProductCardComponent,\n    InputSearchComponent,\n    MatFormFieldModule,\n    MatInputModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatButtonModule,\n    MatIconModule,\n    ProductCardComponent,\n    ProductSmallCardComponent,\n    InputPosSearchComponent,\n  ],\n  templateUrl: './sample-pos-layout.component.html',\n  styleUrl: './sample-pos-layout.component.scss',\n})\nexport class SamplePosLayoutComponent {\n  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;\n  totalPrice$ = new BehaviorSubject('0');\n\n  productCart = new Map<string, Partial<ISkuViewRaw>>();\n\n  products: Partial<ISkuViewRaw>[] = [\n    {\n      barcode: '100000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000010',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000011',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ];\n\n  addItemToCart(item: Partial<ISkuViewRaw>) {\n    const foundItem = this.productCart.get(item.barcode!);\n    if (foundItem) {\n      foundItem.quantity = (foundItem.quantity ?? 1) + 1;\n      this.productCart.delete(item.barcode!);\n      this.productCart.set(item.barcode!, foundItem);\n      console.log(foundItem);\n    } else {\n      this.productCart.set(item.barcode!, item);\n    }\n    this.udpateTotalPrice();\n  }\n\n  getCartItems() {\n    return [...this.productCart.entries()].map(([, value]) => value);\n  }\n\n  handleCloseButton(item: Partial<ISkuViewRaw>) {\n    this.productCart.delete(item.barcode!);\n    this.udpateTotalPrice();\n  }\n\n  handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {\n    this.productCart.get(item.barcode!)!.quantity = quantity;\n    this.udpateTotalPrice();\n  }\n\n  handleInputEvent(event: string) {\n    this.products.find((e) => {\n      if (e.barcode === event) {\n        this.addItemToCart(e);\n        this.inputPosSearch.clear();\n      } else {\n        // NOT Implemented\n      }\n    });\n  }\n\n  udpateTotalPrice() {\n    const items = this.getCartItems();\n    let totalPrice = 0;\n    if (items && items.length > 0) {\n      totalPrice = this.getCartItems()\n        .map((e) => {\n          if (e.quantity && e.price) {\n            return e.quantity * e.price;\n          }\n          return 0;\n        })\n        .reduce((p, c) => p + c);\n    }\n\n    this.totalPrice$.next(totalPrice.toLocaleString());\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\nimport {\n  CardAvatarComponent,\n  ProductCardComponent,\n  ProductSmallCardComponent,\n} from '@mdtx/material/card';\nimport {\n  InputPosSearchComponent,\n  InputSearchComponent,\n} from '@mdtx/material/form';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\nimport { BehaviorSubject } from 'rxjs';\nimport { BarcodeViewComponent} from '@mdtx/material/barcode'\n@Component({\n  selector: 'mdtx-sample-pos-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    PosLayoutModule,\n    CardAvatarComponent,\n    ProductCardComponent,\n    InputSearchComponent,\n    MatFormFieldModule,\n    MatInputModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatButtonModule,\n    MatIconModule,\n    ProductCardComponent,\n    ProductSmallCardComponent,\n    InputPosSearchComponent,\n    BarcodeViewComponent\n  ],\n  templateUrl: './sample-pos-layout.component.html',\n  styleUrl: './sample-pos-layout.component.scss',\n})\nexport class SamplePosLayoutComponent {\n  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;\n  totalPrice$ = new BehaviorSubject('0');\n\n  productCart = new Map<string, Partial<ISkuViewRaw>>();\n\n  products: Partial<ISkuViewRaw>[] = [\n    {\n      barcode: '1000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000000',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000001',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ];\n\n  addItemToCart(item: Partial<ISkuViewRaw>) {\n    const foundItem = this.productCart.get(item.barcode!);\n    if (foundItem) {\n      foundItem.quantity = (foundItem.quantity ?? 1) + 1;\n      this.productCart.delete(item.barcode!);\n      this.productCart.set(item.barcode!, foundItem);\n      console.log(foundItem);\n    } else {\n      this.productCart.set(item.barcode!, item);\n    }\n    this.udpateTotalPrice();\n  }\n\n  getCartItems() {\n    return [...this.productCart.entries()].map(([, value]) => value);\n  }\n\n  handleCloseButton(item: Partial<ISkuViewRaw>) {\n    this.productCart.delete(item.barcode!);\n    this.udpateTotalPrice();\n  }\n\n  handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {\n    this.productCart.get(item.barcode!)!.quantity = quantity;\n    this.udpateTotalPrice();\n  }\n\n  handleInputEvent(event: string) {\n    this.products.find((e) => {\n      if (e.barcode === event) {\n        this.addItemToCart(e);\n        this.inputPosSearch.clear();\n      } else {\n        // NOT Implemented\n      }\n    });\n  }\n\n  udpateTotalPrice() {\n    const items = this.getCartItems();\n    let totalPrice = 0;\n    if (items && items.length > 0) {\n      totalPrice = this.getCartItems()\n        .map((e) => {\n          if (e.quantity && e.price) {\n            return e.quantity * e.price;\n          }\n          return 0;\n        })\n        .reduce((p, c) => p + c);\n    }\n\n    this.totalPrice$.next(totalPrice.toLocaleString());\n  }\n}\n",
             "styleUrl": "./sample-pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"font-barcode39\">100000000001</div>\n\n<mdtx-pos-layout>\n  <!-- mdtxPosLayoutToolbar -->\n  <!-- mdtxPosLayoutProductList -->\n  <!-- mdtxPosLayoutCartList -->\n  <!-- mdtxPosLayoutCartPrice -->\n\n  <ng-template mdtxPosLayoutToolbar>\n    <mdtx-input-pos-search\n      #inputPosSearch\n      (inputEvent)=\"handleInputEvent($event)\"\n    ></mdtx-input-pos-search>\n  </ng-template>\n\n  <ng-template mdtxPosLayoutProductList>\n    @for(item of products; track item){\n\n    <mdtx-product-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [price]=\"item.price!\"\n      (primaryButtonClickEvent)=\"addItemToCart(item)\"\n    ></mdtx-product-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartList>\n    @for(item of getCartItems() ; track item){\n\n    <mdtx-product-small-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [unitPrice]=\"item.price!\"\n      [quantity]=\"item.quantity!\"\n      (closeButtonClick)=\"handleCloseButton(item)\"\n      (quantityValueChange)=\"handleQuantityChange($event, item)\"\n    ></mdtx-product-small-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartPrice>\n    <div\n      style=\"\n        display: flex;\n        gap: 1em;\n        align-items: center;\n        justify-content: flex-end;\n      \"\n    >\n      <div class=\"total-price-container\">\n        <div class=\"total-price\">${{ totalPrice$ | async }}</div>\n      </div>\n      <button\n        style=\"\n          height: 100px;\n          width: 100px;\n          font-size: 2em;\n          text-transform: uppercase;\n          font-weight: bolder;\n        \"\n        mat-raised-button\n        color=\"primary\"\n      >\n        Pay\n      </button>\n    </div>\n  </ng-template>\n</mdtx-pos-layout>\n"
+            "templateData": "<div style=\"display: flex; gap: 2em\">\n  <mdtx-barcode-view barcode=\"1000000001\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000002\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000003\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000004\"></mdtx-barcode-view>\n</div>\n\n<mdtx-pos-layout>\n  <ng-template mdtxPosLayoutToolbar>\n    <mdtx-input-pos-search\n      #inputPosSearch\n      (inputEvent)=\"handleInputEvent($event)\"\n    ></mdtx-input-pos-search>\n  </ng-template>\n\n  <ng-template mdtxPosLayoutProductList>\n    @for(item of products; track item){\n\n    <mdtx-product-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [price]=\"item.price!\"\n      (primaryButtonClickEvent)=\"addItemToCart(item)\"\n    ></mdtx-product-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartList>\n    @for(item of getCartItems() ; track item){\n\n    <mdtx-product-small-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [unitPrice]=\"item.price!\"\n      [quantity]=\"item.quantity!\"\n      (closeButtonClick)=\"handleCloseButton(item)\"\n      (quantityValueChange)=\"handleQuantityChange($event, item)\"\n    ></mdtx-product-small-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartPrice>\n    <div\n      style=\"\n        display: flex;\n        gap: 1em;\n        align-items: center;\n        justify-content: flex-end;\n      \"\n    >\n      <div class=\"total-price-container\">\n        <div class=\"total-price\">${{ totalPrice$ | async }}</div>\n      </div>\n      <button\n        style=\"\n          height: 100px;\n\n          font-size: 2em;\n          text-transform: uppercase;\n          font-weight: bolder;\n        \"\n        mat-raised-button\n        color=\"primary\"\n      >\n        Checkout\n      </button>\n    </div>\n  </ng-template>\n</mdtx-pos-layout>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -39808,6 +39996,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkout-button works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -40378,6 +40576,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CheckoutButtonComponent>",
+                "defaultValue": "{\n  component: CheckoutButtonComponent,\n  title: 'CheckoutButtonComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -40943,6 +41151,16 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n]"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n}"
             },
             {
                 "name": "Primary",
@@ -41915,6 +42133,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 187
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<CheckoutButtonComponent>",
+                "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
             },
             {
                 "name": "Story",
@@ -42938,6 +43167,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Post',\r\n    inputControl: editorControl,\r\n    inputName: 'editor',\r\n  },\r\n}"
+                }
+            ],
+            "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkout-button works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CheckoutButtonComponent>",
+                    "defaultValue": "{\n  component: CheckoutButtonComponent,\n  title: 'CheckoutButtonComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n}"
                 }
             ],
             "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts": [
@@ -44905,6 +45166,19 @@
                     "kind": 187
                 }
             ],
+            "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CheckoutButtonComponent>",
+                    "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts": [
                 {
                     "name": "Story",
@@ -45601,6 +45875,63 @@
         "count": 1,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/barcode/src/lib/barcode-view/barcode-view.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BarcodeViewComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/barcode/src/lib/material-barcode/material-barcode.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MaterialBarcodeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/button/src/lib/checkout-button/checkout-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/button/src/lib/checkout-button/checkout-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckoutButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts",
                 "type": "variable",

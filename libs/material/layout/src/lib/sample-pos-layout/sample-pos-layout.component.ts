@@ -17,7 +17,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ISkuRaw, ISkuViewRaw } from '@mdtx/common';
 import { BehaviorSubject } from 'rxjs';
-import { BarcodeViewComponent} from '@mdtx/material/barcode'
+import { BarcodeViewComponent } from '@mdtx/material/barcode';
+
+import { CheckoutButtonComponent } from '@mdtx/material/button';
 @Component({
   selector: 'mdtx-sample-pos-layout',
   standalone: true,
@@ -36,7 +38,8 @@ import { BarcodeViewComponent} from '@mdtx/material/barcode'
     ProductCardComponent,
     ProductSmallCardComponent,
     InputPosSearchComponent,
-    BarcodeViewComponent
+    BarcodeViewComponent,
+    CheckoutButtonComponent,
   ],
   templateUrl: './sample-pos-layout.component.html',
   styleUrl: './sample-pos-layout.component.scss',
@@ -76,42 +79,6 @@ export class SamplePosLayoutComponent {
       barcode: '1000000005',
       name: 'Product Name 5',
       price: 500.99,
-      quantity: 1,
-    },
-    {
-      barcode: '1000000006',
-      name: 'Product Name 6',
-      price: 600.99,
-      quantity: 1,
-    },
-    {
-      barcode: '1000000007',
-      name: 'Product Name 7',
-      price: 700.99,
-      quantity: 1,
-    },
-    {
-      barcode: '1000000008',
-      name: 'Product Name 8',
-      price: 800.99,
-      quantity: 1,
-    },
-    {
-      barcode: '1000000009',
-      name: 'Product Name 9',
-      price: 900.99,
-      quantity: 1,
-    },
-    {
-      barcode: '10000000000',
-      name: 'Product Name 10',
-      price: 1000.99,
-      quantity: 1,
-    },
-    {
-      barcode: '10000000001',
-      name: 'Last Product',
-      price: 1100.99,
       quantity: 1,
     },
   ];
