@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PosLayoutModule } from '../pos-layout/pos-layout.module';
 import {
@@ -6,14 +6,18 @@ import {
   ProductCardComponent,
   ProductSmallCardComponent,
 } from '@mdtx/material/card';
-import { InputSearchComponent } from '@mdtx/material/form';
+import {
+  InputPosSearchComponent,
+  InputSearchComponent,
+} from '@mdtx/material/form';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ISkuViewRaw } from '@mdtx/common';
+import { ISkuRaw, ISkuViewRaw } from '@mdtx/common';
 import { BehaviorSubject } from 'rxjs';
+import { BarcodeViewComponent} from '@mdtx/material/barcode'
 @Component({
   selector: 'mdtx-sample-pos-layout',
   standalone: true,
@@ -31,78 +35,81 @@ import { BehaviorSubject } from 'rxjs';
     MatIconModule,
     ProductCardComponent,
     ProductSmallCardComponent,
+    InputPosSearchComponent,
+    BarcodeViewComponent
   ],
   templateUrl: './sample-pos-layout.component.html',
   styleUrl: './sample-pos-layout.component.scss',
 })
 export class SamplePosLayoutComponent {
+  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;
   totalPrice$ = new BehaviorSubject('0');
 
   productCart = new Map<string, Partial<ISkuViewRaw>>();
 
   products: Partial<ISkuViewRaw>[] = [
     {
-      barcode: '100000000001',
+      barcode: '1000000001',
       name: 'First Product',
       price: 100.99,
       quantity: 1,
     },
     {
-      barcode: '100000000002',
+      barcode: '1000000002',
       name: 'Product Name 2',
       price: 200.99,
       quantity: 1,
     },
     {
-      barcode: '100000000003',
+      barcode: '1000000003',
       name: 'Product Name 3',
       price: 300.99,
       quantity: 1,
     },
     {
-      barcode: '100000000004',
+      barcode: '1000000004',
       name: 'Product Name 4',
       price: 400.99,
       quantity: 1,
     },
     {
-      barcode: '100000000005',
+      barcode: '1000000005',
       name: 'Product Name 5',
       price: 500.99,
       quantity: 1,
     },
     {
-      barcode: '100000000006',
+      barcode: '1000000006',
       name: 'Product Name 6',
       price: 600.99,
       quantity: 1,
     },
     {
-      barcode: '100000000007',
+      barcode: '1000000007',
       name: 'Product Name 7',
       price: 700.99,
       quantity: 1,
     },
     {
-      barcode: '100000000008',
+      barcode: '1000000008',
       name: 'Product Name 8',
       price: 800.99,
       quantity: 1,
     },
     {
-      barcode: '100000000009',
+      barcode: '1000000009',
       name: 'Product Name 9',
       price: 900.99,
       quantity: 1,
     },
     {
-      barcode: '1000000000010',
+      barcode: '10000000000',
       name: 'Product Name 10',
       price: 1000.99,
       quantity: 1,
     },
     {
-      barcode: '1000000000011',
+      barcode: '10000000001',
       name: 'Last Product',
       price: 1100.99,
       quantity: 1,
@@ -110,8 +117,12 @@ export class SamplePosLayoutComponent {
   ];
 
   addItemToCart(item: Partial<ISkuViewRaw>) {
-    if (this.productCart.get(item.barcode!)) {
-      // Item already in the cart
+    const foundItem = this.productCart.get(item.barcode!);
+    if (foundItem) {
+      foundItem.quantity = (foundItem.quantity ?? 1) + 1;
+      this.productCart.delete(item.barcode!);
+      this.productCart.set(item.barcode!, foundItem);
+      console.log(foundItem);
     } else {
       this.productCart.set(item.barcode!, item);
     }
@@ -130,6 +141,17 @@ export class SamplePosLayoutComponent {
   handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {
     this.productCart.get(item.barcode!)!.quantity = quantity;
     this.udpateTotalPrice();
+  }
+
+  handleInputEvent(event: string) {
+    this.products.find((e) => {
+      if (e.barcode === event) {
+        this.addItemToCart(e);
+        this.inputPosSearch.clear();
+      } else {
+        // NOT Implemented
+      }
+    });
   }
 
   udpateTotalPrice() {

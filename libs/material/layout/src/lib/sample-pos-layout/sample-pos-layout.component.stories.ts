@@ -10,13 +10,17 @@ import { within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { PosLayoutModule } from '../pos-layout/pos-layout.module';
+import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
 const meta: Meta<SamplePosLayoutComponent> = {
   component: SamplePosLayoutComponent,
   title: 'SamplePosLayoutComponent',
   decorators: [
     applicationConfig({
-      providers: [provideAnimations()],
+      providers: [
+        provideAnimations(),
+        provideMatFormFieldOptions({ appearance: 'outline' }),
+      ],
     }),
     moduleMetadata({
       imports: [PosLayoutModule],

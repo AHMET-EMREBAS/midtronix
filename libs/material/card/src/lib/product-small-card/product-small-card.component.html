@@ -21,7 +21,7 @@
   <div class="product-card-price-content" style="position: relative">
     <mdtx-input-quantity
       #quantityInput
-      [value]="1"
+      [value]="quantity"
       (quantityValueChange)="quantityValueChangeHandler($event)"
     ></mdtx-input-quantity>
     <div class="product-unit-price">$ {{ unitPrice }}</div>

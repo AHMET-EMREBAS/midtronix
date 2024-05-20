@@ -1,0 +1,15 @@
+.subtotal {
+  font-size: 1em;
+  font-weight: 500;
+}
+.total {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.checkout-price {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.3em;
+}

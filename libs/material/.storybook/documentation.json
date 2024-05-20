@@ -25994,12 +25994,12 @@
         },
         {
             "name": "PosLayoutCartListDirective",
-            "id": "directive-PosLayoutCartListDirective-341e2d348444218cdcf73ae8d336f7cd1e6135a51615d84a5663559606d838e91e63948438ec81691054c8d2c6a09439cfee744719fdd38ea1a2259f3777aa7e",
+            "id": "directive-PosLayoutCartListDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
             "selector": "[mdtxPosLayoutCartList]",
             "providers": [],
             "hostDirectives": [],
@@ -26010,18 +26010,61 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
             "methodsClass": [],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "PosLayoutCartPriceDirective",
-            "id": "directive-PosLayoutCartPriceDirective-341e2d348444218cdcf73ae8d336f7cd1e6135a51615d84a5663559606d838e91e63948438ec81691054c8d2c6a09439cfee744719fdd38ea1a2259f3777aa7e",
+            "id": "directive-PosLayoutCartPriceDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
             "selector": "[mdtxPosLayoutCartPrice]",
             "providers": [],
             "hostDirectives": [],
@@ -26032,18 +26075,61 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
             "methodsClass": [],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 21,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "PosLayoutProductListDirective",
-            "id": "directive-PosLayoutProductListDirective-341e2d348444218cdcf73ae8d336f7cd1e6135a51615d84a5663559606d838e91e63948438ec81691054c8d2c6a09439cfee744719fdd38ea1a2259f3777aa7e",
+            "id": "directive-PosLayoutProductListDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
             "selector": "[mdtxPosLayoutProductList]",
             "providers": [],
             "hostDirectives": [],
@@ -26054,18 +26140,61 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
             "methodsClass": [],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "PosLayoutToolbarDirective",
-            "id": "directive-PosLayoutToolbarDirective-341e2d348444218cdcf73ae8d336f7cd1e6135a51615d84a5663559606d838e91e63948438ec81691054c8d2c6a09439cfee744719fdd38ea1a2259f3777aa7e",
+            "id": "directive-PosLayoutToolbarDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
             "selector": "[mdtxPosLayoutToolbar]",
             "providers": [],
             "hostDirectives": [],
@@ -26076,9 +26205,52 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "templateRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TemplateRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 7,
+                    "modifierKind": [
+                        125,
+                        148
+                    ]
+                }
+            ],
             "methodsClass": [],
-            "extends": []
+            "extends": [],
+            "implements": [
+                "ITemplateRef"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 6,
+                "jsdoctags": [
+                    {
+                        "name": "templateRef",
+                        "type": "TemplateRef<any>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         },
         {
             "name": "ScrollDirective",
@@ -28308,7 +28480,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28424,6 +28596,19 @@
                     ]
                 },
                 {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
                     "name": "getErrorMessage",
                     "args": [],
                     "optional": false,
@@ -28509,7 +28694,7 @@
         },
         {
             "name": "InputBaseComponent",
-            "id": "component-InputBaseComponent-65c39e1662bc764ec4ee44273aca7ed06d72b3794734248e2a96af1185da549c066dbad5402b1e72aa9eb2e8260739386e4ea3f0a941bfb58c32df4471b083f4",
+            "id": "component-InputBaseComponent-ee0e1c93814fff916a6703d857280117184333da63c5075fa42eacc06d8d5e7f0c8d2ccf4ba223bd3fc6178ccc09bc93a481c9d3dea59f36154435eb7db448a3",
             "file": "libs/material/form/src/lib/input-base/input-base.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28562,7 +28747,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": []
                 },
@@ -28582,7 +28767,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter"
                 }
             ],
@@ -28607,6 +28792,16 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -28672,7 +28867,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\nimport { Icon } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-base',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-base.component.html',\r\n  styleUrl: './input-base.component.scss',\r\n})\r\nexport class InputBaseComponent implements OnInit, AfterViewInit {\r\n  @Input() inputControl!: FormControl;\r\n  @Input() label!: string;\r\n  @Input() inputName!: string;\r\n  @Input() hint = '';\r\n  @Input() serverSideError = '';\r\n  @Output() inputEvent = new EventEmitter();\r\n  @Input() prefixIcon?: Icon;\r\n\r\n  $valueChange!: Observable<any>;\r\n  $statusChange!: Observable<any>;\r\n\r\n  ngOnInit(): void {\r\n    if (!this.inputControl) this.inputControl = new FormControl();\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));\r\n    this.$statusChange = this.inputControl.statusChanges.pipe(\r\n      debounceTime(600)\r\n    );\r\n  }\r\n\r\n  getErrorMessage() {\r\n    const errors = this.inputControl?.errors;\r\n    if (errors) {\r\n      return Object.values(errors).shift();\r\n    }\r\n    return 'Field is not valid!';\r\n  }\r\n\r\n  testid() {\r\n    return 'input-' + this.inputName;\r\n  }\r\n\r\n  iconColor() {\r\n    return this.inputControl?.invalid && this.inputControl.touched\r\n      ? 'warn'\r\n      : 'primary';\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime } from 'rxjs';\r\nimport { Icon } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-base',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './input-base.component.html',\r\n  styleUrl: './input-base.component.scss',\r\n})\r\nexport class InputBaseComponent implements OnInit, AfterViewInit {\r\n  @Input() inputControl!: FormControl;\r\n  @Input() label!: string;\r\n  @Input() inputName!: string;\r\n  @Input() hint = '';\r\n  @Input() serverSideError = '';\r\n  @Input() prefixIcon?: Icon;\r\n  @Output() inputEvent = new EventEmitter();\r\n\r\n  $valueChange!: Observable<any>;\r\n  $statusChange!: Observable<any>;\r\n\r\n  ngOnInit(): void {\r\n    if (!this.inputControl) this.inputControl = new FormControl();\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));\r\n    this.$statusChange = this.inputControl.statusChanges.pipe(\r\n      debounceTime(600)\r\n    );\r\n  }\r\n\r\n  getErrorMessage() {\r\n    const errors = this.inputControl?.errors;\r\n    if (errors) {\r\n      return Object.values(errors).shift();\r\n    }\r\n    return 'Field is not valid!';\r\n  }\r\n\r\n  testid() {\r\n    return 'input-' + this.inputName;\r\n  }\r\n\r\n  iconColor() {\r\n    return this.inputControl?.invalid && this.inputControl.touched\r\n      ? 'warn'\r\n      : 'primary';\r\n  }\r\n\r\n  clear() {\r\n    this.inputControl.setValue(null);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-base.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28759,7 +28954,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -28785,7 +28980,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -28819,6 +29014,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -28983,7 +29191,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -29009,7 +29217,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29043,6 +29251,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -29262,7 +29483,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29384,6 +29605,19 @@
                     ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
                     }
                 },
                 {
@@ -29565,7 +29799,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29599,6 +29833,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -29809,7 +30056,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -29905,6 +30152,19 @@
                     "modifierKind": [
                         164
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -30065,7 +30325,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -30091,7 +30351,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30125,6 +30385,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -30330,7 +30603,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -30356,7 +30629,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30429,6 +30702,19 @@
                     "modifierKind": [
                         164
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -30638,7 +30924,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30759,6 +31045,19 @@
                     "modifierKind": [
                         164
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -30905,7 +31204,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -30931,7 +31230,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -30994,6 +31293,19 @@
                     "line": 16,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
                 },
                 {
                     "name": "getErrorMessage",
@@ -31213,7 +31525,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -31335,6 +31647,19 @@
                     ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
                     }
                 },
                 {
@@ -31544,7 +31869,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -31590,6 +31915,19 @@
                     "modifierKind": [
                         164
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -31828,7 +32166,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -31881,6 +32219,19 @@
                     "line": 16,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
                 },
                 {
                     "name": "getErrorMessage",
@@ -32122,7 +32473,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -32156,6 +32507,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -32245,6 +32609,253 @@
                 "InputTextComponent"
             ],
             "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>{{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"tel\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix [color]=\"iconColor()\">{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
+        },
+        {
+            "name": "InputPosSearchComponent",
+            "id": "component-InputPosSearchComponent-5009a639856bd7d8b615e925d16d7516950c6ed4c0472f8f1732b8a918bd6a83f82ba06d458d1645e1d49c099e444170b9ec6f1bd2aac0c1be942df81d2507c2",
+            "file": "libs/material/form/src/lib/input-pos-search/input-pos-search.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-input-pos-search",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./input-pos-search.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "hint",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "FormControl",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "inputName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "prefixIcon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "Icon",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "serverSideError",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "inputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "inputControl",
+                    "defaultValue": "new FormControl('', [])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        164
+                    ]
+                },
+                {
+                    "name": "$statusChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "$valueChange",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "getErrorMessage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "iconColor",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "\"warn\" | \"primary\"",
+                    "typeParameters": [],
+                    "line": 57,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "testid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputTextComponent } from '../input-text/input-text.component';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl } from '@angular/forms';\n\n@Component({\n  selector: 'mdtx-input-pos-search',\n  standalone: true,\n  imports: [CommonModule, InputTextComponent],\n  templateUrl: './input-pos-search.component.html',\n  styleUrl: './input-pos-search.component.scss',\n})\nexport class InputPosSearchComponent extends InputBaseComponent {\n  override inputControl: FormControl<any> = new FormControl('', []);\n}\n",
+            "styleUrl": "./input-pos-search.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [
+                "InputBaseComponent"
+            ],
+            "templateData": "<mdtx-input-text\n  prefixIcon=\"search\"\n  [inputControl]=\"inputControl\"\n  (inputEvent)=\"inputEvent.emit($event)\"\n  label=\"Scan Barcode\"\n></mdtx-input-text>\n"
         },
         {
             "name": "InputQuantityComponent",
@@ -32512,7 +33123,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -32634,6 +33245,19 @@
                     ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
                     }
                 },
                 {
@@ -32811,7 +33435,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -32837,7 +33461,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -32871,6 +33495,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -32967,7 +33604,7 @@
         },
         {
             "name": "InputSearchComponent",
-            "id": "component-InputSearchComponent-17044dce22d251bcec23d29e4294dc2d7b6f2579c06d350bb9b62d4e14453992bf4558b6f9f8292e0258f50a1342967dfc453ced1657c64b7a6210612d8b2c31",
+            "id": "component-InputSearchComponent-54db62e833511b9998d12f88fb1fed8eacf83d6b9b2958481d4454699a59549982bc5a6ed99ea7838ac89769fd7945eb19c25b2b4a628bb09505b95a5bba1cfd",
             "file": "libs/material/form/src/lib/input-search/input-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -32989,20 +33626,20 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 36,
+                    "line": 30,
                     "type": "EventEmitter"
                 }
             ],
             "propertiesClass": [
                 {
                     "name": "closeAfter3000$",
-                    "defaultValue": "this.open$.pipe(\r\n    debounceTime(5000),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  )",
+                    "defaultValue": "this.open$.pipe(\r\n    debounceTime(400),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 24
                 },
                 {
                     "name": "open$",
@@ -33012,7 +33649,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 29
+                    "line": 22
                 },
                 {
                     "name": "searchControl",
@@ -33022,7 +33659,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 20
                 },
                 {
                     "name": "sub",
@@ -33031,7 +33668,7 @@
                     "type": "Subscription",
                     "optional": false,
                     "description": "",
-                    "line": 38
+                    "line": 32
                 }
             ],
             "methodsClass": [
@@ -33041,7 +33678,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 48,
+                    "line": 42,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -33051,7 +33688,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 40,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -33061,7 +33698,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 46,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -33080,7 +33717,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  OnDestroy,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { FormControl } from '@angular/forms';\r\nimport {\r\n  BehaviorSubject,\r\n  Subscription,\r\n  debounce,\r\n  debounceTime,\r\n  startWith,\r\n  tap,\r\n} from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-search',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-search.component.html',\r\n  styleUrl: './input-search.component.scss',\r\n})\r\nexport class InputSearchComponent implements OnInit, OnDestroy {\r\n  searchControl = new FormControl('');\r\n\r\n  open$ = new BehaviorSubject(false);\r\n  closeAfter3000$ = this.open$.pipe(\r\n    debounceTime(5000),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  );\r\n  @Output() searchEvent = new EventEmitter<string>();\r\n\r\n  sub!: Subscription;\r\n\r\n  ngOnInit(): void {\r\n    this.sub = this.searchControl.valueChanges\r\n      .pipe(debounceTime(1000))\r\n      .subscribe((searchString) => {\r\n        this.searchEvent.emit(searchString ?? '');\r\n      });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n\r\n  openSearch() {\r\n    this.open$.next(true);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  OnDestroy,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { FormControl } from '@angular/forms';\r\nimport { BehaviorSubject, Subscription, debounceTime, tap } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-search',\r\n  standalone: true,\r\n  imports: [CommonFormModule],\r\n  templateUrl: './input-search.component.html',\r\n  styleUrl: './input-search.component.scss',\r\n})\r\nexport class InputSearchComponent implements OnInit, OnDestroy {\r\n  searchControl = new FormControl('');\r\n\r\n  open$ = new BehaviorSubject(false);\r\n  \r\n  closeAfter3000$ = this.open$.pipe(\r\n    debounceTime(400),\r\n    tap(() => {\r\n      this.open$.next(false);\r\n    })\r\n  );\r\n  @Output() searchEvent = new EventEmitter<string>();\r\n\r\n  sub!: Subscription;\r\n\r\n  ngOnInit(): void {\r\n    this.sub = this.searchControl.valueChanges\r\n      .pipe(debounceTime(1000))\r\n      .subscribe((searchString) => {\r\n        this.searchEvent.emit(searchString ?? '');\r\n      });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    this.sub.unsubscribe();\r\n  }\r\n\r\n  openSearch() {\r\n    this.open$.next(true);\r\n  }\r\n}\r\n",
             "styleUrl": "./input-search.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -33220,7 +33857,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -33342,6 +33979,19 @@
                     ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
                     }
                 },
                 {
@@ -33501,7 +34151,7 @@
                     "name": "prefixIcon",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 28,
                     "type": "Icon",
                     "decorators": [],
                     "inheritance": {
@@ -33527,7 +34177,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -33570,6 +34220,19 @@
                     "line": 15,
                     "deprecated": false,
                     "deprecationMessage": ""
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
                 },
                 {
                     "name": "getErrorMessage",
@@ -33791,7 +34454,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -33825,6 +34488,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -34053,7 +34729,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -34087,6 +34763,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -34178,7 +34867,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>\r\n    {{ label || inputName | titlecase }}\r\n  </mat-label>\r\n  <input\r\n    [type]=\"inputType\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix [color]=\"iconColor()\">\r\n    {{ prefixIcon }}\r\n  </mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label>\r\n    {{ label || inputName | titlecase }}\r\n  </mat-label>\r\n  <input\r\n    [type]=\"inputType\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [name]=\"inputName\"\r\n    [formControl]=\"inputControl\"\r\n    [attr.data-testid]=\"testid()\"\r\n    (input)=\"inputEvent.emit(inputControl.value)\"\r\n  />\r\n\r\n  <!-- Text suffix -->\r\n  @if(textPrefix){\r\n  <span matTextPrefix> {{ textPrefix }}</span>\r\n  }\r\n\r\n  <!-- Text suffix -->\r\n  @if(textSuffix){\r\n  <span matTextSuffix> {{ textSuffix }}</span>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matIconSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matIconPrefix [color]=\"iconColor()\">\r\n    {{ prefixIcon }}\r\n  </mat-icon>\r\n  }\r\n\r\n  <mat-error>{{ getErrorMessage() }}</mat-error>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputTimeComponent",
@@ -34290,7 +34979,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -34386,6 +35075,19 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
                 },
                 {
                     "name": "getErrorMessage",
@@ -34609,7 +35311,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -34730,6 +35432,19 @@
                     "modifierKind": [
                         164
                     ],
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
                     "inheritance": {
                         "file": "InputBaseComponent"
                     }
@@ -34919,7 +35634,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -34953,6 +35668,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -35196,7 +35924,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "EventEmitter",
                     "inheritance": {
                         "file": "InputBaseComponent"
@@ -35230,6 +35958,19 @@
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "inheritance": {
+                        "file": "InputBaseComponent"
+                    }
+                },
                 {
                     "name": "getErrorMessage",
                     "args": [],
@@ -35322,7 +36063,7 @@
         },
         {
             "name": "LayoutComponent",
-            "id": "component-LayoutComponent-5e57cc3d9a5025b5a1507e17b9fcc5260a4755a86222fd11edb6130289751cf5ba6f75008c980e12de333d37d1ade998a49a6c3e0849a21eef3256d445197355",
+            "id": "component-LayoutComponent-bcc8f3f71fcf385f5483cccd10a0c4af7919694cc1e8a27de161296b8840ab0913385cb0e6231025ebccbae996ab6ff004fe15cd84b7e483172257cb7fb2964d",
             "file": "libs/material/layout/src/lib/layout/layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -35890,7 +36631,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  ViewportDirective,\r\n  FullscreenDirective,\r\n  ScrollDirective,\r\n} from '@mdtx/material/core';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { LayoutDirectives } from './layout.directive';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { BaseLayoutComponent } from './base-layout.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSidenavModule,\r\n    MatMenuModule,\r\n    MatListModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatToolbarModule,\r\n    MatProgressBarModule,\r\n    TemplateOutletComponent,\r\n    FullscreenDirective,\r\n    ViewportDirective,\r\n    ScrollDirective,\r\n  ],\r\n  templateUrl: './layout.component.html',\r\n  styleUrl: './layout.component.scss',\r\n  // providers: [...LayoutDirectives],\r\n})\r\nexport class LayoutComponent extends BaseLayoutComponent {}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatSidenavModule } from '@angular/material/sidenav';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { MatListModule } from '@angular/material/list';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport {\r\n  ViewportDirective,\r\n  FullscreenDirective,\r\n  ScrollDirective,\r\n} from '@mdtx/material/core';\r\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { BaseLayoutComponent } from './base-layout.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSidenavModule,\r\n    MatMenuModule,\r\n    MatListModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatToolbarModule,\r\n    MatProgressBarModule,\r\n    TemplateOutletComponent,\r\n    FullscreenDirective,\r\n    ViewportDirective,\r\n    ScrollDirective,\r\n  ],\r\n  templateUrl: './layout.component.html',\r\n  styleUrl: './layout.component.scss',\r\n})\r\nexport class LayoutComponent extends BaseLayoutComponent {}\r\n",
             "styleUrl": "./layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -36372,7 +37113,7 @@
         },
         {
             "name": "PosLayoutComponent",
-            "id": "component-PosLayoutComponent-5309113e4a82479f9d7d42e853e9bc80d96c80dd2fed1124e5cf167bcd419e779d0322caa9ccf8904581d4ff8a7fb67032d77673c4df3eeefbe7aee72a0c3a59",
+            "id": "component-PosLayoutComponent-241a3992b3f82c4ae436b59aa6bf2ce6e0344fc42b8385ca548cc0907b635f982a2f1fb3ae3cd288b2600ad652152f116083b0122714fe90cf60b468e74f544e",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36397,7 +37138,7 @@
                     "type": "QueryList<PosLayoutCartListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 26,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36415,7 +37156,7 @@
                     "type": "QueryList<PosLayoutCartPriceDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 29,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36433,7 +37174,7 @@
                     "type": "QueryList<PosLayoutProductListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 23,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36451,7 +37192,7 @@
                     "type": "QueryList<PosLayoutToolbarDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36468,22 +37209,31 @@
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": false,
-            "imports": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TemplateOutletComponent",
+                    "type": "component"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\nimport {\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n  PosLayoutProductListDirective,\n  PosLayoutToolbarDirective,\n} from './pos-layout.directive';\n\n@Component({\n  selector: 'mdtx-pos-layout',\n  templateUrl: './pos-layout.component.html',\n  styleUrl: './pos-layout.component.scss',\n})\nexport class PosLayoutComponent {\n  @ContentChildren(PosLayoutToolbarDirective)\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\n\n  @ContentChildren(PosLayoutProductListDirective)\n  productList!: QueryList<PosLayoutProductListDirective>;\n\n  @ContentChildren(PosLayoutCartListDirective)\n  cartList!: QueryList<PosLayoutCartListDirective>;\n\n  @ContentChildren(PosLayoutCartPriceDirective)\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\n}\n",
+            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\nimport {\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n  PosLayoutProductListDirective,\n  PosLayoutToolbarDirective,\n} from './pos-layout.directive';\nimport { CommonModule } from '@angular/common';\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\n\n@Component({\n  selector: 'mdtx-pos-layout',\n  standalone: true,\n  imports: [CommonModule, TemplateOutletComponent],\n  templateUrl: './pos-layout.component.html',\n  styleUrl: './pos-layout.component.scss',\n})\nexport class PosLayoutComponent {\n  @ContentChildren(PosLayoutToolbarDirective)\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\n\n  @ContentChildren(PosLayoutProductListDirective)\n  productList!: QueryList<PosLayoutProductListDirective>;\n\n  @ContentChildren(PosLayoutCartListDirective)\n  cartList!: QueryList<PosLayoutCartListDirective>;\n\n  @ContentChildren(PosLayoutCartPriceDirective)\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\n}\n",
             "styleUrl": "./pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"pos-container\">\n  <div class=\"pos-toolbar\">\n    <mdtx-template-outlet [items]=\"toolbar\"></mdtx-template-outlet>\n  </div>\n\n  <div class=\"pos-content-container\">\n    <div class=\"pos-product-list\">\n      <mdtx-template-outlet [items]=\"productList\"></mdtx-template-outlet>\n    </div>\n\n    <div class=\"pos-cart-list\">\n      <mdtx-template-outlet [items]=\"cartList\"></mdtx-template-outlet>\n      <div class=\"pos-cart-price\">\n        <mdtx-template-outlet [items]=\"cartPrice\"></mdtx-template-outlet>\n      </div>\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"pos-layout-container\">\n  <div class=\"pos-toolbar\">\n    <mdtx-template-outlet [items]=\"toolbar\"></mdtx-template-outlet>\n  </div>\n\n  <div class=\"pos-content-container\">\n    <div class=\"pos-product-list\">\n      @if(productList){ @for(item of productList; track item){\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n      } }\n    </div>\n\n    <div class=\"pos-cart-list\">\n      @if(cartList){ @for(item of cartList; track item){\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n      } }\n    </div>\n  </div>\n  <div class=\"pos-cart-price\">\n    @if(cartPrice){ @for(item of cartPrice; track item){\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n    } }\n  </div>\n</div>\n"
         },
         {
             "name": "ProductCardComponent",
-            "id": "component-ProductCardComponent-83820f7cb5547facb2ffac2174f00e359a24cc005feaa277bc949bf084cd10bc14b9d344490725d71055f68c1c1964dcccda6b7de1481c9349bb9030b1ebbfcc",
+            "id": "component-ProductCardComponent-0d37c6ac56b04c0d7d2725fac9d7810a662910fecb661242dfdce7d36a0927b6c2deddbbe523bbdbf8815995e0c2f5dbae8e863ea4d3c1cbf31df0428e827092",
             "file": "libs/material/card/src/lib/product-card/product-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36498,10 +37248,121 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "description",
+                    "defaultValue": "'Product description'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "price",
+                    "defaultValue": "200.99",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "primaryButtonIcon",
+                    "defaultValue": "'add_shopping_cart'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primaryButtonLabel",
+                    "defaultValue": "'Add To Cart'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "secondaryButtonIcon",
+                    "defaultValue": "'info'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "secondaryButtonLabel",
+                    "defaultValue": "'Details'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "subtitle",
+                    "defaultValue": "'Product subtitle'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Product title'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "primaryButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "secondaryButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handlePrimaryButtonClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleSecondaryButtonClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -36511,22 +37372,38 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatCardModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-product-card',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './product-card.component.html',\n  styleUrl: './product-card.component.scss',\n})\nexport class ProductCardComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatTooltipModule } from '@angular/material/tooltip';\n\n@Component({\n  selector: 'mdtx-product-card',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatCardModule,\n    MatButtonModule,\n    MatIconModule,\n    MatTooltipModule,\n  ],\n  templateUrl: './product-card.component.html',\n  styleUrl: './product-card.component.scss',\n})\nexport class ProductCardComponent {\n  @Input() title = 'Product title';\n  @Input() subtitle = 'Product subtitle';\n  @Input() description = 'Product description';\n\n  @Input() price = 200.99;\n\n  @Input() primaryButtonLabel = 'Add To Cart';\n  @Input() secondaryButtonLabel = 'Details';\n  @Input() primaryButtonIcon = 'add_shopping_cart';\n  @Input() secondaryButtonIcon = 'info';\n\n  @Output() primaryButtonClickEvent = new EventEmitter();\n  @Output() secondaryButtonClickEvent = new EventEmitter();\n\n  handlePrimaryButtonClick() {\n    this.primaryButtonClickEvent.emit();\n  }\n  \n  handleSecondaryButtonClick() {\n    this.secondaryButtonClickEvent.emit();\n  }\n}\n",
             "styleUrl": "./product-card.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>product-card works!</p>\n"
+            "templateData": "<mat-card>\n  <mat-card-header>\n    <mat-card-title>{{ title }}</mat-card-title>\n    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>\n  </mat-card-header>\n  <mat-card-content>\n    <p>{{ description }}</p>\n\n    <h4 style=\"text-align: center\">${{ price }}</h4>\n  </mat-card-content>\n  <mat-card-actions>\n    <button\n      mat-icon-button\n      color=\"primary\"\n      [matTooltip]=\"primaryButtonLabel\"\n      matTooltipPosition=\"above\"\n      (click)=\"handlePrimaryButtonClick()\"\n    >\n      <mat-icon>{{ primaryButtonIcon }}</mat-icon>\n    </button>\n    <button\n      mat-icon-button\n      color=\"primary\"\n      [matTooltip]=\"secondaryButtonLabel\"\n      matTooltipPosition=\"above\"\n      (click)=\"handleSecondaryButtonClick()\"\n    >\n      <mat-icon>{{ secondaryButtonIcon }}</mat-icon>\n    </button>\n  </mat-card-actions>\n</mat-card>\n"
         },
         {
             "name": "ProductSmallCardComponent",
-            "id": "component-ProductSmallCardComponent-2724908a3c922021e3e3f0b153a2d7646c5ebc65037045153c5f6914f36ab5bd76cb3382c06eb8f3a086a1a6558335950106e849d03db61dba8e7022fe58bfa4",
+            "id": "component-ProductSmallCardComponent-fd6fdeca046fd7130cbc28444587afebe806480c96ce0a953a9d4faa7ad499b19802aa7e661fd964833124d6c279a31a5d1b0555801960fc2a75c92304f58ff8",
             "file": "libs/material/card/src/lib/product-small-card/product-small-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36541,10 +37418,173 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "description",
+                    "defaultValue": "'Product description'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "quantity",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "showCloseButton",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "subtitle",
+                    "defaultValue": "'87874199912'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Product title'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "totalPrice",
+                    "defaultValue": "99999.99",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "unitPrice",
+                    "defaultValue": "500.99",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "closeButtonClick",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "quantityValueChange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "calculateTotalPrice",
+                    "args": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "uprice",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "uprice",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleCloseButtonClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "quantityValueChangeHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -36554,18 +37594,30 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputQuantityComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-product-small-card',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './product-small-card.component.html',\n  styleUrl: './product-small-card.component.scss',\n})\nexport class ProductSmallCardComponent {}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { InputQuantityComponent } from '@mdtx/material/form';\n@Component({\n  selector: 'mdtx-product-small-card',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatButtonModule,\n    MatIconModule,\n    InputQuantityComponent,\n  ],\n  templateUrl: './product-small-card.component.html',\n  styleUrl: './product-small-card.component.scss',\n})\nexport class ProductSmallCardComponent {\n  @Input() title = 'Product title';\n  @Input() subtitle = '87874199912';\n  @Input() description = 'Product description';\n\n  @Input() unitPrice = 500.99;\n  @Input() totalPrice = 99999.99;\n  @Input() quantity = 1;\n\n  @Output() quantityValueChange = new EventEmitter();\n  @Output() closeButtonClick = new EventEmitter();\n\n  @Input() showCloseButton = true;\n\n  quantityValueChangeHandler(event: number) {\n    this.quantityValueChange.emit(event);\n  }\n\n  handleCloseButtonClick() {\n    this.closeButtonClick.emit();\n  }\n\n  calculateTotalPrice(quantity: number, uprice: number) {\n    return (quantity * uprice).toFixed(2);\n  }\n}\n",
             "styleUrl": "./product-small-card.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"product-card-container\">\n  <img\n    class=\"product-card-image\"\n    src=\"./assets/imgs/inventory.svg\"\n    alt=\"Product\n  Image\"\n  />\n\n  <div class=\"product-card-content\">\n    <div class=\"product-name\">Product Name</div>\n    <div class=\"product-barcode\">8988123411512</div>\n    <div class=\"product-quantity\">\n      <button>-</button>\n      <div>1</div>\n      <button>+</button>\n    </div>\n  </div>\n\n  <div class=\"product-card-price-content\">\n    <div class=\"product-unit-price\">$ 50.99</div>\n    <div class=\"product-total-price\">$ 200.99</div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"product-card-container\">\n  <button\n    mat-icon-button\n    color=\"accent\"\n    style=\"position: absolute; top: 0px; right: 0px; z-index: 1\"\n    (click)=\"handleCloseButtonClick()\"\n    *ngIf=\"showCloseButton\"\n  >\n    <mat-icon>close</mat-icon>\n  </button>\n  <div class=\"product-card-content\">\n    <img\n      class=\"product-card-image\"\n      src=\"./assets/imgs/inventory.svg\"\n      alt=\"Product Image\"\n    />\n    <div class=\"product-name\">{{ title }}</div>\n    <div class=\"product-barcode\">{{ subtitle }}</div>\n  </div>\n\n  <div class=\"product-card-price-content\" style=\"position: relative\">\n    <mdtx-input-quantity\n      #quantityInput\n      [value]=\"quantity\"\n      (quantityValueChange)=\"quantityValueChangeHandler($event)\"\n    ></mdtx-input-quantity>\n    <div class=\"product-unit-price\">$ {{ unitPrice }}</div>\n    <div class=\"product-total-price\">\n      $ {{ calculateTotalPrice(quantityInput.value, unitPrice)}}\n    </div>\n  </div>\n</div>\n"
         },
         {
             "name": "SampleFormComponent",
@@ -37032,7 +38084,7 @@
         },
         {
             "name": "SamplePosLayoutComponent",
-            "id": "component-SamplePosLayoutComponent-e4eeb3d90a0f8dd76325067dc0d9461561abd9b881f9344ce8b6a1a03e65e3ed4b29c250c2bbe09c8faa9c3a6e5dc34a0d12870a8562b35ebebd12a69e96512b",
+            "id": "component-SamplePosLayoutComponent-ebeef2b4546440f4f09745e4622342d590c86318a2df8fe3478dcb861c2f9865ad0c06aed2ac339c70f0cec4b2f1a1f825c5705435348df4137ac9d110ff5082",
             "file": "libs/material/layout/src/lib/sample-pos-layout/sample-pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37049,8 +38101,205 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "inputPosSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "InputPosSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 43,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputPosSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "productCart",
+                    "defaultValue": "new Map<string, Partial<ISkuViewRaw>>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "products",
+                    "defaultValue": "[\n    {\n      barcode: '100000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000010',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000011',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Partial<ISkuViewRaw>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 48
+                },
+                {
+                    "name": "totalPrice$",
+                    "defaultValue": "new BehaviorSubject('0')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 44
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "addItemToCart",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 117,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCartItems",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 130,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleCloseButton",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleInputEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 144,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleQuantityChange",
+                    "args": [
+                        {
+                            "name": "quantity",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 139,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "quantity",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "Partial<ISkuViewRaw>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "udpateTotalPrice",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 155,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -37064,18 +38313,66 @@
                 {
                     "name": "PosLayoutModule",
                     "type": "module"
+                },
+                {
+                    "name": "CardAvatarComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ProductCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputSearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatFormFieldModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatInputModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ProductCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ProductSmallCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputPosSearchComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\n\n@Component({\n  selector: 'mdtx-sample-pos-layout',\n  standalone: true,\n  imports: [CommonModule, PosLayoutModule],\n  templateUrl: './sample-pos-layout.component.html',\n  styleUrl: './sample-pos-layout.component.scss',\n})\nexport class SamplePosLayoutComponent {}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\nimport {\n  CardAvatarComponent,\n  ProductCardComponent,\n  ProductSmallCardComponent,\n} from '@mdtx/material/card';\nimport {\n  InputPosSearchComponent,\n  InputSearchComponent,\n} from '@mdtx/material/form';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\nimport { BehaviorSubject } from 'rxjs';\n@Component({\n  selector: 'mdtx-sample-pos-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    PosLayoutModule,\n    CardAvatarComponent,\n    ProductCardComponent,\n    InputSearchComponent,\n    MatFormFieldModule,\n    MatInputModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatButtonModule,\n    MatIconModule,\n    ProductCardComponent,\n    ProductSmallCardComponent,\n    InputPosSearchComponent,\n  ],\n  templateUrl: './sample-pos-layout.component.html',\n  styleUrl: './sample-pos-layout.component.scss',\n})\nexport class SamplePosLayoutComponent {\n  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;\n  totalPrice$ = new BehaviorSubject('0');\n\n  productCart = new Map<string, Partial<ISkuViewRaw>>();\n\n  products: Partial<ISkuViewRaw>[] = [\n    {\n      barcode: '100000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '100000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000010',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000000011',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ];\n\n  addItemToCart(item: Partial<ISkuViewRaw>) {\n    const foundItem = this.productCart.get(item.barcode!);\n    if (foundItem) {\n      foundItem.quantity = (foundItem.quantity ?? 1) + 1;\n      this.productCart.delete(item.barcode!);\n      this.productCart.set(item.barcode!, foundItem);\n      console.log(foundItem);\n    } else {\n      this.productCart.set(item.barcode!, item);\n    }\n    this.udpateTotalPrice();\n  }\n\n  getCartItems() {\n    return [...this.productCart.entries()].map(([, value]) => value);\n  }\n\n  handleCloseButton(item: Partial<ISkuViewRaw>) {\n    this.productCart.delete(item.barcode!);\n    this.udpateTotalPrice();\n  }\n\n  handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {\n    this.productCart.get(item.barcode!)!.quantity = quantity;\n    this.udpateTotalPrice();\n  }\n\n  handleInputEvent(event: string) {\n    this.products.find((e) => {\n      if (e.barcode === event) {\n        this.addItemToCart(e);\n        this.inputPosSearch.clear();\n      } else {\n        // NOT Implemented\n      }\n    });\n  }\n\n  udpateTotalPrice() {\n    const items = this.getCartItems();\n    let totalPrice = 0;\n    if (items && items.length > 0) {\n      totalPrice = this.getCartItems()\n        .map((e) => {\n          if (e.quantity && e.price) {\n            return e.quantity * e.price;\n          }\n          return 0;\n        })\n        .reduce((p, c) => p + c);\n    }\n\n    this.totalPrice$.next(totalPrice.toLocaleString());\n  }\n}\n",
             "styleUrl": "./sample-pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mdtx-pos-layout>\n  <!-- mdtxPosLayoutToolbar -->\n  <!-- mdtxPosLayoutProductList -->\n  <!-- mdtxPosLayoutCartList -->\n  <!-- mdtxPosLayoutCartPrice -->\n\n  <ng-template mdtxPosLayoutToolbar>\n    <h1>Pos Layout Toolbar</h1>\n  </ng-template>\n</mdtx-pos-layout>\n"
+            "templateData": "<div class=\"font-barcode39\">100000000001</div>\n\n<mdtx-pos-layout>\n  <!-- mdtxPosLayoutToolbar -->\n  <!-- mdtxPosLayoutProductList -->\n  <!-- mdtxPosLayoutCartList -->\n  <!-- mdtxPosLayoutCartPrice -->\n\n  <ng-template mdtxPosLayoutToolbar>\n    <mdtx-input-pos-search\n      #inputPosSearch\n      (inputEvent)=\"handleInputEvent($event)\"\n    ></mdtx-input-pos-search>\n  </ng-template>\n\n  <ng-template mdtxPosLayoutProductList>\n    @for(item of products; track item){\n\n    <mdtx-product-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [price]=\"item.price!\"\n      (primaryButtonClickEvent)=\"addItemToCart(item)\"\n    ></mdtx-product-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartList>\n    @for(item of getCartItems() ; track item){\n\n    <mdtx-product-small-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [unitPrice]=\"item.price!\"\n      [quantity]=\"item.quantity!\"\n      (closeButtonClick)=\"handleCloseButton(item)\"\n      (quantityValueChange)=\"handleQuantityChange($event, item)\"\n    ></mdtx-product-small-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartPrice>\n    <div\n      style=\"\n        display: flex;\n        gap: 1em;\n        align-items: center;\n        justify-content: flex-end;\n      \"\n    >\n      <div class=\"total-price-container\">\n        <div class=\"total-price\">${{ totalPrice$ | async }}</div>\n      </div>\n      <button\n        style=\"\n          height: 100px;\n          width: 100px;\n          font-size: 2em;\n          text-transform: uppercase;\n          font-weight: bolder;\n        \"\n        mat-raised-button\n        color=\"primary\"\n      >\n        Pay\n      </button>\n    </div>\n  </ng-template>\n</mdtx-pos-layout>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -38297,13 +39594,13 @@
         },
         {
             "name": "PosLayoutModule",
-            "id": "module-PosLayoutModule-cf7c4a4c27957c2381fc050a9778e4af37ea52535d3336130b82b8fe95b0e988fa1a29caa3bddd3a9dcf3e49c9a38cbdb17c401be8c734d6d0aa32d1c26efa3e",
+            "id": "module-PosLayoutModule-92d1ba7a8422c5dc8575b74c8f555eb80ea5d48ccb93ee73efe92266bec7f896f5bfc3b51edbee56ab038904e721fc7a2a6355518572f934e5c49aa9ab3c8075",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { CommonModule } from '@angular/common';\r\nimport { PosLayoutComponent } from './pos-layout.component';\r\n\r\nconst Components = [\r\n  PosLayoutComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n@NgModule({\r\n  declarations: [...Components],\r\n  imports: [CommonModule, TemplateOutletComponent],\r\n  exports: [...Components],\r\n})\r\nexport class PosLayoutModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PosLayoutDirectives } from './pos-layout.directive';\r\nimport { PosLayoutComponent } from './pos-layout.component';\r\n\r\n@NgModule({\r\n  declarations: [...PosLayoutDirectives],\r\n  imports: [PosLayoutComponent],\r\n  exports: [...PosLayoutDirectives, PosLayoutComponent],\r\n})\r\nexport class PosLayoutModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -38319,9 +39616,6 @@
                             "name": "PosLayoutCartPriceDirective"
                         },
                         {
-                            "name": "PosLayoutComponent"
-                        },
-                        {
                             "name": "PosLayoutProductListDirective"
                         },
                         {
@@ -38333,10 +39627,7 @@
                     "type": "imports",
                     "elements": [
                         {
-                            "name": "CommonModule"
-                        },
-                        {
-                            "name": "TemplateOutletComponent"
+                            "name": "PosLayoutComponent"
                         }
                     ]
                 },
@@ -38412,16 +39703,6 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createValueProvider<string>('baseRoute')"
-            },
-            {
-                "name": "Components",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  PosLayoutComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
             },
             {
                 "name": "ContentBottomProvider",
@@ -39531,7 +40812,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SamplePosLayoutComponent>",
-                "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -41277,18 +42558,6 @@
                     "defaultValue": "createValueProvider<Navlist>('navlist')"
                 }
             ],
-            "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts": [
-                {
-                    "name": "Components",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  PosLayoutComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
-                }
-            ],
             "libs/material/layout/src/lib/common/layout-providers.ts": [
                 {
                     "name": "ContentBottomProvider",
@@ -42906,7 +44175,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SamplePosLayoutComponent>",
-                    "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -44407,7 +45676,7 @@
                 "linktype": "component",
                 "name": "ProductCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
@@ -44446,7 +45715,7 @@
                 "linktype": "component",
                 "name": "ProductSmallCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
@@ -45087,7 +46356,7 @@
                 "linktype": "component",
                 "name": "InputAutocompleteComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -45126,7 +46395,7 @@
                 "linktype": "component",
                 "name": "InputBaseComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -45165,7 +46434,7 @@
                 "linktype": "component",
                 "name": "InputButtonToggleComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -45204,7 +46473,7 @@
                 "linktype": "component",
                 "name": "InputCheckboxComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -45243,7 +46512,7 @@
                 "linktype": "component",
                 "name": "InputChipSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -45292,7 +46561,7 @@
                 "linktype": "component",
                 "name": "InputFiveDayDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -45301,7 +46570,7 @@
                 "linktype": "component",
                 "name": "InputTreeDayDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -45350,7 +46619,7 @@
                 "linktype": "component",
                 "name": "InputDateRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -45458,7 +46727,7 @@
                 "linktype": "component",
                 "name": "InputDateComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -45507,7 +46776,7 @@
                 "linktype": "component",
                 "name": "InputDatetimeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
@@ -45556,7 +46825,7 @@
                 "linktype": "component",
                 "name": "InputEditorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -45595,7 +46864,7 @@
                 "linktype": "component",
                 "name": "InputLikeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {
@@ -45634,7 +46903,7 @@
                 "linktype": "component",
                 "name": "InputListSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -45673,7 +46942,7 @@
                 "linktype": "component",
                 "name": "InputNumberComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/20",
                 "status": "low"
             },
             {
@@ -45712,7 +46981,7 @@
                 "linktype": "component",
                 "name": "InputPasswordComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -45751,7 +47020,16 @@
                 "linktype": "component",
                 "name": "InputPhoneComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/form/src/lib/input-pos-search/input-pos-search.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputPosSearchComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
                 "status": "low"
             },
             {
@@ -45829,7 +47107,7 @@
                 "linktype": "component",
                 "name": "InputRadioComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -45868,7 +47146,7 @@
                 "linktype": "component",
                 "name": "InputRangeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/19",
                 "status": "low"
             },
             {
@@ -45946,7 +47224,7 @@
                 "linktype": "component",
                 "name": "InputSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/22",
                 "status": "low"
             },
             {
@@ -45985,7 +47263,7 @@
                 "linktype": "component",
                 "name": "InputSliderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -46024,7 +47302,7 @@
                 "linktype": "component",
                 "name": "InputTextComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -46063,7 +47341,7 @@
                 "linktype": "component",
                 "name": "InputTextareaComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/20",
                 "status": "low"
             },
             {
@@ -46102,7 +47380,7 @@
                 "linktype": "component",
                 "name": "InputTimeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -46141,7 +47419,7 @@
                 "linktype": "component",
                 "name": "InputUrlComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/17",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
@@ -46180,7 +47458,7 @@
                 "linktype": "component",
                 "name": "InputUsernameComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/20",
+                "coverageCount": "0/21",
                 "status": "low"
             },
             {
@@ -46785,7 +48063,7 @@
                 "linktype": "directive",
                 "name": "PosLayoutCartListDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -46794,7 +48072,7 @@
                 "linktype": "directive",
                 "name": "PosLayoutCartPriceDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -46803,7 +48081,7 @@
                 "linktype": "directive",
                 "name": "PosLayoutProductListDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -46812,7 +48090,7 @@
                 "linktype": "directive",
                 "name": "PosLayoutToolbarDirective",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -46821,16 +48099,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "PosLayoutDirectives",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Components",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -46988,7 +48256,7 @@
                 "linktype": "component",
                 "name": "SamplePosLayoutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/1",
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {

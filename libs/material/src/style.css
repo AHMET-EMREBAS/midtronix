@@ -5018,3 +5018,12 @@ html {
   --font-handjet: Handjet, Verdana;
   --font-icon: Material Icons, Verdana;
 }
+
+@font-face {
+  font-family: Ean13;
+  src: url(./assets/fonts/Ean_13/Ean-13.ttf);
+}
+
+.font-ean13 {
+  font-family: Ean13;
+}

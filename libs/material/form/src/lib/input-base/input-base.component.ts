@@ -25,8 +25,8 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   @Input() inputName!: string;
   @Input() hint = '';
   @Input() serverSideError = '';
-  @Output() inputEvent = new EventEmitter();
   @Input() prefixIcon?: Icon;
+  @Output() inputEvent = new EventEmitter();
 
   $valueChange!: Observable<any>;
   $statusChange!: Observable<any>;
@@ -58,5 +58,9 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
     return this.inputControl?.invalid && this.inputControl.touched
       ? 'warn'
       : 'primary';
+  }
+
+  clear() {
+    this.inputControl.setValue(null);
   }
 }

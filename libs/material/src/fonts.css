@@ -4,6 +4,12 @@
   font-weight: 100 700;
   src: url(./assets/fonts/material-symbols.woff2) format('woff2');
 }
+
+@font-face {
+  font-family: Barcode39;
+  src: url(./assets/fonts/Libre_Barcode_39/LibreBarcode39-Regular.ttf);
+}
+
 @font-face {
   font-family: Handjet;
   src: url(./assets/fonts/Handjet/Handjet-VariableFont.ttf);
@@ -77,4 +83,7 @@
   --font-black-ops-one: Black Ops One, Verdana;
   --font-handjet: Handjet, Verdana;
   --font-icon: Material Icons, Verdana;
+}
+.font-barcode39 {
+  font-family: Barcode39;
 }

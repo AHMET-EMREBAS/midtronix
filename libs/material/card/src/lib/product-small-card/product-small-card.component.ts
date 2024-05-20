@@ -22,6 +22,7 @@ export class ProductSmallCardComponent {
 
   @Input() unitPrice = 500.99;
   @Input() totalPrice = 99999.99;
+  @Input() quantity = 1;
 
   @Output() quantityValueChange = new EventEmitter();
   @Output() closeButtonClick = new EventEmitter();

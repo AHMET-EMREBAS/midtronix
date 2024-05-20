@@ -1,13 +1,16 @@
-<mdtx-pos-layout>
-  <!-- mdtxPosLayoutToolbar -->
-  <!-- mdtxPosLayoutProductList -->
-  <!-- mdtxPosLayoutCartList -->
-  <!-- mdtxPosLayoutCartPrice -->
+<div style="display: flex; gap: 2em">
+  <mdtx-barcode-view barcode="1000000001"></mdtx-barcode-view>
+  <mdtx-barcode-view barcode="1000000002"></mdtx-barcode-view>
+  <mdtx-barcode-view barcode="1000000003"></mdtx-barcode-view>
+  <mdtx-barcode-view barcode="1000000004"></mdtx-barcode-view>
+</div>
 
+<mdtx-pos-layout>
   <ng-template mdtxPosLayoutToolbar>
-    <mat-form-field appearance="outline">
-      <input type="text" matInput placeholder="Search" autocomplete="off" />
-    </mat-form-field>
+    <mdtx-input-pos-search
+      #inputPosSearch
+      (inputEvent)="handleInputEvent($event)"
+    ></mdtx-input-pos-search>
   </ng-template>
 
   <ng-template mdtxPosLayoutProductList>
@@ -29,6 +32,7 @@
       [title]="item.name!"
       [subtitle]="item.barcode!"
       [unitPrice]="item.price!"
+      [quantity]="item.quantity!"
       (closeButtonClick)="handleCloseButton(item)"
       (quantityValueChange)="handleQuantityChange($event, item)"
     ></mdtx-product-small-card>
@@ -50,7 +54,7 @@
       <button
         style="
           height: 100px;
-          width: 100px;
+
           font-size: 2em;
           text-transform: uppercase;
           font-weight: bolder;
@@ -58,10 +62,8 @@
         mat-raised-button
         color="primary"
       >
-        Pay
+        Checkout
       </button>
     </div>
   </ng-template>
 </mdtx-pos-layout>
-
-

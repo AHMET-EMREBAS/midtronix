@@ -10,6 +10,7 @@
     [name]="inputName"
     [formControl]="inputControl"
     [attr.data-testid]="testid()"
+    (input)="inputEvent.emit(inputControl.value)"
   />
 
   <!-- Text suffix -->
