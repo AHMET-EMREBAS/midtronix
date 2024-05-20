@@ -116,7 +116,8 @@ export class PriceView implements IPriceView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('m.id', 'id')
+      .select('m.id', 'skuId')
+      .addSelect('ROW_NUMBER() OVER (ORDER BY m.id)', 'id')
       .addSelect('m.upc', 'barcode')
       .addSelect('m.name', 'name')
       .addSelect('m.description', 'description')
@@ -139,6 +140,7 @@ export class PriceView implements IPriceView {
 })
 export class SkuView implements ISkuView {
   @ViewColumn() id!: number;
+  @ViewColumn() skuId!: number;
   @ViewColumn() barcode!: string;
   @ViewColumn() name!: string;
   @ViewColumn() price!: number;

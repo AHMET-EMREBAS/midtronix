@@ -1,5 +1,20 @@
 <mdtx-pos-layout>
   <ng-template mdtxPosLayoutToolbar>
-    <mdtx-input-pos-search></mdtx-input-pos-search>
+    <mdtx-input-pos-search
+      (inputEvent)="handleSearchEvent($event)"
+    ></mdtx-input-pos-search>
+  </ng-template>
+
+  <ng-template mdtxPosLayoutProductList>
+    <mdtx-product-card-list
+      *ngIf="items$ | async as items"
+      [products]="items"
+    ></mdtx-product-card-list>
+  </ng-template>
+
+  <ng-template mdtxPosLayoutCartList>
+    <mdtx-product-small-card-list
+      [products]="getItemsInCart()"
+    ></mdtx-product-small-card-list>
   </ng-template>
 </mdtx-pos-layout>

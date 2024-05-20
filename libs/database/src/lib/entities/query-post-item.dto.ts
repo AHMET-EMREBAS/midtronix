@@ -1,4 +1,4 @@
-import { Exclude, Property } from '@mdtx/core';
+import { Exclude, PartialType, Property } from '@mdtx/core';
 import { SkuView } from './product.view';
 
 @Exclude()
@@ -14,3 +14,6 @@ export class QueryPosItemDto
   @Property({ type: 'string', required: true })
   priceLevelId!: number;
 }
+
+@Exclude()
+export class PartialQueryPosItemDto extends PartialType(QueryPosItemDto) {}

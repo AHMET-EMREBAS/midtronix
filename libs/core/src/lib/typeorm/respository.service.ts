@@ -31,7 +31,9 @@ export class RepositoryService<T extends IID> {
   );
 
   protected readonly __searchables = this.__md.columns
-    .filter((e) => e.type === 'varchar' || e.type === 'numeric')
+    .filter((e) => {
+      return e.type === 'varchar' || e.type === undefined;
+    })
     .map((e) => e.propertyName);
 
   constructor(protected repository: Repository<T>) {}
@@ -41,12 +43,12 @@ export class RepositoryService<T extends IID> {
   ): FindOptionsWhere<T> | undefined {
     return search
       ? (this.__searchables.map((e) => ({
-          [e]: search,
+          [e]: ILike(`%${search}%`),
         })) as FindOptionsWhere<any>)
       : undefined;
   }
 
-  async findAll(paginator: PaginatorDto) {
+  async findAll(paginator: PaginatorDto, query: any = {}) {
     const { take, skip, withDeleted, search, select } = paginator;
 
     if (select)
@@ -58,12 +60,18 @@ export class RepositoryService<T extends IID> {
         }
       });
 
+    const where = this.__where(search);
+
+    console.log(where);
     return await this.repository.find({
       take,
       skip,
       withDeleted,
       select: select as any,
-      where: this.__where(search),
+      where: {
+        ...where,
+        ...query,
+      },
     });
   }
 
