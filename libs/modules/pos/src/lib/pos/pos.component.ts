@@ -15,4 +15,8 @@ import { PosLayoutModule } from '@mdtx/material/layout';
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
 })
-export class PosComponent {}
+export class PosComponent {
+  handleSearchEvent(search: string) {
+    console.log(search);
+  }
+}
