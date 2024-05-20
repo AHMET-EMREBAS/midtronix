@@ -11,7 +11,6 @@ import {
   ViewportDirective,
   FullscreenDirective,
   ScrollDirective,
-  Icon,
 } from '@mdtx/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutDirectives } from './layout.directive';
@@ -39,7 +38,6 @@ import { BaseLayoutComponent } from './base-layout.component';
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
-  providers: [...LayoutDirectives],
+  // providers: [...LayoutDirectives],
 })
-export class LayoutComponent extends BaseLayoutComponent {
-}
+export class LayoutComponent extends BaseLayoutComponent {}

@@ -1,6 +1,5 @@
 import { Directive } from '@angular/core';
 
-
 @Directive({ selector: '[mdtxPosLayoutToolbar]' })
 export class PosLayoutToolbarDirective {}
 
@@ -12,3 +11,10 @@ export class PosLayoutCartListDirective {}
 
 @Directive({ selector: '[mdtxPosLayoutCartPrice]' })
 export class PosLayoutCartPriceDirective {}
+
+export const PosLayoutDirectives = [
+  PosLayoutToolbarDirective,
+  PosLayoutProductListDirective,
+  PosLayoutCartListDirective,
+  PosLayoutCartPriceDirective,
+];

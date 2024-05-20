@@ -25994,12 +25994,12 @@
         },
         {
             "name": "PosLayoutCartListDirective",
-            "id": "directive-PosLayoutCartListDirective-f899a72b290abf542389dde6b77e583f9fe86ac12ff4313a5c63fbe25fb0f94f17f3b1f263e74ee4b8a1d15c9eb5e091654b4e2f40f7a4644eace5e1daa43196",
+            "id": "directive-PosLayoutCartListDirective-470d3302c46df49da0b9ee07a9395acd497b2c0eb8e6615a0930b5c6cb3ab5110c01a3461c888601ab778b9f5759f26c4813b1a1342d3b9a09e0af31fbcc553f",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayout]' })\nexport class PosLayoutDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
+            "sourceCode": "import { Directive } from '@angular/core';\n\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
             "selector": "[mdtxPosLayoutCartList]",
             "providers": [],
             "hostDirectives": [],
@@ -26016,12 +26016,12 @@
         },
         {
             "name": "PosLayoutCartPriceDirective",
-            "id": "directive-PosLayoutCartPriceDirective-f899a72b290abf542389dde6b77e583f9fe86ac12ff4313a5c63fbe25fb0f94f17f3b1f263e74ee4b8a1d15c9eb5e091654b4e2f40f7a4644eace5e1daa43196",
+            "id": "directive-PosLayoutCartPriceDirective-470d3302c46df49da0b9ee07a9395acd497b2c0eb8e6615a0930b5c6cb3ab5110c01a3461c888601ab778b9f5759f26c4813b1a1342d3b9a09e0af31fbcc553f",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayout]' })\nexport class PosLayoutDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
+            "sourceCode": "import { Directive } from '@angular/core';\n\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
             "selector": "[mdtxPosLayoutCartPrice]",
             "providers": [],
             "hostDirectives": [],
@@ -26037,35 +26037,13 @@
             "extends": []
         },
         {
-            "name": "PosLayoutDirective",
-            "id": "directive-PosLayoutDirective-f899a72b290abf542389dde6b77e583f9fe86ac12ff4313a5c63fbe25fb0f94f17f3b1f263e74ee4b8a1d15c9eb5e091654b4e2f40f7a4644eace5e1daa43196",
-            "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
-            "type": "directive",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayout]' })\nexport class PosLayoutDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
-            "selector": "[mdtxPosLayout]",
-            "providers": [],
-            "hostDirectives": [],
-            "standalone": false,
-            "inputsClass": [],
-            "outputsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "extends": []
-        },
-        {
             "name": "PosLayoutProductListDirective",
-            "id": "directive-PosLayoutProductListDirective-f899a72b290abf542389dde6b77e583f9fe86ac12ff4313a5c63fbe25fb0f94f17f3b1f263e74ee4b8a1d15c9eb5e091654b4e2f40f7a4644eace5e1daa43196",
+            "id": "directive-PosLayoutProductListDirective-470d3302c46df49da0b9ee07a9395acd497b2c0eb8e6615a0930b5c6cb3ab5110c01a3461c888601ab778b9f5759f26c4813b1a1342d3b9a09e0af31fbcc553f",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayout]' })\nexport class PosLayoutDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
+            "sourceCode": "import { Directive } from '@angular/core';\n\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
             "selector": "[mdtxPosLayoutProductList]",
             "providers": [],
             "hostDirectives": [],
@@ -26082,12 +26060,12 @@
         },
         {
             "name": "PosLayoutToolbarDirective",
-            "id": "directive-PosLayoutToolbarDirective-f899a72b290abf542389dde6b77e583f9fe86ac12ff4313a5c63fbe25fb0f94f17f3b1f263e74ee4b8a1d15c9eb5e091654b4e2f40f7a4644eace5e1daa43196",
+            "id": "directive-PosLayoutToolbarDirective-470d3302c46df49da0b9ee07a9395acd497b2c0eb8e6615a0930b5c6cb3ab5110c01a3461c888601ab778b9f5759f26c4813b1a1342d3b9a09e0af31fbcc553f",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive } from '@angular/core';\n\n@Directive({ selector: '[mdtxPosLayout]' })\nexport class PosLayoutDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
+            "sourceCode": "import { Directive } from '@angular/core';\n\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective {}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective {}\n",
             "selector": "[mdtxPosLayoutToolbar]",
             "providers": [],
             "hostDirectives": [],
@@ -36399,7 +36377,7 @@
         },
         {
             "name": "PosLayoutComponent",
-            "id": "component-PosLayoutComponent-052dd1936942390d712162b879ecb94ae5f5eb12db8355bff925564f0a46bf35454d64ce0cca301e4e5ffb5ed7e2144ad66b31272075e444339ed57f98086a69",
+            "id": "component-PosLayoutComponent-5309113e4a82479f9d7d42e853e9bc80d96c80dd2fed1124e5cf167bcd419e779d0322caa9ccf8904581d4ff8a7fb67032d77673c4df3eeefbe7aee72a0c3a59",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36424,7 +36402,7 @@
                     "type": "QueryList<PosLayoutCartListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 22,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36442,7 +36420,7 @@
                     "type": "QueryList<PosLayoutCartPriceDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 27,
+                    "line": 25,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36460,7 +36438,7 @@
                     "type": "QueryList<PosLayoutProductListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 19,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36478,7 +36456,7 @@
                     "type": "QueryList<PosLayoutToolbarDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 16,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -36496,16 +36474,11 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                }
-            ],
+            "imports": [],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n  PosLayoutProductListDirective,\n  PosLayoutToolbarDirective,\n} from './pos-layout.directive';\n\n@Component({\n  selector: 'mdtx-pos-layout',\n  imports: [CommonModule],\n  templateUrl: './pos-layout.component.html',\n  styleUrl: './pos-layout.component.scss',\n})\nexport class PosLayoutComponent {\n  @ContentChildren(PosLayoutToolbarDirective)\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\n\n  @ContentChildren(PosLayoutProductListDirective)\n  productList!: QueryList<PosLayoutProductListDirective>;\n\n  @ContentChildren(PosLayoutCartListDirective)\n  cartList!: QueryList<PosLayoutCartListDirective>;\n\n  @ContentChildren(PosLayoutCartPriceDirective)\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\n}\n",
+            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\nimport {\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n  PosLayoutProductListDirective,\n  PosLayoutToolbarDirective,\n} from './pos-layout.directive';\n\n@Component({\n  selector: 'mdtx-pos-layout',\n  templateUrl: './pos-layout.component.html',\n  styleUrl: './pos-layout.component.scss',\n})\nexport class PosLayoutComponent {\n  @ContentChildren(PosLayoutToolbarDirective)\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\n\n  @ContentChildren(PosLayoutProductListDirective)\n  productList!: QueryList<PosLayoutProductListDirective>;\n\n  @ContentChildren(PosLayoutCartListDirective)\n  cartList!: QueryList<PosLayoutCartListDirective>;\n\n  @ContentChildren(PosLayoutCartPriceDirective)\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\n}\n",
             "styleUrl": "./pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -37107,7 +37080,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mdtx-pos-layout>\n  <ng-template mdtxPosLayoutToolbar></ng-template>\n</mdtx-pos-layout>\n"
+            "templateData": "<mdtx-pos-layout>\n  <!-- mdtxPosLayoutToolbar -->\n  <!-- mdtxPosLayoutProductList -->\n  <!-- mdtxPosLayoutCartList -->\n  <!-- mdtxPosLayoutCartPrice -->\n  <ng-template mdtxPosLayoutToolbar> <h1>Pos Layout Toolbar</h1></ng-template>\n  <ng-template mdtxPosLayoutProductList>\n    <h1>Pos Layout Product List</h1>\n  </ng-template>\n</mdtx-pos-layout>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -38329,13 +38302,13 @@
         },
         {
             "name": "PosLayoutModule",
-            "id": "module-PosLayoutModule-6822a660175fe8568f2bd07b728aa80ed857efc171513fefc68c423e0e2968e52bf1f50b0777736cfd21663b3ef7d9b594cea25f316234c2eaaed4fbc71218ad",
+            "id": "module-PosLayoutModule-ae3547e76d03085acabbb6e63fdbcb95712e074c79f3abe50787db58ae408a177f4d046888f425e017ba33fcb40f36d8bd881f712c25ac82e7754b2bf24cbec7",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PosLayoutComponent } from './pos-layout.component';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\n\r\nconst Directives = [\r\n  TemplateOutletComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n\r\nconst Modules = [PosLayoutComponent];\r\n@NgModule({\r\n  declarations: [...Directives, PosLayoutComponent],\r\n  exports: [...Modules],\r\n})\r\nexport class PosLayoutModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { PosLayoutComponent } from './pos-layout.component';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nconst Components = [\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutComponent,\r\n];\r\n\r\n@NgModule({\r\n  declarations: [...Components],\r\n  imports: [CommonModule, TemplateOutletComponent],\r\n  exports: [...Components],\r\n})\r\nexport class PosLayoutModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -38358,6 +38331,14 @@
                         },
                         {
                             "name": "PosLayoutToolbarDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "CommonModule"
                         },
                         {
                             "name": "TemplateOutletComponent"
@@ -38365,14 +38346,22 @@
                     ]
                 },
                 {
-                    "type": "imports",
-                    "elements": []
-                },
-                {
                     "type": "exports",
                     "elements": [
                         {
+                            "name": "PosLayoutCartListDirective"
+                        },
+                        {
+                            "name": "PosLayoutCartPriceDirective"
+                        },
+                        {
                             "name": "PosLayoutComponent"
+                        },
+                        {
+                            "name": "PosLayoutProductListDirective"
+                        },
+                        {
+                            "name": "PosLayoutToolbarDirective"
                         }
                     ]
                 },
@@ -38428,6 +38417,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createValueProvider<string>('baseRoute')"
+            },
+            {
+                "name": "Components",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutComponent,\r\n]"
             },
             {
                 "name": "ContentBottomProvider",
@@ -38518,16 +38517,6 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new FormControl('', [])"
-            },
-            {
-                "name": "Directives",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[\r\n  TemplateOutletComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
             },
             {
                 "name": "editorControl",
@@ -38977,7 +38966,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-pos-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -39527,7 +39516,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PosLayoutComponent>",
-                "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n}"
+                "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -39648,16 +39637,6 @@
                 "deprecationMessage": "",
                 "type": "[]",
                 "defaultValue": "[\r\n  CommonModule,\r\n  FormsModule,\r\n  ReactiveFormsModule,\r\n  MatFormFieldModule,\r\n  MatInputModule,\r\n  MatButtonModule,\r\n  MatIconModule,\r\n  InputDirective,\r\n  MatProgressSpinnerModule,\r\n]"
-            },
-            {
-                "name": "Modules",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "[]",
-                "defaultValue": "[PosLayoutComponent]"
             },
             {
                 "name": "month",
@@ -41293,6 +41272,18 @@
                     "defaultValue": "createValueProvider<Navlist>('navlist')"
                 }
             ],
+            "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts": [
+                {
+                    "name": "Components",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutComponent,\r\n]"
+                }
+            ],
             "libs/material/layout/src/lib/common/layout-providers.ts": [
                 {
                     "name": "ContentBottomProvider",
@@ -41631,28 +41622,6 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {\r\n    label: 'Select date',\r\n    inputControl: dateControl,\r\n    inputName: 'date',\r\n  },\r\n}"
-                }
-            ],
-            "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts": [
-                {
-                    "name": "Directives",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[\r\n  TemplateOutletComponent,\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
-                },
-                {
-                    "name": "Modules",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "[]",
-                    "defaultValue": "[PosLayoutComponent]"
                 }
             ],
             "libs/material/form/src/lib/input-editor/input-editor.component.stories.ts": [
@@ -42868,7 +42837,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PosLayoutComponent>",
-                    "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n}"
+                    "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [provideAnimations()],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -42922,7 +42891,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/sample-pos-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -46815,15 +46784,6 @@
                 "filePath": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
-                "name": "PosLayoutDirective",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
-                "type": "directive",
-                "linktype": "directive",
                 "name": "PosLayoutProductListDirective",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
@@ -46843,17 +46803,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Directives",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/layout/src/lib/pos-layout/pos-layout.module.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Modules",
+                "name": "Components",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

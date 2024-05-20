@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { PosLayoutComponent } from './pos-layout.component';
 import {
   PosLayoutCartListDirective,
   PosLayoutCartPriceDirective,
@@ -8,15 +7,15 @@ import {
 } from './pos-layout.directive';
 import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
 import { CommonModule } from '@angular/common';
+import { PosLayoutComponent } from './pos-layout.component';
 
 const Components = [
+  PosLayoutComponent,
   PosLayoutToolbarDirective,
   PosLayoutProductListDirective,
   PosLayoutCartListDirective,
   PosLayoutCartPriceDirective,
-  PosLayoutComponent,
 ];
-
 @NgModule({
   declarations: [...Components],
   imports: [CommonModule, TemplateOutletComponent],
