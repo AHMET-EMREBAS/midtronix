@@ -1,5 +1,5 @@
-$bigFontsize: 1.2em;
-$smallFontsize: 0.7em;
+$bigFontsize: 1em;
+$smallFontsize: 0.8em;
 
 .product-card-image {
   border-radius: 1em;
@@ -36,7 +36,7 @@ $smallFontsize: 0.7em;
 }
 
 .product-barcode {
-  font-size: 1em;
+  font-size: $smallFontsize;
   font-weight: 400s;
   letter-spacing: 0.2em;
 }
@@ -52,5 +52,10 @@ $smallFontsize: 0.7em;
 
 .product-total-price {
   font-size: $bigFontsize;
-  font-weight: 600;
+  font-weight: bolder;
+}
+
+.product-unit-price {
+  font-size: $smallFontsize;
+  font-weight: 400;
 }

@@ -13,20 +13,19 @@ type Story = StoryObj<CheckoutButtonComponent>;
 
 export const Primary: Story = {
   args: {
-    subtotal: 'Subtotal Value',
-    total: 'Total Value',
+    subtotal: 0,
+    total: 0,
     label: 'Checkout',
   },
 };
 
 export const Heading: Story = {
   args: {
-    subtotal: 'Subtotal Value',
-    total: 'Total Value',
+    subtotal: 0,
+    total: 0,
     label: 'Checkout',
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/checkout-button works!/gi)).toBeTruthy();
   },
 };

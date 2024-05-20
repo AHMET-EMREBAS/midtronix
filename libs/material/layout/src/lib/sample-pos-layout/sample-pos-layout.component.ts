@@ -4,7 +4,9 @@ import { PosLayoutModule } from '../pos-layout/pos-layout.module';
 import {
   CardAvatarComponent,
   ProductCardComponent,
+  ProductCardListComponent,
   ProductSmallCardComponent,
+  ProductSmallCardListComponent,
 } from '@mdtx/material/card';
 import {
   InputPosSearchComponent,
@@ -15,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ISkuRaw, ISkuViewRaw } from '@mdtx/common';
+import { ISkuViewRaw } from '@mdtx/common';
 import { BehaviorSubject } from 'rxjs';
 import { BarcodeViewComponent } from '@mdtx/material/barcode';
 
@@ -39,18 +41,24 @@ import { CheckoutButtonComponent } from '@mdtx/material/button';
     ProductSmallCardComponent,
     InputPosSearchComponent,
     BarcodeViewComponent,
+    // Components
     CheckoutButtonComponent,
+    ProductCardListComponent,
+    ProductSmallCardListComponent,
   ],
   templateUrl: './sample-pos-layout.component.html',
   styleUrl: './sample-pos-layout.component.scss',
 })
 export class SamplePosLayoutComponent {
   @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;
-  totalPrice$ = new BehaviorSubject('0');
+
+  totalPrice$ = new BehaviorSubject(0);
+
+  taxrate = 10.25 / 100;
 
   productCart = new Map<string, Partial<ISkuViewRaw>>();
 
-  products: Partial<ISkuViewRaw>[] = [
+  products: ISkuViewRaw[] = [
     {
       barcode: '1000000001',
       name: 'First Product',
@@ -81,7 +89,7 @@ export class SamplePosLayoutComponent {
       price: 500.99,
       quantity: 1,
     },
-  ];
+  ] as ISkuViewRaw[];
 
   addItemToCart(item: Partial<ISkuViewRaw>) {
     const foundItem = this.productCart.get(item.barcode!);
@@ -89,25 +97,23 @@ export class SamplePosLayoutComponent {
       foundItem.quantity = (foundItem.quantity ?? 1) + 1;
       this.productCart.delete(item.barcode!);
       this.productCart.set(item.barcode!, foundItem);
-      console.log(foundItem);
     } else {
-      this.productCart.set(item.barcode!, item);
+      this.productCart.set(item.barcode!, { ...item, quantity: 1 });
     }
-    this.udpateTotalPrice();
   }
 
   getCartItems() {
-    return [...this.productCart.entries()].map(([, value]) => value);
+    return [...this.productCart.entries()].map(
+      ([, value]) => value
+    ) as ISkuViewRaw[];
   }
 
   handleCloseButton(item: Partial<ISkuViewRaw>) {
     this.productCart.delete(item.barcode!);
-    this.udpateTotalPrice();
   }
 
   handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {
     this.productCart.get(item.barcode!)!.quantity = quantity;
-    this.udpateTotalPrice();
   }
 
   handleInputEvent(event: string) {
@@ -121,20 +127,11 @@ export class SamplePosLayoutComponent {
     });
   }
 
-  udpateTotalPrice() {
-    const items = this.getCartItems();
-    let totalPrice = 0;
-    if (items && items.length > 0) {
-      totalPrice = this.getCartItems()
-        .map((e) => {
-          if (e.quantity && e.price) {
-            return e.quantity * e.price;
-          }
-          return 0;
-        })
-        .reduce((p, c) => p + c);
-    }
+  udpateTotalPrice(total: number) {
+    this.totalPrice$.next(total);
+  }
 
-    this.totalPrice$.next(totalPrice.toLocaleString());
+  deleteProductHandler(event: ISkuViewRaw) {
+    this.productCart.delete(event.barcode);
   }
 }

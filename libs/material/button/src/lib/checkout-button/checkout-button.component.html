@@ -1,7 +1,11 @@
 <div class="checkout-button-container">
   <div class="checkout-price">
-    <div class="subtotal">{{ subtotal }}</div>
-    <div class="total">{{ total }}</div>
+    <div class="tax-value"><span>Tax:</span> $ {{ printTax() }}</div>
+    <div class="subtotal-value">
+      <span>Subtotal:</span> $ {{ printSubtotal() }}
+    </div>
+    <div class="total-divider"></div>
+    <div class="total-value"><span>Total:</span> $ {{ printTotal() }}</div>
   </div>
 
   <button

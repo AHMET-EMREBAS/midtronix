@@ -1,0 +1,10 @@
+<div class="product-card-list-container">
+  @for(item of products; track item){
+  <mdtx-product-card
+    [title]="item.name!"
+    [subtitle]="item.barcode!"
+    [price]="item.price!"
+    (primaryButtonClickEvent)="addCartEvent.emit(item)"
+  ></mdtx-product-card>
+  }
+</div>

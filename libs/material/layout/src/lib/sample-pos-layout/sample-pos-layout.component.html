@@ -14,32 +14,24 @@
   </ng-template>
 
   <ng-template mdtxPosLayoutProductList>
-    @for(item of products; track item){
-
-    <mdtx-product-card
-      [title]="item.name!"
-      [subtitle]="item.barcode!"
-      [price]="item.price!"
-      (primaryButtonClickEvent)="addItemToCart(item)"
-    ></mdtx-product-card>
-    }
+    <mdtx-product-card-list
+      [products]="products"
+      (addCartEvent)="addItemToCart($event)"
+    ></mdtx-product-card-list>
   </ng-template>
 
   <ng-template mdtxPosLayoutCartList>
-    @for(item of getCartItems() ; track item){
-
-    <mdtx-product-small-card
-      [title]="item.name!"
-      [subtitle]="item.barcode!"
-      [unitPrice]="item.price!"
-      [quantity]="item.quantity!"
-      (closeButtonClick)="handleCloseButton(item)"
-      (quantityValueChange)="handleQuantityChange($event, item)"
-    ></mdtx-product-small-card>
-    }
+    <mdtx-product-small-card-list
+      [products]="getCartItems()"
+      (totalChangeEvent)="udpateTotalPrice($event)"
+      (deleteProductEvent)="deleteProductHandler($event)"
+    ></mdtx-product-small-card-list>
   </ng-template>
 
   <ng-template mdtxPosLayoutCartPrice>
-    <mdtx-checkout-button [total]="totalPrice$ | async"></mdtx-checkout-button>
+    <mdtx-checkout-button
+      [taxrate]="taxrate"
+      [subtotal]="(totalPrice$ | async) || 0"
+    ></mdtx-checkout-button>
   </ng-template>
 </mdtx-pos-layout>

@@ -1,0 +1,11 @@
+<div class="product-sample-card-list-container">
+  @for(item of products; track item){
+  <mdtx-product-small-card
+    [title]="item.name"
+    [unitPrice]="item.price"
+    [quantity]="item.quantity"
+    (quantityValueChange)="calculateTotal($event, item)"
+    (closeButtonClick)="deleteProductEventHandler(item)"
+  ></mdtx-product-small-card>
+  }
+</div>

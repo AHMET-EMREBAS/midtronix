@@ -1,19 +1,28 @@
-.subtotal {
+.tax-value {
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
 }
-.total {
-  font-size: 1.4em;
-  font-weight: 700;
+.subtotal-value {
+  font-size: 1em;
+  font-weight: 400;
 }
-
+.total-value {
+  font-size: 1.6em;
+  font-weight: 600;
+}
 .checkout-price {
   display: flex;
   flex-direction: column;
-
+  align-items: flex-end;
   gap: 0.3em;
 }
-
+.total-divider {
+  border-bottom: 1px dashed gray;
+  color: gray;
+  min-width: 200px;
+  line-height: 0px;
+  font-size: 4em;
+}
 .checkout-button-container {
   display: flex;
   flex-direction: row;
