@@ -1,5 +1,4 @@
 import { Component, ContentChildren, QueryList } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {
   PosLayoutCartListDirective,
   PosLayoutCartPriceDirective,
@@ -9,7 +8,6 @@ import {
 
 @Component({
   selector: 'mdtx-pos-layout',
-  imports: [CommonModule],
   templateUrl: './pos-layout.component.html',
   styleUrl: './pos-layout.component.scss',
 })

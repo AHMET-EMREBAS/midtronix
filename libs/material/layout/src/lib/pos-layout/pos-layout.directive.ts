@@ -1,7 +1,5 @@
 import { Directive } from '@angular/core';
 
-@Directive({ selector: '[mdtxPosLayout]' })
-export class PosLayoutDirective {}
 
 @Directive({ selector: '[mdtxPosLayoutToolbar]' })
 export class PosLayoutToolbarDirective {}

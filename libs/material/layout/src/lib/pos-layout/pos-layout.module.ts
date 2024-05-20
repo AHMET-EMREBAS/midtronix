@@ -7,18 +7,19 @@ import {
   PosLayoutToolbarDirective,
 } from './pos-layout.directive';
 import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
+import { CommonModule } from '@angular/common';
 
-const Directives = [
-  TemplateOutletComponent,
+const Components = [
   PosLayoutToolbarDirective,
   PosLayoutProductListDirective,
   PosLayoutCartListDirective,
   PosLayoutCartPriceDirective,
+  PosLayoutComponent,
 ];
 
-const Modules = [PosLayoutComponent];
 @NgModule({
-  declarations: [...Directives, PosLayoutComponent],
-  exports: [...Modules],
+  declarations: [...Components],
+  imports: [CommonModule, TemplateOutletComponent],
+  exports: [...Components],
 })
 export class PosLayoutModule {}
