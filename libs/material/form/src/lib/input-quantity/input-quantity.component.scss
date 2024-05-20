@@ -9,21 +9,18 @@
 .horizontal {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: fit-content;
 }
 
 .count-input {
   border: none;
-  font-size: 1em;
   outline: none;
-  min-width: 100px;
-  width: 100px;
+  min-width: 50px;
+  width: 50px;
   height: 50px;
   text-align: center;
-  font-size: 2em;
-  font-weight: bold;
-  font-family: Comfortaa, Arial;
-  resize: both;
+  font-size: 1.3em;
   overflow: auto;
 }
 
@@ -31,4 +28,9 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.mat-mdc-mini-fab {
+  width: 30px;
+  height: 30px;
 }

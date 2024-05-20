@@ -1,18 +1,24 @@
-<div class="pos-container">
+<div class="pos-layout-container">
   <div class="pos-toolbar">
     <mdtx-template-outlet [items]="toolbar"></mdtx-template-outlet>
   </div>
 
   <div class="pos-content-container">
     <div class="pos-product-list">
-      <mdtx-template-outlet [items]="productList"></mdtx-template-outlet>
+      @if(productList){ @for(item of productList; track item){
+      <ng-container *ngTemplateOutlet="item.templateRef"></ng-container>
+      } }
     </div>
 
     <div class="pos-cart-list">
-      <mdtx-template-outlet [items]="cartList"></mdtx-template-outlet>
-      <div class="pos-cart-price">
-        <mdtx-template-outlet [items]="cartPrice"></mdtx-template-outlet>
-      </div>
+      @if(cartList){ @for(item of cartList; track item){
+      <ng-container *ngTemplateOutlet="item.templateRef"></ng-container>
+      } }
     </div>
+  </div>
+  <div class="pos-cart-price">
+    @if(cartPrice){ @for(item of cartPrice; track item){
+    <ng-container *ngTemplateOutlet="item.templateRef"></ng-container>
+    } }
   </div>
 </div>

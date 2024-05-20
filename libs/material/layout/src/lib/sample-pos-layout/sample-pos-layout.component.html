@@ -5,18 +5,63 @@
   <!-- mdtxPosLayoutCartPrice -->
 
   <ng-template mdtxPosLayoutToolbar>
-    <h1>Pos Layout Toolbar</h1>
+    <mat-form-field appearance="outline">
+      <input type="text" matInput placeholder="Search" autocomplete="off" />
+    </mat-form-field>
   </ng-template>
 
   <ng-template mdtxPosLayoutProductList>
-    <h1>Pos Layout Product List</h1>
-  </ng-template>
+    @for(item of products; track item){
 
-  <ng-template mdtxPosLayoutCartPrice>
-    <h1>Pos Layout Cart price</h1>
+    <mdtx-product-card
+      [title]="item.name!"
+      [subtitle]="item.barcode!"
+      [price]="item.price!"
+      (primaryButtonClickEvent)="addItemToCart(item)"
+    ></mdtx-product-card>
+    }
   </ng-template>
 
   <ng-template mdtxPosLayoutCartList>
-    <h1>Pos Layout Cart List</h1>
+    @for(item of getCartItems() ; track item){
+
+    <mdtx-product-small-card
+      [title]="item.name!"
+      [subtitle]="item.barcode!"
+      [unitPrice]="item.price!"
+      (closeButtonClick)="handleCloseButton(item)"
+      (quantityValueChange)="handleQuantityChange($event, item)"
+    ></mdtx-product-small-card>
+    }
+  </ng-template>
+
+  <ng-template mdtxPosLayoutCartPrice>
+    <div
+      style="
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        justify-content: flex-end;
+      "
+    >
+      <div class="total-price-container">
+        <div class="total-price">${{ totalPrice$ | async }}</div>
+      </div>
+      <button
+        style="
+          height: 100px;
+          width: 100px;
+          font-size: 2em;
+          text-transform: uppercase;
+          font-weight: bolder;
+        "
+        mat-raised-button
+        color="primary"
+      >
+        Pay
+      </button>
+    </div>
   </ng-template>
 </mdtx-pos-layout>
+
+

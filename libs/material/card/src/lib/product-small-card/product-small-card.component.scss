@@ -1,24 +1,32 @@
-$bigFontsize: 1.6em;
+$bigFontsize: 1.2em;
 $smallFontsize: 0.7em;
 
 .product-card-image {
+  border-radius: 1em;
   width: 100px;
-  height: 100px;
 }
 
 .product-card-container {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  align-items: stretch;
+  flex-wrap: wrap;
   gap: 1em;
+  font-family: Comfortaa;
+
+  box-shadow: 0px 0px 5px gray;
+  border-radius: 1em;
+  padding: 1em;
 }
 
 .product-card-content {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 0.2em;
-
 }
 
 .product-name {
@@ -29,38 +37,20 @@ $smallFontsize: 0.7em;
 
 .product-barcode {
   font-size: 1em;
-  font-weight: lighter;
-  letter-spacing: 0.1em;
+  font-weight: 400s;
+  letter-spacing: 0.2em;
 }
 
 .product-card-price-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.2em;
   text-align: right;
-  align-self: stretch;
-  gap: 1em;
 }
 
-.product-unit-price {
-  letter-spacing: 0.1em;
-  text-align: right;
-
-  border: 1px dashed gray;
-  padding: 0.3em;
-  border-top-left-radius: 1em;
-  border-bottom-left-radius: 1em;
-}
 .product-total-price {
-  text-align: right;
   font-size: $bigFontsize;
   font-weight: 600;
-}
-
-.product-quantity {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  font-size: 0.7em;
-  align-items: center;
 }

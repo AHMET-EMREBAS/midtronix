@@ -1,34 +1,52 @@
-.pos-container {
-  border: 3px solid orange;
+.pos-layout-container {
   display: flex;
   flex-direction: column;
+  max-height: 98vh;
+  justify-content: flex-start;
+  overflow: hidden;
   gap: 1em;
+  padding: 1em;
 }
+
 .pos-content-container {
+  position: relative;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  gap: 2em;
+  overflow: hidden;
 }
 
 .pos-product-list {
-  border: 3px solid blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
-
+  padding: 1em;
   gap: 1em;
+  flex-grow: 1;
+  justify-content: space-around;
+  flex-grow: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  border-radius: 1em;
+  border-right: none;
 }
 
 .pos-cart-list {
-  border: 3px solid crimson;
-
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 0.5em;
+  min-width: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 1em;
+  border-radius: 1em;
+  border-right: none;
 }
 
 .pos-cart-price {
-  border: 3px solid green;
   display: flex;
   flex-direction: column;
+  flex-direction: end;
 }

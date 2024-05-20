@@ -1,23 +1,32 @@
 <div class="product-card-container">
-  <img
-    class="product-card-image"
-    src="./assets/imgs/inventory.svg"
-    alt="Product
-  Image"
-  />
-
+  <button
+    mat-icon-button
+    color="accent"
+    style="position: absolute; top: 0px; right: 0px; z-index: 1"
+    (click)="handleCloseButtonClick()"
+    *ngIf="showCloseButton"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
   <div class="product-card-content">
-    <div class="product-name">Product Name</div>
-    <div class="product-barcode">8988123411512</div>
-    <div class="product-quantity">
-      <button>-</button>
-      <div>1</div>
-      <button>+</button>
-    </div>
+    <img
+      class="product-card-image"
+      src="./assets/imgs/inventory.svg"
+      alt="Product Image"
+    />
+    <div class="product-name">{{ title }}</div>
+    <div class="product-barcode">{{ subtitle }}</div>
   </div>
 
-  <div class="product-card-price-content">
-    <div class="product-unit-price">$ 50.99</div>
-    <div class="product-total-price">$ 200.99</div>
+  <div class="product-card-price-content" style="position: relative">
+    <mdtx-input-quantity
+      #quantityInput
+      [value]="1"
+      (quantityValueChange)="quantityValueChangeHandler($event)"
+    ></mdtx-input-quantity>
+    <div class="product-unit-price">$ {{ unitPrice }}</div>
+    <div class="product-total-price">
+      $ {{ calculateTotalPrice(quantityInput.value, unitPrice)}}
+    </div>
   </div>
 </div>
