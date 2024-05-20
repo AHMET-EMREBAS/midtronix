@@ -9,8 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { catchError, debounceTime, forkJoin, of, switchMap, tap } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
-import { CardAvatarComponent } from '@mdtx/material/card';
-import { InputQuantityComponent } from '@mdtx/material/form';
 import {
   StoreSearchComponent,
   PriceLevelSearchComponent,
@@ -31,7 +29,6 @@ import {
     StoreSearchComponent,
     PriceLevelSearchComponent,
     SkuSearchComponent,
-
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
