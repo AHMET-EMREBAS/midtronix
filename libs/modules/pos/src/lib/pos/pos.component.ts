@@ -34,7 +34,13 @@ export class PosComponent implements AfterViewInit {
   constructor(protected readonly skuService: SkuViewService) {}
 
   handleSearchEvent(search: string) {
-    console.log(search);
+    this.skuService.clearCache();
+    this.skuService.getWithQuery({
+      barcode: search,
+      name: search,
+      storeId: 1,
+      priceLevelId: 1,
+    });
   }
 
   getItemsInCart() {
@@ -49,7 +55,7 @@ export class PosComponent implements AfterViewInit {
       this.itemsInCart.delete(item.barcode);
       this.itemsInCart.set(foundItem.barcode, foundItem);
     } else {
-      this.itemsInCart.set(item.barcode, item);
+      this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });
     }
   }
 

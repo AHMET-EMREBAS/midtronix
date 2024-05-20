@@ -13,6 +13,11 @@ export class QueryPosItemDto
 
   @Property({ type: 'string', required: true })
   priceLevelId!: number;
+
+  @Property({ type: 'string', maxLength: 30 }) name?: string;
+  @Property({ type: 'string', maxLength: 30 }) description?: string;
+  @Property({ type: 'string', maxLength: 30 }) category?: string;
+  @Property({ type: 'string', maxLength: 30 }) department?: string;
 }
 
 @Exclude()

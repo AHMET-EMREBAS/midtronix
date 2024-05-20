@@ -62,16 +62,12 @@ export class RepositoryService<T extends IID> {
 
     const where = this.__where(search);
 
-    console.log(where);
     return await this.repository.find({
       take,
       skip,
       withDeleted,
       select: select as any,
-      where: {
-        ...where,
-        ...query,
-      },
+      where,
     });
   }
 

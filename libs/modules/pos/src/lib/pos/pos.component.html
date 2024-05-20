@@ -9,6 +9,8 @@
     <mdtx-product-card-list
       *ngIf="items$ | async as items"
       [products]="items"
+
+      (addCartEvent)="addItemToCart($event)"
     ></mdtx-product-card-list>
   </ng-template>
 
