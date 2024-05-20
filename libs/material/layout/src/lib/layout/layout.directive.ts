@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NgTemplateOutlet } from '@angular/common';
+
 import { Directive, TemplateRef } from '@angular/core';
 import { ITemplateRef } from '@mdtx/material/core';
 

@@ -1,0 +1,29 @@
+.pos-container {
+  border: 3px solid orange;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.pos-product-list {
+  border: 3px solid blue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  gap: 1em;
+}
+.pos-cart-list {
+  border: 3px solid crimson;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.pos-cart-price {
+  border: 3px solid green;
+  display: flex;
+  flex-direction: column;
+}
