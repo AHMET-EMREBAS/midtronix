@@ -38,7 +38,7 @@
           "libs/modules/tsconfig.json"
         ],
         "assets": ["libs/modules/src/assets", "libs/modules/src/favicon.svg"],
-        "styles": ["libs/modules/src/style.css"]
+        "styles": ["libs/modules/src/style.css", "libs/modules/src/fonts.css"]
       },
       "configurations": {
         "ci": {
