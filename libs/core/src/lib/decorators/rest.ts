@@ -64,6 +64,14 @@ export class RestRouteBuilder {
     );
   }
 
+  Count() {
+    return applyDecorators(
+      Get(this.AP.COUNT_PATH),
+      this.RP.CanRead(),
+      this.__common()
+    );
+  }
+
   FindAll() {
     return applyDecorators(
       Get(this.AP.PLURAL_PATH),

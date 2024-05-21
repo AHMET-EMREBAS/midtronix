@@ -1,16 +1,11 @@
-import { Exclude, Transform } from 'class-transformer';
+import { Exclude } from 'class-transformer';
 import { Property } from '../property';
-import {
-  BooleanTransformer,
-  DefaultValueTransformer,
-  IntegerTransformer,
-} from './transformers';
-import { isArray, isString } from 'class-validator';
+import { DefaultValueTransformer, IntegerTransformer } from './transformers';
 
 @Exclude()
 export class PaginatorDto {
   @Property({ type: 'number' })
-  @DefaultValueTransformer(20)
+  @DefaultValueTransformer(100)
   @IntegerTransformer()
   take?: number;
 
@@ -18,23 +13,4 @@ export class PaginatorDto {
   @DefaultValueTransformer(0)
   @IntegerTransformer()
   skip?: number;
-
-  @Property({ type: 'string', isArray: true, noValidate: true })
-  @Transform(({ value }) => {
-    if (isArray(value)) {
-      return value;
-    } else if (isString(value)) {
-      return [value];
-    }
-    return undefined;
-  })
-  select?: string[];
-
-  @Property({ type: 'boolean', noValidate: true })
-  @DefaultValueTransformer(false)
-  @BooleanTransformer()
-  withDeleted?: boolean;
-
-  @Property({ type: 'string', maxLength: 200 })
-  search?: string;
 }

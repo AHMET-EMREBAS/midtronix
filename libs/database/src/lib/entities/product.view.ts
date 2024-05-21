@@ -165,7 +165,6 @@ export const SkuViewEntities: Readonly<Type<any>[]> = [
   Sku,
   Price,
   Quantity,
-
   PriceLevel,
   Category,
   Department,

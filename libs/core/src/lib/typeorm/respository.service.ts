@@ -16,7 +16,6 @@ import {
 } from '../dto';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { IID, ResourceMetadata } from '@mdtx/common';
-import { UnprocessableEntityException } from '@nestjs/common';
 
 export class RepositoryService<T extends IID> {
   protected readonly __md = this.repository.metadata;
@@ -49,26 +48,8 @@ export class RepositoryService<T extends IID> {
   }
 
   async findAll(paginator: PaginatorDto, query: any = {}) {
-    const { take, skip, withDeleted, search, select } = paginator;
-
-    if (select)
-      select.forEach((e) => {
-        if (!this.__columns.includes(e)) {
-          throw new UnprocessableEntityException(
-            `${this.__entityName} does not have ${e} field!`
-          );
-        }
-      });
-
-    const where = this.__where(search);
-
-    return await this.repository.find({
-      take,
-      skip,
-      withDeleted,
-      select: select as any,
-      where,
-    });
+    const { take, skip } = paginator;
+    return await this.repository.find({ take, skip, where: query });
   }
 
   async findOne(options: FindOneOptions<T>) {
@@ -91,8 +72,8 @@ export class RepositoryService<T extends IID> {
     } as FindOptionsWhere<T>);
   }
 
-  async count() {
-    return { count: await this.repository.count() };
+  async count(query: FindOptionsWhere<T> = {}) {
+    return { count: await this.repository.count({ where: query }) };
   }
 
   async save(entity: DeepPartial<T>) {

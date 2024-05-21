@@ -6,4 +6,5 @@ export * from './hashing';
 export * from './nestjs';
 export * from './property';
 export * from './provider';
+export * from './query';
 export * from './typeorm';
