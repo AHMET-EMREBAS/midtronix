@@ -1,11 +1,4 @@
-import {
-  Exclude,
-  FindOperator,
-  ILike,
-  Property,
-  QueryProperty,
-  Transform,
-} from '@mdtx/core';
+import { Exclude, Property, QueryProperty } from '@mdtx/core';
 import { IQuerySingleSkuViewDto, IQuerySkuViewDto } from '@mdtx/common';
 
 @Exclude()
@@ -42,9 +35,9 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
   priceLevelId!: number;
 
-  quantity!: number;
-  price!: number;
-  cost!: number;
+  @QueryProperty() quantity!: number;
+  @QueryProperty() price!: number;
+  @QueryProperty() cost!: number;
 
   @QueryProperty() barcode!: string;
   @QueryProperty() name!: string;

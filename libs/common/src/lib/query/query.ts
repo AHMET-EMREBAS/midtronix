@@ -2,6 +2,10 @@ export enum QueryOprator {
   EQUAL = 'eq',
   MORE_THAN = 'mt',
   LESS_THAN = 'lt',
+
+  MORE_THAN_OR_EQUAL = 'mte',
+  LESS_THAN_OR_EQUAL = 'lte',
+
   START_WITH = 'sw',
   END_WITH = 'ew',
   CONTAIN = 'cn',
@@ -20,6 +24,8 @@ export type QueryInput = {
   property: string;
   operator: string;
   value: string;
+  and?: QueryInput;
+  or?: QueryInput;
 };
 
 export function createQuery(query: QueryInput) {
