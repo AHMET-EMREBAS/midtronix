@@ -1,11 +1,19 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-input-text
+  <mdtx-user-search
+    inputName="user"
+    label="Employee"
+    prefixIcon="person"
+    [inputControl]="control('user')"
+  ></mdtx-user-search>
+
+  <!-- Form Inputs  -->
+  <mdtx-customer-search
     inputName="owner"
-    label="Cart Name"
-    prefixIcon="category"
+    label="Customer"
+    prefixIcon="person"
     [inputControl]="control('owner')"
-  ></mdtx-input-text>
+  ></mdtx-customer-search>
 
   <!-- Form actions -->
   <div class="form-actions">
