@@ -1,6 +1,7 @@
 # TODO
 
 - Working on Order View
+- Create cart and test it.
 - Find a good way to calcualte Taxes based on State/Location
 
 Alabama: 4.0%

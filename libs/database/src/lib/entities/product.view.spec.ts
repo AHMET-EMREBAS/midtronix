@@ -27,6 +27,12 @@ describe('ProductView', () => {
   let QuantityViewRepo: Repository<QuantityView>;
   let PriceViewRepo: Repository<PriceView>;
   let SkuViewRepo: Repository<SkuView>;
+  let CartRepo: Repository<Cart>;
+  let CartViewRepo: Repository<CartView>;
+  let OrderRepo: Repository<Order>;
+  let OrderViewRepo: Repository<OrderView>;
+  let UserRepo: Repository<User>;
+  let CustomerRepo: Repository<Customer>;
 
   beforeAll(async () => {
     ds = await testDB([
@@ -43,10 +49,10 @@ describe('ProductView', () => {
       QuantityView,
       PriceView,
       SkuView,
-      Order,
-      OrderView,
       Cart,
       CartView,
+      Order,
+      OrderView,
       ...UserEntities,
       ...CustomerEntities,
     ]);
@@ -63,6 +69,13 @@ describe('ProductView', () => {
     QuantityViewRepo = await ds.getRepository(QuantityView);
     PriceViewRepo = await ds.getRepository(PriceView);
     SkuViewRepo = await ds.getRepository(SkuView);
+
+    CartRepo = ds.getRepository(Cart);
+    CartViewRepo = ds.getRepository(CartView);
+    OrderRepo = ds.getRepository(Order);
+    OrderViewRepo = ds.getRepository(OrderView);
+    UserRepo = ds.getRepository(User);
+    CustomerRepo = ds.getRepository(Customer);
   });
 
   it('should initialize the data source', () => {
@@ -79,6 +92,11 @@ describe('ProductView', () => {
     expect(QuantityViewRepo).toBeTruthy();
     expect(PriceViewRepo).toBeTruthy();
     expect(SkuViewRepo).toBeTruthy();
+
+    expect(CartRepo).toBeTruthy();
+    expect(CartViewRepo).toBeTruthy();
+    expect(OrderRepo).toBeTruthy();
+    expect(OrderViewRepo).toBeTruthy();
   });
 
   it('should create sku-view', async () => {
@@ -88,6 +106,12 @@ describe('ProductView', () => {
     let priceCount = 0;
     let quantityCount = 0;
     let storeCount = 0;
+
+    let orderCount = 0;
+    let cartCount = 0;
+
+    let customerCount = 0;
+    let userCount = 0;
 
     const category = await CategoryRepo.save({ name: 'Default' });
     const department = await DepartmentRepo.save({ name: 'Default' });
@@ -130,6 +154,32 @@ describe('ProductView', () => {
       store: Store,
       count = ++quantityCount
     ) => await QuantityRepo.save({ quantity: count * 10, sku, store });
+
+    const createUser = async (count = ++userCount) =>
+      await UserRepo.save({
+        username: `user${count}@gmail.com`,
+        password: `Password123!`,
+      });
+
+    const createCustomer = async (count = ++userCount) =>
+      await CustomerRepo.save({
+        username: `customer${count}@gmail.com`,
+        password: 'Password123!',
+      });
+
+    const createCart = async (store: Store, owner: Customer, user: User) =>
+      await CartRepo.save({ store, owner: owner, user });
+
+    const createOrder = async (cart: Cart, sku: Sku, quantity: number) =>
+      await OrderRepo.save({ cart, sku, quantity });
+
+    const user1 = await createUser();
+    const user2 = await createUser();
+    const user3 = await createUser();
+
+    const customer1 = await createCustomer();
+    const customer2 = await createCustomer();
+    const customer3 = await createCustomer();
 
     const store1 = await createStore();
     const store2 = await createStore();
@@ -249,6 +299,8 @@ describe('ProductView', () => {
         where: { barcode: '1000000013', priceLevelId: 1, storeId: 1 },
       })
     );
+
+    // Create Cart and test it.
   });
 
   afterAll(() => {
