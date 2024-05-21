@@ -27,6 +27,8 @@ export * from './role';
 export * from './sku.view';
 export * from './store.dto';
 export * from './store';
+export * from './taxrate.dto';
+export * from './taxrate';
 export * from './ticket.dto';
 export * from './ticket';
 export * from './user.dto';
