@@ -15,29 +15,19 @@ body {
   font-size: 16px;
 }
 
-mat-form-field {
-  width: 100%;
-}
+// .form-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1.5em;
+//   padding: 1em;
+// }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  padding: 1em;
-}
-
-.form-actions {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1em;
-  button {
-    width: 100%;
-  }
-}
-
-mat-toolbar {
-  min-height: 60px;
-  overflow: hidden;
-  overflow-y: auto;
-}
+// .form-actions {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   gap: 1em;
+//   button {
+//     width: 100%;
+//   }
+// }
