@@ -4,23 +4,8 @@ import {
   Property,
   QueryProperty,
 } from '@mdtx/core';
-import {
-  IQuerySingleSkuViewDto,
-  IQuerySkuViewDto,
-  SKU_VIEW_PROPERTIES,
-} from '@mdtx/common';
+import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES } from '@mdtx/common';
 
-@Exclude()
-export class QuerySingleSkuViewDto implements IQuerySingleSkuViewDto {
-  @Property({ type: 'string', minLength: 1, maxLength: 10, required: true })
-  barcode!: string;
-
-  @Property({ type: 'string', minLength: 1, maxLength: 10, required: true })
-  storeId!: number;
-
-  @Property({ type: 'string', minLength: 1, maxLength: 10, required: true })
-  priceLevelId!: number;
-}
 
 @Exclude()
 export class QuerySkuViewDto implements IQuerySkuViewDto {
@@ -47,7 +32,6 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() quantity!: number;
   @QueryProperty() price!: number;
   @QueryProperty() cost!: number;
-
   @QueryProperty() barcode!: string;
   @QueryProperty() name!: string;
   @QueryProperty() priceLevelName!: string;

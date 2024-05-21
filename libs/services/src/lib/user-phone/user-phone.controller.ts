@@ -29,7 +29,7 @@ export class UserPhoneController {
 
   @R.FindAll()
   findAll(@R.Query() paginator: PaginatorDto) {
-    return this.service.findAll({ ...paginator });
+    return this.service.findAll(paginator);
   }
 
   @R.FindOneById()

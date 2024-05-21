@@ -47,6 +47,13 @@ export class RepositoryService<T extends IID> {
       : undefined;
   }
 
+  /**
+   *
+   * @param paginator Paginator
+   * @param query Entity Specific Query
+   * @param select list of entity property names
+   * @returns
+   */
   async findAll(paginator: PaginatorDto, query: any = {}, select?: any) {
     const { take, skip } = paginator;
     return await this.repository.find({ take, skip, select, where: query });
