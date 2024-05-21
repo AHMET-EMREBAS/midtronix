@@ -47,9 +47,9 @@ export class RepositoryService<T extends IID> {
       : undefined;
   }
 
-  async findAll(paginator: PaginatorDto, query: any = {}) {
+  async findAll(paginator: PaginatorDto, query: any = {}, select?: any) {
     const { take, skip } = paginator;
-    return await this.repository.find({ take, skip, where: query });
+    return await this.repository.find({ take, skip, select, where: query });
   }
 
   async findOne(options: FindOneOptions<T>) {

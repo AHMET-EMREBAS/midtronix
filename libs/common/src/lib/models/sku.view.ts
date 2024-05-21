@@ -1,3 +1,21 @@
+export const SKU_VIEW_PROPERTIES = [
+  'id',
+  'skuId',
+  'barcode',
+  'name',
+  'price',
+  'cost',
+  'priceLevelId',
+  'priceLevelName',
+  'storeId',
+  'quantity',
+  'storeName',
+  'category',
+  'department',
+  'productId',
+  'productUpc',
+];
+
 export interface ISkuView {
   id: number;
   skuId: number;

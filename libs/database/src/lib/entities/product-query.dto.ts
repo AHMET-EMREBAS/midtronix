@@ -1,5 +1,14 @@
-import { Exclude, Property, QueryProperty } from '@mdtx/core';
-import { IQuerySingleSkuViewDto, IQuerySkuViewDto } from '@mdtx/common';
+import {
+  CreateSelectQuery,
+  Exclude,
+  Property,
+  QueryProperty,
+} from '@mdtx/core';
+import {
+  IQuerySingleSkuViewDto,
+  IQuerySkuViewDto,
+  SKU_VIEW_PROPERTIES,
+} from '@mdtx/common';
 
 @Exclude()
 export class QuerySingleSkuViewDto implements IQuerySingleSkuViewDto {
@@ -47,3 +56,6 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() department!: string;
   @QueryProperty() productUpc!: string;
 }
+
+@Exclude()
+export class SelectSkuViewDto extends CreateSelectQuery(SKU_VIEW_PROPERTIES) {}

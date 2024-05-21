@@ -1,6 +1,11 @@
-import { NotFoundException, PaginatorDto, RestRouteBuilder } from '@mdtx/core';
+import {
+  NotFoundException,
+  PaginatorDto,
+  RestRouteBuilder,
+  CreateSelectQuery,
+} from '@mdtx/core';
 import { SkuViewService } from './sku-view.service';
-import { QuerySkuViewDto } from '@mdtx/database';
+import { QuerySkuViewDto, SelectSkuViewDto } from '@mdtx/database';
 
 const R = RestRouteBuilder.get('SkuView');
 
@@ -23,9 +28,14 @@ export class SkuViewController {
   @R.FindAll()
   findAll(
     @R.Query() paginator: PaginatorDto,
-    @R.Query() querySkuViewDto: QuerySkuViewDto
+    @R.Query() querySkuViewDto: QuerySkuViewDto,
+    @R.Query() selectQueryDto: SelectSkuViewDto
   ) {
-    return this.service.findAll(paginator, querySkuViewDto);
+    return this.service.findAll(
+      paginator,
+      querySkuViewDto,
+      selectQueryDto.select
+    );
   }
 
   @R.Count()

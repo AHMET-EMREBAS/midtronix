@@ -77,7 +77,7 @@ export function QueryProperty() {
           .map(toQueryOperator)
           .filter((e) => e) as FindOperator<any>[];
 
-        if (operators.length > 0) return Or(...operators);
+        if (operators.length > 0) return And(...operators);
       }
       return undefined;
     })
