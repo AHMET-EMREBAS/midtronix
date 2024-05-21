@@ -8,3 +8,5 @@ export class Taxrate extends BaseEntity implements ITaxrate {
   @Column({ type: 'varchar' }) district!: string;
   @Column({ type: 'numeric', precision: 10, scale: 2 }) rate!: number;
 }
+
+export const TaxrateEntities = [Taxrate];
