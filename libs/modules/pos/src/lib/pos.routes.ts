@@ -15,6 +15,8 @@ export const PosRoutes: Routes = [
     path: '',
     loadComponent: () => AppLayoutComponent,
     providers: [
+
+      
       provideEntityData(
         {
           pluralNames: {

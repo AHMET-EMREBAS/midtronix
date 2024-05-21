@@ -23,6 +23,9 @@ export class ProductSmallCardListComponent implements OnChanges {
   @Output() totalChangeEvent = new EventEmitter<number>();
 
   @Output() deleteProductEvent = new EventEmitter<ISkuViewRaw>();
+
+  @Output() quantityChangeEvent = new EventEmitter<ISkuViewRaw>();
+
   __calculateTotal() {
     if (this.products && this.products.length > 0) {
       const total = this.products
@@ -44,5 +47,10 @@ export class ProductSmallCardListComponent implements OnChanges {
   deleteProductEventHandler(event: ISkuViewRaw) {
     this.calculateTotal(0, event);
     this.deleteProductEvent.emit(event);
+  }
+
+  handleQuantityChangeEvent(quantity: number, item: ISkuViewRaw) {
+    this.calculateTotal(quantity, item);
+    this.quantityChangeEvent.emit(item);
   }
 }

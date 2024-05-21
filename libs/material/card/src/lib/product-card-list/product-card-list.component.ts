@@ -12,5 +12,6 @@ import { ISkuViewRaw } from '@mdtx/common';
 })
 export class ProductCardListComponent {
   @Input() products!: ISkuViewRaw[];
-  @Output() addCartEvent = new EventEmitter<ISkuViewRaw>();
+  @Output() addProductToCartEvent = new EventEmitter<ISkuViewRaw>();
+  @Output() viewProductDetailsEvent = new EventEmitter<ISkuViewRaw>();
 }

@@ -4,7 +4,8 @@
     [title]="item.name!"
     [subtitle]="item.barcode!"
     [price]="item.price!"
-    (primaryButtonClickEvent)="addCartEvent.emit(item)"
+    (primaryButtonClickEvent)="addProductToCartEvent.emit(item)"
+    (secondaryButtonClickEvent)="viewProductDetailsEvent.emit(item)"
   ></mdtx-product-card>
   }
 </div>

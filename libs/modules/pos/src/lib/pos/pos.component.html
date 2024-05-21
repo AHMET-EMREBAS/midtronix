@@ -1,22 +1,34 @@
 <mdtx-pos-layout>
+  <!-- Toolbar -->
   <ng-template mdtxPosLayoutToolbar>
     <mdtx-input-pos-search
       (inputEvent)="handleSearchEvent($event)"
     ></mdtx-input-pos-search>
   </ng-template>
 
+  <!-- Product List -->
   <ng-template mdtxPosLayoutProductList>
     <mdtx-product-card-list
-      *ngIf="items$ | async as items"
-      [products]="items"
-
-      (addCartEvent)="addItemToCart($event)"
+      *ngIf="items$ | async as __items"
+      [products]="__items"
+      (addProductToCartEvent)="handleAddProductToCartEvent($event)"
     ></mdtx-product-card-list>
   </ng-template>
 
+  <!-- Cart List -->
   <ng-template mdtxPosLayoutCartList>
     <mdtx-product-small-card-list
-      [products]="getItemsInCart()"
+      *ngIf="getItemsInCart() as __itemsInCart"
+      [products]="__itemsInCart"
+      (deleteProductEvent)="handleDeleteProductEvent($event)"
+      (quantityChangeEvent)="handleQuantityChangeEvent()"
     ></mdtx-product-small-card-list>
   </ng-template>
+
+  <ng-template mdtxPosLayoutCartPrice>
+    <mdtx-checkout-button
+      [subtotal]="(subtotal$ | async) || 0"
+    ></mdtx-checkout-button>
+  </ng-template>
 </mdtx-pos-layout>
+{{ subtotal$ | async }}

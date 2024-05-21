@@ -12,7 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class CheckoutButtonComponent {
   @Input() label = 'Checkout';
-  @Input() taxrate = 10.25;
+  @Input() taxrate = 10.25 / 100;
   @Input() subtotal = 0;
 
   @Output() checkoutButtonClickEvent = new EventEmitter();
