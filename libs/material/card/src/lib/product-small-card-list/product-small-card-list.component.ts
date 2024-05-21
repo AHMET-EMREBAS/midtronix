@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductSmallCardComponent } from '../product-small-card/product-small-card.component';
-import { ISkuRaw, ISkuViewRaw } from '@mdtx/common';
+import { ISkuViewRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-product-small-card-list',

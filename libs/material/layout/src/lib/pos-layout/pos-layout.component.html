@@ -1,6 +1,12 @@
-<div class="pos-layout-container">
+<div #posContainerRef class="pos-layout-container">
+  <mdtx-fullscreen-button
+    [fullscreenContainerRef]="posContainerRef"
+  ></mdtx-fullscreen-button>
+
   <div class="pos-toolbar">
-    <mdtx-template-outlet [items]="toolbar"></mdtx-template-outlet>
+    @if(productList){ @for(item of toolbar; track item){
+    <ng-container *ngTemplateOutlet="item.templateRef"></ng-container>
+    } }
   </div>
 
   <div class="pos-content-container">

@@ -2,6 +2,7 @@
   @for(item of products; track item){
   <mdtx-product-small-card
     [title]="item.name"
+    [subtitle]="item.barcode"
     [unitPrice]="item.price"
     [quantity]="item.quantity"
     (quantityValueChange)="handleQuantityChangeEvent($event, item)"

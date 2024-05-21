@@ -7,11 +7,12 @@ import {
 } from './pos-layout.directive';
 import { CommonModule } from '@angular/common';
 import { TemplateOutletComponent } from '../template-outlet/template-outlet.component';
+import { FullscreenButtonComponent } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-pos-layout',
   standalone: true,
-  imports: [CommonModule, TemplateOutletComponent],
+  imports: [CommonModule, TemplateOutletComponent, FullscreenButtonComponent],
   templateUrl: './pos-layout.component.html',
   styleUrl: './pos-layout.component.scss',
 })

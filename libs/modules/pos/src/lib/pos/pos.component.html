@@ -1,9 +1,22 @@
+<ng-container *ngIf="searchObserver$ | async"></ng-container>
+
 <mdtx-pos-layout>
   <!-- Toolbar -->
   <ng-template mdtxPosLayoutToolbar>
     <mdtx-input-pos-search
+      #barcodeSearch
       (inputEvent)="handleSearchEvent($event)"
     ></mdtx-input-pos-search>
+
+    <mdtx-store-search
+      #storeSearch
+      [defaultStore]="defaultStore"
+    ></mdtx-store-search>
+
+    <mdtx-price-level-search
+      #priceLevelSearch
+      [defaultPriceLevel]="defaultPriceLevel"
+    ></mdtx-price-level-search>
   </ng-template>
 
   <!-- Product List -->
@@ -31,4 +44,3 @@
     ></mdtx-checkout-button>
   </ng-template>
 </mdtx-pos-layout>
-{{ subtotal$ | async }}

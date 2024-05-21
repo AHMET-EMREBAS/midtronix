@@ -28,8 +28,14 @@ export type QueryInput = {
   or?: QueryInput;
 };
 
+export function createQueryValue(
+  query: Pick<QueryInput, 'operator' | 'value'>
+) {
+  return `${query.operator}:${query.value}`;
+}
+
 export function createQuery(query: QueryInput) {
-  return `${query.property}=${query.operator}:${query.value}`;
+  return `${query.property}=${createQueryValue(query)}`;
 }
 
 export function parseQueryInput(

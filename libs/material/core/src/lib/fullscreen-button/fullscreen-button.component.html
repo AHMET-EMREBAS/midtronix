@@ -1,0 +1,10 @@
+<button
+  mat-icon-button
+  #fs="mdtxFullscreen"
+  [mdtxFullscreen]="fullscreenContainerRef"
+  style="position: absolute; right: 1em; top: 1em"
+>
+  <mat-icon>
+    {{ fs.isFullscreen() ? 'close_fullscreen' : 'fullscreen' }}
+  </mat-icon>
+</button>

@@ -29,9 +29,11 @@ const meta: Meta<CreateCustomerAddressComponent> = {
           {
             pluralNames: {
               CustomerAddress: 'CustomerAddresses',
+              Customer: 'Customers',
             },
             entityMetadata: {
               CustomerAddress: {},
+              Customer: {},
             },
           },
           withEffects()

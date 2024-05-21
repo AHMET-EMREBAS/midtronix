@@ -43,7 +43,6 @@ export class CartTableComponent extends BaseTableComponent<ICartRaw> {
     this.selectedItems = [...items.entries()].map(([, value]) => value);
   }
 
- 
   addItem() {
     this.addEvent.emit();
   }
@@ -64,7 +63,7 @@ export class CartTableComponent extends BaseTableComponent<ICartRaw> {
       search: searchString,
     });
   }
-  
+
   pageHandler(page: PageEvent) {
     this.service.clearCache();
     this.service.getWithQuery({

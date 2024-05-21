@@ -9,7 +9,7 @@ export interface ICart<TCustomer extends IID = IID, TUser extends IID = IID>
   user: TUser;
 }
 
-export interface IOrder<TSku extends IID, TCart extends IID>
+export interface IOrder<TSku extends IID = IID, TCart extends IID = IID>
   extends IBaseEntity {
   quantity: number;
   sku: TSku;

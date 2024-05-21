@@ -1,11 +1,15 @@
 .pos-layout-container {
   display: flex;
   flex-direction: column;
-  max-height: 98vh;
+  max-height: 96%;
   justify-content: flex-start;
   overflow: hidden;
   gap: 1em;
   padding: 1em;
+}
+
+.pos-layout-container:fullscreen {
+  background-color: var(--mdc-theme-surface, white);
 }
 
 .pos-content-container {
@@ -14,6 +18,7 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 2em;
+  flex-grow: 1;
   overflow: hidden;
 }
 
@@ -49,4 +54,16 @@
   display: flex;
   flex-direction: column;
   flex-direction: end;
+
+  position: sticky;
+  bottom: 0px;
+}
+
+.pos-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  flex-wrap: wrap;
 }

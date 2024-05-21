@@ -1,9 +1,9 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { StoreService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
-import { IStoreRaw } from '@mdtx/common';
+import { IID, IStoreRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-store-search',
@@ -21,8 +21,14 @@ import { IStoreRaw } from '@mdtx/common';
   `,
   providers: [StoreService],
 })
-export class StoreSearchComponent {
+export class StoreSearchComponent implements OnInit {
   @Input() inputControl = new FormControl<IStoreRaw | null>(null, []);
-
+  @Input() defaultStore?: IStoreRaw;
   constructor(protected readonly service: StoreService) {}
+
+  ngOnInit(): void {
+    if (this.defaultStore) {
+      this.inputControl.setValue(this.defaultStore);
+    }
+  }
 }

@@ -25994,12 +25994,12 @@
         },
         {
             "name": "PosLayoutCartListDirective",
-            "id": "directive-PosLayoutCartListDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
+            "id": "directive-PosLayoutCartListDirective-0842126f6b3722ce0c4e8522659f404523d96e8b176164e30be752224c67b82794bdeddb68b6d5eabbc17d4b75df258a29f6185eaca9f185b670c6e2205ae8ee",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\r\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\r\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\r\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\r\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const PosLayoutDirectives = [\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n",
             "selector": "[mdtxPosLayoutCartList]",
             "providers": [],
             "hostDirectives": [],
@@ -26059,12 +26059,12 @@
         },
         {
             "name": "PosLayoutCartPriceDirective",
-            "id": "directive-PosLayoutCartPriceDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
+            "id": "directive-PosLayoutCartPriceDirective-0842126f6b3722ce0c4e8522659f404523d96e8b176164e30be752224c67b82794bdeddb68b6d5eabbc17d4b75df258a29f6185eaca9f185b670c6e2205ae8ee",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\r\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\r\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\r\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\r\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const PosLayoutDirectives = [\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n",
             "selector": "[mdtxPosLayoutCartPrice]",
             "providers": [],
             "hostDirectives": [],
@@ -26124,12 +26124,12 @@
         },
         {
             "name": "PosLayoutProductListDirective",
-            "id": "directive-PosLayoutProductListDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
+            "id": "directive-PosLayoutProductListDirective-0842126f6b3722ce0c4e8522659f404523d96e8b176164e30be752224c67b82794bdeddb68b6d5eabbc17d4b75df258a29f6185eaca9f185b670c6e2205ae8ee",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\r\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\r\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\r\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\r\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const PosLayoutDirectives = [\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n",
             "selector": "[mdtxPosLayoutProductList]",
             "providers": [],
             "hostDirectives": [],
@@ -26189,12 +26189,12 @@
         },
         {
             "name": "PosLayoutToolbarDirective",
-            "id": "directive-PosLayoutToolbarDirective-cc42bfc6cce4dbb673b249b89f85d2d4196c59a9349e06fd69978f531d57e72c4142087fbaf8ee0f59720f40ae64d21dde369f5f858ae2ae5c75b567a80054c9",
+            "id": "directive-PosLayoutToolbarDirective-0842126f6b3722ce0c4e8522659f404523d96e8b176164e30be752224c67b82794bdeddb68b6d5eabbc17d4b75df258a29f6185eaca9f185b670c6e2205ae8ee",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\nimport { ITemplateRef } from '@mdtx/material/core';\n\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\n  constructor(public readonly templateRef: TemplateRef<any>) {}\n}\n\nexport const PosLayoutDirectives = [\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n];\n",
+            "sourceCode": "import { Directive, TemplateRef } from '@angular/core';\r\nimport { ITemplateRef } from '@mdtx/material/core';\r\n\r\n@Directive({ selector: '[mdtxPosLayoutToolbar]' })\r\nexport class PosLayoutToolbarDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutProductList]' })\r\nexport class PosLayoutProductListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartList]' })\r\nexport class PosLayoutCartListDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\n@Directive({ selector: '[mdtxPosLayoutCartPrice]' })\r\nexport class PosLayoutCartPriceDirective implements ITemplateRef<any> {\r\n  constructor(public readonly templateRef: TemplateRef<any>) {}\r\n}\r\n\r\nexport const PosLayoutDirectives = [\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n];\r\n",
             "selector": "[mdtxPosLayoutToolbar]",
             "providers": [],
             "hostDirectives": [],
@@ -27061,7 +27061,7 @@
         },
         {
             "name": "BarcodeViewComponent",
-            "id": "component-BarcodeViewComponent-33a23d3b3f4b7874c5516ea370d620d76b796a9be8f7744f35dae19c386c191e68ffe53f6e1979c8e1b334e5c03008d9bad31a2c9212f6027cec06b4e90540e9",
+            "id": "component-BarcodeViewComponent-79dfd823c76663cb26da8f69af0341aa46a954b17dd3b243401d4f28b36f96c2f93ccbe4cbc8c003382f851e1e208a51a1a71debca0ffb5db8c0a8f71ff588d1",
             "file": "libs/material/barcode/src/lib/barcode-view/barcode-view.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27114,7 +27114,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport * as JsBarcode from 'jsbarcode';\n@Component({\n  selector: 'mdtx-barcode-view',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './barcode-view.component.html',\n  styleUrl: './barcode-view.component.scss',\n})\nexport class BarcodeViewComponent implements AfterViewInit {\n  @Input() barcode!: string;\n\n  ngAfterViewInit(): void {\n    JsBarcode(`#b${this.barcode}`, this.barcode);\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport * as JsBarcode from 'jsbarcode';\r\n@Component({\r\n  selector: 'mdtx-barcode-view',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './barcode-view.component.html',\r\n  styleUrl: './barcode-view.component.scss',\r\n})\r\nexport class BarcodeViewComponent implements AfterViewInit {\r\n  @Input() barcode!: string;\r\n\r\n  ngAfterViewInit(): void {\r\n    JsBarcode(`#b${this.barcode}`, this.barcode);\r\n  }\r\n}\r\n",
             "styleUrl": "./barcode-view.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -27123,11 +27123,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<svg [attr.id]=\"'b' + barcode\" *ngIf=\"barcode\"></svg>\n"
+            "templateData": "<svg [attr.id]=\"'b' + barcode\" *ngIf=\"barcode\"></svg>\r\n"
         },
         {
             "name": "BaseAppLayoutComponent",
-            "id": "component-BaseAppLayoutComponent-4c9613c7c276d842b0aa1e6f0b8b8126cc28259bdd95d4a341bf02caa588a9d80f1009c4d1ca5e3cb7cc5a4c0ca6a148f976221cafb5a35f441721efb7ab3215",
+            "id": "component-BaseAppLayoutComponent-95aadc869dd211e577939caa602ca5a56186bd1218944d07dbe122b156ad04e08ab08b52b3a3ae5b6f539797a8ca83228039acad1a9041a1b5274e007b08844f",
             "file": "libs/material/layout/src/lib/common/base-app-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27344,7 +27344,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Inject, Input, Optional } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LayoutModule } from '../layout/layout.module';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Icon, Navlist } from '@mdtx/material/core';\r\nimport { NavlistComponent } from '../navlist/navlist.component';\r\nimport { Title } from '@angular/platform-browser';\r\nimport { SidebarComponent } from '@mdtx/material/toolbar';\r\nimport {\r\n  ToolbarLeftProvider,\r\n  ToolbarRightProvider,\r\n  ToolbarCenterProvider,\r\n  StatusbarLeftProvider,\r\n  StatusbarRightProvider,\r\n  StatusbarCenterProvider,\r\n  ContentTopProvider,\r\n  ContentBottomProvider,\r\n  ContentCenterProvider,\r\n  ContentCenterLeftProvider,\r\n  ContentCenterRightProvider,\r\n  SidenavRightTopProvider,\r\n  SidenavRightBottomProvider,\r\n  SidenavRightCenterProvider,\r\n  SidenavLeftTopProvider,\r\n  SidenavLeftBottomProvider,\r\n  SidenavLeftCenterProvider,\r\n} from '../common';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-app-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    LayoutModule,\r\n    RouterModule,\r\n    NavlistComponent,\r\n    SidebarComponent,\r\n  ],\r\n  template: '',\r\n})\r\nexport class BaseAppLayoutComponent {\r\n  @Input() rightSidenavIcon?: Icon = 'settings';\r\n  @Input() progressValue = 100;\r\n  @Input() toolbarLeft?: Navlist;\r\n  @Input() toolbarRight?: Navlist;\r\n  @Input() toolbarCenter?: Navlist;\r\n  @Input() statusbarLeft?: Navlist;\r\n  @Input() statusbarRight?: Navlist;\r\n  @Input() statusbarCenter?: Navlist;\r\n  @Input() contentTop?: Navlist;\r\n  @Input() contentBottom?: Navlist;\r\n  @Input() contentCenter?: Navlist;\r\n  @Input() contentCenterLeft?: Navlist;\r\n  @Input() contentCenterRight?: Navlist;\r\n  @Input() sidenavRightTop?: Navlist;\r\n  @Input() sidenavRightBottom?: Navlist;\r\n  @Input() sidenavRightCenter?: Navlist;\r\n  @Input() sidenavLeftTop?: Navlist;\r\n  @Input() sidenavLeftBottom?: Navlist;\r\n  @Input() sidenavLeftCenter?: Navlist;\r\n\r\n  constructor(\r\n    public readonly title: Title,\r\n    @Optional() @Inject(ToolbarLeftProvider.token()) toolbarLeft?: Navlist,\r\n    @Optional() @Inject(ToolbarRightProvider.token()) toolbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(ToolbarCenterProvider.token())\r\n    toolbarCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarLeftProvider.token())\r\n    statusbarLeft?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarRightProvider.token())\r\n    statusbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarCenterProvider.token())\r\n    statusbarCenter?: Navlist,\r\n    @Optional() @Inject(ContentTopProvider.token()) contentTop?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentBottomProvider.token())\r\n    contentBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentCenterProvider.token())\r\n    contentCenter?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(ContentCenterLeftProvider.token())\r\n    contentCenterLeft?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(ContentCenterRightProvider.token())\r\n    contentCenterRight?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(SidenavRightTopProvider.token())\r\n    sidenavRightTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightBottomProvider.token())\r\n    sidenavRightBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightCenterProvider.token())\r\n    sidenavRightCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftTopProvider.token())\r\n    sidenavLeftTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftBottomProvider.token())\r\n    sidenavLeftBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftCenterProvider.token())\r\n    sidenavLeftCenter?: Navlist\r\n  ) {\r\n    if (toolbarLeft) this.toolbarLeft = toolbarLeft;\r\n    if (toolbarRight) this.toolbarRight = toolbarRight;\r\n    if (toolbarCenter) this.toolbarCenter = toolbarCenter;\r\n    if (statusbarLeft) this.statusbarLeft = statusbarLeft;\r\n    if (statusbarRight) this.statusbarRight = statusbarRight;\r\n    if (statusbarCenter) this.statusbarCenter = statusbarCenter;\r\n    if (contentTop) this.contentTop = contentTop;\r\n    if (contentBottom) this.contentBottom = contentBottom;\r\n    if (contentCenter) this.contentCenter = contentCenter;\r\n\r\n    if (contentCenterLeft) this.contentCenterLeft = contentCenterLeft;\r\n    if (contentCenterRight) this.contentCenterRight = contentCenterRight;\r\n\r\n    if (sidenavRightTop) this.sidenavRightTop = sidenavRightTop;\r\n    if (sidenavRightBottom) this.sidenavRightBottom = sidenavRightBottom;\r\n    if (sidenavRightCenter) this.sidenavRightCenter = sidenavRightCenter;\r\n    if (sidenavLeftTop) this.sidenavLeftTop = sidenavLeftTop;\r\n    if (sidenavLeftBottom) this.sidenavLeftBottom = sidenavLeftBottom;\r\n    if (sidenavLeftCenter) this.sidenavLeftCenter = sidenavLeftCenter;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Inject, Input, Optional } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { LayoutModule } from '../layout/layout.module';\r\nimport { RouterModule } from '@angular/router';\r\nimport { Icon, Navlist } from '@mdtx/material/core';\r\nimport { NavlistComponent } from '../navlist/navlist.component';\r\nimport { Title } from '@angular/platform-browser';\r\nimport { SidebarComponent } from '@mdtx/material/toolbar';\r\nimport {\r\n  ToolbarLeftProvider,\r\n  ToolbarRightProvider,\r\n  ToolbarCenterProvider,\r\n  StatusbarLeftProvider,\r\n  StatusbarRightProvider,\r\n  StatusbarCenterProvider,\r\n  ContentTopProvider,\r\n  ContentBottomProvider,\r\n  ContentCenterProvider,\r\n  ContentCenterLeftProvider,\r\n  ContentCenterRightProvider,\r\n  SidenavRightTopProvider,\r\n  SidenavRightBottomProvider,\r\n  SidenavRightCenterProvider,\r\n  SidenavLeftTopProvider,\r\n  SidenavLeftBottomProvider,\r\n  SidenavLeftCenterProvider,\r\n} from './layout-providers';\r\n\r\n@Component({\r\n  selector: 'mdtx-base-app-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    LayoutModule,\r\n    RouterModule,\r\n    NavlistComponent,\r\n    SidebarComponent,\r\n  ],\r\n  template: '',\r\n})\r\nexport class BaseAppLayoutComponent {\r\n  @Input() rightSidenavIcon?: Icon = 'settings';\r\n  @Input() progressValue = 100;\r\n  @Input() toolbarLeft?: Navlist;\r\n  @Input() toolbarRight?: Navlist;\r\n  @Input() toolbarCenter?: Navlist;\r\n  @Input() statusbarLeft?: Navlist;\r\n  @Input() statusbarRight?: Navlist;\r\n  @Input() statusbarCenter?: Navlist;\r\n  @Input() contentTop?: Navlist;\r\n  @Input() contentBottom?: Navlist;\r\n  @Input() contentCenter?: Navlist;\r\n  @Input() contentCenterLeft?: Navlist;\r\n  @Input() contentCenterRight?: Navlist;\r\n  @Input() sidenavRightTop?: Navlist;\r\n  @Input() sidenavRightBottom?: Navlist;\r\n  @Input() sidenavRightCenter?: Navlist;\r\n  @Input() sidenavLeftTop?: Navlist;\r\n  @Input() sidenavLeftBottom?: Navlist;\r\n  @Input() sidenavLeftCenter?: Navlist;\r\n\r\n  constructor(\r\n    public readonly title: Title,\r\n    @Optional() @Inject(ToolbarLeftProvider.token()) toolbarLeft?: Navlist,\r\n    @Optional() @Inject(ToolbarRightProvider.token()) toolbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(ToolbarCenterProvider.token())\r\n    toolbarCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarLeftProvider.token())\r\n    statusbarLeft?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarRightProvider.token())\r\n    statusbarRight?: Navlist,\r\n    @Optional()\r\n    @Inject(StatusbarCenterProvider.token())\r\n    statusbarCenter?: Navlist,\r\n    @Optional() @Inject(ContentTopProvider.token()) contentTop?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentBottomProvider.token())\r\n    contentBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(ContentCenterProvider.token())\r\n    contentCenter?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(ContentCenterLeftProvider.token())\r\n    contentCenterLeft?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(ContentCenterRightProvider.token())\r\n    contentCenterRight?: Navlist,\r\n\r\n    @Optional()\r\n    @Inject(SidenavRightTopProvider.token())\r\n    sidenavRightTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightBottomProvider.token())\r\n    sidenavRightBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavRightCenterProvider.token())\r\n    sidenavRightCenter?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftTopProvider.token())\r\n    sidenavLeftTop?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftBottomProvider.token())\r\n    sidenavLeftBottom?: Navlist,\r\n    @Optional()\r\n    @Inject(SidenavLeftCenterProvider.token())\r\n    sidenavLeftCenter?: Navlist\r\n  ) {\r\n    if (toolbarLeft) this.toolbarLeft = toolbarLeft;\r\n    if (toolbarRight) this.toolbarRight = toolbarRight;\r\n    if (toolbarCenter) this.toolbarCenter = toolbarCenter;\r\n    if (statusbarLeft) this.statusbarLeft = statusbarLeft;\r\n    if (statusbarRight) this.statusbarRight = statusbarRight;\r\n    if (statusbarCenter) this.statusbarCenter = statusbarCenter;\r\n    if (contentTop) this.contentTop = contentTop;\r\n    if (contentBottom) this.contentBottom = contentBottom;\r\n    if (contentCenter) this.contentCenter = contentCenter;\r\n\r\n    if (contentCenterLeft) this.contentCenterLeft = contentCenterLeft;\r\n    if (contentCenterRight) this.contentCenterRight = contentCenterRight;\r\n\r\n    if (sidenavRightTop) this.sidenavRightTop = sidenavRightTop;\r\n    if (sidenavRightBottom) this.sidenavRightBottom = sidenavRightBottom;\r\n    if (sidenavRightCenter) this.sidenavRightCenter = sidenavRightCenter;\r\n    if (sidenavLeftTop) this.sidenavLeftTop = sidenavLeftTop;\r\n    if (sidenavLeftBottom) this.sidenavLeftBottom = sidenavLeftBottom;\r\n    if (sidenavLeftCenter) this.sidenavLeftCenter = sidenavLeftCenter;\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -28175,7 +28175,7 @@
         },
         {
             "name": "CheckoutButtonComponent",
-            "id": "component-CheckoutButtonComponent-1839c494065e8d87a41ae9dd609bcddaaa7331633941c74bf8159c0016c08701ad8f40aa8ca5b5251d38603b8bdcc34c971659ebec574688595d70f2917048c2",
+            "id": "component-CheckoutButtonComponent-609a8889cb306d27497168ec44056b8b09eb79c74c610e39bdaa382782926818ae6ef2b6e3da827ea5e5250c26d010889d183bf30bac9d87ed0c7b8954e8d1a6",
             "file": "libs/material/button/src/lib/checkout-button/checkout-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28196,32 +28196,113 @@
                     "defaultValue": "'Checkout'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 14,
                     "type": "string",
                     "decorators": []
                 },
                 {
                     "name": "subtotal",
-                    "defaultValue": "'Subtotal Value'",
+                    "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
+                    "line": 16,
+                    "type": "number",
                     "decorators": []
                 },
                 {
-                    "name": "total",
-                    "defaultValue": "'Total Value'",
+                    "name": "taxrate",
+                    "defaultValue": "10.25 / 100",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
-                    "type": "string",
+                    "line": 15,
+                    "type": "number",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "outputsClass": [
+                {
+                    "name": "checkoutButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "tax",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "total",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "calculateTax",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "calculateTotal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "printSubtotal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "printTax",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "printTotal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -28235,18 +28316,26 @@
                 {
                     "name": "MatButtonModule",
                     "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'mdtx-checkout-button',\n  standalone: true,\n  imports: [CommonModule, MatButtonModule],\n  templateUrl: './checkout-button.component.html',\n  styleUrl: './checkout-button.component.scss',\n})\nexport class CheckoutButtonComponent {\n  @Input() subtotal = 'Subtotal Value';\n  @Input() total = 'Total Value';\n  @Input() label = 'Checkout';\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\n@Component({\r\n  selector: 'mdtx-checkout-button',\r\n  standalone: true,\r\n  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],\r\n  templateUrl: './checkout-button.component.html',\r\n  styleUrl: './checkout-button.component.scss',\r\n})\r\nexport class CheckoutButtonComponent {\r\n  @Input() label = 'Checkout';\r\n  @Input() taxrate = 10.25 / 100;\r\n  @Input() subtotal = 0;\r\n\r\n  @Output() checkoutButtonClickEvent = new EventEmitter();\r\n  tax = 0;\r\n  total = 0;\r\n\r\n  calculateTax() {\r\n    return this.subtotal * this.taxrate;\r\n  }\r\n\r\n  calculateTotal() {\r\n    return this.subtotal + this.calculateTax();\r\n  }\r\n\r\n  printTax() {\r\n    return this.calculateTax().toLocaleString();\r\n  }\r\n\r\n  printSubtotal() {\r\n    return this.subtotal.toLocaleString();\r\n  }\r\n  printTotal() {\r\n    return this.calculateTotal().toLocaleString();\r\n  }\r\n}\r\n",
             "styleUrl": "./checkout-button.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"checkout-button-container\">\n  <div class=\"checkout-price\">\n    <div class=\"subtotal\">{{ subtotal }}</div>\n    <div class=\"total\">{{ total }}</div>\n  </div>\n\n  <button mat-rasied-button color=\"primary\">{{ label }}</button>\n</div>\n"
+            "templateData": "<div class=\"checkout-button-container\">\r\n  <div class=\"checkout-price\">\r\n    <div class=\"tax-value\"><span>Tax:</span> $ {{ printTax() }}</div>\r\n    <div class=\"subtotal-value\">\r\n      <span>Subtotal:</span> $ {{ printSubtotal() }}\r\n    </div>\r\n    <div class=\"total-divider\"></div>\r\n    <div class=\"total-value\"><span>Total:</span> $ {{ printTotal() }}</div>\r\n  </div>\r\n\r\n  <button\r\n    mat-fab\r\n    color=\"accent\"\r\n    [attr.role]=\"label\"\r\n    [matTooltip]=\"label\"\r\n    matTooltipPosition=\"above\"\r\n    (click)=\"checkoutButtonClickEvent.emit()\"\r\n  >\r\n    <mat-icon>shopping_cart_checkout</mat-icon>\r\n  </button>\r\n</div>\r\n"
         },
         {
             "name": "FormComponent",
@@ -32753,7 +32842,7 @@
         },
         {
             "name": "InputPosSearchComponent",
-            "id": "component-InputPosSearchComponent-5009a639856bd7d8b615e925d16d7516950c6ed4c0472f8f1732b8a918bd6a83f82ba06d458d1645e1d49c099e444170b9ec6f1bd2aac0c1be942df81d2507c2",
+            "id": "component-InputPosSearchComponent-e3ac22a315c0dbc9e881d521ff1679788f78dfcf0c50c839683267f3522064a546a934eddcc498482f010db438c31f45d380eb5417626a7a456da2aea4d90e91",
             "file": "libs/material/form/src/lib/input-pos-search/input-pos-search.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -32988,7 +33077,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { InputTextComponent } from '../input-text/input-text.component';\nimport { InputBaseComponent } from '../input-base';\nimport { FormControl } from '@angular/forms';\n\n@Component({\n  selector: 'mdtx-input-pos-search',\n  standalone: true,\n  imports: [CommonModule, InputTextComponent],\n  templateUrl: './input-pos-search.component.html',\n  styleUrl: './input-pos-search.component.scss',\n})\nexport class InputPosSearchComponent extends InputBaseComponent {\n  override inputControl: FormControl<any> = new FormControl('', []);\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputTextComponent } from '../input-text/input-text.component';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { FormControl } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-pos-search',\r\n  standalone: true,\r\n  imports: [CommonModule, InputTextComponent],\r\n  templateUrl: './input-pos-search.component.html',\r\n  styleUrl: './input-pos-search.component.scss',\r\n})\r\nexport class InputPosSearchComponent extends InputBaseComponent {\r\n  override inputControl: FormControl<any> = new FormControl('', []);\r\n}\r\n",
             "styleUrl": "./input-pos-search.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -32996,7 +33085,7 @@
             "extends": [
                 "InputBaseComponent"
             ],
-            "templateData": "<mdtx-input-text\n  prefixIcon=\"search\"\n  [inputControl]=\"inputControl\"\n  (inputEvent)=\"inputEvent.emit($event)\"\n  label=\"Scan Barcode\"\n></mdtx-input-text>\n"
+            "templateData": "<mdtx-input-text\r\n  prefixIcon=\"search\"\r\n  [inputControl]=\"inputControl\"\r\n  (inputEvent)=\"inputEvent.emit($event)\"\r\n  label=\"Scan Barcode\"\r\n></mdtx-input-text>\r\n"
         },
         {
             "name": "InputQuantityComponent",
@@ -36780,7 +36869,7 @@
             "extends": [
                 "BaseLayoutComponent"
             ],
-            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\r\n  <!-- ################### TOOLBAR START -->\r\n  <mat-toolbar color=\"primary\" *ngIf=\"showToolbar\">\r\n    <div class=\"row-container\">\r\n      <!-- Left sidenav toggle -->\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavLeftRef.toggle()\"\r\n        aria-label=\"Toggle Left Sidenav\"\r\n        *ngIf=\"showLeftSidenavToggle\"\r\n      >\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    <!-- Toolbar center -->\r\n    <div class=\"row-container center\">\r\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n\r\n    <!-- Toolbar right -->\r\n    <div class=\"row-container right\">\r\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavRightRef.toggle()\"\r\n        aria-label=\"Toggle Right Sidenav\"\r\n        *ngIf=\"showRightSidenavToggle\"\r\n      >\r\n        <mat-icon>{{ rightSidenavIcon }}</mat-icon>\r\n      </button>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################### TOOLBAR END -->\r\n\r\n  <!-- ################### PROGRESSBAR START -->\r\n  <mat-progress-bar\r\n    mode=\"determinate\"\r\n    [value]=\"progressValue\"\r\n    color=\"accent\"\r\n    aria-label=\"Progressbar\"\r\n    *ngIf=\"showProgressbar\"\r\n  ></mat-progress-bar>\r\n  <!-- ################### PROGRESSBAR END -->\r\n\r\n  <!-- ######################### SIDENAV CONTAINER START -->\r\n  <mat-sidenav-container>\r\n    <!-- ######################### LEFT SIDENAV START -->\r\n    <mat-sidenav\r\n      #sidenavLeftRef\r\n      position=\"start\"\r\n      [opened]=\"screen.isNotHandset() && showLeftSidenav\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\" *ngIf=\"sidenavLeftTop.length > 0\">\r\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div\r\n          class=\"column-container center\"\r\n          *ngIf=\"sidenavLeftCenter.length > 0\"\r\n        >\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div\r\n          class=\"column-container bottom\"\r\n          *ngIf=\"sidenavLeftBottom.length > 0\"\r\n        >\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ######################### LEFT SIDENAV END -->\r\n\r\n    <!-- #########################  SIDENAV RIGHT START -->\r\n    <mat-sidenav\r\n      #sidenavRightRef\r\n      position=\"end\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightTop\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n        <div class=\"column-container center\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div class=\"column-container bottom\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ####################### SIDENAV RIGHT END  -->\r\n\r\n    <!-- ###################### SIDENAV CONTENT START  -->\r\n    <mat-sidenav-content>\r\n      <!-- TOP -->\r\n      <div class=\"column-container\" *ngIf=\"contentTop.length > 0\">\r\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\r\n      </div>\r\n\r\n      <!-- Center Content  -->\r\n      <div class=\"row-container no-gap full full-height flex-grow-1 flex-start\">\r\n        <!-- Center left  -->\r\n        <div class=\"column-container full\" *ngIf=\"contentCenterLeft.length > 0\">\r\n          <mdtx-template-outlet\r\n            [items]=\"contentCenterLeft\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <!-- CENTER -->\r\n        <div\r\n          class=\"column-container full flex-grow-1\"\r\n          style=\"overflow: hidden; overflow-y: auto\"\r\n          *ngIf=\"contentCenter.length > 0\"\r\n        >\r\n          <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <!-- Center Right  -->\r\n        <div class=\"column-container full\" *ngIf=\"contentTop.length > 0\">\r\n          <mdtx-template-outlet\r\n            [items]=\"contentCenterRight\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- BOTTOM -->\r\n      <div class=\"column-container\" *ngIf=\"contentBottom.length > 0\">\r\n        {{ contentBottom.length }}\r\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\r\n      </div>\r\n    </mat-sidenav-content>\r\n    <!-- ####################### SIDENAV CONTENT END -->\r\n  </mat-sidenav-container>\r\n  <!-- ######################### SIDENAV CONTAINER END -->\r\n\r\n  <!-- ################################ STATUSBAR START -->\r\n  <mat-toolbar color=\"accent\" *ngIf=\"showStatusbar\">\r\n    <div class=\"row-container\" *ngIf=\"statusbarLeft.length > 0\">\r\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    <div\r\n      class=\"row-container flex-grow-1 center\"\r\n      *ngIf=\"statusbarCenter.length > 0\"\r\n    >\r\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container right\" *ngIf=\"statusbarRight.length > 0\">\r\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################################ STATUSBAR END -->\r\n</div>\r\n"
+            "templateData": "<div #screen=\"mdtxViewport\" mdtxViewport class=\"main-container\">\r\n  <!-- ################### TOOLBAR START -->\r\n  <mat-toolbar color=\"primary\" *ngIf=\"showToolbar\">\r\n    <div class=\"row-container\">\r\n      <!-- Left sidenav toggle -->\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavLeftRef.toggle()\"\r\n        aria-label=\"Toggle Left Sidenav\"\r\n        *ngIf=\"showLeftSidenavToggle\"\r\n      >\r\n        <mat-icon>menu</mat-icon>\r\n      </button>\r\n      <mdtx-template-outlet [items]=\"toolbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    \r\n    <!-- Toolbar center -->\r\n    <div class=\"row-container center\">\r\n      <mdtx-template-outlet [items]=\"toolbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n\r\n    <!-- Toolbar right -->\r\n    <div class=\"row-container right\">\r\n      <mdtx-template-outlet [items]=\"toolbarRight\"></mdtx-template-outlet>\r\n      <button\r\n        mat-icon-button\r\n        (click)=\"sidenavRightRef.toggle()\"\r\n        aria-label=\"Toggle Right Sidenav\"\r\n        *ngIf=\"showRightSidenavToggle\"\r\n      >\r\n        <mat-icon>{{ rightSidenavIcon }}</mat-icon>\r\n      </button>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################### TOOLBAR END -->\r\n\r\n  <!-- ################### PROGRESSBAR START -->\r\n  <mat-progress-bar\r\n    mode=\"determinate\"\r\n    [value]=\"progressValue\"\r\n    color=\"accent\"\r\n    aria-label=\"Progressbar\"\r\n    *ngIf=\"showProgressbar\"\r\n  ></mat-progress-bar>\r\n  <!-- ################### PROGRESSBAR END -->\r\n\r\n  <!-- ######################### SIDENAV CONTAINER START -->\r\n  <mat-sidenav-container>\r\n    <!-- ######################### LEFT SIDENAV START -->\r\n    <mat-sidenav\r\n      #sidenavLeftRef\r\n      position=\"start\"\r\n      [opened]=\"screen.isNotHandset() && showLeftSidenav\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\" *ngIf=\"sidenavLeftTop.length > 0\">\r\n          <mdtx-template-outlet [items]=\"sidenavLeftTop\"></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div\r\n          class=\"column-container center\"\r\n          *ngIf=\"sidenavLeftCenter.length > 0\"\r\n        >\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div\r\n          class=\"column-container bottom\"\r\n          *ngIf=\"sidenavLeftBottom.length > 0\"\r\n        >\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavLeftBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ######################### LEFT SIDENAV END -->\r\n\r\n    <!-- #########################  SIDENAV RIGHT START -->\r\n    <mat-sidenav\r\n      #sidenavRightRef\r\n      position=\"end\"\r\n      [mode]=\"screen.toggleValue('side', 'over')\"\r\n    >\r\n      <div class=\"column-container full padding-1\">\r\n        <div class=\"column-container\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightTop\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n        <div class=\"column-container center\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightCenter\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <div class=\"column-container bottom\">\r\n          <mdtx-template-outlet\r\n            [items]=\"sidenavRightBottom\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n    </mat-sidenav>\r\n    <!-- ####################### SIDENAV RIGHT END  -->\r\n\r\n    <!-- ###################### SIDENAV CONTENT START  -->\r\n    <mat-sidenav-content>\r\n      <!-- TOP -->\r\n      <div class=\"column-container\" *ngIf=\"contentTop.length > 0\">\r\n        <mdtx-template-outlet [items]=\"contentTop\"></mdtx-template-outlet>\r\n      </div>\r\n\r\n      <!-- Center Content  -->\r\n      <div class=\"row-container no-gap full full-height flex-grow-1 flex-start\">\r\n        <!-- Center left  -->\r\n        <div class=\"column-container full\" *ngIf=\"contentCenterLeft.length > 0\">\r\n          <mdtx-template-outlet\r\n            [items]=\"contentCenterLeft\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <!-- CENTER -->\r\n        <div\r\n          class=\"column-container full flex-grow-1\"\r\n          style=\"overflow: hidden; overflow-y: auto\"\r\n          *ngIf=\"contentCenter.length > 0\"\r\n        >\r\n          <mdtx-template-outlet [items]=\"contentCenter\"></mdtx-template-outlet>\r\n        </div>\r\n\r\n        <!-- Center Right  -->\r\n        <div class=\"column-container full\" *ngIf=\"contentTop.length > 0\">\r\n          <mdtx-template-outlet\r\n            [items]=\"contentCenterRight\"\r\n          ></mdtx-template-outlet>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- BOTTOM -->\r\n      <div class=\"column-container\" *ngIf=\"contentBottom.length > 0\">\r\n        {{ contentBottom.length }}\r\n        <mdtx-template-outlet [items]=\"contentBottom\"></mdtx-template-outlet>\r\n      </div>\r\n    </mat-sidenav-content>\r\n    <!-- ####################### SIDENAV CONTENT END -->\r\n  </mat-sidenav-container>\r\n  <!-- ######################### SIDENAV CONTAINER END -->\r\n\r\n  <!-- ################################ STATUSBAR START -->\r\n  <mat-toolbar color=\"accent\" *ngIf=\"showStatusbar\">\r\n    <div class=\"row-container\" *ngIf=\"statusbarLeft.length > 0\">\r\n      <mdtx-template-outlet [items]=\"statusbarLeft\"></mdtx-template-outlet>\r\n    </div>\r\n    <div\r\n      class=\"row-container flex-grow-1 center\"\r\n      *ngIf=\"statusbarCenter.length > 0\"\r\n    >\r\n      <mdtx-template-outlet [items]=\"statusbarCenter\"></mdtx-template-outlet>\r\n    </div>\r\n    <div class=\"row-container right\" *ngIf=\"statusbarRight.length > 0\">\r\n      <mdtx-template-outlet [items]=\"statusbarRight\"></mdtx-template-outlet>\r\n    </div>\r\n  </mat-toolbar>\r\n  <!-- ################################ STATUSBAR END -->\r\n</div>\r\n"
         },
         {
             "name": "LocalStoreComponent",
@@ -36848,7 +36937,7 @@
         },
         {
             "name": "MaterialBarcodeComponent",
-            "id": "component-MaterialBarcodeComponent-b4a37bfb35cf64a1575bd8945124a63ddf4bd5089a8d0ed6a531fa1e97c650ab6c68a3451ddd72b58588451fdcad24643106699ce036ee282f33d2e5d0527bcc",
+            "id": "component-MaterialBarcodeComponent-9ddb43d7adda2131db62ba1b3ad6f4607f089450904591084eb78e067aeb0b6cc08fc3d3c42d7f960f1a4e3c3ebf0c36bd86a179d218c757da8c88189408ade3",
             "file": "libs/material/barcode/src/lib/material-barcode/material-barcode.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36881,13 +36970,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-material-barcode',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './material-barcode.component.html',\n  styleUrl: './material-barcode.component.css',\n})\nexport class MaterialBarcodeComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'lib-material-barcode',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './material-barcode.component.html',\r\n  styleUrl: './material-barcode.component.css',\r\n})\r\nexport class MaterialBarcodeComponent {}\r\n",
             "styleUrl": "./material-barcode.component.css",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>material-barcode works!</p>\n"
+            "templateData": "<p>material-barcode works!</p>\r\n"
         },
         {
             "name": "ModuleLayoutComponent",
@@ -37297,7 +37386,7 @@
         },
         {
             "name": "PosLayoutComponent",
-            "id": "component-PosLayoutComponent-241a3992b3f82c4ae436b59aa6bf2ce6e0344fc42b8385ca548cc0907b635f982a2f1fb3ae3cd288b2600ad652152f116083b0122714fe90cf60b468e74f544e",
+            "id": "component-PosLayoutComponent-5bed526ff2acc82829b75ae66d1c91efdc3f30ae6ea232c9d31b1ed781bebc5718ad73466acb7800b6eb9561c02dcd299b7589df5915e00f35124ca2ab406670",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37407,17 +37496,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\nimport {\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n  PosLayoutProductListDirective,\n  PosLayoutToolbarDirective,\n} from './pos-layout.directive';\nimport { CommonModule } from '@angular/common';\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\n\n@Component({\n  selector: 'mdtx-pos-layout',\n  standalone: true,\n  imports: [CommonModule, TemplateOutletComponent],\n  templateUrl: './pos-layout.component.html',\n  styleUrl: './pos-layout.component.scss',\n})\nexport class PosLayoutComponent {\n  @ContentChildren(PosLayoutToolbarDirective)\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\n\n  @ContentChildren(PosLayoutProductListDirective)\n  productList!: QueryList<PosLayoutProductListDirective>;\n\n  @ContentChildren(PosLayoutCartListDirective)\n  cartList!: QueryList<PosLayoutCartListDirective>;\n\n  @ContentChildren(PosLayoutCartPriceDirective)\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\n}\n",
+            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos-layout',\r\n  standalone: true,\r\n  imports: [CommonModule, TemplateOutletComponent],\r\n  templateUrl: './pos-layout.component.html',\r\n  styleUrl: './pos-layout.component.scss',\r\n})\r\nexport class PosLayoutComponent {\r\n  @ContentChildren(PosLayoutToolbarDirective)\r\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\r\n\r\n  @ContentChildren(PosLayoutProductListDirective)\r\n  productList!: QueryList<PosLayoutProductListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartListDirective)\r\n  cartList!: QueryList<PosLayoutCartListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartPriceDirective)\r\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\r\n}\r\n",
             "styleUrl": "./pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"pos-layout-container\">\n  <div class=\"pos-toolbar\">\n    <mdtx-template-outlet [items]=\"toolbar\"></mdtx-template-outlet>\n  </div>\n\n  <div class=\"pos-content-container\">\n    <div class=\"pos-product-list\">\n      @if(productList){ @for(item of productList; track item){\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n      } }\n    </div>\n\n    <div class=\"pos-cart-list\">\n      @if(cartList){ @for(item of cartList; track item){\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n      } }\n    </div>\n  </div>\n  <div class=\"pos-cart-price\">\n    @if(cartPrice){ @for(item of cartPrice; track item){\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\n    } }\n  </div>\n</div>\n"
+            "templateData": "<div class=\"pos-layout-container\">\r\n  <div class=\"pos-toolbar\">\r\n    <mdtx-template-outlet [items]=\"toolbar\"></mdtx-template-outlet>\r\n  </div>\r\n\r\n  <div class=\"pos-content-container\">\r\n    <div class=\"pos-product-list\">\r\n      @if(productList){ @for(item of productList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n\r\n    <div class=\"pos-cart-list\">\r\n      @if(cartList){ @for(item of cartList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n  </div>\r\n  <div class=\"pos-cart-price\">\r\n    @if(cartPrice){ @for(item of cartPrice; track item){\r\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n    } }\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "ProductCardComponent",
-            "id": "component-ProductCardComponent-0d37c6ac56b04c0d7d2725fac9d7810a662910fecb661242dfdce7d36a0927b6c2deddbbe523bbdbf8815995e0c2f5dbae8e863ea4d3c1cbf31df0428e827092",
+            "id": "component-ProductCardComponent-d93b4649f3db510c39c0c8b142cd8cb45c10e9b5b3a6d41b1f709ff31e39c383804c8c4595b61214d5a4ca16749cced8ebddc3ab3de75b4f494459e30bef9f0c",
             "file": "libs/material/card/src/lib/product-card/product-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37577,17 +37666,90 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatTooltipModule } from '@angular/material/tooltip';\n\n@Component({\n  selector: 'mdtx-product-card',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatCardModule,\n    MatButtonModule,\n    MatIconModule,\n    MatTooltipModule,\n  ],\n  templateUrl: './product-card.component.html',\n  styleUrl: './product-card.component.scss',\n})\nexport class ProductCardComponent {\n  @Input() title = 'Product title';\n  @Input() subtitle = 'Product subtitle';\n  @Input() description = 'Product description';\n\n  @Input() price = 200.99;\n\n  @Input() primaryButtonLabel = 'Add To Cart';\n  @Input() secondaryButtonLabel = 'Details';\n  @Input() primaryButtonIcon = 'add_shopping_cart';\n  @Input() secondaryButtonIcon = 'info';\n\n  @Output() primaryButtonClickEvent = new EventEmitter();\n  @Output() secondaryButtonClickEvent = new EventEmitter();\n\n  handlePrimaryButtonClick() {\n    this.primaryButtonClickEvent.emit();\n  }\n  \n  handleSecondaryButtonClick() {\n    this.secondaryButtonClickEvent.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatTooltipModule } from '@angular/material/tooltip';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-card',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatCardModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatTooltipModule,\r\n  ],\r\n  templateUrl: './product-card.component.html',\r\n  styleUrl: './product-card.component.scss',\r\n})\r\nexport class ProductCardComponent {\r\n  @Input() title = 'Product title';\r\n  @Input() subtitle = 'Product subtitle';\r\n  @Input() description = 'Product description';\r\n\r\n  @Input() price = 200.99;\r\n\r\n  @Input() primaryButtonLabel = 'Add To Cart';\r\n  @Input() secondaryButtonLabel = 'Details';\r\n  @Input() primaryButtonIcon = 'add_shopping_cart';\r\n  @Input() secondaryButtonIcon = 'info';\r\n\r\n  @Output() primaryButtonClickEvent = new EventEmitter();\r\n  @Output() secondaryButtonClickEvent = new EventEmitter();\r\n\r\n  handlePrimaryButtonClick() {\r\n    this.primaryButtonClickEvent.emit();\r\n  }\r\n  \r\n  handleSecondaryButtonClick() {\r\n    this.secondaryButtonClickEvent.emit();\r\n  }\r\n}\r\n",
             "styleUrl": "./product-card.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<mat-card>\n  <mat-card-header>\n    <mat-card-title>{{ title }}</mat-card-title>\n    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>\n  </mat-card-header>\n  <mat-card-content>\n    <p>{{ description }}</p>\n\n    <h4 style=\"text-align: center\">${{ price }}</h4>\n  </mat-card-content>\n  <mat-card-actions>\n    <button\n      mat-icon-button\n      color=\"primary\"\n      [matTooltip]=\"primaryButtonLabel\"\n      matTooltipPosition=\"above\"\n      (click)=\"handlePrimaryButtonClick()\"\n    >\n      <mat-icon>{{ primaryButtonIcon }}</mat-icon>\n    </button>\n    <button\n      mat-icon-button\n      color=\"primary\"\n      [matTooltip]=\"secondaryButtonLabel\"\n      matTooltipPosition=\"above\"\n      (click)=\"handleSecondaryButtonClick()\"\n    >\n      <mat-icon>{{ secondaryButtonIcon }}</mat-icon>\n    </button>\n  </mat-card-actions>\n</mat-card>\n"
+            "templateData": "<mat-card>\r\n  <mat-card-header>\r\n    <mat-card-title>{{ title }}</mat-card-title>\r\n    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>\r\n  </mat-card-header>\r\n  <mat-card-content>\r\n    <p>{{ description }}</p>\r\n\r\n    <h4 style=\"text-align: center\">${{ price }}</h4>\r\n  </mat-card-content>\r\n  <mat-card-actions>\r\n    <button\r\n      mat-icon-button\r\n      color=\"primary\"\r\n      [matTooltip]=\"primaryButtonLabel\"\r\n      matTooltipPosition=\"above\"\r\n      (click)=\"handlePrimaryButtonClick()\"\r\n    >\r\n      <mat-icon>{{ primaryButtonIcon }}</mat-icon>\r\n    </button>\r\n    <button\r\n      mat-icon-button\r\n      color=\"primary\"\r\n      [matTooltip]=\"secondaryButtonLabel\"\r\n      matTooltipPosition=\"above\"\r\n      (click)=\"handleSecondaryButtonClick()\"\r\n    >\r\n      <mat-icon>{{ secondaryButtonIcon }}</mat-icon>\r\n    </button>\r\n  </mat-card-actions>\r\n</mat-card>\r\n"
+        },
+        {
+            "name": "ProductCardListComponent",
+            "id": "component-ProductCardListComponent-d5a45f0b889b29617c44d04487aa52c78e7510638778447e3dcc2ee4fa90fb3e3e41e4981ba906cc5da8001c5bbfba9c5569564d0cc4f23cbce583636a97da05",
+            "file": "libs/material/card/src/lib/product-card-list/product-card-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-product-card-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./product-card-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "products",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "ISkuViewRaw[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "addProductToCartEvent",
+                    "defaultValue": "new EventEmitter<ISkuViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "viewProductDetailsEvent",
+                    "defaultValue": "new EventEmitter<ISkuViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ProductCardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductCardComponent } from '../product-card/product-card.component';\r\nimport { ISkuViewRaw } from '@mdtx/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-card-list',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductCardComponent],\r\n  templateUrl: './product-card-list.component.html',\r\n  styleUrl: './product-card-list.component.scss',\r\n})\r\nexport class ProductCardListComponent {\r\n  @Input() products!: ISkuViewRaw[];\r\n  @Output() addProductToCartEvent = new EventEmitter<ISkuViewRaw>();\r\n  @Output() viewProductDetailsEvent = new EventEmitter<ISkuViewRaw>();\r\n}\r\n",
+            "styleUrl": "./product-card-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"product-card-list-container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-card\r\n    [title]=\"item.name!\"\r\n    [subtitle]=\"item.barcode!\"\r\n    [price]=\"item.price!\"\r\n    (primaryButtonClickEvent)=\"addProductToCartEvent.emit(item)\"\r\n    (secondaryButtonClickEvent)=\"viewProductDetailsEvent.emit(item)\"\r\n  ></mdtx-product-card>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "ProductSmallCardComponent",
-            "id": "component-ProductSmallCardComponent-fd6fdeca046fd7130cbc28444587afebe806480c96ce0a953a9d4faa7ad499b19802aa7e661fd964833124d6c279a31a5d1b0555801960fc2a75c92304f58ff8",
+            "id": "component-ProductSmallCardComponent-8ef89b7771a112254e41f520cd5ab8d1d80e95f63eae9c508c1b03ca733bd5a4f8ac3cae04b305df7b105a1fbaa9168ce793ac834a61fa523456f9499a4d4522",
             "file": "libs/material/card/src/lib/product-small-card/product-small-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37795,13 +37957,250 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { InputQuantityComponent } from '@mdtx/material/form';\n@Component({\n  selector: 'mdtx-product-small-card',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatButtonModule,\n    MatIconModule,\n    InputQuantityComponent,\n  ],\n  templateUrl: './product-small-card.component.html',\n  styleUrl: './product-small-card.component.scss',\n})\nexport class ProductSmallCardComponent {\n  @Input() title = 'Product title';\n  @Input() subtitle = '87874199912';\n  @Input() description = 'Product description';\n\n  @Input() unitPrice = 500.99;\n  @Input() totalPrice = 99999.99;\n  @Input() quantity = 1;\n\n  @Output() quantityValueChange = new EventEmitter();\n  @Output() closeButtonClick = new EventEmitter();\n\n  @Input() showCloseButton = true;\n\n  quantityValueChangeHandler(event: number) {\n    this.quantityValueChange.emit(event);\n  }\n\n  handleCloseButtonClick() {\n    this.closeButtonClick.emit();\n  }\n\n  calculateTotalPrice(quantity: number, uprice: number) {\n    return (quantity * uprice).toFixed(2);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { InputQuantityComponent } from '@mdtx/material/form';\r\n@Component({\r\n  selector: 'mdtx-product-small-card',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    InputQuantityComponent,\r\n  ],\r\n  templateUrl: './product-small-card.component.html',\r\n  styleUrl: './product-small-card.component.scss',\r\n})\r\nexport class ProductSmallCardComponent {\r\n  @Input() title = 'Product title';\r\n  @Input() subtitle = '87874199912';\r\n  @Input() description = 'Product description';\r\n\r\n  @Input() unitPrice = 500.99;\r\n  @Input() totalPrice = 99999.99;\r\n  @Input() quantity = 1;\r\n\r\n  @Output() quantityValueChange = new EventEmitter();\r\n  @Output() closeButtonClick = new EventEmitter();\r\n\r\n  @Input() showCloseButton = true;\r\n\r\n  quantityValueChangeHandler(event: number) {\r\n    this.quantityValueChange.emit(event);\r\n  }\r\n\r\n  handleCloseButtonClick() {\r\n    this.closeButtonClick.emit();\r\n  }\r\n\r\n  calculateTotalPrice(quantity: number, uprice: number) {\r\n    return (quantity * uprice).toFixed(2);\r\n  }\r\n}\r\n",
             "styleUrl": "./product-small-card.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"product-card-container\">\n  <button\n    mat-icon-button\n    color=\"accent\"\n    style=\"position: absolute; top: 0px; right: 0px; z-index: 1\"\n    (click)=\"handleCloseButtonClick()\"\n    *ngIf=\"showCloseButton\"\n  >\n    <mat-icon>close</mat-icon>\n  </button>\n  <div class=\"product-card-content\">\n    <img\n      class=\"product-card-image\"\n      src=\"./assets/imgs/inventory.svg\"\n      alt=\"Product Image\"\n    />\n    <div class=\"product-name\">{{ title }}</div>\n    <div class=\"product-barcode\">{{ subtitle }}</div>\n  </div>\n\n  <div class=\"product-card-price-content\" style=\"position: relative\">\n    <mdtx-input-quantity\n      #quantityInput\n      [value]=\"quantity\"\n      (quantityValueChange)=\"quantityValueChangeHandler($event)\"\n    ></mdtx-input-quantity>\n    <div class=\"product-unit-price\">$ {{ unitPrice }}</div>\n    <div class=\"product-total-price\">\n      $ {{ calculateTotalPrice(quantityInput.value, unitPrice)}}\n    </div>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"product-card-container\">\r\n  <button\r\n    mat-icon-button\r\n    color=\"accent\"\r\n    style=\"position: absolute; top: 0px; right: 0px; z-index: 1\"\r\n    (click)=\"handleCloseButtonClick()\"\r\n    *ngIf=\"showCloseButton\"\r\n  >\r\n    <mat-icon>close</mat-icon>\r\n  </button>\r\n  <div class=\"product-card-content\">\r\n    <img\r\n      class=\"product-card-image\"\r\n      src=\"./assets/imgs/inventory.svg\"\r\n      alt=\"Product Image\"\r\n    />\r\n    <div class=\"product-name\">{{ title }}</div>\r\n    <div class=\"product-barcode\">{{ subtitle }}</div>\r\n  </div>\r\n\r\n  <div class=\"product-card-price-content\" style=\"position: relative\">\r\n    <mdtx-input-quantity\r\n      #quantityInput\r\n      [value]=\"quantity\"\r\n      (quantityValueChange)=\"quantityValueChangeHandler($event)\"\r\n    ></mdtx-input-quantity>\r\n    <div class=\"product-unit-price\">$ {{ unitPrice }}</div>\r\n    <div class=\"product-total-price\">\r\n      $ {{ calculateTotalPrice(quantityInput.value, unitPrice)}}\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "ProductSmallCardListComponent",
+            "id": "component-ProductSmallCardListComponent-ba73d83f8bc56474bb03eaa5b5b1bbc042d8750a161ef2153cab523ba82ba08c7aadc6cd27a396856a19349d3dae8083eb8b7b8f2bd7acba1f5a4334ac5fdf42",
+            "file": "libs/material/card/src/lib/product-small-card-list/product-small-card-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-product-small-card-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./product-small-card-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "products",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "ISkuViewRaw[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "deleteProductEvent",
+                    "defaultValue": "new EventEmitter<ISkuViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "quantityChangeEvent",
+                    "defaultValue": "new EventEmitter<ISkuViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "totalChangeEvent",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "__calculateTotal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "calculateTotal",
+                    "args": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteProductEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleQuantityChangeEvent",
+                    "args": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "quantity",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ProductSmallCardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnChanges,\r\n  Output,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductSmallCardComponent } from '../product-small-card/product-small-card.component';\r\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-small-card-list',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductSmallCardComponent],\r\n  templateUrl: './product-small-card-list.component.html',\r\n  styleUrl: './product-small-card-list.component.scss',\r\n})\r\nexport class ProductSmallCardListComponent implements OnChanges {\r\n  @Input() products!: ISkuViewRaw[];\r\n\r\n  @Output() totalChangeEvent = new EventEmitter<number>();\r\n\r\n  @Output() deleteProductEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  @Output() quantityChangeEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  __calculateTotal() {\r\n    if (this.products && this.products.length > 0) {\r\n      const total = this.products\r\n        .map((e) => e.price * e.quantity)\r\n        .reduce((p, c) => p + c);\r\n      this.totalChangeEvent.emit(total);\r\n    }\r\n  }\r\n\r\n  calculateTotal(quantity: number, item: ISkuViewRaw) {\r\n    item.quantity = quantity;\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  deleteProductEventHandler(event: ISkuViewRaw) {\r\n    this.calculateTotal(0, event);\r\n    this.deleteProductEvent.emit(event);\r\n  }\r\n\r\n  handleQuantityChangeEvent(quantity: number, item: ISkuViewRaw) {\r\n    this.calculateTotal(quantity, item);\r\n    this.quantityChangeEvent.emit(item);\r\n  }\r\n}\r\n",
+            "styleUrl": "./product-small-card-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnChanges"
+            ],
+            "templateData": "<div class=\"product-sample-card-list-container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-small-card\r\n    [title]=\"item.name\"\r\n    [unitPrice]=\"item.price\"\r\n    [quantity]=\"item.quantity\"\r\n    (quantityValueChange)=\"handleQuantityChangeEvent($event, item)\"\r\n    (closeButtonClick)=\"deleteProductEventHandler(item)\"\r\n  ></mdtx-product-small-card>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "SampleFormComponent",
@@ -38268,7 +38667,7 @@
         },
         {
             "name": "SamplePosLayoutComponent",
-            "id": "component-SamplePosLayoutComponent-d766595e14e3f36e419933c751616848362ac278fd90b527d8e2625260e5d53c27717bfea284fde79fc30fb57342a44421219f8e347d74dc046f993f32c4e9ef",
+            "id": "component-SamplePosLayoutComponent-b45fe1032617cf09a7aa4e0abff1413b1ecc52a10bc23d8bbbb612ce903845b06c42bccd4440e05a549e11e872e1549a8c174dc11242d7e0686d91ed431143ba",
             "file": "libs/material/layout/src/lib/sample-pos-layout/sample-pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -38293,7 +38692,7 @@
                     "type": "InputPosSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 45,
+                    "line": 53,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -38312,27 +38711,37 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 48
+                    "line": 59
                 },
                 {
                     "name": "products",
-                    "defaultValue": "[\n    {\n      barcode: '1000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000000',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000001',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ]",
+                    "defaultValue": "[\r\n    {\r\n      barcode: '1000000001',\r\n      name: 'First Product',\r\n      price: 100.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000002',\r\n      name: 'Product Name 2',\r\n      price: 200.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000003',\r\n      name: 'Product Name 3',\r\n      price: 300.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000004',\r\n      name: 'Product Name 4',\r\n      price: 400.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000005',\r\n      name: 'Product Name 5',\r\n      price: 500.99,\r\n      quantity: 1,\r\n    },\r\n  ] as ISkuViewRaw[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Partial<ISkuViewRaw>[]",
+                    "type": "ISkuViewRaw[]",
                     "optional": false,
                     "description": "",
-                    "line": 50
+                    "line": 61
                 },
                 {
-                    "name": "totalPrice$",
-                    "defaultValue": "new BehaviorSubject('0')",
+                    "name": "taxrate",
+                    "defaultValue": "10.25 / 100",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 46
+                    "line": 57
+                },
+                {
+                    "name": "totalPrice$",
+                    "defaultValue": "new BehaviorSubject(0)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
                 }
             ],
             "methodsClass": [
@@ -38349,7 +38758,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 119,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38365,12 +38774,40 @@
                     ]
                 },
                 {
+                    "name": "deleteProductHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "getCartItems",
                     "args": [],
                     "optional": false,
-                    "returnType": "any",
+                    "returnType": "{}",
                     "typeParameters": [],
-                    "line": 132,
+                    "line": 105,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -38387,7 +38824,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 111,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38415,7 +38852,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 146,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38449,7 +38886,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 141,
+                    "line": 115,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -38475,13 +38912,31 @@
                 },
                 {
                     "name": "udpateTotalPrice",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "total",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 157,
+                    "line": 130,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "total",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -38549,18 +39004,30 @@
                 {
                     "name": "BarcodeViewComponent",
                     "type": "component"
+                },
+                {
+                    "name": "CheckoutButtonComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ProductCardListComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ProductSmallCardListComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\nimport {\n  CardAvatarComponent,\n  ProductCardComponent,\n  ProductSmallCardComponent,\n} from '@mdtx/material/card';\nimport {\n  InputPosSearchComponent,\n  InputSearchComponent,\n} from '@mdtx/material/form';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatInputModule } from '@angular/material/input';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\nimport { BehaviorSubject } from 'rxjs';\nimport { BarcodeViewComponent} from '@mdtx/material/barcode'\n@Component({\n  selector: 'mdtx-sample-pos-layout',\n  standalone: true,\n  imports: [\n    CommonModule,\n    PosLayoutModule,\n    CardAvatarComponent,\n    ProductCardComponent,\n    InputSearchComponent,\n    MatFormFieldModule,\n    MatInputModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatButtonModule,\n    MatIconModule,\n    ProductCardComponent,\n    ProductSmallCardComponent,\n    InputPosSearchComponent,\n    BarcodeViewComponent\n  ],\n  templateUrl: './sample-pos-layout.component.html',\n  styleUrl: './sample-pos-layout.component.scss',\n})\nexport class SamplePosLayoutComponent {\n  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;\n  totalPrice$ = new BehaviorSubject('0');\n\n  productCart = new Map<string, Partial<ISkuViewRaw>>();\n\n  products: Partial<ISkuViewRaw>[] = [\n    {\n      barcode: '1000000001',\n      name: 'First Product',\n      price: 100.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000002',\n      name: 'Product Name 2',\n      price: 200.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000003',\n      name: 'Product Name 3',\n      price: 300.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000004',\n      name: 'Product Name 4',\n      price: 400.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000005',\n      name: 'Product Name 5',\n      price: 500.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000006',\n      name: 'Product Name 6',\n      price: 600.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000007',\n      name: 'Product Name 7',\n      price: 700.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000008',\n      name: 'Product Name 8',\n      price: 800.99,\n      quantity: 1,\n    },\n    {\n      barcode: '1000000009',\n      name: 'Product Name 9',\n      price: 900.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000000',\n      name: 'Product Name 10',\n      price: 1000.99,\n      quantity: 1,\n    },\n    {\n      barcode: '10000000001',\n      name: 'Last Product',\n      price: 1100.99,\n      quantity: 1,\n    },\n  ];\n\n  addItemToCart(item: Partial<ISkuViewRaw>) {\n    const foundItem = this.productCart.get(item.barcode!);\n    if (foundItem) {\n      foundItem.quantity = (foundItem.quantity ?? 1) + 1;\n      this.productCart.delete(item.barcode!);\n      this.productCart.set(item.barcode!, foundItem);\n      console.log(foundItem);\n    } else {\n      this.productCart.set(item.barcode!, item);\n    }\n    this.udpateTotalPrice();\n  }\n\n  getCartItems() {\n    return [...this.productCart.entries()].map(([, value]) => value);\n  }\n\n  handleCloseButton(item: Partial<ISkuViewRaw>) {\n    this.productCart.delete(item.barcode!);\n    this.udpateTotalPrice();\n  }\n\n  handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {\n    this.productCart.get(item.barcode!)!.quantity = quantity;\n    this.udpateTotalPrice();\n  }\n\n  handleInputEvent(event: string) {\n    this.products.find((e) => {\n      if (e.barcode === event) {\n        this.addItemToCart(e);\n        this.inputPosSearch.clear();\n      } else {\n        // NOT Implemented\n      }\n    });\n  }\n\n  udpateTotalPrice() {\n    const items = this.getCartItems();\n    let totalPrice = 0;\n    if (items && items.length > 0) {\n      totalPrice = this.getCartItems()\n        .map((e) => {\n          if (e.quantity && e.price) {\n            return e.quantity * e.price;\n          }\n          return 0;\n        })\n        .reduce((p, c) => p + c);\n    }\n\n    this.totalPrice$.next(totalPrice.toLocaleString());\n  }\n}\n",
+            "sourceCode": "import { Component, ViewChild } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { PosLayoutModule } from '../pos-layout/pos-layout.module';\r\nimport {\r\n  CardAvatarComponent,\r\n  ProductCardComponent,\r\n  ProductCardListComponent,\r\n  ProductSmallCardComponent,\r\n  ProductSmallCardListComponent,\r\n} from '@mdtx/material/card';\r\nimport {\r\n  InputPosSearchComponent,\r\n  InputSearchComponent,\r\n} from '@mdtx/material/form';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { ISkuViewRaw } from '@mdtx/common';\r\nimport { BehaviorSubject } from 'rxjs';\r\nimport { BarcodeViewComponent } from '@mdtx/material/barcode';\r\n\r\nimport { CheckoutButtonComponent } from '@mdtx/material/button';\r\n@Component({\r\n  selector: 'mdtx-sample-pos-layout',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    PosLayoutModule,\r\n    CardAvatarComponent,\r\n    ProductCardComponent,\r\n    InputSearchComponent,\r\n    MatFormFieldModule,\r\n    MatInputModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    ProductCardComponent,\r\n    ProductSmallCardComponent,\r\n    InputPosSearchComponent,\r\n    BarcodeViewComponent,\r\n    // Components\r\n    CheckoutButtonComponent,\r\n    ProductCardListComponent,\r\n    ProductSmallCardListComponent,\r\n  ],\r\n  templateUrl: './sample-pos-layout.component.html',\r\n  styleUrl: './sample-pos-layout.component.scss',\r\n})\r\nexport class SamplePosLayoutComponent {\r\n  @ViewChild('inputPosSearch') inputPosSearch!: InputPosSearchComponent;\r\n\r\n  totalPrice$ = new BehaviorSubject(0);\r\n\r\n  taxrate = 10.25 / 100;\r\n\r\n  productCart = new Map<string, Partial<ISkuViewRaw>>();\r\n\r\n  products: ISkuViewRaw[] = [\r\n    {\r\n      barcode: '1000000001',\r\n      name: 'First Product',\r\n      price: 100.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000002',\r\n      name: 'Product Name 2',\r\n      price: 200.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000003',\r\n      name: 'Product Name 3',\r\n      price: 300.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000004',\r\n      name: 'Product Name 4',\r\n      price: 400.99,\r\n      quantity: 1,\r\n    },\r\n    {\r\n      barcode: '1000000005',\r\n      name: 'Product Name 5',\r\n      price: 500.99,\r\n      quantity: 1,\r\n    },\r\n  ] as ISkuViewRaw[];\r\n\r\n  addItemToCart(item: Partial<ISkuViewRaw>) {\r\n    const foundItem = this.productCart.get(item.barcode!);\r\n    if (foundItem) {\r\n      foundItem.quantity = (foundItem.quantity ?? 1) + 1;\r\n      this.productCart.delete(item.barcode!);\r\n      this.productCart.set(item.barcode!, foundItem);\r\n    } else {\r\n      this.productCart.set(item.barcode!, { ...item, quantity: 1 });\r\n    }\r\n  }\r\n\r\n  getCartItems() {\r\n    return [...this.productCart.entries()].map(\r\n      ([, value]) => value\r\n    ) as ISkuViewRaw[];\r\n  }\r\n\r\n  handleCloseButton(item: Partial<ISkuViewRaw>) {\r\n    this.productCart.delete(item.barcode!);\r\n  }\r\n\r\n  handleQuantityChange(quantity: any, item: Partial<ISkuViewRaw>) {\r\n    this.productCart.get(item.barcode!)!.quantity = quantity;\r\n  }\r\n\r\n  handleInputEvent(event: string) {\r\n    this.products.find((e) => {\r\n      if (e.barcode === event) {\r\n        this.addItemToCart(e);\r\n        this.inputPosSearch.clear();\r\n      } else {\r\n        // NOT Implemented\r\n      }\r\n    });\r\n  }\r\n\r\n  udpateTotalPrice(total: number) {\r\n    this.totalPrice$.next(total);\r\n  }\r\n\r\n  deleteProductHandler(event: ISkuViewRaw) {\r\n    this.productCart.delete(event.barcode);\r\n  }\r\n}\r\n",
             "styleUrl": "./sample-pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div style=\"display: flex; gap: 2em\">\n  <mdtx-barcode-view barcode=\"1000000001\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000002\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000003\"></mdtx-barcode-view>\n  <mdtx-barcode-view barcode=\"1000000004\"></mdtx-barcode-view>\n</div>\n\n<mdtx-pos-layout>\n  <ng-template mdtxPosLayoutToolbar>\n    <mdtx-input-pos-search\n      #inputPosSearch\n      (inputEvent)=\"handleInputEvent($event)\"\n    ></mdtx-input-pos-search>\n  </ng-template>\n\n  <ng-template mdtxPosLayoutProductList>\n    @for(item of products; track item){\n\n    <mdtx-product-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [price]=\"item.price!\"\n      (primaryButtonClickEvent)=\"addItemToCart(item)\"\n    ></mdtx-product-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartList>\n    @for(item of getCartItems() ; track item){\n\n    <mdtx-product-small-card\n      [title]=\"item.name!\"\n      [subtitle]=\"item.barcode!\"\n      [unitPrice]=\"item.price!\"\n      [quantity]=\"item.quantity!\"\n      (closeButtonClick)=\"handleCloseButton(item)\"\n      (quantityValueChange)=\"handleQuantityChange($event, item)\"\n    ></mdtx-product-small-card>\n    }\n  </ng-template>\n\n  <ng-template mdtxPosLayoutCartPrice>\n    <div\n      style=\"\n        display: flex;\n        gap: 1em;\n        align-items: center;\n        justify-content: flex-end;\n      \"\n    >\n      <div class=\"total-price-container\">\n        <div class=\"total-price\">${{ totalPrice$ | async }}</div>\n      </div>\n      <button\n        style=\"\n          height: 100px;\n\n          font-size: 2em;\n          text-transform: uppercase;\n          font-weight: bolder;\n        \"\n        mat-raised-button\n        color=\"primary\"\n      >\n        Checkout\n      </button>\n    </div>\n  </ng-template>\n</mdtx-pos-layout>\n"
+            "templateData": "<!-- <div style=\"display: flex; gap: 2em\">\r\n  <mdtx-barcode-view barcode=\"1000000001\"></mdtx-barcode-view>\r\n  <mdtx-barcode-view barcode=\"1000000002\"></mdtx-barcode-view>\r\n  <mdtx-barcode-view barcode=\"1000000003\"></mdtx-barcode-view>\r\n  <mdtx-barcode-view barcode=\"1000000004\"></mdtx-barcode-view>\r\n</div> -->\r\n\r\n<mdtx-pos-layout>\r\n  <ng-template mdtxPosLayoutToolbar>\r\n    <mdtx-input-pos-search\r\n      #inputPosSearch\r\n      (inputEvent)=\"handleInputEvent($event)\"\r\n    ></mdtx-input-pos-search>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutProductList>\r\n    <mdtx-product-card-list\r\n      [products]=\"products\"\r\n      (addProductToCartEvent)=\"addItemToCart($event)\"\r\n    ></mdtx-product-card-list>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutCartList>\r\n    <mdtx-product-small-card-list\r\n      [products]=\"getCartItems()\"\r\n      (totalChangeEvent)=\"udpateTotalPrice($event)\"\r\n      (deleteProductEvent)=\"deleteProductHandler($event)\"\r\n    ></mdtx-product-small-card-list>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutCartPrice>\r\n    <mdtx-checkout-button\r\n      [taxrate]=\"taxrate\"\r\n      [subtotal]=\"(totalPrice$ | async) || 0\"\r\n    ></mdtx-checkout-button>\r\n  </ng-template>\r\n</mdtx-pos-layout>\r\n"
         },
         {
             "name": "SampleTableComponent",
@@ -40000,7 +40467,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkout-button works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    subtotal: 0,\r\n    total: 0,\r\n    label: 'Checkout',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40020,7 +40487,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40030,7 +40497,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40380,7 +40847,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    rightSidenavIcon: 'settings',\n    progressValue: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/base-app-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    rightSidenavIcon: 'settings',\r\n    progressValue: 100,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/base-app-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40400,7 +40867,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/module-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/module-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40420,7 +40887,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-layout works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pos-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40440,7 +40907,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -40580,7 +41047,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CheckoutButtonComponent>",
-                "defaultValue": "{\n  component: CheckoutButtonComponent,\n  title: 'CheckoutButtonComponent',\n}"
+                "defaultValue": "{\r\n  component: CheckoutButtonComponent,\r\n  title: 'CheckoutButtonComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -40600,7 +41067,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductCardComponent>",
-                "defaultValue": "{\n  component: ProductCardComponent,\n  title: 'ProductCardComponent',\n}"
+                "defaultValue": "{\r\n  component: ProductCardComponent,\r\n  title: 'ProductCardComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -40610,7 +41077,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ProductSmallCardComponent>",
-                "defaultValue": "{\n  component: ProductSmallCardComponent,\n  title: 'ProductSmallCardComponent',\n}"
+                "defaultValue": "{\r\n  component: ProductSmallCardComponent,\r\n  title: 'ProductSmallCardComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -40960,7 +41427,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<BaseAppLayoutComponent>",
-                "defaultValue": "{\n  component: BaseAppLayoutComponent,\n  title: 'BaseAppLayoutComponent',\n}"
+                "defaultValue": "{\r\n  component: BaseAppLayoutComponent,\r\n  title: 'BaseAppLayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -40980,7 +41447,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ModuleLayoutComponent>",
-                "defaultValue": "{\n  component: ModuleLayoutComponent,\n  title: 'ModuleLayoutComponent',\n}"
+                "defaultValue": "{\r\n  component: ModuleLayoutComponent,\r\n  title: 'ModuleLayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -41000,7 +41467,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PosLayoutComponent>",
-                "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n}"
+                "defaultValue": "{\r\n  component: PosLayoutComponent,\r\n  title: 'PosLayoutComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -41020,7 +41487,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<SamplePosLayoutComponent>",
-                "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: SamplePosLayoutComponent,\r\n  title: 'SamplePosLayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n    moduleMetadata({\r\n      imports: [PosLayoutModule],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -41150,7 +41617,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "[]",
-                "defaultValue": "[\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n]"
+                "defaultValue": "[\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
             },
             {
                 "name": "Primary",
@@ -41160,7 +41627,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    subtotal: 0,\r\n    total: 0,\r\n    label: 'Checkout',\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -41180,7 +41647,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -41190,7 +41657,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -41540,7 +42007,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {\n    rightSidenavIcon: 'settings',\n    progressValue: 100,\n  },\n}"
+                "defaultValue": "{\r\n  args: {\r\n    rightSidenavIcon: 'settings',\r\n    progressValue: 100,\r\n  },\r\n}"
             },
             {
                 "name": "Primary",
@@ -41560,7 +42027,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -41580,7 +42047,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -41600,7 +42067,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -43178,7 +43645,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/checkout-button works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    subtotal: 0,\r\n    total: 0,\r\n    label: 'Checkout',\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -43188,7 +43655,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CheckoutButtonComponent>",
-                    "defaultValue": "{\n  component: CheckoutButtonComponent,\n  title: 'CheckoutButtonComponent',\n}"
+                    "defaultValue": "{\r\n  component: CheckoutButtonComponent,\r\n  title: 'CheckoutButtonComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -43198,7 +43665,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    subtotal: 'Subtotal Value',\n    total: 'Total Value',\n    label: 'Checkout',\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    subtotal: 0,\r\n    total: 0,\r\n    label: 'Checkout',\r\n  },\r\n}"
                 }
             ],
             "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts": [
@@ -43242,7 +43709,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -43252,7 +43719,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductCardComponent>",
-                    "defaultValue": "{\n  component: ProductCardComponent,\n  title: 'ProductCardComponent',\n}"
+                    "defaultValue": "{\r\n  component: ProductCardComponent,\r\n  title: 'ProductCardComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -43262,7 +43729,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/card/src/lib/product-small-card/product-small-card.component.stories.ts": [
@@ -43274,7 +43741,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -43284,7 +43751,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ProductSmallCardComponent>",
-                    "defaultValue": "{\n  component: ProductSmallCardComponent,\n  title: 'ProductSmallCardComponent',\n}"
+                    "defaultValue": "{\r\n  component: ProductSmallCardComponent,\r\n  title: 'ProductSmallCardComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -43294,7 +43761,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/core/src/lib/directives/fullscreen.component.stories.ts": [
@@ -44234,7 +44701,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    rightSidenavIcon: 'settings',\n    progressValue: 100,\n  },\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/base-app-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    rightSidenavIcon: 'settings',\r\n    progressValue: 100,\r\n  },\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/base-app-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -44244,7 +44711,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<BaseAppLayoutComponent>",
-                    "defaultValue": "{\n  component: BaseAppLayoutComponent,\n  title: 'BaseAppLayoutComponent',\n}"
+                    "defaultValue": "{\r\n  component: BaseAppLayoutComponent,\r\n  title: 'BaseAppLayoutComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -44254,7 +44721,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {\n    rightSidenavIcon: 'settings',\n    progressValue: 100,\n  },\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    rightSidenavIcon: 'settings',\r\n    progressValue: 100,\r\n  },\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/layout/layout.component.stories.ts": [
@@ -44298,7 +44765,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/module-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/module-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -44308,7 +44775,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ModuleLayoutComponent>",
-                    "defaultValue": "{\n  component: ModuleLayoutComponent,\n  title: 'ModuleLayoutComponent',\n}"
+                    "defaultValue": "{\r\n  component: ModuleLayoutComponent,\r\n  title: 'ModuleLayoutComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -44318,7 +44785,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/navlist/navlist.component.stories.ts": [
@@ -44362,7 +44829,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-layout works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pos-layout works!/gi)).toBeTruthy();\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -44372,7 +44839,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PosLayoutComponent>",
-                    "defaultValue": "{\n  component: PosLayoutComponent,\n  title: 'PosLayoutComponent',\n}"
+                    "defaultValue": "{\r\n  component: PosLayoutComponent,\r\n  title: 'PosLayoutComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -44382,7 +44849,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/sample-layout/sample-layout.component.stories.ts": [
@@ -44426,7 +44893,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -44436,7 +44903,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<SamplePosLayoutComponent>",
-                    "defaultValue": "{\n  component: SamplePosLayoutComponent,\n  title: 'SamplePosLayoutComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n    moduleMetadata({\n      imports: [PosLayoutModule],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: SamplePosLayoutComponent,\r\n  title: 'SamplePosLayoutComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n    moduleMetadata({\r\n      imports: [PosLayoutModule],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -44446,7 +44913,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/material/layout/src/lib/template-outlet/template-outlet.component.stories.ts": [
@@ -44826,7 +45293,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "[]",
-                    "defaultValue": "[\n  PosLayoutToolbarDirective,\n  PosLayoutProductListDirective,\n  PosLayoutCartListDirective,\n  PosLayoutCartPriceDirective,\n]"
+                    "defaultValue": "[\r\n  PosLayoutToolbarDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n]"
                 }
             ],
             "libs/material/core/src/lib/localstore/local-store.component.ts": [
@@ -45929,7 +46396,7 @@
                 "linktype": "component",
                 "name": "CheckoutButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -45972,6 +46439,15 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/card/src/lib/product-card-list/product-card-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductCardListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/card/src/lib/product-card/product-card.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -46008,6 +46484,15 @@
                 "name": "ProductCardComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/card/src/lib/product-small-card-list/product-small-card-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductSmallCardListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -48587,7 +49072,7 @@
                 "linktype": "component",
                 "name": "SamplePosLayoutComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {

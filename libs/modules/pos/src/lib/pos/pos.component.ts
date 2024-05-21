@@ -1,17 +1,25 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutButtonComponent } from '@mdtx/material/button';
 import { InputPosSearchComponent } from '@mdtx/material/form';
 import { PosLayoutModule } from '@mdtx/material/layout';
-
-import { SKU_VIEW_OPTION_COLUMN, SkuViewService } from '@mdtx/ngrx';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { ISkuViewRaw } from '@mdtx/common';
+import { SkuViewService } from '@mdtx/ngrx';
+import { BehaviorSubject, Observable, debounceTime, merge, tap } from 'rxjs';
+import {
+  IPriceLevelRaw,
+  ISkuViewRaw,
+  IStoreRaw,
+  QueryOprator,
+  createQueryValue,
+} from '@mdtx/common';
 import {
   ProductCardListComponent,
   ProductSmallCardListComponent,
 } from '@mdtx/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';
 
 @Component({
   selector: 'mdtx-pos',
@@ -23,26 +31,85 @@ import {
     PosLayoutModule,
     ProductCardListComponent,
     ProductSmallCardListComponent,
+    MatButtonModule,
+    MatIconModule,
+    StoreSearchComponent,
+    PriceLevelSearchComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
   providers: [SkuViewService],
 })
 export class PosComponent implements AfterViewInit {
-  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$;
+  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;
+  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
+  @ViewChild('barcodeSearch') barcodeSearch!: InputPosSearchComponent;
+
+  searchObserver$!: Observable<any>;
+
+  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$.pipe(
+    tap((data) => {
+      if (data.length === 1) {
+        this.handleAddProductToCartEvent(data[0]);
+      }
+    })
+  );
+
   itemsInCart = new Map<string, ISkuViewRaw>();
+
+  defaultStore?: IStoreRaw;
+  defaultPriceLevel?: IPriceLevelRaw;
 
   subtotal$ = new BehaviorSubject(0);
 
   constructor(protected readonly skuService: SkuViewService) {}
 
+  ngAfterViewInit(): void {
+    this.skuService.clearCache();
+    this.updateProductList();
+
+    this.searchObserver$ = merge(
+      this.barcodeSearch.$valueChange,
+      this.storeSearch.inputControl.valueChanges,
+      this.priceLevelSearch.inputControl.valueChanges
+    ).pipe(
+      debounceTime(600),
+      tap(() => {
+        const items = this.getItemsInCart();
+        if (items) {
+          for (const item of items) {
+
+            console.log("Updating M>...")
+            this.skuService.getWithQuery({
+              barcode: item.barcode,
+              storeId: this.storeSearch.inputControl.value?.id ?? 1,
+              priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
+            });
+          }
+        }
+
+        console.log('Updating Something');
+      })
+    );
+  }
+
+  updateProductList() {
+    this.skuService.getWithQuery({
+      take: 10000,
+      storeId: this.storeSearch.inputControl.value?.id ?? 1,
+      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
+    });
+  }
+
   handleSearchEvent(search: string) {
     this.skuService.clearCache();
     this.skuService.getWithQuery({
-      barcode: search,
-      name: search,
-      storeId: 1,
-      priceLevelId: 1,
+      barcode: createQueryValue({
+        operator: QueryOprator.EQUAL,
+        value: search,
+      }),
+      storeId: this.storeSearch.inputControl.value?.id ?? 1,
+      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
     });
   }
 
@@ -51,15 +118,6 @@ export class PosComponent implements AfterViewInit {
       return [...this.itemsInCart.entries()].map(([, value]) => value);
     }
     return undefined;
-  }
-
-  ngAfterViewInit(): void {
-    this.skuService.clearCache();
-    this.skuService.getWithQuery({
-      take: 10000,
-      storeId: 1,
-      priceLevelId: 1,
-    });
   }
 
   handleAddProductToCartEvent(item: ISkuViewRaw) {
@@ -73,6 +131,9 @@ export class PosComponent implements AfterViewInit {
       this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });
     }
     this.updateTotal();
+
+    this.barcodeSearch.inputControl.setValue('');
+    this.updateProductList();
   }
 
   handleDeleteProductEvent(skuView: ISkuViewRaw) {
