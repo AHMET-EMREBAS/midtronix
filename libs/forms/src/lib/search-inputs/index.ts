@@ -1,5 +1,6 @@
 // @index('./*', f => `export * from '${f.path}'`)
 export * from './__base'
+export * from './cart'
 export * from './category'
 export * from './customer'
 export * from './customer-address'
