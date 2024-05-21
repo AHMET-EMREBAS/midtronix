@@ -1,5 +1,6 @@
 # TODO
 
+- Working on Order View
 - Find a good way to calcualte Taxes based on State/Location
 
 Alabama: 4.0%

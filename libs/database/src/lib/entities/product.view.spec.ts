@@ -6,6 +6,12 @@ import { Price, PriceLevel, Product, Quantity, Sku } from './product';
 import { Store } from './store';
 import { Manufacturer } from './manufacturer';
 import { QuantityView, PriceView, SkuView, ProductView } from './product.view';
+import { Order } from './order';
+import { Cart } from './cart';
+import { OrderView } from './order.view';
+import { CartView } from './cart.view';
+import { User, UserEntities } from './user';
+import { Customer, CustomerEntities } from './customer';
 describe('ProductView', () => {
   let ds: DataSource;
 
@@ -37,6 +43,12 @@ describe('ProductView', () => {
       QuantityView,
       PriceView,
       SkuView,
+      Order,
+      OrderView,
+      Cart,
+      CartView,
+      ...UserEntities,
+      ...CustomerEntities,
     ]);
 
     ProductRepo = await ds.getRepository(Product);
