@@ -1,6 +1,7 @@
 const { execSync } = require('child_process');
 
 const rns = [
+  'cart',
   'category',
   'customer-address',
   'customer-email',
@@ -26,8 +27,8 @@ const rns = [
   'user-phone',
   'user',
   'price-level',
-  'price', 
-  'quantity'
+  'price',
+  'quantity',
 ];
 
 for (const r of rns) {
