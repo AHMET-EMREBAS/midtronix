@@ -1,11 +1,27 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
   <mdtx-input-text
-    inputName="name"
-    label="Taxrate Name"
-    prefixIcon="category"
-    [inputControl]="control('name')"
+    inputName="state"
+    label="State"
+    prefixIcon="flag"
+    [inputControl]="control('state')"
   ></mdtx-input-text>
+
+  <!-- Form Inputs  -->
+  <mdtx-input-text
+    inputName="district"
+    label="District"
+    prefixIcon="location_city"
+    [inputControl]="control('district')"
+  ></mdtx-input-text>
+
+  <!-- Form Inputs  -->
+  <mdtx-input-number
+    inputName="rate"
+    label="Tax Rate"
+    prefixIcon="gavel"
+    [inputControl]="control('rate')"
+  ></mdtx-input-number>
 
   <!-- Form actions -->
   <div class="form-actions">

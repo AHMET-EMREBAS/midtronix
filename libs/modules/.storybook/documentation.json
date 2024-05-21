@@ -2787,6 +2787,113 @@
             "templateData": "<mdtx-task-form (submitEvent)=\"handleSubmit($event)\"></mdtx-task-form>\r\n"
         },
         {
+            "name": "CreateTaxrateComponent",
+            "id": "component-CreateTaxrateComponent-e92f1653084a53903586e00ba1bb9b8f2b0ee2e6e3406668f3f4ca91949b63c58b9e45a249d6bbccb59618626315a5700d89a81c3f227911b5419d8d2f5cc2c9",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "TaxrateService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-create-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./create-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleSubmit",
+                    "args": [
+                        {
+                            "name": "taxrate",
+                            "type": "ITaxrate",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "taxrate",
+                            "type": "ITaxrate",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TaxrateFormComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TaxrateFormComponent } from '@mdtx/forms';\nimport { ITaxrate } from '@mdtx/common';\nimport { TaxrateService } from '@mdtx/ngrx';\n@Component({\n  selector: 'mdtx-create-taxrate',\n  standalone: true,\n  imports: [CommonModule, TaxrateFormComponent],\n  templateUrl: './create-taxrate.component.html',\n  styleUrl: './create-taxrate.component.scss',\n  providers: [TaxrateService],\n})\nexport class CreateTaxrateComponent {\n  constructor(protected readonly service: TaxrateService) {}\n  handleSubmit(taxrate: ITaxrate) {\n    this.service.add(taxrate);\n  }\n}\n",
+            "styleUrl": "./create-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "service",
+                        "type": "TaxrateService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "service",
+                        "type": "TaxrateService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mdtx-taxrate-form (submitEvent)=\"handleSubmit($event)\"></mdtx-taxrate-form>\n"
+        },
+        {
             "name": "CreateTicketComponent",
             "id": "component-CreateTicketComponent-6e918ba50cc058e82e0ad3c8dc2f37e2ad3f16dc07d12e5ecfe95e93dc4f0b8c6ffbb18133fcae2a44e0c0e8d2aed41d650299e32ded91150cf29acb567816e4",
             "file": "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.ts",
@@ -4696,6 +4803,49 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>dashboard-task works!</p>\r\n"
+        },
+        {
+            "name": "DashboardTaxrateComponent",
+            "id": "component-DashboardTaxrateComponent-affc8b5966b3631581332822df8b7c202908595e4b0e7a3fb30f6ad66f2cfa14c97900afd550febae9082e104aa5ad057658a3a345be679f13f87cdcce2fbd5a",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/dashboard-taxrate/dashboard-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-dashboard-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-dashboard-taxrate',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './dashboard-taxrate.component.html',\n  styleUrl: './dashboard-taxrate.component.scss',\n})\nexport class DashboardTaxrateComponent {}\n",
+            "styleUrl": "./dashboard-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>dashboard-taxrate works!</p>\n"
         },
         {
             "name": "DashboardTicketComponent",
@@ -9785,6 +9935,209 @@
             "templateData": "<mat-card>\r\n  <mat-card-title>\r\n    <h3>Delete Task</h3>\r\n  </mat-card-title>\r\n\r\n  <mat-card-content>\r\n    <p>Are you sure to delete the task list?</p>\r\n    <hr />\r\n    @for(item of items; track item){\r\n    <div style=\"display: flex; gap: 1em; width: 100%\">\r\n      <p>{{ value(item) }}</p>\r\n      <button\r\n        #button\r\n        mat-icon-button\r\n        color=\"accent\"\r\n        (click)=\"deleteItem(item.id); button.disabled = true\"\r\n      >\r\n        <mat-icon #icon>delete</mat-icon>\r\n      </button>\r\n    </div>\r\n    }\r\n  </mat-card-content>\r\n\r\n  <mat-card-actions>\r\n    <button mat-raised-button color=\"accent\" (click)=\"deleteAll()\">\r\n      Delete All\r\n    </button>\r\n\r\n    <button mat-stroked-button color=\"primary\" matDialogClose>Close</button>\r\n  </mat-card-actions>\r\n</mat-card>\r\n\r\n<!-- <div\r\n  style=\"\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 1em;\r\n    padding: 1em;\r\n    max-height: 400px;\r\n    overflow: auto;\r\n    padding-bottom: 3em;\r\n  \"\r\n>\r\n  <div\r\n    style=\"\r\n      display: flex;\r\n      flex-direction: column;\r\n      gap: 1em;\r\n      width: 100%;\r\n      position: sticky;\r\n      background-color: white;\r\n    \"\r\n  ></div>\r\n</div> -->\r\n"
         },
         {
+            "name": "DeleteTaxrateComponent",
+            "id": "component-DeleteTaxrateComponent-0a666d430c8af676c4689a1979478490aebf028c3f38a5df55fed76a469dd209cad54493a3aad136ff4f82fb4cf1a38db5de8a94756354cacd9bb9e616683a48",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "TaxrateService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-delete-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./delete-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "deletedItems",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ITaxrate[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "DIALOG_DATA"
+                        }
+                    ],
+                    "modifierKind": [
+                        170,
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "deleteAll",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "deleteItem",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "value",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "ITaxrate",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "item",
+                            "type": "ITaxrate",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCardModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatDialogModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  MatDialog,\n  MatDialogClose,\n  MatDialogModule,\n} from '@angular/material/dialog';\nimport { ITaxrate } from '@mdtx/common';\nimport { DIALOG_DATA } from '@angular/cdk/dialog';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { TaxrateService } from '@mdtx/ngrx';\nimport { MatCardModule } from '@angular/material/card';\n@Component({\n  selector: 'mdtx-delete-taxrate',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatCardModule,\n    MatDialogModule,\n    MatButtonModule,\n    MatIconModule,\n  ],\n  templateUrl: './delete-taxrate.component.html',\n  styleUrl: './delete-taxrate.component.scss',\n  providers: [TaxrateService],\n})\nexport class DeleteTaxrateComponent {\n  deletedItems: number[] = [];\n\n  constructor(\n    protected readonly service: TaxrateService,\n    @Inject(DIALOG_DATA) public readonly items: ITaxrate[]\n  ) {}\n\n  deleteItem(id: number) {\n    this.deletedItems.push(id);\n    this.service.delete(id);\n  }\n\n  deleteAll() {\n    this.items.forEach((e) => {\n      if (!this.deletedItems.includes(e.id)) {\n        this.service.delete(e.id);\n      }\n    });\n  }\n\n  value(item: ITaxrate) {\n    return Object.values(item).join(', ');\n  }\n}\n",
+            "styleUrl": "./delete-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "service",
+                        "type": "TaxrateService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "items",
+                        "type": "ITaxrate[]",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 29,
+                "jsdoctags": [
+                    {
+                        "name": "service",
+                        "type": "TaxrateService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "items",
+                        "type": "ITaxrate[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mat-card>\n  <mat-card-title>\n    <h3>Delete Taxrate</h3>\n  </mat-card-title>\n\n  <mat-card-content>\n    <p>Are you sure to delete the taxrate list?</p>\n    <hr />\n    @for(item of items; track item){\n    <div style=\"display: flex; gap: 1em; width: 100%\">\n      <p>{{ value(item) }}</p>\n      <button\n        #button\n        mat-icon-button\n        color=\"accent\"\n        (click)=\"deleteItem(item.id); button.disabled = true\"\n      >\n        <mat-icon #icon>delete</mat-icon>\n      </button>\n    </div>\n    }\n  </mat-card-content>\n\n  <mat-card-actions>\n    <button mat-raised-button color=\"accent\" (click)=\"deleteAll()\">\n      Delete All\n    </button>\n\n    <button mat-stroked-button color=\"primary\" matDialogClose>Close</button>\n  </mat-card-actions>\n</mat-card>\n\n<!-- <div\n  style=\"\n    display: flex;\n    flex-direction: column;\n    gap: 1em;\n    padding: 1em;\n    max-height: 400px;\n    overflow: auto;\n    padding-bottom: 3em;\n  \"\n>\n  <div\n    style=\"\n      display: flex;\n      flex-direction: column;\n      gap: 1em;\n      width: 100%;\n      position: sticky;\n      background-color: white;\n    \"\n  ></div>\n</div> -->\n"
+        },
+        {
             "name": "DeleteTicketComponent",
             "id": "component-DeleteTicketComponent-7cf3fb152b07960e6e719b6c06ea28e7b5c3610a0e42577b31604ccc81ab2d1a0157839564ffba296c2b5072a5af20e67002db0a20d471736119b77e418cbabf",
             "file": "libs/modules/sub-modules/src/lib/ticket/delete-ticket/delete-ticket.component.ts",
@@ -11957,6 +12310,49 @@
             "templateData": "<p>home-task works!</p>\r\n"
         },
         {
+            "name": "HomeTaxrateComponent",
+            "id": "component-HomeTaxrateComponent-b7af9d5671f885cf8f88023ceb440fc7c4f6ef78276696c8baaca54596ff57e9772a9f55865584baeb9de8b835d5218bfece8354ea18f55635e6a53b619c1118",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/home-taxrate/home-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-home-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./home-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-home-taxrate',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './home-taxrate.component.html',\n  styleUrl: './home-taxrate.component.scss',\n})\nexport class HomeTaxrateComponent {}\n",
+            "styleUrl": "./home-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>home-taxrate works!</p>\n"
+        },
+        {
             "name": "HomeTicketComponent",
             "id": "component-HomeTicketComponent-7b489398897a912a0bc6798188c1ff56060e09cc25c5b4330662b96401a056f9eaf40c0e8a6c500a7e92d333def63bad903cdaae6b14e305ed9c135748def6bc",
             "file": "libs/modules/sub-modules/src/lib/ticket/home-ticket/home-ticket.component.ts",
@@ -12750,7 +13146,7 @@
         },
         {
             "name": "PosComponent",
-            "id": "component-PosComponent-ba3dff8129327451369169e1f62a31d881a2df052aaf3c9809d256b154c5e270659bd9d60ca16a1c9367812ff99fee4a5dc103da378507781f8d1bfce3ca4d5b",
+            "id": "component-PosComponent-23bbffbea61872f06a0a568180f1d600dfb25e48154a1d5f5a6100aa7e0b58c9c7f8dfb65b3728b89ebc0f684dbcc02626941ecca2b08234b8a33475a254ed70",
             "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -12781,7 +13177,7 @@
                     "type": "Observable<ISkuViewRaw[]>",
                     "optional": false,
                     "description": "",
-                    "line": 30
+                    "line": 32
                 },
                 {
                     "name": "itemsInCart",
@@ -12791,12 +13187,32 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 32
+                    "line": 33
+                },
+                {
+                    "name": "subtotal$",
+                    "defaultValue": "new BehaviorSubject(0)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "addItemToCart",
+                    "name": "getItemsInCart",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleAddProductToCartEvent",
                     "args": [
                         {
                             "name": "item",
@@ -12808,7 +13224,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 50,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12824,12 +13240,40 @@
                     ]
                 },
                 {
-                    "name": "getItemsInCart",
+                    "name": "handleDeleteProductEvent",
+                    "args": [
+                        {
+                            "name": "skuView",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "skuView",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleQuantityChangeEvent",
                     "args": [],
                     "optional": false,
-                    "returnType": "any",
+                    "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 83,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -12846,7 +13290,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -12867,7 +13311,17 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateTotal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 87,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -12906,7 +13360,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CheckoutButtonComponent } from '@mdtx/material/button';\r\nimport { InputPosSearchComponent } from '@mdtx/material/form';\r\nimport { PosLayoutModule } from '@mdtx/material/layout';\r\n\r\nimport { SkuViewService } from '@mdtx/ngrx';\r\nimport { Observable, take } from 'rxjs';\r\nimport { ISkuViewRaw } from '@mdtx/common';\r\nimport {\r\n  ProductCardListComponent,\r\n  ProductSmallCardListComponent,\r\n} from '@mdtx/material/card';\r\n@Component({\r\n  selector: 'mdtx-pos',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    CheckoutButtonComponent,\r\n    InputPosSearchComponent,\r\n    PosLayoutModule,\r\n    ProductCardListComponent,\r\n    ProductSmallCardListComponent,\r\n  ],\r\n  templateUrl: './pos.component.html',\r\n  styleUrl: './pos.component.scss',\r\n  providers: [SkuViewService],\r\n})\r\nexport class PosComponent implements AfterViewInit {\r\n  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$;\r\n\r\n  itemsInCart = new Map<string, ISkuViewRaw>();\r\n\r\n  constructor(protected readonly skuService: SkuViewService) {}\r\n\r\n  handleSearchEvent(search: string) {\r\n    this.skuService.clearCache();\r\n    this.skuService.getWithQuery({\r\n      barcode: search,\r\n      name: search,\r\n      storeId: 1,\r\n      priceLevelId: 1,\r\n    });\r\n  }\r\n\r\n  getItemsInCart() {\r\n    return [...this.itemsInCart.entries()].map(([, value]) => value);\r\n  }\r\n\r\n  addItemToCart(item: ISkuViewRaw) {\r\n    const foundItem = this.itemsInCart.get(item.barcode);\r\n\r\n    if (foundItem) {\r\n      foundItem.quantity = foundItem.quantity + 1;\r\n      this.itemsInCart.delete(item.barcode);\r\n      this.itemsInCart.set(foundItem.barcode, foundItem);\r\n    } else {\r\n      this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });\r\n    }\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.skuService.clearCache();\r\n    this.skuService.getWithQuery({\r\n      take: 10000,\r\n      storeId: 1,\r\n      priceLevelId: 1,\r\n    });\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CheckoutButtonComponent } from '@mdtx/material/button';\r\nimport { InputPosSearchComponent } from '@mdtx/material/form';\r\nimport { PosLayoutModule } from '@mdtx/material/layout';\r\n\r\nimport { SKU_VIEW_OPTION_COLUMN, SkuViewService } from '@mdtx/ngrx';\r\nimport { BehaviorSubject, Observable } from 'rxjs';\r\nimport { ISkuViewRaw } from '@mdtx/common';\r\nimport {\r\n  ProductCardListComponent,\r\n  ProductSmallCardListComponent,\r\n} from '@mdtx/material/card';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    CheckoutButtonComponent,\r\n    InputPosSearchComponent,\r\n    PosLayoutModule,\r\n    ProductCardListComponent,\r\n    ProductSmallCardListComponent,\r\n  ],\r\n  templateUrl: './pos.component.html',\r\n  styleUrl: './pos.component.scss',\r\n  providers: [SkuViewService],\r\n})\r\nexport class PosComponent implements AfterViewInit {\r\n  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$;\r\n  itemsInCart = new Map<string, ISkuViewRaw>();\r\n\r\n  subtotal$ = new BehaviorSubject(0);\r\n\r\n  constructor(protected readonly skuService: SkuViewService) {}\r\n\r\n  handleSearchEvent(search: string) {\r\n    this.skuService.clearCache();\r\n    this.skuService.getWithQuery({\r\n      barcode: search,\r\n      name: search,\r\n      storeId: 1,\r\n      priceLevelId: 1,\r\n    });\r\n  }\r\n\r\n  getItemsInCart() {\r\n    if (this.itemsInCart.size > 0) {\r\n      return [...this.itemsInCart.entries()].map(([, value]) => value);\r\n    }\r\n    return undefined;\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.skuService.clearCache();\r\n    this.skuService.getWithQuery({\r\n      take: 10000,\r\n      storeId: 1,\r\n      priceLevelId: 1,\r\n    });\r\n  }\r\n\r\n  handleAddProductToCartEvent(item: ISkuViewRaw) {\r\n    const foundItem = this.itemsInCart.get(item.barcode);\r\n\r\n    if (foundItem) {\r\n      foundItem.quantity = foundItem.quantity + 1;\r\n      this.itemsInCart.delete(item.barcode);\r\n      this.itemsInCart.set(foundItem.barcode, foundItem);\r\n    } else {\r\n      this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });\r\n    }\r\n    this.updateTotal();\r\n  }\r\n\r\n  handleDeleteProductEvent(skuView: ISkuViewRaw) {\r\n    this.itemsInCart.delete(skuView.barcode);\r\n    this.updateTotal();\r\n  }\r\n\r\n  handleQuantityChangeEvent() {\r\n    this.updateTotal();\r\n  }\r\n\r\n  updateTotal() {\r\n    const items = this.getItemsInCart();\r\n    const itemPrices = items\r\n      ?.map((e) => parseFloat(e.price + '') * (e.quantity ?? 1))\r\n      .filter((e) => e);\r\n\r\n    if (itemPrices && itemPrices.length > 0) {\r\n      const subtotal = itemPrices.reduce((p, c) => p! + c!);\r\n      this.subtotal$.next(subtotal);\r\n    } else {\r\n      this.subtotal$.next(0);\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./pos.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -12924,7 +13378,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 32,
+                "line": 35,
                 "jsdoctags": [
                     {
                         "name": "skuService",
@@ -12941,7 +13395,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<mdtx-pos-layout>\r\n  <!-- Toolbar -->\r\n  <ng-template mdtxPosLayoutToolbar>\r\n    <mdtx-input-pos-search\r\n      (inputEvent)=\"handleSearchEvent($event)\"\r\n    ></mdtx-input-pos-search>\r\n  </ng-template>\r\n\r\n  <!-- Product List -->\r\n  <ng-template mdtxPosLayoutProductList>\r\n    <mdtx-product-card-list\r\n      *ngIf=\"items$ | async as items\"\r\n      [products]=\"items\"\r\n      (addCartEvent)=\"addItemToCart($event)\"\r\n    ></mdtx-product-card-list>\r\n  </ng-template>\r\n\r\n  <!-- Cart List -->\r\n  <ng-template mdtxPosLayoutCartList>\r\n    <mdtx-product-small-card-list\r\n      [products]=\"getItemsInCart()\"\r\n    ></mdtx-product-small-card-list>\r\n  </ng-template>\r\n</mdtx-pos-layout>\r\n"
+            "templateData": "<mdtx-pos-layout>\r\n  <!-- Toolbar -->\r\n  <ng-template mdtxPosLayoutToolbar>\r\n    <mdtx-input-pos-search\r\n      (inputEvent)=\"handleSearchEvent($event)\"\r\n    ></mdtx-input-pos-search>\r\n  </ng-template>\r\n\r\n  <!-- Product List -->\r\n  <ng-template mdtxPosLayoutProductList>\r\n    <mdtx-product-card-list\r\n      *ngIf=\"items$ | async as __items\"\r\n      [products]=\"__items\"\r\n      (addProductToCartEvent)=\"handleAddProductToCartEvent($event)\"\r\n    ></mdtx-product-card-list>\r\n  </ng-template>\r\n\r\n  <!-- Cart List -->\r\n  <ng-template mdtxPosLayoutCartList>\r\n    <mdtx-product-small-card-list\r\n      *ngIf=\"getItemsInCart() as __itemsInCart\"\r\n      [products]=\"__itemsInCart\"\r\n      (deleteProductEvent)=\"handleDeleteProductEvent($event)\"\r\n      (quantityChangeEvent)=\"handleQuantityChangeEvent()\"\r\n    ></mdtx-product-small-card-list>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutCartPrice>\r\n    <mdtx-checkout-button\r\n      [subtotal]=\"(subtotal$ | async) || 0\"\r\n    ></mdtx-checkout-button>\r\n  </ng-template>\r\n</mdtx-pos-layout>\r\n{{ subtotal$ | async }}\r\n"
         },
         {
             "name": "PriceComponent",
@@ -13497,6 +13951,49 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>task works!</p>\r\n"
+        },
+        {
+            "name": "TaxrateComponent",
+            "id": "component-TaxrateComponent-9a765420719a7ff40ab8cf4decbb0cc39d547eb50747910ef6656d3444ab3461efa7a9d72aa4147486aa3af09df9456d949d73f929f94922f7231a3a54851a39",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ModuleLayoutComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ModuleLayoutComponent } from '@mdtx/material/layout';\n\n@Component({\n  selector: 'mdtx-taxrate',\n  standalone: true,\n  imports: [ModuleLayoutComponent],\n  templateUrl: './taxrate.component.html',\n  styleUrl: './taxrate.component.scss',\n})\nexport class TaxrateComponent {}\n",
+            "styleUrl": "./taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>taxrate works!</p>\n"
         },
         {
             "name": "TicketComponent",
@@ -14615,6 +15112,49 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>update-task works!</p>\r\n"
+        },
+        {
+            "name": "UpdateTaxrateComponent",
+            "id": "component-UpdateTaxrateComponent-0aae50f5c065a1c483f2c0b6c7c7c432666664901a9477e597f49baddb7f658d13340a2a4b0668953f2366f378a6430d44950540d977a7cc7bd71be898e493c8",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-update-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./update-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-update-taxrate',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './update-taxrate.component.html',\n  styleUrl: './update-taxrate.component.scss',\n})\nexport class UpdateTaxrateComponent {}\n",
+            "styleUrl": "./update-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>update-taxrate works!</p>\n"
         },
         {
             "name": "UpdateTicketComponent",
@@ -18508,6 +19048,152 @@
             "templateData": "<mdtx-task-table\r\n  (addEvent)=\"createItem()\"\r\n  (deleteEvent)=\"deleteItems($event)\"\r\n></mdtx-task-table>\r\n"
         },
         {
+            "name": "ViewTaxrateComponent",
+            "id": "component-ViewTaxrateComponent-dbdf2c600001a276d929dff5903bd85492020ba1c2d2d01bd8f1bb4c2aa79b0e1f92aa3837d62c6e478198a65bd667faa21e17ea8a38ad516c6c3cdbb70babc3",
+            "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-view-taxrate",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./view-taxrate.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "createItem",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "deleteItems",
+                    "args": [
+                        {
+                            "name": "items",
+                            "type": "ITaxrate[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "items",
+                            "type": "ITaxrate[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TaxrateTableComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatDialogModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TaxrateTableComponent } from '@mdtx/tables';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { ITaxrate } from '@mdtx/common';\n\nimport { MatDialog, MatDialogModule } from '@angular/material/dialog';\nimport { DeleteTaxrateComponent } from '../delete-taxrate/delete-taxrate.component';\n\n@Component({\n  selector: 'mdtx-view-taxrate',\n  standalone: true,\n  imports: [CommonModule, TaxrateTableComponent, MatDialogModule],\n  templateUrl: './view-taxrate.component.html',\n  styleUrl: './view-taxrate.component.scss',\n})\nexport class ViewTaxrateComponent {\n  constructor(\n    protected readonly router: Router,\n    protected readonly route: ActivatedRoute,\n    protected readonly matDialog: MatDialog\n  ) {}\n\n  createItem() {\n    this.router.navigate(['..', 'create'], { relativeTo: this.route });\n  }\n\n  deleteItems(items: ITaxrate[]) {\n    console.log(items, '<<< items to be deleted!');\n    this.matDialog.open(DeleteTaxrateComponent, { data: [...items] });\n  }\n}\n",
+            "styleUrl": "./view-taxrate.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "matDialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "matDialog",
+                        "type": "MatDialog",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<mdtx-taxrate-table\n  (addEvent)=\"createItem()\"\n  (deleteEvent)=\"deleteItems($event)\"\n></mdtx-taxrate-table>\n"
+        },
+        {
             "name": "ViewTicketComponent",
             "id": "component-ViewTicketComponent-0a7b5f22dfe9434f48971c470897f44731efa9210f9c3207d0e26f653f9eedeec641af3c75a317ee45560214bf57ab18fb06b795ba313232c1b5fb93742e2e0f",
             "file": "libs/modules/sub-modules/src/lib/ticket/view-ticket/view-ticket.component.ts",
@@ -19436,7 +20122,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -19677,6 +20363,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -21172,6 +21868,46 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -21616,7 +22352,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PosComponent>",
-                "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n}"
+                "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -21857,6 +22593,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<TaskComponent>",
                 "defaultValue": "{\r\n  component: TaskComponent,\r\n  title: 'TaskComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TaxrateComponent>",
+                "defaultValue": "{\n  component: TaxrateComponent,\n  title: 'TaxrateComponent',\n}"
             },
             {
                 "name": "meta",
@@ -23352,6 +24098,46 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CreateTaxrateComponent>",
+                "defaultValue": "{\n  component: CreateTaxrateComponent,\n  title: 'CreateTaxrateComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DeleteTaxrateComponent>",
+                "defaultValue": "{\n  component: DeleteTaxrateComponent,\n  title: 'DeleteTaxrateComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<UpdateTaxrateComponent>",
+                "defaultValue": "{\n  component: UpdateTaxrateComponent,\n  title: 'UpdateTaxrateComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewTaxrateComponent>",
+                "defaultValue": "{\n  component: ViewTaxrateComponent,\n  title: 'ViewTaxrateComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -24037,6 +24823,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
             },
             {
                 "name": "Primary",
@@ -25532,6 +26328,46 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -26255,6 +27091,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<TaskComponent>",
                 "file": "libs/modules/sub-modules/src/lib/task/task.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TaxrateComponent>",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -27903,6 +28750,50 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<CreateTaxrateComponent>",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DeleteTaxrateComponent>",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<UpdateTaxrateComponent>",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewTaxrateComponent>",
+                "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<CreateTicketComponent>",
                 "file": "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts",
                 "deprecated": false,
@@ -28701,7 +29592,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\r\n  },\r\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -28711,7 +29602,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PosComponent>",
-                    "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n}"
+                    "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -29490,6 +30381,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TaxrateComponent>",
+                    "defaultValue": "{\n  component: TaxrateComponent,\n  title: 'TaxrateComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/ticket/ticket.component.stories.ts": [
@@ -34260,6 +35183,134 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
+            "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CreateTaxrateComponent>",
+                    "defaultValue": "{\n  component: CreateTaxrateComponent,\n  title: 'CreateTaxrateComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DeleteTaxrateComponent>",
+                    "defaultValue": "{\n  component: DeleteTaxrateComponent,\n  title: 'DeleteTaxrateComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<UpdateTaxrateComponent>",
+                    "defaultValue": "{\n  component: UpdateTaxrateComponent,\n  title: 'UpdateTaxrateComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewTaxrateComponent>",
+                    "defaultValue": "{\n  component: ViewTaxrateComponent,\n  title: 'ViewTaxrateComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -35725,6 +36776,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<TaskComponent>",
                     "file": "libs/modules/sub-modules/src/lib/task/task.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TaxrateComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -37668,6 +38732,58 @@
                     "kind": 183
                 }
             ],
+            "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CreateTaxrateComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DeleteTaxrateComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<UpdateTaxrateComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewTaxrateComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/modules/sub-modules/src/lib/ticket/create-ticket/create-ticket.component.stories.ts": [
                 {
                     "name": "Story",
@@ -38656,7 +39772,7 @@
                 "linktype": "component",
                 "name": "PosComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -45217,6 +46333,219 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ViewTaskComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/create-taxrate/create-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CreateTaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/dashboard-taxrate/dashboard-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DashboardTaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/delete-taxrate/delete-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DeleteTaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/home-taxrate/home-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomeTaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/update-taxrate/update-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "UpdateTaxrateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/sub-modules/src/lib/taxrate/view-taxrate/view-taxrate.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ViewTaxrateComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
                 "status": "low"
