@@ -24,7 +24,7 @@ import {
   SidenavLeftTopProvider,
   SidenavLeftBottomProvider,
   SidenavLeftCenterProvider,
-} from '../common';
+} from './layout-providers';
 
 @Component({
   selector: 'mdtx-base-app-layout',

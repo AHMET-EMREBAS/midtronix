@@ -1,9 +1,12 @@
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Routes } from '@angular/router';
-import { AppLayoutComponent } from '@mdtx/material/layout';
+import {
+  AppLayoutComponent,
+  SidenavLeftBottomProvider,
+} from '@mdtx/material/layout';
 
 import { provideEntityData, withEffects } from '@ngrx/data';
-import { SidenavLeftBottomProvider } from 'libs/material/layout/src/lib/common';
+
 import { PosComponent } from './pos/pos.component';
 
 export const PosRoutes: Routes = [
