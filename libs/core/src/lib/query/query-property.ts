@@ -14,7 +14,6 @@ import {
   Equal,
   LessThanOrEqual,
   MoreThanOrEqual,
-  Or,
 } from 'typeorm';
 import { isArray } from 'class-validator';
 
@@ -32,6 +31,8 @@ export function toQueryOperator(queryString: string) {
   switch (operator as QueryOprator) {
     case QueryOprator.CONTAIN:
       return ILike(`%${q}%`);
+    case QueryOprator.START_WITH:
+      return ILike(`${q}%`);
     case QueryOprator.END_WITH:
       return ILike(`%${q}`);
     case QueryOprator.EQUAL:
@@ -50,6 +51,8 @@ export function toQueryOperator(queryString: string) {
 
     case QueryOprator.NOT_CONTAIN:
       return Not(ILike(`%${q}%`));
+    case QueryOprator.NOT_START_WITH:
+      return Not(ILike(`${q}%`));
     case QueryOprator.NOT_END_WITH:
       return Not(ILike(`%${q}`));
     case QueryOprator.NOT_EQUAL:
