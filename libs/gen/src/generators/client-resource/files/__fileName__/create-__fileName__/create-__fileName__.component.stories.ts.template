@@ -28,7 +28,7 @@ const meta: Meta<Create<%- className %>Component> = {
         provideEntityData(
           {
             pluralNames: {
-              <%- className %>: '<%- className %>s',
+              <%- className %>: '<%- pluralClassName %>',
             },
             entityMetadata: {
               <%- className %>: {},
