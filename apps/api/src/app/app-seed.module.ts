@@ -36,6 +36,10 @@ import { Repository } from 'typeorm';
       Role,
       User,
       Customer,
+      Cart,
+      CartView,
+      Order,
+      OrderView,
     ]),
   ],
 })
