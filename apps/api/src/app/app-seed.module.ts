@@ -290,8 +290,8 @@ export class AppSeedModule implements OnModuleInit {
 
     const discount1 = await this.DiscountRepo.save({
       name: 'D1',
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: new Date('5/20/2024'),
+      endDate: new Date('5/24/2024'),
       fixed: 10,
       skus: [s1p1, s3p1, s3p3, s3p2],
     });
@@ -304,14 +304,12 @@ export class AppSeedModule implements OnModuleInit {
     const carts = await this.CartRepo.find();
 
     const printOrders = async () => {
-      const orders = await this.OrderViewRepo.find({
-        select: ['id', 'quantity', 'price', 'fixedDiscount', 'subtotal'],
-      });
+      const orders = await this.OrderViewRepo.find({});
       console.log(orders);
     };
 
     await printOrders();
-    const skus = await this.SkuViewRepo.find({ select: ['id', 'price'] });
+    const skus = await this.SkuViewRepo.find({});
 
     await this.OrderRepo.update(5, { priceLevel: pl3 });
     await printOrders();

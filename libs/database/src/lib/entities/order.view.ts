@@ -5,7 +5,6 @@ import { SkuView } from './product.view';
 import { Price, PriceLevel, Sku } from './product';
 import { CartView } from './cart.view';
 import { Cart } from './cart';
-import { Discount } from './discount';
 import { DiscountView } from './discount.view';
 
 @ViewEntity({
@@ -16,8 +15,10 @@ import { DiscountView } from './discount.view';
       .addSelect('ROW_NUMBER() OVER (ORDER BY main.id)', 'id')
       .addSelect('main.skuId', 'skuId')
       .addSelect('main.cartId', 'cartId')
-      .addSelect('main.priceLevelId', 'priceLevelId')
+      .addSelect('cart.ownerId', 'customerId')
+      .addSelect('cart.userId', 'employeeId')
       .addSelect('cart.storeId', 'storeId')
+      .addSelect('main.priceLevelId', 'priceLevelId')
       .addSelect('sku.name', 'name')
       .addSelect('sku.barcode', 'barcode')
       .addSelect('main.quantity', 'quantity')
@@ -37,6 +38,7 @@ import { DiscountView } from './discount.view';
         'price.skuId = main.skuId AND price.priceLevelId = main.priceLevelId'
       )
       .leftJoin(DiscountView, 'discount', 'discount.skuId = main.skuId')
+
       .leftJoin(Cart, 'cart', 'cart.id = main.cartId')
       .leftJoin(SkuView, 'sku', 'sku.id = main.skuId');
   },
@@ -46,6 +48,8 @@ export class OrderView implements IOrderView {
   @ViewColumn() orderId!: number;
   @ViewColumn() skuId!: number;
   @ViewColumn() cartId!: number;
+  @ViewColumn() customerId!: number;
+  @ViewColumn() employeeId!: number;
   @ViewColumn() priceLevelId!: number;
   @ViewColumn() storeId!: number;
   @ViewColumn() name!: string;
