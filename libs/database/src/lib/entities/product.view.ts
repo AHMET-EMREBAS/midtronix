@@ -1,15 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Type, ViewColumn, ViewEntity } from '@mdtx/core';
-import {
-  Price,
-  PriceLevel,
-  Product,
-  ProductEntities,
-  ProductImage,
-  ProductVideo,
-  Quantity,
-  Sku,
-} from './product';
+import { Price, PriceLevel, Product, Quantity, Sku } from './product';
 import { Store } from './store';
 import { IPriceView, IQuantityView, ISkuView } from '@mdtx/common';
 import { Category, Department } from './meta';

@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {
+  Cart,
+  CartView,
   Category,
   Customer,
   Department,
+  Order,
+  OrderView,
   Permission,
   Price,
   PriceLevel,
@@ -13,7 +17,7 @@ import {
   Store,
   User,
 } from '@mdtx/database';
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Inject, Module, OnModuleInit } from '@nestjs/common';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -57,7 +61,17 @@ export class AppSeedModule implements OnModuleInit {
     @InjectRepository(User)
     protected readonly UserRepo: Repository<User>,
     @InjectRepository(Customer)
-    protected readonly CustomerRepo: Repository<Customer>
+    protected readonly CustomerRepo: Repository<Customer>,
+
+    @InjectRepository(Cart) protected readonly CartRepo: Repository<Cart>,
+
+    @InjectRepository(CartView)
+    protected readonly CartViewRepo: Repository<CartView>,
+
+    @InjectRepository(Order) protected readonly OrderRepo: Repository<Order>,
+
+    @InjectRepository(OrderView)
+    protected readonly OrderViewRepo: Repository<OrderView>
   ) {}
   async onModuleInit() {
     let priceLevelCount = 0;
@@ -66,6 +80,7 @@ export class AppSeedModule implements OnModuleInit {
     let priceCount = 0;
     let quantityCount = 0;
     let storeCount = 0;
+    let userCount = 0;
 
     const category = await this.CategoryRepo.save({ name: 'Default Category' });
     const department = await this.DepartmentRepo.save({
@@ -110,6 +125,32 @@ export class AppSeedModule implements OnModuleInit {
       store: Store,
       count = ++quantityCount
     ) => await this.QuantityRepo.save({ quantity: count * 10, sku, store });
+
+    const createUser = async (count = ++userCount) =>
+      await this.UserRepo.save({
+        username: `user${count}@gmail.com`,
+        password: `Password123!`,
+      });
+
+    const createCustomer = async (count = ++userCount) =>
+      await this.CustomerRepo.save({
+        username: `customer${count}@gmail.com`,
+        password: 'Password123!',
+      });
+
+    const createCart = async (store: Store, owner: Customer, user: User) =>
+      await this.CartRepo.save({ store, owner: owner, user });
+
+    const createOrder = async (cart: Cart, sku: Sku, quantity: number) =>
+      await this.OrderRepo.save({ cart, sku, quantity });
+
+    const user1 = await createUser();
+    const user2 = await createUser();
+    const user3 = await createUser();
+
+    const customer1 = await createCustomer();
+    const customer2 = await createCustomer();
+    const customer3 = await createCustomer();
 
     const store1 = await createStore();
     const store2 = await createStore();

@@ -12,5 +12,3 @@ export class Order extends BaseEntity implements IOrder<Sku, Cart, PriceLevel> {
   @OwnerRelation(Cart) cart!: Cart;
   @OneRelation(PriceLevel) priceLevel!: PriceLevel;
 }
-
-export const OrderEntities = [Order, OrderView, Sku, Cart];

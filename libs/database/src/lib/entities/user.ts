@@ -57,17 +57,3 @@ export class UserEmail extends EmailEntity(User) {}
  */
 @Entity()
 export class UserPhone extends PhoneEntity(User) {}
-
-export const UserEntities: Readonly<Type[]> = [User, Role, Permission];
-
-export const UserPhoneEntities: Readonly<Type[]> = [...UserEntities, UserPhone];
-
-export const UserEmailEntities: Readonly<Type[]> = [...UserEntities, UserEmail];
-
-export const UserAddressEntities: Readonly<Type[]> = [
-  ...UserEntities,
-  UserAddress,
-];
-
-export const PermissionEntities: Readonly<Type[]> = [Permission];
-export const RoleEntities: Readonly<Type[]> = [Role, Permission];

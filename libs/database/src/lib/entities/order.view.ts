@@ -2,8 +2,9 @@ import { IOrderView } from '@mdtx/common';
 import { ViewEntity, ViewColumn } from '@mdtx/core';
 import { Order } from './order';
 import { SkuView } from './product.view';
-import { PriceLevel } from './product';
+import { PriceLevel, Sku } from './product';
 import { CartView } from './cart.view';
+import { Cart } from './cart';
 
 @ViewEntity({
   expression(ds) {
@@ -43,3 +44,12 @@ export class OrderView implements IOrderView {
   @ViewColumn() price!: number;
   @ViewColumn() cost!: number;
 }
+export const OrderViewEntities = [
+  Order,
+  OrderView,
+  Sku,
+  Cart,
+  PriceLevel,
+  CartView,
+  SkuView,
+];

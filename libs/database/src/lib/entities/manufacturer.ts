@@ -22,17 +22,3 @@ export class ManufacturerPhone extends PhoneEntity(Manufacturer) {}
 
 @Entity()
 export class ManufacturerEmail extends EmailEntity(Manufacturer) {}
-
-export const ManufacturerEntities: Readonly<Type[]> = [Manufacturer];
-export const ManufacturerAddressEntities: Readonly<Type[]> = [
-  Manufacturer,
-  ManufacturerAddress,
-];
-export const ManufacturerEmailEntities: Readonly<Type[]> = [
-  Manufacturer,
-  ManufacturerEmail,
-];
-export const ManufacturerPhoneEntities: Readonly<Type[]> = [
-  Manufacturer,
-  ManufacturerPhone,
-];

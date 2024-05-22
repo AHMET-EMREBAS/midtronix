@@ -61,33 +61,3 @@ export class CustomerEmail extends EmailEntity(Customer) {}
  */
 @Entity()
 export class CustomerPhone extends PhoneEntity(Customer) {}
-
-export const CustomerEntities: Readonly<Type[]> = [
-  Customer,
-  CustomerRole,
-  CustomerPermission,
-];
-
-export const CustomerPhoneEntities: Readonly<Type[]> = [
-  CustomerPhone,
-  ...CustomerEntities,
-];
-
-export const CustomerEmailEntities: Readonly<Type[]> = [
-  CustomerEmail,
-  ...CustomerEntities,
-];
-
-export const CustomerAddressEntities: Readonly<Type[]> = [
-  CustomerAddress,
-  ...CustomerEntities,
-];
-
-export const CustomerRoleEntities: Readonly<Type[]> = [
-  CustomerRole,
-  CustomerPermission,
-];
-
-export const CustomerPermissionEntities: Readonly<Type[]> = [
-  CustomerPermission,
-];

@@ -14,5 +14,3 @@ export class StorePhone extends PhoneEntity(Store) {}
 
 @Entity()
 export class StoreEmail extends EmailEntity(Store) {}
-
-export const StoreEntities: Readonly<Type[]> = [Store];

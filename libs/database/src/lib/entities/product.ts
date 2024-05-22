@@ -94,36 +94,3 @@ export class ProductImage
 export class ProductVideo
   extends VideoEntity(Product)
   implements IProductVideo<Product> {}
-
-export const ProductEntities: Readonly<Type[]> = [
-  Product,
-  Manufacturer,
-  Category,
-  Department,
-];
-
-export const SkuEntities: Readonly<Type[]> = [...ProductEntities, Sku];
-
-export const PriceEntities: Readonly<Type[]> = [
-  Sku,
-  Price,
-  PriceLevel,
-  ...ProductEntities,
-];
-
-export const QuantityEntities: Readonly<Type[]> = [
-  ...ProductEntities,
-  Store,
-  Sku,
-  Quantity,
-];
-
-export const ProductImageEntities: Readonly<Type[]> = [
-  ...ProductEntities,
-  ProductImage,
-];
-
-export const ProductVideoEntities: Readonly<Type[]> = [
-  ...ProductEntities,
-  ProductVideo,
-];
