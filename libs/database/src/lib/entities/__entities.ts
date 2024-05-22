@@ -40,6 +40,7 @@ import { Store } from './store';
 import { Project, Sprint, Task } from './project';
 import { Ticket } from './ticket';
 import { Taxrate } from './taxrate';
+import { Discount } from './discount';
 
 export const UserEntities: Readonly<Type[]> = [User, Role, Permission];
 
@@ -165,3 +166,5 @@ export const TicketEntities: Readonly<Type[]> = [
   ...CustomerEntities,
   ...UserEntities,
 ];
+
+export const DiscountEntities = [Discount, ...SkuEntities];

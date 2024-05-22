@@ -1,5 +1,6 @@
 <form class="form-container" novalidate="true">
-  <!-- Form Inputs  -->
+  <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
+
   <mdtx-input-text
     inputName="name"
     label="Discount Name"
@@ -7,7 +8,34 @@
     [inputControl]="control('name')"
   ></mdtx-input-text>
 
-  <!-- Form actions -->
+  <mdtx-input-number
+    inputName="fixed"
+    label="Fixed Discount"
+    prefixIcon="category"
+    [inputControl]="control('fixed')"
+  ></mdtx-input-number>
+
+  <mdtx-input-number
+    inputName="percent"
+    label="% Discount"
+    prefixIcon="category"
+    [inputControl]="control('percent')"
+  ></mdtx-input-number>
+
+  <mdtx-input-date
+    inputName="startDate"
+    label="Start Date"
+    prefixIcon="date_range"
+    [inputControl]="control('startDate')"
+  ></mdtx-input-date>
+
+  <mdtx-input-date
+    inputName="endDate"
+    label="Start Date"
+    prefixIcon="date_range"
+    [inputControl]="control('endDate')"
+  ></mdtx-input-date>
+
   <div class="form-actions">
     <button
       mat-raised-button

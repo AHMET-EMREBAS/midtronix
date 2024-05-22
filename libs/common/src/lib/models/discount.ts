@@ -24,3 +24,5 @@ export interface IDiscount<TSku extends IID = IID> extends IBaseEntity {
  * @param skus
  */
 export interface IDiscountRaw extends IDiscount<ISku> {}
+
+export interface ICreateDiscountDto extends Omit<IDiscount, keyof IBaseEntity> {}
