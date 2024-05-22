@@ -13,6 +13,7 @@ import {
   minLength,
   maxLength,
   isNumberString,
+  isDate,
 } from 'class-validator';
 import { IFormBuilder } from './form-builder-interface';
 
@@ -50,16 +51,14 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
     });
   }
 
-  date(value?: number): ValidatorBuilder<T> {
-    if (value != undefined)
-      return this.push((c: AbstractControl) =>
-        isDateString(c.value)
-          ? null
-          : {
-              date: `${this.__name()} should be a valid date!`,
-            }
-      );
-    return this;
+  date(): ValidatorBuilder<T> {
+    return this.push((c: AbstractControl) =>
+      isDate(new Date(c.value))
+        ? null
+        : {
+            date: `${this.__name()} should be a valid date!`,
+          }
+    );
   }
 
   range(start: number, end: number): ValidatorBuilder<T> {

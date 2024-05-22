@@ -3,6 +3,7 @@ import { ICreateDiscountDto, IID } from '@mdtx/common';
 
 @Exclude()
 export class CreateDiscountDto implements ICreateDiscountDto {
+  @Property({ type: 'string', required: true }) name!: string;
   @Property({ type: 'number' }) fixed!: number;
   @Property({ type: 'number' }) percent!: number;
   @Property({ type: 'string', required: true }) startDate!: Date;

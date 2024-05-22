@@ -9,6 +9,7 @@ import { ISku } from './product';
  * @param skus
  */
 export interface IDiscount<TSku extends IID = IID> extends IBaseEntity {
+  name: string;
   fixed: number;
   percent: number;
   startDate: Date;
@@ -25,4 +26,5 @@ export interface IDiscount<TSku extends IID = IID> extends IBaseEntity {
  */
 export interface IDiscountRaw extends IDiscount<ISku> {}
 
-export interface ICreateDiscountDto extends Omit<IDiscount, keyof IBaseEntity> {}
+export interface ICreateDiscountDto
+  extends Omit<IDiscount, keyof IBaseEntity> {}

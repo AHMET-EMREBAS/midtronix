@@ -29,9 +29,11 @@ const meta: Meta<CreateDiscountComponent> = {
           {
             pluralNames: {
               Discount: 'Discounts',
+              Sku: 'Skus',
             },
             entityMetadata: {
               Discount: {},
+              Sku: {},
             },
           },
           withEffects()

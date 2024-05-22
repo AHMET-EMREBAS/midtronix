@@ -2,7 +2,6 @@ import { NameEntity } from './__base';
 import { Column, Entity, ManyRelation } from '@mdtx/core';
 import { Sku } from './product';
 import { IDiscount } from '@mdtx/common';
-import { SkuEntities } from './__entities';
 
 export class BaseDiscount extends NameEntity {
   @Column({ type: 'numeric', default: 0 }) fixed!: number;

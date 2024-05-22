@@ -18,6 +18,7 @@ export class InputAutocompleteComponent
   @Input() optionNameAsValue = false;
   @Input() override prefixIcon = 'event';
   @Input() options!: IInputOption[];
+  @Input() multiple?: boolean = false;
 
   filteredOptions$!: Observable<IInputOption[]>;
 

@@ -17,11 +17,13 @@ import { ISkuRaw } from '@mdtx/common';
       label="Search Sku"
       prefixIcon="search"
       [inputControl]="inputControl"
+      [multiple]="multiple"
     ></mdtx-input-autocomplete>
   `,
   providers: [SkuService],
 })
 export class SkuSearchComponent {
+  @Input() multiple = false;
   @Input() inputControl = new FormControl<ISkuRaw | null>(null, []);
 
   constructor(protected readonly service: SkuService) {}

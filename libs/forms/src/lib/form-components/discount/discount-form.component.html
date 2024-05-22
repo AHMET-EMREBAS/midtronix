@@ -1,5 +1,8 @@
 <form class="form-container" novalidate="true">
-  <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
+  <mdtx-sku-search
+    [inputControl]="control('skus')"
+    [multiple]="true"
+  ></mdtx-sku-search>
 
   <mdtx-input-text
     inputName="name"
