@@ -7,6 +7,7 @@ export * from './contact.dto';
 export * from './contact';
 export * from './customer.dto';
 export * from './customer';
+export * from './discount';
 export * from './manufacturer.dto';
 export * from './manufacturer';
 export * from './media.dto';
