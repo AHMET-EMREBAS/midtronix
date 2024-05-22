@@ -4,7 +4,11 @@ import {
   CartView,
   Category,
   Customer,
+  CustomerBadge,
+  CustomerPoint,
   Department,
+  Discount,
+  DiscountView,
   Order,
   OrderView,
   Permission,
@@ -14,8 +18,11 @@ import {
   Quantity,
   Role,
   Sku,
+  SkuView,
   Store,
   User,
+  UserBadge,
+  UserPoint,
 } from '@mdtx/database';
 import { Inject, Module, OnModuleInit } from '@nestjs/common';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
@@ -28,6 +35,7 @@ import { Repository } from 'typeorm';
       Department,
       Store,
       Sku,
+      SkuView,
       Product,
       Price,
       Quantity,
@@ -40,6 +48,12 @@ import { Repository } from 'typeorm';
       CartView,
       Order,
       OrderView,
+      Discount,
+      DiscountView,
+      UserBadge,
+      CustomerBadge,
+      UserPoint,
+      CustomerPoint,
     ]),
   ],
 })
@@ -75,7 +89,14 @@ export class AppSeedModule implements OnModuleInit {
     @InjectRepository(Order) protected readonly OrderRepo: Repository<Order>,
 
     @InjectRepository(OrderView)
-    protected readonly OrderViewRepo: Repository<OrderView>
+    protected readonly OrderViewRepo: Repository<OrderView>,
+
+    @InjectRepository(SkuView)
+    protected readonly SkuViewRepo: Repository<SkuView>,
+    @InjectRepository(Discount)
+    protected readonly DiscountRepo: Repository<Discount>,
+    @InjectRepository(DiscountView)
+    protected readonly DiscountViewRepo: Repository<DiscountView>
   ) {}
   async onModuleInit() {
     let priceLevelCount = 0;
@@ -107,7 +128,7 @@ export class AppSeedModule implements OnModuleInit {
 
     const createSku = async (product: Product, count = ++skuCount) =>
       await this.SkuRepo.save({
-        name: `SKU_${count}`,
+        name: `${product.name}_SKU_${count}`,
         upc: `1000000000${product.id}${count}`,
         product,
       });
@@ -145,8 +166,12 @@ export class AppSeedModule implements OnModuleInit {
     const createCart = async (store: Store, owner: Customer, user: User) =>
       await this.CartRepo.save({ store, owner: owner, user });
 
-    const createOrder = async (cart: Cart, sku: Sku, quantity: number) =>
-      await this.OrderRepo.save({ cart, sku, quantity });
+    const createOrder = async (
+      cart: Cart,
+      sku: Sku,
+      priceLevel: PriceLevel,
+      quantity: number
+    ) => await this.OrderRepo.save({ cart, sku, quantity, priceLevel });
 
     const user1 = await createUser();
     const user2 = await createUser();
@@ -252,5 +277,54 @@ export class AppSeedModule implements OnModuleInit {
     const qs3p3pl1 = await createQuantity(s3p3, store1);
     const qs3p3pl2 = await createQuantity(s3p3, store2);
     const qs3p3pl3 = await createQuantity(s3p3, store3);
+
+    const cart1 = await createCart(store1, customer1, user1);
+    const cart2 = await createCart(store1, customer1, user1);
+
+    const order1 = await createOrder(cart1, s1p1, pl1, 3);
+    const order2 = await createOrder(cart1, s1p2, pl1, 3);
+    const order3 = await createOrder(cart1, s1p3, pl1, 3);
+    const order4 = await createOrder(cart1, s2p1, pl1, 3);
+    const order5 = await createOrder(cart1, s2p2, pl1, 3);
+    const order6 = await createOrder(cart1, s2p3, pl1, 3);
+
+    const discount1 = await this.DiscountRepo.save({
+      name: 'D1',
+      startDate: new Date(),
+      endDate: new Date(),
+      fixed: 10,
+      skus: [s1p1, s3p1, s3p3, s3p2],
+    });
+
+    const printDiscounts = async () => {
+      const discounts = await this.DiscountViewRepo.find();
+      console.log(discounts);
+    };
+
+    const carts = await this.CartRepo.find();
+
+    const printOrders = async () => {
+      const orders = await this.OrderViewRepo.find({
+        select: ['id', 'quantity', 'price', 'fixedDiscount', 'subtotal'],
+      });
+      console.log(orders);
+    };
+
+    await printOrders();
+    const skus = await this.SkuViewRepo.find({ select: ['id', 'price'] });
+
+    await this.OrderRepo.update(5, { priceLevel: pl3 });
+    await printOrders();
+
+    // console.log(skus);
+    await printDiscounts();
+
+    await this.DiscountRepo.createQueryBuilder()
+      .relation('skus')
+      .of(discount1.id)
+      .add(s1p2.id);
+
+    await printOrders();
+    await printDiscounts();
   }
 }

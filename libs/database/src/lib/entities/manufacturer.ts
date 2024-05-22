@@ -6,7 +6,7 @@ import {
   EmailEntity,
   PhoneEntity,
   UserDetailEntity,
-} from './contact';
+} from './__factory';
 
 @Entity()
 export class Manufacturer extends DescriptionEntity implements IManufacturer {}

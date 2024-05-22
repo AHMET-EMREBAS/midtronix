@@ -1,7 +1,7 @@
 import { IStore } from '@mdtx/common';
 import { Entity, Type } from '@mdtx/core';
 import { DescriptionEntity } from './__base';
-import { AddressEntity, EmailEntity, PhoneEntity } from './contact';
+import { AddressEntity, EmailEntity, PhoneEntity } from './__factory';
 
 @Entity()
 export class Store extends DescriptionEntity implements IStore {}

@@ -85,7 +85,7 @@ export class QuantityView implements IQuantityView {
       .addSelect('m.price', 'price')
       .addSelect('m.cost', 'cost')
       .addSelect('sku.id', 'skuId')
-      .addSelect('pl.id', 'priceLevelId')
+      .addSelect('m.priceLevelId', 'priceLevelId')
       .addSelect('pl.name', 'priceLevelName')
       .from(Price, 'm')
       .leftJoin(PriceLevel, 'pl', 'pl.id = m.priceLevelId')

@@ -3,10 +3,12 @@ import {
   AddressEntity,
   EmailEntity,
   PhoneEntity,
+  PointEntity,
   UserDetailEntity,
-} from './contact';
-import { Entity, ManyRelation, Type } from '@mdtx/core';
+} from './__factory';
+import { Column, Entity, ManyRelation, Type } from '@mdtx/core';
 import { IRole } from '@mdtx/common';
+import { CustomerBadge } from './meta';
 
 /**
  * @param name string
@@ -36,6 +38,9 @@ export class CustomerRole
 export class Customer extends CredentialEntity {
   @ManyRelation(CustomerRole)
   roles?: CustomerRole[];
+
+  @ManyRelation(CustomerBadge)
+  badges?: CustomerBadge[];
 }
 
 /**
@@ -61,3 +66,9 @@ export class CustomerEmail extends EmailEntity(Customer) {}
  */
 @Entity()
 export class CustomerPhone extends PhoneEntity(Customer) {}
+
+/**
+ * Customer collects points on each purchase
+ */
+@Entity()
+export class CustomerPoint extends PointEntity(Customer) {}

@@ -77,3 +77,15 @@ export function EmailEntity<T extends IID>(owner: Type<T>) {
   }
   return EmailEntity;
 }
+
+/**
+ * Create an entity with the column points
+ * @param owner
+ * @returns
+ */
+export function PointEntity<T extends IID>(owner: Type<T>) {
+  class PointEntity extends OwnerEntity(owner) {
+    @Column({ type: 'int', default: 0 }) points!: number;
+  }
+  return PointEntity;
+}

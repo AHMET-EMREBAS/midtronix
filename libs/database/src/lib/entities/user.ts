@@ -3,10 +3,12 @@ import {
   AddressEntity,
   EmailEntity,
   PhoneEntity,
+  PointEntity,
   UserDetailEntity,
-} from './contact';
+} from './__factory';
 import { Entity, ManyRelation, Type } from '@mdtx/core';
 import { IRole } from '@mdtx/common';
+import { UserBadge } from './meta';
 
 /**
  * @param name
@@ -32,6 +34,9 @@ export class Role extends NameEntity implements IRole<Permission> {
 export class User extends CredentialEntity {
   @ManyRelation(Role)
   roles?: Role[];
+
+  @ManyRelation(UserBadge)
+  badges?: UserBadge[];
 }
 
 /**
@@ -57,3 +62,6 @@ export class UserEmail extends EmailEntity(User) {}
  */
 @Entity()
 export class UserPhone extends PhoneEntity(User) {}
+
+@Entity()
+export class UserPoint extends PointEntity(User) {}

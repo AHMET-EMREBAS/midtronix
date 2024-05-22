@@ -1,6 +1,10 @@
 import { Exclude } from 'class-transformer';
 import { Property } from '../property';
-import { DefaultValueTransformer, IntegerTransformer } from './transformers';
+import {
+  BooleanTransformer,
+  DefaultValueTransformer,
+  IntegerTransformer,
+} from './transformers';
 
 @Exclude()
 export class PaginatorDto {
@@ -13,4 +17,8 @@ export class PaginatorDto {
   @DefaultValueTransformer(0)
   @IntegerTransformer()
   skip?: number;
+
+  @Property({ type: 'boolean' })
+  @BooleanTransformer()
+  withDeleted?: boolean;
 }
