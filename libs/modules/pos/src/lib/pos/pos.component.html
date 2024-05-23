@@ -1,10 +1,8 @@
+<ng-container *ngif="posSearchEventObserver$ | async"></ng-container>
 <mdtx-pos-layout>
   <!-- Toolbar -->
   <ng-template mdtxPosLayoutToolbar>
-    <mdtx-input-pos-search
-      #posSearchComponentRef
-      (inputEvent)="handleSearchEvent($event)"
-    ></mdtx-input-pos-search>
+    <mdtx-input-pos-search #posSearchComponentRef></mdtx-input-pos-search>
   </ng-template>
 
   <!-- Product List -->

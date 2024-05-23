@@ -5,7 +5,16 @@ import { CheckoutButtonComponent } from '@mdtx/material/button';
 import { InputPosSearchComponent } from '@mdtx/material/form';
 import { PosLayoutModule } from '@mdtx/material/layout';
 import { OrderService, OrderViewService, SkuViewService } from '@mdtx/ngrx';
-import { firstValueFrom, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  firstValueFrom,
+  forkJoin,
+  map,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   IOrderRaw,
   IOrderViewRaw,
@@ -57,6 +66,8 @@ export class PosComponent implements AfterViewInit {
   storeId = 1;
   priceLevelId = 1;
 
+  posSearchEventObserver$!: Observable<any>;
+
   constructor(
     protected readonly skuViewService: SkuViewService,
     protected readonly orderViewService: OrderViewService,
@@ -66,25 +77,34 @@ export class PosComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.skuViewService.getWithQuery({ take: 1000 });
     this.reloadOrderViews();
-  }
 
-  handleSearchEvent(search: string) {
-    firstValueFrom(
-      this.skuViewService.getWithQuery({
-        barcode: QueryBuilder.EQUAL(search),
-        cartId: this.cartId,
-        priceLevelId: this.priceLevelId,
-        storeId: this.storeId,
+    this.posSearchEventObserver$ = this.posSearchComponentRef.$valueChange.pipe(
+      switchMap((search) => {
+        this.skuViewService.clearCache();
+        return forkJoin([
+          this.skuViewService.getWithQuery({
+            barcode: QueryBuilder.EQUAL(search),
+            cartId: this.cartId,
+            priceLevelId: this.priceLevelId,
+            storeId: this.storeId,
+          }),
+          this.skuViewService.getWithQuery({
+            name: QueryBuilder.CONTAIN(search),
+            cartId: this.cartId,
+            priceLevelId: this.priceLevelId,
+            storeId: this.storeId,
+          }),
+        ]).pipe(debounceTime(600));
+      }),
+      map(([set1, set2]) => {
+        const data = set1.length == 1 ? set1 : set2;
+        if (data.length == 1) {
+          const foundItem = data[0];
+          this.addProductToCartEventHandler(foundItem);
+          this.posSearchComponentRef.inputControl.setValue('');
+        }
       })
-    ).then((data) => {
-      console.log('Entities: ', data);
-
-      const foundItem = data[0];
-      if (data.length == 1) {
-        this.addProductToCartEventHandler(foundItem);
-        this.handleSearchEvent('');
-      }
-    });
+    );
   }
 
   reloadOrderViews() {
