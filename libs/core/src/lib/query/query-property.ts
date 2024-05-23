@@ -2,7 +2,7 @@
 import { applyDecorators } from '@nestjs/common';
 import { Transform } from 'class-transformer';
 import { Property } from '../property';
-import { QueryOprator, parseQueryInput } from '@mdtx/common';
+import { QueryOperator, parseQueryInput } from '@mdtx/common';
 import {
   ILike,
   In,
@@ -28,40 +28,40 @@ export function toQueryOperator(queryString: string) {
 
   const { operator, value: q } = queryInput;
 
-  switch (operator as QueryOprator) {
-    case QueryOprator.CONTAIN:
+  switch (operator as QueryOperator) {
+    case QueryOperator.CONTAIN:
       return ILike(`%${q}%`);
-    case QueryOprator.START_WITH:
+    case QueryOperator.START_WITH:
       return ILike(`${q}%`);
-    case QueryOprator.END_WITH:
+    case QueryOperator.END_WITH:
       return ILike(`%${q}`);
-    case QueryOprator.EQUAL:
+    case QueryOperator.EQUAL:
       return Equal(q);
-    case QueryOprator.IN:
+    case QueryOperator.IN:
       return In(q.split(','));
-    case QueryOprator.MORE_THAN:
+    case QueryOperator.MORE_THAN:
       return MoreThan(q);
-    case QueryOprator.LESS_THAN:
+    case QueryOperator.LESS_THAN:
       return LessThan(q);
 
-    case QueryOprator.MORE_THAN_OR_EQUAL:
+    case QueryOperator.MORE_THAN_OR_EQUAL:
       return MoreThanOrEqual(q);
-    case QueryOprator.LESS_THAN_OR_EQUAL:
+    case QueryOperator.LESS_THAN_OR_EQUAL:
       return LessThanOrEqual(q);
 
-    case QueryOprator.NOT_CONTAIN:
+    case QueryOperator.NOT_CONTAIN:
       return Not(ILike(`%${q}%`));
-    case QueryOprator.NOT_START_WITH:
+    case QueryOperator.NOT_START_WITH:
       return Not(ILike(`${q}%`));
-    case QueryOprator.NOT_END_WITH:
+    case QueryOperator.NOT_END_WITH:
       return Not(ILike(`%${q}`));
-    case QueryOprator.NOT_EQUAL:
+    case QueryOperator.NOT_EQUAL:
       return Not(ILike(`${q}`));
-    case QueryOprator.NOT_IN:
+    case QueryOperator.NOT_IN:
       return Not(In(q.split(',')));
-    case QueryOprator.NOT_LESS_THAN:
+    case QueryOperator.NOT_LESS_THAN:
       return Not(LessThan(q));
-    case QueryOprator.NOT_MORE_THAN:
+    case QueryOperator.NOT_MORE_THAN:
       return Not(MoreThan(q));
   }
 

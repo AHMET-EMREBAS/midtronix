@@ -1140,7 +1140,7 @@
         },
         {
             "name": "CreateDiscountComponent",
-            "id": "component-CreateDiscountComponent-b79abf2e063d8529c61c5ef15e4ad1e0b8c1afef00cb13cdbe2bc29ff7a2dd0998313f263afbac9612b0a50af8a694c4df4d8de5318f25bc431abab72943c071",
+            "id": "component-CreateDiscountComponent-41eb8374658c19769ef87f209875d93b3645c53cb85e18a48552a1942b705a8c854b52026db3282be5da830401481f623f0d89a37ec59b4c1fde0d5c5367b3c7",
             "file": "libs/modules/sub-modules/src/lib/discount/create-discount/create-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1211,7 +1211,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DiscountFormComponent } from '@mdtx/forms';\nimport { IDiscount } from '@mdtx/common';\nimport { DiscountService } from '@mdtx/ngrx';\n@Component({\n  selector: 'mdtx-create-discount',\n  standalone: true,\n  imports: [CommonModule, DiscountFormComponent],\n  templateUrl: './create-discount.component.html',\n  styleUrl: './create-discount.component.scss',\n  providers: [DiscountService],\n})\nexport class CreateDiscountComponent {\n  constructor(protected readonly service: DiscountService) {}\n  handleSubmit(discount: IDiscount) {\n    this.service.add(discount);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { DiscountFormComponent } from '@mdtx/forms';\r\nimport { IDiscount } from '@mdtx/common';\r\nimport { DiscountService } from '@mdtx/ngrx';\r\n@Component({\r\n  selector: 'mdtx-create-discount',\r\n  standalone: true,\r\n  imports: [CommonModule, DiscountFormComponent],\r\n  templateUrl: './create-discount.component.html',\r\n  styleUrl: './create-discount.component.scss',\r\n  providers: [DiscountService],\r\n})\r\nexport class CreateDiscountComponent {\r\n  constructor(protected readonly service: DiscountService) {}\r\n  handleSubmit(discount: IDiscount) {\r\n    this.service.add(discount);\r\n  }\r\n}\r\n",
             "styleUrl": "./create-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -1243,7 +1243,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<mdtx-discount-form (submitEvent)=\"handleSubmit($event)\"></mdtx-discount-form>\n"
+            "templateData": "<mdtx-discount-form (submitEvent)=\"handleSubmit($event)\"></mdtx-discount-form>\r\n"
         },
         {
             "name": "CreateManufacturerComponent",
@@ -4418,7 +4418,7 @@
         },
         {
             "name": "DashboardDiscountComponent",
-            "id": "component-DashboardDiscountComponent-2b8f4cfcd082dcb2b634387f3dd53b146132da004340ffd2c9d0424be4767669eecb2d5e4fbd6006bf69ca3e3c4244d6cfaf6a8fcfe6e555a1586095aed0b6cf",
+            "id": "component-DashboardDiscountComponent-1dccb9031a3fba13daf566560210a56d22bd026a73339a63cdd69937d8de74ecba1ea35d7e91f5678e4ac3b8b97bee8bee2ca2afda856e4a04d72d13a722a30e",
             "file": "libs/modules/sub-modules/src/lib/discount/dashboard-discount/dashboard-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4451,13 +4451,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-dashboard-discount',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './dashboard-discount.component.html',\n  styleUrl: './dashboard-discount.component.scss',\n})\nexport class DashboardDiscountComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-dashboard-discount',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './dashboard-discount.component.html',\r\n  styleUrl: './dashboard-discount.component.scss',\r\n})\r\nexport class DashboardDiscountComponent {}\r\n",
             "styleUrl": "./dashboard-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>dashboard-discount works!</p>\n"
+            "templateData": "<p>dashboard-discount works!</p>\r\n"
         },
         {
             "name": "DashboardManufacturerComponent",
@@ -7234,7 +7234,7 @@
         },
         {
             "name": "DeleteDiscountComponent",
-            "id": "component-DeleteDiscountComponent-823eaa0074958eb0cbefe376f7020612c67e08603c0b6816998e8a08c2cc7c995a7302be5a9616368e7ec3af16fbec2580666d4ee8d10a1190c12a7bd81e1275",
+            "id": "component-DeleteDiscountComponent-c3df39e4e8cdb37b67a38a2ccffadfad3eaa55286d070f46880c43562d59ee8cb44df5b35eeec52e0d624a3adf959a87db36a03e91956b461b661e1652df24e8",
             "file": "libs/modules/sub-modules/src/lib/discount/delete-discount/delete-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -7386,7 +7386,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  MatDialog,\n  MatDialogClose,\n  MatDialogModule,\n} from '@angular/material/dialog';\nimport { IDiscount } from '@mdtx/common';\nimport { DIALOG_DATA } from '@angular/cdk/dialog';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { DiscountService } from '@mdtx/ngrx';\nimport { MatCardModule } from '@angular/material/card';\n@Component({\n  selector: 'mdtx-delete-discount',\n  standalone: true,\n  imports: [\n    CommonModule,\n    MatCardModule,\n    MatDialogModule,\n    MatButtonModule,\n    MatIconModule,\n  ],\n  templateUrl: './delete-discount.component.html',\n  styleUrl: './delete-discount.component.scss',\n  providers: [DiscountService],\n})\nexport class DeleteDiscountComponent {\n  deletedItems: number[] = [];\n\n  constructor(\n    protected readonly service: DiscountService,\n    @Inject(DIALOG_DATA) public readonly items: IDiscount[]\n  ) {}\n\n  deleteItem(id: number) {\n    this.deletedItems.push(id);\n    this.service.delete(id);\n  }\n\n  deleteAll() {\n    this.items.forEach((e) => {\n      if (!this.deletedItems.includes(e.id)) {\n        this.service.delete(e.id);\n      }\n    });\n  }\n\n  value(item: IDiscount) {\n    return Object.values(item).join(', ');\n  }\n}\n",
+            "sourceCode": "import { Component, Inject } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport {\r\n  MatDialog,\r\n  MatDialogClose,\r\n  MatDialogModule,\r\n} from '@angular/material/dialog';\r\nimport { IDiscount } from '@mdtx/common';\r\nimport { DIALOG_DATA } from '@angular/cdk/dialog';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { DiscountService } from '@mdtx/ngrx';\r\nimport { MatCardModule } from '@angular/material/card';\r\n@Component({\r\n  selector: 'mdtx-delete-discount',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatCardModule,\r\n    MatDialogModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n  ],\r\n  templateUrl: './delete-discount.component.html',\r\n  styleUrl: './delete-discount.component.scss',\r\n  providers: [DiscountService],\r\n})\r\nexport class DeleteDiscountComponent {\r\n  deletedItems: number[] = [];\r\n\r\n  constructor(\r\n    protected readonly service: DiscountService,\r\n    @Inject(DIALOG_DATA) public readonly items: IDiscount[]\r\n  ) {}\r\n\r\n  deleteItem(id: number) {\r\n    this.deletedItems.push(id);\r\n    this.service.delete(id);\r\n  }\r\n\r\n  deleteAll() {\r\n    this.items.forEach((e) => {\r\n      if (!this.deletedItems.includes(e.id)) {\r\n        this.service.delete(e.id);\r\n      }\r\n    });\r\n  }\r\n\r\n  value(item: IDiscount) {\r\n    return Object.values(item).join(', ');\r\n  }\r\n}\r\n",
             "styleUrl": "./delete-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -7433,7 +7433,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<mat-card>\n  <mat-card-title>\n    <h3>Delete Discount</h3>\n  </mat-card-title>\n\n  <mat-card-content>\n    <p>Are you sure to delete the discount list?</p>\n    <hr />\n    @for(item of items; track item){\n    <div style=\"display: flex; gap: 1em; width: 100%\">\n      <p>{{ value(item) }}</p>\n      <button\n        #button\n        mat-icon-button\n        color=\"accent\"\n        (click)=\"deleteItem(item.id); button.disabled = true\"\n      >\n        <mat-icon #icon>delete</mat-icon>\n      </button>\n    </div>\n    }\n  </mat-card-content>\n\n  <mat-card-actions>\n    <button mat-raised-button color=\"accent\" (click)=\"deleteAll()\">\n      Delete All\n    </button>\n\n    <button mat-stroked-button color=\"primary\" matDialogClose>Close</button>\n  </mat-card-actions>\n</mat-card>\n\n<!-- <div\n  style=\"\n    display: flex;\n    flex-direction: column;\n    gap: 1em;\n    padding: 1em;\n    max-height: 400px;\n    overflow: auto;\n    padding-bottom: 3em;\n  \"\n>\n  <div\n    style=\"\n      display: flex;\n      flex-direction: column;\n      gap: 1em;\n      width: 100%;\n      position: sticky;\n      background-color: white;\n    \"\n  ></div>\n</div> -->\n"
+            "templateData": "<mat-card>\r\n  <mat-card-title>\r\n    <h3>Delete Discount</h3>\r\n  </mat-card-title>\r\n\r\n  <mat-card-content>\r\n    <p>Are you sure to delete the discount list?</p>\r\n    <hr />\r\n    @for(item of items; track item){\r\n    <div style=\"display: flex; gap: 1em; width: 100%\">\r\n      <p>{{ value(item) }}</p>\r\n      <button\r\n        #button\r\n        mat-icon-button\r\n        color=\"accent\"\r\n        (click)=\"deleteItem(item.id); button.disabled = true\"\r\n      >\r\n        <mat-icon #icon>delete</mat-icon>\r\n      </button>\r\n    </div>\r\n    }\r\n  </mat-card-content>\r\n\r\n  <mat-card-actions>\r\n    <button mat-raised-button color=\"accent\" (click)=\"deleteAll()\">\r\n      Delete All\r\n    </button>\r\n\r\n    <button mat-stroked-button color=\"primary\" matDialogClose>Close</button>\r\n  </mat-card-actions>\r\n</mat-card>\r\n\r\n<!-- <div\r\n  style=\"\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 1em;\r\n    padding: 1em;\r\n    max-height: 400px;\r\n    overflow: auto;\r\n    padding-bottom: 3em;\r\n  \"\r\n>\r\n  <div\r\n    style=\"\r\n      display: flex;\r\n      flex-direction: column;\r\n      gap: 1em;\r\n      width: 100%;\r\n      position: sticky;\r\n      background-color: white;\r\n    \"\r\n  ></div>\r\n</div> -->\r\n"
         },
         {
             "name": "DeleteManufacturerComponent",
@@ -11946,7 +11946,7 @@
         },
         {
             "name": "DiscountComponent",
-            "id": "component-DiscountComponent-ddd7d545d3c40c43c378387a625894100e0cdc012867e8a5882d84e7253b2fe352100f8e3bd8d65e7b2ef94383ac2b57a8bd6217dcd6ed128fcbb92a37d17383",
+            "id": "component-DiscountComponent-0c66321d6bc023f05e8c1a096aecf76902488d8c920777fb2371525d3f2159b4ff750bcff1e8f4e54bcc6d3af16801b711cc58161c1fe23e7ef0a75a67041d9a",
             "file": "libs/modules/sub-modules/src/lib/discount/discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -11979,13 +11979,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { ModuleLayoutComponent } from '@mdtx/material/layout';\n\n@Component({\n  selector: 'mdtx-discount',\n  standalone: true,\n  imports: [ModuleLayoutComponent],\n  templateUrl: './discount.component.html',\n  styleUrl: './discount.component.scss',\n})\nexport class DiscountComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ModuleLayoutComponent } from '@mdtx/material/layout';\r\n\r\n@Component({\r\n  selector: 'mdtx-discount',\r\n  standalone: true,\r\n  imports: [ModuleLayoutComponent],\r\n  templateUrl: './discount.component.html',\r\n  styleUrl: './discount.component.scss',\r\n})\r\nexport class DiscountComponent {}\r\n",
             "styleUrl": "./discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>discount works!</p>\n"
+            "templateData": "<p>discount works!</p>\r\n"
         },
         {
             "name": "EmsComponent",
@@ -12458,7 +12458,7 @@
         },
         {
             "name": "HomeDiscountComponent",
-            "id": "component-HomeDiscountComponent-7d7e0e553208397e5aef82f6590b7b3e5cbd2d5dd5a5e26bbfe30ce7d555e83e93aecb519690d93b5005a38623e652082b69f1bd76864a455917ffe0f47886b8",
+            "id": "component-HomeDiscountComponent-ba42a58b2b5361da627d40cc545316548c7b8f75395f1dc4e6ede0cdc37012ff217c5be64d32766478a8d35dba4d40f284fa240bafa178327476d3bb95e43c6c",
             "file": "libs/modules/sub-modules/src/lib/discount/home-discount/home-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -12491,13 +12491,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-home-discount',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './home-discount.component.html',\n  styleUrl: './home-discount.component.scss',\n})\nexport class HomeDiscountComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-home-discount',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './home-discount.component.html',\r\n  styleUrl: './home-discount.component.scss',\r\n})\r\nexport class HomeDiscountComponent {}\r\n",
             "styleUrl": "./home-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>home-discount works!</p>\n"
+            "templateData": "<p>home-discount works!</p>\r\n"
         },
         {
             "name": "HomeManufacturerComponent",
@@ -13941,6 +13941,268 @@
             "templateData": "<p>notification works!</p>\r\n"
         },
         {
+            "name": "OrderCardComponent",
+            "id": "component-OrderCardComponent-78ccf9edd5240380b489acca9656584d9f4f9600828a6fed85ad6050489e377de2d74928cda004017d252de01fb2bfa96d8ae6f12100f67c9ed434a3ff80f00f",
+            "file": "libs/modules/pos/src/lib/order-card/order-card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-order-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./order-card.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "orderView",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "IOrderViewRaw",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "deleteEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "quantityEvent",
+                    "defaultValue": "new EventEmitter<-1 | 1>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCardModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputQuantityComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "CloseButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { IOrderViewRaw } from '@mdtx/common';\r\nimport { MatCardModule } from '@angular/material/card';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { InputQuantityComponent } from '@mdtx/material/form';\r\nimport { CloseButtonComponent } from '@mdtx/material/button';\r\n\r\n@Component({\r\n  selector: 'mdtx-order-card',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatCardModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    InputQuantityComponent,\r\n    CloseButtonComponent,\r\n  ],\r\n  templateUrl: './order-card.component.html',\r\n  styleUrl: './order-card.component.scss',\r\n})\r\nexport class OrderCardComponent {\r\n  @Input() orderView!: IOrderViewRaw;\r\n  @Output() quantityEvent = new EventEmitter<-1 | 1>();\r\n  @Output() deleteEvent = new EventEmitter();\r\n}\r\n",
+            "styleUrl": "./order-card.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"order-card\" *ngIf=\"orderView as o\">\r\n  <div class=\"order-actions\">\r\n    <mdtx-input-quantity\r\n      [value]=\"o.quantity\"\r\n      (quantityValueChange)=\"quantityEvent.emit($event)\"\r\n      layoutDirection=\"verticle\"\r\n    ></mdtx-input-quantity>\r\n  </div>\r\n\r\n  <div class=\"order-content\">\r\n    <strong>{{ o.name }}</strong>\r\n    <small>{{ o.barcode }}</small>\r\n    <small>$ {{ o.price }}</small>\r\n    <strong>$ {{ o.subtotal }}</strong>\r\n  </div>\r\n\r\n  <div class=\"order-actions\">\r\n    <mdtx-close-button (click)=\"deleteEvent.emit()\"> </mdtx-close-button>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "OrderCardListComponent",
+            "id": "component-OrderCardListComponent-2b4b025badef09582774e32513b43793eb09c7cb1001f6529d54a89e1446e2df42b0097bd75195dd8e7069d2da798b4b7aa1f00c4047c4cb6cfe60e365a79b28",
+            "file": "libs/modules/pos/src/lib/order-card-list/order-card-list.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "OrderViewService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "OrderService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-order-card-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./order-card-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "cartId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "orders",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "IOrderViewRaw[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "deleteOrderEvent",
+                    "defaultValue": "new EventEmitter<IOrderViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "updateOrderEvent",
+                    "defaultValue": "new EventEmitter<IOrderViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "deleteEventHandler",
+                    "args": [
+                        {
+                            "name": "order",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "order",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getCount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "quantityEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "\"1\" | ",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "order",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "\"1\" | ",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "order",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "OrderCardComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  ChangeDetectionStrategy,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { OrderService, OrderViewService } from '@mdtx/ngrx';\r\n\r\nimport { IOrderViewRaw } from '@mdtx/common';\r\nimport { OrderCardComponent } from '../order-card/order-card.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-order-card-list',\r\n  standalone: true,\r\n  imports: [CommonModule, OrderCardComponent],\r\n  templateUrl: './order-card-list.component.html',\r\n  styleUrl: './order-card-list.component.scss',\r\n  providers: [OrderViewService, OrderService],\r\n  changeDetection: ChangeDetectionStrategy.OnPush,\r\n})\r\nexport class OrderCardListComponent {\r\n  @Input() orders!: IOrderViewRaw[];\r\n  @Input() cartId!: number;\r\n  @Output() updateOrderEvent = new EventEmitter<IOrderViewRaw>();\r\n  @Output() deleteOrderEvent = new EventEmitter<IOrderViewRaw>();\r\n  getCount() {\r\n    if (this.orders && this.orders.length > 0) {\r\n      return this.orders\r\n        .map((e) => e.quantity)\r\n        .reduce((p, c) => p + c) as number;\r\n    }\r\n\r\n    return 0;\r\n  }\r\n\r\n  quantityEventHandler(event: 1 | -1, order: IOrderViewRaw) {\r\n    this.updateOrderEvent.emit({ ...order, quantity: order.quantity + event });\r\n  }\r\n\r\n  deleteEventHandler(order: IOrderViewRaw) {\r\n    this.deleteOrderEvent.emit(order);\r\n  }\r\n}\r\n",
+            "styleUrl": "./order-card-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<strong>Count: {{ getCount() }}</strong>\r\n<div style=\"display: flex; flex-direction: column; gap: 3px\">\r\n  @for(o of orders; track o ){\r\n  <mdtx-order-card\r\n    [orderView]=\"o\"\r\n    (quantityEvent)=\"quantityEventHandler($event, o)\"\r\n    (deleteEvent)=\"deleteEventHandler(o)\"\r\n  ></mdtx-order-card>\r\n  }\r\n</div>\r\n"
+        },
+        {
             "name": "PermissionComponent",
             "id": "component-PermissionComponent-47bd648aa796dbad924bfda27685d4f5a0d865c3f5cefd586496f35b0f140ce7e6f739408c2206d364bcd81e42b1b341f6a5afe995b044725fe26ae537fcb05a",
             "file": "libs/modules/sub-modules/src/lib/permission/permission.component.ts",
@@ -14024,7 +14286,7 @@
         },
         {
             "name": "PosComponent",
-            "id": "component-PosComponent-675e45b111ffab4f63bea8857d7b2925dfdaaafdaf9a3c335a16f370e0f43794162726d712b0ed60a8ac2225fad3139ec75e430f52ffe17cc29cf94ab8d34da1",
+            "id": "component-PosComponent-a21bf8877bbf018f0a4bebb9309f1064bf0b5052e436a8d067dc41c9171c9e9c922876a98036b362ded9448ffeeaa952b36d8397cc214ffa9cf904f2d145a107",
             "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -14033,6 +14295,14 @@
             "providers": [
                 {
                     "name": "SkuViewService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "OrderService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "OrderViewService",
                     "type": "injectable"
                 }
             ],
@@ -14048,144 +14318,142 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "barcodeSearch",
+                    "name": "cartId",
+                    "defaultValue": "2",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "InputPosSearchComponent",
+                    "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 46,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'barcodeSearch'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
+                    "line": 54
                 },
                 {
-                    "name": "defaultPriceLevel",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "IPriceLevelRaw",
-                    "optional": true,
-                    "description": "",
-                    "line": 61
-                },
-                {
-                    "name": "defaultStore",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "IStoreRaw",
-                    "optional": true,
-                    "description": "",
-                    "line": 60
-                },
-                {
-                    "name": "items$",
-                    "defaultValue": "this.skuService.entities$.pipe(\r\n    tap((data) => {\r\n      if (data.length === 1) {\r\n        this.handleAddProductToCartEvent(data[0]);\r\n      }\r\n    })\r\n  )",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Observable<ISkuViewRaw[]>",
-                    "optional": false,
-                    "description": "",
-                    "line": 50
-                },
-                {
-                    "name": "itemsInCart",
-                    "defaultValue": "new Map<string, ISkuViewRaw>()",
+                    "name": "currentOrders",
+                    "defaultValue": "new Map<string, IOrderRaw | IOrderViewRaw>()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 45
                 },
                 {
-                    "name": "priceLevelSearch",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "PriceLevelSearchComponent",
-                    "optional": false,
-                    "description": "",
-                    "line": 45,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'priceLevelSearch'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
-                },
-                {
-                    "name": "searchObserver$",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Observable<any>",
-                    "optional": false,
-                    "description": "",
-                    "line": 48
-                },
-                {
-                    "name": "storeSearch",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "StoreSearchComponent",
-                    "optional": false,
-                    "description": "",
-                    "line": 44,
-                    "decorators": [
-                        {
-                            "name": "ViewChild",
-                            "stringifiedArguments": "'storeSearch'"
-                        }
-                    ],
-                    "modifierKind": [
-                        170
-                    ]
-                },
-                {
-                    "name": "subtotal$",
-                    "defaultValue": "new BehaviorSubject(0)",
+                    "name": "orders$",
+                    "defaultValue": "this.orderViewService.entities$.pipe(\r\n    tap((data) => {\r\n      for (const o of data) {\r\n        this.currentOrders.set(o.barcode, o);\r\n      }\r\n    })\r\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 63
+                    "line": 47
+                },
+                {
+                    "name": "priceLevelId",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 56
+                },
+                {
+                    "name": "products$",
+                    "defaultValue": "this.skuViewService.entities$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "storeId",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "getItemsInCart",
-                    "args": [],
+                    "name": "__deleteOrder",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 124,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "__updateOrderQuantity",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 131,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "addProductToCartEventHandler",
+                    "args": [
+                        {
+                            "name": "item",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 116,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "handleAddProductToCartEvent",
-                    "args": [
-                        {
-                            "name": "item",
-                            "type": "ISkuViewRaw",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 123,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ],
                     "jsdoctags": [
                         {
                             "name": "item",
@@ -14199,11 +14467,11 @@
                     ]
                 },
                 {
-                    "name": "handleDeleteProductEvent",
+                    "name": "deleteOrderEventHandler",
                     "args": [
                         {
-                            "name": "skuView",
-                            "type": "ISkuViewRaw",
+                            "name": "event",
+                            "type": "IOrderViewRaw",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -14211,13 +14479,13 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 139,
+                    "line": 119,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "skuView",
-                            "type": "ISkuViewRaw",
+                            "name": "event",
+                            "type": "IOrderViewRaw",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -14225,16 +14493,6 @@
                             }
                         }
                     ]
-                },
-                {
-                    "name": "handleQuantityChangeEvent",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 144,
-                    "deprecated": false,
-                    "deprecationMessage": ""
                 },
                 {
                     "name": "handleSearchEvent",
@@ -14249,7 +14507,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 104,
+                    "line": 69,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14270,29 +14528,47 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 67,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "updateProductList",
+                    "name": "reloadOrderViews",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 96,
+                    "line": 84,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "updateTotal",
-                    "args": [],
+                    "name": "updateOrderEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 148,
+                    "line": 114,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -14340,12 +14616,16 @@
                 {
                     "name": "PriceLevelSearchComponent",
                     "type": "component"
+                },
+                {
+                    "name": "OrderCardListComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CheckoutButtonComponent } from '@mdtx/material/button';\r\nimport { InputPosSearchComponent } from '@mdtx/material/form';\r\nimport { PosLayoutModule } from '@mdtx/material/layout';\r\nimport { SkuViewService } from '@mdtx/ngrx';\r\nimport { BehaviorSubject, Observable, debounceTime, merge, tap } from 'rxjs';\r\nimport {\r\n  IPriceLevelRaw,\r\n  ISkuViewRaw,\r\n  IStoreRaw,\r\n  QueryOprator,\r\n  createQueryValue,\r\n} from '@mdtx/common';\r\nimport {\r\n  ProductCardListComponent,\r\n  ProductSmallCardListComponent,\r\n} from '@mdtx/material/card';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    CheckoutButtonComponent,\r\n    InputPosSearchComponent,\r\n    PosLayoutModule,\r\n    ProductCardListComponent,\r\n    ProductSmallCardListComponent,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    StoreSearchComponent,\r\n    PriceLevelSearchComponent,\r\n  ],\r\n  templateUrl: './pos.component.html',\r\n  styleUrl: './pos.component.scss',\r\n  providers: [SkuViewService],\r\n})\r\nexport class PosComponent implements AfterViewInit {\r\n  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;\r\n  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;\r\n  @ViewChild('barcodeSearch') barcodeSearch!: InputPosSearchComponent;\r\n\r\n  searchObserver$!: Observable<any>;\r\n\r\n  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$.pipe(\r\n    tap((data) => {\r\n      if (data.length === 1) {\r\n        this.handleAddProductToCartEvent(data[0]);\r\n      }\r\n    })\r\n  );\r\n\r\n  itemsInCart = new Map<string, ISkuViewRaw>();\r\n\r\n  defaultStore?: IStoreRaw;\r\n  defaultPriceLevel?: IPriceLevelRaw;\r\n\r\n  subtotal$ = new BehaviorSubject(0);\r\n\r\n  constructor(protected readonly skuService: SkuViewService) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.skuService.clearCache();\r\n    this.updateProductList();\r\n\r\n    this.searchObserver$ = merge(\r\n      this.barcodeSearch.$valueChange,\r\n      this.storeSearch.inputControl.valueChanges,\r\n      this.priceLevelSearch.inputControl.valueChanges\r\n    ).pipe(\r\n      debounceTime(600),\r\n      tap(() => {\r\n        const items = this.getItemsInCart();\r\n        if (items) {\r\n          for (const item of items) {\r\n\r\n            console.log(\"Updating M>...\")\r\n            this.skuService.getWithQuery({\r\n              barcode: item.barcode,\r\n              storeId: this.storeSearch.inputControl.value?.id ?? 1,\r\n              priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,\r\n            });\r\n          }\r\n        }\r\n\r\n        console.log('Updating Something');\r\n      })\r\n    );\r\n  }\r\n\r\n  updateProductList() {\r\n    this.skuService.getWithQuery({\r\n      take: 10000,\r\n      storeId: this.storeSearch.inputControl.value?.id ?? 1,\r\n      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,\r\n    });\r\n  }\r\n\r\n  handleSearchEvent(search: string) {\r\n    this.skuService.clearCache();\r\n    this.skuService.getWithQuery({\r\n      barcode: createQueryValue({\r\n        operator: QueryOprator.EQUAL,\r\n        value: search,\r\n      }),\r\n      storeId: this.storeSearch.inputControl.value?.id ?? 1,\r\n      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,\r\n    });\r\n  }\r\n\r\n  getItemsInCart() {\r\n    if (this.itemsInCart.size > 0) {\r\n      return [...this.itemsInCart.entries()].map(([, value]) => value);\r\n    }\r\n    return undefined;\r\n  }\r\n\r\n  handleAddProductToCartEvent(item: ISkuViewRaw) {\r\n    const foundItem = this.itemsInCart.get(item.barcode);\r\n\r\n    if (foundItem) {\r\n      foundItem.quantity = foundItem.quantity + 1;\r\n      this.itemsInCart.delete(item.barcode);\r\n      this.itemsInCart.set(foundItem.barcode, foundItem);\r\n    } else {\r\n      this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });\r\n    }\r\n    this.updateTotal();\r\n\r\n    this.barcodeSearch.inputControl.setValue('');\r\n    this.updateProductList();\r\n  }\r\n\r\n  handleDeleteProductEvent(skuView: ISkuViewRaw) {\r\n    this.itemsInCart.delete(skuView.barcode);\r\n    this.updateTotal();\r\n  }\r\n\r\n  handleQuantityChangeEvent() {\r\n    this.updateTotal();\r\n  }\r\n\r\n  updateTotal() {\r\n    const items = this.getItemsInCart();\r\n    const itemPrices = items\r\n      ?.map((e) => parseFloat(e.price + '') * (e.quantity ?? 1))\r\n      .filter((e) => e);\r\n\r\n    if (itemPrices && itemPrices.length > 0) {\r\n      const subtotal = itemPrices.reduce((p, c) => p! + c!);\r\n      this.subtotal$.next(subtotal);\r\n    } else {\r\n      this.subtotal$.next(0);\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { CheckoutButtonComponent } from '@mdtx/material/button';\r\nimport { InputPosSearchComponent } from '@mdtx/material/form';\r\nimport { PosLayoutModule } from '@mdtx/material/layout';\r\nimport { OrderService, OrderViewService, SkuViewService } from '@mdtx/ngrx';\r\nimport { firstValueFrom, tap } from 'rxjs';\r\nimport {\r\n  IOrderRaw,\r\n  IOrderViewRaw,\r\n  ISkuViewRaw,\r\n  QueryBuilder,\r\n} from '@mdtx/common';\r\nimport {\r\n  ProductCardListComponent,\r\n  ProductSmallCardListComponent,\r\n} from '@mdtx/material/card';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';\r\nimport { OrderCardListComponent } from '../order-card-list/order-card-list.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    CheckoutButtonComponent,\r\n    InputPosSearchComponent,\r\n    PosLayoutModule,\r\n    ProductCardListComponent,\r\n    ProductSmallCardListComponent,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    StoreSearchComponent,\r\n    PriceLevelSearchComponent,\r\n    OrderCardListComponent,\r\n  ],\r\n  templateUrl: './pos.component.html',\r\n  styleUrl: './pos.component.scss',\r\n  providers: [SkuViewService, OrderService, OrderViewService],\r\n})\r\nexport class PosComponent implements AfterViewInit {\r\n  currentOrders = new Map<string, IOrderRaw | IOrderViewRaw>();\r\n  products$ = this.skuViewService.entities$;\r\n  orders$ = this.orderViewService.entities$.pipe(\r\n    tap((data) => {\r\n      for (const o of data) {\r\n        this.currentOrders.set(o.barcode, o);\r\n      }\r\n    })\r\n  );\r\n  cartId = 2;\r\n  storeId = 1;\r\n  priceLevelId = 1;\r\n\r\n  constructor(\r\n    protected readonly skuViewService: SkuViewService,\r\n    protected readonly orderViewService: OrderViewService,\r\n    protected readonly orderService: OrderService\r\n  ) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    this.skuViewService.getWithQuery({ take: 1000 });\r\n    this.reloadOrderViews();\r\n  }\r\n\r\n  handleSearchEvent(search: string) {\r\n    this.skuViewService\r\n      .getWithQuery({\r\n        barcode: QueryBuilder.EQUAL(search),\r\n        cartId: this.cartId,\r\n        priceLevelId: this.priceLevelId,\r\n        storeId: this.storeId,\r\n      })\r\n      .pipe(\r\n        tap((data) => {\r\n          console.log(data);\r\n        })\r\n      );\r\n  }\r\n\r\n  reloadOrderViews() {\r\n    this.orderViewService.clearCache();\r\n    this.orderViewService.getWithQuery({\r\n      take: 10000,\r\n      cartId: this.cartId,\r\n    });\r\n  }\r\n\r\n  async addProductToCartEventHandler(item: ISkuViewRaw) {\r\n    const found = this.currentOrders.get(item.barcode);\r\n\r\n    if (found) {\r\n      const newQuantity = found.quantity + 1;\r\n      this.orderService.update({ id: found.id, quantity: newQuantity });\r\n      this.currentOrders.set(item.barcode, { ...found, quantity: newQuantity });\r\n    } else {\r\n      const saved = await firstValueFrom(\r\n        this.orderService.addOrder({\r\n          cart: { id: this.cartId },\r\n          sku: { id: item.id },\r\n          priceLevel: { id: this.priceLevelId },\r\n          quantity: 1,\r\n        })\r\n      );\r\n      this.currentOrders.set(item.barcode, saved);\r\n    }\r\n\r\n    this.reloadOrderViews();\r\n  }\r\n\r\n  updateOrderEventHandler(event: IOrderViewRaw) {\r\n    this.__updateOrderQuantity(event);\r\n    this.reloadOrderViews();\r\n  }\r\n\r\n  deleteOrderEventHandler(event: IOrderViewRaw) {\r\n    this.__deleteOrder(event);\r\n    this.reloadOrderViews();\r\n  }\r\n\r\n  __deleteOrder(event: IOrderViewRaw) {\r\n    console.log('Deleting item from current orders.');\r\n    this.currentOrders.delete(event.barcode);\r\n    console.log('Deleting item from Database.');\r\n    this.orderService.deleteItem(event.id);\r\n  }\r\n\r\n  __updateOrderQuantity(event: IOrderViewRaw) {\r\n    const newQuantity = event.quantity;\r\n    if (newQuantity <= 0) {\r\n      this.__deleteOrder(event);\r\n    } else {\r\n      console.log('Updating item from current list.');\r\n      this.currentOrders.set(event.barcode, event);\r\n      console.log('Updating item from Database.');\r\n      this.orderService.update({ id: event.id, quantity: event.quantity });\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./pos.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -14357,17 +14637,47 @@
                 "deprecationMessage": "",
                 "args": [
                     {
-                        "name": "skuService",
+                        "name": "skuViewService",
                         "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "orderViewService",
+                        "type": "OrderViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "orderService",
+                        "type": "OrderService",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 63,
+                "line": 56,
                 "jsdoctags": [
                     {
-                        "name": "skuService",
+                        "name": "skuViewService",
                         "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "orderViewService",
+                        "type": "OrderViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "orderService",
+                        "type": "OrderService",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -14380,7 +14690,7 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<ng-container *ngIf=\"searchObserver$ | async\"></ng-container>\r\n\r\n<mdtx-pos-layout>\r\n  <!-- Toolbar -->\r\n  <ng-template mdtxPosLayoutToolbar>\r\n    <mdtx-input-pos-search\r\n      #barcodeSearch\r\n      (inputEvent)=\"handleSearchEvent($event)\"\r\n    ></mdtx-input-pos-search>\r\n\r\n    <mdtx-store-search\r\n      #storeSearch\r\n      [defaultStore]=\"defaultStore\"\r\n    ></mdtx-store-search>\r\n\r\n    <mdtx-price-level-search\r\n      #priceLevelSearch\r\n      [defaultPriceLevel]=\"defaultPriceLevel\"\r\n    ></mdtx-price-level-search>\r\n  </ng-template>\r\n\r\n  <!-- Product List -->\r\n  <ng-template mdtxPosLayoutProductList>\r\n    <mdtx-product-card-list\r\n      *ngIf=\"items$ | async as __items\"\r\n      [products]=\"__items\"\r\n      (addProductToCartEvent)=\"handleAddProductToCartEvent($event)\"\r\n    ></mdtx-product-card-list>\r\n  </ng-template>\r\n\r\n  <!-- Cart List -->\r\n  <ng-template mdtxPosLayoutCartList>\r\n    <mdtx-product-small-card-list\r\n      *ngIf=\"getItemsInCart() as __itemsInCart\"\r\n      [products]=\"__itemsInCart\"\r\n      (deleteProductEvent)=\"handleDeleteProductEvent($event)\"\r\n      (quantityChangeEvent)=\"handleQuantityChangeEvent()\"\r\n    ></mdtx-product-small-card-list>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutCartPrice>\r\n    <mdtx-checkout-button\r\n      [subtotal]=\"(subtotal$ | async) || 0\"\r\n    ></mdtx-checkout-button>\r\n  </ng-template>\r\n</mdtx-pos-layout>\r\n"
+            "templateData": "<mdtx-pos-layout>\r\n  <!-- Toolbar -->\r\n  <ng-template mdtxPosLayoutToolbar>\r\n    <mdtx-input-pos-search\r\n      (inputEvent)=\"handleSearchEvent($event)\"\r\n    ></mdtx-input-pos-search>\r\n  </ng-template>\r\n\r\n  <!-- Product List -->\r\n  <ng-template mdtxPosLayoutProductList>\r\n    <mdtx-product-card-list\r\n      *ngIf=\"products$ | async as products\"\r\n      [products]=\"products\"\r\n      (addProductToCartEvent)=\"addProductToCartEventHandler($event)\"\r\n    ></mdtx-product-card-list>\r\n  </ng-template>\r\n\r\n  <!-- Cart List -->\r\n  <ng-template mdtxPosLayoutCartList>\r\n    <mdtx-order-card-list\r\n      *ngIf=\"orders$ | async as orders\"\r\n      [orders]=\"orders\"\r\n      (updateOrderEvent)=\"updateOrderEventHandler($event)\"\r\n      (deleteOrderEvent)=\"deleteOrderEventHandler($event)\"\r\n    ></mdtx-order-card-list>\r\n  </ng-template>\r\n\r\n  <ng-template mdtxPosLayoutCartPrice>\r\n    <mdtx-checkout-button [subtotal]=\"0\"></mdtx-checkout-button>\r\n  </ng-template>\r\n</mdtx-pos-layout>\r\n"
         },
         {
             "name": "PriceComponent",
@@ -15412,7 +15722,7 @@
         },
         {
             "name": "UpdateDiscountComponent",
-            "id": "component-UpdateDiscountComponent-c4adf7068c051cde2a03b10eef33be0fa4d83f2c4ebd64f42e5d795aaa409d7efd87d85da5ff290c676ac0e4c07540fa2ce69ac6e89b9477aa4484f98cbb5e54",
+            "id": "component-UpdateDiscountComponent-3dcefbd991323b6002a0f14a9888cfe213b7d81d406ca07b0c008750f967ec346731a95d7e4d743281978aa35e740de0ed920c133e1aefc0ef1ca14b2e805a99",
             "file": "libs/modules/sub-modules/src/lib/discount/update-discount/update-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -15445,13 +15755,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-update-discount',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './update-discount.component.html',\n  styleUrl: './update-discount.component.scss',\n})\nexport class UpdateDiscountComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-update-discount',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './update-discount.component.html',\r\n  styleUrl: './update-discount.component.scss',\r\n})\r\nexport class UpdateDiscountComponent {}\r\n",
             "styleUrl": "./update-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<p>update-discount works!</p>\n"
+            "templateData": "<p>update-discount works!</p>\r\n"
         },
         {
             "name": "UpdateManufacturerComponent",
@@ -17930,7 +18240,7 @@
         },
         {
             "name": "ViewDiscountComponent",
-            "id": "component-ViewDiscountComponent-747c86a3747fe29071594e1523605c198fb4c1fb784c5ff0386eb4526b935fecf6a1da82880e38117b2dda739466f57fa01cecfc13334bb8a11fbb6c5fd3f605",
+            "id": "component-ViewDiscountComponent-7c4286d144511baefebab6ef69dba8304bdd9a38b64a3b4c511aefc410b5e36649e816ee1a913b9066fab61e54d9a0a9266581f26ad8b909c843cca69da8f036",
             "file": "libs/modules/sub-modules/src/lib/discount/view-discount/view-discount.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -18010,7 +18320,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { DiscountTableComponent } from '@mdtx/tables';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { IDiscount } from '@mdtx/common';\n\nimport { MatDialog, MatDialogModule } from '@angular/material/dialog';\nimport { DeleteDiscountComponent } from '../delete-discount/delete-discount.component';\n\n@Component({\n  selector: 'mdtx-view-discount',\n  standalone: true,\n  imports: [CommonModule, DiscountTableComponent, MatDialogModule],\n  templateUrl: './view-discount.component.html',\n  styleUrl: './view-discount.component.scss',\n})\nexport class ViewDiscountComponent {\n  constructor(\n    protected readonly router: Router,\n    protected readonly route: ActivatedRoute,\n    protected readonly matDialog: MatDialog\n  ) {}\n\n  createItem() {\n    this.router.navigate(['..', 'create'], { relativeTo: this.route });\n  }\n\n  deleteItems(items: IDiscount[]) {\n    console.log(items, '<<< items to be deleted!');\n    this.matDialog.open(DeleteDiscountComponent, { data: [...items] });\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { DiscountTableComponent } from '@mdtx/tables';\r\nimport { ActivatedRoute, Router } from '@angular/router';\r\nimport { IDiscount } from '@mdtx/common';\r\n\r\nimport { MatDialog, MatDialogModule } from '@angular/material/dialog';\r\nimport { DeleteDiscountComponent } from '../delete-discount/delete-discount.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-view-discount',\r\n  standalone: true,\r\n  imports: [CommonModule, DiscountTableComponent, MatDialogModule],\r\n  templateUrl: './view-discount.component.html',\r\n  styleUrl: './view-discount.component.scss',\r\n})\r\nexport class ViewDiscountComponent {\r\n  constructor(\r\n    protected readonly router: Router,\r\n    protected readonly route: ActivatedRoute,\r\n    protected readonly matDialog: MatDialog\r\n  ) {}\r\n\r\n  createItem() {\r\n    this.router.navigate(['..', 'create'], { relativeTo: this.route });\r\n  }\r\n\r\n  deleteItems(items: IDiscount[]) {\r\n    console.log(items, '<<< items to be deleted!');\r\n    this.matDialog.open(DeleteDiscountComponent, { data: [...items] });\r\n  }\r\n}\r\n",
             "styleUrl": "./view-discount.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -18072,7 +18382,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<mdtx-discount-table\n  (addEvent)=\"createItem()\"\n  (deleteEvent)=\"deleteItems($event)\"\n></mdtx-discount-table>\n"
+            "templateData": "<mdtx-discount-table\r\n  (addEvent)=\"createItem()\"\r\n  (deleteEvent)=\"deleteItems($event)\"\r\n></mdtx-discount-table>\r\n"
         },
         {
             "name": "ViewManufacturerComponent",
@@ -21491,7 +21801,7 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -21501,7 +21811,7 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -21585,7 +21895,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -21811,6 +22121,46 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -21862,46 +22212,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -22335,7 +22645,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -22345,7 +22655,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -22355,7 +22665,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -22365,7 +22675,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
             },
             {
                 "name": "Heading",
@@ -23815,17 +24125,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PosComponent>",
-                "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CategoryComponent>",
-                "defaultValue": "{\r\n  component: CategoryComponent,\r\n  title: 'CategoryComponent',\r\n}"
+                "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n              Order: 'Orders',\r\n              OrderView: 'OrderViews',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n              Order: {},\r\n              OrderView: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -23836,6 +24136,16 @@
                 "deprecationMessage": "",
                 "type": "Meta<CartComponent>",
                 "defaultValue": "{\r\n  component: CartComponent,\r\n  title: 'CartComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CategoryComponent>",
+                "defaultValue": "{\r\n  component: CategoryComponent,\r\n  title: 'CategoryComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -23915,7 +24225,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DiscountComponent>",
-                "defaultValue": "{\n  component: DiscountComponent,\n  title: 'DiscountComponent',\n}"
+                "defaultValue": "{\r\n  component: DiscountComponent,\r\n  title: 'DiscountComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24141,6 +24451,46 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CreateCartComponent>",
+                "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DeleteCartComponent>",
+                "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<UpdateCartComponent>",
+                "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewCartComponent>",
+                "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -24196,46 +24546,6 @@
                 "deprecationMessage": "",
                 "type": "Meta<ViewCategoryComponent>",
                 "defaultValue": "{\r\n  component: ViewCategoryComponent,\r\n  title: 'ViewCategoryComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Category: 'Categories',\r\n            },\r\n            entityMetadata: {\r\n              Category: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CreateCartComponent>",
-                "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DeleteCartComponent>",
-                "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<UpdateCartComponent>",
-                "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ViewCartComponent>",
-                "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -24665,7 +24975,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CreateDiscountComponent>",
-                "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Discount: {},\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: CreateDiscountComponent,\r\n  title: 'CreateDiscountComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Discount: 'Discounts',\r\n              Sku: 'Skus',\r\n            },\r\n            entityMetadata: {\r\n              Discount: {},\r\n              Sku: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -24675,7 +24985,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<DeleteDiscountComponent>",
-                "defaultValue": "{\n  component: DeleteDiscountComponent,\n  title: 'DeleteDiscountComponent',\n}"
+                "defaultValue": "{\r\n  component: DeleteDiscountComponent,\r\n  title: 'DeleteDiscountComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24685,7 +24995,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<UpdateDiscountComponent>",
-                "defaultValue": "{\n  component: UpdateDiscountComponent,\n  title: 'UpdateDiscountComponent',\n}"
+                "defaultValue": "{\r\n  component: UpdateDiscountComponent,\r\n  title: 'UpdateDiscountComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24695,7 +25005,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<ViewDiscountComponent>",
-                "defaultValue": "{\n  component: ViewDiscountComponent,\n  title: 'ViewDiscountComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        importProvidersFrom(RouterModule.forRoot([])),\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n            },\n            entityMetadata: {\n              Discount: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\r\n  component: ViewDiscountComponent,\r\n  title: 'ViewDiscountComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Discount: 'Discounts',\r\n            },\r\n            entityMetadata: {\r\n              Discount: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -26151,7 +26461,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -26161,7 +26471,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -26245,7 +26555,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -26471,6 +26781,46 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -26522,46 +26872,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -26995,7 +27305,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -27005,7 +27315,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -27015,7 +27325,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -27025,7 +27335,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n}"
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -28499,8 +28809,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CategoryComponent>",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "rawtype": "StoryObj<CartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -28510,8 +28820,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "rawtype": "StoryObj<CategoryComponent>",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -28851,6 +29161,50 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
+                "rawtype": "StoryObj<CreateCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DeleteCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<UpdateCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
                 "rawtype": "StoryObj<CreateCategoryComponent>",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
@@ -28908,50 +29262,6 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ViewCategoryComponent>",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<CreateCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<DeleteCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<UpdateCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<ViewCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31375,45 +31685,13 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PosComponent>",
-                    "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                    "defaultValue": "{\r\n  component: PosComponent,\r\n  title: 'PosComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n              Order: 'Orders',\r\n              OrderView: 'OrderViews',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n              Order: {},\r\n              OrderView: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CategoryComponent>",
-                    "defaultValue": "{\r\n  component: CategoryComponent,\r\n  title: 'CategoryComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -31446,6 +31724,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CategoryComponent>",
+                    "defaultValue": "{\r\n  component: CategoryComponent,\r\n  title: 'CategoryComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -31685,7 +31995,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -31695,7 +32005,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DiscountComponent>",
-                    "defaultValue": "{\n  component: DiscountComponent,\n  title: 'DiscountComponent',\n}"
+                    "defaultValue": "{\r\n  component: DiscountComponent,\r\n  title: 'DiscountComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -31705,7 +32015,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/manufacturer/manufacturer.component.stories.ts": [
@@ -32412,6 +32722,134 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
+            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CreateCartComponent>",
+                    "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DeleteCartComponent>",
+                    "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<UpdateCartComponent>",
+                    "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewCartComponent>",
+                    "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
             "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -32598,134 +33036,6 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CreateCartComponent>",
-                    "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DeleteCartComponent>",
-                    "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<UpdateCartComponent>",
-                    "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ViewCartComponent>",
-                    "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -34085,7 +34395,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -34095,7 +34405,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CreateDiscountComponent>",
-                    "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Discount: {},\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: CreateDiscountComponent,\r\n  title: 'CreateDiscountComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Discount: 'Discounts',\r\n              Sku: 'Skus',\r\n            },\r\n            entityMetadata: {\r\n              Discount: {},\r\n              Sku: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -34105,7 +34415,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/discount/delete-discount/delete-discount.component.stories.ts": [
@@ -34117,7 +34427,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -34127,7 +34437,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<DeleteDiscountComponent>",
-                    "defaultValue": "{\n  component: DeleteDiscountComponent,\n  title: 'DeleteDiscountComponent',\n}"
+                    "defaultValue": "{\r\n  component: DeleteDiscountComponent,\r\n  title: 'DeleteDiscountComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -34137,7 +34447,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/discount/update-discount/update-discount.component.stories.ts": [
@@ -34149,7 +34459,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -34159,7 +34469,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<UpdateDiscountComponent>",
-                    "defaultValue": "{\n  component: UpdateDiscountComponent,\n  title: 'UpdateDiscountComponent',\n}"
+                    "defaultValue": "{\r\n  component: UpdateDiscountComponent,\r\n  title: 'UpdateDiscountComponent',\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -34169,7 +34479,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/discount/view-discount/view-discount.component.stories.ts": [
@@ -34181,7 +34491,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
                 },
                 {
                     "name": "meta",
@@ -34191,7 +34501,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<ViewDiscountComponent>",
-                    "defaultValue": "{\n  component: ViewDiscountComponent,\n  title: 'ViewDiscountComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        importProvidersFrom(RouterModule.forRoot([])),\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n            },\n            entityMetadata: {\n              Discount: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\r\n  component: ViewDiscountComponent,\r\n  title: 'ViewDiscountComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Discount: 'Discounts',\r\n            },\r\n            entityMetadata: {\r\n              Discount: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
                 },
                 {
                     "name": "Primary",
@@ -34201,7 +34511,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n}"
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/manufacturer/create-manufacturer/create-manufacturer.component.stories.ts": [
@@ -38563,19 +38873,6 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CategoryComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
                 {
                     "name": "Story",
@@ -38583,6 +38880,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CartComponent>",
                     "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CategoryComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -38979,6 +39289,58 @@
                     "kind": 183
                 }
             ],
+            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CreateCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DeleteCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<UpdateCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts": [
                 {
                     "name": "Story",
@@ -39051,58 +39413,6 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ViewCategoryComponent>",
                     "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CreateCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DeleteCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<UpdateCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ViewCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -41960,6 +42270,24 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/modules/pos/src/lib/order-card-list/order-card-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "OrderCardListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/pos/src/lib/order-card/order-card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "OrderCardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -41995,7 +42323,7 @@
                 "linktype": "component",
                 "name": "PosComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/19",
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {

@@ -1,6 +1,11 @@
 <mdtx-pos-layout>
   <!-- Toolbar -->
-  <ng-template mdtxPosLayoutToolbar> </ng-template>
+  <ng-template mdtxPosLayoutToolbar>
+    <mdtx-input-pos-search
+      #posSearchComponentRef
+      (inputEvent)="handleSearchEvent($event)"
+    ></mdtx-input-pos-search>
+  </ng-template>
 
   <!-- Product List -->
   <ng-template mdtxPosLayoutProductList>

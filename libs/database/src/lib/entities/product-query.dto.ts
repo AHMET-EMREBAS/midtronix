@@ -1,11 +1,11 @@
 import {
+  BooleanTransformer,
   CreateSelectQuery,
   Exclude,
   Property,
   QueryProperty,
 } from '@mdtx/core';
 import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES } from '@mdtx/common';
-
 
 @Exclude()
 export class QuerySkuViewDto implements IQuerySkuViewDto {
@@ -39,6 +39,7 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() category!: string;
   @QueryProperty() department!: string;
   @QueryProperty() productUpc!: string;
+
 }
 
 @Exclude()

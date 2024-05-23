@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutButtonComponent } from '@mdtx/material/button';
 import { InputPosSearchComponent } from '@mdtx/material/form';
 import { PosLayoutModule } from '@mdtx/material/layout';
 import { OrderService, OrderViewService, SkuViewService } from '@mdtx/ngrx';
 import { firstValueFrom, tap } from 'rxjs';
-import { IOrderRaw, IOrderViewRaw, ISkuViewRaw } from '@mdtx/common';
+import {
+  IOrderRaw,
+  IOrderViewRaw,
+  ISkuViewRaw,
+  QueryBuilder,
+} from '@mdtx/common';
 import {
   ProductCardListComponent,
   ProductSmallCardListComponent,
@@ -15,7 +20,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';
 import { OrderCardListComponent } from '../order-card-list/order-card-list.component';
-import { MergeStrategy } from '@ngrx/data';
 
 @Component({
   selector: 'mdtx-pos',
@@ -38,6 +42,8 @@ import { MergeStrategy } from '@ngrx/data';
   providers: [SkuViewService, OrderService, OrderViewService],
 })
 export class PosComponent implements AfterViewInit {
+  @ViewChild('posSearchComponentRef')
+  posSearchComponentRef!: InputPosSearchComponent;
   currentOrders = new Map<string, IOrderRaw | IOrderViewRaw>();
   products$ = this.skuViewService.entities$;
   orders$ = this.orderViewService.entities$.pipe(
@@ -62,11 +68,32 @@ export class PosComponent implements AfterViewInit {
     this.reloadOrderViews();
   }
 
+  handleSearchEvent(search: string) {
+    firstValueFrom(
+      this.skuViewService.getWithQuery({
+        barcode: QueryBuilder.EQUAL(search),
+        cartId: this.cartId,
+        priceLevelId: this.priceLevelId,
+        storeId: this.storeId,
+      })
+    ).then((data) => {
+      console.log('Entities: ', data);
+
+      const foundItem = data[0];
+      if (data.length == 1) {
+        this.addProductToCartEventHandler(foundItem);
+        this.handleSearchEvent('');
+      }
+    });
+  }
+
   reloadOrderViews() {
     this.orderViewService.clearCache();
     this.orderViewService.getWithQuery({
       take: 10000,
       cartId: this.cartId,
+      storeId: this.storeId,
+      priceLevelId: this.priceLevelId,
     });
   }
 
@@ -103,9 +130,7 @@ export class PosComponent implements AfterViewInit {
   }
 
   __deleteOrder(event: IOrderViewRaw) {
-    console.log('Deleting item from current orders.');
     this.currentOrders.delete(event.barcode);
-    console.log('Deleting item from Database.');
     this.orderService.deleteItem(event.id);
   }
 

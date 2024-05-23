@@ -6,6 +6,8 @@
   overflow: hidden;
   gap: 1em;
   padding: 1em;
+  border: 1px solid red;
+  max-height: 90vh;
 }
 
 .pos-layout-container:fullscreen {

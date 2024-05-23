@@ -48,13 +48,18 @@ export class CollectionBaseService<
   }
 
   deleteItem(id: number) {
-    return super.delete(id, { isOptimistic: false }).pipe(
-      catchError((err, caught) => {
-        console.log(err);
-        this.errorMessages$.next(err);
-        return caught;
+    super.removeOneFromCache(id);
+    return super
+      .delete(id, {
+        isOptimistic: false,
       })
-    );
+      .pipe(
+        catchError((err, caught) => {
+          console.log(err);
+          this.errorMessages$.next(err);
+          return caught;
+        })
+      );
   }
 
   override add(entity: any): Observable<T> {
