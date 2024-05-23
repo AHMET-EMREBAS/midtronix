@@ -1,4 +1,4 @@
-<ng-container *ngif="posSearchEventObserver$ | async"></ng-container>
+<ng-container *ngIf="posSearchEventObserver$ | async"></ng-container>
 <mdtx-pos-layout>
   <!-- Toolbar -->
   <ng-template mdtxPosLayoutToolbar>
@@ -21,6 +21,7 @@
       [orders]="orders"
       (updateOrderEvent)="updateOrderEventHandler($event)"
       (deleteOrderEvent)="deleteOrderEventHandler($event)"
+      (deleteAllOrdersEvent)="deleteAllOrdersHandler($event)"
     ></mdtx-order-card-list>
   </ng-template>
 

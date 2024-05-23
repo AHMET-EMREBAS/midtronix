@@ -1,10 +1,23 @@
-<strong>Count: {{ getCount() }}</strong>
-<div style="display: flex; flex-direction: column; gap: 3px">
-  @for(o of orders; track o ){
-  <mdtx-order-card
-    [orderView]="o"
-    (quantityEvent)="quantityEventHandler($event, o)"
-    (deleteEvent)="deleteEventHandler(o)"
-  ></mdtx-order-card>
-  }
+<div class="container">
+  <mat-toolbar color="primary" class="top">
+    <div class="grow-1"></div>
+    <button mat-raised-button color="warn" (click)="deleteAllEventHandler()">
+      Clear Cart
+    </button>
+  </mat-toolbar>
+
+  <div class="cart-list-container">
+    @for(o of orders; track o ){
+    <mdtx-order-card
+      [orderView]="o"
+      (quantityEvent)="quantityEventHandler($event, o)"
+      (deleteEvent)="deleteEventHandler(o)"
+    ></mdtx-order-card>
+    }
+  </div>
+
+  <mat-toolbar class="bottom">
+    <div class="grow-1"></div>
+    <div class="order-quantity">{{ getCount() }}ct</div>
+  </mat-toolbar>
 </div>

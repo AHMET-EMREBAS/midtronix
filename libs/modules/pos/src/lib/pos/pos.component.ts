@@ -149,6 +149,17 @@ export class PosComponent implements AfterViewInit {
     this.reloadOrderViews();
   }
 
+  deleteAllOrdersHandler(event: IOrderViewRaw[]) {
+    if (event && event.length > 0) {
+      for (let i = 0; i < event.length; i++) {
+        setTimeout(() => {
+          this.__deleteOrder(event[i]);
+          this.reloadOrderViews();
+        }, 100 * i);
+      }
+    }
+  }
+
   __deleteOrder(event: IOrderViewRaw) {
     this.currentOrders.delete(event.barcode);
     this.orderService.deleteItem(event.id);

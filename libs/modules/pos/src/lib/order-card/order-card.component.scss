@@ -7,10 +7,9 @@
 .order-card {
   display: flex;
   flex-direction: row;
-
-  border: 2px solid gray;
-  border-radius: 0.5em;
   padding: 0.5em;
+
+  border-bottom: 3px solid gray;
 }
 
 .order-content {
