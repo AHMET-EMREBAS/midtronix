@@ -16,8 +16,18 @@
     }
   </div>
 
-  <mat-toolbar class="bottom">
-    <div class="grow-1"></div>
-    <div class="order-quantity">{{ getCount() }}ct</div>
-  </mat-toolbar>
+  <div class="footer">
+    <div style="display: flex; flex-direction: row; gap: 0.2em">
+      <div>
+        <div><strong>Subtotal :</strong> {{ getSubtotal() }}</div>
+        <div><strong>Tax :</strong> {{ getTax() }}</div>
+        <div><strong>Total :</strong> {{ getTotal() }}</div>
+      </div>
+      <div class="grow-1"></div>
+      <div class="order-quantity">{{ getCount() }}ct</div>
+    </div>
+    <button mat-raised-button (click)="handleCheckout()" color="accent">
+      Checkout
+    </button>
+  </div>
 </div>

@@ -22,6 +22,10 @@ export class CreateOrderDto implements ICreateOrderDto {
   @NumberTransformer()
   saleTotal!: number;
 
+  @Property({ type: 'number' })
+  @NumberTransformer()
+  taxrate!: number;
+
   @IDObjectProperty({ required: true }) sku!: IID;
   @IDObjectProperty({ required: true }) cart!: IID;
   @IDObjectProperty({ required: true }) priceLevel!: IID;

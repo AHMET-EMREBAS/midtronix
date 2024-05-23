@@ -6,6 +6,7 @@ import { IOrderViewRaw } from '@mdtx/common';
 import { OrderCardComponent } from '../order-card/order-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'mdtx-order-card-list',
@@ -15,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     OrderCardComponent,
     MatButtonModule,
     MatToolbarModule,
+    MatIconModule,
   ],
   templateUrl: './order-card-list.component.html',
   styleUrl: './order-card-list.component.scss',
@@ -26,6 +28,7 @@ export class OrderCardListComponent {
   @Output() updateOrderEvent = new EventEmitter<IOrderViewRaw>();
   @Output() deleteOrderEvent = new EventEmitter<IOrderViewRaw>();
   @Output() deleteAllOrdersEvent = new EventEmitter<IOrderViewRaw[]>();
+
   getCount() {
     if (this.orders && this.orders.length > 0) {
       return this.orders
@@ -46,5 +49,26 @@ export class OrderCardListComponent {
 
   deleteAllEventHandler() {
     this.deleteAllOrdersEvent.emit(this.orders);
+  }
+
+  getSubtotal() {
+    if (this.orders.length > 0) {
+      return this.orders
+        .map((e) => parseFloat(e.salePrice + '') * parseFloat(e.quantity + ''))
+        .reduce((p, c) => p + c) as number;
+    }
+    return 0;
+  }
+
+  getTax() {
+    return (this.getSubtotal() * 6.25) / 100;
+  }
+
+  getTotal() {
+    return this.getSubtotal() + this.getTax();
+  }
+
+  handleCheckout() {
+    console.log('Checking out');
   }
 }

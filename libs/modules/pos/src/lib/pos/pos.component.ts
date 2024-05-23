@@ -122,7 +122,14 @@ export class PosComponent implements AfterViewInit {
 
     if (found) {
       const newQuantity = found.quantity + 1;
-      this.orderService.update({ id: found.id, quantity: newQuantity });
+      this.orderService.update({
+        id: found.id,
+        quantity: newQuantity,
+        saleSubtotal:
+          (parseFloat(item.price + '') +
+            (parseFloat(item.price + '') * 6.25) / 100) *
+          newQuantity,
+      });
       this.currentOrders.set(item.barcode, { ...found, quantity: newQuantity });
     } else {
       const saved = await firstValueFrom(
@@ -130,10 +137,13 @@ export class PosComponent implements AfterViewInit {
           cart: { id: this.cartId },
           sku: { id: item.id },
           priceLevel: { id: this.priceLevelId },
+          taxrate: 6.25,
           quantity: 1,
           salePrice: item.price,
           saleTotal: item.price,
-          saleSubtotal: item.price * 6.25,
+          saleSubtotal:
+            parseFloat(item.price + '') +
+            (parseFloat(item.price + '') * 6.25) / 100,
         })
       );
       this.currentOrders.set(item.barcode, saved);
@@ -176,7 +186,21 @@ export class PosComponent implements AfterViewInit {
       console.log('Updating item from current list.');
       this.currentOrders.set(event.barcode, event);
       console.log('Updating item from Database.');
-      this.orderService.update({ id: event.id, quantity: event.quantity });
+      this.orderService.update(this.__calculateSaleSubtotal(event));
     }
+  }
+
+  __calculateSaleSubtotal(event: IOrderViewRaw): IOrderViewRaw {
+    return {
+      ...event,
+      saleSubtotal:
+        (parseFloat(event.price + '') +
+          (parseFloat(event.price + '') * 6.25) / 100) *
+        event.quantity,
+    };
+  }
+
+  getCartSubtotal() {
+    return;
   }
 }

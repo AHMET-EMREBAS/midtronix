@@ -17,6 +17,8 @@ export class Order extends BaseEntity implements IOrder<Sku, Cart, PriceLevel> {
   @OwnerRelation(Sku, { eager: true }) sku!: Sku;
   @OneRelation(PriceLevel) priceLevel!: PriceLevel;
   @OwnerRelation(Cart) cart!: Cart;
+  
+  @Column({ type: 'numeric', nullable: true }) taxrate!: number;
   @Column({ type: 'numeric', nullable: true }) salePrice!: number;
   @Column({ type: 'numeric', nullable: true }) saleSubtotal!: number;
   @Column({ type: 'numeric', nullable: true }) saleTotal!: number;

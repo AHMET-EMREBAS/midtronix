@@ -40,19 +40,9 @@ export interface IOrder<
   cart: TCart;
   priceLevel: TPriceLevel;
 
-  /**
-   * Persistent sale prices
-   */
+  taxrate: number;
   salePrice: number;
-
-  /**
-   * Persistent sale prices
-   */
   saleSubtotal: number;
-
-  /**
-   * Persistent sale prices
-   */
   saleTotal: number;
 }
 
@@ -69,12 +59,15 @@ export interface IOrderView {
   storeId: number;
   name: string;
   barcode: string;
-  quantity: number;
-  price: number;
   cost: number;
   fixedDiscount: number;
   percentDiscount: number;
-  subtotal: number;
+  quantity: number;
+  price: number;
+  salePrice: number;
+  taxrate: number;
+  saleSubtotal: number;
+  saleTotal: number;
 }
 
 export interface IOrderViewRaw extends IOrderView {}

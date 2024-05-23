@@ -31,3 +31,14 @@ mat-toolbar.bottom {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
+
+.footer {
+  position: sticky;
+  bottom: 0px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1em;
+  gap: 1em;
+}

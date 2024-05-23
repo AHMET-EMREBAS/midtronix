@@ -9,9 +9,19 @@
 
   <div class="order-content">
     <strong>{{ o.name }}</strong>
-    <small>{{ o.barcode }}</small>
-    <small>$ {{ o.price }}</small>
-    <strong>$ {{ o.subtotal }}</strong>
+    <strong>{{ o.barcode }}</strong>
+    <div>
+      <strong>Sale Unit Price : </strong>
+      <span>$ {{ o.salePrice }}</span>
+    </div>
+    <div>
+      <strong> Sale Subtotal : </strong>
+      <span>$ {{ o.saleSubtotal }}</span>
+    </div>
+    <div>
+      <strong> Sale Total : </strong>
+      <span>$ {{ o.saleTotal }}</span>
+    </div>
   </div>
 
   <div class="order-actions">
