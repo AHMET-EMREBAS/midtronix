@@ -34,7 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';
 import { OrderCardListComponent } from '../order-card-list/order-card-list.component';
-
+import { MatTabsModule } from '@angular/material/tabs';
 @Component({
   selector: 'mdtx-pos',
   standalone: true,
@@ -50,6 +50,7 @@ import { OrderCardListComponent } from '../order-card-list/order-card-list.compo
     StoreSearchComponent,
     PriceLevelSearchComponent,
     OrderCardListComponent,
+    MatTabsModule,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',

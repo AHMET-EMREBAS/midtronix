@@ -21,6 +21,7 @@ export interface ICart<
   user: TUser;
   store: TStore;
   note?: string;
+  closed?: boolean;
 }
 
 export interface ICartView {

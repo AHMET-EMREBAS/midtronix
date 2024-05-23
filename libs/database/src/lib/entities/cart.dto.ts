@@ -7,7 +7,7 @@ export class CreateCartDto implements ICreateCartDto {
   @IDObjectProperty({ required: true }) owner!: IID;
   @IDObjectProperty({ required: true }) store!: IID;
   @Property({ type: 'string' }) note?: string;
-  @Property({ type: 'boolean' }) checkout?: boolean;
+  @Property({ type: 'boolean' }) closed?: boolean;
 }
 
 @Exclude()

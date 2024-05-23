@@ -8,14 +8,26 @@ import {
 import { CommonModule } from '@angular/common';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { SaleFormComponent } from '@mdtx/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { IOrderViewRaw } from '@mdtx/common';
 import { debounceTime } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { CartService, OrderViewService } from '@mdtx/ngrx';
 
 @Component({
   selector: 'mdtx-checkout',
   standalone: true,
-  imports: [CommonModule, InputNumberComponent, SaleFormComponent],
+  imports: [
+    MatButtonModule,
+    MatDialogModule,
+    CommonModule,
+    InputNumberComponent,
+    SaleFormComponent,
+  ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
@@ -28,7 +40,10 @@ export class CheckoutComponent implements AfterViewInit {
     protected readonly data: {
       orders: IOrderViewRaw[];
       cartId: number;
-    }
+    },
+    protected readonly matDialog: MatDialog,
+    protected cartService: CartService,
+    protected orderViewService: OrderViewService
   ) {}
 
   ngAfterViewInit(): void {
@@ -40,7 +55,7 @@ export class CheckoutComponent implements AfterViewInit {
 
     const cardPayment = this.saleForm.control('cardPayment');
     const cashPayment = this.saleForm.control('cashPayment');
-    
+
     cardPayment.setValue(this.getTotal());
     cashPayment.setValue(0);
 
@@ -81,5 +96,10 @@ export class CheckoutComponent implements AfterViewInit {
 
   submitEventHandler(event: any) {
     console.log('Submit EVent: ', event);
+
+    this.orderViewService.clearCache();
+
+    this.cartService.update({ id: this.data.cartId, closed: true });
+    this.matDialog.closeAll();
   }
 }

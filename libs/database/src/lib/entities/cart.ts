@@ -12,5 +12,5 @@ export class Cart extends BaseEntity implements ICart<User, Customer, Store> {
   @OwnerRelation(Store) store!: Store;
 
   @Column({ type: 'varchar', nullable: true }) note!: string;
-  @Column({ type: 'boolean', nullable: true }) checkout!: boolean;
+  @Column({ type: 'boolean', nullable: true }) closed!: boolean;
 }
