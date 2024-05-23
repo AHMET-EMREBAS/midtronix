@@ -28,7 +28,7 @@ export class OrderCardListComponent {
   @Output() updateOrderEvent = new EventEmitter<IOrderViewRaw>();
   @Output() deleteOrderEvent = new EventEmitter<IOrderViewRaw>();
   @Output() deleteAllOrdersEvent = new EventEmitter<IOrderViewRaw[]>();
-
+  @Output() reloadOrdersEvent = new EventEmitter();
   getCount() {
     if (this.orders && this.orders.length > 0) {
       return this.orders
@@ -51,6 +51,10 @@ export class OrderCardListComponent {
     this.deleteAllOrdersEvent.emit(this.orders);
   }
 
+  updateEventHandler() {
+    this.reloadOrdersEvent.emit();
+  }
+
   getSubtotal() {
     if (this.orders.length > 0) {
       return this.orders
@@ -61,7 +65,7 @@ export class OrderCardListComponent {
   }
 
   getTax() {
-    return (this.getSubtotal() * 6.25) / 100;
+    return this.getSubtotal() * (6.25 / 100);
   }
 
   getTotal() {

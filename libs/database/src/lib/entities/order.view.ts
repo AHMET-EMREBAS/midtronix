@@ -28,7 +28,6 @@ import { DiscountView } from './discount.view';
       .addSelect('TRUNC(COALESCE(discount.fixed, 0), 2)', 'fixedDiscount')
       .addSelect('TRUNC(COALESCE(discount.percent, 0), 2)', 'percentDiscount')
       .addSelect('price.cost', 'cost')
-
       .addSelect(
         'TRUNC(COALESCE(((price.price - discount.fixed) - (price.price * discount.percent / 100)) * main.quantity, price.price * main.quantity), 2)',
         'subtotal'

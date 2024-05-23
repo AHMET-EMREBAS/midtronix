@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { InputBaseComponent } from '../input-base';
 import { CommonFormModule } from '../form';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {
+  MatAutocomplete,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
 import { IInputOption } from '@mdtx/material/core';
 import { Observable, debounceTime, map, startWith } from 'rxjs';
 @Component({
@@ -15,6 +18,7 @@ export class InputAutocompleteComponent
   extends InputBaseComponent
   implements OnInit
 {
+  @ViewChild('inputRef') inputRef!: MatAutocomplete;
   @Input() optionNameAsValue = false;
   @Input() override prefixIcon = 'event';
   @Input() options!: IInputOption[];

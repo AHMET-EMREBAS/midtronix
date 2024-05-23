@@ -140,10 +140,8 @@ export class PosComponent implements AfterViewInit {
           taxrate: 6.25,
           quantity: 1,
           salePrice: item.price,
-          saleTotal: item.price,
-          saleSubtotal:
-            parseFloat(item.price + '') +
-            (parseFloat(item.price + '') * 6.25) / 100,
+          saleSubtotal: parseFloat(item.price + ''),
+          saleTotal: item.price * 1 + (item.price * 6.25) / 100,
         })
       );
       this.currentOrders.set(item.barcode, saved);
@@ -191,12 +189,22 @@ export class PosComponent implements AfterViewInit {
   }
 
   __calculateSaleSubtotal(event: IOrderViewRaw): IOrderViewRaw {
+    const subtotal =
+      parseFloat(event.salePrice + '') * parseFloat(event.quantity + '');
+
+    const tax = (subtotal * event.taxrate) / 100;
+    const total = tax + subtotal;
+
+    console.table({
+      subtotal,
+      tax,
+      total,
+    });
     return {
       ...event,
-      saleSubtotal:
-        (parseFloat(event.price + '') +
-          (parseFloat(event.price + '') * 6.25) / 100) *
-        event.quantity,
+      salePrice: event.salePrice,
+      saleSubtotal: subtotal,
+      saleTotal: total,
     };
   }
 

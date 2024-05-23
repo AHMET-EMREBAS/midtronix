@@ -6,13 +6,13 @@
     mdtxInput
     matInput
     [formControl]="inputControl"
-    [matAutocomplete]="auto"
+    [matAutocomplete]="inputRef"
     [attr.data-testid]="testid()"
     [multiple]="multiple"
   />
   <mat-autocomplete
     autoActiveFirstOption
-    #auto="matAutocomplete"
+    #inputRef="matAutocomplete"
     [displayWith]="displayWith"
     [autoSelectActiveOption]="true"
   >

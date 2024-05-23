@@ -1,0 +1,23 @@
+<form novalidate>
+  <h3>Update Sale Price</h3>
+  <mdtx-input-number
+    prefixIcon="money"
+    #salePrice
+    label="Update Sale Price"
+    inputName="salePrice"
+  ></mdtx-input-number>
+
+  <div class="actions">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="updateSalePrice()"
+      matDialogClose
+    >
+      Update
+    </button>
+
+    <button mat-flat-button matDialogClose>Closes</button>
+  </div>
+</form>
