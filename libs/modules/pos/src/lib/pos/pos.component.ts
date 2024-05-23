@@ -131,6 +131,9 @@ export class PosComponent implements AfterViewInit {
           sku: { id: item.id },
           priceLevel: { id: this.priceLevelId },
           quantity: 1,
+          salePrice: item.price,
+          saleTotal: item.price,
+          saleSubtotal: item.price * 6.25,
         })
       );
       this.currentOrders.set(item.barcode, saved);

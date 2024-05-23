@@ -39,6 +39,21 @@ export interface IOrder<
   sku: TSku;
   cart: TCart;
   priceLevel: TPriceLevel;
+
+  /**
+   * Persistent sale prices
+   */
+  salePrice: number;
+
+  /**
+   * Persistent sale prices
+   */
+  saleSubtotal: number;
+
+  /**
+   * Persistent sale prices
+   */
+  saleTotal: number;
 }
 
 export type ICartRaw = ICart<ICustomer, IUser>;

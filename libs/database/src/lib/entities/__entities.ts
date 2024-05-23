@@ -42,6 +42,7 @@ import { Ticket } from './ticket';
 import { Taxrate } from './taxrate';
 import { Discount } from './discount';
 import { SkuView } from './product.view';
+import { Sale, SaleView } from './sale';
 
 export const UserEntities: Readonly<Type[]> = [
   User,
@@ -185,3 +186,5 @@ export const OrderViewEntities = [
   CartView,
   SkuView,
 ];
+
+export const SaleEntities = [Sale, SaleView, ...OrderEntities];

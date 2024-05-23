@@ -25,6 +25,8 @@ export * from './project';
 export * from './quantity.view';
 export * from './role.dto';
 export * from './role';
+export * from './sale.dto';
+export * from './sale';
 export * from './sku.view';
 export * from './store.dto';
 export * from './store';
