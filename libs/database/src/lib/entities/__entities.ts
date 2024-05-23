@@ -24,7 +24,7 @@ import {
   UserEmail,
   UserPhone,
 } from './user';
-import { Category, Department } from './meta';
+import { Category, CustomerBadge, Department, UserBadge } from './meta';
 import { Order } from './order';
 import { OrderView } from './order.view';
 import {
@@ -41,8 +41,14 @@ import { Project, Sprint, Task } from './project';
 import { Ticket } from './ticket';
 import { Taxrate } from './taxrate';
 import { Discount } from './discount';
+import { SkuView } from './product.view';
 
-export const UserEntities: Readonly<Type[]> = [User, Role, Permission];
+export const UserEntities: Readonly<Type[]> = [
+  User,
+  Role,
+  Permission,
+  UserBadge,
+];
 
 export const UserPhoneEntities: Readonly<Type[]> = [...UserEntities, UserPhone];
 
@@ -62,6 +68,7 @@ export const CustomerEntities: Readonly<Type[]> = [
   Customer,
   CustomerRole,
   CustomerPermission,
+  CustomerBadge,
 ];
 
 export const CustomerPhoneEntities: Readonly<Type[]> = [
@@ -168,3 +175,13 @@ export const TicketEntities: Readonly<Type[]> = [
 ];
 
 export const DiscountEntities = [Discount, ...SkuEntities];
+
+export const OrderViewEntities = [
+  Order,
+  OrderView,
+  Sku,
+  Cart,
+  PriceLevel,
+  CartView,
+  SkuView,
+];

@@ -4,6 +4,15 @@ import { ICustomer } from './customer';
 import { ISku } from './product';
 import { IUser } from './user';
 
+/**
+ * @param owner customer
+ * @param user employee
+ * @param store
+ * @param note string
+ * @param discountTotal number
+ * @param subtotal number
+ * @param total number
+ */
 export interface ICart<
   TCustomer extends IID = IID,
   TUser extends IID = IID,
@@ -11,6 +20,7 @@ export interface ICart<
 > extends IOwner<TCustomer> {
   user: TUser;
   store: TStore;
+  note?: string;
 }
 
 export interface ICartView {

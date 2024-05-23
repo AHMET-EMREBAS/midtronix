@@ -1,8 +1,5 @@
 import { ViewEntity, ViewColumn } from '@mdtx/core';
 import { Cart } from './cart';
-import { Customer } from './customer';
-import { User } from './user';
-import { Store } from './store';
 import { ICartView } from '@mdtx/common';
 
 /**
@@ -16,13 +13,10 @@ import { ICartView } from '@mdtx/common';
     return ds
       .createQueryBuilder()
       .select('main.id', 'id')
-      .addSelect('store.id', 'storeId')
-      .addSelect('customer.id', 'customerId')
-      .addSelect('user.id', 'userId')
-      .from(Cart, 'main')
-      .leftJoin(Store, 'store', 'store.id = main.storeId')
-      .leftJoin(Customer, 'customer', 'customer.id = main.ownerId')
-      .leftJoin(User, 'user', 'user.id = main.userId');
+      .addSelect('main.storeId', 'storeId')
+      .addSelect('main.ownerId', 'customerId')
+      .addSelect('main.userId', 'userId')
+      .from(Cart, 'main');
   },
 })
 export class CartView implements ICartView {

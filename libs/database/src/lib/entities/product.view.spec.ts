@@ -10,8 +10,9 @@ import { Order } from './order';
 import { Cart } from './cart';
 import { OrderView } from './order.view';
 import { CartView } from './cart.view';
-import { User, UserEntities } from './user';
-import { Customer, CustomerEntities } from './customer';
+import { User } from './user';
+import { Customer } from './customer';
+import { UserEntities, CustomerEntities } from './__entities';
 describe('ProductView', () => {
   let ds: DataSource;
 
@@ -266,39 +267,50 @@ describe('ProductView', () => {
     const qs3p3pl2 = await createQuantity(s3p3, store2);
     const qs3p3pl3 = await createQuantity(s3p3, store3);
 
-    console.log('All : ');
+    const c1 = await createCart(store1, customer1, user1);
+    const c2 = await createCart(store1, customer1, user1);
 
-    const result = await SkuViewRepo.find();
-    console.log('First: ');
-    console.log(result[0]);
-    console.log('Last: ');
-    console.log(result[result.length - 1]);
+    const c1o1 = createOrder(c1, s1p1, 1);
+    const c1o2 = createOrder(c1, s1p2, 1);
+    const c1o3 = createOrder(c1, s1p3, 1);
 
-    console.log('Barcode : 1000000039 PriceLevel: PL_1  Store:STORE_1 ');
+    const orderViews = await OrderViewRepo.find();
 
-    console.log(
-      await SkuViewRepo.find({
-        where: { barcode: '1000000039', priceLevelId: 1, storeId: 1 },
-      })
-    );
+    console.log(orderViews);
 
-    console.log('Barcode : 1000000011 PriceLevel: PL_1  Store:STORE_1 ');
+    // console.log('All : ');
 
-    console.log(
-      await SkuViewRepo.findOne({
-        where: { barcode: '1000000011', priceLevelId: 1, storeId: 1 },
-      })
-    );
-    console.log(
-      await SkuViewRepo.findOne({
-        where: { barcode: '1000000012', priceLevelId: 1, storeId: 1 },
-      })
-    );
-    console.log(
-      await SkuViewRepo.findOne({
-        where: { barcode: '1000000013', priceLevelId: 1, storeId: 1 },
-      })
-    );
+    // const result = await SkuViewRepo.find();
+    // console.log('First: ');
+    // console.log(result[0]);
+    // console.log('Last: ');
+    // console.log(result[result.length - 1]);
+
+    // console.log('Barcode : 1000000039 PriceLevel: PL_1  Store:STORE_1 ');
+
+    // console.log(
+    //   await SkuViewRepo.find({
+    //     where: { barcode: '1000000039', priceLevelId: 1, storeId: 1 },
+    //   })
+    // );
+
+    // console.log('Barcode : 1000000011 PriceLevel: PL_1  Store:STORE_1 ');
+
+    // console.log(
+    //   await SkuViewRepo.findOne({
+    //     where: { barcode: '1000000011', priceLevelId: 1, storeId: 1 },
+    //   })
+    // );
+    // console.log(
+    //   await SkuViewRepo.findOne({
+    //     where: { barcode: '1000000012', priceLevelId: 1, storeId: 1 },
+    //   })
+    // );
+    // console.log(
+    //   await SkuViewRepo.findOne({
+    //     where: { barcode: '1000000013', priceLevelId: 1, storeId: 1 },
+    //   })
+    // );
 
     // Create Cart and test it.
   });

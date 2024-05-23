@@ -281,48 +281,62 @@ export class AppSeedModule implements OnModuleInit {
     const cart1 = await createCart(store1, customer1, user1);
     const cart2 = await createCart(store1, customer1, user1);
 
-    const order1 = await createOrder(cart1, s1p1, pl1, 3);
-    const order2 = await createOrder(cart1, s1p2, pl1, 3);
-    const order3 = await createOrder(cart1, s1p3, pl1, 3);
-    const order4 = await createOrder(cart1, s2p1, pl1, 3);
-    const order5 = await createOrder(cart1, s2p2, pl1, 3);
-    const order6 = await createOrder(cart1, s2p3, pl1, 3);
+    const order1 = await createOrder(cart1, s1p1, pl1, 1);
+    // const order2 = await createOrder(cart1, s1p2, pl1, 3);
+    // const order3 = await createOrder(cart1, s1p3, pl1, 3);
+    // const order4 = await createOrder(cart1, s2p1, pl1, 3);
+    // const order5 = await createOrder(cart1, s2p2, pl1, 3);
+    // const order6 = await createOrder(cart1, s2p3, pl1, 3);
 
-    const discount1 = await this.DiscountRepo.save({
-      name: 'D1',
-      startDate: new Date('5/20/2024'),
-      endDate: new Date('5/24/2024'),
-      fixed: 10,
-      sku: s1p1,
-    });
-
-    const printDiscounts = async () => {
-      const discounts = await this.DiscountViewRepo.find();
-      console.log(discounts);
-    };
-
-    const carts = await this.CartRepo.find();
-
-    const printOrders = async () => {
-      const orders = await this.OrderViewRepo.find({});
+    const printOrderViews = async () => {
+      const orders = await this.OrderViewRepo.find();
       console.log(orders);
     };
 
-    await printOrders();
-    const skus = await this.SkuViewRepo.find({});
+    const printCartViews = async () => {
+      const carts = await this.CartViewRepo.find();
+      console.log(carts);
+    };
 
-    await this.OrderRepo.update(5, { priceLevel: pl3 });
-    await printOrders();
+    await printOrderViews();
 
-    // console.log(skus);
-    await printDiscounts();
+    await printCartViews();
 
-    await this.DiscountRepo.createQueryBuilder()
-      .relation('sku')
-      .of(discount1.id)
-      .set(s1p1.id);
+    // const discount1 = await this.DiscountRepo.save({
+    //   name: 'D1',
+    //   startDate: new Date('5/20/2024'),
+    //   endDate: new Date('5/24/2024'),
+    //   fixed: 10,
+    //   sku: s1p1,
+    // });
 
-    await printOrders();
-    await printDiscounts();
+    // const printDiscounts = async () => {
+    //   const discounts = await this.DiscountViewRepo.find();
+    //   console.log(discounts);
+    // };
+
+    // const carts = await this.CartRepo.find();
+
+    // const printOrders = async () => {
+    //   const orders = await this.OrderViewRepo.find({});
+    //   console.log(orders);
+    // };
+
+    // await printOrders();
+    // const skus = await this.SkuViewRepo.find({});
+
+    // await this.OrderRepo.update(5, { priceLevel: pl3 });
+    // await printOrders();
+
+    // // console.log(skus);
+    // await printDiscounts();
+
+    // await this.DiscountRepo.createQueryBuilder()
+    //   .relation('sku')
+    //   .of(discount1.id)
+    //   .set(s1p1.id);
+
+    // await printOrders();
+    // await printDiscounts();
   }
 }

@@ -2,8 +2,7 @@ import { IOrderView } from '@mdtx/common';
 import { ViewEntity, ViewColumn } from '@mdtx/core';
 import { Order } from './order';
 import { SkuView } from './product.view';
-import { Price, PriceLevel, Sku } from './product';
-import { CartView } from './cart.view';
+import { Price } from './product';
 import { Cart } from './cart';
 import { DiscountView } from './discount.view';
 
@@ -60,12 +59,3 @@ export class OrderView implements IOrderView {
   @ViewColumn() percentDiscount!: number;
   @ViewColumn() subtotal!: number;
 }
-export const OrderViewEntities = [
-  Order,
-  OrderView,
-  Sku,
-  Cart,
-  PriceLevel,
-  CartView,
-  SkuView,
-];
