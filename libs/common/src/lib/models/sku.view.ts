@@ -18,7 +18,6 @@ export const SKU_VIEW_PROPERTIES = [
 
 export interface ISkuView {
   id: number;
-  skuId: number;
   barcode: string;
   name: string;
   price: number;
@@ -32,16 +31,6 @@ export interface ISkuView {
   department: string;
   productId: number;
   productUpc: string;
-
-  /**
-   * For frontend use only
-   */
-  total?: number;
-
-  /**
-   * For frontend use only
-   */
-  tax?: number;
 }
 
 export type ISkuViewRaw = ISkuView;

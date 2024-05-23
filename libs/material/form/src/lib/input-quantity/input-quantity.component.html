@@ -1,7 +1,8 @@
 <div [class]="layoutDirection">
-  <button mat-mini-fab color="accent" (click)="descrement()">
-    <mat-icon class="fill">remove</mat-icon>
-  </button>
+  <mdtx-mini-fab buttonColor="accent" (click)="descrement()">
+    remove
+  </mdtx-mini-fab>
+
   <input
     class="count-input"
     type="text"
@@ -9,7 +10,5 @@
     [mdtxInputValueFilter]="inputValueFilter"
     [(ngModel)]="value"
   />
-  <button mat-mini-fab color="primary" (click)="increment()">
-    <mat-icon class="fill">add</mat-icon>
-  </button>
+  <mdtx-mini-fab buttonColor="primary" (click)="increment()">add</mdtx-mini-fab>
 </div>

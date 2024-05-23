@@ -1,18 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutButtonComponent } from '@mdtx/material/button';
 import { InputPosSearchComponent } from '@mdtx/material/form';
 import { PosLayoutModule } from '@mdtx/material/layout';
-import { SkuViewService } from '@mdtx/ngrx';
-import { BehaviorSubject, Observable, debounceTime, merge, tap } from 'rxjs';
-import {
-  IPriceLevelRaw,
-  ISkuViewRaw,
-  IStoreRaw,
-  QueryOprator,
-  createQueryValue,
-} from '@mdtx/common';
+import { OrderService, OrderViewService, SkuViewService } from '@mdtx/ngrx';
+import { firstValueFrom, tap } from 'rxjs';
+import { IOrderRaw, IOrderViewRaw, ISkuViewRaw } from '@mdtx/common';
 import {
   ProductCardListComponent,
   ProductSmallCardListComponent,
@@ -20,6 +14,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';
+import { OrderCardListComponent } from '../order-card-list/order-card-list.component';
+import { MergeStrategy } from '@ngrx/data';
 
 @Component({
   selector: 'mdtx-pos',
@@ -35,127 +31,93 @@ import { PriceLevelSearchComponent, StoreSearchComponent } from '@mdtx/forms';
     MatIconModule,
     StoreSearchComponent,
     PriceLevelSearchComponent,
+    OrderCardListComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
-  providers: [SkuViewService],
+  providers: [SkuViewService, OrderService, OrderViewService],
 })
 export class PosComponent implements AfterViewInit {
-  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;
-  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
-  @ViewChild('barcodeSearch') barcodeSearch!: InputPosSearchComponent;
-
-  searchObserver$!: Observable<any>;
-
-  items$: Observable<ISkuViewRaw[]> = this.skuService.entities$.pipe(
+  currentOrders = new Map<string, IOrderRaw | IOrderViewRaw>();
+  products$ = this.skuViewService.entities$;
+  orders$ = this.orderViewService.entities$.pipe(
     tap((data) => {
-      if (data.length === 1) {
-        this.handleAddProductToCartEvent(data[0]);
+      for (const o of data) {
+        this.currentOrders.set(o.barcode, o);
       }
     })
   );
+  cartId = 2;
+  storeId = 1;
+  priceLevelId = 1;
 
-  itemsInCart = new Map<string, ISkuViewRaw>();
-
-  defaultStore?: IStoreRaw;
-  defaultPriceLevel?: IPriceLevelRaw;
-
-  subtotal$ = new BehaviorSubject(0);
-
-  constructor(protected readonly skuService: SkuViewService) {}
+  constructor(
+    protected readonly skuViewService: SkuViewService,
+    protected readonly orderViewService: OrderViewService,
+    protected readonly orderService: OrderService
+  ) {}
 
   ngAfterViewInit(): void {
-    this.skuService.clearCache();
-    this.updateProductList();
-
-    this.searchObserver$ = merge(
-      this.barcodeSearch.$valueChange,
-      this.storeSearch.inputControl.valueChanges,
-      this.priceLevelSearch.inputControl.valueChanges
-    ).pipe(
-      debounceTime(600),
-      tap(() => {
-        const items = this.getItemsInCart();
-        if (items) {
-          for (const item of items) {
-
-            console.log("Updating M>...")
-            this.skuService.getWithQuery({
-              barcode: item.barcode,
-              storeId: this.storeSearch.inputControl.value?.id ?? 1,
-              priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
-            });
-          }
-        }
-
-        console.log('Updating Something');
-      })
-    );
+    this.skuViewService.getWithQuery({ take: 1000 });
+    this.reloadOrderViews();
   }
 
-  updateProductList() {
-    this.skuService.getWithQuery({
+  reloadOrderViews() {
+    this.orderViewService.clearCache();
+    this.orderViewService.getWithQuery({
       take: 10000,
-      storeId: this.storeSearch.inputControl.value?.id ?? 1,
-      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
+      cartId: this.cartId,
     });
   }
 
-  handleSearchEvent(search: string) {
-    this.skuService.clearCache();
-    this.skuService.getWithQuery({
-      barcode: createQueryValue({
-        operator: QueryOprator.EQUAL,
-        value: search,
-      }),
-      storeId: this.storeSearch.inputControl.value?.id ?? 1,
-      priceLevelId: this.priceLevelSearch.inputControl.value?.id ?? 1,
-    });
-  }
+  async addProductToCartEventHandler(item: ISkuViewRaw) {
+    const found = this.currentOrders.get(item.barcode);
 
-  getItemsInCart() {
-    if (this.itemsInCart.size > 0) {
-      return [...this.itemsInCart.entries()].map(([, value]) => value);
-    }
-    return undefined;
-  }
-
-  handleAddProductToCartEvent(item: ISkuViewRaw) {
-    const foundItem = this.itemsInCart.get(item.barcode);
-
-    if (foundItem) {
-      foundItem.quantity = foundItem.quantity + 1;
-      this.itemsInCart.delete(item.barcode);
-      this.itemsInCart.set(foundItem.barcode, foundItem);
+    if (found) {
+      const newQuantity = found.quantity + 1;
+      this.orderService.update({ id: found.id, quantity: newQuantity });
+      this.currentOrders.set(item.barcode, { ...found, quantity: newQuantity });
     } else {
-      this.itemsInCart.set(item.barcode, { ...item, quantity: 1 });
+      const saved = await firstValueFrom(
+        this.orderService.addOrder({
+          cart: { id: this.cartId },
+          sku: { id: item.id },
+          priceLevel: { id: this.priceLevelId },
+          quantity: 1,
+        })
+      );
+      this.currentOrders.set(item.barcode, saved);
     }
-    this.updateTotal();
 
-    this.barcodeSearch.inputControl.setValue('');
-    this.updateProductList();
+    this.reloadOrderViews();
   }
 
-  handleDeleteProductEvent(skuView: ISkuViewRaw) {
-    this.itemsInCart.delete(skuView.barcode);
-    this.updateTotal();
+  updateOrderEventHandler(event: IOrderViewRaw) {
+    this.__updateOrderQuantity(event);
+    this.reloadOrderViews();
   }
 
-  handleQuantityChangeEvent() {
-    this.updateTotal();
+  deleteOrderEventHandler(event: IOrderViewRaw) {
+    this.__deleteOrder(event);
+    this.reloadOrderViews();
   }
 
-  updateTotal() {
-    const items = this.getItemsInCart();
-    const itemPrices = items
-      ?.map((e) => parseFloat(e.price + '') * (e.quantity ?? 1))
-      .filter((e) => e);
+  __deleteOrder(event: IOrderViewRaw) {
+    console.log('Deleting item from current orders.');
+    this.currentOrders.delete(event.barcode);
+    console.log('Deleting item from Database.');
+    this.orderService.deleteItem(event.id);
+  }
 
-    if (itemPrices && itemPrices.length > 0) {
-      const subtotal = itemPrices.reduce((p, c) => p! + c!);
-      this.subtotal$.next(subtotal);
+  __updateOrderQuantity(event: IOrderViewRaw) {
+    const newQuantity = event.quantity;
+    if (newQuantity <= 0) {
+      this.__deleteOrder(event);
     } else {
-      this.subtotal$.next(0);
+      console.log('Updating item from current list.');
+      this.currentOrders.set(event.barcode, event);
+      console.log('Updating item from Database.');
+      this.orderService.update({ id: event.id, quantity: event.quantity });
     }
   }
 }

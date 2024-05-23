@@ -9,12 +9,12 @@ import { Discount } from './discount';
       .addSelect('main.name', 'name')
       .addSelect('main.fixed', 'fixed')
       .addSelect('main.percent', 'percent')
-      .addSelect('skus.skuId', 'skuId')
+      .addSelect('main.skuId', 'skuId')
       .addSelect('main.startDate', 'startDate')
       .addSelect('main.endDate', 'endDate')
       .from(Discount, 'main')
-      .leftJoin('discount_skus_sku', 'skus', 'skus.discountId = main.id')
-      .where('main.endDate > CURRENT_DATE AND main.startDate <= CURRENT_DATE');
+      .where('main.endDate > CURRENT_DATE AND main.startDate <= CURRENT_DATE')
+      .orderBy('id', 'ASC');
   },
 })
 export class DiscountView {

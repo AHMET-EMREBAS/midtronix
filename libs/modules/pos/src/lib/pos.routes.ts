@@ -15,8 +15,6 @@ export const PosRoutes: Routes = [
     path: '',
     loadComponent: () => AppLayoutComponent,
     providers: [
-
-      
       provideEntityData(
         {
           pluralNames: {
@@ -28,6 +26,8 @@ export const PosRoutes: Routes = [
             Quantity: 'Quantities',
             SkuView: 'SkuViews',
             Cart: 'Carts',
+            Order: 'Orders',
+            OrderView: 'OrderViews',
           },
           entityMetadata: {
             Sku: {},
@@ -38,6 +38,8 @@ export const PosRoutes: Routes = [
             Store: {},
             Quantity: {},
             Cart: {},
+            Order: {},
+            OrderView: {},
           },
         },
         withEffects()

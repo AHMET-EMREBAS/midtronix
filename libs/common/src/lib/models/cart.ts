@@ -20,7 +20,6 @@ export interface ICartView {
   userId: number;
 }
 
-
 export interface IOrder<
   TSku extends IID = IID,
   TCart extends IID = IID,
@@ -37,9 +36,10 @@ export type IOrderRaw = IOrder<ISku, ICart>;
 
 export interface IOrderView {
   id: number;
-  orderId: number;
   skuId: number;
   cartId: number;
+  customerId: number;
+  employeeId: number;
   priceLevelId: number;
   storeId: number;
   name: string;
@@ -47,4 +47,9 @@ export interface IOrderView {
   quantity: number;
   price: number;
   cost: number;
+  fixedDiscount: number;
+  percentDiscount: number;
+  subtotal: number;
 }
+
+export interface IOrderViewRaw extends IOrderView {}

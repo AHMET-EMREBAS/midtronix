@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputFilterDirective } from '@mdtx/material/core';
+
+import { MiniFabComponent } from '@mdtx/material/button';
 @Component({
   selector: 'mdtx-input-quantity',
   standalone: true,
@@ -15,6 +17,7 @@ import { InputFilterDirective } from '@mdtx/material/core';
     MatButtonModule,
     MatIconModule,
     InputFilterDirective,
+    MiniFabComponent,
   ],
   templateUrl: './input-quantity.component.html',
   styleUrl: './input-quantity.component.scss',
@@ -27,21 +30,17 @@ export class InputQuantityComponent {
 
   @Input() value = 0;
 
-  @Output() quantityValueChange = new EventEmitter<number>();
-
-  emitChange() {
-    this.quantityValueChange.emit(this.value);
-  }
+  @Output() quantityValueChange = new EventEmitter<1 | -1>();
 
   increment() {
     this.value++;
-    this.emitChange();
+    this.quantityValueChange.emit(1);
   }
 
   descrement() {
     if (this.value > 0) {
       this.value--;
-      this.emitChange();
+      this.quantityValueChange.emit(-1);
     }
   }
 }

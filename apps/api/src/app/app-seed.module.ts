@@ -293,7 +293,7 @@ export class AppSeedModule implements OnModuleInit {
       startDate: new Date('5/20/2024'),
       endDate: new Date('5/24/2024'),
       fixed: 10,
-      skus: [s1p1, s3p1, s3p3, s3p2],
+      sku: s1p1,
     });
 
     const printDiscounts = async () => {
@@ -318,9 +318,9 @@ export class AppSeedModule implements OnModuleInit {
     await printDiscounts();
 
     await this.DiscountRepo.createQueryBuilder()
-      .relation('skus')
+      .relation('sku')
       .of(discount1.id)
-      .add(s1p2.id);
+      .set(s1p1.id);
 
     await printOrders();
     await printDiscounts();

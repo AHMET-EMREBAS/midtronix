@@ -11,24 +11,23 @@ import { DiscountView } from './discount.view';
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('main.id', 'orderId')
-      .addSelect('ROW_NUMBER() OVER (ORDER BY main.id)', 'id')
+      .select('main.id', 'id')
       .addSelect('main.skuId', 'skuId')
       .addSelect('main.cartId', 'cartId')
       .addSelect('cart.ownerId', 'customerId')
       .addSelect('cart.userId', 'employeeId')
       .addSelect('cart.storeId', 'storeId')
       .addSelect('main.priceLevelId', 'priceLevelId')
-      .addSelect('sku.name', 'name')
-      .addSelect('sku.barcode', 'barcode')
+      .addSelect('skuView.name', 'name')
+      .addSelect('skuView.barcode', 'barcode')
       .addSelect('main.quantity', 'quantity')
       .addSelect('price.price', 'price')
-      .addSelect('COALESCE(discount.fixed, 0)', 'fixedDiscount')
-      .addSelect('COALESCE(discount.percent, 0)', 'percentDiscount')
+      .addSelect('TRUNC(COALESCE(discount.fixed, 0), 2)', 'fixedDiscount')
+      .addSelect('TRUNC(COALESCE(discount.percent, 0), 2)', 'percentDiscount')
       .addSelect('price.cost', 'cost')
 
       .addSelect(
-        'COALESCE(((price.price - discount.fixed) - (price.price * discount.percent / 100)) * main.quantity, price.price * main.quantity)',
+        'TRUNC(COALESCE(((price.price - discount.fixed) - (price.price * discount.percent / 100)) * main.quantity, price.price * main.quantity), 2)',
         'subtotal'
       )
       .from(Order, 'main')
@@ -40,12 +39,12 @@ import { DiscountView } from './discount.view';
       .leftJoin(DiscountView, 'discount', 'discount.skuId = main.skuId')
 
       .leftJoin(Cart, 'cart', 'cart.id = main.cartId')
-      .leftJoin(SkuView, 'sku', 'sku.id = main.skuId');
+      .leftJoin(SkuView, 'skuView', 'skuView.id = main.skuId')
+      .orderBy('main.createdAt', 'ASC');
   },
 })
 export class OrderView implements IOrderView {
   @ViewColumn() id!: number;
-  @ViewColumn() orderId!: number;
   @ViewColumn() skuId!: number;
   @ViewColumn() cartId!: number;
   @ViewColumn() customerId!: number;

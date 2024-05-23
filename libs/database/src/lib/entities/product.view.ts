@@ -10,16 +10,16 @@ import { Manufacturer } from './manufacturer';
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('m.id', 'id')
-      .addSelect('m.name', 'name')
-      .addSelect('m.description', 'description')
-      .addSelect('m.upc', 'upc')
+      .select('main.id', 'id')
+      .addSelect('main.name', 'name')
+      .addSelect('main.description', 'description')
+      .addSelect('main.upc', 'upc')
       .addSelect('c.name', 'category')
       .addSelect('d.name', 'department')
 
-      .from(Product, 'm')
-      .leftJoin(Category, 'c', 'c.id = m.categoryId')
-      .leftJoin(Department, 'd', 'd.id = m.departmentId');
+      .from(Product, 'main')
+      .leftJoin(Category, 'c', 'c.id = main.categoryId')
+      .leftJoin(Department, 'd', 'd.id = main.departmentId');
   },
 })
 export class ProductView {
@@ -44,16 +44,16 @@ export class ProductView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('m.id', 'id')
+      .select('main.id', 'id')
       .addSelect('sku.name', 'name')
-      .addSelect('m.quantity', 'quantity')
+      .addSelect('main.quantity', 'quantity')
       .addSelect('sku.upc', 'barcode')
       .addSelect('sku.id', 'skuId')
       .addSelect('store.id', 'storeId')
       .addSelect('store.name', 'storeName')
-      .from(Quantity, 'm')
-      .leftJoin(Store, 'store', 'store.id = m.storeId')
-      .leftJoin(Sku, 'sku', 'sku.id = m.skuId');
+      .from(Quantity, 'main')
+      .leftJoin(Store, 'store', 'store.id = main.storeId')
+      .leftJoin(Sku, 'sku', 'sku.id = main.skuId');
   },
 })
 export class QuantityView implements IQuantityView {
@@ -79,17 +79,17 @@ export class QuantityView implements IQuantityView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('m.id', 'id')
+      .select('main.id', 'id')
       .addSelect('sku.name', 'name')
       .addSelect('sku.upc', 'barcode')
-      .addSelect('m.price', 'price')
-      .addSelect('m.cost', 'cost')
+      .addSelect('main.price', 'price')
+      .addSelect('main.cost', 'cost')
       .addSelect('sku.id', 'skuId')
-      .addSelect('m.priceLevelId', 'priceLevelId')
+      .addSelect('main.priceLevelId', 'priceLevelId')
       .addSelect('pl.name', 'priceLevelName')
-      .from(Price, 'm')
-      .leftJoin(PriceLevel, 'pl', 'pl.id = m.priceLevelId')
-      .leftJoin(Sku, 'sku', 'sku.id = m.skuId');
+      .from(Price, 'main')
+      .leftJoin(PriceLevel, 'pl', 'pl.id = main.priceLevelId')
+      .leftJoin(Sku, 'sku', 'sku.id = main.skuId');
   },
 })
 export class PriceView implements IPriceView {
@@ -107,31 +107,29 @@ export class PriceView implements IPriceView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('m.id', 'skuId')
-      .addSelect('ROW_NUMBER() OVER (ORDER BY m.id)', 'id')
-      .addSelect('m.upc', 'barcode')
-      .addSelect('m.name', 'name')
-      .addSelect('m.description', 'description')
-      .addSelect('pv.price', 'price')
-      .addSelect('pv.cost', 'cost')
-      .addSelect('pv.priceLevelId', 'priceLevelId')
-      .addSelect('pv.priceLevelName', 'priceLevelName')
-      .addSelect('qv.storeId', 'storeId')
-      .addSelect('qv.quantity', 'quantity')
-      .addSelect('qv.storeName', 'storeName')
-      .addSelect('p.category', 'category')
-      .addSelect('p.department', 'department')
-      .addSelect('p.id', 'productId')
-      .addSelect('p.upc', 'productUpc')
-      .from(Sku, 'm')
-      .leftJoin(ProductView, 'p', 'p.id = m.productId')
-      .leftJoin(PriceView, 'pv', 'pv.skuId = m.id')
-      .leftJoin(QuantityView, 'qv', 'qv.skuId = m.id');
+      .select('main.id', 'id')
+      .addSelect('main.upc', 'barcode')
+      .addSelect('main.name', 'name')
+      .addSelect('main.description', 'description')
+      .addSelect('priceView.price', 'price')
+      .addSelect('priceView.cost', 'cost')
+      .addSelect('priceView.priceLevelId', 'priceLevelId')
+      .addSelect('priceView.priceLevelName', 'priceLevelName')
+      .addSelect('quantityView.storeId', 'storeId')
+      .addSelect('quantityView.quantity', 'quantity')
+      .addSelect('quantityView.storeName', 'storeName')
+      .addSelect('productView.category', 'category')
+      .addSelect('productView.department', 'department')
+      .addSelect('productView.id', 'productId')
+      .addSelect('productView.upc', 'productUpc')
+      .from(Sku, 'main')
+      .leftJoin(ProductView, 'productView', 'productView.id = main.productId')
+      .leftJoin(PriceView, 'priceView', 'priceView.skuId = main.id')
+      .leftJoin(QuantityView, 'quantityView', 'quantityView.skuId = main.id');
   },
 })
 export class SkuView implements ISkuView {
   @ViewColumn() id!: number;
-  @ViewColumn() skuId!: number;
   @ViewColumn() barcode!: string;
   @ViewColumn() name!: string;
   @ViewColumn() price!: number;

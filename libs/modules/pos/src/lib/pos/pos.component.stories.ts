@@ -36,6 +36,8 @@ const meta: Meta<PosComponent> = {
               Quantity: 'Quantities',
               SkuView: 'SkuViews',
               Cart: 'Carts',
+              Order: 'Orders',
+              OrderView: 'OrderViews',
             },
             entityMetadata: {
               Sku: {},
@@ -46,6 +48,8 @@ const meta: Meta<PosComponent> = {
               Store: {},
               Quantity: {},
               Cart: {},
+              Order: {},
+              OrderView: {},
             },
           },
           withEffects()

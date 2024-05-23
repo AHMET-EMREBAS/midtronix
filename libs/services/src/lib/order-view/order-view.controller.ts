@@ -1,5 +1,6 @@
 import { PaginatorDto, RestRouteBuilder } from '@mdtx/core';
 import { OrderViewService } from './order-view.service';
+import { QueryOrderViewDto } from '@mdtx/database';
 
 const R = RestRouteBuilder.get('OrderView');
 
@@ -13,8 +14,11 @@ export class OrderViewController {
   }
 
   @R.FindAll()
-  findAll(@R.Query() paginator: PaginatorDto) {
-    return this.service.findAll({ ...paginator });
+  findAll(
+    @R.Query() paginator: PaginatorDto,
+    @R.Query() query: QueryOrderViewDto
+  ) {
+    return this.service.findAll({ ...paginator }, query);
   }
 
   @R.FindOneById()

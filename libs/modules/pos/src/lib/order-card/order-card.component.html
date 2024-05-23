@@ -1,0 +1,20 @@
+<div class="order-card" *ngIf="orderView as o">
+  <div class="order-actions">
+    <mdtx-input-quantity
+      [value]="o.quantity"
+      (quantityValueChange)="quantityEvent.emit($event)"
+      layoutDirection="verticle"
+    ></mdtx-input-quantity>
+  </div>
+
+  <div class="order-content">
+    <strong>{{ o.name }}</strong>
+    <small>{{ o.barcode }}</small>
+    <small>$ {{ o.price }}</small>
+    <strong>$ {{ o.subtotal }}</strong>
+  </div>
+
+  <div class="order-actions">
+    <mdtx-close-button (click)="deleteEvent.emit()"> </mdtx-close-button>
+  </div>
+</div>

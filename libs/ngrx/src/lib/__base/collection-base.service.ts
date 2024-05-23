@@ -2,6 +2,7 @@ import {
   EntityActionOptions,
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
+  MergeStrategy,
 } from '@ngrx/data';
 import { HttpClient } from '@angular/common/http';
 import {
@@ -57,6 +58,9 @@ export class CollectionBaseService<
   }
 
   override add(entity: any): Observable<T> {
-    return super.add(entity, { isOptimistic: false });
+    return super.add(entity, {
+      isOptimistic: false,
+      mergeStrategy: MergeStrategy.OverwriteChanges,
+    });
   }
 }

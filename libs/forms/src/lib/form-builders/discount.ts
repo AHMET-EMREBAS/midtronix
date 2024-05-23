@@ -23,7 +23,7 @@ export const DiscountFormBuilder = new FormGroupBuilder<ICreateDiscountDto>(
   .required()
   .date()
 
-  .add('skus')
+  .add('sku')
   .required()
 
   .done()

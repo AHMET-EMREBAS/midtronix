@@ -14,7 +14,7 @@ export interface IDiscount<TSku extends IID = IID> extends IBaseEntity {
   percent: number;
   startDate: Date;
   endDate: Date;
-  skus: TSku[];
+  sku: TSku;
 }
 
 /**

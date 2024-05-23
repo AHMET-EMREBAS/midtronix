@@ -1,0 +1,10 @@
+<strong>Count: {{ getCount() }}</strong>
+<div style="display: flex; flex-direction: column; gap: 3px">
+  @for(o of orders; track o ){
+  <mdtx-order-card
+    [orderView]="o"
+    (quantityEvent)="quantityEventHandler($event, o)"
+    (deleteEvent)="deleteEventHandler(o)"
+  ></mdtx-order-card>
+  }
+</div>

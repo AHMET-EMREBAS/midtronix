@@ -21491,7 +21491,7 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -21501,7 +21501,7 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -21811,46 +21811,6 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-            },
-            {
-                "name": "Heading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -21902,6 +21862,46 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -23821,21 +23821,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CartComponent>",
-                "defaultValue": "{\r\n  component: CartComponent,\r\n  title: 'CartComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CategoryComponent>",
                 "defaultValue": "{\r\n  component: CategoryComponent,\r\n  title: 'CategoryComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CartComponent>",
+                "defaultValue": "{\r\n  component: CartComponent,\r\n  title: 'CartComponent',\r\n}"
             },
             {
                 "name": "meta",
@@ -24141,46 +24141,6 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<CreateCartComponent>",
-                "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<DeleteCartComponent>",
-                "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<UpdateCartComponent>",
-                "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ViewCartComponent>",
-                "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -24236,6 +24196,46 @@
                 "deprecationMessage": "",
                 "type": "Meta<ViewCategoryComponent>",
                 "defaultValue": "{\r\n  component: ViewCategoryComponent,\r\n  title: 'ViewCategoryComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Category: 'Categories',\r\n            },\r\n            entityMetadata: {\r\n              Category: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<CreateCartComponent>",
+                "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<DeleteCartComponent>",
+                "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<UpdateCartComponent>",
+                "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ViewCartComponent>",
+                "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
             },
             {
                 "name": "meta",
@@ -24665,7 +24665,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CreateDiscountComponent>",
-                "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n            },\n            entityMetadata: {\n              Discount: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Discount: {},\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -26151,7 +26151,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -26161,7 +26161,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -26471,46 +26471,6 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {},\r\n}"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -26562,6 +26522,46 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -28499,8 +28499,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                "rawtype": "StoryObj<CategoryComponent>",
+                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -28510,8 +28510,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CategoryComponent>",
-                "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                "rawtype": "StoryObj<CartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -28851,50 +28851,6 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CreateCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<DeleteCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<UpdateCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
-                "rawtype": "StoryObj<ViewCartComponent>",
-                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "description": "",
-                "kind": 183
-            },
-            {
-                "name": "Story",
-                "ctype": "miscellaneous",
-                "subtype": "typealias",
                 "rawtype": "StoryObj<CreateCategoryComponent>",
                 "file": "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts",
                 "deprecated": false,
@@ -28952,6 +28908,50 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<ViewCategoryComponent>",
                 "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<CreateCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<DeleteCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<UpdateCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ViewCartComponent>",
+                "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31388,38 +31388,6 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CartComponent>",
-                    "defaultValue": "{\r\n  component: CartComponent,\r\n  title: 'CartComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
             "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -31446,6 +31414,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CartComponent>",
+                    "defaultValue": "{\r\n  component: CartComponent,\r\n  title: 'CartComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -32412,134 +32412,6 @@
                     "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
-            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<CreateCartComponent>",
-                    "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<DeleteCartComponent>",
-                    "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<UpdateCartComponent>",
-                    "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
-                {
-                    "name": "Heading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
-                },
-                {
-                    "name": "meta",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Meta<ViewCartComponent>",
-                    "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {},\r\n}"
-                }
-            ],
             "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -32726,6 +32598,134 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<CreateCartComponent>",
+                    "defaultValue": "{\r\n  component: CreateCartComponent,\r\n  title: 'CreateCartComponent',\r\n\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n              User: 'Users',\r\n              Customer: 'Customers',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n              User: {},\r\n              Customer: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DeleteCartComponent>",
+                    "defaultValue": "{\r\n  component: DeleteCartComponent,\r\n  title: 'DeleteCartComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<UpdateCartComponent>",
+                    "defaultValue": "{\r\n  component: UpdateCartComponent,\r\n  title: 'UpdateCartComponent',\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<ViewCartComponent>",
+                    "defaultValue": "{\r\n  component: ViewCartComponent,\r\n  title: 'ViewCartComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        importProvidersFrom(RouterModule.forRoot([])),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Cart: 'Carts',\r\n            },\r\n            entityMetadata: {\r\n              Cart: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -34095,7 +34095,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<CreateDiscountComponent>",
-                    "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n            },\n            entityMetadata: {\n              Discount: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: CreateDiscountComponent,\n  title: 'CreateDiscountComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Discount: 'Discounts',\n              Sku: 'Skus',\n            },\n            entityMetadata: {\n              Discount: {},\n              Sku: {},\n            },\n          },\n          withEffects()\n        ),\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -38563,19 +38563,6 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/modules/sub-modules/src/lib/category/category.component.stories.ts": [
                 {
                     "name": "Story",
@@ -38583,6 +38570,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CategoryComponent>",
                     "file": "libs/modules/sub-modules/src/lib/category/category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -38979,58 +38979,6 @@
                     "kind": 183
                 }
             ],
-            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<CreateCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<DeleteCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<UpdateCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
-            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ViewCartComponent>",
-                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/modules/sub-modules/src/lib/category/create-category/create-category.component.stories.ts": [
                 {
                     "name": "Story",
@@ -39103,6 +39051,58 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<ViewCategoryComponent>",
                     "file": "libs/modules/sub-modules/src/lib/category/view-category/view-category.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<CreateCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/create-cart/create-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<DeleteCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/delete-cart/delete-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<UpdateCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/update-cart/update-cart.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ViewCartComponent>",
+                    "file": "libs/modules/sub-modules/src/lib/cart/view-cart/view-cart.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",

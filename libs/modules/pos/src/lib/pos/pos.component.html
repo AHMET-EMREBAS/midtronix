@@ -1,46 +1,27 @@
-<ng-container *ngIf="searchObserver$ | async"></ng-container>
-
 <mdtx-pos-layout>
   <!-- Toolbar -->
-  <ng-template mdtxPosLayoutToolbar>
-    <mdtx-input-pos-search
-      #barcodeSearch
-      (inputEvent)="handleSearchEvent($event)"
-    ></mdtx-input-pos-search>
-
-    <mdtx-store-search
-      #storeSearch
-      [defaultStore]="defaultStore"
-    ></mdtx-store-search>
-
-    <mdtx-price-level-search
-      #priceLevelSearch
-      [defaultPriceLevel]="defaultPriceLevel"
-    ></mdtx-price-level-search>
-  </ng-template>
+  <ng-template mdtxPosLayoutToolbar> </ng-template>
 
   <!-- Product List -->
   <ng-template mdtxPosLayoutProductList>
     <mdtx-product-card-list
-      *ngIf="items$ | async as __items"
-      [products]="__items"
-      (addProductToCartEvent)="handleAddProductToCartEvent($event)"
+      *ngIf="products$ | async as products"
+      [products]="products"
+      (addProductToCartEvent)="addProductToCartEventHandler($event)"
     ></mdtx-product-card-list>
   </ng-template>
 
   <!-- Cart List -->
   <ng-template mdtxPosLayoutCartList>
-    <mdtx-product-small-card-list
-      *ngIf="getItemsInCart() as __itemsInCart"
-      [products]="__itemsInCart"
-      (deleteProductEvent)="handleDeleteProductEvent($event)"
-      (quantityChangeEvent)="handleQuantityChangeEvent()"
-    ></mdtx-product-small-card-list>
+    <mdtx-order-card-list
+      *ngIf="orders$ | async as orders"
+      [orders]="orders"
+      (updateOrderEvent)="updateOrderEventHandler($event)"
+      (deleteOrderEvent)="deleteOrderEventHandler($event)"
+    ></mdtx-order-card-list>
   </ng-template>
 
   <ng-template mdtxPosLayoutCartPrice>
-    <mdtx-checkout-button
-      [subtotal]="(subtotal$ | async) || 0"
-    ></mdtx-checkout-button>
+    <mdtx-checkout-button [subtotal]="0"></mdtx-checkout-button>
   </ng-template>
 </mdtx-pos-layout>
