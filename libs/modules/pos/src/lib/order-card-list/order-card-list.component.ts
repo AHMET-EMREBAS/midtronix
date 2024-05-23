@@ -7,6 +7,8 @@ import { OrderCardComponent } from '../order-card/order-card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 @Component({
   selector: 'mdtx-order-card-list',
@@ -17,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatDialogModule,
   ],
   templateUrl: './order-card-list.component.html',
   styleUrl: './order-card-list.component.scss',
@@ -29,6 +32,8 @@ export class OrderCardListComponent {
   @Output() deleteOrderEvent = new EventEmitter<IOrderViewRaw>();
   @Output() deleteAllOrdersEvent = new EventEmitter<IOrderViewRaw[]>();
   @Output() reloadOrdersEvent = new EventEmitter();
+
+  constructor(protected readonly dialog: MatDialog) {}
   getCount() {
     if (this.orders && this.orders.length > 0) {
       return this.orders
@@ -73,6 +78,6 @@ export class OrderCardListComponent {
   }
 
   handleCheckout() {
-    console.log('Checking out');
+    const d = this.dialog.open(CheckoutComponent);
   }
 }

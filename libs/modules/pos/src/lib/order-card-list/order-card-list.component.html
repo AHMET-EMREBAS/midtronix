@@ -27,7 +27,12 @@
       </div>
       <div class="grow-1"></div>
     </div>
-    <button mat-raised-button (click)="handleCheckout()" color="accent">
+    <button
+      mat-raised-button
+      (click)="handleCheckout()"
+      color="accent"
+      [disabled]="orders.length === 0 || !orders"
+    >
       Checkout
     </button>
   </div>
