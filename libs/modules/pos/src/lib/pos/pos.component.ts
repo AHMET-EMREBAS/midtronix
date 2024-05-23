@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckoutButtonComponent } from '@mdtx/material/button';
 import { InputPosSearchComponent } from '@mdtx/material/form';
 import { PosLayoutModule } from '@mdtx/material/layout';
-import { OrderService, OrderViewService, SkuViewService } from '@mdtx/ngrx';
+import {
+  CartService,
+  OrderService,
+  OrderViewService,
+  SkuViewService,
+} from '@mdtx/ngrx';
 import {
   BehaviorSubject,
   Observable,
@@ -48,9 +53,11 @@ import { OrderCardListComponent } from '../order-card-list/order-card-list.compo
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
-  providers: [SkuViewService, OrderService, OrderViewService],
+  providers: [SkuViewService, OrderService, OrderViewService, CartService],
 })
 export class PosComponent implements AfterViewInit {
+  carts$ = this.cartService.entities$;
+
   @ViewChild('posSearchComponentRef')
   posSearchComponentRef!: InputPosSearchComponent;
   currentOrders = new Map<string, IOrderViewRaw>();
@@ -62,16 +69,17 @@ export class PosComponent implements AfterViewInit {
       }
     })
   );
-  cartId = 2;
-  storeId = 1;
-  priceLevelId = 1;
+  @Input() cartId = 2;
+  @Input() storeId = 1;
+  @Input() priceLevelId = 1;
 
   posSearchEventObserver$!: Observable<any>;
 
   constructor(
     protected readonly skuViewService: SkuViewService,
     protected readonly orderViewService: OrderViewService,
-    protected readonly orderService: OrderService
+    protected readonly orderService: OrderService,
+    protected readonly cartService: CartService
   ) {}
 
   ngAfterViewInit(): void {

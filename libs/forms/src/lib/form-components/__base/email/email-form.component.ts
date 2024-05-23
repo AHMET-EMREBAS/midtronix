@@ -12,8 +12,6 @@ import { EmailFormBuilder } from '../../../form-builders';
   styleUrl: './email-form.component.scss',
 })
 export class EmailFormComponent extends BaseFormComponent {
-  @Input() submitLabel = 'Save Email';
-  
   override createFormGroup(): FormGroup {
     return new FormGroup({
       ...EmailFormBuilder.controls(),

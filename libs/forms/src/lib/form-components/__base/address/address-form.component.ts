@@ -12,9 +12,6 @@ import { AddressFormBuilder } from '../../../form-builders';
   styleUrl: './address-form.component.scss',
 })
 export class AddressFormComponent extends BaseFormComponent {
-  
-  @Input() submitLabel = 'Save Address';
-
   override createFormGroup(): FormGroup {
     return new FormGroup({
       ...AddressFormBuilder.controls(),

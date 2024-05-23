@@ -18,6 +18,7 @@
   <ng-template mdtxPosLayoutCartList>
     <mdtx-order-card-list
       *ngIf="orders$ | async as orders"
+      [cartId]="cartId"
       [orders]="orders"
       (updateOrderEvent)="updateOrderEventHandler($event)"
       (deleteOrderEvent)="deleteOrderEventHandler($event)"

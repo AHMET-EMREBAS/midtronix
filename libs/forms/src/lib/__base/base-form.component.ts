@@ -16,6 +16,7 @@ export class BaseFormComponent implements FormComponent, AfterViewInit {
    */
   @Input() resourceFormGroup = this.createFormGroup();
 
+  @Input() submitLabel = 'Save';
   /**
    * Emits form value when form submit
    */
