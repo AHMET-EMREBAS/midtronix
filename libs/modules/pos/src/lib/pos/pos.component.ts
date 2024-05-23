@@ -53,7 +53,7 @@ import { OrderCardListComponent } from '../order-card-list/order-card-list.compo
 export class PosComponent implements AfterViewInit {
   @ViewChild('posSearchComponentRef')
   posSearchComponentRef!: InputPosSearchComponent;
-  currentOrders = new Map<string, IOrderRaw | IOrderViewRaw>();
+  currentOrders = new Map<string, IOrderViewRaw>();
   products$ = this.skuViewService.entities$;
   orders$ = this.orderViewService.entities$.pipe(
     tap((data) => {
@@ -121,15 +121,13 @@ export class PosComponent implements AfterViewInit {
     const found = this.currentOrders.get(item.barcode);
 
     if (found) {
-      const newQuantity = found.quantity + 1;
-      this.orderService.update({
-        id: found.id,
-        quantity: newQuantity,
-        saleSubtotal:
-          (parseFloat(item.price + '') +
-            (parseFloat(item.price + '') * 6.25) / 100) *
-          newQuantity,
-      });
+      const newQuantity = parseFloat(found.quantity + '') + 1;
+      this.orderService.update(
+        this.__calculateSaleSubtotal({
+          ...found,
+          quantity: newQuantity,
+        })
+      );
       this.currentOrders.set(item.barcode, { ...found, quantity: newQuantity });
     } else {
       const saved = await firstValueFrom(
@@ -144,7 +142,7 @@ export class PosComponent implements AfterViewInit {
           saleTotal: item.price * 1 + (item.price * 6.25) / 100,
         })
       );
-      this.currentOrders.set(item.barcode, saved);
+      this.currentOrders.set(item.barcode, saved as unknown as IOrderViewRaw);
     }
 
     this.reloadOrderViews();

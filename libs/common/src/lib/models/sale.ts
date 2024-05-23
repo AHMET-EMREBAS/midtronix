@@ -6,6 +6,8 @@ export interface ISale<TOrder extends IID = IID, TCart extends IID = IID>
   taxrate: number;
   orders: TOrder[];
   cart: TCart;
+  cashPayment: number;
+  cardPayment: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

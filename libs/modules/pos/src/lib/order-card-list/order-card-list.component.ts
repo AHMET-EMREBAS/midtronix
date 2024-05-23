@@ -78,6 +78,6 @@ export class OrderCardListComponent {
   }
 
   handleCheckout() {
-    const d = this.dialog.open(CheckoutComponent);
+    const d = this.dialog.open(CheckoutComponent, { data: this.orders });
   }
 }

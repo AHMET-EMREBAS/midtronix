@@ -15,6 +15,8 @@ export class Sale extends BaseEntity implements ISale<Order, Cart> {
   @ManyRelation(Order, { eager: true }) orders!: Order[];
   @OneRelation(Cart) cart!: Cart;
   @Column({ type: 'numeric', default: 0 }) taxrate!: number;
+  @Column({ type: 'numeric', default: 0 }) cashPayment!: number;
+  @Column({ type: 'numeric', default: 0 }) cardPayment!: number;
 }
 
 @ViewEntity({
