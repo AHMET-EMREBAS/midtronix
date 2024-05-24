@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IOrderViewRaw } from '@mdtx/common';
+import { PosOrderCardComponent } from '../pos-order-card/pos-order-card.component';
 
 @Component({
   selector: 'mdtx-pos-order-card-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PosOrderCardComponent],
   templateUrl: './pos-order-card-list.component.html',
   styleUrl: './pos-order-card-list.component.scss',
 })
-export class PosOrderCardListComponent {}
+export class PosOrderCardListComponent {
+  @Input() orderListItems: IOrderViewRaw[] = [];
+  @Output() editButtonClickEvent = new EventEmitter<IOrderViewRaw>();
+
+  editButtonClickEventHandler(item: IOrderViewRaw) {
+    this.editButtonClickEvent.emit(item);
+  }
+}

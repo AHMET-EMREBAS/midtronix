@@ -37430,7 +37430,7 @@
         },
         {
             "name": "PosOrderCardComponent",
-            "id": "component-PosOrderCardComponent-f05efc5f0fa949050166bfc12311e4c2217cd415aad8237ac876c2f9efe99bc52002ffc651286eaf48ac5f611ba8559955813cb95cd3f6b1026c14241a86b1a5",
+            "id": "component-PosOrderCardComponent-7fcf50a906370c7ae3ab54b9c8f4421500055934a70d5ff0513be0b4398b2ecc326cb079e49cc3cbbf645413824a57b375cf6831a1a542cf5d832c773d76ec24",
             "file": "libs/material/card/src/lib/pos-order-card/pos-order-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37445,10 +37445,181 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "inputsClass": [
+                {
+                    "name": "productBarcode",
+                    "defaultValue": "'No Barcode'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 6,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                },
+                {
+                    "name": "productDescription",
+                    "defaultValue": "'Product description'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                },
+                {
+                    "name": "productImage",
+                    "defaultValue": "'./assets/imgs/placeholder.svg'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                },
+                {
+                    "name": "productName",
+                    "defaultValue": "'No Product Name'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 5,
+                    "type": "string",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                },
+                {
+                    "name": "productQuantity",
+                    "defaultValue": "-100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "number",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                },
+                {
+                    "name": "productUnitPrice",
+                    "defaultValue": "-100",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 7,
+                    "type": "number",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "editButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "minusButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "plusButtonClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "addToCartEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "EventEmitter",
+                    "inheritance": {
+                        "file": "BaseProductCardComponent"
+                    }
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "priceControl",
+                    "defaultValue": "new FormControl(0)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "quantityControl",
+                    "defaultValue": "new FormControl(0)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "editButtonClickEventHandler",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "minusButtonClickEventHandler",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "plusButtonClickEventHandler",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -37458,18 +37629,47 @@
                 {
                     "name": "CommonModule",
                     "type": "module"
+                },
+                {
+                    "name": "InputQuantityComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTooltipModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-pos-order-card',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './pos-order-card.component.html',\n  styleUrl: './pos-order-card.component.scss',\n})\nexport class PosOrderCardComponent {}\n",
+            "sourceCode": "import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { BaseProductCardComponent } from '../__common/base-product-card';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatTooltipModule } from '@angular/material/tooltip';\nimport { InputQuantityComponent } from '@mdtx/material/form';\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\n@Component({\n  selector: 'mdtx-pos-order-card',\n  standalone: true,\n  imports: [\n    CommonModule,\n    InputQuantityComponent,\n    MatButtonModule,\n    MatIconModule,\n    MatTooltipModule,\n    FormsModule,\n    ReactiveFormsModule,\n  ],\n  templateUrl: './pos-order-card.component.html',\n  styleUrl: './pos-order-card.component.scss',\n})\nexport class PosOrderCardComponent\n  extends BaseProductCardComponent\n  implements AfterViewInit\n{\n  @Output() editButtonClickEvent = new EventEmitter();\n  @Output() plusButtonClickEvent = new EventEmitter();\n  @Output() minusButtonClickEvent = new EventEmitter();\n\n  priceControl = new FormControl(0);\n  quantityControl = new FormControl(0);\n\n  ngAfterViewInit(): void {\n    this.priceControl.setValue(this.productUnitPrice);\n    this.quantityControl.setValue(this.productQuantity);\n  }\n  editButtonClickEventHandler() {\n    this.editButtonClickEvent.emit();\n  }\n\n  plusButtonClickEventHandler() {\n    this.plusButtonClickEvent.emit();\n  }\n\n  minusButtonClickEventHandler() {\n    this.minusButtonClickEvent.emit();\n  }\n}\n",
             "styleUrl": "./pos-order-card.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "templateData": "<p>pos-order-card works!</p>\n"
+            "extends": [
+                "BaseProductCardComponent"
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"card\">\n  <img [src]=\"productImage\" alt=\"\" />\n  <div class=\"content\">\n    <div class=\"title\">{{ productName }}</div>\n    <div class=\"subtitle\">{{ productBarcode }}</div>\n    <div class=\"details\">\n      <div class=\"quantity\">{{ productQuantity }}qty</div>\n      <div class=\"price\">${{ productUnitPrice }}</div>\n    </div>\n  </div>\n\n  <button\n    mat-icon-button\n    color=\"primary\"\n    class=\"edit-button\"\n    (click)=\"editButtonClickEventHandler()\"\n  >\n    <mat-icon>edit</mat-icon>\n  </button>\n</div>\n"
         },
         {
             "name": "PosOrderCardListComponent",
@@ -37513,6 +37713,49 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<p>pos-order-card-list works!</p>\n"
+        },
+        {
+            "name": "PosOrderEditorComponent",
+            "id": "component-PosOrderEditorComponent-dbd19c76f58285450d7eec48d865141bd0c4a4e152c16a6eb3bef77f8745d19676fd369304b577b12e6cd18b7533fe8d0280e6bb2924fffab8172f9d332f42a2",
+            "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-pos-order-editor",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./pos-order-editor.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-pos-order-editor',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './pos-order-editor.component.html',\n  styleUrl: './pos-order-editor.component.scss',\n})\nexport class PosOrderEditorComponent {}\n",
+            "styleUrl": "./pos-order-editor.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>pos-order-editor works!</p>\n"
         },
         {
             "name": "PosProductCardComponent",
@@ -39770,7 +40013,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-order-card works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -39781,6 +40024,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-order-card-list works!/gi)).toBeTruthy();\n  },\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-order-editor works!/gi)).toBeTruthy();\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -40366,6 +40619,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<PosOrderEditorComponent>",
+                "defaultValue": "{\n  component: PosOrderEditorComponent,\n  title: 'PosOrderEditorComponent',\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/card/src/lib/pos-product-card/pos-product-card.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -40927,6 +41190,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/material/card/src/lib/pos-order-card-list/pos-order-card-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
@@ -41912,6 +42185,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<PosOrderCardListComponent>",
                 "file": "libs/material/card/src/lib/pos-order-card-list/pos-order-card-list.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<PosOrderEditorComponent>",
+                "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -42960,7 +43244,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-order-card works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -43009,6 +43293,38 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/material/card/src/lib/pos-order-card-list/pos-order-card-list.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos-order-editor works!/gi)).toBeTruthy();\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PosOrderEditorComponent>",
+                    "defaultValue": "{\n  component: PosOrderEditorComponent,\n  title: 'PosOrderEditorComponent',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
@@ -44943,6 +45259,19 @@
                     "kind": 183
                 }
             ],
+            "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<PosOrderEditorComponent>",
+                    "file": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/card/src/lib/pos-product-card/pos-product-card.component.stories.ts": [
                 {
                     "name": "Story",
@@ -45771,6 +46100,45 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "PosOrderCardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/card/src/lib/pos-order-editor/pos-order-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PosOrderEditorComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
