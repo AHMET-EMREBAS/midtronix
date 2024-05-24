@@ -1,6 +1,6 @@
 // @index('./*/*.component.ts', f => `export * from '${f.path}'`)
-export * from './card-avatar/card-avatar.component'
-export * from './product-card-list/product-card-list.component'
-export * from './product-card/product-card.component'
-export * from './product-small-card-list/product-small-card-list.component'
-export * from './product-small-card/product-small-card.component'
+export * from './pos-order-card-list/pos-order-card-list.component';
+export * from './pos-order-card/pos-order-card.component';
+export * from './pos-product-card-list/pos-product-card-list.component';
+export * from './pos-product-card/pos-product-card.component';
+export * from './product-card/product-card.component';
