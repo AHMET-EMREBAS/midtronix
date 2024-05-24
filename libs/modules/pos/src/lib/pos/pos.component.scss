@@ -1,0 +1,17 @@
+.pos-container {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid orange;
+  height: 100%;
+  min-height: 300px;
+}
+
+.pos-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  border: 3px solid brown;
+  min-height: 60px;
+}
