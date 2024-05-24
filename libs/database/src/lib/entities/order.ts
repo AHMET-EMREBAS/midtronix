@@ -15,7 +15,7 @@ import { Cart } from './cart';
 @Entity()
 export class Order extends BaseEntity implements IOrder<Sku, Cart> {
   @OneRelation(Sku) sku!: Sku;
-  @OneRelation(Sku) cart!: Cart;
+  @OneRelation(Cart) cart!: Cart;
   @Column({ type: 'int' }) quantity!: number;
   @Column({ type: 'numeric' }) unitPrice!: number;
   @Column({ type: 'numeric' }) subtotal!: number;

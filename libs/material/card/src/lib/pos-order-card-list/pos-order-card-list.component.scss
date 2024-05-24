@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 60vh;
+  padding: 0.5em;
+  border: 3px dashed gray;
+  border-radius: 1em;
+  width: calc(350px + 1em);
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

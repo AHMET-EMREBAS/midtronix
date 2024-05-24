@@ -1,27 +1,3 @@
-<!-- Product card -->
-<ng-template
-  #productCard
-  let-name="name"
-  let-barcode="barcode"
-  let-image="image"
-  let-price="price"
-  let-quantity="quantity"
->
-  <div class="product-card">
-    <img class="image" src="./assets/imgs/placeholder.svg" alt="" />
-    <div class="content">
-      <div class="title">{{ name }}</div>
-      <div class="subtitle">{{ barcode }}</div>
-      <div class="price">{{ price }}</div>
-      <div class="quantity">{{ quantity }}</div>
-    </div>
-
-    <div class="product-card-actions">
-      <div class="product-add-card-button">Add Cart</div>
-    </div>
-  </div>
-</ng-template>
-
 <!-- Barcode Scanner  -->
 
 <ng-template #barcodeScanner>
@@ -42,37 +18,32 @@
   </div>
 
   <div class="pos-middle-container">
-    <div class="list-container sm-hide">
-      <h3>Products</h3>
+    <mdtx-pos-product-card-list
+      *ngIf="productListItems$ | async as productListItems"
+      [productListItems]="productListItems"
+      (addToCartEvent)="addToCartEventHandler($event)"
+    ></mdtx-pos-product-card-list>
 
-      <div class="row-list">
-        @for(item of products$ | async; track item ){
-        <ng-container
-          *ngTemplateOutlet="productCard;context:{
-            name:item.name,
-            barcode: item.id, 
-            image: item.id, 
-            price: item.id, 
-            quantity: item.id, 
-          }"
-        ></ng-container>
-        }
-      </div>
-    </div>
+    <mdtx-pos-order-card-list
+      *ngIf="orderListItems$ | async as orderListItems"
+      [orderListItems]="orderListItems"
+      (editButtonClickEvent)="editButtonClickEventHandler($event)"
+      (deleteButtonClickEvent)="deleteButtonClickEventHandler($event)"
+    ></mdtx-pos-order-card-list>
 
-    <div class="list-container sm-full">
-      <h3>Orders</h3>
-      <div class="col-list"></div>
-    </div>
+    
   </div>
 
-  <div class="pos-statusbar">
+  <button mat-raised-button color="primary" (click)="createNewCart()">
+    New Cart
+  </button>
+  <div class="toolbar">
     <mdtx-store-search #storeSearch></mdtx-store-search>
     <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
     <mdtx-customer-search #customerSearch></mdtx-customer-search>
   </div>
 </div>
 
-<div class="messages" #messagesContainer>
+<!-- <div class="messages" #messagesContainer>
   <p *ngFor="let m of messages">{{ m }}</p>
-</div>
+</div> -->

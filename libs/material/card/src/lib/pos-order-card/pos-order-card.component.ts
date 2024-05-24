@@ -26,6 +26,7 @@ export class PosOrderCardComponent
   implements AfterViewInit
 {
   @Output() editButtonClickEvent = new EventEmitter();
+  @Output() deleteButtonClickEvent = new EventEmitter();
 
   priceControl = new FormControl(0);
   quantityControl = new FormControl(0);
@@ -37,5 +38,12 @@ export class PosOrderCardComponent
 
   editButtonClickEventHandler() {
     this.editButtonClickEvent.emit();
+  }
+
+
+
+
+  deleteButtonClickEventHandler(){
+    this.deleteButtonClickEvent.emit()
   }
 }

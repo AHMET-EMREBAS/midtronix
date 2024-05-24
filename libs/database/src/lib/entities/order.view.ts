@@ -20,7 +20,7 @@ import { Cart } from './cart';
       .addSelect('main.total', 'total')
       .from(Order, 'main')
       .leftJoin(Cart, 'cart', 'cart.id = main.cartId')
-      .leftJoin(SkuView, 'skuView', 'skuView.id = main.skuId')
+      .innerJoin(SkuView, 'skuView', 'skuView.id = main.skuId')
       .orderBy('main.createdAt', 'ASC');
   },
 })

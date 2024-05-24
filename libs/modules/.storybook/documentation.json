@@ -14024,13 +14024,30 @@
         },
         {
             "name": "PosComponent",
-            "id": "component-PosComponent-09deddaa115a578ccbbf12a334549d48b4ad594ac3a4c0e216aba655ad1f2de4f92980320b9d84c88e6d22d000dce60b23d4a9c14cbb2b5825998053f687c36a",
+            "id": "component-PosComponent-5834719c671509449e08e7500ce511a1fe065c88cf116d67f285a2c312d1f2fc168b271a1f87e3ff029894fa827c9697eb850414d422e3e17c195691b3249a90",
             "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [],
+            "providers": [
+                {
+                    "name": "SkuViewService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "CartService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "OrderService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "OrderViewService",
+                    "type": "injectable"
+                }
+            ],
             "selector": "mdtx-pos",
             "styleUrls": [],
             "styles": [],
@@ -14043,6 +14060,83 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "customerSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoreSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'customerSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "messages",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 56,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "messagesContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 44,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'messagesContainer'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "priceLevelSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoreSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'priceLevelSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "products$",
+                    "defaultValue": "this.skuViewService.entities$.pipe(\n    debounceTime(600),\n    tap((data) => {\n      console.log(data);\n    })\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 49
+                },
+                {
                     "name": "scanControl",
                     "defaultValue": "new FormControl('')",
                     "deprecated": false,
@@ -14050,17 +14144,63 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 58
+                },
+                {
+                    "name": "storeSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "StoreSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 45,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'storeSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "log",
+                    "args": [
+                        {
+                            "name": "msg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "msg",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 65,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -14084,6 +14224,10 @@
                     "type": "module"
                 },
                 {
+                    "name": "MatInputModule",
+                    "type": "module"
+                },
+                {
                     "name": "MatFormFieldModule",
                     "type": "module"
                 },
@@ -14094,21 +14238,74 @@
                 {
                     "name": "MatIconModule",
                     "type": "module"
+                },
+                {
+                    "name": "StoreSearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PriceLevelSearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "CustomerSearchComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'mdtx-pos',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatFormFieldModule,\n    MatButtonModule,\n    MatIconModule,\n  ],\n  templateUrl: './pos.component.html',\n  styleUrl: './pos.component.scss',\n})\nexport class PosComponent implements AfterViewInit {\n  scanControl = new FormControl('');\n\n  ngAfterViewInit(): void {\n    this.scanControl.valueChanges.subscribe(() => {\n      console.log('Scanning item');\n    });\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatInputModule } from '@angular/material/input';\nimport { debounceTime, merge, tap } from 'rxjs';\nimport {\n  CustomerSearchComponent,\n  PriceLevelSearchComponent,\n  StoreSearchComponent,\n} from '@mdtx/forms';\nimport {\n  CartService,\n  OrderService,\n  OrderViewService,\n  SkuViewService,\n} from '@mdtx/ngrx';\n\nconst DEBOUNCE_TIME = 600;\n\n@Component({\n  selector: 'mdtx-pos',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatInputModule,\n    MatFormFieldModule,\n    MatButtonModule,\n    MatIconModule,\n    StoreSearchComponent,\n    PriceLevelSearchComponent,\n    CustomerSearchComponent,\n  ],\n  templateUrl: './pos.component.html',\n  styleUrl: './pos.component.scss',\n  providers: [SkuViewService, CartService, OrderService, OrderViewService],\n})\nexport class PosComponent implements AfterViewInit {\n  @ViewChild('messagesContainer')\n  messagesContainer!: ElementRef<HTMLDivElement>;\n  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;\n  @ViewChild('priceLevelSearch') priceLevelSearch!: StoreSearchComponent;\n  @ViewChild('customerSearch') customerSearch!: StoreSearchComponent;\n\n  products$ = this.skuViewService.entities$.pipe(\n    debounceTime(600),\n    tap((data) => {\n      console.log(data);\n    })\n  );\n\n  readonly messages: string[] = [];\n\n  scanControl = new FormControl('');\n\n  constructor(\n    protected readonly skuViewService: SkuViewService,\n    protected readonly cartService: CartService\n  ) {}\n\n  ngAfterViewInit(): void {\n    merge(\n      this.storeSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.priceLevelSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.customerSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.scanControl.valueChanges.pipe(debounceTime(DEBOUNCE_TIME))\n    ).subscribe((search) => {\n      console.log('? : ', search);\n      this.log(`Scaning by ${search}`);\n    });\n\n    this.skuViewService.getWithQuery({ take: 10000 });\n  }\n\n  log(msg: string) {\n    this.messages.unshift(msg);\n    this.messagesContainer.nativeElement.scrollBy({\n      behavior: 'smooth',\n      top: 10000,\n    });\n  }\n}\n",
             "styleUrl": "./pos.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "skuViewService",
+                        "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cartService",
+                        "type": "CartService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 58,
+                "jsdoctags": [
+                    {
+                        "name": "skuViewService",
+                        "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cartService",
+                        "type": "CartService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<div class=\"pos-container\">\n  <div class=\"pos-toolbar\">\n    <mat-form-field appearance=\"outline\">\n      <mat-label>Scan</mat-label>\n      <input\n        matInput\n        type=\"text\"\n        autocomplete=\"off\"\n        [formControl]=\"scanControl\"\n      />\n    </mat-form-field>\n  </div>\n\n  <div class=\"product-list\"></div>\n</div>\n"
+            "templateData": "<!-- Product card -->\n<ng-template\n  #productCard\n  let-name=\"name\"\n  let-barcode=\"barcode\"\n  let-image=\"image\"\n  let-price=\"price\"\n  let-quantity=\"quantity\"\n>\n  <div class=\"product-card\">\n    <img class=\"image\" src=\"./assets/imgs/placeholder.svg\" alt=\"\" />\n    <div class=\"content\">\n      <div class=\"title\">{{ name }}</div>\n      <div class=\"subtitle\">{{ barcode }}</div>\n      <div class=\"price\">{{ price }}</div>\n      <div class=\"quantity\">{{ quantity }}</div>\n    </div>\n\n    <div class=\"product-card-actions\">\n      <div class=\"product-add-card-button\">Add Cart</div>\n    </div>\n  </div>\n</ng-template>\n\n<!-- Barcode Scanner  -->\n\n<ng-template #barcodeScanner>\n  <mat-form-field appearance=\"outline\">\n    <mat-label>Scan</mat-label>\n    <input\n      matInput\n      type=\"text\"\n      autocomplete=\"off\"\n      [formControl]=\"scanControl\"\n    />\n  </mat-form-field>\n</ng-template>\n\n<div class=\"pos-container\">\n  <div class=\"pos-toolbar\">\n    <ng-container *ngTemplateOutlet=\"barcodeScanner\"></ng-container>\n  </div>\n\n  <div class=\"pos-middle-container\">\n    <div class=\"list-container sm-hide\">\n      <h3>Products</h3>\n\n      <div class=\"row-list\">\n        @for(item of products$ | async; track item ){\n        <ng-container\n          *ngTemplateOutlet=\"productCard;context:{\n            name:item.name,\n            barcode: item.id, \n            image: item.id, \n            price: item.id, \n            quantity: item.id, \n          }\"\n        ></ng-container>\n        }\n      </div>\n    </div>\n\n    <div class=\"list-container sm-full\">\n      <h3>Orders</h3>\n      <div class=\"col-list\"></div>\n    </div>\n  </div>\n\n  <div class=\"pos-statusbar\">\n    <mdtx-store-search #storeSearch></mdtx-store-search>\n    <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>\n    <mdtx-customer-search #customerSearch></mdtx-customer-search>\n  </div>\n</div>\n\n<div class=\"messages\" #messagesContainer>\n  <p *ngFor=\"let m of messages\">{{ m }}</p>\n</div>\n"
         },
         {
             "name": "PriceComponent",
@@ -21066,6 +21263,16 @@
                 "defaultValue": "''"
             },
             {
+                "name": "DEBOUNCE_TIME",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "number",
+                "defaultValue": "600"
+            },
+            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -21213,7 +21420,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\n  },\n}"
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
             },
             {
                 "name": "Heading",
@@ -23543,7 +23750,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<PosComponent>",
-                "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Sku: 'Skus',\n              Price: 'Prices',\n              PriceLevel: 'PriceLevels',\n              Store: 'Stores',\n              Quantity: 'Quantities',\n              SkuView: 'SkuViews',\n              Cart: 'Carts',\n              Order: 'Orders',\n              OrderView: 'OrderViews',\n              Sale: 'Sales',\n              SaleView: 'SaleViews',\n            },\n            entityMetadata: {\n              Sku: {},\n              SkuView: {},\n              Product: {},\n              Price: {},\n              PriceLevel: {},\n              Store: {},\n              Quantity: {},\n              Cart: {},\n              Order: {},\n              OrderView: {},\n              Sale: {},\n              SaleView: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Sku: 'Skus',\n              Price: 'Prices',\n              PriceLevel: 'PriceLevels',\n              Store: 'Stores',\n              Quantity: 'Quantities',\n              SkuView: 'SkuViews',\n              Cart: 'Carts',\n              Order: 'Orders',\n              OrderView: 'OrderViews',\n              Sale: 'Sales',\n              SaleView: 'SaleViews',\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Sku: {},\n              SkuView: {},\n              Product: {},\n              Price: {},\n              PriceLevel: {},\n              Store: {},\n              Quantity: {},\n              Cart: {},\n              Order: {},\n              OrderView: {},\n              Sale: {},\n              SaleView: {},\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -30665,6 +30872,18 @@
                     "defaultValue": "''"
                 }
             ],
+            "libs/modules/pos/src/lib/pos/pos.component.ts": [
+                {
+                    "name": "DEBOUNCE_TIME",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "defaultValue": "600"
+                }
+            ],
             "libs/modules/cms/src/lib/cms.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -31122,7 +31341,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();\n  },\n}"
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
                 },
                 {
                     "name": "meta",
@@ -31132,7 +31351,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<PosComponent>",
-                    "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Sku: 'Skus',\n              Price: 'Prices',\n              PriceLevel: 'PriceLevels',\n              Store: 'Stores',\n              Quantity: 'Quantities',\n              SkuView: 'SkuViews',\n              Cart: 'Carts',\n              Order: 'Orders',\n              OrderView: 'OrderViews',\n              Sale: 'Sales',\n              SaleView: 'SaleViews',\n            },\n            entityMetadata: {\n              Sku: {},\n              SkuView: {},\n              Product: {},\n              Price: {},\n              PriceLevel: {},\n              Store: {},\n              Quantity: {},\n              Cart: {},\n              Order: {},\n              OrderView: {},\n              Sale: {},\n              SaleView: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: PosComponent,\n  title: 'PosComponent',\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideMatFormFieldOptions({ appearance: 'outline' }),\n        provideAnimations(),\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\n        provideStore(),\n        provideEffects([]),\n        provideEntityData(\n          {\n            pluralNames: {\n              Product: 'Products',\n              Sku: 'Skus',\n              Price: 'Prices',\n              PriceLevel: 'PriceLevels',\n              Store: 'Stores',\n              Quantity: 'Quantities',\n              SkuView: 'SkuViews',\n              Cart: 'Carts',\n              Order: 'Orders',\n              OrderView: 'OrderViews',\n              Sale: 'Sales',\n              SaleView: 'SaleViews',\n              Customer: 'Customers',\n            },\n            entityMetadata: {\n              Sku: {},\n              SkuView: {},\n              Product: {},\n              Price: {},\n              PriceLevel: {},\n              Store: {},\n              Quantity: {},\n              Cart: {},\n              Order: {},\n              OrderView: {},\n              Sale: {},\n              SaleView: {},\n              Customer: {},\n            },\n          },\n          withEffects()\n        ),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -41793,7 +42012,17 @@
                 "linktype": "component",
                 "name": "PosComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/pos/src/lib/pos/pos.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DEBOUNCE_TIME",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

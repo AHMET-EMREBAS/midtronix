@@ -5,7 +5,10 @@
     <div class="subtitle">{{ productBarcode }}</div>
     <div class="details">
       <div class="quantity">{{ productQuantity }}qty</div>
-      <div class="price">${{ productUnitPrice }}</div>
+      <div class="price">
+        <div>${{ productUnitPrice }}</div>
+      </div>
+      <div class="price">${{ productUnitPrice * productQuantity }}</div>
     </div>
   </div>
 
@@ -16,5 +19,13 @@
     (click)="editButtonClickEventHandler()"
   >
     <mat-icon>edit</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    color="accent"
+    class="delete-button"
+    (click)="deleteButtonClickEventHandler()"
+  >
+    <mat-icon>delete</mat-icon>
   </button>
 </div>

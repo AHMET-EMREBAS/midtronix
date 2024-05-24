@@ -205,6 +205,12 @@ export class AppSeedModule implements OnModuleInit {
     const p1 = await createProduct();
     const p2 = await createProduct();
     const p3 = await createProduct();
+    const p4 = await createProduct();
+    const p5 = await createProduct();
+    const p6 = await createProduct();
+    const p7 = await createProduct();
+    const p8 = await createProduct();
+    const p9 = await createProduct();
 
     const s1p1 = await createSku(p1);
     const s2p1 = await createSku(p1);
@@ -217,6 +223,26 @@ export class AppSeedModule implements OnModuleInit {
     const s1p3 = await createSku(p3);
     const s2p3 = await createSku(p3);
     const s3p3 = await createSku(p3);
+
+    const s1p5 = await createSku(p5);
+    const s2p5 = await createSku(p5);
+    const s3p5 = await createSku(p5);
+
+    const s1p6 = await createSku(p6);
+    const s2p6 = await createSku(p6);
+    const s3p6 = await createSku(p6);
+
+    const s1p7 = await createSku(p7);
+    const s2p7 = await createSku(p7);
+    const s3p7 = await createSku(p7);
+
+    const s1p8 = await createSku(p8);
+    const s2p8 = await createSku(p8);
+    const s3p8 = await createSku(p8);
+
+    const s1p9 = await createSku(p9);
+    const s2p9 = await createSku(p9);
+    const s3p9 = await createSku(p9);
 
     const s1p1pl1 = await createPrice(s1p1, pl1);
     const s1p1pl2 = await createPrice(s1p1, pl2);
