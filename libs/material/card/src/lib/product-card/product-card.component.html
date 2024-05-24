@@ -1,31 +1,15 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>{{ title }}</mat-card-title>
-    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{ description }}</p>
+<div class="card">
+  <img src="./assets/imgs/placeholder.svg" alt="" />
+  <div class="content">
+    <div class="title">Product title</div>
+    <div class="subtitle">98982746576711</div>
+    <div class="details">
+      <span class="quantity">300qty</span>
+      <span class="price">$100,000.00</span>
+    </div>
+  </div>
 
-    <h4 style="text-align: center">${{ price }}</h4>
-  </mat-card-content>
-  <mat-card-actions>
-    <button
-      mat-icon-button
-      color="primary"
-      [matTooltip]="primaryButtonLabel"
-      matTooltipPosition="above"
-      (click)="handlePrimaryButtonClick()"
-    >
-      <mat-icon>{{ primaryButtonIcon }}</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      color="primary"
-      [matTooltip]="secondaryButtonLabel"
-      matTooltipPosition="above"
-      (click)="handleSecondaryButtonClick()"
-    >
-      <mat-icon>{{ secondaryButtonIcon }}</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+  <div class="actions">
+    <button mat-mini-fab><mat-icon>add_shopping_cart</mat-icon></button>
+  </div>
+</div>

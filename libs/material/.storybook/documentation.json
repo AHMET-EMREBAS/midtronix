@@ -23647,12 +23647,12 @@
         },
         {
             "name": "ValidatorBuilder",
-            "id": "class-ValidatorBuilder-330373afba30ae8b8b286d39e3213fd797de9e50476fcbc78126c0ef7561a959739b1279509de834d1800fd50a592e74bfb4ecdf6fad2b328820d4ea7518523b",
+            "id": "class-ValidatorBuilder-d4664c4a2d395027a7ff3a2e488e4aac983af8987e47fd4f954787a56568cdebce035001c5769d2395519d14cb91eed2a42685731735f3507f0c6aa857133621",
             "file": "libs/material/core/src/lib/form/validator-builder.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import { AbstractControl, ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n  isIn,\r\n  isURL,\r\n  isDateString,\r\n  isNumber,\r\n  min,\r\n  minLength,\r\n  maxLength,\r\n  isNumberString,\r\n} from 'class-validator';\r\nimport { IFormBuilder } from './form-builder-interface';\r\n\r\nexport class ValidatorBuilder<T extends Record<string, any> = any> {\r\n  private readonly validatorList: ValidatorFn[] = [];\r\n  private parentInstance!: IFormBuilder<T>;\r\n  constructor(private readonly propertyName: keyof T) {\r\n    if (!propertyName) throw new Error('Property name is required!');\r\n  }\r\n  private __name() {\r\n    return this.propertyName?.toString();\r\n  }\r\n\r\n  setParent(parent: IFormBuilder<T>) {\r\n    this.parentInstance = parent;\r\n  }\r\n\r\n  done() {\r\n    return this.parentInstance;\r\n  }\r\n\r\n  add(propertyName: keyof T) {\r\n    if (!this.parentInstance) throw new Error('Parent is not set!');\r\n    return this.parentInstance.add(propertyName);\r\n  }\r\n\r\n  private push(fn: ValidatorFn) {\r\n    this.validatorList.push(fn);\r\n    return this;\r\n  }\r\n\r\n  required(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      return c.value ? null : { required: `${this.__name()} is required!` };\r\n    });\r\n  }\r\n\r\n  date(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isDateString(c.value)\r\n          ? null\r\n          : {\r\n              date: `${this.__name()} should be a valid date!`,\r\n            }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  range(start: number, end: number): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      const cValue = parseInt(c.value);\r\n      if (cValue) {\r\n        cValue >= start && cValue <= end\r\n          ? null\r\n          : {\r\n              range: `${this.__name()} should be in range of ${start} and ${end}`,\r\n            };\r\n      }\r\n\r\n      return null;\r\n    });\r\n  }\r\n\r\n  url(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isURL(c.value) ? null : { url: `${this.__name()} should be valid url!` }\r\n    );\r\n  }\r\n\r\n  shortText() {\r\n    this.minLength(1);\r\n    this.maxLength(60);\r\n    return this;\r\n  }\r\n\r\n  longText() {\r\n    this.maxLength(600);\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              minLength: `${this.__name()} should be longer than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              maxLength: `${this.__name()} should be shorter than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  min(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              min: `${this.__name()} should be more than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  max(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              max: `${this.__name()} should be less than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  email(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.__name()} should be a valid email!` }\r\n    );\r\n  }\r\n\r\n  password(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isStrongPassword(c.value)\r\n        ? null\r\n        : {\r\n            password: `${this.__name()} should be a strong password!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  ean(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      (isNumberString(c.value) || isNumber(c.value)) &&\r\n      minLength(c.value, 10) &&\r\n      maxLength(c.value, 13)\r\n        ? null\r\n        : { ean: `${this.__name()} should be a valid barcode!` }\r\n    );\r\n  }\r\n\r\n  phone(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isPhoneNumber(c.value)\r\n        ? null\r\n        : {\r\n            phone: `${this.__name()} should be a valid phone number!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  isIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? null\r\n          : { isIn: `${this.__name()} should be one of ${value}` }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  isNotIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? { isNotIn: `${this.__name()} should be none of ${value}` }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  build(): ValidatorFn[] {\r\n    return [...this.validatorList];\r\n  }\r\n}\r\n",
+            "sourceCode": "import { AbstractControl, ValidatorFn } from '@angular/forms';\r\nimport {\r\n  isEmail,\r\n  isStrongPassword,\r\n  isPhoneNumber,\r\n  isEAN,\r\n  isIn,\r\n  isURL,\r\n  isDateString,\r\n  isNumber,\r\n  min,\r\n  minLength,\r\n  maxLength,\r\n  isNumberString,\r\n  isDate,\r\n} from 'class-validator';\r\nimport { IFormBuilder } from './form-builder-interface';\r\n\r\nexport class ValidatorBuilder<T extends Record<string, any> = any> {\r\n  private readonly validatorList: ValidatorFn[] = [];\r\n  private parentInstance!: IFormBuilder<T>;\r\n  constructor(private readonly propertyName: keyof T) {\r\n    if (!propertyName) throw new Error('Property name is required!');\r\n  }\r\n  private __name() {\r\n    return this.propertyName?.toString();\r\n  }\r\n\r\n  setParent(parent: IFormBuilder<T>) {\r\n    this.parentInstance = parent;\r\n  }\r\n\r\n  done() {\r\n    return this.parentInstance;\r\n  }\r\n\r\n  add(propertyName: keyof T) {\r\n    if (!this.parentInstance) throw new Error('Parent is not set!');\r\n    return this.parentInstance.add(propertyName);\r\n  }\r\n\r\n  private push(fn: ValidatorFn) {\r\n    this.validatorList.push(fn);\r\n    return this;\r\n  }\r\n\r\n  required(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      return c.value ? null : { required: `${this.__name()} is required!` };\r\n    });\r\n  }\r\n\r\n  date(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isDate(new Date(c.value))\r\n        ? null\r\n        : {\r\n            date: `${this.__name()} should be a valid date!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  range(start: number, end: number): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) => {\r\n      const cValue = parseInt(c.value);\r\n      if (cValue) {\r\n        cValue >= start && cValue <= end\r\n          ? null\r\n          : {\r\n              range: `${this.__name()} should be in range of ${start} and ${end}`,\r\n            };\r\n      }\r\n\r\n      return null;\r\n    });\r\n  }\r\n\r\n  url(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isURL(c.value) ? null : { url: `${this.__name()} should be valid url!` }\r\n    );\r\n  }\r\n\r\n  shortText() {\r\n    this.minLength(1);\r\n    this.maxLength(60);\r\n    return this;\r\n  }\r\n\r\n  longText() {\r\n    this.maxLength(600);\r\n    return this;\r\n  }\r\n\r\n  minLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              minLength: `${this.__name()} should be longer than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n\r\n    return this;\r\n  }\r\n\r\n  maxLength(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              maxLength: `${this.__name()} should be shorter than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  min(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length < value\r\n          ? {\r\n              min: `${this.__name()} should be more than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  max(value?: number): ValidatorBuilder<T> {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        c.value?.length > value\r\n          ? {\r\n              max: `${this.__name()} should be less than ${value}!`,\r\n            }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  email(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isEmail(c.value)\r\n        ? null\r\n        : { email: `${this.__name()} should be a valid email!` }\r\n    );\r\n  }\r\n\r\n  password(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isStrongPassword(c.value)\r\n        ? null\r\n        : {\r\n            password: `${this.__name()} should be a strong password!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  ean(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      (isNumberString(c.value) || isNumber(c.value)) &&\r\n      minLength(c.value, 10) &&\r\n      maxLength(c.value, 13)\r\n        ? null\r\n        : { ean: `${this.__name()} should be a valid barcode!` }\r\n    );\r\n  }\r\n\r\n  phone(): ValidatorBuilder<T> {\r\n    return this.push((c: AbstractControl) =>\r\n      isPhoneNumber(c.value)\r\n        ? null\r\n        : {\r\n            phone: `${this.__name()} should be a valid phone number!`,\r\n          }\r\n    );\r\n  }\r\n\r\n  isIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? null\r\n          : { isIn: `${this.__name()} should be one of ${value}` }\r\n      );\r\n    return this;\r\n  }\r\n\r\n  isNotIn(value?: any[]) {\r\n    if (value != undefined)\r\n      return this.push((c: AbstractControl) =>\r\n        isIn(c.value, value)\r\n          ? { isNotIn: `${this.__name()} should be none of ${value}` }\r\n          : null\r\n      );\r\n    return this;\r\n  }\r\n\r\n  build(): ValidatorFn[] {\r\n    return [...this.validatorList];\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -23666,7 +23666,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 21,
+                "line": 22,
                 "jsdoctags": [
                     {
                         "name": "propertyName",
@@ -23689,7 +23689,7 @@
                     "type": "IFormBuilder<T>",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "modifierKind": [
                         123
                     ]
@@ -23702,7 +23702,7 @@
                     "type": "ValidatorFn[]",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "modifierKind": [
                         123,
                         148
@@ -23716,7 +23716,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -23736,7 +23736,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 37,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23757,39 +23757,19 @@
                     "optional": false,
                     "returnType": "ValidatorFn[]",
                     "typeParameters": [],
-                    "line": 204,
+                    "line": 203,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
                     "name": "date",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true
-                        }
-                    ],
+                    "args": [],
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 53,
+                    "line": 54,
                     "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "optional": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
+                    "deprecationMessage": ""
                 },
                 {
                     "name": "done",
@@ -23797,7 +23777,7 @@
                     "optional": false,
                     "returnType": "IFormBuilder<T>",
                     "typeParameters": [],
-                    "line": 33,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23807,7 +23787,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 164,
+                    "line": 163,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23817,7 +23797,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 146,
+                    "line": 145,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23835,7 +23815,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 183,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23865,7 +23845,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 194,
+                    "line": 193,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23887,7 +23867,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 92,
+                    "line": 91,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23905,7 +23885,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 134,
+                    "line": 133,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23935,7 +23915,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 110,
+                    "line": 109,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23965,7 +23945,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 122,
+                    "line": 121,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23995,7 +23975,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 97,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24017,7 +23997,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 154,
+                    "line": 153,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24027,7 +24007,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 174,
+                    "line": 173,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24044,7 +24024,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 43,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -24081,7 +24061,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24111,7 +24091,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 47,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24128,7 +24108,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -24149,7 +24129,7 @@
                     "optional": false,
                     "returnType": "this",
                     "typeParameters": [],
-                    "line": 86,
+                    "line": 85,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -24159,7 +24139,7 @@
                     "optional": false,
                     "returnType": "ValidatorBuilder<T>",
                     "typeParameters": [],
-                    "line": 80,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -28338,6 +28318,53 @@
             "templateData": "<div class=\"checkout-button-container\">\r\n  <div class=\"checkout-price\">\r\n    <div class=\"tax-value\"><span>Tax:</span> $ {{ printTax() }}</div>\r\n    <div class=\"subtotal-value\">\r\n      <span>Subtotal:</span> $ {{ printSubtotal() }}\r\n    </div>\r\n    <div class=\"total-divider\"></div>\r\n    <div class=\"total-value\"><span>Total:</span> $ {{ printTotal() }}</div>\r\n  </div>\r\n\r\n  <button\r\n    mat-fab\r\n    color=\"accent\"\r\n    [attr.role]=\"label\"\r\n    [matTooltip]=\"label\"\r\n    matTooltipPosition=\"above\"\r\n    (click)=\"checkoutButtonClickEvent.emit()\"\r\n  >\r\n    <mat-icon>shopping_cart_checkout</mat-icon>\r\n  </button>\r\n</div>\r\n"
         },
         {
+            "name": "CloseButtonComponent",
+            "id": "component-CloseButtonComponent-7c7665faafdc1a67f5dd9b39319d2a8f746df095e390982a755c2baa3459af641ea8f52562c92b85343b8bc0ddbd5482b207b1b455b2917d9bfa15ceb439cdd9",
+            "file": "libs/material/button/src/lib/close-button/close-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-close-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./close-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MiniFabComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MiniFabComponent } from '../mini-fab/mini-fab.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-close-button',\r\n  standalone: true,\r\n  imports: [CommonModule, MiniFabComponent],\r\n  templateUrl: './close-button.component.html',\r\n  styleUrl: './close-button.component.scss',\r\n})\r\nexport class CloseButtonComponent {}\r\n",
+            "styleUrl": "./close-button.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<mdtx-mini-fab buttonColor=\"warn\">close</mdtx-mini-fab>\r\n"
+        },
+        {
             "name": "FormComponent",
             "id": "component-FormComponent-9de8764f11d94fb6a428becf3ceecdab9291e9c6f25f9f41fb0a3045a9322afa80be53e7ed497daba9664df6b28e81bd95e48a60606d5a92441de644c7d139a5",
             "file": "libs/material/form/src/lib/form/form.component.ts",
@@ -28513,6 +28540,70 @@
             ]
         },
         {
+            "name": "FullscreenButtonComponent",
+            "id": "component-FullscreenButtonComponent-b7edf64e8c74f2001fea3eb36e64e7a76e961636407a8f11ef2352743b7750e6fd0d2b88f41b03f338ea57c629c4b346475ca9f95ada20cbf3315bd2dd3f0297",
+            "file": "libs/material/core/src/lib/fullscreen-button/fullscreen-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-fullscreen-button",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./fullscreen-button.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "fullscreenContainerRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "HTMLDivElement",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FullscreenDirective",
+                    "type": "directive"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FullscreenDirective } from '../directives';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\n\r\n@Component({\r\n  selector: 'mdtx-fullscreen-button',\r\n  standalone: true,\r\n  imports: [CommonModule, FullscreenDirective, MatButtonModule, MatIconModule],\r\n  templateUrl: './fullscreen-button.component.html',\r\n  styleUrl: './fullscreen-button.component.scss',\r\n})\r\nexport class FullscreenButtonComponent {\r\n  @Input() fullscreenContainerRef!: HTMLDivElement;\r\n}\r\n",
+            "styleUrl": "./fullscreen-button.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<button\r\n  mat-icon-button\r\n  #fs=\"mdtxFullscreen\"\r\n  [mdtxFullscreen]=\"fullscreenContainerRef\"\r\n  style=\"position: absolute; right: 1em; top: 1em\"\r\n>\r\n  <mat-icon>\r\n    {{ fs.isFullscreen() ? 'close_fullscreen' : 'fullscreen' }}\r\n  </mat-icon>\r\n</button>\r\n"
+        },
+        {
             "name": "FullscreenDirectiveComponent",
             "id": "component-FullscreenDirectiveComponent-e5493a4d69d0413453113a856ae17fcdded0fd369c8419847c8dd0394e8e5c18380893a682a7d66cfaa8596cc970ffbbe6f67bb8919c77af98b334ce6b01a955",
             "file": "libs/material/core/src/lib/directives/fullscreen.component.ts",
@@ -28601,7 +28692,7 @@
         },
         {
             "name": "InputAutocompleteComponent",
-            "id": "component-InputAutocompleteComponent-74b4dba38653d3dbdc03e0c4d2612a7938fa7dcf7ba1aacb27ccdf13fae77cefe95903387e4d65a4a0183430864e89d58eca2ead6c2820be5de15c1505817c40",
+            "id": "component-InputAutocompleteComponent-653d9bd1329b41050128cee43a9adc003a03e6bb65a7ae7b82460c43d8329f6af47d22fd7d9773126836f17b97ae0111d9ac265c871af1d962dfa32526c80565",
             "file": "libs/material/form/src/lib/input-autocomplete/input-autocomplete.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -28618,11 +28709,20 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "optionNameAsValue",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -28630,7 +28730,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "IInputOption[]",
                     "decorators": []
                 },
@@ -28639,7 +28739,7 @@
                     "defaultValue": "'event'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 23,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -28725,7 +28825,25 @@
                     "type": "Observable<IInputOption[]>",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 27
+                },
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatAutocomplete",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
                 },
                 {
                     "name": "$statusChange",
@@ -28766,7 +28884,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28787,7 +28905,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -28810,7 +28928,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -28909,7 +29027,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    if (!this.options) throw new Error('Options is required!');\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(1000),\r\n      map((search: string) => {\r\n        if (\r\n          typeof search === 'string' &&\r\n          search.trim().length > 0 &&\r\n          this.options\r\n        ) {\r\n          const result = this.options.filter((option) => {\r\n            return option.name?.toLowerCase().includes(search?.toLowerCase());\r\n          });\r\n\r\n          if (result && result.length > 0)\r\n            this.inputControl.setValue(result[0]);\r\n\r\n          return result;\r\n        }\r\n        return this.options;\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option && option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option && option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input, OnInit, ViewChild } from '@angular/core';\r\nimport { InputBaseComponent } from '../input-base';\r\nimport { CommonFormModule } from '../form';\r\nimport {\r\n  MatAutocomplete,\r\n  MatAutocompleteModule,\r\n} from '@angular/material/autocomplete';\r\nimport { IInputOption } from '@mdtx/material/core';\r\nimport { Observable, debounceTime, map, startWith } from 'rxjs';\r\n@Component({\r\n  selector: 'mdtx-input-autocomplete',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatAutocompleteModule],\r\n  templateUrl: './input-autocomplete.component.html',\r\n  styleUrl: './input-autocomplete.component.scss',\r\n})\r\nexport class InputAutocompleteComponent\r\n  extends InputBaseComponent\r\n  implements OnInit\r\n{\r\n  @ViewChild('inputRef') inputRef!: MatAutocomplete;\r\n  @Input() optionNameAsValue = false;\r\n  @Input() override prefixIcon = 'event';\r\n  @Input() options!: IInputOption[];\r\n  @Input() multiple?: boolean = false;\r\n\r\n  filteredOptions$!: Observable<IInputOption[]>;\r\n\r\n  override ngOnInit(): void {\r\n    super.ngOnInit();\r\n\r\n    if (!this.options) throw new Error('Options is required!');\r\n\r\n    this.filteredOptions$ = this.inputControl.valueChanges.pipe(\r\n      startWith(''),\r\n      debounceTime(1000),\r\n      map((search: string) => {\r\n        if (\r\n          typeof search === 'string' &&\r\n          search.trim().length > 0 &&\r\n          this.options\r\n        ) {\r\n          const result = this.options.filter((option) => {\r\n            return option.name?.toLowerCase().includes(search?.toLowerCase());\r\n          });\r\n\r\n          if (result && result.length > 0)\r\n            this.inputControl.setValue(result[0]);\r\n\r\n          return result;\r\n        }\r\n        return this.options;\r\n      })\r\n    );\r\n  }\r\n\r\n  displayWith(option: IInputOption) {\r\n    return option && option.name;\r\n  }\r\n\r\n  valueWith(option: IInputOption) {\r\n    if (this.optionNameAsValue) {\r\n      return option && option.name;\r\n    }\r\n    return option;\r\n  }\r\n}\r\n",
             "styleUrl": "./input-autocomplete.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -28920,7 +29038,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label> {{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matAutocomplete]=\"auto\"\r\n    [attr.data-testid]=\"testid()\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #auto=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n    [autoSelectActiveOption]=\"true\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"valueWith(option)\">{{ option.name }}</mat-option>\r\n    }\r\n    <mat-option [value]=\"null\">None</mat-option>\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix [color]=\"iconColor()\">{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
+            "templateData": "<mat-form-field class=\"example-full-width\">\r\n  <mat-label> {{ label || inputName | titlecase }}</mat-label>\r\n  <input\r\n    type=\"text\"\r\n    #mdtxInput=\"mdtxInput\"\r\n    mdtxInput\r\n    matInput\r\n    [formControl]=\"inputControl\"\r\n    [matAutocomplete]=\"inputRef\"\r\n    [attr.data-testid]=\"testid()\"\r\n    [multiple]=\"multiple\"\r\n  />\r\n  <mat-autocomplete\r\n    autoActiveFirstOption\r\n    #inputRef=\"matAutocomplete\"\r\n    [displayWith]=\"displayWith\"\r\n    [autoSelectActiveOption]=\"true\"\r\n  >\r\n    @for (option of filteredOptions$ | async ; track option) {\r\n    <mat-option [value]=\"valueWith(option)\">{{ option.name }}</mat-option>\r\n    }\r\n    <mat-option [value]=\"null\">None</mat-option>\r\n  </mat-autocomplete>\r\n\r\n  <!-- Prefix icon -->\r\n  @if(prefixIcon){\r\n  <mat-icon matPrefix [color]=\"iconColor()\">{{ prefixIcon }}</mat-icon>\r\n  }\r\n\r\n  <!-- Typing indicator -->\r\n  <mat-icon matSuffix [color]=\"iconColor()\">\r\n    @if(mdtxInput.isTyping()){\r\n    <mat-progress-spinner\r\n      [diameter]=\"22\"\r\n      mode=\"indeterminate\"\r\n    ></mat-progress-spinner>\r\n    }\r\n  </mat-icon>\r\n</mat-form-field>\r\n"
         },
         {
             "name": "InputBaseComponent",
@@ -29590,7 +29708,7 @@
         },
         {
             "name": "InputChipSelectComponent",
-            "id": "component-InputChipSelectComponent-0e09b5d235ddc2710e786aeb66f62d7ccf19a703f40de0b347e23ef3e1833c5d9ad69f631f69eb95c00f9f4fd806ad35dc049ee4693d6607318756aed9fc69d5",
+            "id": "component-InputChipSelectComponent-4ae23b33b6f6bc0380e69c9276de7931be2ba7f39eaf3119a5ccba84b3961ffd2cdefa9c6261e37c5f00d8690cdadccee9055e0664a7a3b16bb054be91aa147a",
             "file": "libs/material/form/src/lib/input-chip-select/input-chip-select.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -29608,18 +29726,22 @@
             "inputsClass": [
                 {
                     "name": "multiple",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 25,
                     "type": "boolean",
-                    "decorators": []
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
                 },
                 {
                     "name": "optionNameAsValue",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -29630,7 +29752,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "IInputOption[]",
                     "decorators": [],
                     "inheritance": {
@@ -29642,7 +29764,7 @@
                     "defaultValue": "'event'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 23,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -29728,7 +29850,28 @@
                     "type": "Observable<IInputOption[]>",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 27,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatAutocomplete",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
                     }
@@ -29772,7 +29915,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -29796,7 +29939,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -29819,7 +29962,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -29921,7 +30064,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, InputOptions } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatChipListboxChange, MatChipsModule } from '@angular/material/chips';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\nimport { IInputOption } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-chip-select',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-chip-select.component.html',\r\n  styleUrl: './input-chip-select.component.scss',\r\n})\r\nexport class InputChipSelectComponent extends InputAutocompleteComponent {\r\n  @Input() multiple?: boolean;\r\n\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { CommonFormModule } from '../form';\r\nimport { MatChipsModule } from '@angular/material/chips';\r\nimport { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-input-chip-select',\r\n  standalone: true,\r\n  imports: [CommonFormModule, MatChipsModule],\r\n  templateUrl: './input-chip-select.component.html',\r\n  styleUrl: './input-chip-select.component.scss',\r\n})\r\nexport class InputChipSelectComponent extends InputAutocompleteComponent {}\r\n",
             "styleUrl": "./input-chip-select.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -31647,13 +31790,14 @@
             "inputsClass": [
                 {
                     "name": "multiple",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 25,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
-                        "file": "InputChipSelectComponent"
+                        "file": "InputAutocompleteComponent"
                     }
                 },
                 {
@@ -31661,7 +31805,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -31672,7 +31816,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "IInputOption[]",
                     "decorators": [],
                     "inheritance": {
@@ -31684,7 +31828,7 @@
                     "defaultValue": "'event'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 23,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -31770,7 +31914,28 @@
                     "type": "Observable<IInputOption[]>",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 27,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatAutocomplete",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
                     }
@@ -31814,7 +31979,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -31838,7 +32003,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -31861,7 +32026,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -33089,7 +33254,7 @@
         },
         {
             "name": "InputQuantityComponent",
-            "id": "component-InputQuantityComponent-2d0125002b516197749652d15a4071f49fdb5923c69bf7a9b182aa13be0c6ff7ba9dcb1a4045afac481aa94017d29fe525fc94754286d9a94e46ecf629b76267",
+            "id": "component-InputQuantityComponent-adc08db9c1ad8a99fbaa2ebbd7d08b7df0db664181456c0adf78f7fb122c96e5ba9fc8c6419eae18902d4e51b6cdb8b21e6b18292539f539e5c4996017b57ebd",
             "file": "libs/material/form/src/lib/input-quantity/input-quantity.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -33110,7 +33275,7 @@
                     "defaultValue": "'horizontal'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 29,
                     "type": "\"horizontal\" | \"verticle\"",
                     "decorators": []
                 },
@@ -33119,7 +33284,7 @@
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 31,
                     "type": "number",
                     "decorators": []
                 }
@@ -33127,10 +33292,10 @@
             "outputsClass": [
                 {
                     "name": "quantityValueChange",
-                    "defaultValue": "new EventEmitter<number>()",
+                    "defaultValue": "new EventEmitter<1 | -1>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 33,
                     "type": "EventEmitter"
                 }
             ],
@@ -33143,7 +33308,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 26,
                     "modifierKind": [
                         148
                     ]
@@ -33156,7 +33321,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 27,
                     "modifierKind": [
                         148
                     ]
@@ -33169,17 +33334,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 41,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "emitChange",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 32,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -33189,7 +33344,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -33223,18 +33378,22 @@
                 {
                     "name": "InputFilterDirective",
                     "type": "directive"
+                },
+                {
+                    "name": "MiniFabComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFilterDirective } from '@mdtx/material/core';\r\n@Component({\r\n  selector: 'mdtx-input-quantity',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    InputFilterDirective,\r\n  ],\r\n  templateUrl: './input-quantity.component.html',\r\n  styleUrl: './input-quantity.component.scss',\r\n})\r\nexport class InputQuantityComponent {\r\n  readonly inputFilter = /[0-9]/;\r\n  readonly inputValueFilter = /^[1-9]\\d{0,3}$/;\r\n\r\n  @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';\r\n\r\n  @Input() value = 0;\r\n\r\n  @Output() quantityValueChange = new EventEmitter<number>();\r\n\r\n  emitChange() {\r\n    this.quantityValueChange.emit(this.value);\r\n  }\r\n\r\n  increment() {\r\n    this.value++;\r\n    this.emitChange();\r\n  }\r\n\r\n  descrement() {\r\n    if (this.value > 0) {\r\n      this.value--;\r\n      this.emitChange();\r\n    }\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { InputFilterDirective } from '@mdtx/material/core';\r\n\r\nimport { MiniFabComponent } from '@mdtx/material/button';\r\n@Component({\r\n  selector: 'mdtx-input-quantity',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    InputFilterDirective,\r\n    MiniFabComponent,\r\n  ],\r\n  templateUrl: './input-quantity.component.html',\r\n  styleUrl: './input-quantity.component.scss',\r\n})\r\nexport class InputQuantityComponent {\r\n  readonly inputFilter = /[0-9]/;\r\n  readonly inputValueFilter = /^[1-9]\\d{0,3}$/;\r\n\r\n  @Input() layoutDirection: 'horizontal' | 'verticle' = 'horizontal';\r\n\r\n  @Input() value = 0;\r\n\r\n  @Output() quantityValueChange = new EventEmitter<1 | -1>();\r\n\r\n  increment() {\r\n    this.value++;\r\n    this.quantityValueChange.emit(1);\r\n  }\r\n\r\n  descrement() {\r\n    if (this.value > 0) {\r\n      this.value--;\r\n      this.quantityValueChange.emit(-1);\r\n    }\r\n  }\r\n}\r\n",
             "styleUrl": "./input-quantity.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div [class]=\"layoutDirection\">\r\n  <button mat-mini-fab color=\"accent\" (click)=\"descrement()\">\r\n    <mat-icon class=\"fill\">remove</mat-icon>\r\n  </button>\r\n  <input\r\n    class=\"count-input\"\r\n    type=\"text\"\r\n    [mdtxInputFilter]=\"inputFilter\"\r\n    [mdtxInputValueFilter]=\"inputValueFilter\"\r\n    [(ngModel)]=\"value\"\r\n  />\r\n  <button mat-mini-fab color=\"primary\" (click)=\"increment()\">\r\n    <mat-icon class=\"fill\">add</mat-icon>\r\n  </button>\r\n</div>\r\n"
+            "templateData": "<div [class]=\"layoutDirection\">\r\n  <mdtx-mini-fab buttonColor=\"accent\" (click)=\"descrement()\">\r\n    remove\r\n  </mdtx-mini-fab>\r\n\r\n  <input\r\n    class=\"count-input\"\r\n    type=\"text\"\r\n    [mdtxInputFilter]=\"inputFilter\"\r\n    [mdtxInputValueFilter]=\"inputValueFilter\"\r\n    [(ngModel)]=\"value\"\r\n  />\r\n  <mdtx-mini-fab buttonColor=\"primary\" (click)=\"increment()\">add</mdtx-mini-fab>\r\n</div>\r\n"
         },
         {
             "name": "InputRadioComponent",
@@ -33255,11 +33414,23 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "multiple",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": [],
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
                     "name": "optionNameAsValue",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -33270,7 +33441,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "IInputOption[]",
                     "decorators": [],
                     "inheritance": {
@@ -33282,7 +33453,7 @@
                     "defaultValue": "'event'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 23,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -33368,7 +33539,28 @@
                     "type": "Observable<IInputOption[]>",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 27,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatAutocomplete",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
                     }
@@ -33412,7 +33604,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -33436,7 +33628,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -33459,7 +33651,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -33979,13 +34171,14 @@
             "inputsClass": [
                 {
                     "name": "multiple",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 25,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
-                        "file": "InputChipSelectComponent"
+                        "file": "InputAutocompleteComponent"
                     }
                 },
                 {
@@ -33993,7 +34186,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 22,
                     "type": "boolean",
                     "decorators": [],
                     "inheritance": {
@@ -34004,7 +34197,7 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 24,
                     "type": "IInputOption[]",
                     "decorators": [],
                     "inheritance": {
@@ -34016,7 +34209,7 @@
                     "defaultValue": "'event'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 23,
                     "type": "string",
                     "decorators": [],
                     "inheritance": {
@@ -34102,7 +34295,28 @@
                     "type": "Observable<IInputOption[]>",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 27,
+                    "inheritance": {
+                        "file": "InputAutocompleteComponent"
+                    }
+                },
+                {
+                    "name": "inputRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatAutocomplete",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'inputRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ],
                     "inheritance": {
                         "file": "InputAutocompleteComponent"
                     }
@@ -34146,7 +34360,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 52,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -34170,7 +34384,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -34193,7 +34407,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -36979,6 +37193,67 @@
             "templateData": "<p>material-barcode works!</p>\r\n"
         },
         {
+            "name": "MiniFabComponent",
+            "id": "component-MiniFabComponent-34b3fca7de5195e8d31b949547076f1b54b584df45d17ec77e07f2dad9f84fef21904b27323843aedce8aca07ba4411ca9a19202edd73f0005932e243f2d7e46",
+            "file": "libs/material/button/src/lib/mini-fab/mini-fab.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-mini-fab",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./mini-fab.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "buttonColor",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "\"primary\" | \"accent\" | \"warn\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\n\r\n@Component({\r\n  selector: 'mdtx-mini-fab',\r\n  standalone: true,\r\n  imports: [CommonModule, MatButtonModule, MatIconModule],\r\n  templateUrl: './mini-fab.component.html',\r\n  styleUrl: './mini-fab.component.scss',\r\n})\r\nexport class MiniFabComponent {\r\n  @Input() buttonColor: 'primary' | 'accent' | 'warn' = 'primary';\r\n}\r\n",
+            "styleUrl": "./mini-fab.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<button mat-mini-fab [color]=\"buttonColor\">\r\n  <mat-icon><ng-content></ng-content></mat-icon>\r\n</button>\r\n"
+        },
+        {
             "name": "ModuleLayoutComponent",
             "id": "component-ModuleLayoutComponent-91f29bf2030abd64e550dfe86f078040d17f1cc37f866e5567386bccbd31cfdefa42f257582c70e603c21c23f6a3db6995ca0337a42e759d4eb466e18fbdc8eb",
             "file": "libs/material/layout/src/lib/module-layout/module-layout.component.ts",
@@ -37386,7 +37661,7 @@
         },
         {
             "name": "PosLayoutComponent",
-            "id": "component-PosLayoutComponent-5bed526ff2acc82829b75ae66d1c91efdc3f30ae6ea232c9d31b1ed781bebc5718ad73466acb7800b6eb9561c02dcd299b7589df5915e00f35124ca2ab406670",
+            "id": "component-PosLayoutComponent-d1e7fda2fbbf16e6e68dbb79b564174e9889eee4d8d012677068c98fdd834335131043bbe1baa21342890c918698cdb997fb2c6364eba0c71b0d1b2cd51de321",
             "file": "libs/material/layout/src/lib/pos-layout/pos-layout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -37411,7 +37686,7 @@
                     "type": "QueryList<PosLayoutCartListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 27,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -37429,7 +37704,7 @@
                     "type": "QueryList<PosLayoutCartPriceDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -37447,7 +37722,7 @@
                     "type": "QueryList<PosLayoutProductListDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 23,
+                    "line": 24,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -37465,7 +37740,7 @@
                     "type": "QueryList<PosLayoutToolbarDirective>",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "decorators": [
                         {
                             "name": "ContentChildren",
@@ -37491,18 +37766,22 @@
                 {
                     "name": "TemplateOutletComponent",
                     "type": "component"
+                },
+                {
+                    "name": "FullscreenButtonComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos-layout',\r\n  standalone: true,\r\n  imports: [CommonModule, TemplateOutletComponent],\r\n  templateUrl: './pos-layout.component.html',\r\n  styleUrl: './pos-layout.component.scss',\r\n})\r\nexport class PosLayoutComponent {\r\n  @ContentChildren(PosLayoutToolbarDirective)\r\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\r\n\r\n  @ContentChildren(PosLayoutProductListDirective)\r\n  productList!: QueryList<PosLayoutProductListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartListDirective)\r\n  cartList!: QueryList<PosLayoutCartListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartPriceDirective)\r\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\r\n}\r\n",
+            "sourceCode": "import { Component, ContentChildren, QueryList } from '@angular/core';\r\nimport {\r\n  PosLayoutCartListDirective,\r\n  PosLayoutCartPriceDirective,\r\n  PosLayoutProductListDirective,\r\n  PosLayoutToolbarDirective,\r\n} from './pos-layout.directive';\r\nimport { CommonModule } from '@angular/common';\r\nimport { TemplateOutletComponent } from '../template-outlet/template-outlet.component';\r\nimport { FullscreenButtonComponent } from '@mdtx/material/core';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos-layout',\r\n  standalone: true,\r\n  imports: [CommonModule, TemplateOutletComponent, FullscreenButtonComponent],\r\n  templateUrl: './pos-layout.component.html',\r\n  styleUrl: './pos-layout.component.scss',\r\n})\r\nexport class PosLayoutComponent {\r\n  @ContentChildren(PosLayoutToolbarDirective)\r\n  toolbar!: QueryList<PosLayoutToolbarDirective>;\r\n\r\n  @ContentChildren(PosLayoutProductListDirective)\r\n  productList!: QueryList<PosLayoutProductListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartListDirective)\r\n  cartList!: QueryList<PosLayoutCartListDirective>;\r\n\r\n  @ContentChildren(PosLayoutCartPriceDirective)\r\n  cartPrice!: QueryList<PosLayoutCartPriceDirective>;\r\n}\r\n",
             "styleUrl": "./pos-layout.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"pos-layout-container\">\r\n  <div class=\"pos-toolbar\">\r\n    <mdtx-template-outlet [items]=\"toolbar\"></mdtx-template-outlet>\r\n  </div>\r\n\r\n  <div class=\"pos-content-container\">\r\n    <div class=\"pos-product-list\">\r\n      @if(productList){ @for(item of productList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n\r\n    <div class=\"pos-cart-list\">\r\n      @if(cartList){ @for(item of cartList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n  </div>\r\n  <div class=\"pos-cart-price\">\r\n    @if(cartPrice){ @for(item of cartPrice; track item){\r\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n    } }\r\n  </div>\r\n</div>\r\n"
+            "templateData": "<div #posContainerRef class=\"pos-layout-container\">\r\n  <mdtx-fullscreen-button\r\n    [fullscreenContainerRef]=\"posContainerRef\"\r\n  ></mdtx-fullscreen-button>\r\n\r\n  <div class=\"pos-toolbar\">\r\n    @if(productList){ @for(item of toolbar; track item){\r\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n    } }\r\n  </div>\r\n\r\n  <div class=\"pos-content-container\">\r\n    <div class=\"pos-product-list\">\r\n      @if(productList){ @for(item of productList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n\r\n    <div class=\"pos-cart-list\">\r\n      @if(cartList){ @for(item of cartList; track item){\r\n      <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n      } }\r\n    </div>\r\n  </div>\r\n  <div class=\"pos-cart-price\">\r\n    @if(cartPrice){ @for(item of cartPrice; track item){\r\n    <ng-container *ngTemplateOutlet=\"item.templateRef\"></ng-container>\r\n    } }\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "ProductCardComponent",
@@ -37745,7 +38024,7 @@
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"product-card-list-container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-card\r\n    [title]=\"item.name!\"\r\n    [subtitle]=\"item.barcode!\"\r\n    [price]=\"item.price!\"\r\n    (primaryButtonClickEvent)=\"addProductToCartEvent.emit(item)\"\r\n    (secondaryButtonClickEvent)=\"viewProductDetailsEvent.emit(item)\"\r\n  ></mdtx-product-card>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div class=\"container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-card\r\n    [title]=\"item.name!\"\r\n    [subtitle]=\"item.barcode!\"\r\n    [price]=\"item.price!\"\r\n    (primaryButtonClickEvent)=\"addProductToCartEvent.emit(item)\"\r\n    (secondaryButtonClickEvent)=\"viewProductDetailsEvent.emit(item)\"\r\n  ></mdtx-product-card>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "ProductSmallCardComponent",
@@ -37967,7 +38246,7 @@
         },
         {
             "name": "ProductSmallCardListComponent",
-            "id": "component-ProductSmallCardListComponent-ba73d83f8bc56474bb03eaa5b5b1bbc042d8750a161ef2153cab523ba82ba08c7aadc6cd27a396856a19349d3dae8083eb8b7b8f2bd7acba1f5a4334ac5fdf42",
+            "id": "component-ProductSmallCardListComponent-05e384a092b8d6e4c0fcec3fb3a7564910bc59c724391d8f1c83cca58d15a0df7280595e00153aaf4810a242f1cb94b8ceb71e702224949362da08fd64cf5509",
             "file": "libs/material/card/src/lib/product-small-card-list/product-small-card-list.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -38191,7 +38470,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnChanges,\r\n  Output,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductSmallCardComponent } from '../product-small-card/product-small-card.component';\r\nimport { ISkuRaw, ISkuViewRaw } from '@mdtx/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-small-card-list',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductSmallCardComponent],\r\n  templateUrl: './product-small-card-list.component.html',\r\n  styleUrl: './product-small-card-list.component.scss',\r\n})\r\nexport class ProductSmallCardListComponent implements OnChanges {\r\n  @Input() products!: ISkuViewRaw[];\r\n\r\n  @Output() totalChangeEvent = new EventEmitter<number>();\r\n\r\n  @Output() deleteProductEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  @Output() quantityChangeEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  __calculateTotal() {\r\n    if (this.products && this.products.length > 0) {\r\n      const total = this.products\r\n        .map((e) => e.price * e.quantity)\r\n        .reduce((p, c) => p + c);\r\n      this.totalChangeEvent.emit(total);\r\n    }\r\n  }\r\n\r\n  calculateTotal(quantity: number, item: ISkuViewRaw) {\r\n    item.quantity = quantity;\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  deleteProductEventHandler(event: ISkuViewRaw) {\r\n    this.calculateTotal(0, event);\r\n    this.deleteProductEvent.emit(event);\r\n  }\r\n\r\n  handleQuantityChangeEvent(quantity: number, item: ISkuViewRaw) {\r\n    this.calculateTotal(quantity, item);\r\n    this.quantityChangeEvent.emit(item);\r\n  }\r\n}\r\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnChanges,\r\n  Output,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ProductSmallCardComponent } from '../product-small-card/product-small-card.component';\r\nimport { ISkuViewRaw } from '@mdtx/common';\r\n\r\n@Component({\r\n  selector: 'mdtx-product-small-card-list',\r\n  standalone: true,\r\n  imports: [CommonModule, ProductSmallCardComponent],\r\n  templateUrl: './product-small-card-list.component.html',\r\n  styleUrl: './product-small-card-list.component.scss',\r\n})\r\nexport class ProductSmallCardListComponent implements OnChanges {\r\n  @Input() products!: ISkuViewRaw[];\r\n\r\n  @Output() totalChangeEvent = new EventEmitter<number>();\r\n\r\n  @Output() deleteProductEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  @Output() quantityChangeEvent = new EventEmitter<ISkuViewRaw>();\r\n\r\n  __calculateTotal() {\r\n    if (this.products && this.products.length > 0) {\r\n      const total = this.products\r\n        .map((e) => e.price * e.quantity)\r\n        .reduce((p, c) => p + c);\r\n      this.totalChangeEvent.emit(total);\r\n    }\r\n  }\r\n\r\n  calculateTotal(quantity: number, item: ISkuViewRaw) {\r\n    item.quantity = quantity;\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    this.__calculateTotal();\r\n  }\r\n\r\n  deleteProductEventHandler(event: ISkuViewRaw) {\r\n    this.calculateTotal(0, event);\r\n    this.deleteProductEvent.emit(event);\r\n  }\r\n\r\n  handleQuantityChangeEvent(quantity: number, item: ISkuViewRaw) {\r\n    this.calculateTotal(quantity, item);\r\n    this.quantityChangeEvent.emit(item);\r\n  }\r\n}\r\n",
             "styleUrl": "./product-small-card-list.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -38200,7 +38479,7 @@
             "implements": [
                 "OnChanges"
             ],
-            "templateData": "<div class=\"product-sample-card-list-container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-small-card\r\n    [title]=\"item.name\"\r\n    [unitPrice]=\"item.price\"\r\n    [quantity]=\"item.quantity\"\r\n    (quantityValueChange)=\"handleQuantityChangeEvent($event, item)\"\r\n    (closeButtonClick)=\"deleteProductEventHandler(item)\"\r\n  ></mdtx-product-small-card>\r\n  }\r\n</div>\r\n"
+            "templateData": "<div class=\"product-sample-card-list-container\">\r\n  @for(item of products; track item){\r\n  <mdtx-product-small-card\r\n    [title]=\"item.name\"\r\n    [subtitle]=\"item.barcode\"\r\n    [unitPrice]=\"item.price\"\r\n    [quantity]=\"item.quantity\"\r\n    (quantityValueChange)=\"handleQuantityChangeEvent($event, item)\"\r\n    (closeButtonClick)=\"deleteProductEventHandler(item)\"\r\n  ></mdtx-product-small-card>\r\n  }\r\n</div>\r\n"
         },
         {
             "name": "SampleFormComponent",
@@ -46400,6 +46679,24 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/material/button/src/lib/close-button/close-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CloseButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/button/src/lib/mini-fab/mini-fab.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MiniFabComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/material/card/src/lib/card-avatar/card-avatar.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -46759,6 +47056,15 @@
                 "name": "ValidatorBuilder",
                 "coveragePercent": 0,
                 "coverageCount": "0/26",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/core/src/lib/fullscreen-button/fullscreen-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FullscreenButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {
@@ -47172,7 +47478,7 @@
                 "linktype": "component",
                 "name": "InputAutocompleteComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -47328,7 +47634,7 @@
                 "linktype": "component",
                 "name": "InputChipSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -47719,7 +48025,7 @@
                 "linktype": "component",
                 "name": "InputListSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -47884,7 +48190,7 @@
                 "linktype": "component",
                 "name": "InputQuantityComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -47923,7 +48229,7 @@
                 "linktype": "component",
                 "name": "InputRadioComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/21",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -48040,7 +48346,7 @@
                 "linktype": "component",
                 "name": "InputSelectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/22",
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
