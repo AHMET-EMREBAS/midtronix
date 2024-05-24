@@ -20,7 +20,13 @@ export class SaleController {
 
   @R.SaveOne()
   save(@R.Body() body: CreateSaleDto) {
-    return this.service.save(body);
+    return this.service.save({
+      ...body,
+      customer: { id: 1 },
+      user: { id: 1 },
+      store: { id: 1 },
+      taxrate: 6.25,
+    });
   }
 
   @R.FindAll()

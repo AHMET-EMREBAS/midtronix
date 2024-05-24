@@ -13,10 +13,10 @@ import {
   MatDialog,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { IOrderViewRaw } from '@mdtx/common';
+import { ICreateSaleDto, IOrderViewRaw } from '@mdtx/common';
 import { debounceTime } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { CartService, OrderViewService } from '@mdtx/ngrx';
+import { CartService, OrderViewService, SaleService } from '@mdtx/ngrx';
 
 @Component({
   selector: 'mdtx-checkout',
@@ -30,6 +30,7 @@ import { CartService, OrderViewService } from '@mdtx/ngrx';
   ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
+  providers: [CartService, OrderViewService, SaleService],
 })
 export class CheckoutComponent implements AfterViewInit {
   @ViewChild('saleForm') saleForm!: SaleFormComponent;
@@ -43,7 +44,8 @@ export class CheckoutComponent implements AfterViewInit {
     },
     protected readonly matDialog: MatDialog,
     protected cartService: CartService,
-    protected orderViewService: OrderViewService
+    protected orderViewService: OrderViewService,
+    protected saleService: SaleService
   ) {}
 
   ngAfterViewInit(): void {
@@ -94,12 +96,17 @@ export class CheckoutComponent implements AfterViewInit {
     return parseFloat(this.getSubtotal() + '') + parseFloat(this.getTax() + '');
   }
 
-  submitEventHandler(event: any) {
+  submitEventHandler(event: ICreateSaleDto) {
     console.log('Submit EVent: ', event);
 
     this.orderViewService.clearCache();
-
     this.cartService.update({ id: this.data.cartId, closed: true });
+
     this.matDialog.closeAll();
+
+    this.saleService.addSale({
+      ...event,
+      cart: { id: this.data.cartId },
+    });
   }
 }

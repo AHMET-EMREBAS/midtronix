@@ -10,10 +10,21 @@ import {
 import { Order } from './order';
 import { Cart } from './cart';
 import { ISale, ISaleView } from '@mdtx/common';
+import { User } from './user';
+import { Customer } from './customer';
+import { Store } from './store';
+
 @Entity()
-export class Sale extends BaseEntity implements ISale<Order, Cart> {
+export class Sale
+  extends BaseEntity
+  implements ISale<Order, Cart, User, Customer, Store>
+{
   @ManyRelation(Order, { eager: true }) orders!: Order[];
   @OneRelation(Cart) cart!: Cart;
+  @OneRelation(User) user!: User;
+  @OneRelation(Customer) customer!: Customer;
+  @OneRelation(Store) store!: Store;
+
   @Column({ type: 'numeric', default: 0 }) taxrate!: number;
   @Column({ type: 'numeric', default: 0 }) cashPayment!: number;
   @Column({ type: 'numeric', default: 0 }) cardPayment!: number;

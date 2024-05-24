@@ -23,6 +23,7 @@ export * from './lib/product-video';
 export * from './lib/project';
 export * from './lib/quantity';
 export * from './lib/role';
+export * from './lib/sale';
 export * from './lib/sku';
 export * from './lib/sku-view';
 export * from './lib/sprint';

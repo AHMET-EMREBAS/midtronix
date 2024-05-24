@@ -1,11 +1,19 @@
 import { IBaseEntity, IID } from './__base';
 import { ICart, IOrder } from './cart';
 
-export interface ISale<TOrder extends IID = IID, TCart extends IID = IID>
-  extends IBaseEntity {
+export interface ISale<
+  TOrder extends IID = IID,
+  TCart extends IID = IID,
+  TUser extends IID = IID,
+  TCustomer extends IID = IID,
+  TStore extends IID = IID
+> extends IBaseEntity {
   taxrate: number;
   orders: TOrder[];
   cart: TCart;
+  user: TUser;
+  store: TStore;
+  customer: TCustomer;
   cashPayment: number;
   cardPayment: number;
 }

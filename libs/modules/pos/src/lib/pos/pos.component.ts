@@ -70,7 +70,7 @@ export class PosComponent implements AfterViewInit {
       }
     })
   );
-  @Input() cartId = 2;
+  @Input() cartId!: number;
   @Input() storeId = 1;
   @Input() priceLevelId = 1;
 
@@ -83,9 +83,22 @@ export class PosComponent implements AfterViewInit {
     protected readonly cartService: CartService
   ) {}
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
+    const newCart = await firstValueFrom(
+      this.cartService.addCart({
+        owner: { id: 1 },
+        store: { id: 1 },
+        user: { id: 1 },
+        note: 'Auto',
+      })
+    );
+    this.cartId = newCart.id;
+
+    
     this.skuViewService.getWithQuery({ take: 1000 });
+
     this.reloadOrderViews();
+
 
     this.posSearchEventObserver$ = this.posSearchComponentRef.$valueChange.pipe(
       switchMap((search) => {

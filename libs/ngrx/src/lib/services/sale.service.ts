@@ -1,4 +1,4 @@
-import { ISaleRaw } from '@mdtx/common';
+import { ICreateSaleDto, ISaleRaw } from '@mdtx/common';
 import { CollectionBaseService } from '../__base';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -15,5 +15,9 @@ export class SaleService extends CollectionBaseService<ISaleRaw> {
     httpClient: HttpClient
   ) {
     super('Sale', factory, httpClient, SALE_OPTION_COLUMN);
+  }
+
+  addSale(sale: ICreateSaleDto) {
+    return super.add(sale);
   }
 }
