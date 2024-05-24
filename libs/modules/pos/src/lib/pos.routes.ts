@@ -7,8 +7,6 @@ import {
 
 import { provideEntityData, withEffects } from '@ngrx/data';
 
-import { PosComponent } from './pos/pos.component';
-
 export const PosRoutes: Routes = [
   {
     title: 'Point Of Sale',
@@ -52,6 +50,6 @@ export const PosRoutes: Routes = [
       ]),
     ],
 
-    children: [{ path: '', loadComponent: () => PosComponent }],
+    children: [{ path: '' }],
   },
 ];

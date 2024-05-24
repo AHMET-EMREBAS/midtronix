@@ -1,14 +1,18 @@
 import { ICreateSaleDto, IID } from '@mdtx/common';
-import { Exclude, IDObjectProperty, PartialType } from '@mdtx/core';
+import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
 
 @Exclude()
 export class CreateSaleDto implements Omit<ICreateSaleDto, 'user' | 'store'> {
   @IDObjectProperty({ required: true }) cart!: IID;
-  @IDObjectProperty({}) customer!: IID;
-  @IDObjectProperty({ required: true, isArray: true }) orders!: IID[];
-  @IDObjectProperty({ required: true }) taxrate!: number;
-  @IDObjectProperty({ required: true }) cashPayment!: number;
-  @IDObjectProperty({ required: true }) cardPayment!: number;
+  @IDObjectProperty({ required: true }) employee!: IID;
+  @IDObjectProperty({ required: true }) customer!: IID;
+  @Property({ type: 'number', required: true }) accountBalancePayment!: number;
+  @Property({ type: 'number', required: true }) cashPayment!: number;
+  @Property({ type: 'number', required: true }) cardPayment!: number;
+  @Property({ type: 'number', required: true }) taxrate!: number;
+  @Property({ type: 'number', required: true }) tax!: number;
+  @Property({ type: 'number', required: true }) subtotal!: number;
+  @Property({ type: 'number', required: true }) total!: number;
 }
 
 @Exclude()

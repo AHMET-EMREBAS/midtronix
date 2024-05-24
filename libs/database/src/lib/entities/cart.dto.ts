@@ -3,11 +3,11 @@ import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
 
 @Exclude()
 export class CreateCartDto implements ICreateCartDto {
-  @IDObjectProperty({ required: true }) user!: IID;
-  @IDObjectProperty({ required: true }) owner!: IID;
+  @IDObjectProperty({ required: true }) employee!: IID;
+  @IDObjectProperty({ required: true }) customer!: IID;
   @IDObjectProperty({ required: true }) store!: IID;
   @Property({ type: 'string' }) note?: string;
-  @Property({ type: 'boolean' }) closed?: boolean;
+  @Property({ type: 'boolean' }) checkout?: boolean | undefined;
 }
 
 @Exclude()

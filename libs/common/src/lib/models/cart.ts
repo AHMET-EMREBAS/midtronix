@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IBaseEntity, IID, IOwner } from './__base';
+import { IBaseEntity, IID } from './__base';
 import { ICustomer } from './customer';
 import { ISku } from './product';
 import { IUser } from './user';
@@ -17,58 +17,70 @@ export interface ICart<
   TCustomer extends IID = IID,
   TUser extends IID = IID,
   TStore extends IID = IID
-> extends IOwner<TCustomer> {
-  user: TUser;
+> extends IBaseEntity {
+  employee: TUser;
+  customer: TCustomer;
   store: TStore;
   note?: string;
-  closed?: boolean;
+  checkout?: boolean;
 }
 
+/**
+ * @param id
+ * @param storeId
+ * @param customerId
+ * @param employeeId
+ */
 export interface ICartView {
   id: number;
   storeId: number;
   customerId: number;
-  userId: number;
+  employeeId: number;
 }
 
-export interface IOrder<
-  TSku extends IID = IID,
-  TCart extends IID = IID,
-  TPriceLevel extends IID = IID
-> extends IBaseEntity {
-  quantity: number;
+/**
+ * @param sku
+ * @param cart
+ * @param quantity
+ * @param unitPrice
+ * @param subtotal
+ * @param total
+ */
+export interface IOrder<TSku extends IID = IID, TCart extends IID = IID>
+  extends IBaseEntity {
   sku: TSku;
   cart: TCart;
-  priceLevel: TPriceLevel;
-
-  taxrate: number;
-  salePrice: number;
-  saleSubtotal: number;
-  saleTotal: number;
+  quantity: number;
+  unitPrice: number;
+  subtotal: number;
+  total: number;
 }
 
 export type ICartRaw = ICart<ICustomer, IUser>;
+
 export type IOrderRaw = IOrder<ISku, ICart>;
 
+/**
+ * @param id
+ * @param skuId
+ * @param cartId
+ * @param name
+ * @param barcode
+ * @param quantity
+ * @param unitPrice
+ * @param subtotal
+ * @param total
+ */
 export interface IOrderView {
   id: number;
   skuId: number;
   cartId: number;
-  customerId: number;
-  employeeId: number;
-  priceLevelId: number;
-  storeId: number;
   name: string;
   barcode: string;
-  cost: number;
-  fixedDiscount: number;
-  percentDiscount: number;
   quantity: number;
-  price: number;
-  salePrice: number;
-  taxrate: number;
-  saleSubtotal: number;
-  saleTotal: number;
+  unitPrice: number;
+  subtotal: number;
+  total: number;
 }
 
 export interface IOrderViewRaw extends IOrderView {}

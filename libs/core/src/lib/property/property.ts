@@ -32,7 +32,9 @@ export function Property(options?: PropertyOptions) {
 
   const decorators: PropertyDecorator[] = [ApiProperty({ ...options })];
 
-  const push = (pd: PropertyDecorator) => decorators.push(pd);
+  const push = (pd: PropertyDecorator) => {
+    decorators.push(pd);
+  };
 
   const { type, isArray, required, minItems, maxItems, noValidate, exclude } =
     options;

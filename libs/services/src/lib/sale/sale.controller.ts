@@ -23,7 +23,7 @@ export class SaleController {
     return this.service.save({
       ...body,
       customer: { id: 1 },
-      user: { id: 1 },
+      employee: { id: 1 },
       store: { id: 1 },
       taxrate: 6.25,
     });

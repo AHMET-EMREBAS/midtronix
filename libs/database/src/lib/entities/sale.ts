@@ -2,12 +2,10 @@ import { BaseEntity } from './__base';
 import {
   Column,
   Entity,
-  ManyRelation,
   OneRelation,
   ViewColumn,
   ViewEntity,
 } from '@mdtx/core';
-import { Order } from './order';
 import { Cart } from './cart';
 import { ISale, ISaleView } from '@mdtx/common';
 import { User } from './user';
@@ -17,17 +15,20 @@ import { Store } from './store';
 @Entity()
 export class Sale
   extends BaseEntity
-  implements ISale<Order, Cart, User, Customer, Store>
+  implements ISale<Cart, User, Customer, Store>
 {
-  @ManyRelation(Order, { eager: true }) orders!: Order[];
   @OneRelation(Cart) cart!: Cart;
-  @OneRelation(User) user!: User;
+  @OneRelation(User) employee!: User;
   @OneRelation(Customer) customer!: Customer;
   @OneRelation(Store) store!: Store;
 
-  @Column({ type: 'numeric', default: 0 }) taxrate!: number;
-  @Column({ type: 'numeric', default: 0 }) cashPayment!: number;
-  @Column({ type: 'numeric', default: 0 }) cardPayment!: number;
+  @Column({ type: 'numeric', precision: 2 }) accountBalancePayment!: number;
+  @Column({ type: 'numeric', precision: 2 }) cashPayment!: number;
+  @Column({ type: 'numeric', precision: 2 }) cardPayment!: number;
+  @Column({ type: 'numeric', precision: 2 }) taxrate!: number;
+  @Column({ type: 'numeric', precision: 2 }) tax!: number;
+  @Column({ type: 'numeric', precision: 2 }) subtotal!: number;
+  @Column({ type: 'numeric', precision: 2 }) total!: number;
 }
 
 @ViewEntity({
@@ -36,27 +37,30 @@ export class Sale
       .createQueryBuilder()
       .select('main.id', 'id')
       .addSelect('main.cartId', 'cartId')
-      .addSelect('main.user', 'userId')
-      .addSelect('main.customer', 'customerId')
-      .addSelect('main.store', 'storeId')
+      .addSelect('main.employeeId', 'employeeId')
+      .addSelect('main.customerId', 'customerId')
+      .addSelect('main.storeId', 'storeId')
+      .addSelect('main.accountBalancePayment', 'accountBalancePayment')
+      .addSelect('main.cashPayment', 'cashPayment')
+      .addSelect('main.cardPayment', 'cardPayment')
       .addSelect('main.taxrate', 'taxrate')
-      .addSelect('SUM(order.quantity)', 'quantity')
-      .addSelect('SUM(order.saleSubtotal)', 'subtotal')
-      .addSelect('SUM(order.saleTotal)', 'total')
-      .from(Sale, 'main')
-      .leftJoin('sale_orders_order', 'orders', 'main.id = orders.saleId')
-      .leftJoin(Order, 'order', 'order.id = orders.orderId')
-      .groupBy('main.id, main.cartId, order.saleSubtotal, order.saleTotal');
+      .addSelect('main.tax', 'tax')
+      .addSelect('main.subtotal', 'subtotal')
+      .addSelect('main.total', 'total')
+      .from(Sale, 'main');
   },
 })
 export class SaleView implements ISaleView {
   @ViewColumn() id!: number;
   @ViewColumn() cartId!: number;
-  @ViewColumn() userId!: number;
+  @ViewColumn() employeeId!: number;
   @ViewColumn() customerId!: number;
   @ViewColumn() storeId!: number;
-  @ViewColumn() quantity!: number;
-  @ViewColumn() subtotal!: number;
+  @ViewColumn() accountBalancePayment!: number;
+  @ViewColumn() cashPayment!: number;
+  @ViewColumn() cardPayment!: number;
   @ViewColumn() taxrate!: number;
+  @ViewColumn() tax!: number;
+  @ViewColumn() subtotal!: number;
   @ViewColumn() total!: number;
 }

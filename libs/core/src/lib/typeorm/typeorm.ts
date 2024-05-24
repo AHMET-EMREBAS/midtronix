@@ -11,12 +11,15 @@ import { RelationOptions } from 'typeorm';
 
 export { FindOperator, Equal, Like, ILike, MoreThan, LessThan } from 'typeorm';
 
-export function OneRelation<T extends IID>(target: Type<T>) {
+export function OneRelation<T extends IID>(
+  target: Type<T>,
+  options: RelationOptions = {}
+) {
   return applyDecorators(
     ManyToOne(
       () => target,
       (t) => t.id,
-      { eager: true, nullable: true, onDelete: 'SET NULL' }
+      { eager: true, nullable: true, onDelete: 'SET NULL', ...options }
     ),
     JoinColumn()
   );

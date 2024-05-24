@@ -14,8 +14,8 @@ import { ICartView } from '@mdtx/common';
       .createQueryBuilder()
       .select('main.id', 'id')
       .addSelect('main.storeId', 'storeId')
-      .addSelect('main.ownerId', 'customerId')
-      .addSelect('main.userId', 'userId')
+      .addSelect('main.customerId', 'customerId')
+      .addSelect('main.employeeId', 'employeeId')
       .from(Cart, 'main');
   },
 })
@@ -23,5 +23,5 @@ export class CartView implements ICartView {
   @ViewColumn() id!: number;
   @ViewColumn() storeId!: number;
   @ViewColumn() customerId!: number;
-  @ViewColumn() userId!: number;
+  @ViewColumn() employeeId!: number;
 }

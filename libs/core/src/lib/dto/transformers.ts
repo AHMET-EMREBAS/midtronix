@@ -15,14 +15,14 @@ export function IntegerTransformer() {
     return isNumberString(value) ? parseInt(value) : undefined;
   });
 }
-export function NumberTransformer() {
+export function NumberTransformer(): PropertyDecorator {
   return Transform(({ value }) => {
     if (isNumber(value)) return value;
     return isNumberString(value) ? parseFloat(value) : undefined;
   });
 }
 
-export function BooleanTransformer() {
+export function BooleanTransformer(): PropertyDecorator {
   return Transform(({ value }) => {
     if (isBoolean(value)) return value;
     return isBooleanString(value)
@@ -69,7 +69,4 @@ export function ObjectTransformer() {
   });
 }
 
-
-
-// Query Transformers 
-
+// Query Transformers

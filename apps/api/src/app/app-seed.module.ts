@@ -170,8 +170,21 @@ export class AppSeedModule implements OnModuleInit {
       cart: Cart,
       sku: Sku,
       priceLevel: PriceLevel,
-      quantity: number
-    ) => await this.OrderRepo.save({ cart, sku, quantity, priceLevel });
+      quantity: number,
+      unitPrice: number
+    ) => {
+      const tax = (unitPrice * quantity * 6.25) / 100;
+
+      await this.OrderRepo.save({
+        cart,
+        sku,
+        quantity,
+        priceLevel,
+        unitPrice,
+        subtotal: unitPrice * quantity,
+        total: unitPrice * quantity + tax,
+      });
+    };
 
     const user1 = await createUser();
     const user2 = await createUser();
@@ -281,7 +294,7 @@ export class AppSeedModule implements OnModuleInit {
     const cart1 = await createCart(store1, customer1, user1);
     const cart2 = await createCart(store1, customer1, user1);
 
-    const order1 = await createOrder(cart1, s1p1, pl1, 1);
+    const order1 = await createOrder(cart1, s1p1, pl1, 1, 100);
     // const order2 = await createOrder(cart1, s1p2, pl1, 3);
     // const order3 = await createOrder(cart1, s1p3, pl1, 3);
     // const order4 = await createOrder(cart1, s2p1, pl1, 3);
