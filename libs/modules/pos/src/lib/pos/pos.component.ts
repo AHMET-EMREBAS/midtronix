@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, forkJoin, merge, of, tap } from 'rxjs';
+import { debounceTime, merge, tap } from 'rxjs';
 import {
   CustomerSearchComponent,
   PriceLevelSearchComponent,

@@ -1,1 +1,11 @@
-<p>pos-product-card-list works!</p>
+<div class="container">
+  @for(item of productListItems; track item){
+  <mdtx-pos-product-card
+    [productName]="item.name"
+    [productBarcode]="item.barcode"
+    [productQuantity]="item.quantity"
+    [productUnitPrice]="item.price"
+    (addToCartEvent)="addToCartEventHandler(item)"
+  ></mdtx-pos-product-card>
+  }
+</div>

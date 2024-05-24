@@ -1,1 +1,17 @@
-<p>pos-product-card works!</p>
+<div class="card">
+  <img [src]="productImage" alt="" />
+  <div class="content">
+    <div class="title">{{ productName }}</div>
+    <div class="subtitle">{{ productBarcode }}</div>
+    <div class="details">
+      <span class="quantity">{{ productQuantity }}qty</span>
+      <span class="price">${{ productUnitPrice }}</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button mat-mini-fab (click)="addToCartEventHandler()">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+  </div>
+</div>

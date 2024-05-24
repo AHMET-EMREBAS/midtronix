@@ -1,1 +1,20 @@
-<p>pos-order-card works!</p>
+<div class="card">
+  <img [src]="productImage" alt="" />
+  <div class="content">
+    <div class="title">{{ productName }}</div>
+    <div class="subtitle">{{ productBarcode }}</div>
+    <div class="details">
+      <div class="quantity">{{ productQuantity }}qty</div>
+      <div class="price">${{ productUnitPrice }}</div>
+    </div>
+  </div>
+
+  <button
+    mat-icon-button
+    color="primary"
+    class="edit-button"
+    (click)="editButtonClickEventHandler()"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>
