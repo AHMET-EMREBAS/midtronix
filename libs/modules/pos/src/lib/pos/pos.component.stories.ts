@@ -4,16 +4,14 @@ import {
   type StoryObj,
 } from '@storybook/angular';
 import { PosComponent } from './pos.component';
-
 import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 import { provideAnimations } from '@angular/platform-browser/animations';
-
 import { provideStore } from '@ngrx/store';
 import { provideEntityData, withEffects } from '@ngrx/data';
 import { provideEffects } from '@ngrx/effects';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { storyBookHttpInterceptor } from '@mdtx/forms';
+import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
 const meta: Meta<PosComponent> = {
   component: PosComponent,
@@ -21,6 +19,7 @@ const meta: Meta<PosComponent> = {
   decorators: [
     applicationConfig({
       providers: [
+        provideMatFormFieldOptions({ appearance: 'outline' }),
         provideAnimations(),
         provideHttpClient(withInterceptors(storyBookHttpInterceptor)),
         provideStore(),
@@ -40,6 +39,7 @@ const meta: Meta<PosComponent> = {
               OrderView: 'OrderViews',
               Sale: 'Sales',
               SaleView: 'SaleViews',
+              Customer: 'Customers',
             },
             entityMetadata: {
               Sku: {},
@@ -54,6 +54,7 @@ const meta: Meta<PosComponent> = {
               OrderView: {},
               Sale: {},
               SaleView: {},
+              Customer: {},
             },
           },
           withEffects()
@@ -73,6 +74,5 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/pos works!/gi)).toBeTruthy();
   },
 };

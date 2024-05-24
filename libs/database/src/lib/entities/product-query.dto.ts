@@ -1,5 +1,4 @@
 import {
-  BooleanTransformer,
   CreateSelectQuery,
   Exclude,
   Property,
@@ -39,7 +38,6 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() category!: string;
   @QueryProperty() department!: string;
   @QueryProperty() productUpc!: string;
-
 }
 
 @Exclude()

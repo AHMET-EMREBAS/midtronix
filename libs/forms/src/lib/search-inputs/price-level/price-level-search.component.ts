@@ -31,7 +31,7 @@ import { IPriceLevelRaw } from '@mdtx/common';
 export class PriceLevelSearchComponent implements OnInit {
   @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
   @Input() inputControl = new FormControl<IPriceLevelRaw | null>(null, []);
-
+  
   @Input() defaultPriceLevel?: IPriceLevelRaw;
 
   constructor(protected readonly service: PriceLevelService) {}

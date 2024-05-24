@@ -1,15 +1,78 @@
+<!-- Product card -->
+<ng-template
+  #productCard
+  let-name="name"
+  let-barcode="barcode"
+  let-image="image"
+  let-price="price"
+  let-quantity="quantity"
+>
+  <div class="product-card">
+    <img class="image" src="./assets/imgs/placeholder.svg" alt="" />
+    <div class="content">
+      <div class="title">{{ name }}</div>
+      <div class="subtitle">{{ barcode }}</div>
+      <div class="price">{{ price }}</div>
+      <div class="quantity">{{ quantity }}</div>
+    </div>
+
+    <div class="product-card-actions">
+      <div class="product-add-card-button">Add Cart</div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Barcode Scanner  -->
+
+<ng-template #barcodeScanner>
+  <mat-form-field appearance="outline">
+    <mat-label>Scan</mat-label>
+    <input
+      matInput
+      type="text"
+      autocomplete="off"
+      [formControl]="scanControl"
+    />
+  </mat-form-field>
+</ng-template>
+
 <div class="pos-container">
   <div class="pos-toolbar">
-    <mat-form-field appearance="outline">
-      <mat-label>Scan</mat-label>
-      <input
-        matInput
-        type="text"
-        autocomplete="off"
-        [formControl]="scanControl"
-      />
-    </mat-form-field>
+    <ng-container *ngTemplateOutlet="barcodeScanner"></ng-container>
   </div>
 
-  <div class="product-list"></div>
+  <div class="pos-middle-container">
+    <div class="list-container sm-hide">
+      <h3>Products</h3>
+
+      <div class="row-list">
+        @for(item of products$ | async; track item ){
+        <ng-container
+          *ngTemplateOutlet="productCard;context:{
+            name:item.name,
+            barcode: item.id, 
+            image: item.id, 
+            price: item.id, 
+            quantity: item.id, 
+          }"
+        ></ng-container>
+        }
+      </div>
+    </div>
+
+    <div class="list-container sm-full">
+      <h3>Orders</h3>
+      <div class="col-list"></div>
+    </div>
+  </div>
+
+  <div class="pos-statusbar">
+    <mdtx-store-search #storeSearch></mdtx-store-search>
+    <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
+    <mdtx-customer-search #customerSearch></mdtx-customer-search>
+  </div>
+</div>
+
+<div class="messages" #messagesContainer>
+  <p *ngFor="let m of messages">{{ m }}</p>
 </div>
