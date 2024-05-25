@@ -11,12 +11,9 @@ export interface ISale<
   employee: TUser;
   customer: TCustomer;
   store: TStore;
-
   accountBalancePayment: number;
   cashPayment: number;
   cardPayment: number;
-
-  taxrate: number;
   tax: number;
   subtotal: number;
   total: number;
@@ -36,7 +33,6 @@ export interface ISaleView {
   cashPayment: number;
   cardPayment: number;
 
-  taxrate: number;
   tax: number;
   subtotal: number;
   total: number;

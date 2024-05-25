@@ -26,10 +26,12 @@
       ></mdtx-pos-product-card-list>
 
       <mdtx-pos-order-card-list
+        #posOrderList
         *ngIf="orderListItems$ | async as orderListItems"
         [orderListItems]="orderListItems"
         (editButtonClickEvent)="editButtonClickEventHandler($event)"
         (deleteButtonClickEvent)="deleteButtonClickEventHandler($event)"
+        (checkoutButtonClickEvent)="checkoutButtonClickEventHandler()"
       ></mdtx-pos-order-card-list>
     </div>
   </div>
@@ -43,5 +45,12 @@
     (updateEvent)="updateOrderEventHandler()"
     (closeEvent)="closeOrderEditorHandler()"
   ></mdtx-pos-order-editor>
+  } @if(checkoutOpen){
+
+  <mdtx-pos-checkout
+    *ngIf="orderListItems$ | async as orderListItems"
+    [orderListItems]="orderListItems"
+    (closeCheckoutEvent)="closeCheckout()"
+  ></mdtx-pos-checkout>
   }
 </div>

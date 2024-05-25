@@ -34,6 +34,7 @@
       mat-raised-button
       color="primary"
       (click)="checkoutButtonClickEventHandler()"
+      [disabled]="orderListItems.length === 0"
     >
       Checkout
     </button>

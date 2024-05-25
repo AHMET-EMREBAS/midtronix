@@ -1,0 +1,61 @@
+<div class="dialog">
+  <div class="ripple" (click)="closeCheckoutEventHandler()"></div>
+
+  <div class="dialog-content">
+    <mat-tab-group>
+      <mat-tab label="Amount">
+        <div class="container">
+          <mdtx-input-number
+            #tax
+            prefixIcon="money"
+            inputName="tax"
+          ></mdtx-input-number>
+          
+          <mdtx-input-number
+            #subtotal
+            prefixIcon="money"
+            inputName="subtotal"
+          ></mdtx-input-number>
+          <mdtx-input-number
+            #total
+            prefixIcon="money"
+            inputName="total"
+          ></mdtx-input-number>
+        </div>
+      </mat-tab>
+      <mat-tab label="Payment Options">
+        <div class="container">
+          <mdtx-input-number
+            #accountBalance
+            prefixIcon="money"
+            inputName="accountBalance"
+          ></mdtx-input-number>
+          <mdtx-input-number
+            #cashPayment
+            prefixIcon="money"
+            inputName="cashPayment"
+          ></mdtx-input-number>
+          <mdtx-input-number
+            #cardPayment
+            prefixIcon="money"
+            inputName="cardPayment"
+          >
+          </mdtx-input-number>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <div class="actions">
+      <button mat-raised-button color="primary" (click)="payAndSaveSale()">
+        Pay
+      </button>
+      <button
+        mat-stroked-button
+        color="accent"
+        (click)="closeCheckoutEventHandler()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

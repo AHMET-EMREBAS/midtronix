@@ -46,7 +46,7 @@ import {
 import { FullscreenButtonComponent, LocalStore } from '@mdtx/material/core';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.component';
-
+import { PosCheckoutComponent } from './../pos-checkout/pos-checkout.component';
 @Component({
   selector: 'mdtx-pos',
   standalone: true,
@@ -68,6 +68,7 @@ import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.co
     InputNumberComponent,
     PosOrderEditorComponent,
     FullscreenButtonComponent,
+    PosCheckoutComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
@@ -75,6 +76,8 @@ import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.co
 })
 export class PosComponent implements AfterViewInit {
   readonly cartStore = LocalStore.createStore('cart', { debounce: 400 });
+
+  checkoutOpen = false;
 
   activeCustomer: ICustomer = { id: 1 } as ICustomer;
   activeEmployee: IUser = { id: 1 } as IUser;
@@ -244,5 +247,13 @@ export class PosComponent implements AfterViewInit {
 
   closeOrderEditorHandler() {
     this.orderUnderUpdate = undefined;
+  }
+
+  checkoutButtonClickEventHandler() {
+    this.checkoutOpen = true;
+  }
+
+  closeCheckout() {
+    this.checkoutOpen = false;
   }
 }

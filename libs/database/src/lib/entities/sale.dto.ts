@@ -1,6 +1,19 @@
 import { ICreateSaleDto, IID } from '@mdtx/common';
 import { Exclude, IDObjectProperty, PartialType, Property } from '@mdtx/core';
 
+/**
+ *
+ * @param cart
+ * @param employee
+ * @param customer
+ * @param accountBalancePayment
+ * @param cashPayment
+ * @param cardPayment
+ * @param taxrate
+ * @param tax
+ * @param subtotal
+ * @param total
+ */
 @Exclude()
 export class CreateSaleDto implements Omit<ICreateSaleDto, 'user' | 'store'> {
   @IDObjectProperty({ required: true }) cart!: IID;
