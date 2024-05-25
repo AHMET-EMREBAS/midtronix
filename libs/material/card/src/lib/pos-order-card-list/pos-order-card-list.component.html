@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="toolbar"></div>
   @for(item of orderListItems; track item){
   <mdtx-pos-order-card
     [productName]="item.name"
@@ -11,4 +12,30 @@
     (deleteButtonClickEvent)="deleteButtonClickEventHandler(item)"
   ></mdtx-pos-order-card>
   }
+
+  <div class="grow-1"></div>
+  <div class="checkoutbar">
+    <div class="line">
+      <div class="header">Number Of Items</div>
+      <div class="value">{{ getQuantity() }}</div>
+    </div>
+    <div class="line">
+      <div class="header">Subtotal</div>
+      <div class="value">${{ getSubtotal() }}</div>
+    </div>
+
+    <div class="line last">
+      <div class="header">Total</div>
+      <div class="value">${{ getTotal() }}</div>
+    </div>
+
+    <button
+      class="checkout-button"
+      mat-raised-button
+      color="primary"
+      (click)="checkoutButtonClickEventHandler()"
+    >
+      Checkout
+    </button>
+  </div>
 </div>

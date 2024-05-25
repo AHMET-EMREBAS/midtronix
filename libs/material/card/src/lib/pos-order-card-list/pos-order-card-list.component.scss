@@ -18,3 +18,35 @@
     align-items: center;
   }
 }
+
+.checkoutbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+  justify-content: flex-end;
+  position: sticky;
+  bottom: 0px;
+  background-color: rgb(243, 239, 239);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding: 1em;
+}
+
+.checkoutbar > .line {
+  display: flex;
+  justify-content: space-between;
+
+  .header {
+    font-weight: 600;
+    color: gray;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+  }
+
+  .value {
+    letter-spacing: 0.1em;
+    font-weight: bolder;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
