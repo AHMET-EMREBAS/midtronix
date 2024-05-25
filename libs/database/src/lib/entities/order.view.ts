@@ -11,6 +11,7 @@ import { Cart } from './cart';
       .select('main.id', 'id')
       .addSelect('main.skuId', 'skuId')
       .addSelect('main.cartId', 'cartId')
+      .addSelect('main.taxrate', 'taxrate')
       .addSelect('skuView.name', 'name')
       .addSelect('skuView.barcode', 'barcode')
       .addSelect('main.quantity', 'quantity')
@@ -34,4 +35,5 @@ export class OrderView implements IOrderView {
   @ViewColumn() unitPrice!: number;
   @ViewColumn() subtotal!: number;
   @ViewColumn() total!: number;
+  @ViewColumn() taxrate!: number;
 }

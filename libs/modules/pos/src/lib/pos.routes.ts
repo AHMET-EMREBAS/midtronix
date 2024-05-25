@@ -29,6 +29,8 @@ export const PosRoutes: Routes = [
             Sale: 'Sales',
             SaleView: 'SaleViews',
             Customer: 'Customers',
+            Discount: 'Discount',
+            DiscountView: 'DiscountViews',
           },
           entityMetadata: {
             Sku: {},
@@ -44,6 +46,8 @@ export const PosRoutes: Routes = [
             Sale: {},
             SaleView: {},
             Customer: {},
+            Discount: {},
+            DiscountView: {},
           },
         },
         withEffects()

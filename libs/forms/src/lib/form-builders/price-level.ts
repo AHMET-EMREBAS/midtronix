@@ -7,5 +7,10 @@ export const PriceLevelFormBuilder = new FormGroupBuilder<ICreatePriceLevelDto>(
   .add('name')
   .required()
   .shortText()
+
+  .add('taxrate')
+  .required()
+  .min(0)
+
   .done()
   .lock();

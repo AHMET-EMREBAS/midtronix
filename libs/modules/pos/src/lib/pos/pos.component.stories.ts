@@ -40,6 +40,8 @@ const meta: Meta<PosComponent> = {
               Sale: 'Sales',
               SaleView: 'SaleViews',
               Customer: 'Customers',
+              Discount: 'Discount',
+              DiscountView: 'DiscountViews',
             },
             entityMetadata: {
               Sku: {},
@@ -55,6 +57,8 @@ const meta: Meta<PosComponent> = {
               Sale: {},
               SaleView: {},
               Customer: {},
+              Discount: {},
+              DiscountView: {},
             },
           },
           withEffects()

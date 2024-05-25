@@ -12,22 +12,19 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 3px solid orange;
   height: 100%;
   min-height: 300px;
   max-height: 100vh;
   overflow: hidden;
-  padding: 0.5em;
+  padding: 2em;
   gap: 0.5em;
 }
 
 .pos-toolbar {
   @extend .toolbar;
-  border: 3px solid brown;
 }
 
 .messages {
-  border: 3px solid black;
   overflow: scroll;
   padding: 0.5em;
   max-height: 100px;
@@ -46,37 +43,9 @@
   display: flex;
   flex-direction: row;
   gap: 1em;
-  border: 5px solid yellow;
   flex-grow: 1;
   overflow: hidden;
   overflow-y: auto;
-}
-
-// List style
-.list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  padding: 1em;
-  border: 3px dashed green;
-}
-
-.row-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1em;
-  flex-grow: 1;
-  border: 3px solid blue;
-  justify-content: flex-start;
-}
-
-.col-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  flex-grow: 1;
-  border: 3px solid blue;
 }
 
 @media screen and (max-width: 900px) {
@@ -101,4 +70,8 @@
       width: 100%;
     }
   }
+}
+
+.pos-container:fullscreen {
+  background-color: white;
 }

@@ -24,7 +24,9 @@ import { Category, Department } from './meta';
  * @param name
  */
 @Entity()
-export class PriceLevel extends NameEntity {}
+export class PriceLevel extends NameEntity {
+  @Column({ type: 'numeric' }) taxrate!: number;
+}
 
 /**
  * @param name

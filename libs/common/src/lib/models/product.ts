@@ -5,7 +5,9 @@ import { IImage } from './media';
 import { ICategoryRaw, IDepartmentRaw } from './meta';
 import { IStoreRaw } from './store';
 
-export interface IPriceLevel extends IDescription {}
+export interface IPriceLevel extends IDescription {
+  taxrate: number;
+}
 
 export interface IProductCommon extends IDescription {
   upc: string;

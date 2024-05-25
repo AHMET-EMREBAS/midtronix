@@ -17,7 +17,19 @@ export class Order extends BaseEntity implements IOrder<Sku, Cart> {
   @OneRelation(Sku) sku!: Sku;
   @OneRelation(Cart) cart!: Cart;
   @Column({ type: 'int' }) quantity!: number;
+  @Column({ type: 'numeric' }) taxrate!: number;
   @Column({ type: 'numeric' }) unitPrice!: number;
   @Column({ type: 'numeric' }) subtotal!: number;
   @Column({ type: 'numeric' }) total!: number;
 }
+
+// @EventSubscriber()
+// export class OrderSubscriber implements EntitySubscriberInterface<IOrder> {
+//   beforeUpdate(event: UpdateEvent<IOrder<IID, IID>>): void | Promise<any> {
+//     const entity = event.entity;
+
+//     const { unitPrice, quantity } = entity as IOrder;
+
+//   }
+//   beforeInsert(event: InsertEvent<IOrder<IID, IID>>): void | Promise<any> {}
+// }

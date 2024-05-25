@@ -116,7 +116,7 @@ export class AppSeedModule implements OnModuleInit {
       await this.StoreRepo.save({ name: `STORE_${count}` });
 
     const createPriceLevel = async (count = ++priceLevelCount) =>
-      await this.PriceLevelRepo.save({ name: `PL_${count}` });
+      await this.PriceLevelRepo.save({ name: `PL_${count}`, taxrate: 10.25 });
 
     const createProduct = async (count = ++productCount) =>
       await this.ProductRepo.save({
@@ -179,10 +179,10 @@ export class AppSeedModule implements OnModuleInit {
         cart,
         sku,
         quantity,
-        priceLevel,
         unitPrice,
         subtotal: unitPrice * quantity,
         total: unitPrice * quantity + tax,
+        taxrate: priceLevel.taxrate,
       });
     };
 

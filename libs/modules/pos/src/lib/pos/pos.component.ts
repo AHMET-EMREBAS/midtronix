@@ -21,6 +21,7 @@ import {
   CartService,
   OrderService,
   OrderViewService,
+  PriceLevelService,
   SkuViewService,
 } from '@mdtx/ngrx';
 import {
@@ -29,10 +30,16 @@ import {
   PosOrderCardComponent,
   PosOrderCardListComponent,
 } from '@mdtx/material/card';
-import { IOrderViewRaw, ISkuViewRaw } from '@mdtx/common';
-import { LocalStore } from '@mdtx/material/core';
-import { MergeStrategy } from '@ngrx/data';
+import {
+  IOrderRaw,
+  IOrderViewRaw,
+  IPriceLevel,
+  ISkuViewRaw,
+  IStore,
+} from '@mdtx/common';
+import { FullscreenButtonComponent, LocalStore } from '@mdtx/material/core';
 import { InputNumberComponent } from '@mdtx/material/form';
+import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.component';
 
 const DEBOUNCE_TIME = 600;
 
@@ -55,6 +62,8 @@ const DEBOUNCE_TIME = 600;
     PosOrderCardComponent,
     PosOrderCardListComponent,
     InputNumberComponent,
+    PosOrderEditorComponent,
+    FullscreenButtonComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
@@ -63,11 +72,12 @@ const DEBOUNCE_TIME = 600;
 export class PosComponent implements AfterViewInit {
   readonly cartStore = LocalStore.createStore('cart', { debounce: 400 });
 
-  @ViewChild('messagesContainer')
-  messagesContainer!: ElementRef<HTMLDivElement>;
+  activeStore!: IStore;
+  activePriceLevel!: IPriceLevel;
+
   @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;
-  @ViewChild('priceLevelSearch') priceLevelSearch!: StoreSearchComponent;
-  @ViewChild('customerSearch') customerSearch!: StoreSearchComponent;
+  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
+  @ViewChild('customerSearch') customerSearch!: CustomerSearchComponent;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -85,6 +95,8 @@ export class PosComponent implements AfterViewInit {
 
   scanControl = new FormControl('');
 
+  orderUnderUpdate?: IOrderViewRaw;
+
   constructor(
     protected readonly skuViewService: SkuViewService,
     protected readonly orderService: OrderService,
@@ -95,10 +107,16 @@ export class PosComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     merge(
       this.storeSearch.inputControl.valueChanges.pipe(
-        debounceTime(DEBOUNCE_TIME)
+        debounceTime(DEBOUNCE_TIME),
+        tap((data) => {
+          this.activeStore = data!;
+        })
       ),
       this.priceLevelSearch.inputControl.valueChanges.pipe(
-        debounceTime(DEBOUNCE_TIME)
+        debounceTime(DEBOUNCE_TIME),
+        tap((data) => {
+          this.activePriceLevel = data!;
+        })
       ),
       this.customerSearch.inputControl.valueChanges.pipe(
         debounceTime(DEBOUNCE_TIME)
@@ -111,14 +129,6 @@ export class PosComponent implements AfterViewInit {
 
     this.reloadOrderList();
     this.reloadProductList();
-  }
-
-  log(msg: string) {
-    this.messages.unshift(msg);
-    this.messagesContainer.nativeElement.scrollBy({
-      behavior: 'smooth',
-      top: 10000,
-    });
   }
 
   __customerId() {
@@ -168,6 +178,8 @@ export class PosComponent implements AfterViewInit {
       this.orderService.addOrder({
         cart: { id: this.__cartId() },
         sku: { id: event.id },
+
+        taxrate: this.activePriceLevel.taxrate,
         quantity: 1,
         unitPrice: parseFloat(event.price + ''),
         subtotal: parseFloat(event.price + ''),
@@ -179,6 +191,7 @@ export class PosComponent implements AfterViewInit {
 
   editButtonClickEventHandler(event: IOrderViewRaw) {
     console.log('Edited : ', event);
+    this.orderUnderUpdate = event;
   }
 
   deleteButtonClickEventHandler(event: IOrderViewRaw) {
@@ -209,5 +222,15 @@ export class PosComponent implements AfterViewInit {
       },
       { isOptimistic: false }
     );
+  }
+
+  updateOrderEventHandler(order: Partial<IOrderRaw>) {
+    this.orderService.update(order);
+    this.closeOrderEditorHandler();
+    this.reloadOrderList();
+  }
+
+  closeOrderEditorHandler() {
+    this.orderUnderUpdate = undefined;
   }
 }

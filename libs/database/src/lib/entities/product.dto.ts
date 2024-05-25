@@ -20,7 +20,10 @@ import { CreateImageDto, CreateVideoDto } from './media.dto';
 @Exclude()
 export class CreatePriceLevelDto
   extends CreateNameDto
-  implements ICreatePriceLevelDto {}
+  implements ICreatePriceLevelDto
+{
+  @Property({ type: 'number', minimum: 0 }) taxrate!: number;
+}
 
 @Exclude()
 export class UpdatePriceLevelDto extends CreatePriceLevelDto {}

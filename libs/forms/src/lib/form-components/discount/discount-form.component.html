@@ -14,12 +14,28 @@
     label="Start"
     [inputControl]="control('startDate')"
   ></mdtx-input-date>
-  
+
   <mdtx-input-date
-    inputName="finishDate"
+    inputName="endDate"
     label="End"
-    [inputControl]="control('finishDate')"
+    [inputControl]="control('endDate')"
   ></mdtx-input-date>
+
+  <mdtx-input-number
+    inputName="percent"
+    label="% Discount"
+    prefixIcon="money_off"
+    [inputControl]="control('percent')"
+  >
+  </mdtx-input-number>
+
+  <mdtx-input-number
+    inputName="fixed"
+    label="Fixed Discount"
+    prefixIcon="money_off"
+    [inputControl]="control('fixed')"
+  >
+  </mdtx-input-number>
 
   <!-- Form actions -->
   <div class="form-actions">

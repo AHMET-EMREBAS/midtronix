@@ -1,49 +1,60 @@
 <!-- Barcode Scanner  -->
 
-<ng-template #barcodeScanner>
-  <mat-form-field appearance="outline">
-    <mat-label>Scan</mat-label>
-    <input
-      matInput
-      type="text"
-      autocomplete="off"
-      [formControl]="scanControl"
-    />
-  </mat-form-field>
-</ng-template>
+<div class="pos-container" #containerRef>
+  <ng-template #barcodeScanner>
+    <mat-form-field appearance="outline">
+      <mat-label>Scan</mat-label>
+      <input
+        matInput
+        type="text"
+        autocomplete="off"
+        [formControl]="scanControl"
+      />
+    </mat-form-field>
+  </ng-template>
 
-<div class="pos-container">
-  <div class="pos-toolbar">
-    <ng-container *ngTemplateOutlet="barcodeScanner"></ng-container>
+  <div class="pos-container">
+    <div class="pos-toolbar">
+      <ng-container *ngTemplateOutlet="barcodeScanner"></ng-container>
+    </div>
+
+    <div class="pos-middle-container">
+      <mdtx-pos-product-card-list
+        *ngIf="productListItems$ | async as productListItems"
+        [productListItems]="productListItems"
+        (addToCartEvent)="addToCartEventHandler($event)"
+      ></mdtx-pos-product-card-list>
+
+      <mdtx-pos-order-card-list
+        *ngIf="orderListItems$ | async as orderListItems"
+        [orderListItems]="orderListItems"
+        (editButtonClickEvent)="editButtonClickEventHandler($event)"
+        (deleteButtonClickEvent)="deleteButtonClickEventHandler($event)"
+      ></mdtx-pos-order-card-list>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="createNewCart()">
+      New Cart
+    </button>
+    <div class="toolbar">
+      <mdtx-store-search #storeSearch></mdtx-store-search>
+      <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
+      <mdtx-customer-search #customerSearch></mdtx-customer-search>
+    </div>
   </div>
 
-  <div class="pos-middle-container">
-    <mdtx-pos-product-card-list
-      *ngIf="productListItems$ | async as productListItems"
-      [productListItems]="productListItems"
-      (addToCartEvent)="addToCartEventHandler($event)"
-    ></mdtx-pos-product-card-list>
+  @if(orderUnderUpdate){
 
-    <mdtx-pos-order-card-list
-      *ngIf="orderListItems$ | async as orderListItems"
-      [orderListItems]="orderListItems"
-      (editButtonClickEvent)="editButtonClickEventHandler($event)"
-      (deleteButtonClickEvent)="deleteButtonClickEventHandler($event)"
-    ></mdtx-pos-order-card-list>
+  <mdtx-pos-order-editor
+    [activeStore]="activeStore"
+    [activePriceLevel]="activePriceLevel"
+    [activeOrder]="orderUnderUpdate"
+    (updateEvent)="updateOrderEventHandler($event)"
+    (closeEvent)="closeOrderEditorHandler()"
+  ></mdtx-pos-order-editor>
+  }
 
-    
-  </div>
-
-  <button mat-raised-button color="primary" (click)="createNewCart()">
-    New Cart
-  </button>
-  <div class="toolbar">
-    <mdtx-store-search #storeSearch></mdtx-store-search>
-    <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
-    <mdtx-customer-search #customerSearch></mdtx-customer-search>
-  </div>
-</div>
-
-<!-- <div class="messages" #messagesContainer>
+  <!-- <div class="messages" #messagesContainer>
   <p *ngFor="let m of messages">{{ m }}</p>
 </div> -->
+</div>

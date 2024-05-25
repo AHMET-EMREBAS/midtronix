@@ -1,10 +1,11 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { DiscountViewService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IInputOption } from '@mdtx/material/core';
+import { IDiscountViewRaw } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-discount-view-search',
@@ -23,15 +24,15 @@ import { IInputOption } from '@mdtx/material/core';
   providers: [DiscountViewService],
 })
 export class DiscountViewSearchComponent implements OnInit {
-  options$!: Observable<IInputOption[]>;
+  options$: Observable<IDiscountViewRaw[]> = this.service.entities$;
 
-  @Input() inputControl = new FormControl<IInputOption | null>(null, []);
-
-  @Input() skuId = 1;
+  @Input() inputControl = new FormControl<IDiscountViewRaw | null>(null, []);
+  @Input() skuId!: number;
 
   constructor(protected readonly service: DiscountViewService) {}
 
   ngOnInit(): void {
-    this.options$ = this.service.findBySkuId(this.skuId);
+    this.service.clearCache();
+    this.service.getWithQuery({ skuId: this.skuId });
   }
 }

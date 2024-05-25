@@ -85,4 +85,13 @@ export class CollectionBaseService<
       mergeStrategy: MergeStrategy.OverwriteChanges,
     });
   }
+
+  query(query: Record<string, any>) {
+    const queryString = Object.entries(query)
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&');
+    return this.httpClient.get<T[]>(
+      'api/' + this.apiPaths.PLURAL_PATH + `?take=10000&${queryString}`
+    );
+  }
 }

@@ -20,6 +20,7 @@ export class InputNumberComponent
   @Input() maxValue?: number;
   @Input() textSuffix?: string;
   @Input() textPrefix?: string;
+  @Input() currency = false;
 
   override ngAfterViewInit(): void {
     super.ngAfterViewInit();

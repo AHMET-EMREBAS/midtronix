@@ -14,7 +14,9 @@ export interface ICreateProductDto
   extends Omit<IProduct<IID, IID, IID>, keyof IBaseEntity> {}
 
 export interface ICreatePriceLevelDto
-  extends Omit<IPriceLevel, keyof IBaseEntity> {}
+  extends Omit<IPriceLevel, keyof IBaseEntity> {
+  taxrate: number;
+}
 
 export interface ICreateSkuDto extends Omit<ISku<IID>, keyof IBaseEntity> {}
 

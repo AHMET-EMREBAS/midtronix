@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { CustomerService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
+import { IInputOption } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-customer-search',
@@ -21,7 +22,7 @@ import { FormControl } from '@angular/forms';
   providers: [CustomerService],
 })
 export class CustomerSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<IInputOption | null>(null, []);
 
   constructor(protected readonly service: CustomerService) {}
 }

@@ -14024,7 +14024,7 @@
         },
         {
             "name": "PosComponent",
-            "id": "component-PosComponent-5834719c671509449e08e7500ce511a1fe065c88cf116d67f285a2c312d1f2fc168b271a1f87e3ff029894fa827c9697eb850414d422e3e17c195691b3249a90",
+            "id": "component-PosComponent-02bab4e7e94f8752e904e40cb7f5cd6b214e766da10f17bcefd6915fbbfd85a23e363193d80ded19df511d4ca37af011185247a3bafafeeaae09e12da86cbf4b",
             "file": "libs/modules/pos/src/lib/pos/pos.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -14060,13 +14060,26 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "cartStore",
+                    "defaultValue": "LocalStore.createStore('cart', { debounce: 400 })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
                     "name": "customerSearch",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoreSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 47,
+                    "line": 70,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -14085,7 +14098,7 @@
                     "type": "string[]",
                     "optional": false,
                     "description": "",
-                    "line": 56,
+                    "line": 84,
                     "modifierKind": [
                         148
                     ]
@@ -14097,7 +14110,7 @@
                     "type": "ElementRef<HTMLDivElement>",
                     "optional": false,
                     "description": "",
-                    "line": 44,
+                    "line": 67,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -14109,13 +14122,33 @@
                     ]
                 },
                 {
+                    "name": "orderListItems$",
+                    "defaultValue": "this.orderViewService.entities$.pipe(\r\n    debounceTime(200),\r\n    tap((data) => (this.orderListItemsSnapshot = data))\r\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 79
+                },
+                {
+                    "name": "orderListItemsSnapshot",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IOrderViewRaw[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 78
+                },
+                {
                     "name": "priceLevelSearch",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "StoreSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 46,
+                    "line": 69,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -14127,14 +14160,24 @@
                     ]
                 },
                 {
-                    "name": "products$",
-                    "defaultValue": "this.skuViewService.entities$.pipe(\n    debounceTime(600),\n    tap((data) => {\n      console.log(data);\n    })\n  )",
+                    "name": "productListItems$",
+                    "defaultValue": "this.skuViewService.entities$.pipe(\r\n    debounceTime(200),\r\n    tap((data) => (this.productListItemsSnapshot = data))\r\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 49
+                    "line": 73
+                },
+                {
+                    "name": "productListItemsSnapshot",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ISkuViewRaw[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 72
                 },
                 {
                     "name": "scanControl",
@@ -14144,7 +14187,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 58
+                    "line": 86
                 },
                 {
                     "name": "storeSearch",
@@ -14153,7 +14196,7 @@
                     "type": "StoreSearchComponent",
                     "optional": false,
                     "description": "",
-                    "line": 45,
+                    "line": 68,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -14167,6 +14210,153 @@
             ],
             "methodsClass": [
                 {
+                    "name": "__cartId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 140,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__customerId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 124,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__employeeId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 136,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__priceLevelId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 132,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__storeId",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 128,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "addToCartEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 156,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ISkuViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "createNewCart",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 144,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        134
+                    ]
+                },
+                {
+                    "name": "deleteButtonClickEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 184,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "editButtonClickEventHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 180,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "IOrderViewRaw",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "log",
                     "args": [
                         {
@@ -14179,7 +14369,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 85,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -14200,7 +14390,27 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 65,
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "reloadOrderList",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 203,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "reloadProductList",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 191,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -14250,12 +14460,32 @@
                 {
                     "name": "CustomerSearchComponent",
                     "type": "component"
+                },
+                {
+                    "name": "PosProductCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PosProductCardListComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PosOrderCardComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PosOrderCardListComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "InputNumberComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatInputModule } from '@angular/material/input';\nimport { debounceTime, merge, tap } from 'rxjs';\nimport {\n  CustomerSearchComponent,\n  PriceLevelSearchComponent,\n  StoreSearchComponent,\n} from '@mdtx/forms';\nimport {\n  CartService,\n  OrderService,\n  OrderViewService,\n  SkuViewService,\n} from '@mdtx/ngrx';\n\nconst DEBOUNCE_TIME = 600;\n\n@Component({\n  selector: 'mdtx-pos',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatInputModule,\n    MatFormFieldModule,\n    MatButtonModule,\n    MatIconModule,\n    StoreSearchComponent,\n    PriceLevelSearchComponent,\n    CustomerSearchComponent,\n  ],\n  templateUrl: './pos.component.html',\n  styleUrl: './pos.component.scss',\n  providers: [SkuViewService, CartService, OrderService, OrderViewService],\n})\nexport class PosComponent implements AfterViewInit {\n  @ViewChild('messagesContainer')\n  messagesContainer!: ElementRef<HTMLDivElement>;\n  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;\n  @ViewChild('priceLevelSearch') priceLevelSearch!: StoreSearchComponent;\n  @ViewChild('customerSearch') customerSearch!: StoreSearchComponent;\n\n  products$ = this.skuViewService.entities$.pipe(\n    debounceTime(600),\n    tap((data) => {\n      console.log(data);\n    })\n  );\n\n  readonly messages: string[] = [];\n\n  scanControl = new FormControl('');\n\n  constructor(\n    protected readonly skuViewService: SkuViewService,\n    protected readonly cartService: CartService\n  ) {}\n\n  ngAfterViewInit(): void {\n    merge(\n      this.storeSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.priceLevelSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.customerSearch.inputControl.valueChanges.pipe(\n        debounceTime(DEBOUNCE_TIME)\n      ),\n      this.scanControl.valueChanges.pipe(debounceTime(DEBOUNCE_TIME))\n    ).subscribe((search) => {\n      console.log('? : ', search);\n      this.log(`Scaning by ${search}`);\n    });\n\n    this.skuViewService.getWithQuery({ take: 10000 });\n  }\n\n  log(msg: string) {\n    this.messages.unshift(msg);\n    this.messagesContainer.nativeElement.scrollBy({\n      behavior: 'smooth',\n      top: 10000,\n    });\n  }\n}\n",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  ElementRef,\r\n  OnInit,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatFormFieldModule } from '@angular/material/form-field';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { MatInputModule } from '@angular/material/input';\r\nimport { debounceTime, firstValueFrom, merge, take, tap } from 'rxjs';\r\nimport {\r\n  CustomerSearchComponent,\r\n  PriceLevelSearchComponent,\r\n  StoreSearchComponent,\r\n} from '@mdtx/forms';\r\nimport {\r\n  CartService,\r\n  OrderService,\r\n  OrderViewService,\r\n  SkuViewService,\r\n} from '@mdtx/ngrx';\r\nimport {\r\n  PosProductCardComponent,\r\n  PosProductCardListComponent,\r\n  PosOrderCardComponent,\r\n  PosOrderCardListComponent,\r\n} from '@mdtx/material/card';\r\nimport { IOrderViewRaw, ISkuViewRaw } from '@mdtx/common';\r\nimport { LocalStore } from '@mdtx/material/core';\r\nimport { MergeStrategy } from '@ngrx/data';\r\nimport { InputNumberComponent } from '@mdtx/material/form';\r\n\r\nconst DEBOUNCE_TIME = 600;\r\n\r\n@Component({\r\n  selector: 'mdtx-pos',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    FormsModule,\r\n    ReactiveFormsModule,\r\n    MatInputModule,\r\n    MatFormFieldModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    StoreSearchComponent,\r\n    PriceLevelSearchComponent,\r\n    CustomerSearchComponent,\r\n    PosProductCardComponent,\r\n    PosProductCardListComponent,\r\n    PosOrderCardComponent,\r\n    PosOrderCardListComponent,\r\n    InputNumberComponent,\r\n  ],\r\n  templateUrl: './pos.component.html',\r\n  styleUrl: './pos.component.scss',\r\n  providers: [SkuViewService, CartService, OrderService, OrderViewService],\r\n})\r\nexport class PosComponent implements AfterViewInit {\r\n  readonly cartStore = LocalStore.createStore('cart', { debounce: 400 });\r\n\r\n  @ViewChild('messagesContainer')\r\n  messagesContainer!: ElementRef<HTMLDivElement>;\r\n  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;\r\n  @ViewChild('priceLevelSearch') priceLevelSearch!: StoreSearchComponent;\r\n  @ViewChild('customerSearch') customerSearch!: StoreSearchComponent;\r\n\r\n  productListItemsSnapshot: ISkuViewRaw[] = [];\r\n  productListItems$ = this.skuViewService.entities$.pipe(\r\n    debounceTime(200),\r\n    tap((data) => (this.productListItemsSnapshot = data))\r\n  );\r\n\r\n  orderListItemsSnapshot: IOrderViewRaw[] = [];\r\n  orderListItems$ = this.orderViewService.entities$.pipe(\r\n    debounceTime(200),\r\n    tap((data) => (this.orderListItemsSnapshot = data))\r\n  );\r\n\r\n  readonly messages: string[] = [];\r\n\r\n  scanControl = new FormControl('');\r\n\r\n  constructor(\r\n    protected readonly skuViewService: SkuViewService,\r\n    protected readonly orderService: OrderService,\r\n    protected readonly orderViewService: OrderViewService,\r\n    protected readonly cartService: CartService\r\n  ) {}\r\n\r\n  ngAfterViewInit(): void {\r\n    merge(\r\n      this.storeSearch.inputControl.valueChanges.pipe(\r\n        debounceTime(DEBOUNCE_TIME)\r\n      ),\r\n      this.priceLevelSearch.inputControl.valueChanges.pipe(\r\n        debounceTime(DEBOUNCE_TIME)\r\n      ),\r\n      this.customerSearch.inputControl.valueChanges.pipe(\r\n        debounceTime(DEBOUNCE_TIME)\r\n      ),\r\n      this.scanControl.valueChanges.pipe(debounceTime(DEBOUNCE_TIME))\r\n    ).subscribe((search) => {\r\n      this.reloadProductList();\r\n      this.reloadOrderList();\r\n    });\r\n\r\n    this.reloadOrderList();\r\n    this.reloadProductList();\r\n  }\r\n\r\n  log(msg: string) {\r\n    this.messages.unshift(msg);\r\n    this.messagesContainer.nativeElement.scrollBy({\r\n      behavior: 'smooth',\r\n      top: 10000,\r\n    });\r\n  }\r\n\r\n  __customerId() {\r\n    return this.customerSearch?.inputControl?.value?.id ?? 1;\r\n  }\r\n\r\n  __storeId() {\r\n    return this.storeSearch?.inputControl?.value?.id ?? 1;\r\n  }\r\n\r\n  __priceLevelId() {\r\n    return this.priceLevelSearch?.inputControl?.value?.id ?? 1;\r\n  }\r\n\r\n  __employeeId() {\r\n    return 1;\r\n  }\r\n\r\n  __cartId() {\r\n    return parseInt(this.cartStore.get() ?? '1');\r\n  }\r\n\r\n  async createNewCart() {\r\n    const result = await firstValueFrom(\r\n      this.cartService.addCart({\r\n        customer: { id: this.__customerId() },\r\n        employee: { id: this.__employeeId() },\r\n        store: { id: this.__storeId() },\r\n      })\r\n    );\r\n\r\n    this.cartStore.set(result.id + '');\r\n  }\r\n\r\n  addToCartEventHandler(event: ISkuViewRaw) {\r\n    const foundItem = this.orderListItemsSnapshot.find(\r\n      (e) => e.barcode === event.barcode\r\n    );\r\n\r\n    if (foundItem) {\r\n      console.log('Updating Item : ', foundItem);\r\n      this.orderService.update({\r\n        id: foundItem.id,\r\n        quantity: parseInt(foundItem.quantity + '') + 1,\r\n      });\r\n    } else {\r\n      this.orderService.addOrder({\r\n        cart: { id: this.__cartId() },\r\n        sku: { id: event.id },\r\n        quantity: 1,\r\n        unitPrice: parseFloat(event.price + ''),\r\n        subtotal: parseFloat(event.price + ''),\r\n        total: parseFloat(event.price + ''),\r\n      });\r\n    }\r\n    this.reloadOrderList();\r\n  }\r\n\r\n  editButtonClickEventHandler(event: IOrderViewRaw) {\r\n    console.log('Edited : ', event);\r\n  }\r\n\r\n  deleteButtonClickEventHandler(event: IOrderViewRaw) {\r\n    console.log('Deleting Item : ', event);\r\n    this.orderViewService.removeOneFromCache(event);\r\n    this.orderService.delete(event.id);\r\n    this.reloadOrderList();\r\n  }\r\n\r\n  reloadProductList() {\r\n    this.skuViewService.getWithQuery(\r\n      {\r\n        take: 10000,\r\n        storeId: this.__storeId(),\r\n        cusotmerId: this.__customerId(),\r\n        priceLevelId: this.__priceLevelId(),\r\n      },\r\n      { isOptimistic: false }\r\n    );\r\n  }\r\n\r\n  reloadOrderList() {\r\n    this.orderViewService.getWithQuery(\r\n      {\r\n        take: 1000,\r\n        cartId: this.__cartId(),\r\n        storeId: this.__storeId(),\r\n      },\r\n      { isOptimistic: false }\r\n    );\r\n  }\r\n}\r\n",
             "styleUrl": "./pos.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -14273,17 +14503,47 @@
                         "deprecationMessage": ""
                     },
                     {
+                        "name": "orderService",
+                        "type": "OrderService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "orderViewService",
+                        "type": "OrderViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
                         "name": "cartService",
                         "type": "CartService",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 58,
+                "line": 86,
                 "jsdoctags": [
                     {
                         "name": "skuViewService",
                         "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "orderService",
+                        "type": "OrderService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "orderViewService",
+                        "type": "OrderViewService",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -14305,7 +14565,206 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<!-- Product card -->\n<ng-template\n  #productCard\n  let-name=\"name\"\n  let-barcode=\"barcode\"\n  let-image=\"image\"\n  let-price=\"price\"\n  let-quantity=\"quantity\"\n>\n  <div class=\"product-card\">\n    <img class=\"image\" src=\"./assets/imgs/placeholder.svg\" alt=\"\" />\n    <div class=\"content\">\n      <div class=\"title\">{{ name }}</div>\n      <div class=\"subtitle\">{{ barcode }}</div>\n      <div class=\"price\">{{ price }}</div>\n      <div class=\"quantity\">{{ quantity }}</div>\n    </div>\n\n    <div class=\"product-card-actions\">\n      <div class=\"product-add-card-button\">Add Cart</div>\n    </div>\n  </div>\n</ng-template>\n\n<!-- Barcode Scanner  -->\n\n<ng-template #barcodeScanner>\n  <mat-form-field appearance=\"outline\">\n    <mat-label>Scan</mat-label>\n    <input\n      matInput\n      type=\"text\"\n      autocomplete=\"off\"\n      [formControl]=\"scanControl\"\n    />\n  </mat-form-field>\n</ng-template>\n\n<div class=\"pos-container\">\n  <div class=\"pos-toolbar\">\n    <ng-container *ngTemplateOutlet=\"barcodeScanner\"></ng-container>\n  </div>\n\n  <div class=\"pos-middle-container\">\n    <div class=\"list-container sm-hide\">\n      <h3>Products</h3>\n\n      <div class=\"row-list\">\n        @for(item of products$ | async; track item ){\n        <ng-container\n          *ngTemplateOutlet=\"productCard;context:{\n            name:item.name,\n            barcode: item.id, \n            image: item.id, \n            price: item.id, \n            quantity: item.id, \n          }\"\n        ></ng-container>\n        }\n      </div>\n    </div>\n\n    <div class=\"list-container sm-full\">\n      <h3>Orders</h3>\n      <div class=\"col-list\"></div>\n    </div>\n  </div>\n\n  <div class=\"pos-statusbar\">\n    <mdtx-store-search #storeSearch></mdtx-store-search>\n    <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>\n    <mdtx-customer-search #customerSearch></mdtx-customer-search>\n  </div>\n</div>\n\n<div class=\"messages\" #messagesContainer>\n  <p *ngFor=\"let m of messages\">{{ m }}</p>\n</div>\n"
+            "templateData": "<!-- Barcode Scanner  -->\r\n\r\n<ng-template #barcodeScanner>\r\n  <mat-form-field appearance=\"outline\">\r\n    <mat-label>Scan</mat-label>\r\n    <input\r\n      matInput\r\n      type=\"text\"\r\n      autocomplete=\"off\"\r\n      [formControl]=\"scanControl\"\r\n    />\r\n  </mat-form-field>\r\n</ng-template>\r\n\r\n<div class=\"pos-container\">\r\n  <div class=\"pos-toolbar\">\r\n    <ng-container *ngTemplateOutlet=\"barcodeScanner\"></ng-container>\r\n  </div>\r\n\r\n  <div class=\"pos-middle-container\">\r\n    <mdtx-pos-product-card-list\r\n      *ngIf=\"productListItems$ | async as productListItems\"\r\n      [productListItems]=\"productListItems\"\r\n      (addToCartEvent)=\"addToCartEventHandler($event)\"\r\n    ></mdtx-pos-product-card-list>\r\n\r\n    <mdtx-pos-order-card-list\r\n      *ngIf=\"orderListItems$ | async as orderListItems\"\r\n      [orderListItems]=\"orderListItems\"\r\n      (editButtonClickEvent)=\"editButtonClickEventHandler($event)\"\r\n      (deleteButtonClickEvent)=\"deleteButtonClickEventHandler($event)\"\r\n    ></mdtx-pos-order-card-list>\r\n\r\n    \r\n  </div>\r\n\r\n  <button mat-raised-button color=\"primary\" (click)=\"createNewCart()\">\r\n    New Cart\r\n  </button>\r\n  <div class=\"toolbar\">\r\n    <mdtx-store-search #storeSearch></mdtx-store-search>\r\n    <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>\r\n    <mdtx-customer-search #customerSearch></mdtx-customer-search>\r\n  </div>\r\n</div>\r\n\r\n<!-- <div class=\"messages\" #messagesContainer>\r\n  <p *ngFor=\"let m of messages\">{{ m }}</p>\r\n</div> -->\r\n"
+        },
+        {
+            "name": "PosOrderEditorComponent",
+            "id": "component-PosOrderEditorComponent-bfbfd6efb63e85e35670e140546c35bb5cce581f0240ca8e71f5864bd9d3a023f2625b940b1b866d53f2dfd5fb4b917b01aca2689ff06e449d576d5278f010da",
+            "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "SkuViewService",
+                    "type": "injectable"
+                },
+                {
+                    "name": "DiscountViewService",
+                    "type": "injectable"
+                }
+            ],
+            "selector": "mdtx-pos-order-editor",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./pos-order-editor.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "order",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 37,
+                    "type": "IOrderViewRaw",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "updateEvent",
+                    "defaultValue": "new EventEmitter<IOrderViewRaw>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 43,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "discountSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DiscountViewSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 39,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'discountSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "priceLevelSearch",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "PriceLevelSearchComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 38,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'priceLevelSearch'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "quantityControl",
+                    "defaultValue": "new FormControl(0, [Validators.min(1)])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputNumberComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "PriceLevelSearchComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "DiscountViewSearchComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n  AfterViewInit,\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n  ViewChild,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputNumberComponent } from '@mdtx/material/form';\r\nimport { FormControl, Validators } from '@angular/forms';\r\nimport {\r\n  DiscountViewSearchComponent,\r\n  PriceLevelSearchComponent,\r\n} from '@mdtx/forms';\r\nimport { IOrderViewRaw } from '@mdtx/common';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { DiscountViewService, SkuViewService } from '@mdtx/ngrx';\r\nimport { switchMap } from 'rxjs';\r\n\r\n@Component({\r\n  selector: 'mdtx-pos-order-editor',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatButtonModule,\r\n    InputNumberComponent,\r\n    PriceLevelSearchComponent,\r\n    DiscountViewSearchComponent,\r\n  ],\r\n  templateUrl: './pos-order-editor.component.html',\r\n  styleUrl: './pos-order-editor.component.scss',\r\n  providers: [SkuViewService, DiscountViewService],\r\n})\r\nexport class PosOrderEditorComponent implements OnInit, AfterViewInit {\r\n  @Input() order!: IOrderViewRaw;\r\n  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;\r\n  @ViewChild('discountSearch') discountSearch!: DiscountViewSearchComponent;\r\n\r\n  quantityControl = new FormControl(0, [Validators.min(1)]);\r\n\r\n  @Output() updateEvent = new EventEmitter<IOrderViewRaw>();\r\n\r\n  constructor(\r\n    protected readonly skuViewService: SkuViewService,\r\n    protected readonly discountViewService: DiscountViewService\r\n  ) {}\r\n  ngOnInit(): void {\r\n    if (!this.order) {\r\n      this.order = { id: 1 } as IOrderViewRaw;\r\n    }\r\n    this.quantityControl.setValue(this.order.quantity ?? 1);\r\n  }\r\n\r\n  ngAfterViewInit(): void {\r\n    this.priceLevelSearch.inputControl.valueChanges\r\n      .pipe(\r\n        switchMap((priceLevel) => {\r\n          return this.skuViewService.queryBy(\r\n            'priceLevelId',\r\n            priceLevel?.id + ''\r\n          );\r\n        })\r\n      )\r\n      .subscribe((skus) => {\r\n        console.log(skus);\r\n      });\r\n\r\n    this.discountSearch.inputControl.valueChanges\r\n      .pipe(\r\n        switchMap((d) => {\r\n          return this.discountViewService.queryBy(\r\n            'skuId',\r\n            this.order.skuId + ''\r\n          );\r\n        })\r\n      )\r\n      .subscribe((discount) => {\r\n        console.log(discount);\r\n      });\r\n  }\r\n}\r\n",
+            "styleUrl": "./pos-order-editor.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "skuViewService",
+                        "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "discountViewService",
+                        "type": "DiscountViewService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 43,
+                "jsdoctags": [
+                    {
+                        "name": "skuViewService",
+                        "type": "SkuViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "discountViewService",
+                        "type": "DiscountViewService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"pos-order-editor\">\r\n  <h1>Update Order</h1>\r\n  <mdtx-input-number\r\n    inputName=\"quantity\"\r\n    prefixIcon=\"numbers\"\r\n    label=\"Update Quantity\"\r\n    [inputControl]=\"quantityControl\"\r\n  ></mdtx-input-number>\r\n\r\n  <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>\r\n\r\n  <mdtx-discount-view-search\r\n    #discountSearch\r\n    [skuId]=\"order.skuId ?? 1\"\r\n  ></mdtx-discount-view-search>\r\n\r\n  <div class=\"actions\">\r\n    <button mat-raised-button color=\"primary\">Update</button>\r\n    <button mat-stroked-button color=\"primary\">Close</button>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "PriceComponent",
@@ -21426,6 +21885,16 @@
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -23756,6 +24225,16 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<PosOrderEditorComponent>",
+                "defaultValue": "{\r\n  component: PosOrderEditorComponent,\r\n  title: 'PosOrderEditorComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n              Order: 'Orders',\r\n              OrderView: 'OrderViews',\r\n              Sale: 'Sales',\r\n              SaleView: 'SaleViews',\r\n              Customer: 'Customers',\r\n              Discount: 'Discount',\r\n              DiscountView: 'DiscountViews',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n              Order: {},\r\n              OrderView: {},\r\n              Sale: {},\r\n              SaleView: {},\r\n              Customer: {},\r\n              Discount: {},\r\n              DiscountView: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -26081,6 +26560,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
             },
             {
                 "name": "Primary",
@@ -28454,6 +28943,17 @@
                 "subtype": "typealias",
                 "rawtype": "StoryObj<PosComponent>",
                 "file": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<PosOrderEditorComponent>",
+                "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -31362,6 +31862,38 @@
                     "deprecationMessage": "",
                     "type": "Story",
                     "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
+            "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<PosOrderEditorComponent>",
+                    "defaultValue": "{\r\n  component: PosOrderEditorComponent,\r\n  title: 'PosOrderEditorComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [\r\n        provideMatFormFieldOptions({ appearance: 'outline' }),\r\n        provideAnimations(),\r\n        provideHttpClient(withInterceptors(storyBookHttpInterceptor)),\r\n        provideStore(),\r\n        provideEffects([]),\r\n        provideEntityData(\r\n          {\r\n            pluralNames: {\r\n              Product: 'Products',\r\n              Sku: 'Skus',\r\n              Price: 'Prices',\r\n              PriceLevel: 'PriceLevels',\r\n              Store: 'Stores',\r\n              Quantity: 'Quantities',\r\n              SkuView: 'SkuViews',\r\n              Cart: 'Carts',\r\n              Order: 'Orders',\r\n              OrderView: 'OrderViews',\r\n              Sale: 'Sales',\r\n              SaleView: 'SaleViews',\r\n              Customer: 'Customers',\r\n              Discount: 'Discount',\r\n              DiscountView: 'DiscountViews',\r\n            },\r\n            entityMetadata: {\r\n              Sku: {},\r\n              SkuView: {},\r\n              Product: {},\r\n              Price: {},\r\n              PriceLevel: {},\r\n              Store: {},\r\n              Quantity: {},\r\n              Cart: {},\r\n              Order: {},\r\n              OrderView: {},\r\n              Sale: {},\r\n              SaleView: {},\r\n              Customer: {},\r\n              Discount: {},\r\n              DiscountView: {},\r\n            },\r\n          },\r\n          withEffects()\r\n        ),\r\n      ],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
                 }
             ],
             "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
@@ -38570,6 +39102,19 @@
                     "kind": 183
                 }
             ],
+            "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<PosOrderEditorComponent>",
+                    "file": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/modules/sub-modules/src/lib/cart/cart.component.stories.ts": [
                 {
                     "name": "Story",
@@ -41977,6 +42522,45 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/modules/pos/src/lib/pos-order-editor/pos-order-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PosOrderEditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/modules/pos/src/lib/pos/pos.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -42012,7 +42596,7 @@
                 "linktype": "component",
                 "name": "PosComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/26",
                 "status": "low"
             },
             {
