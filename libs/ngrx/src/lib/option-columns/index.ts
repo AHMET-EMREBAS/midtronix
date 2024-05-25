@@ -8,6 +8,7 @@ export * from './customer-phone';
 export * from './customer-role';
 export * from './customer';
 export * from './department';
+export * from './discount-view';
 export * from './discount';
 export * from './manufacturer';
 export * from './message';

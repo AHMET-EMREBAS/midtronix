@@ -7,5 +7,15 @@
     [inputControl]="quantityControl"
   ></mdtx-input-number>
 
-  <mdtx-price-level-search></mdtx-price-level-search>
+  <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
+
+  <mdtx-discount-view-search
+    #discountSearch
+    [skuId]="order.skuId ?? 1"
+  ></mdtx-discount-view-search>
+
+  <div class="actions">
+    <button mat-raised-button color="primary">Update</button>
+    <button mat-stroked-button color="primary">Close</button>
+  </div>
 </div>

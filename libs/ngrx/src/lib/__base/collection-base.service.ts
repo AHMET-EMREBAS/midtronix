@@ -47,6 +47,23 @@ export class CollectionBaseService<
       );
   }
 
+  queryBy(key: string, value: string) {
+    return this.httpClient
+      .get<T[]>(
+        'api/' + this.apiPaths.PLURAL_PATH + `?take=10000&${key}=${value}`
+      )
+      .pipe(
+        map((data) => {
+          return data.map((d) => {
+            return {
+              id: d.id,
+              name: d[this.optionColumn] + '',
+            };
+          });
+        })
+      );
+  }
+
   deleteItem(id: number) {
     super.removeOneFromCache(id);
     return super

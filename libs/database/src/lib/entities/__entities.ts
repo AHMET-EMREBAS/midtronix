@@ -43,6 +43,7 @@ import { Taxrate } from './taxrate';
 import { Discount } from './discount';
 import { SkuView } from './product.view';
 import { Sale, SaleView } from './sale';
+import { DiscountView } from './discount.view';
 
 export const UserEntities: Readonly<Type[]> = [
   User,
@@ -176,6 +177,7 @@ export const TicketEntities: Readonly<Type[]> = [
 ];
 
 export const DiscountEntities = [Discount, ...SkuEntities];
+export const DiscountViewEntities = [DiscountView, ...DiscountEntities];
 
 export const OrderViewEntities = [
   Order,

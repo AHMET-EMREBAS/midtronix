@@ -4,7 +4,12 @@ import {
   RestRouteBuilder,
   RelationDto,
 } from '@mdtx/core';
-import { CreateDiscountDto, Discount, UpdateDiscountDto } from '@mdtx/database';
+import {
+  CreateDiscountDto,
+  Discount,
+  QueryDiscountDto,
+  UpdateDiscountDto,
+} from '@mdtx/database';
 import { DiscountService } from './discount.service';
 
 const R = RestRouteBuilder.get('Discount');
@@ -24,7 +29,9 @@ export class DiscountController {
   }
 
   @R.FindAll()
-  findAll(@R.Query() paginator: PaginatorDto) {
+  findAll(
+    @R.Query() paginator: PaginatorDto,
+  ) {
     return this.service.findAll({ ...paginator });
   }
 

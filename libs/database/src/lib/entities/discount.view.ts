@@ -1,5 +1,6 @@
 import { ViewEntity, ViewColumn } from '@mdtx/core';
 import { Discount } from './discount';
+import { IDiscountView } from '@mdtx/common';
 
 @ViewEntity({
   expression(ds) {
@@ -17,7 +18,7 @@ import { Discount } from './discount';
       .orderBy('id', 'ASC');
   },
 })
-export class DiscountView {
+export class DiscountView implements IDiscountView {
   @ViewColumn() id!: number;
   @ViewColumn() skuId!: number;
   @ViewColumn() name!: string;

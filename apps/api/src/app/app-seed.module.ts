@@ -341,13 +341,21 @@ export class AppSeedModule implements OnModuleInit {
 
     await printCartViews();
 
-    // const discount1 = await this.DiscountRepo.save({
-    //   name: 'D1',
-    //   startDate: new Date('5/20/2024'),
-    //   endDate: new Date('5/24/2024'),
-    //   fixed: 10,
-    //   sku: s1p1,
-    // });
+    const discount1 = await this.DiscountRepo.save({
+      name: 'D1',
+      startDate: new Date('5/20/2024'),
+      endDate: new Date('5/30/2024'),
+      fixed: 10,
+      sku: s1p1,
+    });
+
+    const discount2 = await this.DiscountRepo.save({
+      name: 'D2',
+      startDate: new Date('5/20/2024'),
+      endDate: new Date('5/30/2024'),
+      fixed: 30,
+      sku: s1p2,
+    });
 
     // const printDiscounts = async () => {
     //   const discounts = await this.DiscountViewRepo.find();

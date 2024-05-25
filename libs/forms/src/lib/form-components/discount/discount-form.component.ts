@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import {
   CommonFormModule,
   InputDateComponent,
-  InputNumberComponent,
   InputTextComponent,
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
@@ -16,9 +15,8 @@ import { SkuSearchComponent } from '../../search-inputs';
   imports: [
     CommonFormModule,
     InputTextComponent,
-    InputNumberComponent,
     InputDateComponent,
-    SkuSearchComponent
+    SkuSearchComponent,
   ],
   templateUrl: './discount-form.component.html',
   styleUrl: './discount-form.component.scss',

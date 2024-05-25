@@ -28,3 +28,15 @@ export interface IDiscountRaw extends IDiscount<ISku> {}
 
 export interface ICreateDiscountDto
   extends Omit<IDiscount, keyof IBaseEntity> {}
+
+export interface IDiscountView {
+  id: number;
+  skuId: number;
+  name: string;
+  fixed: number;
+  percent: number;
+  startDate: Date;
+  endDate: Date;
+}
+
+export interface IDiscountViewRaw extends IDiscountView {}

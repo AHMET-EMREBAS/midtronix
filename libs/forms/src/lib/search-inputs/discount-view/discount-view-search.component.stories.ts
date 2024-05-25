@@ -3,7 +3,7 @@ import {
   type Meta,
   type StoryObj,
 } from '@storybook/angular';
-import { DiscountSearchComponent } from './discount-search.component';
+import { DiscountViewSearchComponent } from './discount-view-search.component';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -14,9 +14,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { storyBookHttpInterceptor } from '../../__base';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
-const meta: Meta<DiscountSearchComponent> = {
-  component: DiscountSearchComponent,
-  title: 'DiscountSearchComponent',
+const meta: Meta<DiscountViewSearchComponent> = {
+  component: DiscountViewSearchComponent,
+  title: 'DiscountViewSearchComponent',
   decorators: [
     applicationConfig({
       providers: [
@@ -28,10 +28,10 @@ const meta: Meta<DiscountSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              Discount: 'Discounts',
+              DiscountView: 'DiscountViews',
             },
             entityMetadata: {
-              Discount: {},
+              DiscountView: {},
             },
           },
           withEffects()
@@ -43,7 +43,7 @@ const meta: Meta<DiscountSearchComponent> = {
 
 export default meta;
 
-type Story = StoryObj<DiscountSearchComponent>;
+type Story = StoryObj<DiscountViewSearchComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -58,7 +58,7 @@ export const Heading: Story = {
 
     const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);
 
-    const searchInput = findInput('discount');
+    const searchInput = findInput('discountView');
 
     const search = async (searchValue: string) => {
       await userEvent.clear(searchInput);
@@ -66,9 +66,9 @@ export const Heading: Story = {
     };
 
     for (const [i, s] of [
-      [1, 'discount 1'],
-      [2, 'discount 2'],
-      [3, 'discount 3'],
+      [1, 'discountView 1'],
+      [2, 'discountView 2'],
+      [3, 'discountView 3'],
       [4, '1'],
       [5, '2'],
       [6, '3'],
