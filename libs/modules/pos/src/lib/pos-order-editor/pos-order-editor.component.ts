@@ -124,6 +124,21 @@ export class PosOrderEditorComponent implements AfterViewInit {
     this.updateEvent.emit();
   }
 
+  updateTotal() {
+    const __subtotal = this.subtotalControl.value;
+    const __quantity = this.quantityControl.value;
+
+    if (__subtotal && __quantity) {
+      const subtotal = parseFloat(__subtotal + '');
+      const quantity = parseFloat(__quantity + '');
+
+      const price = parseFloat((subtotal / quantity).toFixed(2));
+
+      this.unitPriceControl.setValue(price);
+      this.updateOrder();
+    }
+  }
+
   async updatePriceLevel() {
     const priceLevel = this.priceLevelSearch.inputControl.value;
 

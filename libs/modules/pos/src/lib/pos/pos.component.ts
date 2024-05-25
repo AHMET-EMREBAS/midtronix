@@ -116,18 +116,24 @@ export class PosComponent implements AfterViewInit {
         debounceTime(1000),
         switchMap((search) => {
           if (search) {
-            return this.skuViewService.query({
+            return this.skuViewService.getWithQuery({
               barcode: QueryBuilder.EQUAL(search),
               storeId: this.activeStore.id,
               cusotmerId: this.activeCustomer.id,
               priceLevelId: this.activePriceLevel.id,
             });
           }
-
-          return of(null);
+          return of(search);
         }),
-        map((result) => {
-          if (result && result.length == 1) {
+        tap((result) => {
+          if (typeof result === 'string') {
+            this.skuViewService.getWithQuery({
+              name: QueryBuilder.CONTAIN(result),
+              storeId: this.activeStore.id,
+              cusotmerId: this.activeCustomer.id,
+              priceLevelId: this.activePriceLevel.id,
+            });
+          } else if (result && result.length == 1) {
             const found = result[0];
             if (found) {
               this.addToCartEventHandler(found);

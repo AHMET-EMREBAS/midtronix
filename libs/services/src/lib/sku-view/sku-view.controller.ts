@@ -1,9 +1,4 @@
-import {
-  NotFoundException,
-  PaginatorDto,
-  RestRouteBuilder,
-  CreateSelectQuery,
-} from '@mdtx/core';
+import { NotFoundException, PaginatorDto, RestRouteBuilder } from '@mdtx/core';
 import { SkuViewService } from './sku-view.service';
 import { QuerySkuViewDto, SelectSkuViewDto } from '@mdtx/database';
 

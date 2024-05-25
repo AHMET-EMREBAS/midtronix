@@ -72,15 +72,8 @@
             [inputControl]="subtotalControl"
           ></mdtx-input-number>
 
-          <mdtx-input-number
-            label="Total"
-            inputName="total"
-            prefixIcon="money"
-            [inputControl]="totalControl"
-          ></mdtx-input-number>
-
           <div class="actions">
-            <button mat-raised-button color="primary" (click)="updateOrder()">
+            <button mat-raised-button color="primary" (click)="updateTotal()">
               Update Total
             </button>
           </div>
