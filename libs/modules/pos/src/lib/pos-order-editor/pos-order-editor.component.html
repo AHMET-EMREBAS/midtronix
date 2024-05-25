@@ -78,6 +78,12 @@
             prefixIcon="money"
             [inputControl]="totalControl"
           ></mdtx-input-number>
+
+          <div class="actions">
+            <button mat-raised-button color="primary" (click)="updateOrder()">
+              Update Total
+            </button>
+          </div>
         </div>
       </mat-tab>
     </mat-tab-group>

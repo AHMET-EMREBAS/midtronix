@@ -14,14 +14,7 @@ import {
   DiscountViewSearchComponent,
   PriceLevelSearchComponent,
 } from '@mdtx/forms';
-import {
-  IOrder,
-  IOrderRaw,
-  IOrderViewRaw,
-  IPriceLevel,
-  IStore,
-  QueryBuilder,
-} from '@mdtx/common';
+import { IOrderViewRaw, IPriceLevel, IStore, QueryBuilder } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import {
   DiscountViewService,
@@ -29,9 +22,9 @@ import {
   OrderViewService,
   SkuViewService,
 } from '@mdtx/ngrx';
-import { firstValueFrom, switchMap } from 'rxjs';
-import { calcualteTax } from '../__common';
+import { firstValueFrom } from 'rxjs';
 import { MatTabsModule } from '@angular/material/tabs';
+
 @Component({
   selector: 'mdtx-pos-order-editor',
   standalone: true,
@@ -65,7 +58,7 @@ export class PosOrderEditorComponent implements AfterViewInit {
   subtotalControl = new FormControl(0, [Validators.min(0)]);
   totalControl = new FormControl(0, [Validators.min(0)]);
 
-  @Output() updateEvent = new EventEmitter<Partial<IOrderRaw>>();
+  @Output() updateEvent = new EventEmitter();
   @Output() closeEvent = new EventEmitter();
 
   constructor(
@@ -88,42 +81,6 @@ export class PosOrderEditorComponent implements AfterViewInit {
 
   async ngAfterViewInit() {
     this.updateOrderForm();
-  }
-
-  calculatePrices(
-    price: number,
-    quantity: number,
-    fixedDiscount = 0,
-    percentDiscount = 0
-  ): Pick<IOrderViewRaw, 'unitPrice' | 'subtotal' | 'total'> {
-    const discount = fixedDiscount + (percentDiscount * price) / 100;
-    const unitPrice = price - discount;
-    const tax = calcualteTax(unitPrice);
-    const subtotal = quantity * unitPrice;
-    const total = quantity * (tax + parseFloat(unitPrice + ''));
-
-    return {
-      unitPrice,
-      subtotal,
-      total,
-    };
-  }
-
-  updateOrderEventHandler() {
-    const { subtotal, total, unitPrice } = this.calculatePrices(
-      parseFloat(this.unitPriceControl.value + ''),
-      parseFloat(this.quantityControl.value + ''),
-      this.discountSearch.inputControl.value?.fixed,
-      this.discountSearch.inputControl.value?.percent
-    );
-    const updatedOrder: Partial<IOrderRaw> = {
-      id: this.activeOrder.id,
-      quantity: this.quantityControl.value ?? 1,
-      unitPrice: unitPrice,
-      subtotal: parseFloat(this.subtotalControl.value + ''),
-      total: total,
-    };
-    this.updateEvent.emit(updatedOrder);
   }
 
   closeEventHandler() {
@@ -156,15 +113,6 @@ export class PosOrderEditorComponent implements AfterViewInit {
     const subtotal = unitPrice * quantity;
     const total = subtotal + (taxrate * subtotal) / 100;
 
-    console.table({
-      fixedDiscount,
-      percentDiscount,
-      subtotal,
-      total,
-      unitPrice,
-      quantity,
-      taxrate,
-    });
     this.orderService.update({
       id: this.activeOrder.id,
       quantity,
@@ -172,6 +120,8 @@ export class PosOrderEditorComponent implements AfterViewInit {
       subtotal,
       total,
     });
+
+    this.updateEvent.emit();
   }
 
   async updatePriceLevel() {

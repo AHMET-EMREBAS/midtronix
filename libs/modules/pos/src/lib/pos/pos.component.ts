@@ -32,6 +32,8 @@ import {
   PosOrderCardListComponent,
 } from '@mdtx/material/card';
 import {
+  ICart,
+  ICategory,
   ICustomer,
   IOrderRaw,
   IOrderViewRaw,
@@ -125,12 +127,11 @@ export class PosComponent implements AfterViewInit {
           return of(null);
         }),
         map((result) => {
-          if (result) {
-            console.log(result);
+          if (result && result.length == 1) {
             const found = result[0];
-
             if (found) {
               this.addToCartEventHandler(found);
+              this.scanControl.setValue(null);
             }
           }
         })
@@ -172,20 +173,25 @@ export class PosComponent implements AfterViewInit {
 
       this.orderService.update({
         id: foundItem.id,
-        quantity: parseInt(foundItem.quantity + '') + 1,
+        quantity: newQuantity,
         subtotal: subtotal,
         total: total,
       });
     } else {
+      const quantity = 1;
+      const unitPrice = parseFloat((event.price ?? 0) + '');
+      const subtotal = unitPrice * quantity;
+      const taxrate = parseFloat((this.activePriceLevel.taxrate ?? '0') + '');
+      const total = subtotal + (taxrate * subtotal) / 100;
+
       this.orderService.addOrder({
         cart: { id: this.__cartId() },
         sku: { id: event.id },
-
-        taxrate: this.activePriceLevel.taxrate,
-        quantity: 1,
-        unitPrice: parseFloat(event.price + ''),
-        subtotal: parseFloat(event.price + ''),
-        total: parseFloat(event.price + ''),
+        quantity,
+        taxrate,
+        unitPrice,
+        subtotal,
+        total,
       });
     }
     this.reloadOrderList();
@@ -226,9 +232,7 @@ export class PosComponent implements AfterViewInit {
     );
   }
 
-  updateOrderEventHandler(order: Partial<IOrderRaw>) {
-    this.orderService.update(order);
-    this.closeOrderEditorHandler();
+  updateOrderEventHandler() {
     this.reloadOrderList();
   }
 
