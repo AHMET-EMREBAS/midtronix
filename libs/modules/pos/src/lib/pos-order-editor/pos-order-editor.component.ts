@@ -130,23 +130,47 @@ export class PosOrderEditorComponent implements AfterViewInit {
     this.closeEvent.emit();
   }
 
-  updateQuantity() {
-    const newQuantity = parseInt(this.quantityControl.value + '') ?? 1;
-    const unitPrice = parseFloat(this.unitPriceControl.value + '') ?? 0;
-    const subtotal = newQuantity * unitPrice;
+  updateOrder() {
+    const quantity = parseInt(this.quantityControl.value + '') ?? 1;
 
-    this.orderService.update({
-      id: this.activeOrder.id,
-      quantity: newQuantity,
-      subtotal: subtotal,
-      total: 0,
+    const taxrate = parseFloat(
+      (this.priceLevelSearch.inputControl.value?.taxrate ??
+        this.activePriceLevel.taxrate ??
+        0) + ''
+    );
+    const __initialUnitPrice = parseFloat(this.unitPriceControl.value + '');
+
+    const fixedDiscount =
+      parseFloat((this.discountSearch.inputControl.value?.fixed ?? '0') + '') ??
+      0;
+
+    const percentDiscount =
+      (__initialUnitPrice *
+        parseFloat(
+          (this.discountSearch.inputControl.value?.percent ?? '0') + ''
+        )) /
+      100;
+
+    const unitPrice = __initialUnitPrice - (fixedDiscount || percentDiscount);
+
+    const subtotal = unitPrice * quantity;
+    const total = subtotal + (taxrate * subtotal) / 100;
+
+    console.table({
+      fixedDiscount,
+      percentDiscount,
+      subtotal,
+      total,
+      unitPrice,
+      quantity,
+      taxrate,
     });
-  }
-
-  updateUnitPrice() {
     this.orderService.update({
       id: this.activeOrder.id,
-      unitPrice: parseFloat(this.unitPriceControl.value + '') ?? 0,
+      quantity,
+      unitPrice,
+      subtotal,
+      total,
     });
   }
 
@@ -164,10 +188,8 @@ export class PosOrderEditorComponent implements AfterViewInit {
       const found = foundPriceLevels[0];
       if (found) {
         this.unitPriceControl.setValue(found.price);
-        this.updateUnitPrice();
+        this.updateOrder();
       }
     }
   }
-
-  udpateDiscount() {}
 }

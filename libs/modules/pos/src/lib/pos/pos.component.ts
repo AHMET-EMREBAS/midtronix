@@ -1,17 +1,19 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, firstValueFrom, merge, take, tap } from 'rxjs';
+import {
+  debounceTime,
+  firstValueFrom,
+  map,
+  merge,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   CustomerSearchComponent,
   PriceLevelSearchComponent,
@@ -21,7 +23,6 @@ import {
   CartService,
   OrderService,
   OrderViewService,
-  PriceLevelService,
   SkuViewService,
 } from '@mdtx/ngrx';
 import {
@@ -31,17 +32,18 @@ import {
   PosOrderCardListComponent,
 } from '@mdtx/material/card';
 import {
+  ICustomer,
   IOrderRaw,
   IOrderViewRaw,
   IPriceLevel,
   ISkuViewRaw,
   IStore,
+  IUser,
+  QueryBuilder,
 } from '@mdtx/common';
 import { FullscreenButtonComponent, LocalStore } from '@mdtx/material/core';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.component';
-
-const DEBOUNCE_TIME = 600;
 
 @Component({
   selector: 'mdtx-pos',
@@ -72,12 +74,10 @@ const DEBOUNCE_TIME = 600;
 export class PosComponent implements AfterViewInit {
   readonly cartStore = LocalStore.createStore('cart', { debounce: 400 });
 
-  activeStore!: IStore;
-  activePriceLevel!: IPriceLevel;
-
-  @ViewChild('storeSearch') storeSearch!: StoreSearchComponent;
-  @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
-  @ViewChild('customerSearch') customerSearch!: CustomerSearchComponent;
+  activeCustomer: ICustomer = { id: 1 } as ICustomer;
+  activeEmployee: IUser = { id: 1 } as IUser;
+  activeStore: IStore = { id: 1 } as IStore;
+  activePriceLevel: IPriceLevel = { id: 1, taxrate: 6.25 } as IPriceLevel;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -104,47 +104,38 @@ export class PosComponent implements AfterViewInit {
     protected readonly cartService: CartService
   ) {}
 
-  ngAfterViewInit(): void {
-    merge(
-      this.storeSearch.inputControl.valueChanges.pipe(
-        debounceTime(DEBOUNCE_TIME),
-        tap((data) => {
-          this.activeStore = data!;
-        })
-      ),
-      this.priceLevelSearch.inputControl.valueChanges.pipe(
-        debounceTime(DEBOUNCE_TIME),
-        tap((data) => {
-          this.activePriceLevel = data!;
-        })
-      ),
-      this.customerSearch.inputControl.valueChanges.pipe(
-        debounceTime(DEBOUNCE_TIME)
-      ),
-      this.scanControl.valueChanges.pipe(debounceTime(DEBOUNCE_TIME))
-    ).subscribe((search) => {
-      this.reloadProductList();
-      this.reloadOrderList();
-    });
-
+  async ngAfterViewInit() {
     this.reloadOrderList();
     this.reloadProductList();
-  }
+    await this.createNewCart();
 
-  __customerId() {
-    return this.customerSearch?.inputControl?.value?.id ?? 1;
-  }
+    this.scanControl.valueChanges
+      .pipe(
+        debounceTime(1000),
+        switchMap((search) => {
+          if (search) {
+            return this.skuViewService.query({
+              barcode: QueryBuilder.EQUAL(search),
+              storeId: this.activeStore.id,
+              cusotmerId: this.activeCustomer.id,
+              priceLevelId: this.activePriceLevel.id,
+            });
+          }
 
-  __storeId() {
-    return this.storeSearch?.inputControl?.value?.id ?? 1;
-  }
+          return of(null);
+        }),
+        map((result) => {
+          if (result) {
+            console.log(result);
+            const found = result[0];
 
-  __priceLevelId() {
-    return this.priceLevelSearch?.inputControl?.value?.id ?? 1;
-  }
-
-  __employeeId() {
-    return 1;
+            if (found) {
+              this.addToCartEventHandler(found);
+            }
+          }
+        })
+      )
+      .subscribe();
   }
 
   __cartId() {
@@ -152,15 +143,18 @@ export class PosComponent implements AfterViewInit {
   }
 
   async createNewCart() {
-    const result = await firstValueFrom(
-      this.cartService.addCart({
-        customer: { id: this.__customerId() },
-        employee: { id: this.__employeeId() },
-        store: { id: this.__storeId() },
-      })
-    );
+    const cart = this.cartStore.get();
 
-    this.cartStore.set(result.id + '');
+    if (!cart) {
+      const result = await firstValueFrom(
+        this.cartService.addCart({
+          store: { id: this.activeStore.id },
+          customer: { id: this.activeCustomer.id },
+          employee: { id: this.activeEmployee.id },
+        })
+      );
+      this.cartStore.set(result.id + '');
+    }
   }
 
   addToCartEventHandler(event: ISkuViewRaw) {
@@ -170,9 +164,17 @@ export class PosComponent implements AfterViewInit {
 
     if (foundItem) {
       console.log('Updating Item : ', foundItem);
+      const newQuantity = parseInt(foundItem.quantity + '') + 1;
+      const price = parseFloat(foundItem.unitPrice + '');
+      const subtotal = price * newQuantity;
+      const total =
+        subtotal + (parseFloat(foundItem.taxrate + '') * subtotal) / 100;
+
       this.orderService.update({
         id: foundItem.id,
         quantity: parseInt(foundItem.quantity + '') + 1,
+        subtotal: subtotal,
+        total: total,
       });
     } else {
       this.orderService.addOrder({
@@ -205,9 +207,9 @@ export class PosComponent implements AfterViewInit {
     this.skuViewService.getWithQuery(
       {
         take: 10000,
-        storeId: this.__storeId(),
-        cusotmerId: this.__customerId(),
-        priceLevelId: this.__priceLevelId(),
+        storeId: this.activeStore.id,
+        cusotmerId: this.activeCustomer.id,
+        priceLevelId: this.activePriceLevel.id,
       },
       { isOptimistic: false }
     );
@@ -218,7 +220,7 @@ export class PosComponent implements AfterViewInit {
       {
         take: 1000,
         cartId: this.__cartId(),
-        storeId: this.__storeId(),
+        storeId: this.activeStore.id,
       },
       { isOptimistic: false }
     );

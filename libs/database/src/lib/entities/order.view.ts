@@ -31,9 +31,9 @@ export class OrderView implements IOrderView {
   @ViewColumn() cartId!: number;
   @ViewColumn() name!: string;
   @ViewColumn() barcode!: string;
+  @ViewColumn() taxrate!: number;
   @ViewColumn() quantity!: number;
   @ViewColumn() unitPrice!: number;
   @ViewColumn() subtotal!: number;
   @ViewColumn() total!: number;
-  @ViewColumn() taxrate!: number;
 }

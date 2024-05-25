@@ -50,7 +50,6 @@ export interface IOrder<TSku extends IID = IID, TCart extends IID = IID>
   extends IBaseEntity {
   sku: TSku;
   cart: TCart;
-
   taxrate: number;
   quantity: number;
   unitPrice: number;
@@ -78,6 +77,7 @@ export interface IOrderView {
   skuId: number;
   cartId: number;
   name: string;
+  taxrate: number;
   barcode: string;
   quantity: number;
   unitPrice: number;

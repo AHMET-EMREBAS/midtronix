@@ -32,15 +32,6 @@
         (deleteButtonClickEvent)="deleteButtonClickEventHandler($event)"
       ></mdtx-pos-order-card-list>
     </div>
-
-    <button mat-raised-button color="primary" (click)="createNewCart()">
-      New Cart
-    </button>
-    <div class="toolbar">
-      <mdtx-store-search #storeSearch></mdtx-store-search>
-      <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
-      <mdtx-customer-search #customerSearch></mdtx-customer-search>
-    </div>
   </div>
 
   @if(orderUnderUpdate){
@@ -53,8 +44,4 @@
     (closeEvent)="closeOrderEditorHandler()"
   ></mdtx-pos-order-editor>
   }
-
-  <!-- <div class="messages" #messagesContainer>
-  <p *ngFor="let m of messages">{{ m }}</p>
-</div> -->
 </div>
