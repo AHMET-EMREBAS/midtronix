@@ -272,6 +272,5 @@ export class CreateProductComponent implements AfterViewInit {
     this.quantityForm.formReset();
     this.advancePriceForm.formReset();
     this.stepper.reset();
-    this.cd.detectChanges();
   }
 }
