@@ -1,4 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   PriceFormComponent,
@@ -77,6 +82,7 @@ export class CreateProductComponent implements AfterViewInit {
   savedProduct!: IProduct;
 
   constructor(
+    protected readonly cd: ChangeDetectorRef,
     protected readonly service: ProductService,
     protected readonly skuViewService: SkuViewService,
     protected readonly priceService: PriceService,
@@ -266,5 +272,6 @@ export class CreateProductComponent implements AfterViewInit {
     this.quantityForm.formReset();
     this.advancePriceForm.formReset();
     this.stepper.reset();
+    this.cd.detectChanges();
   }
 }

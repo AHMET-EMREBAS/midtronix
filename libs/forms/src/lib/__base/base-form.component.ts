@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -81,6 +82,11 @@ export class BaseFormComponent
   formReset() {
     this.resourceFormGroup.reset();
     this.resourceFormGroup.markAsUntouched();
+    for (const c of Object.values(this.resourceFormGroup.controls)) {
+      c.reset();
+      c.markAsUntouched();
+      c.setErrors(null);
+    }
   }
 
   /**

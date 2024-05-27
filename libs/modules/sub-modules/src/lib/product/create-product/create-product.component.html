@@ -1,4 +1,5 @@
 <mat-stepper #stepper [linear]="true">
+
   <mat-step #productStep>
     <ng-template matStepLabel> Product </ng-template>
     <ng-template matStepContent>
@@ -39,6 +40,7 @@
       [showSkuInput]="false"
     ></mdtx-quantity-form>
   </mat-step>
+  
   <mat-step #finalize>
     <p>Successfully created the product.</p>
     <button mat-raised-button color="primary" (click)="reset()">
