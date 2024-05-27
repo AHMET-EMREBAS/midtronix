@@ -23,6 +23,7 @@ export interface ISkuView {
   price: number;
   cost: number;
   taxrate: number;
+  priceId: number;
   priceLevelId: number;
   priceLevelName: string;
   storeId: number;

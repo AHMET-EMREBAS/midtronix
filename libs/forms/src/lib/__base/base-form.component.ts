@@ -73,8 +73,6 @@ export class BaseFormComponent
    */
   formSubmit() {
     this.submitEvent.emit(this.resourceFormGroup.value);
-    this.resourceFormGroup.reset();
-    this.resourceFormGroup.markAsUntouched();
   }
 
   /**
@@ -82,6 +80,7 @@ export class BaseFormComponent
    */
   formReset() {
     this.resourceFormGroup.reset();
+    this.resourceFormGroup.markAsUntouched();
   }
 
   /**

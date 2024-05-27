@@ -4,6 +4,10 @@ import { FormGroupBuilder } from '@mdtx/material/core';
 export const PriceFormBuilder = new FormGroupBuilder<ICreatePriceDto>(
   'Price Form'
 )
+
+  .add('priceLevel')
+  .required()
+
   .add('price')
   .required()
   .min(0)
@@ -11,12 +15,6 @@ export const PriceFormBuilder = new FormGroupBuilder<ICreatePriceDto>(
   .add('cost')
   .required()
   .min(0)
-
-  .add('priceLevel')
-  .required()
-
-  .add('sku')
-  .required()
 
   .done()
   .lock();

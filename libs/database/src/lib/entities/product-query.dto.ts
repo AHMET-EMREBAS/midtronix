@@ -12,7 +12,6 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
     type: 'string',
     maxLength: 10,
     minLength: 1,
-    description: 'Index (not id)',
   })
   id!: number;
 
@@ -28,6 +27,10 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
   priceLevelId!: number;
 
+  @Property({ type: 'string', maxLength: 10, minLength: 1 })
+  priceId!: number;
+
+  @QueryProperty() taxrate!: number;
   @QueryProperty() quantity!: number;
   @QueryProperty() price!: number;
   @QueryProperty() cost!: number;

@@ -113,6 +113,7 @@ export class PriceView implements IPriceView {
       .addSelect('main.upc', 'barcode')
       .addSelect('main.name', 'name')
       .addSelect('main.description', 'description')
+      .addSelect('priceView.id', 'priceId')
       .addSelect('priceView.price', 'price')
       .addSelect('priceView.cost', 'cost')
       .addSelect('priceView.taxrate', 'taxrate')
@@ -138,6 +139,7 @@ export class SkuView implements ISkuView {
   @ViewColumn() price!: number;
   @ViewColumn() cost!: number;
   @ViewColumn() taxrate!: number;
+  @ViewColumn() priceId!: number;
   @ViewColumn() priceLevelId!: number;
   @ViewColumn() priceLevelName!: string;
   @ViewColumn() storeId!: number;

@@ -53,11 +53,6 @@ export class PriceLevelSearchComponent
     }
   }
 
-  // selectById(id: number) {
-  //   // const foundOption = this.inputRef.options.find((e) => e.id == id);
-  //   // this.inputRef;
-  // }
-
   ngAfterViewInit(): void {
     this.sub = this.inputControl.valueChanges
       .pipe(debounceTime(600))
