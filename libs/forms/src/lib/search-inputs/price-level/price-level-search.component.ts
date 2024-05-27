@@ -7,7 +7,6 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PriceLevelService } from '@mdtx/ngrx';

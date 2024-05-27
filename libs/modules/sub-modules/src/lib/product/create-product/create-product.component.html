@@ -39,4 +39,10 @@
       [showSkuInput]="false"
     ></mdtx-quantity-form>
   </mat-step>
+  <mat-step #finalize>
+    <p>Successfully created the product.</p>
+    <button mat-raised-button color="primary" (click)="stepper.reset()">
+      Done
+    </button>
+  </mat-step>
 </mat-stepper>

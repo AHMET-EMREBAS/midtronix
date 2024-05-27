@@ -106,19 +106,14 @@ export class CreateProductComponent implements AfterViewInit {
             catchError((err, caught) => {
               alert('Could not update the price! Please try again!');
               return of(null);
-            }),
-            map((data) => {
-              if (data) {
-                this.stepper.next();
-                this.priceStep.completed = true;
-                this.priceStep.editable = false;
-              }
-
-              return data;
             })
           )
       );
     }
+
+    this.priceStep.completed = true;
+    this.priceStep.editable = false;
+    this.stepper.next();
   }
 
   async handleAdvancePriceSubmit(price: ICreatePriceDto) {
@@ -136,15 +131,10 @@ export class CreateProductComponent implements AfterViewInit {
           catchError((err, caught) => {
             alert('Could not update the price! Please try again!');
             return of(null);
-          }),
-          map((data) => {
-            if (data) {
-              this.priceStep.completed = true;
-            }
-            return data;
           })
         )
     );
+    this.advancePriceStep.completed = true;
   }
 
   async handleQuantitySubmit(quantity: IQuantity) {
@@ -159,16 +149,10 @@ export class CreateProductComponent implements AfterViewInit {
           catchError((err, caught) => {
             alert('Could not update the price! Please try again!');
             return of(null);
-          }),
-          map((data) => {
-            if (data) {
-              this.priceStep.completed = true;
-            }
-
-            return data;
           })
         )
     );
+    this.priceStep.completed = true;
   }
 
   async handleProductSubmit(product: IProduct) {
