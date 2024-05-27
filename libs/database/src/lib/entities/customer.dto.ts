@@ -1,6 +1,12 @@
-import { ICreateCustomerDto } from '@mdtx/common';
+import { ICreateCustomerAccountDto, ICreateCustomerDto } from '@mdtx/common';
 import { CreateUserDto } from './user.dto';
-import { Exclude, PartialType } from '@mdtx/core';
+import {
+  Exclude,
+  IDDto,
+  IDObjectProperty,
+  PartialType,
+  Property,
+} from '@mdtx/core';
 import {
   CreateAddressDto,
   CreateEmailDto,
@@ -50,4 +56,14 @@ export class CreateCustomerPermissionDto extends CreatePermissionDto {}
 @Exclude()
 export class UpdateCustomerPermissionDto extends PartialType(
   CreateCustomerPermissionDto
+) {}
+
+@Exclude()
+export class CreateCustomerAccountDto implements ICreateCustomerAccountDto {
+  @Property({ type: 'number', required: true }) balance!: number;
+  @IDObjectProperty({ required: true }) customer!: IDDto;
+}
+@Exclude()
+export class UpdateCustomerAccountDto extends PartialType(
+  CreateCustomerAccountDto
 ) {}

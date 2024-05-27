@@ -2,6 +2,7 @@
 export * from './lib/cart'
 export * from './lib/category'
 export * from './lib/customer'
+export * from './lib/customer-account'
 export * from './lib/customer-address'
 export * from './lib/customer-email'
 export * from './lib/customer-permission'
