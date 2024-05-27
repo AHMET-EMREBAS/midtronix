@@ -152,7 +152,7 @@ export class CreateProductComponent implements AfterViewInit {
           })
         )
     );
-    this.priceStep.completed = true;
+    this.quantityStep.completed = true;
   }
 
   async handleProductSubmit(product: IProduct) {
@@ -258,5 +258,13 @@ export class CreateProductComponent implements AfterViewInit {
           })
         )
     );
+  }
+
+  reset() {
+    this.priceForm.formReset();
+    this.productForm.formReset();
+    this.quantityForm.formReset();
+    this.advancePriceForm.formReset();
+    this.stepper.reset();
   }
 }
