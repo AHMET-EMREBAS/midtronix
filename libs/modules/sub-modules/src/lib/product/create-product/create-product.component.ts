@@ -11,11 +11,11 @@ import {
   IPriceLevel,
   IProduct,
   IQuantity,
-  ISku,
   ISkuView,
   IStore,
 } from '@mdtx/common';
 import {
+  PriceLevelService,
   PriceService,
   ProductService,
   QuantityService,
@@ -45,40 +45,90 @@ import { catchError, firstValueFrom, of, map } from 'rxjs';
   ],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.scss',
-  providers: [ProductService, PriceService, QuantityService, SkuViewService],
+  providers: [
+    ProductService,
+    PriceService,
+    QuantityService,
+    SkuViewService,
+    PriceLevelService,
+  ],
 })
 export class CreateProductComponent implements AfterViewInit {
   currentSku!: ISkuView;
   currentStore!: IStore;
 
+  priceLevels!: IPriceLevel[];
+  skuPrices!: ISkuView[];
+  skuQuantities!: ISkuView[];
+
   @ViewChild('productForm') productForm!: ProductFormComponent;
   @ViewChild('priceForm') priceForm!: PriceFormComponent;
+  @ViewChild('advancePriceForm') advancePriceForm!: PriceFormComponent;
+
   @ViewChild('quantityForm') quantityForm!: QuantityFormComponent;
 
   @ViewChild('stepper') stepper!: MatStepper;
+
   @ViewChild('productStep') productStep!: MatStep;
   @ViewChild('priceStep') priceStep!: MatStep;
   @ViewChild('quantityStep') quantityStep!: MatStep;
+  @ViewChild('advancePriceStep') advancePriceStep!: MatStep;
 
   savedProduct!: IProduct;
+
   constructor(
     protected readonly service: ProductService,
     protected readonly skuViewService: SkuViewService,
     protected readonly priceService: PriceService,
-    protected readonly quantityService: QuantityService
+    protected readonly quantityService: QuantityService,
+    protected readonly priceLevelService: PriceLevelService
   ) {}
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
     this.productStep.completed = false;
     this.priceStep.completed = false;
     this.quantityStep.completed = false;
+    this.advancePriceStep.completed = false;
+
+    this.priceLevels = await firstValueFrom(this.priceLevelService.getAll());
   }
 
-  async handlePriceSubmit(price: IPrice) {
+  async handlePriceSubmit(price: ICreatePriceDto) {
+    for (const sku of this.skuPrices) {
+      await firstValueFrom(
+        this.priceService
+          .update({
+            id: sku.priceId,
+            cost: price.cost,
+            price: price.price,
+          })
+          .pipe(
+            catchError((err, caught) => {
+              alert('Could not update the price! Please try again!');
+              return of(null);
+            }),
+            map((data) => {
+              if (data) {
+                this.stepper.next();
+                this.priceStep.completed = true;
+                this.priceStep.editable = false;
+              }
+
+              return data;
+            })
+          )
+      );
+    }
+  }
+
+  async handleAdvancePriceSubmit(price: ICreatePriceDto) {
+    const found = this.skuPrices.find(
+      (e) => e.priceLevelId == price.priceLevel.id
+    );
     await firstValueFrom(
       this.priceService
         .update({
-          id: this.currentSku.priceId,
+          id: found?.priceId,
           cost: price.cost,
           price: price.price,
         })
@@ -89,9 +139,8 @@ export class CreateProductComponent implements AfterViewInit {
           }),
           map((data) => {
             if (data) {
-              // Do Nothing
+              this.priceStep.completed = true;
             }
-
             return data;
           })
         )
@@ -100,24 +149,30 @@ export class CreateProductComponent implements AfterViewInit {
 
   async handleQuantitySubmit(quantity: IQuantity) {
     await firstValueFrom(
-      this.quantityService.update({}).pipe(
-        catchError((err, caught) => {
-          alert('Could not update the price! Please try again!');
-          return of(null);
-        }),
-        map((data) => {
-          if (data) {
-            // Do Nothing
-          }
-
-          return data;
+      this.quantityService
+        .update({
+          id: this.currentSku.quantityId,
+          quantity: quantity.quantity,
+          store: this.currentStore,
         })
-      )
+        .pipe(
+          catchError((err, caught) => {
+            alert('Could not update the price! Please try again!');
+            return of(null);
+          }),
+          map((data) => {
+            if (data) {
+              this.priceStep.completed = true;
+            }
+
+            return data;
+          })
+        )
     );
   }
 
   async handleProductSubmit(product: IProduct) {
-    const result = await firstValueFrom(
+    await firstValueFrom(
       this.service.add(product).pipe(
         catchError((err, caught) => {
           alert(
@@ -125,13 +180,30 @@ export class CreateProductComponent implements AfterViewInit {
           );
           return of(null);
         }),
-        map((data) => {
+        map(async (data) => {
           if (data) {
             this.productForm.formReset();
             this.savedProduct = data;
             this.productStep.completed = true;
             this.productStep.editable = false;
             this.stepper.next();
+
+            await firstValueFrom(
+              this.skuViewService
+                .getWithQuery({
+                  productId: this.savedProduct.id,
+                  storeId: 1,
+                })
+                .pipe(
+                  map((data) => {
+                    if (data) this.skuPrices = data;
+
+                    return data;
+                  })
+                )
+            );
+
+            console.log(this.skuPrices);
           }
           return data;
         })
@@ -160,8 +232,12 @@ export class CreateProductComponent implements AfterViewInit {
               this.currentSku = data[0];
 
               console.log('Current SKU :', data);
-              this.priceForm.control('price').setValue(this.currentSku.price);
-              this.priceForm.control('cost').setValue(this.currentSku.cost);
+              this.advancePriceForm
+                .control('price')
+                .setValue(this.currentSku.price);
+              this.advancePriceForm
+                .control('cost')
+                .setValue(this.currentSku.cost);
             }
 
             return data;

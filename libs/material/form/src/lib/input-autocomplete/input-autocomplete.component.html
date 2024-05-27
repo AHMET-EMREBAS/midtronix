@@ -15,6 +15,7 @@
     #inputRef="matAutocomplete"
     [displayWith]="displayWith"
     [autoSelectActiveOption]="true"
+    (opened)="handleOpendedEvent()"
   >
     @for (option of filteredOptions$ | async ; track option) {
     <mat-option [value]="valueWith(option)">{{ option.name }}</mat-option>

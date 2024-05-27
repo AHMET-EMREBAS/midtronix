@@ -11,19 +11,32 @@
 
   <mat-step #priceStep>
     <ng-template matStepLabel>Price</ng-template>
-
     <mdtx-price-form
       #priceForm
-      (priceLevelChangeEvent)="priceLevelChangeEventHandler($event)"
       (submitEvent)="handlePriceSubmit($event)"
+      [showPriceLevel]="false"
+      [showSkuInput]="false"
+    ></mdtx-price-form>
+  </mat-step>
+
+  <mat-step #advancePriceStep>
+    <ng-template matStepLabel>Advance Price</ng-template>
+    <mdtx-price-form
+      *ngIf="skuPrices"
+      #advancePriceForm
+      (priceLevelChangeEvent)="priceLevelChangeEventHandler($event)"
+      (submitEvent)="handleAdvancePriceSubmit($event)"
+      [showSkuInput]="false"
     ></mdtx-price-form>
   </mat-step>
 
   <mat-step #quantityStep>
     <ng-template matStepLabel>Quantity</ng-template>
     <mdtx-quantity-form
-      #storeForm
+      #quantityForm
       (storeChangeEvent)="storeChangeEventHandler($event)"
+      (submitEvent)="handleQuantitySubmit($event)"
+      [showSkuInput]="false"
     ></mdtx-quantity-form>
   </mat-step>
 </mat-stepper>

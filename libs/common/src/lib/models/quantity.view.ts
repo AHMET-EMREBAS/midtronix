@@ -1,5 +1,6 @@
 export interface IQuantityView {
   id: number;
+  quantityId: number;
   name: string;
   quantity: number;
   barcode: string;

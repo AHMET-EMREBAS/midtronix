@@ -2,7 +2,13 @@
   <mdtx-store-search
     [inputControl]="control('store')"
     (changeEvent)="storeChangeEvent.emit($event)"
+    *ngIf="showStoreInput"
   ></mdtx-store-search>
+
+  <mdtx-sku-search
+    [inputControl]="control('sku')"
+    *ngIf="showSkuInput"
+  ></mdtx-sku-search>
 
   <mdtx-input-number
     inputName="quantity"

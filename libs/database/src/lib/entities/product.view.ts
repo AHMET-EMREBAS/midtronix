@@ -44,7 +44,8 @@ export class ProductView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('main.id', 'id')
+      .select('ROW_NUMBER() OVER ()', 'id')
+      .addSelect('main.id', 'quantityId')
       .addSelect('sku.name', 'name')
       .addSelect('main.quantity', 'quantity')
       .addSelect('sku.upc', 'barcode')
@@ -58,6 +59,7 @@ export class ProductView {
 })
 export class QuantityView implements IQuantityView {
   @ViewColumn() id!: number;
+  @ViewColumn() quantityId!: number;
   @ViewColumn() name!: string;
   @ViewColumn() quantity!: number;
   @ViewColumn() barcode!: string;
@@ -109,7 +111,8 @@ export class PriceView implements IPriceView {
   expression(ds) {
     return ds
       .createQueryBuilder()
-      .select('main.id', 'id')
+      .select('ROW_NUMBER() OVER ()', 'id')
+      .addSelect('main.id', 'skuId')
       .addSelect('main.upc', 'barcode')
       .addSelect('main.name', 'name')
       .addSelect('main.description', 'description')
@@ -120,6 +123,7 @@ export class PriceView implements IPriceView {
       .addSelect('priceView.priceLevelId', 'priceLevelId')
       .addSelect('priceView.priceLevelName', 'priceLevelName')
       .addSelect('quantityView.storeId', 'storeId')
+      .addSelect('quantityView.quantityId', 'quantityId')
       .addSelect('quantityView.quantity', 'quantity')
       .addSelect('quantityView.storeName', 'storeName')
       .addSelect('productView.category', 'category')
@@ -133,7 +137,9 @@ export class PriceView implements IPriceView {
   },
 })
 export class SkuView implements ISkuView {
+  @ViewColumn() quantityId!: number;
   @ViewColumn() id!: number;
+  @ViewColumn() skuId!: number;
   @ViewColumn() barcode!: string;
   @ViewColumn() name!: string;
   @ViewColumn() price!: number;

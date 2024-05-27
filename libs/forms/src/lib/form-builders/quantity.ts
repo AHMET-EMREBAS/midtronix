@@ -4,8 +4,10 @@ import { FormGroupBuilder } from '@mdtx/material/core';
 export const QuantityFormBuilder = new FormGroupBuilder<ICreateQuantityDto>(
   'Quantity Form'
 )
+
+  .add('sku')
+
   .add('store')
-  .required()
 
   .add('quantity')
   .required()

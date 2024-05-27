@@ -5,8 +5,9 @@ export const PriceFormBuilder = new FormGroupBuilder<ICreatePriceDto>(
   'Price Form'
 )
 
+  .add('sku')
+  
   .add('priceLevel')
-  .required()
 
   .add('price')
   .required()

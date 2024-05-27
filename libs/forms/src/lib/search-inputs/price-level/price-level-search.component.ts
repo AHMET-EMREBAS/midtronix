@@ -13,7 +13,8 @@ import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PriceLevelService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
 import { IPriceLevelRaw } from '@mdtx/common';
-import { Subscription, debounceTime } from 'rxjs';
+import { Observable, Subscription, debounceTime } from 'rxjs';
+import { IInputOption } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-price-level-search',
@@ -22,7 +23,7 @@ import { Subscription, debounceTime } from 'rxjs';
   template: `
     <mdtx-input-autocomplete
       #inputRef
-      *ngIf="service.asOptions$ | async as options"
+      *ngIf="options$ | async as options"
       [options]="options"
       inputName="price-level"
       label="Search PriceLevel"
@@ -37,7 +38,7 @@ import { Subscription, debounceTime } from 'rxjs';
 export class PriceLevelSearchComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
+  options$!: Observable<IInputOption[]>;
   @Input() inputControl = new FormControl<IPriceLevelRaw | null>(null, []);
 
   @Input() defaultPriceLevel?: IPriceLevelRaw;
@@ -61,6 +62,7 @@ export class PriceLevelSearchComponent
           this.changeEvent.emit(data);
         }
       });
+    this.options$ = this.service.asOptions$;
   }
 
   ngOnDestroy(): void {

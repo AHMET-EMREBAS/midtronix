@@ -12,7 +12,8 @@ import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { StoreService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
 import { IStoreRaw } from '@mdtx/common';
-import { Subscription, debounceTime } from 'rxjs';
+import { Observable, Subscription, debounceTime } from 'rxjs';
+import { IInputOption } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-store-search',
@@ -20,7 +21,7 @@ import { Subscription, debounceTime } from 'rxjs';
   imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
     <mdtx-input-autocomplete
-      *ngIf="service.asOptions$ | async as options"
+      *ngIf="options$ | async as options"
       [options]="options"
       inputName="store"
       label="Search Store"
@@ -31,6 +32,7 @@ import { Subscription, debounceTime } from 'rxjs';
   providers: [StoreService],
 })
 export class StoreSearchComponent implements OnInit, AfterViewInit, OnDestroy {
+  options$!: Observable<IInputOption[]>;
   @Input() inputControl = new FormControl<IStoreRaw | null>(null, []);
   @Input() defaultStore?: IStoreRaw;
 
@@ -52,6 +54,7 @@ export class StoreSearchComponent implements OnInit, AfterViewInit, OnDestroy {
           this.changeEvent.emit(data);
         }
       });
+    this.options$ = this.service.asOptions$;
   }
 
   ngOnDestroy(): void {

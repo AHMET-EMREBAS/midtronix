@@ -40,8 +40,8 @@ const Employees: Partial<User>[] = [
 const PriceLevels: Partial<PriceLevel>[] = [
   {
     id: 1,
-    name: 'Chicago Retail 2024',
-    description: 'Chicago Retail  2024',
+    name: 'Retail Price',
+    description: 'Retail Price',
     taxrate: 10.25,
   },
   {
@@ -50,24 +50,24 @@ const PriceLevels: Partial<PriceLevel>[] = [
     description: 'Wholesale Price',
     taxrate: 0,
   },
-  {
-    id: 3,
-    name: 'Chicago Retail Price',
-    description: 'Chicago Retail Price',
-    taxrate: 10.25,
-  },
-  {
-    id: 4,
-    name: 'New jersey Retail',
-    description: 'New jersey Retail',
-    taxrate: 6.63,
-  },
-  {
-    id: 5,
-    name: 'Houston Retail',
-    description: 'Houston Retail',
-    taxrate: 8.25,
-  },
+  // {
+  //   id: 3,
+  //   name: 'Chicago Retail Price',
+  //   description: 'Chicago Retail Price',
+  //   taxrate: 10.25,
+  // },
+  // {
+  //   id: 4,
+  //   name: 'New jersey Retail',
+  //   description: 'New jersey Retail',
+  //   taxrate: 6.63,
+  // },
+  // {
+  //   id: 5,
+  //   name: 'Houston Retail',
+  //   description: 'Houston Retail',
+  //   taxrate: 8.25,
+  // },
 ];
 
 const Customers: Partial<Customer>[] = [

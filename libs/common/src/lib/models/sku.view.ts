@@ -18,6 +18,7 @@ export const SKU_VIEW_PROPERTIES = [
 
 export interface ISkuView {
   id: number;
+  skuId: number;
   barcode: string;
   name: string;
   price: number;
@@ -28,6 +29,7 @@ export interface ISkuView {
   priceLevelName: string;
   storeId: number;
   quantity: number;
+  quantityId: number;
   storeName: string;
   category: string;
   department: string;

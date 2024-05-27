@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { InputBaseComponent } from '../input-base';
 import { CommonFormModule } from '../form';
 import {
@@ -25,8 +33,10 @@ export class InputAutocompleteComponent
   @Input() multiple?: boolean = false;
   @Input() defaultValue?: IInputOption;
 
+  @Output() openedEvent = new EventEmitter();
+
   filteredOptions$!: Observable<IInputOption[]>;
-  
+
   override ngOnInit(): void {
     super.ngOnInit();
 
@@ -68,5 +78,8 @@ export class InputAutocompleteComponent
       return option && option.name;
     }
     return option;
+  }
+  handleOpendedEvent() {
+    this.openedEvent.emit();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CommonFormModule, InputNumberComponent } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
@@ -20,6 +20,9 @@ import { IStore } from '@mdtx/common';
 })
 export class QuantityFormComponent extends BaseFormComponent {
   @Output() storeChangeEvent = new EventEmitter<IStore>();
+
+  @Input() showStoreInput = true;
+  @Input() showSkuInput = true;
 
   override createFormGroup(): FormGroup {
     return new FormGroup({

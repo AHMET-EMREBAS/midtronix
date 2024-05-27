@@ -1,9 +1,27 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  signal,
+} from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { SkuService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
-import { ISkuRaw } from '@mdtx/common';
+import { ISku, ISkuRaw } from '@mdtx/common';
+import { IInputOption } from '@mdtx/material/core';
+import {
+  Observable,
+  Subscription,
+  debounceTime,
+  firstValueFrom,
+  map,
+} from 'rxjs';
 
 @Component({
   selector: 'mdtx-sku-search',
@@ -11,20 +29,55 @@ import { ISkuRaw } from '@mdtx/common';
   imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
     <mdtx-input-autocomplete
-      *ngIf="service.asOptions$ | async as options"
+      *ngIf="options"
+      #inputRef
       [options]="options"
       inputName="sku"
       label="Search Sku"
       prefixIcon="search"
       [inputControl]="inputControl"
       [multiple]="multiple"
+      (openedEvent)="handleOpenedEvent()"
     ></mdtx-input-autocomplete>
   `,
   providers: [SkuService],
 })
-export class SkuSearchComponent {
+export class SkuSearchComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() options?: IInputOption[];
+  @Input() inputControl = new FormControl<ISku | null>(null, []);
   @Input() multiple = false;
-  @Input() inputControl = new FormControl<ISkuRaw | null>(null, []);
+  @Input() defaultPriceLevel?: ISku;
 
+  @Output() changeEvent = new EventEmitter<ISku>();
+
+  sub!: Subscription;
   constructor(protected readonly service: SkuService) {}
+
+  ngOnInit(): void {
+    if (this.defaultPriceLevel) {
+      this.inputControl.setValue(this.defaultPriceLevel);
+    }
+  }
+
+  async ngAfterViewInit() {
+    if (!this.options) {
+      this.options = await firstValueFrom(this.service.asOptions$);
+    }
+
+    this.sub = this.inputControl.valueChanges
+      .pipe(debounceTime(600))
+      .subscribe((data) => {
+        if (data) {
+          this.changeEvent.emit(data);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  handleOpenedEvent() {
+    this.changeEvent.emit();
+  }
 }

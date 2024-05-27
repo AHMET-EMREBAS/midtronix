@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
   CommonFormModule,
@@ -11,7 +11,7 @@ import {
   PriceLevelSearchComponent,
   SkuSearchComponent,
 } from '../../search-inputs';
-import { IPriceLevel } from '@mdtx/common';
+import { IPriceLevel, ISkuView } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-price-form',
@@ -28,6 +28,9 @@ import { IPriceLevel } from '@mdtx/common';
 })
 export class PriceFormComponent extends BaseFormComponent {
   @Output() priceLevelChangeEvent = new EventEmitter<IPriceLevel>();
+  @Input() showSkuInput = true;
+  @Input() showPriceLevel = true;
+  @Input() skuItems?: ISkuView[];
 
   override createFormGroup(): FormGroup {
     return new FormGroup({
