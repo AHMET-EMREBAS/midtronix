@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { ICredential, IID } from './__base';
+import { IBaseEntity, ICredential, IID } from './__base';
 import { IAddress, IEmail, IPhone } from './contact';
 import { IImage } from './media';
 import { IPermission, IRole } from './role';
@@ -35,3 +35,11 @@ export type ICustomerImageRaw = ICustomerImage<ICustomer>;
 export type ICustomerAddressRaw = ICustomerAddress<ICustomer>;
 export type ICustomerEmailRaw = ICustomerEmail<ICustomer>;
 export type ICustomerPhoneRaw = ICustomerPhone<ICustomer>;
+
+export interface ICustomerAccount<TCustomer extends IID = IID>
+  extends IBaseEntity {
+  balance: number;
+  customer: TCustomer;
+}
+
+export interface ICustomerAccountRaw extends ICustomerAccount<ICustomer> {}

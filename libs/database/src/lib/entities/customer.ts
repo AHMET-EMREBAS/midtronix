@@ -1,4 +1,4 @@
-import { CredentialEntity, NameEntity } from './__base';
+import { BaseEntity, CredentialEntity, NameEntity } from './__base';
 import {
   AddressEntity,
   EmailEntity,
@@ -6,8 +6,8 @@ import {
   PointEntity,
   UserDetailEntity,
 } from './__factory';
-import { Column, Entity, ManyRelation, Type } from '@mdtx/core';
-import { IRole } from '@mdtx/common';
+import { Column, Entity, ManyRelation, OwnerRelation } from '@mdtx/core';
+import { ICustomerRaw, IRole } from '@mdtx/common';
 import { CustomerBadge } from './meta';
 
 /**
@@ -35,7 +35,7 @@ export class CustomerRole
  * @param roles {@link CustomerRole}[]
  */
 @Entity()
-export class Customer extends CredentialEntity {
+export class Customer extends CredentialEntity implements ICustomerRaw {
   @ManyRelation(CustomerRole)
   roles?: CustomerRole[];
 
@@ -72,3 +72,9 @@ export class CustomerPhone extends PhoneEntity(Customer) {}
  */
 @Entity()
 export class CustomerPoint extends PointEntity(Customer) {}
+
+@Entity()
+export class CustomerAccount extends BaseEntity {
+  @Column({ type: 'numeric' }) balance!: number;
+  @OwnerRelation(Customer) customer!: Customer;
+}

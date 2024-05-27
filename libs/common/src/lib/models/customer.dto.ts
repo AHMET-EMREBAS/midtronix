@@ -2,6 +2,7 @@
 import { IBaseEntity, IID } from './__base';
 import {
   ICustomer,
+  ICustomerAccount,
   ICustomerAddress,
   ICustomerEmail,
   ICustomerImage,
@@ -30,3 +31,11 @@ export interface ICreateCustomerEmailDto
 
 export interface ICreateCustomerPhoneDto
   extends Omit<ICustomerPhone<IID>, keyof IBaseEntity> {}
+
+export interface ICreateCustomerAccountDto
+  extends Omit<ICustomerAccount, keyof IBaseEntity> {}
+
+
+
+
+  

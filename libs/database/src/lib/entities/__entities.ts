@@ -2,6 +2,7 @@ import { Cart } from './cart';
 import { CartView } from './cart.view';
 import {
   Customer,
+  CustomerAccount,
   CustomerAddress,
   CustomerEmail,
   CustomerPermission,
@@ -71,6 +72,7 @@ export const CustomerEntities: Readonly<Type[]> = [
   CustomerRole,
   CustomerPermission,
   CustomerBadge,
+  CustomerAccount,
 ];
 
 export const CustomerPhoneEntities: Readonly<Type[]> = [
@@ -96,6 +98,8 @@ export const CustomerRoleEntities: Readonly<Type[]> = [
 export const CustomerPermissionEntities: Readonly<Type[]> = [
   CustomerPermission,
 ];
+
+export const CustomerAccountEntities: Readonly<Type[]> = [...CustomerEntities];
 
 export const ManufacturerEntities: Readonly<Type[]> = [Manufacturer];
 export const ManufacturerAddressEntities: Readonly<Type[]> = [
