@@ -4,11 +4,14 @@ import {
   ManyRelation,
   OneRelation,
   OwnerRelation,
-  Type,
+  EntitySubscriberInterface,
+  EventSubscriber,
+  InsertEvent,
 } from '@mdtx/core';
 import { NameEntity, ProductCommonEntity, BaseEntity } from './__base';
 import {
   IPrice,
+  IPriceLevel,
   IProduct,
   IProductImage,
   IProductVideo,
@@ -24,8 +27,9 @@ import { Category, Department } from './meta';
  * @param name
  */
 @Entity()
-export class PriceLevel extends NameEntity {
+export class PriceLevel extends NameEntity implements IPriceLevel {
   @Column({ type: 'numeric' }) taxrate!: number;
+  @Column({ type: 'varchar', nullable: true }) description!: string;
 }
 
 /**
@@ -96,3 +100,58 @@ export class ProductImage
 export class ProductVideo
   extends VideoEntity(Product)
   implements IProductVideo<Product> {}
+
+@EventSubscriber()
+export class ProductSubscriber implements EntitySubscriberInterface<Product> {
+  listenTo() {
+    return Product;
+  }
+
+  async afterInsert(event: InsertEvent<Product>) {
+    const product = event.entity;
+
+    const skuRepo = event.manager.getRepository(Sku);
+
+    await skuRepo.save({
+      ...product,
+      product,
+    });
+  }
+}
+
+@EventSubscriber()
+export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
+  listenTo() {
+    return Sku;
+  }
+
+  async afterInsert(event: InsertEvent<Sku>) {
+    const sku = event.entity;
+
+    const priceRepo = event.manager.getRepository(Price);
+
+    const storeRepo = event.manager.getRepository(Store);
+    const priceLevelRepo = event.manager.getRepository(PriceLevel);
+    const quantityRepo = event.manager.getRepository(Quantity);
+
+    const priceLevels = await priceLevelRepo.find();
+    const stores = await storeRepo.find();
+
+    for (const priceLevel of priceLevels) {
+      await priceRepo.save({
+        cost: 0,
+        price: 1000000,
+        sku,
+        priceLevel,
+      });
+    }
+
+    for (const store of stores) {
+      await quantityRepo.save({
+        quantity: 1000000,
+        store,
+        sku,
+      });
+    }
+  }
+}

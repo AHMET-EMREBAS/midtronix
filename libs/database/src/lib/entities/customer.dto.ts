@@ -1,4 +1,8 @@
-import { ICreateCustomerAccountDto, ICreateCustomerDto } from '@mdtx/common';
+import {
+  ICreateCustomerAccountDto,
+  ICreateCustomerDto,
+  IID,
+} from '@mdtx/common';
 import { CreateUserDto } from './user.dto';
 import {
   Exclude,
@@ -62,6 +66,7 @@ export class UpdateCustomerPermissionDto extends PartialType(
 export class CreateCustomerAccountDto implements ICreateCustomerAccountDto {
   @Property({ type: 'number', required: true }) balance!: number;
   @IDObjectProperty({ required: true }) customer!: IDDto;
+  @IDObjectProperty({ required: true }) priceLevel!: IDDto;
 }
 @Exclude()
 export class UpdateCustomerAccountDto extends PartialType(

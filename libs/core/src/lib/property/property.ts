@@ -9,6 +9,7 @@ import {
   ValidationOptions,
   Exclude,
   Expose,
+  Transform,
 } from '../__external';
 import { PropertyOptions } from './types';
 import { __StringProperty } from './string';
@@ -63,6 +64,15 @@ export function Property(options?: PropertyOptions) {
   else if (type === 'boolean') push(__BooleanProperty(options));
   else if (type === 'date') push(__DateProperty(options));
   else if (type === 'object') push(__ObjectProperty(options));
+
+  if (options.default) {
+    push(
+      Transform(({ value }) => {
+        if (value == undefined) return options.default;
+        return value;
+      })
+    );
+  }
 
   return applyDecorators(...decorators);
 }

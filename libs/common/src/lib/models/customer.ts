@@ -36,10 +36,13 @@ export type ICustomerAddressRaw = ICustomerAddress<ICustomer>;
 export type ICustomerEmailRaw = ICustomerEmail<ICustomer>;
 export type ICustomerPhoneRaw = ICustomerPhone<ICustomer>;
 
-export interface ICustomerAccount<TCustomer extends IID = IID>
-  extends IBaseEntity {
+export interface ICustomerAccount<
+  TCustomer extends IID = IID,
+  TPriceLevel extends IID = IID
+> extends IBaseEntity {
   balance: number;
   customer: TCustomer;
+  priceLevel: TPriceLevel;
 }
 
 export interface ICustomerAccountRaw extends ICustomerAccount<ICustomer> {}

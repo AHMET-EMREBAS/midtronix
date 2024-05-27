@@ -34,9 +34,10 @@ export class CreateProductDto
   implements ICreateProductDto
 {
   @Property({ type: 'string' }) upc!: string;
-  @IDObjectProperty({ objectType: IDDto }) category!: IID;
-  @IDObjectProperty({ objectType: IDDto }) department!: IID;
-  @IDObjectProperty({ objectType: IDDto, isArray: true }) manufacturers?: IID[];
+  @IDObjectProperty({ objectType: IDDto, default: { id: 1 } }) category!: IID;
+  @IDObjectProperty({ objectType: IDDto, default: { id: 1 } }) department!: IID;
+  @IDObjectProperty({ objectType: IDDto, isArray: true, default: [{ id: 1 }] })
+  manufacturers?: IID[];
 }
 
 @Exclude()

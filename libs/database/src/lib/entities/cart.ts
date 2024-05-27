@@ -6,7 +6,7 @@ import { BaseEntity } from './__base';
 import { Store } from './store';
 
 @Entity()
-export class Cart extends BaseEntity implements ICart<User, Customer, Store> {
+export class Cart extends BaseEntity implements ICart<Customer, User, Store> {
   @OwnerRelation(User) employee!: User;
   @OwnerRelation(Customer) customer!: Customer;
   @OwnerRelation(Store) store!: Store;

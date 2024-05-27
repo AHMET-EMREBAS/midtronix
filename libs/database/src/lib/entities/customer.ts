@@ -6,9 +6,19 @@ import {
   PointEntity,
   UserDetailEntity,
 } from './__factory';
-import { Column, Entity, ManyRelation, OwnerRelation } from '@mdtx/core';
-import { ICustomerRaw, IRole } from '@mdtx/common';
+import {
+  Column,
+  Entity,
+  ManyRelation,
+  OwnerRelation,
+  EntitySubscriberInterface,
+  EventSubscriber,
+  InsertEvent,
+  OneRelation,
+} from '@mdtx/core';
+import { ICustomerAccount, ICustomerRaw, IRole } from '@mdtx/common';
 import { CustomerBadge } from './meta';
+import { PriceLevel } from './product';
 
 /**
  * @param name string
@@ -36,11 +46,8 @@ export class CustomerRole
  */
 @Entity()
 export class Customer extends CredentialEntity implements ICustomerRaw {
-  @ManyRelation(CustomerRole)
-  roles?: CustomerRole[];
-
-  @ManyRelation(CustomerBadge)
-  badges?: CustomerBadge[];
+  @ManyRelation(CustomerRole) roles?: CustomerRole[];
+  @ManyRelation(CustomerBadge) badges?: CustomerBadge[];
 }
 
 /**
@@ -74,7 +81,26 @@ export class CustomerPhone extends PhoneEntity(Customer) {}
 export class CustomerPoint extends PointEntity(Customer) {}
 
 @Entity()
-export class CustomerAccount extends BaseEntity {
+export class CustomerAccount extends BaseEntity implements ICustomerAccount {
   @Column({ type: 'numeric' }) balance!: number;
+  @OneRelation(PriceLevel) priceLevel!: PriceLevel;
   @OwnerRelation(Customer) customer!: Customer;
+}
+
+@EventSubscriber()
+export class CustomerSubscriber implements EntitySubscriberInterface<Customer> {
+  listenTo() {
+    return Customer;
+  }
+  async afterInsert(event: InsertEvent<Customer>) {
+    const customer = event.entity;
+    const manager = event.manager;
+    const accountRepo = manager.getRepository(CustomerAccount);
+
+    await accountRepo.save({
+      balance: 0,
+      customer: { id: customer.id },
+      priceLevel: { id: 1 },
+    });
+  }
 }

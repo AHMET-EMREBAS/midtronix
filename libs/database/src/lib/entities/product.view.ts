@@ -86,6 +86,7 @@ export class QuantityView implements IQuantityView {
       .addSelect('main.cost', 'cost')
       .addSelect('sku.id', 'skuId')
       .addSelect('main.priceLevelId', 'priceLevelId')
+      .addSelect('pl.taxrate', 'taxrate')
       .addSelect('pl.name', 'priceLevelName')
       .from(Price, 'main')
       .leftJoin(PriceLevel, 'pl', 'pl.id = main.priceLevelId')
@@ -98,6 +99,7 @@ export class PriceView implements IPriceView {
   @ViewColumn() skuId!: number;
   @ViewColumn() price!: number;
   @ViewColumn() cost!: number;
+  @ViewColumn() taxrate!: number;
   @ViewColumn() barcode!: string;
   @ViewColumn() priceLevelId!: number;
   @ViewColumn() priceLevelName!: string;
@@ -113,6 +115,7 @@ export class PriceView implements IPriceView {
       .addSelect('main.description', 'description')
       .addSelect('priceView.price', 'price')
       .addSelect('priceView.cost', 'cost')
+      .addSelect('priceView.taxrate', 'taxrate')
       .addSelect('priceView.priceLevelId', 'priceLevelId')
       .addSelect('priceView.priceLevelName', 'priceLevelName')
       .addSelect('quantityView.storeId', 'storeId')
@@ -134,6 +137,7 @@ export class SkuView implements ISkuView {
   @ViewColumn() name!: string;
   @ViewColumn() price!: number;
   @ViewColumn() cost!: number;
+  @ViewColumn() taxrate!: number;
   @ViewColumn() priceLevelId!: number;
   @ViewColumn() priceLevelName!: string;
   @ViewColumn() storeId!: number;

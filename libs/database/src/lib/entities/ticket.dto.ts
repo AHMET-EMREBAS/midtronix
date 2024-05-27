@@ -8,6 +8,9 @@ export class CreateTicketDto
   implements ICreateTicketDto
 {
   @IDObjectProperty({ required: true }) customer!: IDDto;
+
+
+  
 }
 
 @Exclude()
