@@ -23,9 +23,10 @@ export class InputAutocompleteComponent
   @Input() override prefixIcon = 'event';
   @Input() options!: IInputOption[];
   @Input() multiple?: boolean = false;
+  @Input() defaultValue?: IInputOption;
 
   filteredOptions$!: Observable<IInputOption[]>;
-
+  
   override ngOnInit(): void {
     super.ngOnInit();
 
@@ -52,6 +53,10 @@ export class InputAutocompleteComponent
         return this.options;
       })
     );
+
+    if (this.defaultValue) {
+      this.inputControl.setValue(this.defaultValue);
+    }
   }
 
   displayWith(option: IInputOption) {

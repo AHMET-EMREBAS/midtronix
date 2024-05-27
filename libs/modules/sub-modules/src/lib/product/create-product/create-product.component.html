@@ -1,1 +1,25 @@
-<mdtx-product-form (submitEvent)="handleSubmit($event)"></mdtx-product-form>
+<mat-stepper>
+  <mat-step>
+    <ng-template matStepLabel> Product </ng-template>
+
+    <ng-template matStepContent>
+      <mdtx-product-form
+        (submitEvent)="handleSubmit($event)"
+      ></mdtx-product-form>
+    </ng-template>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Price</ng-template>
+
+    <mdtx-price-form
+      (priceLevelChangeEvent)="priceLevelChangeEventHandler($event)"
+    ></mdtx-price-form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Quantity</ng-template>
+
+    <mdtx-quantity-form></mdtx-quantity-form>
+  </mat-step>
+</mat-stepper>

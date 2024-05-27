@@ -3,8 +3,15 @@ import { FormGroupBuilder } from '@mdtx/material/core';
 
 export const CustomerAccountFormBuilder =
   new FormGroupBuilder<ICreateCustomerAccountDto>('CustomerAccount Form')
-    .add('name')
+    .add('balance')
     .required()
-    .shortText()
+    .min(0)
+
+    .add('priceLevel')
+    .required()
+
+    .add('customer')
+    .required()
+
     .done()
     .lock();

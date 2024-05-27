@@ -33,6 +33,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 1,
         productUpc: '100000000001',
+        taxrate: 10,
       },
       {
         id: 2,
@@ -49,6 +50,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 1,
         productUpc: '100000000001',
+        taxrate: 10,
       },
       {
         id: 3,
@@ -65,6 +67,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 1,
         productUpc: '100000000001',
+        taxrate: 10,
       },
       {
         id: 4,
@@ -81,6 +84,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 2,
         productUpc: '100000000002',
+        taxrate: 10,
       },
       {
         id: 5,
@@ -97,6 +101,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 2,
         productUpc: '100000000002',
+        taxrate: 10,
       },
       {
         id: 6,
@@ -113,6 +118,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 2,
         productUpc: '100000000002',
+        taxrate: 10,
       },
       {
         id: 7,
@@ -129,6 +135,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 3,
         productUpc: '100000000003',
+        taxrate: 10,
       },
       {
         id: 8,
@@ -145,6 +152,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 3,
         productUpc: '100000000003',
+        taxrate: 10,
       },
       {
         id: 9,
@@ -161,6 +169,7 @@ export const Heading: Story = {
         department: 'Default Department',
         productId: 3,
         productUpc: '100000000003',
+        taxrate: 10,
       },
     ],
   },
