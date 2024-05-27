@@ -76,19 +76,25 @@ export class CreateProductComponent implements AfterViewInit {
 
   async handlePriceSubmit(price: IPrice) {
     await firstValueFrom(
-      this.priceService.add({ ...price, sku: { id: this.currentSku.id } }).pipe(
-        catchError((err, caught) => {
-          alert('Could not update the price! Please try again!');
-          return of(null);
-        }),
-        map((data) => {
-          if (data) {
-            // Do Nothing
-          }
-
-          return data;
+      this.priceService
+        .update({
+          id: this.currentSku.priceId,
+          cost: price.cost,
+          price: price.price,
         })
-      )
+        .pipe(
+          catchError((err, caught) => {
+            alert('Could not update the price! Please try again!');
+            return of(null);
+          }),
+          map((data) => {
+            if (data) {
+              // Do Nothing
+            }
+
+            return data;
+          })
+        )
     );
   }
 
@@ -139,21 +145,28 @@ export class CreateProductComponent implements AfterViewInit {
 
   async priceLevelChangeEventHandler(event: IPriceLevel) {
     await firstValueFrom(
-      this.skuViewService.getWithQuery({ priceLevelId: event.id }).pipe(
-        catchError(() => {
-          alert('Something went wrong while getting the sku-views!');
-          return of(null);
-        }),
-        map((data) => {
-          if (data && data.length > 0) {
-            this.currentSku = data[0];
-            this.priceForm.control('price').setValue(this.currentSku.price);
-            this.priceForm.control('cost').setValue(this.currentSku.cost);
-          }
-
-          return data;
+      this.skuViewService
+        .getWithQuery({
+          priceLevelId: event.id,
+          productId: this.savedProduct.id,
         })
-      )
+        .pipe(
+          catchError(() => {
+            alert('Something went wrong while getting the sku-views!');
+            return of(null);
+          }),
+          map((data) => {
+            if (data && data.length > 0) {
+              this.currentSku = data[0];
+
+              console.log('Current SKU :', data);
+              this.priceForm.control('price').setValue(this.currentSku.price);
+              this.priceForm.control('cost').setValue(this.currentSku.cost);
+            }
+
+            return data;
+          })
+        )
     );
   }
 
@@ -174,6 +187,8 @@ export class CreateProductComponent implements AfterViewInit {
               this.currentStore = event;
               this.currentSku = data[0];
 
+              console.log('Current SKU: ', this.currentSku);
+              console.log('Current Store: ', this.currentStore);
               this.quantityForm
                 .control('quantity')
                 .setValue(this.currentSku.quantity);

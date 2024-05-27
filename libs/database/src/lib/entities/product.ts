@@ -108,6 +108,7 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
   }
 
   async afterInsert(event: InsertEvent<Product>) {
+    console.log('Product: After Insert : ', event.entity);
     const product = event.entity;
 
     const skuRepo = event.manager.getRepository(Sku);
@@ -126,6 +127,7 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
   }
 
   async afterInsert(event: InsertEvent<Sku>) {
+    console.log('SKU : After Insert : ', event.entity);
     const sku = event.entity;
 
     const priceRepo = event.manager.getRepository(Price);
@@ -139,8 +141,8 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
 
     for (const priceLevel of priceLevels) {
       await priceRepo.save({
-        cost: 0,
-        price: 1000000,
+        cost: 11111111,
+        price: 11111111,
         sku,
         priceLevel,
       });
@@ -148,7 +150,7 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
 
     for (const store of stores) {
       await quantityRepo.save({
-        quantity: 1000000,
+        quantity: 11111111,
         store,
         sku,
       });

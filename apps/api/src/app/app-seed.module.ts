@@ -115,13 +115,13 @@ export class AppSeedModule implements OnModuleInit {
     protected readonly DiscountViewRepo: Repository<DiscountView>
   ) {}
   async onModuleInit() {
-    saveDepartments(this.DepartmentRepo);
-    saveCategories(this.CategoryRepo);
-    saveManufacturers(this.ManufacturerRepo);
-    saveStores(this.StoreRepo);
-    savePriceLevels(this.PriceLevelRepo);
-    saveEmployees(this.UserRepo);
-    saveCustomers(this.CustomerRepo);
-    saveProducts(this.ProductRepo);
+    await saveDepartments(this.DepartmentRepo);
+    await saveCategories(this.CategoryRepo);
+    await saveManufacturers(this.ManufacturerRepo);
+    await saveStores(this.StoreRepo);
+    await savePriceLevels(this.PriceLevelRepo);
+    await saveEmployees(this.UserRepo);
+    await saveCustomers(this.CustomerRepo);
+    await saveProducts(this.ProductRepo);
   }
 }
