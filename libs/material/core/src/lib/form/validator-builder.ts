@@ -121,7 +121,7 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
   min(value?: number): ValidatorBuilder<T> {
     if (value != undefined)
       return this.push((c: AbstractControl) =>
-        c.value?.length < value
+        c.value < value
           ? {
               min: `${this.__name()} should be more than ${value}!`,
             }
@@ -133,7 +133,7 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
   max(value?: number): ValidatorBuilder<T> {
     if (value != undefined)
       return this.push((c: AbstractControl) =>
-        c.value?.length > value
+        c.value > value
           ? {
               max: `${this.__name()} should be less than ${value}!`,
             }
