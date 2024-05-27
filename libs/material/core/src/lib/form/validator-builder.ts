@@ -47,7 +47,9 @@ export class ValidatorBuilder<T extends Record<string, any> = any> {
 
   required(): ValidatorBuilder<T> {
     return this.push((c: AbstractControl) => {
-      return c.value ? null : { required: `${this.__name()} is required!` };
+      return c.value == undefined
+        ? { required: `${this.__name()} is required!` }
+        : null;
     });
   }
 

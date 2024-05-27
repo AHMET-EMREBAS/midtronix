@@ -4,7 +4,7 @@ import { TableRow } from '@mdtx/material/table';
 export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
   { name: 'id' },
   { name: 'name' },
-  { name: 'description' },
+  // { name: 'description' },
   {
     name: 'category',
     label: 'category',
@@ -15,24 +15,24 @@ export const PRODUCT_COLUMNS: TableRow<IProductRaw>[] = [
     label: 'department',
     map: (v: IProductRaw) => v.department?.name,
   },
-  {
-    name: 'createdAt',
-    label: 'Created At',
-    map: (v: IProductRaw) =>
-      v.createdAt && new Date(v.updatedAt).toDateString(),
-  },
+  // {
+  //   name: 'createdAt',
+  //   label: 'Created At',
+  //   map: (v: IProductRaw) =>
+  //     v.createdAt && new Date(v.updatedAt).toDateString(),
+  // },
   {
     name: 'updatedAt',
     label: 'Updated At',
     map: (v: IProductRaw) =>
       v.updatedAt && new Date(v.updatedAt).toDateString(),
   },
-  {
-    name: 'deletedAt',
-    label: 'Deleted At',
-    map: (v: IProductRaw) =>
-      v.deletedAt && new Date(v.deletedAt).toDateString(),
-  },
+  // {
+  //   name: 'deletedAt',
+  //   label: 'Deleted At',
+  //   map: (v: IProductRaw) =>
+  //     v.deletedAt && new Date(v.deletedAt).toDateString(),
+  // },
 ];
 
 export const PRODUCT_DISPLAY_COLUMNS: TableRow<IProductRaw>[] = [
