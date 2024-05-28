@@ -20,6 +20,7 @@ const rns = [
   'quantity',
   'role',
   'sku',
+  'sku-view',
   'sprint',
   'store',
   'task',
