@@ -1,74 +1,36 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { UserAddressService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { UserAddressViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { UserAddressToolbarComponent } from '../../toolbars';
+import { UserAddressViewToolbarComponent } from '../../toolbars';
 import {
-  USER_ADDRESS_COLUMNS,
-  USER_ADDRESS_DISPLAY_COLUMNS,
-  USER_ADDRESS_PAGE_SIZE,
+  USER_ADDRESS_VIEW_COLUMNS,
+  USER_ADDRESS_VIEW_DISPLAY_COLUMNS,
+  USER_ADDRESS_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IUserAddressRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { IUserAddressViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-user-address-table',
+  selector: 'mdtx-user-address-view-table',
   standalone: true,
-  imports: [...TableModules, UserAddressToolbarComponent],
-  templateUrl: './user-address-table.component.html',
-  styleUrl: './user-address-table.component.scss',
-  providers: [UserAddressService],
+  imports: [...TableModules, UserAddressViewToolbarComponent],
+  templateUrl: './user-address-view-table.component.html',
+  styleUrl: './user-address-view-table.component.scss',
+  providers: [UserAddressViewService],
 })
-export class UserAddressTableComponent extends BaseTableComponent<IUserAddressRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IUserAddressRaw[]>();
-
+export class UserAddressViewTableComponent extends BaseTableComponent<IUserAddressViewRaw> {
   override pageIndex = 0;
-  override pageSize = USER_ADDRESS_PAGE_SIZE;
-  override columns = USER_ADDRESS_COLUMNS;
-  override displayedColumns = USER_ADDRESS_DISPLAY_COLUMNS;
+  override pageSize = USER_ADDRESS_VIEW_PAGE_SIZE;
+  override columns = USER_ADDRESS_VIEW_COLUMNS;
+  override displayedColumns = USER_ADDRESS_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: UserAddressService, protected readonly router: Router) {
+  constructor(
+    service: UserAddressViewService,
+    protected readonly router: Router
+  ) {
     super(service);
-  }
-
-  selectItems(items: Map<string, IUserAddressRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

@@ -1,77 +1,36 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { CustomerEmailService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { CustomerEmailViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { CustomerEmailToolbarComponent } from '../../toolbars';
+import { CustomerEmailViewToolbarComponent } from '../../toolbars';
 import {
-  CUSTOMER_EMAIL_COLUMNS,
-  CUSTOMER_EMAIL_DISPLAY_COLUMNS,
-  CUSTOMER_EMAIL_PAGE_SIZE,
+  CUSTOMER_EMAIL_VIEW_COLUMNS,
+  CUSTOMER_EMAIL_VIEW_DISPLAY_COLUMNS,
+  CUSTOMER_EMAIL_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerEmailRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { ICustomerEmailViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-customer-email-table',
+  selector: 'mdtx-customer-email-view-table',
   standalone: true,
-  imports: [...TableModules, CustomerEmailToolbarComponent],
-  templateUrl: './customer-email-table.component.html',
-  styleUrl: './customer-email-table.component.scss',
-  providers: [CustomerEmailService],
+  imports: [...TableModules, CustomerEmailViewToolbarComponent],
+  templateUrl: './customer-email-view-table.component.html',
+  styleUrl: './customer-email-view-table.component.scss',
+  providers: [CustomerEmailViewService],
 })
-export class CustomerEmailTableComponent extends BaseTableComponent<ICustomerEmailRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomerEmailRaw[]>();
-
+export class CustomerEmailViewTableComponent extends BaseTableComponent<ICustomerEmailViewRaw> {
   override pageIndex = 0;
-  override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;
-  override columns = CUSTOMER_EMAIL_COLUMNS;
-  override displayedColumns = CUSTOMER_EMAIL_DISPLAY_COLUMNS;
+  override pageSize = CUSTOMER_EMAIL_VIEW_PAGE_SIZE;
+  override columns = CUSTOMER_EMAIL_VIEW_COLUMNS;
+  override displayedColumns = CUSTOMER_EMAIL_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   constructor(
-    service: CustomerEmailService,
+    service: CustomerEmailViewService,
     protected readonly router: Router
   ) {
     super(service);
-  }
-
-  selectItems(items: Map<string, ICustomerEmailRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

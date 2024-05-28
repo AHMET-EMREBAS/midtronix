@@ -1,74 +1,36 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { PermissionService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { PermissionViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { PermissionToolbarComponent } from '../../toolbars';
+import { PermissionViewToolbarComponent } from '../../toolbars';
 import {
-  PERMISSION_COLUMNS,
-  PERMISSION_DISPLAY_COLUMNS,
-  PERMISSION_PAGE_SIZE,
+  PERMISSION_VIEW_COLUMNS,
+  PERMISSION_VIEW_DISPLAY_COLUMNS,
+  PERMISSION_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPermissionRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { IPermissionViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-permission-table',
+  selector: 'mdtx-permission-view-table',
   standalone: true,
-  imports: [...TableModules, PermissionToolbarComponent],
-  templateUrl: './permission-table.component.html',
-  styleUrl: './permission-table.component.scss',
-  providers: [PermissionService],
+  imports: [...TableModules, PermissionViewToolbarComponent],
+  templateUrl: './permission-view-table.component.html',
+  styleUrl: './permission-view-table.component.scss',
+  providers: [PermissionViewService],
 })
-export class PermissionTableComponent extends BaseTableComponent<IPermissionRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IPermissionRaw[]>();
-
+export class PermissionViewTableComponent extends BaseTableComponent<IPermissionViewRaw> {
   override pageIndex = 0;
-  override pageSize = PERMISSION_PAGE_SIZE;
-  override columns = PERMISSION_COLUMNS;
-  override displayedColumns = PERMISSION_DISPLAY_COLUMNS;
+  override pageSize = PERMISSION_VIEW_PAGE_SIZE;
+  override columns = PERMISSION_VIEW_COLUMNS;
+  override displayedColumns = PERMISSION_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: PermissionService, protected readonly router: Router) {
+  constructor(
+    service: PermissionViewService,
+    protected readonly router: Router
+  ) {
     super(service);
-  }
-
-  selectItems(items: Map<string, IPermissionRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

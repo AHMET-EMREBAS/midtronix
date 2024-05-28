@@ -1,74 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { StoreService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { StoreViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { StoreToolbarComponent } from '../../toolbars';
+import { StoreViewToolbarComponent } from '../../toolbars';
 import {
-  STORE_COLUMNS,
-  STORE_DISPLAY_COLUMNS,
-  STORE_PAGE_SIZE,
+  STORE_VIEW_COLUMNS,
+  STORE_VIEW_DISPLAY_COLUMNS,
+  STORE_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IStoreRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { IStoreViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-store-table',
+  selector: 'mdtx-store-view-table',
   standalone: true,
-  imports: [...TableModules, StoreToolbarComponent],
-  templateUrl: './store-table.component.html',
-  styleUrl: './store-table.component.scss',
-  providers: [StoreService],
+  imports: [...TableModules, StoreViewToolbarComponent],
+  templateUrl: './store-view-table.component.html',
+  styleUrl: './store-view-table.component.scss',
+  providers: [StoreViewService],
 })
-export class StoreTableComponent extends BaseTableComponent<IStoreRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IStoreRaw[]>();
-
+export class StoreViewTableComponent extends BaseTableComponent<IStoreViewRaw> {
   override pageIndex = 0;
-  override pageSize = STORE_PAGE_SIZE;
-  override columns = STORE_COLUMNS;
-  override displayedColumns = STORE_DISPLAY_COLUMNS;
+  override pageSize = STORE_VIEW_PAGE_SIZE;
+  override columns = STORE_VIEW_COLUMNS;
+  override displayedColumns = STORE_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: StoreService, protected readonly router: Router) {
+  constructor(service: StoreViewService, protected readonly router: Router) {
     super(service);
-  }
-
-  selectItems(items: Map<string, IStoreRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

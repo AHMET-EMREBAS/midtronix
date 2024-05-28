@@ -1,43 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { SprintService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { SprintViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { SprintToolbarComponent } from '../../toolbars';
+import { SprintViewToolbarComponent } from '../../toolbars';
 import {
-  SPRINT_COLUMNS,
-  SPRINT_DISPLAY_COLUMNS,
-  SPRINT_PAGE_SIZE,
+  SPRINT_VIEW_COLUMNS,
+  SPRINT_VIEW_DISPLAY_COLUMNS,
+  SPRINT_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ISprintRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { ISprintViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-sprint-table',
+  selector: 'mdtx-sprint-view-table',
   standalone: true,
-  imports: [...TableModules, SprintToolbarComponent],
-  templateUrl: './sprint-table.component.html',
-  styleUrl: './sprint-table.component.scss',
-  providers: [SprintService],
+  imports: [...TableModules, SprintViewToolbarComponent],
+  templateUrl: './sprint-view-table.component.html',
+  styleUrl: './sprint-view-table.component.scss',
+  providers: [SprintViewService],
 })
-export class SprintTableComponent extends BaseTableComponent<ISprintRaw> {
+export class SprintViewTableComponent extends BaseTableComponent<ISprintViewRaw> {
   override pageIndex = 0;
-  override pageSize = SPRINT_PAGE_SIZE;
-  override columns = SPRINT_COLUMNS;
-  override displayedColumns = SPRINT_DISPLAY_COLUMNS;
+  override pageSize = SPRINT_VIEW_PAGE_SIZE;
+  override columns = SPRINT_VIEW_COLUMNS;
+  override displayedColumns = SPRINT_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: SprintService, protected readonly router: Router) {
+  constructor(service: SprintViewService, protected readonly router: Router) {
     super(service);
-  }
-
-  selectItems(items: Map<string, ISprintRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
   }
 }

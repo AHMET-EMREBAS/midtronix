@@ -1,74 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { ProjectService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { ProjectViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { ProjectToolbarComponent } from '../../toolbars';
+import { ProjectViewToolbarComponent } from '../../toolbars';
 import {
-  PROJECT_COLUMNS,
-  PROJECT_DISPLAY_COLUMNS,
-  PROJECT_PAGE_SIZE,
+  PROJECT_VIEW_COLUMNS,
+  PROJECT_VIEW_DISPLAY_COLUMNS,
+  PROJECT_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProjectRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { IProjectViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-project-table',
+  selector: 'mdtx-project-view-table',
   standalone: true,
-  imports: [...TableModules, ProjectToolbarComponent],
-  templateUrl: './project-table.component.html',
-  styleUrl: './project-table.component.scss',
-  providers: [ProjectService],
+  imports: [...TableModules, ProjectViewToolbarComponent],
+  templateUrl: './project-view-table.component.html',
+  styleUrl: './project-view-table.component.scss',
+  providers: [ProjectViewService],
 })
-export class ProjectTableComponent extends BaseTableComponent<IProjectRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IProjectRaw[]>();
-
+export class ProjectViewTableComponent extends BaseTableComponent<IProjectViewRaw> {
   override pageIndex = 0;
-  override pageSize = PROJECT_PAGE_SIZE;
-  override columns = PROJECT_COLUMNS;
-  override displayedColumns = PROJECT_DISPLAY_COLUMNS;
+  override pageSize = PROJECT_VIEW_PAGE_SIZE;
+  override columns = PROJECT_VIEW_COLUMNS;
+  override displayedColumns = PROJECT_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: ProjectService, protected readonly router: Router) {
+  constructor(service: ProjectViewService, protected readonly router: Router) {
     super(service);
-  }
-
-  selectItems(items: Map<string, IProjectRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

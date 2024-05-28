@@ -1,74 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { CustomerService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { CustomerViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { CustomerToolbarComponent } from '../../toolbars';
+import { CustomerViewToolbarComponent } from '../../toolbars';
 import {
-  CUSTOMER_COLUMNS,
-  CUSTOMER_DISPLAY_COLUMNS,
-  CUSTOMER_PAGE_SIZE,
+  CUSTOMER_VIEW_COLUMNS,
+  CUSTOMER_VIEW_DISPLAY_COLUMNS,
+  CUSTOMER_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { ICustomerViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-customer-table',
+  selector: 'mdtx-customer-view-table',
   standalone: true,
-  imports: [...TableModules, CustomerToolbarComponent],
-  templateUrl: './customer-table.component.html',
-  styleUrl: './customer-table.component.scss',
-  providers: [CustomerService],
+  imports: [...TableModules, CustomerViewToolbarComponent],
+  templateUrl: './customer-view-table.component.html',
+  styleUrl: './customer-view-table.component.scss',
+  providers: [CustomerViewService],
 })
-export class CustomerTableComponent extends BaseTableComponent<ICustomerRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ICustomerRaw[]>();
-
+export class CustomerViewTableComponent extends BaseTableComponent<ICustomerViewRaw> {
   override pageIndex = 0;
-  override pageSize = CUSTOMER_PAGE_SIZE;
-  override columns = CUSTOMER_COLUMNS;
-  override displayedColumns = CUSTOMER_DISPLAY_COLUMNS;
+  override pageSize = CUSTOMER_VIEW_PAGE_SIZE;
+  override columns = CUSTOMER_VIEW_COLUMNS;
+  override displayedColumns = CUSTOMER_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: CustomerService, protected readonly router: Router) {
+  constructor(service: CustomerViewService, protected readonly router: Router) {
     super(service);
-  }
-
-  selectItems(items: Map<string, ICustomerRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }

@@ -1,74 +1,33 @@
-import { Component, ViewChild, Output, EventEmitter } from '@angular/core';
-import { ProductService } from '@mdtx/ngrx';
+import { Component } from '@angular/core';
+import { ProductViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { ProductToolbarComponent } from '../../toolbars';
+import { ProductViewToolbarComponent } from '../../toolbars';
 import {
-  PRODUCT_COLUMNS,
-  PRODUCT_DISPLAY_COLUMNS,
-  PRODUCT_PAGE_SIZE,
+  PRODUCT_VIEW_COLUMNS,
+  PRODUCT_VIEW_DISPLAY_COLUMNS,
+  PRODUCT_VIEW_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProductRaw } from '@mdtx/common';
-import { TableComponent } from '@mdtx/material/table';
+import { IProductViewRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
-  selector: 'mdtx-product-table',
+  selector: 'mdtx-product-view-table',
   standalone: true,
-  imports: [...TableModules, ProductToolbarComponent],
-  templateUrl: './product-table.component.html',
-  styleUrl: './product-table.component.scss',
-  providers: [ProductService],
+  imports: [...TableModules, ProductViewToolbarComponent],
+  templateUrl: './product-view-table.component.html',
+  styleUrl: './product-view-table.component.scss',
+  providers: [ProductViewService],
 })
-export class ProductTableComponent extends BaseTableComponent<IProductRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<IProductRaw[]>();
-
+export class ProductViewTableComponent extends BaseTableComponent<IProductViewRaw> {
   override pageIndex = 0;
-  override pageSize = PRODUCT_PAGE_SIZE;
-  override columns = PRODUCT_COLUMNS;
-  override displayedColumns = PRODUCT_DISPLAY_COLUMNS;
+  override pageSize = PRODUCT_VIEW_PAGE_SIZE;
+  override columns = PRODUCT_VIEW_COLUMNS;
+  override displayedColumns = PRODUCT_VIEW_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: ProductService, protected readonly router: Router) {
+  constructor(service: ProductViewService, protected readonly router: Router) {
     super(service);
-  }
-
-  selectItems(items: Map<string, IProductRaw>) {
-    this.selectedItems = [...items.entries()].map(([, value]) => value);
-  }
-
-  addItem() {
-    this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }
