@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { QuantityViewService } from '@mdtx/ngrx';
+import { QuantityService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { QuantityViewToolbarComponent } from '../../toolbars';
+import { QuantityToolbarComponent } from '../../toolbars';
 import {
   QUANTITY_COLUMNS,
   QUANTITY_DISPLAY_COLUMNS,
   QUANTITY_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IQuantityViewRaw } from '@mdtx/common';
+import { IQuantityRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-quantity-view-table',
+  selector: 'mdtx-quantity-table',
   standalone: true,
-  imports: [...TableModules, QuantityViewToolbarComponent],
-  templateUrl: './quantity-view-table.component.html',
-  styleUrl: './quantity-view-table.component.scss',
-  providers: [QuantityViewService],
+  imports: [...TableModules, QuantityToolbarComponent],
+  templateUrl: './quantity-table.component.html',
+  styleUrl: './quantity-table.component.scss',
+  providers: [QuantityService],
 })
-export class QuantityViewTableComponent extends BaseTableComponent<IQuantityViewRaw> {
+export class QuantityTableComponent extends BaseTableComponent<IQuantityRaw> {
   override pageIndex = 0;
   override pageSize = QUANTITY_PAGE_SIZE;
   override columns = QUANTITY_COLUMNS;
@@ -27,7 +27,7 @@ export class QuantityViewTableComponent extends BaseTableComponent<IQuantityView
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: QuantityViewService, protected readonly router: Router) {
+  constructor(service: QuantityService, protected readonly router: Router) {
     super(service);
   }
 }

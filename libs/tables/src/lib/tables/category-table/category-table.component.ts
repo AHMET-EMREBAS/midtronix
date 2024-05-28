@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { CategoryViewService } from '@mdtx/ngrx';
+import { CategoryService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { CategoryViewToolbarComponent } from '../../toolbars';
+import { CategoryToolbarComponent } from '../../toolbars';
 import {
   CATEGORY_COLUMNS,
   CATEGORY_DISPLAY_COLUMNS,
   CATEGORY_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICategoryViewRaw } from '@mdtx/common';
+import { ICategoryRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-category-view-table',
+  selector: 'mdtx-category-table',
   standalone: true,
-  imports: [...TableModules, CategoryViewToolbarComponent],
-  templateUrl: './category-view-table.component.html',
-  styleUrl: './category-view-table.component.scss',
-  providers: [CategoryViewService],
+  imports: [...TableModules, CategoryToolbarComponent],
+  templateUrl: './category-table.component.html',
+  styleUrl: './category-table.component.scss',
+  providers: [CategoryService],
 })
-export class CategoryViewTableComponent extends BaseTableComponent<ICategoryViewRaw> {
+export class CategoryTableComponent extends BaseTableComponent<ICategoryRaw> {
   override pageIndex = 0;
   override pageSize = CATEGORY_PAGE_SIZE;
   override columns = CATEGORY_COLUMNS;
@@ -27,7 +27,7 @@ export class CategoryViewTableComponent extends BaseTableComponent<ICategoryView
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: CategoryViewService, protected readonly router: Router) {
+  constructor(service: CategoryService, protected readonly router: Router) {
     super(service);
   }
 }

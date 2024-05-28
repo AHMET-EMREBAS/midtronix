@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { CustomerAddressViewService } from '@mdtx/ngrx';
+import { CustomerAddressService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { CustomerAddressViewToolbarComponent } from '../../toolbars';
+import { CustomerAddressToolbarComponent } from '../../toolbars';
 import {
   CUSTOMER_ADDRESS_COLUMNS,
   CUSTOMER_ADDRESS_DISPLAY_COLUMNS,
   CUSTOMER_ADDRESS_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { ICustomerAddressViewRaw } from '@mdtx/common';
+import { ICustomerAddressRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-customer-address-view-table',
+  selector: 'mdtx-customer-address-table',
   standalone: true,
-  imports: [...TableModules, CustomerAddressViewToolbarComponent],
-  templateUrl: './customer-address-view-table.component.html',
-  styleUrl: './customer-address-view-table.component.scss',
-  providers: [CustomerAddressViewService],
+  imports: [...TableModules, CustomerAddressToolbarComponent],
+  templateUrl: './customer-address-table.component.html',
+  styleUrl: './customer-address-table.component.scss',
+  providers: [CustomerAddressService],
 })
-export class CustomerAddressViewTableComponent extends BaseTableComponent<ICustomerAddressViewRaw> {
+export class CustomerAddressTableComponent extends BaseTableComponent<ICustomerAddressRaw> {
   override pageIndex = 0;
   override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;
   override columns = CUSTOMER_ADDRESS_COLUMNS;
@@ -28,7 +28,7 @@ export class CustomerAddressViewTableComponent extends BaseTableComponent<ICusto
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
   constructor(
-    service: CustomerAddressViewService,
+    service: CustomerAddressService,
     protected readonly router: Router
   ) {
     super(service);

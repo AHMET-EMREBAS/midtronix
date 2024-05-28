@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { ProductViewService } from '@mdtx/ngrx';
+import { ProductService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { ProductViewToolbarComponent } from '../../toolbars';
+import { ProductToolbarComponent } from '../../toolbars';
 import {
   PRODUCT_COLUMNS,
   PRODUCT_DISPLAY_COLUMNS,
   PRODUCT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProductViewRaw } from '@mdtx/common';
+import { IProductRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-product-view-table',
+  selector: 'mdtx-product-table',
   standalone: true,
-  imports: [...TableModules, ProductViewToolbarComponent],
-  templateUrl: './product-view-table.component.html',
-  styleUrl: './product-view-table.component.scss',
-  providers: [ProductViewService],
+  imports: [...TableModules, ProductToolbarComponent],
+  templateUrl: './product-table.component.html',
+  styleUrl: './product-table.component.scss',
+  providers: [ProductService],
 })
-export class ProductViewTableComponent extends BaseTableComponent<IProductViewRaw> {
+export class ProductTableComponent extends BaseTableComponent<IProductRaw> {
   override pageIndex = 0;
   override pageSize = PRODUCT_PAGE_SIZE;
   override columns = PRODUCT_COLUMNS;
@@ -27,7 +27,7 @@ export class ProductViewTableComponent extends BaseTableComponent<IProductViewRa
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: ProductViewService, protected readonly router: Router) {
+  constructor(service: ProductService, protected readonly router: Router) {
     super(service);
   }
 }

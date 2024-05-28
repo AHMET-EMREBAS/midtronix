@@ -12,11 +12,11 @@ import { I<%- className %>Raw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-<%- fileName %>-view-table',
+  selector: 'mdtx-<%- fileName %>-table',
   standalone: true,
   imports: [...TableModules, <%- className %>ToolbarComponent],
-  templateUrl: './<%- fileName %>-view-table.component.html',
-  styleUrl: './<%- fileName %>-view-table.component.scss',
+  templateUrl: './<%- fileName %>-table.component.html',
+  styleUrl: './<%- fileName %>-table.component.scss',
   providers: [<%- className %>Service],
 })
 export class <%- className %>TableComponent extends BaseTableComponent<I<%- className %>Raw> {

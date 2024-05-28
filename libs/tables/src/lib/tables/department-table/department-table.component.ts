@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { DepartmentViewService } from '@mdtx/ngrx';
+import { DepartmentService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { DepartmentViewToolbarComponent } from '../../toolbars';
+import { DepartmentToolbarComponent } from '../../toolbars';
 import {
   DEPARTMENT_COLUMNS,
   DEPARTMENT_DISPLAY_COLUMNS,
   DEPARTMENT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IDepartmentViewRaw } from '@mdtx/common';
+import { IDepartmentRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-department-view-table',
+  selector: 'mdtx-department-table',
   standalone: true,
-  imports: [...TableModules, DepartmentViewToolbarComponent],
-  templateUrl: './department-view-table.component.html',
-  styleUrl: './department-view-table.component.scss',
-  providers: [DepartmentViewService],
+  imports: [...TableModules, DepartmentToolbarComponent],
+  templateUrl: './department-table.component.html',
+  styleUrl: './department-table.component.scss',
+  providers: [DepartmentService],
 })
-export class DepartmentViewTableComponent extends BaseTableComponent<IDepartmentViewRaw> {
+export class DepartmentTableComponent extends BaseTableComponent<IDepartmentRaw> {
   override pageIndex = 0;
   override pageSize = DEPARTMENT_PAGE_SIZE;
   override columns = DEPARTMENT_COLUMNS;
@@ -27,10 +27,7 @@ export class DepartmentViewTableComponent extends BaseTableComponent<IDepartment
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(
-    service: DepartmentViewService,
-    protected readonly router: Router
-  ) {
+  constructor(service: DepartmentService, protected readonly router: Router) {
     super(service);
   }
 }

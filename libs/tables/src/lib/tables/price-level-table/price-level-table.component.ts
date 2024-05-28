@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { PriceLevelViewService } from '@mdtx/ngrx';
+import { PriceLevelService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { PriceLevelViewToolbarComponent } from '../../toolbars';
+import { PriceLevelToolbarComponent } from '../../toolbars';
 import {
   PRICE_LEVEL_COLUMNS,
   PRICE_LEVEL_DISPLAY_COLUMNS,
   PRICE_LEVEL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPriceLevelViewRaw } from '@mdtx/common';
+import { IPriceLevelRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-price-level-view-table',
+  selector: 'mdtx-price-level-table',
   standalone: true,
-  imports: [...TableModules, PriceLevelViewToolbarComponent],
-  templateUrl: './price-level-view-table.component.html',
-  styleUrl: './price-level-view-table.component.scss',
-  providers: [PriceLevelViewService],
+  imports: [...TableModules, PriceLevelToolbarComponent],
+  templateUrl: './price-level-table.component.html',
+  styleUrl: './price-level-table.component.scss',
+  providers: [PriceLevelService],
 })
-export class PriceLevelViewTableComponent extends BaseTableComponent<IPriceLevelViewRaw> {
+export class PriceLevelTableComponent extends BaseTableComponent<IPriceLevelRaw> {
   override pageIndex = 0;
   override pageSize = PRICE_LEVEL_PAGE_SIZE;
   override columns = PRICE_LEVEL_COLUMNS;
@@ -27,10 +27,7 @@ export class PriceLevelViewTableComponent extends BaseTableComponent<IPriceLevel
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(
-    service: PriceLevelViewService,
-    protected readonly router: Router
-  ) {
+  constructor(service: PriceLevelService, protected readonly router: Router) {
     super(service);
   }
 }

@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { PriceViewService } from '@mdtx/ngrx';
+import { PriceService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { PriceViewToolbarComponent } from '../../toolbars';
+import { PriceToolbarComponent } from '../../toolbars';
 import {
   PRICE_COLUMNS,
   PRICE_DISPLAY_COLUMNS,
   PRICE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IPriceViewRaw } from '@mdtx/common';
+import { IPriceRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-price-view-table',
+  selector: 'mdtx-price-table',
   standalone: true,
-  imports: [...TableModules, PriceViewToolbarComponent],
-  templateUrl: './price-view-table.component.html',
-  styleUrl: './price-view-table.component.scss',
-  providers: [PriceViewService],
+  imports: [...TableModules, PriceToolbarComponent],
+  templateUrl: './price-table.component.html',
+  styleUrl: './price-table.component.scss',
+  providers: [PriceService],
 })
-export class PriceViewTableComponent extends BaseTableComponent<IPriceViewRaw> {
+export class PriceTableComponent extends BaseTableComponent<IPriceRaw> {
   override pageIndex = 0;
   override pageSize = PRICE_PAGE_SIZE;
   override columns = PRICE_COLUMNS;
@@ -27,7 +27,7 @@ export class PriceViewTableComponent extends BaseTableComponent<IPriceViewRaw> {
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: PriceViewService, protected readonly router: Router) {
+  constructor(service: PriceService, protected readonly router: Router) {
     super(service);
   }
 }

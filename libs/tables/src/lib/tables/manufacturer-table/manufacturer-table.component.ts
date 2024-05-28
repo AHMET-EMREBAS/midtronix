@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { ManufacturerViewService } from '@mdtx/ngrx';
+import { ManufacturerService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { ManufacturerViewToolbarComponent } from '../../toolbars';
+import { ManufacturerToolbarComponent } from '../../toolbars';
 import {
   MANUFACTURER_COLUMNS,
   MANUFACTURER_DISPLAY_COLUMNS,
   MANUFACTURER_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IManufacturerViewRaw } from '@mdtx/common';
+import { IManufacturerRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'mdtx-manufacturer-view-table',
+  selector: 'mdtx-manufacturer-table',
   standalone: true,
-  imports: [...TableModules, ManufacturerViewToolbarComponent],
-  templateUrl: './manufacturer-view-table.component.html',
-  styleUrl: './manufacturer-view-table.component.scss',
-  providers: [ManufacturerViewService],
+  imports: [...TableModules, ManufacturerToolbarComponent],
+  templateUrl: './manufacturer-table.component.html',
+  styleUrl: './manufacturer-table.component.scss',
+  providers: [ManufacturerService],
 })
-export class ManufacturerViewTableComponent extends BaseTableComponent<IManufacturerViewRaw> {
+export class ManufacturerTableComponent extends BaseTableComponent<IManufacturerRaw> {
   override pageIndex = 0;
   override pageSize = MANUFACTURER_PAGE_SIZE;
   override columns = MANUFACTURER_COLUMNS;
@@ -27,10 +27,7 @@ export class ManufacturerViewTableComponent extends BaseTableComponent<IManufact
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(
-    service: ManufacturerViewService,
-    protected readonly router: Router
-  ) {
+  constructor(service: ManufacturerService, protected readonly router: Router) {
     super(service);
   }
 }
