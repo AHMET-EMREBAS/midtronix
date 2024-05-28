@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ToolbarComponent } from '@mdtx/material/toolbar';
 import { MenuItem } from '@mdtx/material/core';
 import { InputSearchComponent } from '@mdtx/material/form';
+
 @Component({
   selector: 'mdtx-product-image-toolbar',
   standalone: true,

@@ -1,19 +1,11 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import {
-  debounceTime,
-  firstValueFrom,
-  map,
-  merge,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { debounceTime, firstValueFrom, of, switchMap, tap } from 'rxjs';
 import {
   CustomerSearchComponent,
   PriceLevelSearchComponent,
@@ -33,9 +25,7 @@ import {
 } from '@mdtx/material/card';
 import {
   ICart,
-  ICategory,
   ICustomer,
-  IOrderRaw,
   IOrderViewRaw,
   IPriceLevel,
   ISkuViewRaw,
@@ -83,6 +73,7 @@ export class PosComponent implements AfterViewInit {
   activeEmployee: IUser = { id: 1 } as IUser;
   activeStore: IStore = { id: 1 } as IStore;
   activePriceLevel: IPriceLevel = { id: 1, taxrate: 6.25 } as IPriceLevel;
+  activeCart!: ICart;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -110,9 +101,10 @@ export class PosComponent implements AfterViewInit {
   ) {}
 
   async ngAfterViewInit() {
+    await this.createNewCart();
+
     this.reloadOrderList();
     this.reloadProductList();
-    await this.createNewCart();
 
     this.scanControl.valueChanges
       .pipe(
@@ -148,22 +140,33 @@ export class PosComponent implements AfterViewInit {
       .subscribe();
   }
 
-  __cartId() {
-    return parseInt(this.cartStore.get() ?? '1');
+  // __cartId() {
+  //   return parseInt(this.cartStore.get() ?? '1');
+  // }
+
+  async __createCart() {
+    return await firstValueFrom(
+      this.cartService.addCart({
+        store: { id: this.activeStore.id },
+        customer: { id: this.activeCustomer.id },
+        employee: { id: this.activeEmployee.id },
+      })
+    );
   }
-
   async createNewCart() {
-    const cart = this.cartStore.get();
+    const cartId = this.cartStore.get();
 
-    if (!cart) {
-      const result = await firstValueFrom(
-        this.cartService.addCart({
-          store: { id: this.activeStore.id },
-          customer: { id: this.activeCustomer.id },
-          employee: { id: this.activeEmployee.id },
-        })
-      );
-      this.cartStore.set(result.id + '');
+    if (cartId) {
+      const foundCart = await firstValueFrom(this.cartService.getByKey(cartId));
+      console.log('Found Cart: ', foundCart);
+      if (foundCart) {
+        this.activeCart = foundCart;
+      } else {
+        this.activeCart = await this.__createCart();
+      }
+
+      console.log('Active Cart: ', this.activeCart);
+      this.cartStore.set(this.activeCart.id + '');
     }
   }
 
@@ -193,9 +196,10 @@ export class PosComponent implements AfterViewInit {
       const taxrate = parseFloat((this.activePriceLevel.taxrate ?? '0') + '');
       const total = subtotal + (taxrate * subtotal) / 100;
 
+      console.log('Adding Item to Cart : ', event);
       this.orderService.addOrder({
-        cart: { id: this.__cartId() },
-        sku: { id: event.id },
+        cart: { id: this.activeCart.id },
+        sku: { id: event.skuId },
         quantity,
         taxrate,
         unitPrice,
@@ -234,7 +238,7 @@ export class PosComponent implements AfterViewInit {
     this.orderViewService.getWithQuery(
       {
         take: 1000,
-        cartId: this.__cartId(),
+        cartId: this.activeCart.id,
         storeId: this.activeStore.id,
       },
       { isOptimistic: false }

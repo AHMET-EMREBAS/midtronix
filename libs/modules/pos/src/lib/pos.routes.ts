@@ -6,6 +6,7 @@ import {
 } from '@mdtx/material/layout';
 
 import { provideEntityData, withEffects } from '@ngrx/data';
+import { PosComponent } from './pos/pos.component';
 
 export const PosRoutes: Routes = [
   {
@@ -58,6 +59,6 @@ export const PosRoutes: Routes = [
       ]),
     ],
 
-    children: [{ path: '' }],
+    children: [{ path: '', loadComponent: () => PosComponent }],
   },
 ];
