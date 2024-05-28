@@ -58,14 +58,14 @@ export const PosRoutes: Routes = [
         withEffects()
       ),
 
-      SidenavLeftTopProvider.provide([
-        {
-          label: 'Configure Pos',
-          route: '/pos',
-          icon: 'settings',
-          color: 'primary',
-        },
-      ]),
+      // SidenavLeftTopProvider.provide([
+      //   {
+      //     label: 'Configure Pos',
+      //     route: '/pos',
+      //     icon: 'settings',
+      //     color: 'primary',
+      //   },
+      // ]),
 
       SidenavLeftBottomProvider.provide([
         { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
