@@ -22,12 +22,6 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   providers: [SprintService],
 })
 export class SprintTableComponent extends BaseTableComponent<ISprintRaw> {
-  @ViewChild('tableRef') table!: TableComponent;
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  @Output() addEvent = new EventEmitter();
-  @Output() deleteEvent = new EventEmitter<ISprintRaw[]>();
-
   override pageIndex = 0;
   override pageSize = SPRINT_PAGE_SIZE;
   override columns = SPRINT_COLUMNS;
@@ -45,30 +39,5 @@ export class SprintTableComponent extends BaseTableComponent<ISprintRaw> {
 
   addItem() {
     this.addEvent.emit();
-  }
-
-  deleteSelection() {
-    this.deleteEvent.emit(
-      [...this.table.selectedItems.entries()].map(([, v]) => v)
-    );
-    this.table.selectedItems.clear();
-  }
-
-  filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
-  }
-
-  pageHandler(page: PageEvent) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: page.pageSize,
-      skip: page.pageIndex * page.pageSize,
-    });
   }
 }
