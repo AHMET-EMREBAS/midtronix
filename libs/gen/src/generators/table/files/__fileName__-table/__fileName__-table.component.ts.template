@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { <%- className %>ViewService } from '@mdtx/ngrx';
+import { <%- className %>Service } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
-import { <%- className %>ViewToolbarComponent } from '../../toolbars';
+import { <%- className %>ToolbarComponent } from '../../toolbars';
 import {
   <%- constantName %>_COLUMNS,
   <%- constantName %>_DISPLAY_COLUMNS,
   <%- constantName %>_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { I<%- className %>ViewRaw } from '@mdtx/common';
+import { I<%- className %>Raw } from '@mdtx/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'mdtx-<%- fileName %>-view-table',
   standalone: true,
-  imports: [...TableModules, <%- className %>ViewToolbarComponent],
+  imports: [...TableModules, <%- className %>ToolbarComponent],
   templateUrl: './<%- fileName %>-view-table.component.html',
   styleUrl: './<%- fileName %>-view-table.component.scss',
-  providers: [<%- className %>ViewService],
+  providers: [<%- className %>Service],
 })
-export class <%- className %>ViewTableComponent extends BaseTableComponent<I<%- className %>ViewRaw> {
+export class <%- className %>TableComponent extends BaseTableComponent<I<%- className %>Raw> {
   override pageIndex = 0;
   override pageSize = <%- constantName %>_PAGE_SIZE;
   override columns = <%- constantName %>_COLUMNS;
@@ -27,7 +27,7 @@ export class <%- className %>ViewTableComponent extends BaseTableComponent<I<%- 
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: <%- className %>ViewService, protected readonly router: Router) {
+  constructor(service: <%- className %>Service, protected readonly router: Router) {
     super(service);
   }
 }

@@ -3,9 +3,9 @@ import { CustomerAddressViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CustomerAddressViewToolbarComponent } from '../../toolbars';
 import {
-  CUSTOMER_ADDRESS_VIEW_COLUMNS,
-  CUSTOMER_ADDRESS_VIEW_DISPLAY_COLUMNS,
-  CUSTOMER_ADDRESS_VIEW_PAGE_SIZE,
+  CUSTOMER_ADDRESS_COLUMNS,
+  CUSTOMER_ADDRESS_DISPLAY_COLUMNS,
+  CUSTOMER_ADDRESS_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { ICustomerAddressViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class CustomerAddressViewTableComponent extends BaseTableComponent<ICustomerAddressViewRaw> {
   override pageIndex = 0;
-  override pageSize = CUSTOMER_ADDRESS_VIEW_PAGE_SIZE;
-  override columns = CUSTOMER_ADDRESS_VIEW_COLUMNS;
-  override displayedColumns = CUSTOMER_ADDRESS_VIEW_DISPLAY_COLUMNS;
+  override pageSize = CUSTOMER_ADDRESS_PAGE_SIZE;
+  override columns = CUSTOMER_ADDRESS_COLUMNS;
+  override displayedColumns = CUSTOMER_ADDRESS_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

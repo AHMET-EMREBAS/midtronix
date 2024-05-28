@@ -3,9 +3,9 @@ import { ProductViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { ProductViewToolbarComponent } from '../../toolbars';
 import {
-  PRODUCT_VIEW_COLUMNS,
-  PRODUCT_VIEW_DISPLAY_COLUMNS,
-  PRODUCT_VIEW_PAGE_SIZE,
+  PRODUCT_COLUMNS,
+  PRODUCT_DISPLAY_COLUMNS,
+  PRODUCT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { IProductViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class ProductViewTableComponent extends BaseTableComponent<IProductViewRaw> {
   override pageIndex = 0;
-  override pageSize = PRODUCT_VIEW_PAGE_SIZE;
-  override columns = PRODUCT_VIEW_COLUMNS;
-  override displayedColumns = PRODUCT_VIEW_DISPLAY_COLUMNS;
+  override pageSize = PRODUCT_PAGE_SIZE;
+  override columns = PRODUCT_COLUMNS;
+  override displayedColumns = PRODUCT_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

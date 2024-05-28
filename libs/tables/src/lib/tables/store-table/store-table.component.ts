@@ -3,9 +3,9 @@ import { StoreViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { StoreViewToolbarComponent } from '../../toolbars';
 import {
-  STORE_VIEW_COLUMNS,
-  STORE_VIEW_DISPLAY_COLUMNS,
-  STORE_VIEW_PAGE_SIZE,
+  STORE_COLUMNS,
+  STORE_DISPLAY_COLUMNS,
+  STORE_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { IStoreViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class StoreViewTableComponent extends BaseTableComponent<IStoreViewRaw> {
   override pageIndex = 0;
-  override pageSize = STORE_VIEW_PAGE_SIZE;
-  override columns = STORE_VIEW_COLUMNS;
-  override displayedColumns = STORE_VIEW_DISPLAY_COLUMNS;
+  override pageSize = STORE_PAGE_SIZE;
+  override columns = STORE_COLUMNS;
+  override displayedColumns = STORE_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

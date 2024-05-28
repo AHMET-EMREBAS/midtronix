@@ -3,9 +3,9 @@ import { CustomerViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CustomerViewToolbarComponent } from '../../toolbars';
 import {
-  CUSTOMER_VIEW_COLUMNS,
-  CUSTOMER_VIEW_DISPLAY_COLUMNS,
-  CUSTOMER_VIEW_PAGE_SIZE,
+  CUSTOMER_COLUMNS,
+  CUSTOMER_DISPLAY_COLUMNS,
+  CUSTOMER_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { ICustomerViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class CustomerViewTableComponent extends BaseTableComponent<ICustomerViewRaw> {
   override pageIndex = 0;
-  override pageSize = CUSTOMER_VIEW_PAGE_SIZE;
-  override columns = CUSTOMER_VIEW_COLUMNS;
-  override displayedColumns = CUSTOMER_VIEW_DISPLAY_COLUMNS;
+  override pageSize = CUSTOMER_PAGE_SIZE;
+  override columns = CUSTOMER_COLUMNS;
+  override displayedColumns = CUSTOMER_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

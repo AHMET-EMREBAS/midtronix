@@ -3,9 +3,9 @@ import { SkuViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { SkuViewToolbarComponent } from '../../toolbars';
 import {
-  SKU_VIEW_COLUMNS,
-  SKU_VIEW_DISPLAY_COLUMNS,
-  SKU_VIEW_PAGE_SIZE,
+  SKU_COLUMNS,
+  SKU_DISPLAY_COLUMNS,
+  SKU_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { ISkuViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class SkuViewTableComponent extends BaseTableComponent<ISkuViewRaw> {
   override pageIndex = 0;
-  override pageSize = SKU_VIEW_PAGE_SIZE;
-  override columns = SKU_VIEW_COLUMNS;
-  override displayedColumns = SKU_VIEW_DISPLAY_COLUMNS;
+  override pageSize = SKU_PAGE_SIZE;
+  override columns = SKU_COLUMNS;
+  override displayedColumns = SKU_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

@@ -3,9 +3,9 @@ import { QuantityViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { QuantityViewToolbarComponent } from '../../toolbars';
 import {
-  QUANTITY_VIEW_COLUMNS,
-  QUANTITY_VIEW_DISPLAY_COLUMNS,
-  QUANTITY_VIEW_PAGE_SIZE,
+  QUANTITY_COLUMNS,
+  QUANTITY_DISPLAY_COLUMNS,
+  QUANTITY_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { IQuantityViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class QuantityViewTableComponent extends BaseTableComponent<IQuantityViewRaw> {
   override pageIndex = 0;
-  override pageSize = QUANTITY_VIEW_PAGE_SIZE;
-  override columns = QUANTITY_VIEW_COLUMNS;
-  override displayedColumns = QUANTITY_VIEW_DISPLAY_COLUMNS;
+  override pageSize = QUANTITY_PAGE_SIZE;
+  override columns = QUANTITY_COLUMNS;
+  override displayedColumns = QUANTITY_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

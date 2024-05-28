@@ -3,9 +3,9 @@ import { NotificationViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { NotificationViewToolbarComponent } from '../../toolbars';
 import {
-  NOTIFICATION_VIEW_COLUMNS,
-  NOTIFICATION_VIEW_DISPLAY_COLUMNS,
-  NOTIFICATION_VIEW_PAGE_SIZE,
+  NOTIFICATION_COLUMNS,
+  NOTIFICATION_DISPLAY_COLUMNS,
+  NOTIFICATION_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { INotificationViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class NotificationViewTableComponent extends BaseTableComponent<INotificationViewRaw> {
   override pageIndex = 0;
-  override pageSize = NOTIFICATION_VIEW_PAGE_SIZE;
-  override columns = NOTIFICATION_VIEW_COLUMNS;
-  override displayedColumns = NOTIFICATION_VIEW_DISPLAY_COLUMNS;
+  override pageSize = NOTIFICATION_PAGE_SIZE;
+  override columns = NOTIFICATION_COLUMNS;
+  override displayedColumns = NOTIFICATION_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

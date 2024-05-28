@@ -3,9 +3,9 @@ import { PriceLevelViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { PriceLevelViewToolbarComponent } from '../../toolbars';
 import {
-  PRICE_LEVEL_VIEW_COLUMNS,
-  PRICE_LEVEL_VIEW_DISPLAY_COLUMNS,
-  PRICE_LEVEL_VIEW_PAGE_SIZE,
+  PRICE_LEVEL_COLUMNS,
+  PRICE_LEVEL_DISPLAY_COLUMNS,
+  PRICE_LEVEL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { IPriceLevelViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class PriceLevelViewTableComponent extends BaseTableComponent<IPriceLevelViewRaw> {
   override pageIndex = 0;
-  override pageSize = PRICE_LEVEL_VIEW_PAGE_SIZE;
-  override columns = PRICE_LEVEL_VIEW_COLUMNS;
-  override displayedColumns = PRICE_LEVEL_VIEW_DISPLAY_COLUMNS;
+  override pageSize = PRICE_LEVEL_PAGE_SIZE;
+  override columns = PRICE_LEVEL_COLUMNS;
+  override displayedColumns = PRICE_LEVEL_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 

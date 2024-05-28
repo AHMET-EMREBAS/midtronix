@@ -3,9 +3,9 @@ import { CustomerEmailViewService } from '@mdtx/ngrx';
 import { BaseTableComponent, TableModules } from '../../__base';
 import { CustomerEmailViewToolbarComponent } from '../../toolbars';
 import {
-  CUSTOMER_EMAIL_VIEW_COLUMNS,
-  CUSTOMER_EMAIL_VIEW_DISPLAY_COLUMNS,
-  CUSTOMER_EMAIL_VIEW_PAGE_SIZE,
+  CUSTOMER_EMAIL_COLUMNS,
+  CUSTOMER_EMAIL_DISPLAY_COLUMNS,
+  CUSTOMER_EMAIL_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
 import { ICustomerEmailViewRaw } from '@mdtx/common';
@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 })
 export class CustomerEmailViewTableComponent extends BaseTableComponent<ICustomerEmailViewRaw> {
   override pageIndex = 0;
-  override pageSize = CUSTOMER_EMAIL_VIEW_PAGE_SIZE;
-  override columns = CUSTOMER_EMAIL_VIEW_COLUMNS;
-  override displayedColumns = CUSTOMER_EMAIL_VIEW_DISPLAY_COLUMNS;
+  override pageSize = CUSTOMER_EMAIL_PAGE_SIZE;
+  override columns = CUSTOMER_EMAIL_COLUMNS;
+  override displayedColumns = CUSTOMER_EMAIL_DISPLAY_COLUMNS;
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
