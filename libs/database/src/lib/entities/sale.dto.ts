@@ -23,7 +23,6 @@ export class CreateSaleDto implements Omit<ICreateSaleDto, 'user' | 'store'> {
   @Property({ type: 'number', required: true }) cashPayment!: number;
   @Property({ type: 'number', required: true }) cardPayment!: number;
   @Property({ type: 'number', required: true }) taxrate!: number;
-  @Property({ type: 'number', required: true }) tax!: number;
   @Property({ type: 'number', required: true }) subtotal!: number;
   @Property({ type: 'number', required: true }) total!: number;
 }

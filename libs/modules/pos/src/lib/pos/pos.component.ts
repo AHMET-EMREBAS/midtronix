@@ -1,11 +1,26 @@
-import { AfterViewInit, Component } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, firstValueFrom, map, of, switchMap, tap } from 'rxjs';
+import {
+  Subscription,
+  debounceTime,
+  firstValueFrom,
+  map,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   CustomerSearchComponent,
   PriceLevelSearchComponent,
@@ -15,6 +30,7 @@ import {
   CartService,
   OrderService,
   OrderViewService,
+  SaleService,
   SkuViewService,
 } from '@mdtx/ngrx';
 import {
@@ -25,18 +41,25 @@ import {
 } from '@mdtx/material/card';
 import {
   ICart,
-  ICustomer,
+  ICreateSaleDto,
   IOrderViewRaw,
-  IPriceLevel,
   ISkuViewRaw,
-  IStore,
-  IUser,
   QueryBuilder,
 } from '@mdtx/common';
-import { FullscreenButtonComponent, LocalStore } from '@mdtx/material/core';
+import { FullscreenButtonComponent } from '@mdtx/material/core';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { PosOrderEditorComponent } from '../pos-order-editor/pos-order-editor.component';
 import { PosCheckoutComponent } from './../pos-checkout/pos-checkout.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {
+  posCartIdStore,
+  posCustomerIdStore,
+  posEmployeeIdStore,
+  posPriceLevelIdStore,
+  posStoreIdStore,
+  posTaxrateStore,
+} from '../__stores';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'mdtx-pos',
   standalone: true,
@@ -59,20 +82,28 @@ import { PosCheckoutComponent } from './../pos-checkout/pos-checkout.component';
     PosOrderEditorComponent,
     FullscreenButtonComponent,
     PosCheckoutComponent,
+    MatDialogModule,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
-  providers: [SkuViewService, CartService, OrderService, OrderViewService],
+  providers: [
+    SkuViewService,
+    CartService,
+    OrderService,
+    OrderViewService,
+    SaleService,
+  ],
 })
-export class PosComponent implements AfterViewInit {
-  readonly cartStore = LocalStore.createStore('cart', { debounce: 400 });
-
+export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
+  sub!: Subscription;
   checkoutOpen = false;
 
-  activeCustomer: ICustomer = { id: 1 } as ICustomer;
-  activeEmployee: IUser = { id: 1 } as IUser;
-  activeStore: IStore = { id: 1 } as IStore;
-  activePriceLevel: IPriceLevel = { id: 1, taxrate: 6.25 } as IPriceLevel;
+  storeId = +posStoreIdStore.get()!;
+  employeeId = +posEmployeeIdStore.get()!;
+  customerId = +posCustomerIdStore.get()!;
+  priceLevelId = +posPriceLevelIdStore.get()!;
+  taxrate = +posTaxrateStore.get()!;
+
   activeCart!: ICart;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
@@ -89,6 +120,7 @@ export class PosComponent implements AfterViewInit {
 
   readonly messages: string[] = [];
 
+  isReady = false;
   scanControl = new FormControl('');
 
   orderUnderUpdate?: IOrderViewRaw;
@@ -97,25 +129,53 @@ export class PosComponent implements AfterViewInit {
     protected readonly skuViewService: SkuViewService,
     protected readonly orderService: OrderService,
     protected readonly orderViewService: OrderViewService,
-    protected readonly cartService: CartService
+    protected readonly cartService: CartService,
+    protected readonly saleService: SaleService,
+    protected readonly router: Router,
+    protected readonly route: ActivatedRoute,
+    protected readonly cd: ChangeDetectorRef
   ) {}
 
+  ngOnInit(): void {
+    this.isReady = !!(
+      this.customerId > 0 &&
+      this.employeeId > 0 &&
+      this.storeId > 0 &&
+      this.priceLevelId > 0
+    );
+
+    console.table({
+      customerId: this.customerId,
+      employeeId: this.employeeId,
+      storeId: this.storeId,
+      priceLevelId: this.priceLevelId,
+    });
+
+    if (this.isReady) {
+      // Ready
+    } else {
+      this.router.navigate(['setting'], { relativeTo: this.route });
+    }
+  }
+
   async ngAfterViewInit() {
+    if (!this.isReady) return;
+
     await this.createNewCart();
 
     this.reloadOrderList();
     this.reloadProductList();
 
-    this.scanControl.valueChanges
+    this.sub = this.scanControl.valueChanges
       .pipe(
         debounceTime(1000),
         switchMap((search) => {
           if (search) {
             return this.skuViewService
               .getWithQuery({
-                storeId: this.activeStore.id,
-                cusotmerId: this.activeCustomer.id,
-                priceLevelId: this.activePriceLevel.id,
+                storeId: this.storeId!,
+                cusotmerId: this.customerId!,
+                priceLevelId: this.priceLevelId!,
               })
               .pipe(
                 map((data) => {
@@ -136,9 +196,9 @@ export class PosComponent implements AfterViewInit {
           if (typeof result === 'string') {
             this.skuViewService.getWithQuery({
               name: QueryBuilder.CONTAIN(result),
-              storeId: this.activeStore.id,
-              cusotmerId: this.activeCustomer.id,
-              priceLevelId: this.activePriceLevel.id,
+              storeId: this.storeId!,
+              cusotmerId: this.customerId!,
+              priceLevelId: this.priceLevelId!,
             });
           } else if (result && result.length == 1) {
             const found = result[0];
@@ -152,33 +212,36 @@ export class PosComponent implements AfterViewInit {
       .subscribe();
   }
 
-  // __cartId() {
-  //   return parseInt(this.cartStore.get() ?? '1');
-  // }
-
   async __createCart() {
     return await firstValueFrom(
       this.cartService.addCart({
-        store: { id: this.activeStore.id },
-        customer: { id: this.activeCustomer.id },
-        employee: { id: this.activeEmployee.id },
+        store: { id: this.storeId! },
+        customer: { id: this.customerId! },
+        employee: { id: this.employeeId! },
       })
     );
   }
+
   async createNewCart() {
-    const cartId = this.cartStore.get();
+    const cartId = posCartIdStore.get();
 
     if (cartId) {
       const foundCart = await firstValueFrom(this.cartService.getByKey(cartId));
       console.log('Found Cart: ', foundCart);
-      if (foundCart) {
+
+      if (foundCart && foundCart.checkout != true) {
         this.activeCart = foundCart;
       } else {
         this.activeCart = await this.__createCart();
       }
 
       console.log('Active Cart: ', this.activeCart);
-      this.cartStore.set(this.activeCart.id + '');
+      posCartIdStore.set(this.activeCart.id + '');
+    } else {
+      const cart = await this.__createCart();
+
+      this.activeCart = cart;
+      posCartIdStore.set(this.activeCart.id + '');
     }
   }
 
@@ -205,7 +268,7 @@ export class PosComponent implements AfterViewInit {
       const quantity = 1;
       const unitPrice = parseFloat((event.price ?? 0) + '');
       const subtotal = unitPrice * quantity;
-      const taxrate = parseFloat((this.activePriceLevel.taxrate ?? '0') + '');
+      const taxrate = parseFloat((this.taxrate ?? '0') + '');
       const total = subtotal + (taxrate * subtotal) / 100;
 
       console.log('Adding Item to Cart : ', event);
@@ -238,9 +301,9 @@ export class PosComponent implements AfterViewInit {
     this.skuViewService.getWithQuery(
       {
         take: 10000,
-        storeId: this.activeStore.id,
-        cusotmerId: this.activeCustomer.id,
-        priceLevelId: this.activePriceLevel.id,
+        storeId: this.storeId!,
+        cusotmerId: this.customerId!,
+        priceLevelId: this.priceLevelId!,
       },
       { isOptimistic: false }
     );
@@ -251,7 +314,7 @@ export class PosComponent implements AfterViewInit {
       {
         take: 1000,
         cartId: this.activeCart.id,
-        storeId: this.activeStore.id,
+        storeId: this.storeId!,
       },
       { isOptimistic: false }
     );
@@ -271,5 +334,32 @@ export class PosComponent implements AfterViewInit {
 
   closeCheckout() {
     this.checkoutOpen = false;
+  }
+
+  async saleEventHandler(event: ICreateSaleDto) {
+    console.log('Sale : ', event);
+    await firstValueFrom(
+      this.saleService.add({
+        ...event,
+        taxrate: this.taxrate!,
+        employee: { id: this.employeeId! },
+        store: { id: this.storeId! },
+        customer: { id: this.customerId! },
+        cart: { id: this.activeCart.id },
+      } as ICreateSaleDto)
+    );
+
+    await firstValueFrom(
+      this.cartService.update({ id: this.activeCart.id, checkout: true })
+    );
+
+    this.closeCheckout();
+    this.orderViewService.clearCache();
+    await this.ngOnDestroy();
+    await this.ngAfterViewInit();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

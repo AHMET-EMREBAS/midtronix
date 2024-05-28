@@ -47,8 +47,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 })
 export class PosOrderEditorComponent implements AfterViewInit {
   @Input() activeOrder!: IOrderViewRaw;
-  @Input() activeStore!: IStore;
-  @Input() activePriceLevel!: IPriceLevel;
+  @Input() storeId!: number;
+  @Input() priceLevelId!: number;
+  @Input() taxrate!: number;
 
   @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
   @ViewChild('discountSearch') discountSearch!: DiscountViewSearchComponent;
@@ -91,9 +92,8 @@ export class PosOrderEditorComponent implements AfterViewInit {
     const quantity = parseInt(this.quantityControl.value + '') ?? 1;
 
     const taxrate = parseFloat(
-      (this.priceLevelSearch.inputControl.value?.taxrate ??
-        this.activePriceLevel.taxrate ??
-        0) + ''
+      (this.priceLevelSearch.inputControl.value?.taxrate ?? this.taxrate ?? 0) +
+        ''
     );
     const __initialUnitPrice = parseFloat(this.unitPriceControl.value + '');
 
@@ -147,7 +147,7 @@ export class PosOrderEditorComponent implements AfterViewInit {
         this.skuViewService.query({
           barcode: QueryBuilder.EQUAL(this.activeOrder.barcode),
           priceLevelId: priceLevel.id,
-          storeId: this.activeStore.id,
+          storeId: this.storeId,
         })
       );
       const found = foundPriceLevels[0];

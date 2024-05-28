@@ -10,7 +10,7 @@
             prefixIcon="money"
             inputName="tax"
           ></mdtx-input-number>
-          
+
           <mdtx-input-number
             #subtotal
             prefixIcon="money"
@@ -25,11 +25,12 @@
       </mat-tab>
       <mat-tab label="Payment Options">
         <div class="container">
-          <mdtx-input-number
+          <!-- <mdtx-input-number
             #accountBalance
             prefixIcon="money"
             inputName="accountBalance"
-          ></mdtx-input-number>
+            ></mdtx-input-number> -->
+
           <mdtx-input-number
             #cashPayment
             prefixIcon="money"
@@ -46,7 +47,34 @@
     </mat-tab-group>
 
     <div class="actions">
-      <button mat-raised-button color="primary" (click)="payAndSaveSale()">
+      <button mat-raised-button color="warn" *ngIf="cartBalance < 0" (click)="giveCashBack()">
+        Give <strong> ${{ (cartBalance * -1).toFixed(2) }} </strong> Back
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="cartBalance > 0"
+        (click)="addBalanceToCash()"
+      >
+        Get <strong> ${{ cartBalance.toFixed(2) }} </strong> More as Cash
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="cartBalance > 0"
+        (click)="addBalanceTocard()"
+      >
+        Get <strong> ${{ cartBalance.toFixed(2) }} </strong> More From Card
+      </button>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="payAndSaveSale()"
+        [disabled]="cartBalance !== 0"
+      >
         Pay
       </button>
       <button
@@ -54,7 +82,7 @@
         color="accent"
         (click)="closeCheckoutEventHandler()"
       >
-        Close
+        Back
       </button>
     </div>
   </div>

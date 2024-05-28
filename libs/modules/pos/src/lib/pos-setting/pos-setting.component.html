@@ -1,0 +1,50 @@
+<div class="container">
+  <form novalidate="true">
+    <mdtx-input-autocomplete
+      #storeInput
+      label="Select Employee"
+      prefixIcon="person"
+      *ngIf="employees$ | async as employees"
+      [options]="employees"
+      [inputControl]="employeeControl"
+    ></mdtx-input-autocomplete>
+    
+    <mdtx-input-autocomplete
+      #storeInput
+      label="Select Store"
+      prefixIcon="store"
+      *ngIf="stores$ | async as stores"
+      [options]="stores"
+      [inputControl]="storeControl"
+    ></mdtx-input-autocomplete>
+
+    <mdtx-input-autocomplete
+      #priceLevelInput
+      label="Select Price Level"
+      prefixIcon="layers"
+      *ngIf="priceLevels$ | async as priceLevels"
+      [options]="priceLevels"
+      [inputControl]="priceLevelControl"
+    ></mdtx-input-autocomplete>
+
+    <mdtx-input-autocomplete
+      #customerInput
+      label="Select Customer"
+      prefixIcon="person"
+      *ngIf="customers$ | async as customers"
+      [options]="customers"
+      [inputControl]="customerControl"
+    ></mdtx-input-autocomplete>
+
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      style="width: 100%"
+      [disabled]="formGroup?.invalid"
+      (click)="runPos()"
+    >
+      Run
+    </button>
+  </form>
+</div>

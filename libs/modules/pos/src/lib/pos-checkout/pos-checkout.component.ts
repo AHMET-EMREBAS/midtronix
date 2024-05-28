@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputNumberComponent } from '@mdtx/material/form';
-import { IOrderViewRaw } from '@mdtx/common';
+import { ICreateSaleDto, IOrderViewRaw } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { map, merge } from 'rxjs';
@@ -22,13 +22,15 @@ import { map, merge } from 'rxjs';
 })
 export class PosCheckoutComponent implements AfterViewInit {
   @Input() orderListItems!: IOrderViewRaw[];
-  @ViewChild('accountBalance') accountBalance!: InputNumberComponent;
+  // @ViewChild('accountBalance') accountBalance!: InputNumberComponent;
+  cartBalance = 0;
   @ViewChild('cashPayment') cashPayment!: InputNumberComponent;
   @ViewChild('cardPayment') cardPayment!: InputNumberComponent;
   @ViewChild('tax') tax!: InputNumberComponent;
   @ViewChild('subtotal') subtotal!: InputNumberComponent;
   @ViewChild('total') total!: InputNumberComponent;
   @Output() closeCheckoutEvent = new EventEmitter();
+  @Output() saleEvent = new EventEmitter();
 
   closeCheckoutEventHandler() {
     this.closeCheckoutEvent.emit();
@@ -54,7 +56,7 @@ export class PosCheckoutComponent implements AfterViewInit {
 
       this.cardPayment.inputControl.setValue(total);
       this.cashPayment.inputControl.setValue(0);
-      this.accountBalance.inputControl.setValue(0);
+      // this.accountBalance.inputControl.setValue(0);
 
       this.tax.inputControl.setValue(tax);
 
@@ -63,38 +65,73 @@ export class PosCheckoutComponent implements AfterViewInit {
 
       merge(
         this.cardPayment.$valueChange.pipe(map((e) => ({ cardPayment: e }))),
-        this.cashPayment.$valueChange.pipe(map((e) => ({ cashPayment: e }))),
-        this.accountBalance.$valueChange.pipe(
-          map((e) => ({ accountBalance: e }))
-        )
+        this.cashPayment.$valueChange.pipe(map((e) => ({ cashPayment: e })))
+        // this.accountBalance.$valueChange.pipe(
+        //   map((e) => ({ accountBalance: e }))
+        // )
       ).subscribe((payment) => {
-        const { cardPayment, cashPayment, accountBalance } = payment as any;
+        const { cardPayment, cashPayment } = payment as any;
 
         const cardValue = this.card();
         const cashValue = this.cash();
-        const accountValue = this.account();
+        // const accountValue = this.account();
 
         if (cardPayment) {
           if (cashValue == 0) {
-            const rest = total - cardValue - accountValue;
-            this.cashPayment.inputControl.setValue(rest);
-          } else if (accountValue == 0) {
-            const rest = total - cardValue - cashValue;
-            this.accountBalance.inputControl.setValue(rest);
+            const rest = total - cardValue;
+            if (rest > 0) {
+              this.cashPayment.inputControl.setValue(rest);
+            } else {
+              this.cashPayment.inputControl.setValue(0);
+            }
           }
         } else if (cashPayment) {
           const cashValue = this.cash();
           const restCardValue = total - cashValue;
-          this.cardPayment.inputControl.setValue(restCardValue);
+          if (restCardValue > 0) {
+            this.cardPayment.inputControl.setValue(restCardValue);
+          } else {
+            this.cardPayment.inputControl.setValue(0);
+          }
         }
+
+        const cartBalance = total - this.card() - this.cash();
+
+        this.cartBalance = cartBalance;
       });
     }
   }
 
   payAndSaveSale() {
-    console.log('Saving sale');
+    this.saleEvent.emit({
+      accountBalancePayment: 0,
+      cardPayment: this.card(),
+      cashPayment: this.cash(),
+      subtotal: this.subtotalPrice(),
+      total: this.totalPrice(),
+    } as ICreateSaleDto);
   }
 
+  addBalanceToCash() {
+    this.cashPayment.inputControl.setValue(this.cash() + this.cartBalance);
+  }
+
+  addBalanceTocard() {
+    this.cardPayment.inputControl.setValue(this.card() + this.cartBalance);
+  }
+
+  giveCashBack() {
+    const result = this.cash() + this.cartBalance;
+    this.cashPayment.inputControl.setValue(result);
+  }
+
+  subtotalPrice() {
+    return parseFloat(this.subtotal.inputControl.value + '') ?? 0;
+  }
+
+  totalPrice() {
+    return parseFloat(this.total.inputControl.value + '') ?? 0;
+  }
   cash() {
     return parseFloat(this.cashPayment.inputControl.value + '') ?? 0;
   }
@@ -102,6 +139,6 @@ export class PosCheckoutComponent implements AfterViewInit {
     return parseFloat(this.cardPayment.inputControl.value + '') ?? 0;
   }
   account() {
-    return parseFloat(this.accountBalance.inputControl.value + '') ?? 0;
+    // return parseFloat(this.accountBalance.inputControl.value + '') ?? 0;
   }
 }

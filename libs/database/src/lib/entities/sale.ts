@@ -25,7 +25,7 @@ export class Sale
   @Column({ type: 'numeric', precision: 2 }) accountBalancePayment!: number;
   @Column({ type: 'numeric', precision: 2 }) cashPayment!: number;
   @Column({ type: 'numeric', precision: 2 }) cardPayment!: number;
-  @Column({ type: 'numeric', precision: 2 }) tax!: number;
+  @Column({ type: 'numeric', precision: 2 }) taxrate!: number;
   @Column({ type: 'numeric', precision: 2 }) subtotal!: number;
   @Column({ type: 'numeric', precision: 2 }) total!: number;
 }
@@ -42,7 +42,7 @@ export class Sale
       .addSelect('main.accountBalancePayment', 'accountBalancePayment')
       .addSelect('main.cashPayment', 'cashPayment')
       .addSelect('main.cardPayment', 'cardPayment')
-      .addSelect('main.tax', 'tax')
+      .addSelect('main.taxrate', 'taxrate')
       .addSelect('main.subtotal', 'subtotal')
       .addSelect('main.total', 'total')
       .from(Sale, 'main');
@@ -57,7 +57,7 @@ export class SaleView implements ISaleView {
   @ViewColumn() accountBalancePayment!: number;
   @ViewColumn() cashPayment!: number;
   @ViewColumn() cardPayment!: number;
-  @ViewColumn() tax!: number;
+  @ViewColumn() taxrate!: number;
   @ViewColumn() subtotal!: number;
   @ViewColumn() total!: number;
 }

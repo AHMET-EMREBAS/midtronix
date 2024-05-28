@@ -14,7 +14,7 @@ export interface ISale<
   accountBalancePayment: number;
   cashPayment: number;
   cardPayment: number;
-  tax: number;
+  taxrate: number;
   subtotal: number;
   total: number;
 }
@@ -33,7 +33,7 @@ export interface ISaleView {
   cashPayment: number;
   cardPayment: number;
 
-  tax: number;
+  taxrate: number;
   subtotal: number;
   total: number;
 }

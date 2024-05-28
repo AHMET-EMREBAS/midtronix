@@ -39,7 +39,7 @@ export class CollectionBaseService<
         map((data) => {
           return data.map((d) => {
             return {
-              id: d.id,
+              ...d,
               name: d[this.optionColumn] + '',
             };
           });

@@ -3,10 +3,12 @@ import { Routes } from '@angular/router';
 import {
   AppLayoutComponent,
   SidenavLeftBottomProvider,
+  SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
 
 import { provideEntityData, withEffects } from '@ngrx/data';
 import { PosComponent } from './pos/pos.component';
+import { PosSettingComponent } from './pos-setting/pos-setting.component';
 
 export const PosRoutes: Routes = [
   {
@@ -32,6 +34,7 @@ export const PosRoutes: Routes = [
             Customer: 'Customers',
             Discount: 'Discount',
             DiscountView: 'DiscountViews',
+            User: 'Users',
           },
           entityMetadata: {
             Sku: {},
@@ -49,16 +52,29 @@ export const PosRoutes: Routes = [
             Customer: {},
             Discount: {},
             DiscountView: {},
+            User: {},
           },
         },
         withEffects()
       ),
+
+      SidenavLeftTopProvider.provide([
+        {
+          label: 'Configure Pos',
+          route: '/pos',
+          icon: 'settings',
+          color: 'primary',
+        },
+      ]),
 
       SidenavLeftBottomProvider.provide([
         { label: 'Apps', route: '/', icon: 'apps', color: 'accent' },
       ]),
     ],
 
-    children: [{ path: '', loadComponent: () => PosComponent }],
+    children: [
+      { path: '', loadComponent: () => PosComponent },
+      { path: 'setting', loadComponent: () => PosSettingComponent },
+    ],
   },
 ];

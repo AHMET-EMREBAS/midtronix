@@ -36,21 +36,26 @@
     </div>
   </div>
 
+  <!-- Single Order Editor -->
   @if(orderUnderUpdate){
 
   <mdtx-pos-order-editor
-    [activeStore]="activeStore"
-    [activePriceLevel]="activePriceLevel"
+    [storeId]="storeId"
+    [priceLevelId]="priceLevelId"
     [activeOrder]="orderUnderUpdate"
     (updateEvent)="updateOrderEventHandler()"
     (closeEvent)="closeOrderEditorHandler()"
   ></mdtx-pos-order-editor>
-  } @if(checkoutOpen){
+  }
+
+  <!-- Checkout  -->
+  @if(checkoutOpen){
 
   <mdtx-pos-checkout
     *ngIf="orderListItems$ | async as orderListItems"
     [orderListItems]="orderListItems"
     (closeCheckoutEvent)="closeCheckout()"
+    (saleEvent)="saleEventHandler($event)"
   ></mdtx-pos-checkout>
   }
 </div>
