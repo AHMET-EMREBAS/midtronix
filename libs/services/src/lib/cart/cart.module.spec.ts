@@ -34,6 +34,6 @@ describe('CartModuleTest', () => {
   });
 
   afterAll(() => {
-    repo.manager.connection.destroy();
+    app.close();
   });
 });

@@ -31,13 +31,9 @@ const meta: Meta<CartTableComponent> = {
           {
             pluralNames: {
               Cart: 'Carts',
-              User: 'Users',
-              Customer: 'Customers',
             },
             entityMetadata: {
               Cart: {},
-              User: {},
-              Customer: {},
             },
           },
           withEffects()

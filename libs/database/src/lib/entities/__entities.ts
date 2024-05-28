@@ -65,14 +65,21 @@ export const UserAddressEntities: Readonly<Type[]> = [
 export const PermissionEntities: Readonly<Type[]> = [Permission];
 export const RoleEntities: Readonly<Type[]> = [Role, Permission];
 
-export const CartEntities = [Cart, CartView, User, Customer];
-
 export const CustomerEntities: Readonly<Type[]> = [
   Customer,
   CustomerRole,
   CustomerPermission,
   CustomerBadge,
   CustomerAccount,
+  PriceLevel,
+];
+
+export const CartEntities = [
+  Cart,
+  CartView,
+  Store,
+  ...CustomerEntities,
+  ...UserEntities,
 ];
 
 export const CustomerPhoneEntities: Readonly<Type[]> = [
@@ -193,4 +200,12 @@ export const OrderViewEntities = [
   SkuView,
 ];
 
-export const SaleEntities = [Sale, SaleView, ...OrderEntities];
+export const SaleEntities = [
+  Sale,
+  SaleView,
+  ...ProductEntities,
+  ...CartEntities,
+  ...UserEntities,
+  ...CustomerEntities,
+  ...OrderEntities,
+];

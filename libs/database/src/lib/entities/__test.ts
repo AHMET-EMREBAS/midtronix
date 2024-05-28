@@ -21,15 +21,22 @@ export async function testDB(entities: Type<any>[]) {
 }
 
 export function testDBOptions(): TypeOrmModuleOptions {
+  // return {
+  //   type: 'postgres',
+  //   database: 'testdb',
+  //   username: 'postgres',
+  //   password: 'password',
+  //   autoLoadEntities: true,
+  //   synchronize: true,
+  //   dropSchema: true,
+  //   connectTimeoutMS: 1000 * 10,
+  // };
+
   return {
-    type: 'postgres',
-    database: 'testdb',
-    username: 'postgres',
-    password: 'password',
+    type: 'better-sqlite3',
+    database: `tmp/testdb-${Math.random() * 10000}`,
     autoLoadEntities: true,
     synchronize: true,
     dropSchema: true,
-    poolSize: 200,
-    connectTimeoutMS: 1000 * 10,
   };
 }

@@ -1,23 +1,8 @@
-<ng-container *ngIf="closeAfter3000$ | async"></ng-container>
-
-<button mat-icon-button (click)="openSearch(); searchInput.focus()">
-  <mat-icon>search</mat-icon>
-</button>
-
-<button mat-icon-button (click)="searchControl.setValue('')">
-  <mat-icon>filter_alt_off</mat-icon>
-</button>
-
-<div
-  [class.hide-search-input]="(open$ | async) === false"
-  [class.search-input-container]="(open$ | async) === true"
->
-  <mat-icon color="primary">search</mat-icon>
-  <input
-    #searchInput
-    type="search"
-    [formControl]="searchControl"
-    (input)="openSearch()"
-    [autofocus]="true"
-  />
-</div>
+<input
+  #searchInput
+  type="search"
+  [formControl]="searchControl"
+  (input)="openSearch()"
+  [autofocus]="true"
+  placeholder="Search"
+/>

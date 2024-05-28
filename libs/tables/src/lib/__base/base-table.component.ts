@@ -57,6 +57,7 @@ export class BaseTableComponent<T extends IID> implements OnInit {
       skip: page.pageIndex * page.pageSize,
     });
   }
+  
   deleteSelection() {
     this.deleteEvent.emit(
       [...this.table.selectedItems.entries()].map(([, v]) => v)
@@ -65,12 +66,14 @@ export class BaseTableComponent<T extends IID> implements OnInit {
   }
 
   filterItems(searchString: string) {
-    this.service.clearCache();
-    this.service.getWithQuery({
-      take: this.pageSize,
-      skip: this.pageIndex * this.pageSize,
-      search: searchString,
-    });
+    if (searchString && searchString.length > 0) {
+      this.service.clearCache();
+      this.service.getWithQuery({
+        take: this.pageSize,
+        skip: this.pageIndex * this.pageSize,
+        search: searchString,
+      });
+    }
   }
 
   selectItems(items: Map<string, T>) {
