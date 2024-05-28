@@ -9,6 +9,7 @@ const rns = [
   'customer-phone',
   'customer-role',
   'customer-permission',
+
   'customer',
   'department',
   'manufacturer',
