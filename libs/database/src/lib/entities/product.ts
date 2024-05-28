@@ -141,8 +141,8 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
 
     for (const priceLevel of priceLevels) {
       await priceRepo.save({
-        cost: 11111111,
-        price: 11111111,
+        cost: 1,
+        price: 1,
         sku,
         priceLevel,
       });
@@ -150,7 +150,7 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
 
     for (const store of stores) {
       await quantityRepo.save({
-        quantity: 11111111,
+        quantity: 1,
         store,
         sku,
       });

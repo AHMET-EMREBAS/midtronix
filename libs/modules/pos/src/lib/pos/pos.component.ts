@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { debounceTime, firstValueFrom, of, switchMap, tap } from 'rxjs';
+import { debounceTime, firstValueFrom, map, of, switchMap, tap } from 'rxjs';
 import {
   CustomerSearchComponent,
   PriceLevelSearchComponent,
@@ -111,16 +111,28 @@ export class PosComponent implements AfterViewInit {
         debounceTime(1000),
         switchMap((search) => {
           if (search) {
-            return this.skuViewService.getWithQuery({
-              barcode: QueryBuilder.EQUAL(search),
-              storeId: this.activeStore.id,
-              cusotmerId: this.activeCustomer.id,
-              priceLevelId: this.activePriceLevel.id,
-            });
+            return this.skuViewService
+              .getWithQuery({
+                storeId: this.activeStore.id,
+                cusotmerId: this.activeCustomer.id,
+                priceLevelId: this.activePriceLevel.id,
+              })
+              .pipe(
+                map((data) => {
+                  console.log(data);
+                  return data.filter((e) => {
+                    return (
+                      e.barcode == search ||
+                      e.name.toLowerCase().includes(search.toLowerCase())
+                    );
+                  });
+                })
+              );
           }
           return of(search);
         }),
         tap((result) => {
+          console.log(result);
           if (typeof result === 'string') {
             this.skuViewService.getWithQuery({
               name: QueryBuilder.CONTAIN(result),
