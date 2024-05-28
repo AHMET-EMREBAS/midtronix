@@ -55,7 +55,6 @@ export class SkuViewTableComponent extends BaseTableComponent<ISkuViewRaw> {
   }
 
   filterItems(searchString: string) {
-    console.log('Searching : ', searchString);
     this.service.clearCache();
     this.service.getWithQuery({
       take: this.pageSize,

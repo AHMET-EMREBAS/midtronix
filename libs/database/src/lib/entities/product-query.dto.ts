@@ -3,6 +3,7 @@ import {
   Exclude,
   Property,
   QueryProperty,
+  CreateSearchDto,
 } from '@mdtx/core';
 import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES } from '@mdtx/common';
 
@@ -47,3 +48,6 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
 
 @Exclude()
 export class SelectSkuViewDto extends CreateSelectQuery(SKU_VIEW_PROPERTIES) {}
+
+@Exclude()
+export class SearchSkuViewDto extends CreateSearchDto(SKU_VIEW_PROPERTIES) {}
