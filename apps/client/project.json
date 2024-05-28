@@ -4,6 +4,23 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/client/src",
+  "i18n": {
+    "sourceLocale": "en",
+    "locales": {
+      "": {
+        "translation": "apps/client/src/locale/messages.xlf",
+        "baseHref": ""
+      },
+      "es": {
+        "translation": "apps/client/src/locale/messages.es.xlf",
+        "baseHref": ""
+      },
+      "tr": {
+        "translation": "apps/client/src/locale/messages.tr.xlf",
+        "baseHref": ""
+      }
+    }
+  },
   "tags": [],
   "targets": {
     "build": {
@@ -44,7 +61,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "localize": true
         },
         "development": {
           "buildOptimizer": false,
@@ -88,6 +106,68 @@
       "options": {
         "jestConfig": "apps/client/jest.config.ts"
       }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "client:build",
+        "port": 4200,
+        "spa": true
+      }
+    },
+    "server": {
+      "dependsOn": ["build"],
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/apps/client/server",
+        "main": "apps/client/server.ts",
+        "tsConfig": "apps/client/tsconfig.server.json",
+        "inlineStyleLanguage": "scss"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "client:build:development",
+          "serverTarget": "client:server:development"
+        },
+        "production": {
+          "browserTarget": "client:build:production",
+          "serverTarget": "client:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "development": {
+          "browserTarget": "client:build:development",
+          "serverTarget": "client:server:development"
+        },
+        "production": {
+          "browserTarget": "client:build:production",
+          "serverTarget": "client:server:production"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
