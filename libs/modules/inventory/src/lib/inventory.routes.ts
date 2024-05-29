@@ -18,6 +18,7 @@ import {
   PriceLevelRoutes,
   PriceRoutes,
   QuantityRoutes,
+  PurchaseRoutes,
 } from '@mdtx/modules/sub-modules';
 
 export const InventoryRoutes: Routes = [
@@ -28,6 +29,7 @@ export const InventoryRoutes: Routes = [
       provideEntityData(
         {
           pluralNames: {
+            User: 'Users',
             Product: 'Products',
             Category: 'Categories',
             Department: 'Departments',
@@ -40,8 +42,10 @@ export const InventoryRoutes: Routes = [
             PriceLevel: 'PriceLevels',
             Price: 'Prices',
             Quantity: 'Quantities',
+            Purchase: 'Purchases',
           },
           entityMetadata: {
+            User: {},
             Product: {},
             Category: {},
             Department: {},
@@ -54,6 +58,7 @@ export const InventoryRoutes: Routes = [
             PriceLevel: {},
             Price: {},
             Quantity: {},
+            Purchase: {},
           },
         },
         withEffects()
@@ -76,6 +81,9 @@ export const InventoryRoutes: Routes = [
             { label: 'Category', icon: 'category', route: 'category' },
             { label: 'Department', icon: 'group_work', route: 'department' },
             { divider: true },
+
+            { label: 'Purchase', icon: 'add_shopping_cart', route: 'purchase' },
+            { divider: true },
             { label: 'Store', icon: 'store', route: 'store' },
           ]),
 
@@ -95,6 +103,7 @@ export const InventoryRoutes: Routes = [
           { path: 'pricelevel', loadChildren: () => PriceLevelRoutes },
           { path: 'price', loadChildren: () => PriceRoutes },
           { path: 'quantity', loadChildren: () => QuantityRoutes },
+          { path: 'purchase', loadChildren: () => PurchaseRoutes },
         ],
       },
     ],

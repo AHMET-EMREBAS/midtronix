@@ -1,11 +1,62 @@
+<!-- sku -
+manufacturer -
+employee
+notes
+quantity
+unitCost
+deliveryCost
+orderDate
+deliveryDate -->
 <form class="form-container" novalidate="true">
-  <!-- Form Inputs  -->
-  <mdtx-input-text
-    inputName="name"
-    label="Purchase Name"
-    prefixIcon="category"
-    [inputControl]="control('name')"
-  ></mdtx-input-text>
+  <div class="row">
+    <mdtx-sku-search [inputControl]="control('sku')"></mdtx-sku-search>
+
+    <mdtx-user-search [inputControl]="control('employee')"></mdtx-user-search>
+
+    <mdtx-manufacturer-search
+      [inputControl]="control('manufacturer')"
+    ></mdtx-manufacturer-search>
+  </div>
+
+  <div class="row">
+    <!-- Group 2 -->
+    <mdtx-input-number
+      inputName="quantity"
+      [inputControl]="control('quantity')"
+    ></mdtx-input-number>
+    <mdtx-input-number
+      inputName="unitCost"
+      [inputControl]="control('unitCost')"
+    ></mdtx-input-number>
+
+    <mdtx-input-number
+      inputName="deliveryCost"
+      [inputControl]="control('deliveryCost')"
+    ></mdtx-input-number>
+  </div>
+
+  <div class="row">
+    <!-- Group 3 -->
+    <mdtx-input-date
+      label="Order Date"
+      inputName="orderDate"
+      [inputControl]="control('orderDate')"
+    >
+    </mdtx-input-date>
+    <mdtx-input-date
+      label="Delivery Date"
+      inputName="deliveryDate"
+      [inputControl]="control('deliveryDate')"
+    >
+    </mdtx-input-date>
+  </div>
+
+  <mdtx-input-textarea
+    label="Notes"
+    inputName="notes"
+    prefixIcon="description"
+    [inputControl]="control('notes')"
+  ></mdtx-input-textarea>
 
   <!-- Form actions -->
   <div class="form-actions">
