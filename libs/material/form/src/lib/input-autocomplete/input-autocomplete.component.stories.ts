@@ -25,6 +25,7 @@ export const Primary: Story = {
     label: 'Select Option',
     inputName: 'option',
     prefixIcon: 'category',
+    defaultValue: { id: 1, name: 'Option 1' },
     options: [
       { id: 1, name: 'Option 1' },
       { id: 2, name: 'Option 2' },

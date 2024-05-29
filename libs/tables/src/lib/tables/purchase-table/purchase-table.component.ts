@@ -30,4 +30,12 @@ export class PurchaseTableComponent extends BaseTableComponent<IPurchaseRaw> {
   constructor(service: PurchaseService, protected readonly router: Router) {
     super(service);
   }
+
+  markasDeliveredEventHandler() {
+
+    
+    this.selectedItems?.forEach((e) => {
+      this.service.update({ id: e.id, delivered: true });
+    });
+  }
 }

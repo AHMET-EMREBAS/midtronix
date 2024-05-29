@@ -12,6 +12,7 @@ export const PURCHASE_COLUMNS: TableRow<IPurchaseRaw>[] = [
   },
   { name: 'unitCost', label: 'Unit Cost', prefix: '$' },
   { name: 'deliveryCost', label: 'Delivery Cost', prefix: '$' },
+  { name: 'delivered', },
   { name: 'confirmed' },
   {
     name: 'orderedBy',

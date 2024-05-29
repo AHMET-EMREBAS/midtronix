@@ -1,7 +1,12 @@
 <mat-toolbar color="primary" [style.backgroundColor]="bgColor">
   <div class="toolbar-left-container">
     @for(item of leftToolbarItems; track item){
-    <button mat-icon-button (click)="toolbarItemClickEvent.emit(item)">
+    <button
+      [matTooltip]="item.title"
+      matTooltipPosition="below"
+      mat-icon-button
+      (click)="toolbarItemClickEvent.emit(item)"
+    >
       <mat-icon>{{ item.icon }}</mat-icon>
     </button>
     }
@@ -10,7 +15,12 @@
 
   <div class="toolbar-right-container">
     @for(item of rightToolbarItems; track item){
-    <button mat-icon-button (click)="toolbarItemClickEvent.emit(item)">
+    <button
+      [matTooltip]="item.title"
+      matTooltipPosition="below"
+      mat-icon-button
+      (click)="toolbarItemClickEvent.emit(item)"
+    >
       <mat-icon>{{ item.icon }}</mat-icon>
     </button>
     }
