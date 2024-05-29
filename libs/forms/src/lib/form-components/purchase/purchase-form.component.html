@@ -24,13 +24,23 @@ deliveryDate -->
       inputName="quantity"
       [inputControl]="control('quantity')"
     ></mdtx-input-number>
+
+    <mdtx-input-number
+      inputName="taxrate"
+      prefixIcon="layers"
+      [inputControl]="control('taxrate')"
+    ></mdtx-input-number>
     <mdtx-input-number
       inputName="unitCost"
+      label="Unit Cost"
+      prefixIcon="money"
       [inputControl]="control('unitCost')"
     ></mdtx-input-number>
 
     <mdtx-input-number
       inputName="deliveryCost"
+      label="Delivery Cost"
+      prefixIcon="money"
       [inputControl]="control('deliveryCost')"
     ></mdtx-input-number>
   </div>
