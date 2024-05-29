@@ -1,13 +1,5 @@
 import axios from 'axios';
-import { RestApiPathBuilder, RestApiPaths, RestApiTokens } from '@mdtx/common';
-import {
-  Column,
-  DataSource,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { RestApiPathBuilder } from '@mdtx/common';
 const viewNames = ['DiscountView', 'OrderView', 'SkuView'];
 
 const entityNames = [
@@ -116,63 +108,4 @@ describe('API', () => {
       }
     });
   });
-
-  // it('relation test', async () => {
-  //   @Entity()
-  //   class Child {
-  //     @PrimaryGeneratedColumn()
-  //     id: number;
-  //   }
-  //   @Entity()
-  //   class Parent {
-  //     @PrimaryGeneratedColumn()
-  //     id: number;
-
-  //     @Column({ type: 'varchar' })
-  //     name: string;
-
-  //     @ManyToMany(() => Child, (c) => c.id, { eager: true })
-  //     @JoinTable()
-  //     children: Child[];
-  //   }
-
-  //   const ds = await new DataSource({
-  //     type: 'better-sqlite3',
-  //     database: 'tmp/database/test.sqlite',
-  //     entities: [Parent, Child],
-  //     synchronize: true,
-  //     dropSchema: true,
-  //   }).initialize();
-
-  //   const parentRepo = ds.getRepository(Parent);
-  //   const childRepo = ds.getRepository(Child);
-
-  //   const c1 = await childRepo.save({});
-  //   const c2 = await childRepo.save({});
-  //   const c3 = await childRepo.save({});
-  //   const p1 = await parentRepo.save({ name: 'p1', children: [{ id: 1 }] });
-  //   const p2 = await parentRepo.save({ name: 'p2', children: [{ id: 2 }] });
-  //   const p3 = await parentRepo.save({ name: 'p3', children: [{ id: 3 }] });
-
-  //   expect(c1).toBeTruthy();
-  //   expect(c2).toBeTruthy();
-  //   expect(c3).toBeTruthy();
-  //   expect(p1).toBeTruthy();
-  //   expect(p2).toBeTruthy();
-  //   expect(p3).toBeTruthy();
-
-  //   console.log('P1 : ', p1);
-
-  //   await parentRepo.save({
-  //     id: p1.id,
-  //     name: 'Updated',
-  //     children: [{ id: 1 }, { id: 2 }, { id: 3 }],
-  //   });
-
-  //   const updatedP1 = await parentRepo.findOneBy({ id: p1.id });
-
-  //   console.log(updatedP1);
-
-  //   ds.destroy();
-  // });
 });
