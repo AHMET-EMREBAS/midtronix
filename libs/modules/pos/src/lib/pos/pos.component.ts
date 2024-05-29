@@ -111,7 +111,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   taxrate = +posTaxrateStore.get()!;
 
   activeCart!: ICart;
-  activePriceLevel!: IPriceLevel;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -264,9 +263,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       const newQuantity = parseInt(foundItem.quantity + '') + 1;
       const price = parseFloat(foundItem.unitPrice + '');
       const subtotal = price * newQuantity;
-      const total =
-        subtotal +
-        (parseFloat(this.activePriceLevel.taxrate + '') * subtotal) / 100;
+      const total = subtotal + (parseFloat(this.taxrate + '') * subtotal) / 100;
 
       this.orderService.update({
         id: foundItem.id,
@@ -367,11 +364,5 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
-  }
-
-  priceLevelChangeEventHandler(event: IPriceLevel) {
-    this.activePriceLevel = event;
-
-    this.taxrate = event.taxrate;
   }
 }

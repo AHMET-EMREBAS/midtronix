@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Modules from '@mdtx/services';
-import { AppSeedModule } from './app-seed.module';
 import {
   CustomerSubscriber,
   ProductSubscriber,
@@ -9,20 +8,20 @@ import {
   SaleSubscriber,
   SkuSubscriber,
 } from '@mdtx/database';
-
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'public'),
+    }),
     TypeOrmModule.forRoot({
-      // type: 'postgres',
-
-      // database: 'testdb',
-      // username: 'postgres',
-      // password: 'password',
-
-      type: 'better-sqlite3',
-      database: 'tmp/database/data.sqlite',
+      type: 'postgres',
+      database: 'posinitial1',
+      username: 'postgres',
+      password: 'password',
       autoLoadEntities: true,
       subscribers: [
         CustomerSubscriber,
@@ -31,11 +30,8 @@ const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
         PurchaseSubscriber,
         SaleSubscriber,
       ],
-      synchronize: true,
-      dropSchema: true,
     }),
     ...modules,
-    AppSeedModule,
   ],
 })
 export class AppModule {}
