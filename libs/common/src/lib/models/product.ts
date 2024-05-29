@@ -44,6 +44,7 @@ export interface IQuantity<TSku extends IID = IID, TStore extends IID = IID>
   store: TStore;
 }
 
+
 export interface IProductImage<TOwner extends IID = IID>
   extends IImage<TOwner> {}
 
@@ -61,3 +62,6 @@ export type IPriceRaw = IPrice<ISkuRaw, IPriceLevelRaw>;
 export type IQuantityRaw = IQuantity<ISkuRaw, IStoreRaw>;
 export type IProductImageRaw = IProductImage<IProductRaw>;
 export type IProductVideoRaw = IProductVideo<IProductRaw>;
+
+
+

@@ -73,6 +73,10 @@ export class Price extends BaseEntity implements IPrice<Sku, PriceLevel> {
   @Column({ type: 'numeric', precision: 10, scale: 2, nullable: true })
   price!: number;
 
+  /**
+   *
+   * @TODO Remove cost from there becuase it is included in purchase already!
+   */
   @Column({ type: 'numeric', precision: 10, scale: 2, nullable: true })
   cost!: number;
 

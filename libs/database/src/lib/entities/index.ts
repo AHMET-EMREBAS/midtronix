@@ -31,6 +31,7 @@ export * from './product';
 export * from './product.view';
 export * from './project.dto';
 export * from './project';
+export * from './purchase';
 export * from './sale.dto';
 export * from './sale';
 export * from './store.dto';
