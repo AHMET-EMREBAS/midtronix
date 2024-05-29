@@ -7,15 +7,13 @@ import {
   ILike,
   Repository,
 } from 'typeorm';
-import {
-  DeleteResultDto,
-  PaginatorDto,
-  RelationDto,
-  UnsetRelationDto,
-} from '../dto';
+import { PaginatorDto, RelationDto, UnsetRelationDto } from '../dto';
 
 import { IID, ResourceMetadata } from '@mdtx/common';
-import { NotFoundException } from '@nestjs/common';
+import {
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 
 export class RepositoryService<T extends IID> {
   protected readonly __md = this.repository.metadata;
@@ -95,7 +93,26 @@ export class RepositoryService<T extends IID> {
     return { count: await this.repository.count({ where: query }) };
   }
 
+  private async __isUnqiue(entity: DeepPartial<T>) {
+    for (const u of this.__uniques) {
+      const newValue = (entity as any)[u];
+
+      if (newValue) {
+        const foundItem = await this.repository.findOneBy({
+          [u]: ILike(newValue),
+        } as any);
+
+        if (foundItem) {
+          throw new UnprocessableEntityException({
+            message: 'Invalid Input',
+            messages: [u, [`${u} must be unique!`]],
+          });
+        }
+      }
+    }
+  }
   async save(entity: DeepPartial<T>) {
+    await this.__isUnqiue(entity);
     return await this.repository.save(entity);
   }
 
