@@ -8,7 +8,7 @@
       [options]="employees"
       [inputControl]="employeeControl"
     ></mdtx-input-autocomplete>
-    
+
     <mdtx-input-autocomplete
       #storeInput
       label="Select Store"
@@ -41,7 +41,7 @@
       mat-raised-button
       color="primary"
       style="width: 100%"
-      [disabled]="formGroup.invalid"
+      [disabled]="formGroup?.invalid"
       (click)="runPos()"
     >
       Run
