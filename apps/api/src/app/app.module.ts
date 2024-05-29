@@ -5,6 +5,7 @@ import { AppSeedModule } from './app-seed.module';
 import {
   CustomerSubscriber,
   ProductSubscriber,
+  PurchaseSubscriber,
   SkuSubscriber,
 } from '@mdtx/database';
 
@@ -22,7 +23,12 @@ const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
       type: 'better-sqlite3',
       database: 'tmp/database/data.sqlite',
       autoLoadEntities: true,
-      subscribers: [CustomerSubscriber, ProductSubscriber, SkuSubscriber],
+      subscribers: [
+        CustomerSubscriber,
+        ProductSubscriber,
+        SkuSubscriber,
+        PurchaseSubscriber,
+      ],
       synchronize: true,
       dropSchema: true,
     }),

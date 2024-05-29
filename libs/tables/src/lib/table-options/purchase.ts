@@ -28,6 +28,16 @@ export const PURCHASE_COLUMNS: TableRow<IPurchaseRaw>[] = [
     },
   },
   {
+    name: 'expectedDeliveryDate',
+    label: 'Expected Delivery Date',
+    map(p) {
+      return (
+        p.expectedDeliveryDate &&
+        new Date(p.expectedDeliveryDate).toDateString()
+      );
+    },
+  },
+  {
     name: 'deliveryDate',
     label: 'Delivery Date',
     map(p) {

@@ -31,7 +31,12 @@ export function Property(options?: PropertyOptions) {
     format: options?.format ?? options?.type ?? 'string',
   };
 
-  const decorators: PropertyDecorator[] = [ApiProperty({ ...options })];
+  const decorators: PropertyDecorator[] = [
+    ApiProperty({
+      ...options,
+      type: options.type === 'date' ? 'string' : options.type,
+    }),
+  ];
 
   const push = (pd: PropertyDecorator) => {
     decorators.push(pd);

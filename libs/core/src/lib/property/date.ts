@@ -2,6 +2,7 @@ import {
   ValidationOptions,
   applyDecorators,
   IsDateString,
+  Transform,
 } from '../__external';
 import { PropertyOptions } from './types';
 
@@ -22,7 +23,18 @@ export function __DateProperty(options?: PropertyOptions) {
 
   const push = (pd: PropertyDecorator) => decorators.push(pd);
 
-  push(IsDateString({}, validationOptions));
+  return applyDecorators(
+    Transform(({ value }) => {
+      if (value) {
+        const d = new Date(value).toISOString();
+        if (d) {
+          return d;
+        }
+      }
 
-  return applyDecorators(...decorators);
+      return value;
+    }),
+
+    ...decorators
+  );
 }

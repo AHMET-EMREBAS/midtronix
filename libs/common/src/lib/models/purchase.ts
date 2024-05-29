@@ -11,7 +11,9 @@ export interface IPurchase<
   quantity: number;
   taxrate: number;
   orderDate: Date;
+  expectedDeliveryDate: Date;
   deliveryDate: Date;
+  delivered: boolean;
   notes: string;
   confirmed: boolean;
   sku: ISku;
