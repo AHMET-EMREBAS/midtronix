@@ -2,6 +2,9 @@ import { BaseEntity } from './__base';
 import {
   Column,
   Entity,
+  EntitySubscriberInterface,
+  EventSubscriber,
+  InsertEvent,
   OneRelation,
   ViewColumn,
   ViewEntity,
@@ -11,6 +14,10 @@ import { ISale, ISaleView } from '@mdtx/common';
 import { User } from './user';
 import { Customer } from './customer';
 import { Store } from './store';
+import { Order } from './order';
+import { OrderView } from './order.view';
+import { SkuView } from './product.view';
+import { Quantity } from './product';
 
 @Entity()
 export class Sale
@@ -60,4 +67,46 @@ export class SaleView implements ISaleView {
   @ViewColumn() taxrate!: number;
   @ViewColumn() subtotal!: number;
   @ViewColumn() total!: number;
+}
+
+@EventSubscriber()
+export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
+  listenTo() {
+    return Sale;
+  }
+
+  async afterInsert(event: InsertEvent<ISale>) {
+    const entity = event.entity;
+    const cartRepo = event.manager.getRepository(Cart);
+    const skuViewRepo = event.manager.getRepository(SkuView);
+    const orderViewRepo = event.manager.getRepository(OrderView);
+    const quantityRepo = event.manager.getRepository(Quantity);
+    const cart = await cartRepo.findOneBy({ id: entity.cart.id });
+
+    console.log('Cart : ', cart);
+
+    if (cart) {
+      const orders = await orderViewRepo.find({ where: { cartId: cart.id } });
+      console.log(orders);
+
+      for (const order of orders) {
+        const foundSkuView = await skuViewRepo.findOneBy({
+          skuId: order.skuId,
+        });
+
+        if (foundSkuView) {
+          const quantity = await quantityRepo.findOneBy({
+            id: foundSkuView.quantityId,
+          });
+          if (quantity) {
+            await quantityRepo.decrement(
+              { id: quantity.id },
+              'quantity',
+              order.quantity
+            );
+          }
+        }
+      }
+    }
+  }
 }

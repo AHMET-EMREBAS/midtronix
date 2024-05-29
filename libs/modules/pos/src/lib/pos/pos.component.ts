@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,6 +14,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {
   Subscription,
+  catchError,
   debounceTime,
   firstValueFrom,
   map,
@@ -43,6 +44,7 @@ import {
   ICart,
   ICreateSaleDto,
   IOrderViewRaw,
+  IPriceLevel,
   ISkuViewRaw,
   QueryBuilder,
 } from '@mdtx/common';
@@ -83,6 +85,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     FullscreenButtonComponent,
     PosCheckoutComponent,
     MatDialogModule,
+    PriceLevelSearchComponent,
   ],
   templateUrl: './pos.component.html',
   styleUrl: './pos.component.scss',
@@ -95,6 +98,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   ],
 })
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
+  @ViewChild('priceLevelSearchRef')
+  priceLevelSearchRef!: PriceLevelSearchComponent;
+
   sub!: Subscription;
   checkoutOpen = false;
 
@@ -105,6 +111,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   taxrate = +posTaxrateStore.get()!;
 
   activeCart!: ICart;
+  activePriceLevel!: IPriceLevel;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -121,6 +128,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   readonly messages: string[] = [];
 
   isReady = false;
+
   scanControl = new FormControl('');
 
   orderUnderUpdate?: IOrderViewRaw;
@@ -132,8 +140,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     protected readonly cartService: CartService,
     protected readonly saleService: SaleService,
     protected readonly router: Router,
-    protected readonly route: ActivatedRoute,
-    protected readonly cd: ChangeDetectorRef
+    protected readonly route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -151,9 +158,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       priceLevelId: this.priceLevelId,
     });
 
-    if (this.isReady) {
-      // Ready
-    } else {
+    if (!this.isReady) {
       this.router.navigate(['setting'], { relativeTo: this.route });
     }
   }
@@ -226,8 +231,14 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     const cartId = posCartIdStore.get();
 
     if (cartId) {
-      const foundCart = await firstValueFrom(this.cartService.getByKey(cartId));
-      console.log('Found Cart: ', foundCart);
+      const foundCart = await firstValueFrom(
+        this.cartService.getByKey(cartId).pipe(
+          catchError((err) => {
+            console.debug(err);
+            return of(null);
+          })
+        )
+      );
 
       if (foundCart && foundCart.checkout != true) {
         this.activeCart = foundCart;
@@ -235,7 +246,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
         this.activeCart = await this.__createCart();
       }
 
-      console.log('Active Cart: ', this.activeCart);
       posCartIdStore.set(this.activeCart.id + '');
     } else {
       const cart = await this.__createCart();
@@ -251,18 +261,18 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     );
 
     if (foundItem) {
-      console.log('Updating Item : ', foundItem);
       const newQuantity = parseInt(foundItem.quantity + '') + 1;
       const price = parseFloat(foundItem.unitPrice + '');
       const subtotal = price * newQuantity;
       const total =
-        subtotal + (parseFloat(foundItem.taxrate + '') * subtotal) / 100;
+        subtotal +
+        (parseFloat(this.activePriceLevel.taxrate + '') * subtotal) / 100;
 
       this.orderService.update({
         id: foundItem.id,
         quantity: newQuantity,
         subtotal: subtotal,
-        total: total,
+        total,
       });
     } else {
       const quantity = 1;
@@ -271,7 +281,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       const taxrate = parseFloat((this.taxrate ?? '0') + '');
       const total = subtotal + (taxrate * subtotal) / 100;
 
-      console.log('Adding Item to Cart : ', event);
       this.orderService.addOrder({
         cart: { id: this.activeCart.id },
         sku: { id: event.skuId },
@@ -286,12 +295,10 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   editButtonClickEventHandler(event: IOrderViewRaw) {
-    console.log('Edited : ', event);
     this.orderUnderUpdate = event;
   }
 
   deleteButtonClickEventHandler(event: IOrderViewRaw) {
-    console.log('Deleting Item : ', event);
     this.orderViewService.removeOneFromCache(event);
     this.orderService.delete(event.id);
     this.reloadOrderList();
@@ -337,7 +344,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   async saleEventHandler(event: ICreateSaleDto) {
-    console.log('Sale : ', event);
     await firstValueFrom(
       this.saleService.add({
         ...event,
@@ -360,6 +366,12 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.sub?.unsubscribe();
+  }
+
+  priceLevelChangeEventHandler(event: IPriceLevel) {
+    this.activePriceLevel = event;
+
+    this.taxrate = event.taxrate;
   }
 }

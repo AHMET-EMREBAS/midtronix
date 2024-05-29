@@ -29,6 +29,7 @@ import { IInputOption } from '@mdtx/material/core';
       prefixIcon="search"
       [defaultValue]="defaultPriceLevel"
       [inputControl]="inputControl"
+      [defaultValue]="options[0]"
       (inputEvent)="changeEvent.emit($event)"
     ></mdtx-input-autocomplete>
   `,
@@ -61,7 +62,7 @@ export class PriceLevelSearchComponent
           this.changeEvent.emit(data);
         }
       });
-    this.options$ = this.service.asOptions$;
+    this.options$ = this.service.getWithQuery({ take: 1000000 });
   }
 
   ngOnDestroy(): void {

@@ -6,6 +6,7 @@ import {
   CustomerSubscriber,
   ProductSubscriber,
   PurchaseSubscriber,
+  SaleSubscriber,
   SkuSubscriber,
 } from '@mdtx/database';
 
@@ -28,6 +29,7 @@ const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
         ProductSubscriber,
         SkuSubscriber,
         PurchaseSubscriber,
+        SaleSubscriber,
       ],
       synchronize: true,
       dropSchema: true,
