@@ -7,11 +7,12 @@ export function plural(value: string) {
   const lowerName = value.toLowerCase();
 
   if (lowerName && lowerName.length > 0) {
-    const pluralPattern = /^\w+[^euioa]y$/i;
+    const iesPattern = /^\w+[^euioa]y$/i;
+    const esPattern = /^\w+[^euioa]o$/i;
 
-    if (pluralPattern.test(lowerName)) {
+    if (iesPattern.test(lowerName)) {
       return value.slice(0, -1) + 'ies';
-    } else if (lowerName.endsWith('o')) {
+    } else if (esPattern.test(lowerName)) {
       return value + 'es';
     } else if (lowerName.endsWith('ss')) {
       return value + 'es';

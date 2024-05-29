@@ -40,6 +40,8 @@ export class ProductController {
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateProductDto) {
+    console.log(body);
+    // manufacturers
     return this.service.updateOneById(id, body);
   }
 

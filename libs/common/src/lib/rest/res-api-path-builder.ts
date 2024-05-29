@@ -106,6 +106,11 @@ export class RestApiPathBuilder {
     };
   }
 
+  /**
+   * Create and return the RestApiPaths
+   * @param resourceName
+   * @returns
+   */
   static get(resourceName: string) {
     return new RestApiPathBuilder(resourceName).create();
   }

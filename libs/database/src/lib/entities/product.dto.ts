@@ -26,7 +26,7 @@ export class CreatePriceLevelDto
 }
 
 @Exclude()
-export class UpdatePriceLevelDto extends CreatePriceLevelDto {}
+export class UpdatePriceLevelDto extends PartialType(CreatePriceLevelDto) {}
 
 @Exclude()
 export class CreateProductDto
@@ -67,7 +67,10 @@ export class CreatePriceDto implements ICreatePriceDto {
 }
 
 @Exclude()
-export class UpdatePriceDto extends PartialType(CreatePriceDto) {}
+export class UpdatePriceDto extends PickType(CreatePriceDto, [
+  'price',
+  'cost',
+]) {}
 
 @Exclude()
 export class CreateQuantityDto implements ICreateQuantityDto {
@@ -77,9 +80,9 @@ export class CreateQuantityDto implements ICreateQuantityDto {
 }
 
 @Exclude()
-export class UpdateQuantityDto extends PickType(CreateQuantityDto, [
-  'quantity',
-]) {}
+export class UpdateQuantityDto extends PartialType(
+  PickType(CreateQuantityDto, ['quantity'])
+) {}
 
 @Exclude()
 export class CreateProductImageDto extends CreateImageDto {}

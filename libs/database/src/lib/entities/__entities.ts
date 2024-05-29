@@ -45,6 +45,7 @@ import { Discount } from './discount';
 import { SkuView } from './product.view';
 import { Sale, SaleView } from './sale';
 import { DiscountView } from './discount.view';
+import { Purchase } from './purchase';
 
 export const UserEntities: Readonly<Type[]> = [
   User,
@@ -209,3 +210,5 @@ export const SaleEntities = [
   ...CustomerEntities,
   ...OrderEntities,
 ];
+
+export const PurchaseEntities = [Purchase, ...UserEntities];

@@ -12,10 +12,10 @@ import {
   PaginatorDto,
   RelationDto,
   UnsetRelationDto,
-  UpdateResultDto,
 } from '../dto';
-import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+
 import { IID, ResourceMetadata } from '@mdtx/common';
+import { NotFoundException } from '@nestjs/common';
 
 export class RepositoryService<T extends IID> {
   protected readonly __md = this.repository.metadata;
@@ -70,7 +70,13 @@ export class RepositoryService<T extends IID> {
   }
 
   async findOneById(id: T['id']) {
-    return await this.repository.findOneBy({ id } as FindOptionsWhere<T>);
+    const found = await this.repository.findOneBy({
+      id,
+    } as FindOptionsWhere<T>);
+
+    if (found) return found;
+
+    throw new NotFoundException('Entity Not Found');
   }
 
   async findOneContainsBy(property: keyof T, query: string) {
@@ -97,48 +103,15 @@ export class RepositoryService<T extends IID> {
     return await this.repository.save(entities);
   }
 
-  /**
-   * Delete all entities that match with the criteria
-   * @param property
-   * @param query
-   * @returns
-   */
-  deleteAllBy<P extends keyof T>(
-    property: keyof T,
-    query: T[P]
-  ): Promise<DeleteResultDto> {
-    return this.repository.delete({
-      [property]: Equal(query),
-    } as FindOptionsWhere<T>);
+  async deleteById(id: number): Promise<T> {
+    const found = await this.findOneById(id);
+    await this.repository.delete(found.id);
+    return found;
   }
 
-  async deleteById(id: number): Promise<DeleteResultDto> {
-    return await this.repository.delete(id);
-  }
-
-  /**
-   * Update all entities that match with the criteria
-   * @param property
-   * @param query
-   * @param entity
-   * @returns
-   */
-  updateAllBy<P extends keyof T>(
-    property: keyof T,
-    query: T[P],
-    entity: QueryDeepPartialEntity<T>
-  ): Promise<UpdateResultDto> {
-    return this.repository.update(
-      { [property]: Equal(query) } as FindOptionsWhere<T>,
-      entity
-    );
-  }
-
-  async updateOneById(
-    id: number,
-    entity: QueryDeepPartialEntity<T>
-  ): Promise<UpdateResultDto> {
-    return await this.repository.update(id, entity);
+  async updateOneById(id: number, entity: DeepPartial<T>): Promise<T> {
+    await this.findOneById(id);
+    return await this.save({ ...entity, id });
   }
 
   async addRelation(relationDto: RelationDto<T>) {
