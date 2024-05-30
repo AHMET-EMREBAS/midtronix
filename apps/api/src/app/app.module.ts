@@ -24,7 +24,7 @@ const isDev = process.env.NODE_ENV == 'development';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      database: 'testdb',
+      database: 'posdb',
       username: 'postgres',
       password: 'password',
       autoLoadEntities: true,
@@ -35,10 +35,9 @@ const isDev = process.env.NODE_ENV == 'development';
         PurchaseSubscriber,
         SaleSubscriber,
         OrderSubscriber,
-      ]
+      ],
     }),
     ...modules,
-    AppSeedModule,
   ],
 })
 export class AppModule {}
