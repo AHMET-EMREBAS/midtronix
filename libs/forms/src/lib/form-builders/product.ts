@@ -10,7 +10,6 @@ export const ProductFormBuilder = new FormGroupBuilder<ICreateProductDto>(
 
   .add('upc')
   .required()
-  .ean()
 
   .add('description')
   .longText()
