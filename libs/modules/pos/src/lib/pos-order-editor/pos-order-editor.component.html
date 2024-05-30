@@ -10,7 +10,7 @@
             label="Update Quantity"
             [inputControl]="quantityControl"
           ></mdtx-input-number>
-          <button mat-raised-button color="primary" (click)="updateOrder()">
+          <button mat-raised-button color="primary" (click)="updateQuantity()">
             Update Quantity
           </button>
         </div>
@@ -27,43 +27,14 @@
           ></mdtx-input-number>
 
           <div class="actions">
-            <button mat-raised-button color="primary" (click)="updateOrder()">
+            <button mat-raised-button color="primary" (click)="updateUnitPrice()">
               Update Unit Price
             </button>
           </div>
         </div>
       </mat-tab>
 
-      <mat-tab label="Price Level">
-        <div class="container">
-          <mdtx-price-level-search #priceLevelSearch></mdtx-price-level-search>
-          <div class="actions">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="updatePriceLevel()"
-            >
-              Apply Price Level
-            </button>
-          </div>
-        </div>
-      </mat-tab>
-
-      <mat-tab label="Discounts">
-        <div class="container">
-          <mdtx-discount-view-search
-            #discountSearch
-            [skuId]="activeOrder.skuId"
-          ></mdtx-discount-view-search>
-          <div class="actions">
-            <button mat-raised-button color="primary" (click)="updateOrder()">
-              Apply Discount
-            </button>
-          </div>
-        </div>
-      </mat-tab>
-
-      <mat-tab label="Total">
+      <!-- <mat-tab label="Total">
         <div class="container">
           <mdtx-input-number
             label="Subtotal"
@@ -78,7 +49,7 @@
             </button>
           </div>
         </div>
-      </mat-tab>
+      </mat-tab> -->
     </mat-tab-group>
     <div class="actions" style="padding-left: 1em; padding-right: 1em">
       <button mat-stroked-button color="accent" (click)="closeEventHandler()">

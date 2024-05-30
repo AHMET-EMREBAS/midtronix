@@ -11,6 +11,12 @@
         [formControl]="scanControl"
       />
     </mat-form-field>
+
+    <mdtx-price-level-search
+      #priceLevelSearch
+      (changeEvent)="updatePriceLevel()"
+      [defaultPriceLevel]="activePriceLevel"
+    ></mdtx-price-level-search>
   </ng-template>
 
   <div class="pos-container">

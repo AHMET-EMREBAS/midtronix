@@ -24,7 +24,6 @@ export class PosOrderCardListComponent {
 
   @Output() checkoutButtonClickEvent = new EventEmitter();
 
-  
   editButtonClickEventHandler(item: IOrderViewRaw) {
     this.editButtonClickEvent.emit(item);
   }
@@ -44,6 +43,7 @@ export class PosOrderCardListComponent {
   }
 
   getTotal() {
+    console.log(this.orderListItems);
     if (this.orderListItems && this.orderListItems.length > 0)
       return this.orderListItems
         .map((e) => {

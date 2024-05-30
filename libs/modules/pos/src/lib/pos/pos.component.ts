@@ -45,6 +45,7 @@ import {
   ICreateSaleDto,
   IOrderView,
   IOrderViewRaw,
+  IPriceLevel,
   ISale,
   ISkuViewRaw,
   QueryBuilder,
@@ -100,8 +101,9 @@ import { receiptTemplate } from './receipt-template';
   ],
 })
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
-  @ViewChild('priceLevelSearchRef')
+  @ViewChild('priceLevelSearch')
   priceLevelSearchRef!: PriceLevelSearchComponent;
+
   sub!: Subscription;
   checkoutOpen = false;
 
@@ -115,9 +117,10 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   employeeId = +posEmployeeIdStore.get()!;
   customerId = +posCustomerIdStore.get()!;
   priceLevelId = +posPriceLevelIdStore.get()!;
-  taxrate = +posTaxrateStore.get()!;
+  // taxrate = +posTaxrateStore.get()!;
 
   activeCart!: ICart;
+  activePriceLevel!: IPriceLevel;
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
@@ -258,26 +261,13 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     );
 
     if (foundItem) {
-      const newQuantity = parseInt(foundItem.quantity + '') + 1;
-      const price = parseFloat(foundItem.unitPrice + '');
-      const subtotal = price * newQuantity;
-      const total = subtotal + (parseFloat(this.taxrate + '') * subtotal) / 100;
-
-      this.orderService.update(
-        {
-          id: foundItem.id,
-          quantity: newQuantity,
-          subtotal: subtotal,
-          total,
-        },
-        { isOptimistic: false }
-      );
+      const quantity = parseInt(foundItem.quantity + '') + 1;
+      const id = foundItem.id;
+      this.orderService.update({ id, quantity }, { isOptimistic: false });
     } else {
       const quantity = 1;
       const unitPrice = parseFloat((event.price ?? 0) + '');
-      const subtotal = unitPrice * quantity;
-      const taxrate = parseFloat((this.taxrate ?? '0') + '');
-      const total = subtotal + (taxrate * subtotal) / 100;
+      const taxrate = parseFloat((this.activePriceLevel.taxrate ?? '0') + '');
 
       this.orderService.addOrder({
         cart: { id: this.activeCart.id },
@@ -285,14 +275,29 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
         quantity,
         taxrate,
         unitPrice,
-        subtotal,
-        total,
       });
     }
   }
 
   editButtonClickEventHandler(event: IOrderViewRaw) {
     this.orderUnderUpdate = event;
+  }
+
+  updatePriceLevel() {
+    const pl = this.priceLevelSearchRef.inputControl.value;
+
+    if (pl) {
+      this.activePriceLevel = pl;
+      posPriceLevelIdStore.set(pl.id + '');
+      for (const order of this.orderListItemsSnapshot) {
+        this.orderService.update({
+          id: order.id,
+          taxrate: pl.taxrate,
+        });
+      }
+
+      this.reloadOrderList();
+    }
   }
 
   deleteButtonClickEventHandler(event: IOrderViewRaw) {
@@ -320,7 +325,8 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       {
         take: 1000,
         cartId: this.activeCart.id,
-        storeId: this.storeId!,
+        storeId: this.storeId,
+        priceLevelId: this.priceLevelId,
       },
       { isOptimistic: false }
     );
@@ -346,7 +352,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     const sale = await firstValueFrom(
       this.saleService.add({
         ...event,
-        taxrate: this.taxrate!,
+        taxrate: this.activePriceLevel.taxrate!,
         employee: { id: this.employeeId! },
         store: { id: this.storeId! },
         customer: { id: this.customerId! },

@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as Modules from '@mdtx/services';
 import {
   CustomerSubscriber,
+  OrderSubscriber,
   ProductSubscriber,
   PurchaseSubscriber,
   SaleSubscriber,
@@ -32,6 +33,7 @@ const isDev = process.env.NODE_ENV == 'development';
         SkuSubscriber,
         PurchaseSubscriber,
         SaleSubscriber,
+        OrderSubscriber,
       ],
       synchronize: true,
       dropSchema: true,

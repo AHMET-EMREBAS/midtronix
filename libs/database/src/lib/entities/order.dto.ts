@@ -12,14 +12,8 @@ export class CreateOrderDto implements ICreateOrderDto {
   @Property({ type: 'number', required: true, minimum: 0 })
   taxrate!: number;
 
-  @Property({ type: 'number', required: true, minimum: 0 })
-  subtotal!: number;
-
-  @Property({ type: 'number', required: true, minimum: 0 })
-  total!: number;
-
   @IDObjectProperty({ required: true }) cart!: IID;
-  
+
   @IDObjectProperty({ required: true }) sku!: IID;
 }
 

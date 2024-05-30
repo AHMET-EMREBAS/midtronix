@@ -88,73 +88,67 @@ export class PosOrderEditorComponent implements AfterViewInit {
     this.closeEvent.emit();
   }
 
-  updateOrder() {
-    const quantity = parseInt(this.quantityControl.value + '') ?? 1;
+  // async updateOrder() {
+  //   const quantity = parseInt(this.quantityControl.value + '') ?? 1;
+  //   const unitPrice = parseFloat(this.unitPriceControl.value + '');
 
-    const taxrate = parseFloat(
-      (this.priceLevelSearch.inputControl.value?.taxrate ?? this.taxrate ?? 0) +
-        ''
-    );
-    const __initialUnitPrice = parseFloat(this.unitPriceControl.value + '');
+  //   await firstValueFrom(
+  //     this.orderService.update({
+  //       id: this.activeOrder.id,
+  //       quantity,
+  //       unitPrice,
+  //     })
+  //   );
 
-    const fixedDiscount =
-      parseFloat((this.discountSearch.inputControl.value?.fixed ?? '0') + '') ??
-      0;
+  //   this.updateEvent.emit();
+  // }
 
-    const percentDiscount =
-      (__initialUnitPrice *
-        parseFloat(
-          (this.discountSearch.inputControl.value?.percent ?? '0') + ''
-        )) /
-      100;
+  // updateTotal() {
+  //   const __subtotal = this.subtotalControl.value;
+  //   const __quantity = this.quantityControl.value;
 
-    const unitPrice = __initialUnitPrice - (fixedDiscount || percentDiscount);
+  //   if (__subtotal && __quantity) {
+  //     const subtotal = parseFloat(__subtotal + '');
+  //     const quantity = parseFloat(__quantity + '');
+  //     const price = parseFloat((subtotal / quantity).toFixed(2));
 
-    const subtotal = unitPrice * quantity;
-    const total = subtotal + (taxrate * subtotal) / 100;
+  //     this.unitPriceControl.setValue(price);
+  //     this.updateOrder();
+  //   }
+  // }
+  updateQuantity() {
+    const quantity = this.quantityControl.value;
 
-    this.orderService.update({
-      id: this.activeOrder.id,
-      quantity,
-      unitPrice,
-      subtotal,
-      total,
-    });
-
-    this.updateEvent.emit();
-  }
-
-  updateTotal() {
-    const __subtotal = this.subtotalControl.value;
-    const __quantity = this.quantityControl.value;
-
-    if (__subtotal && __quantity) {
-      const subtotal = parseFloat(__subtotal + '');
-      const quantity = parseFloat(__quantity + '');
-
-      const price = parseFloat((subtotal / quantity).toFixed(2));
-
-      this.unitPriceControl.setValue(price);
-      this.updateOrder();
+    if (quantity) {
+      this.orderService.update({ id: this.activeOrder.id, quantity });
+      this.updateEvent.emit();
     }
   }
 
-  async updatePriceLevel() {
-    const priceLevel = this.priceLevelSearch.inputControl.value;
-
-    if (priceLevel) {
-      const foundPriceLevels = await firstValueFrom(
-        this.skuViewService.query({
-          barcode: QueryBuilder.EQUAL(this.activeOrder.barcode),
-          priceLevelId: priceLevel.id,
-          storeId: this.storeId,
-        })
-      );
-      const found = foundPriceLevels[0];
-      if (found) {
-        this.unitPriceControl.setValue(found.price);
-        this.updateOrder();
-      }
+  updateUnitPrice() {
+    const unitPrice = this.unitPriceControl.value;
+    if (unitPrice) {
+      this.orderService.update({ id: this.activeOrder.id, unitPrice });
+      this.updateEvent.emit();
     }
   }
+
+  // async updatePriceLevel() {
+  //   const priceLevel = this.priceLevelSearch.inputControl.value;
+
+  //   if (priceLevel) {
+  //     const foundPriceLevels = await firstValueFrom(
+  //       this.skuViewService.query({
+  //         barcode: QueryBuilder.EQUAL(this.activeOrder.barcode),
+  //         priceLevelId: priceLevel.id,
+  //         storeId: this.storeId,
+  //       })
+  //     );
+  //     const found = foundPriceLevels[0];
+  //     if (found) {
+  //       this.unitPriceControl.setValue(found.price);
+  //       this.updateOrder();
+  //     }
+  //   }
+  // }
 }
