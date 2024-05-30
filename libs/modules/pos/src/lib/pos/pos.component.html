@@ -1,5 +1,5 @@
 <!-- Barcode Scanner  -->
-
+<ng-container *ngIf="refreshOrderList$ | async"> </ng-container>
 <div class="pos-container" #containerRef>
   <ng-template #barcodeScanner>
     <mat-form-field appearance="outline">

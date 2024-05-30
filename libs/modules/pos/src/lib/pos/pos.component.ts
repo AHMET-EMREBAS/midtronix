@@ -106,6 +106,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   refreshOrderList$ = this.orderService.entityActions$.pipe(
     map((event) => {
       this.reloadOrderList();
+      this.reloadProductList();
     })
   );
 
@@ -156,8 +157,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     if (!this.isReady) {
       this.router.navigate(['setting'], { relativeTo: this.route });
     }
-
-    this.refreshOrderList$.subscribe();
   }
 
   async ngAfterViewInit() {
@@ -302,6 +301,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   reloadProductList() {
+    this.skuViewService.clearCache();
     this.skuViewService.getWithQuery(
       {
         take: 10000,
