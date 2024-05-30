@@ -22,7 +22,7 @@ const isDev = process.env.NODE_ENV == 'development';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      database: 'posinitial1',
+      database: 'testdb',
       username: 'postgres',
       password: 'password',
       autoLoadEntities: true,

@@ -7,7 +7,9 @@ import {
   Min,
   ValidationOptions,
   applyDecorators,
+  Transform,
 } from '../__external';
+import { NumberTransformer } from '../dto';
 import { PropertyOptions } from './types';
 
 /**
@@ -31,5 +33,10 @@ export function __NumberProperty(options?: PropertyOptions) {
   if (isNumber(minimum)) push(Min(minimum, validationOptions));
   if (isArray(enums)) push(IsIn(enums, validationOptions));
 
-  return applyDecorators(...decorators);
+  return applyDecorators(
+    Transform(({ value }) => {
+      return value != undefined ? parseFloat(value) : value;
+    }),
+    ...decorators
+  );
 }
