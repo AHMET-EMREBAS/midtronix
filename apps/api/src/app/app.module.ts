@@ -15,6 +15,7 @@ import { AppSeedModule } from './app-seed.module';
 const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
 
 const isDev = process.env.NODE_ENV == 'development';
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({
