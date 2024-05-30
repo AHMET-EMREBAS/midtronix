@@ -2,6 +2,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -44,8 +45,10 @@ import {
 import {
   ICart,
   ICreateSaleDto,
+  IOrderView,
   IOrderViewRaw,
   IPriceLevel,
+  ISale,
   ISkuViewRaw,
   QueryBuilder,
 } from '@mdtx/common';
@@ -63,6 +66,7 @@ import {
   posTaxrateStore,
 } from '../__stores';
 import { ActivatedRoute, Router } from '@angular/router';
+import { receiptTemplate } from './receipt-template';
 @Component({
   selector: 'mdtx-pos',
   standalone: true,
@@ -99,6 +103,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   ],
 })
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
+  @ViewChild('receipt') receipt!: ElementRef<HTMLDivElement>;
+
   @ViewChild('priceLevelSearchRef')
   priceLevelSearchRef!: PriceLevelSearchComponent;
   sub!: Subscription;
@@ -342,7 +348,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   async saleEventHandler(event: ICreateSaleDto) {
-    await firstValueFrom(
+    const sale = await firstValueFrom(
       this.saleService.add({
         ...event,
         taxrate: this.taxrate!,
@@ -357,10 +363,26 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       this.cartService.update({ id: this.activeCart.id, checkout: true })
     );
 
+    this.printReceipt(sale, this.orderListItemsSnapshot);
     this.closeCheckout();
     this.orderViewService.clearCache();
     await this.createNewCart();
     this.reloadProductList();
+  }
+
+  printReceipt(sale: ISale, orders: IOrderView[]) {
+    const printWindow = window.open(
+      '',
+      'Print Receipt',
+      'width=200,scrollbars=yes'
+    )!;
+
+    const template = receiptTemplate(sale, orders);
+
+    printWindow.document.write(template);
+    printWindow.document.close();
+    printWindow.print();
+    // printWindow.close();
   }
 
   ngOnDestroy(): void {
