@@ -23,12 +23,13 @@ import { map, merge } from 'rxjs';
 export class PosCheckoutComponent implements AfterViewInit {
   @Input() orderListItems!: IOrderViewRaw[];
   // @ViewChild('accountBalance') accountBalance!: InputNumberComponent;
+
+  tax = 0;
+  subtotal = 0;
+  total = 0;
   cartBalance = 0;
   @ViewChild('cashPayment') cashPayment!: InputNumberComponent;
   @ViewChild('cardPayment') cardPayment!: InputNumberComponent;
-  @ViewChild('tax') tax!: InputNumberComponent;
-  @ViewChild('subtotal') subtotal!: InputNumberComponent;
-  @ViewChild('total') total!: InputNumberComponent;
   @Output() closeCheckoutEvent = new EventEmitter();
   @Output() saleEvent = new EventEmitter();
 
@@ -38,15 +39,15 @@ export class PosCheckoutComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.orderListItems && this.orderListItems.length > 0) {
-      const total = this.orderListItems
+      this.total = this.orderListItems
         .map((e) => parseFloat(e.total + ''))
         .reduce((p, c) => p + c);
 
-      const subtotal = this.orderListItems
+      this.subtotal = this.orderListItems
         .map((e) => parseFloat(e.subtotal + ''))
         .reduce((p, c) => p + c);
 
-      const tax = this.orderListItems
+      this.tax = this.orderListItems
         .map((e) => {
           return (
             (parseFloat(e.subtotal + '') * parseFloat(e.taxrate + '')) / 100
@@ -54,31 +55,21 @@ export class PosCheckoutComponent implements AfterViewInit {
         })
         .reduce((p, c) => p + c);
 
-      this.cardPayment.inputControl.setValue(total);
+      this.cardPayment.inputControl.setValue(this.total);
       this.cashPayment.inputControl.setValue(0);
-      // this.accountBalance.inputControl.setValue(0);
-
-      this.tax.inputControl.setValue(tax);
-
-      this.total.inputControl.setValue(total);
-      this.subtotal.inputControl.setValue(subtotal);
 
       merge(
         this.cardPayment.$valueChange.pipe(map((e) => ({ cardPayment: e }))),
         this.cashPayment.$valueChange.pipe(map((e) => ({ cashPayment: e })))
-        // this.accountBalance.$valueChange.pipe(
-        //   map((e) => ({ accountBalance: e }))
-        // )
       ).subscribe((payment) => {
         const { cardPayment, cashPayment } = payment as any;
 
         const cardValue = this.card();
         const cashValue = this.cash();
-        // const accountValue = this.account();
 
         if (cardPayment) {
           if (cashValue == 0) {
-            const rest = total - cardValue;
+            const rest = this.total - cardValue;
             if (rest > 0) {
               this.cashPayment.inputControl.setValue(rest);
             } else {
@@ -87,7 +78,7 @@ export class PosCheckoutComponent implements AfterViewInit {
           }
         } else if (cashPayment) {
           const cashValue = this.cash();
-          const restCardValue = total - cashValue;
+          const restCardValue = this.total - cashValue;
           if (restCardValue > 0) {
             this.cardPayment.inputControl.setValue(restCardValue);
           } else {
@@ -95,7 +86,7 @@ export class PosCheckoutComponent implements AfterViewInit {
           }
         }
 
-        const cartBalance = total - this.card() - this.cash();
+        const cartBalance = this.total - this.card() - this.cash();
 
         this.cartBalance = cartBalance;
       });
@@ -107,8 +98,8 @@ export class PosCheckoutComponent implements AfterViewInit {
       accountBalancePayment: 0,
       cardPayment: this.card(),
       cashPayment: this.cash(),
-      subtotal: this.subtotalPrice(),
-      total: this.totalPrice(),
+      subtotal: this.subtotal,
+      total: this.total,
     } as ICreateSaleDto);
   }
 
@@ -125,20 +116,10 @@ export class PosCheckoutComponent implements AfterViewInit {
     this.cashPayment.inputControl.setValue(result);
   }
 
-  subtotalPrice() {
-    return parseFloat(this.subtotal.inputControl.value + '') ?? 0;
-  }
-
-  totalPrice() {
-    return parseFloat(this.total.inputControl.value + '') ?? 0;
-  }
   cash() {
     return parseFloat(this.cashPayment.inputControl.value + '') ?? 0;
   }
   card() {
     return parseFloat(this.cardPayment.inputControl.value + '') ?? 0;
-  }
-  account() {
-    // return parseFloat(this.accountBalance.inputControl.value + '') ?? 0;
   }
 }

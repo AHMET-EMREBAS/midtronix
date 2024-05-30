@@ -3,7 +3,7 @@
 
   <div class="dialog-content">
     <mat-tab-group>
-      <mat-tab label="Amount">
+      <!-- <mat-tab label="Amount">
         <div class="container">
           <mdtx-input-number
             #tax
@@ -22,7 +22,7 @@
             inputName="total"
           ></mdtx-input-number>
         </div>
-      </mat-tab>
+      </mat-tab> -->
       <mat-tab label="Payment Options">
         <div class="container">
           <!-- <mdtx-input-number
@@ -47,7 +47,12 @@
     </mat-tab-group>
 
     <div class="actions">
-      <button mat-raised-button color="warn" *ngIf="cartBalance < 0" (click)="giveCashBack()">
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="cartBalance < 0"
+        (click)="giveCashBack()"
+      >
         Give <strong> ${{ (cartBalance * -1).toFixed(2) }} </strong> Back
       </button>
 

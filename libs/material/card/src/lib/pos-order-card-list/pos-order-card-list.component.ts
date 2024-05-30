@@ -27,6 +27,7 @@ export class PosOrderCardListComponent {
   editButtonClickEventHandler(item: IOrderViewRaw) {
     this.editButtonClickEvent.emit(item);
   }
+
   deleteButtonClickEventHandler(item: IOrderViewRaw) {
     this.deleteButtonClickEvent.emit(item);
   }
@@ -43,7 +44,6 @@ export class PosOrderCardListComponent {
   }
 
   getTotal() {
-    console.log(this.orderListItems);
     if (this.orderListItems && this.orderListItems.length > 0)
       return this.orderListItems
         .map((e) => {
