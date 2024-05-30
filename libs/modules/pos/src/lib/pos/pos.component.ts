@@ -2,7 +2,6 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -14,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {
-  BehaviorSubject,
   Subscription,
   catchError,
   debounceTime,
@@ -47,7 +45,6 @@ import {
   ICreateSaleDto,
   IOrderView,
   IOrderViewRaw,
-  IPriceLevel,
   ISale,
   ISkuViewRaw,
   QueryBuilder,
@@ -103,8 +100,6 @@ import { receiptTemplate } from './receipt-template';
   ],
 })
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
-  @ViewChild('receipt') receipt!: ElementRef<HTMLDivElement>;
-
   @ViewChild('priceLevelSearchRef')
   priceLevelSearchRef!: PriceLevelSearchComponent;
   sub!: Subscription;
@@ -381,8 +376,13 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
     printWindow.document.write(template);
     printWindow.document.close();
-    printWindow.print();
-    // printWindow.close();
+    printWindow.onafterprint = () => {
+      printWindow.close();
+    };
+
+    setTimeout(() => {
+      printWindow.print();
+    }, 1000);
   }
 
   ngOnDestroy(): void {

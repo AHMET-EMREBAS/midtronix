@@ -58,13 +58,4 @@
     (saleEvent)="saleEventHandler($event)"
   ></mdtx-pos-checkout>
   }
-
-  <div class="receipt" #receipt>
-    @for(item of orderListItems$| async; track item ){
-    <p>
-      <strong> {{ item.quantity }} X </strong>
-      {{ item.name }}
-    </p>
-    }
-  </div>
 </div>
