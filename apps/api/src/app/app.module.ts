@@ -12,10 +12,12 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
 
+const isDev = process.env.NODE_ENV == 'development';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, 'public'),
+      renderPath: isDev ? 'client-app' : '',
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',

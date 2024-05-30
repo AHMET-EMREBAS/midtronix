@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import {
+  BehaviorSubject,
   Subscription,
   catchError,
   debounceTime,
@@ -106,7 +107,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   refreshOrderList$ = this.orderService.entityActions$.pipe(
     map((event) => {
       this.reloadOrderList();
-      this.reloadProductList();
     })
   );
 
@@ -359,8 +359,8 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
     this.closeCheckout();
     this.orderViewService.clearCache();
-
     await this.createNewCart();
+    this.reloadProductList();
   }
 
   ngOnDestroy(): void {

@@ -92,6 +92,7 @@ export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
       for (const order of orders) {
         const foundSkuView = await skuViewRepo.findOneBy({
           skuId: order.skuId,
+          storeId: cart.store.id,
         });
 
         if (foundSkuView) {
@@ -99,6 +100,7 @@ export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
             id: foundSkuView.quantityId,
           });
           if (quantity) {
+            console.log('Updating Quantity : ', quantity);
             await quantityRepo.decrement(
               { id: quantity.id },
               'quantity',
