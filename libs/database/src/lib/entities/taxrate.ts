@@ -6,5 +6,5 @@ import { ITaxrate } from '@mdtx/common';
 export class Taxrate extends BaseEntity implements ITaxrate {
   @Column({ type: 'varchar' }) state!: string;
   @Column({ type: 'varchar' }) district!: string;
-  @Column({ type: 'numeric', precision: 10, scale: 2 }) rate!: number;
+  @Column({ type: 'numeric' }) rate!: number;
 }

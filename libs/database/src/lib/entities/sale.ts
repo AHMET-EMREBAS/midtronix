@@ -10,7 +10,7 @@ import {
   ViewEntity,
 } from '@mdtx/core';
 import { Cart } from './cart';
-import { ISale, ISaleView } from '@mdtx/common';
+import { IID, ISale, ISaleView } from '@mdtx/common';
 import { User } from './user';
 import { Customer } from './customer';
 import { Store } from './store';
@@ -29,12 +29,12 @@ export class Sale
   @OneRelation(Customer) customer!: Customer;
   @OneRelation(Store) store!: Store;
 
-  @Column({ type: 'numeric', precision: 2 }) accountBalancePayment!: number;
-  @Column({ type: 'numeric', precision: 2 }) cashPayment!: number;
-  @Column({ type: 'numeric', precision: 2 }) cardPayment!: number;
-  @Column({ type: 'numeric', precision: 2 }) taxrate!: number;
-  @Column({ type: 'numeric', precision: 2 }) subtotal!: number;
-  @Column({ type: 'numeric', precision: 2 }) total!: number;
+  @Column({ type: 'numeric' }) accountBalancePayment!: number;
+  @Column({ type: 'numeric' }) cashPayment!: number;
+  @Column({ type: 'numeric' }) cardPayment!: number;
+  @Column({ type: 'numeric' }) taxrate!: number;
+  @Column({ type: 'numeric' }) subtotal!: number;
+  @Column({ type: 'numeric' }) total!: number;
 }
 
 @ViewEntity({
@@ -75,6 +75,12 @@ export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
     return Sale;
   }
 
+  beforeInsert(
+    event: InsertEvent<ISale<IID, IID, IID, IID>>
+  ): void | Promise<any> {
+    console.log(event.entity);
+  }
+
   async afterInsert(event: InsertEvent<ISale>) {
     const entity = event.entity;
     const cartRepo = event.manager.getRepository(Cart);
@@ -104,7 +110,7 @@ export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
             await quantityRepo.decrement(
               { id: quantity.id },
               'quantity',
-              order.quantity
+              parseInt(order.quantity + '')
             );
           }
         }
