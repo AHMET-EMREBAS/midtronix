@@ -1,10 +1,14 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { isDevMode } from '@angular/core';
 
 export const httpInterceptors: HttpInterceptorFn[] = [
   (req, next) => {
-    if (req.url) {
+    if (isDevMode()) {
       req = req.clone({ url: `http://localhost:3000/${req.url}` });
-      return next(req);
+
+      if (req.url) {
+        return next(req);
+      }
     }
     return next(req);
   },
