@@ -100,9 +100,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('priceLevelSearchRef')
   priceLevelSearchRef!: PriceLevelSearchComponent;
-
   sub!: Subscription;
   checkoutOpen = false;
+
+  refreshOrderList$ = this.orderService.entityActions$.pipe(
+    map((event) => {
+      this.reloadOrderList();
+    })
+  );
 
   storeId = +posStoreIdStore.get()!;
   employeeId = +posEmployeeIdStore.get()!;
@@ -114,13 +119,11 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
   productListItemsSnapshot: ISkuViewRaw[] = [];
   productListItems$ = this.skuViewService.entities$.pipe(
-    debounceTime(200),
     tap((data) => (this.productListItemsSnapshot = data))
   );
 
   orderListItemsSnapshot: IOrderViewRaw[] = [];
   orderListItems$ = this.orderViewService.entities$.pipe(
-    debounceTime(200),
     tap((data) => (this.orderListItemsSnapshot = data))
   );
 
@@ -150,16 +153,11 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       this.priceLevelId > 0
     );
 
-    console.table({
-      customerId: this.customerId,
-      employeeId: this.employeeId,
-      storeId: this.storeId,
-      priceLevelId: this.priceLevelId,
-    });
-
     if (!this.isReady) {
       this.router.navigate(['setting'], { relativeTo: this.route });
     }
+
+    this.refreshOrderList$.subscribe();
   }
 
   async ngAfterViewInit() {
@@ -254,7 +252,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
-  addToCartEventHandler(event: ISkuViewRaw) {
+  async addToCartEventHandler(event: ISkuViewRaw) {
     const foundItem = this.orderListItemsSnapshot.find(
       (e) => e.barcode === event.barcode
     );
@@ -265,12 +263,15 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       const subtotal = price * newQuantity;
       const total = subtotal + (parseFloat(this.taxrate + '') * subtotal) / 100;
 
-      this.orderService.update({
-        id: foundItem.id,
-        quantity: newQuantity,
-        subtotal: subtotal,
-        total,
-      });
+      this.orderService.update(
+        {
+          id: foundItem.id,
+          quantity: newQuantity,
+          subtotal: subtotal,
+          total,
+        },
+        { isOptimistic: false }
+      );
     } else {
       const quantity = 1;
       const unitPrice = parseFloat((event.price ?? 0) + '');
@@ -288,7 +289,6 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
         total,
       });
     }
-    this.reloadOrderList();
   }
 
   editButtonClickEventHandler(event: IOrderViewRaw) {
@@ -314,6 +314,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   reloadOrderList() {
+    this.orderViewService.clearCache();
     this.orderViewService.getWithQuery(
       {
         take: 1000,
@@ -358,8 +359,8 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
     this.closeCheckout();
     this.orderViewService.clearCache();
-    await this.ngOnDestroy();
-    await this.ngAfterViewInit();
+
+    await this.createNewCart();
   }
 
   ngOnDestroy(): void {
