@@ -35,9 +35,7 @@ const isDev = process.env.NODE_ENV == 'development';
         PurchaseSubscriber,
         SaleSubscriber,
         OrderSubscriber,
-      ],
-      synchronize: true,
-      dropSchema: true,
+      ]
     }),
     ...modules,
     AppSeedModule,
