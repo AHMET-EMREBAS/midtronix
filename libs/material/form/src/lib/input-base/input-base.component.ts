@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl } from '@angular/forms';
-import { Observable, debounceTime } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Icon } from '@mdtx/material/core';
 
 @Component({
@@ -32,14 +32,12 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   $statusChange!: Observable<any>;
 
   ngOnInit(): void {
-    if (!this.inputControl) this.inputControl = new FormControl();
+    if (!this.inputControl) this.inputControl = new FormControl('');
   }
 
   ngAfterViewInit(): void {
-    this.$valueChange = this.inputControl.valueChanges.pipe(debounceTime(600));
-    this.$statusChange = this.inputControl.statusChanges.pipe(
-      debounceTime(600)
-    );
+    this.$valueChange = this.inputControl.valueChanges;
+    this.$statusChange = this.inputControl.statusChanges;
   }
 
   getErrorMessage() {

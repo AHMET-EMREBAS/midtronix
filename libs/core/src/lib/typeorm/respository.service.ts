@@ -59,6 +59,8 @@ export class RepositoryService<T extends IID> {
     search?: any
   ) {
     const where = search ?? query;
+
+    console.log(where);
     const { take, skip } = paginator;
     return await this.repository.find({ take, skip, select, where: where });
   }
@@ -127,8 +129,17 @@ export class RepositoryService<T extends IID> {
   }
 
   async updateOneById(id: number, entity: DeepPartial<T>): Promise<T> {
-    await this.findOneById(id);
-    return await this.save({ ...entity, id });
+    const found = await this.findOneById(id);
+    const updated = Object.entries(entity)
+      .map(([key, value]) => {
+        if ((found as any)[key] === value) {
+          return null;
+        }
+        return { [key]: value };
+      })
+      .filter((e) => e)
+      .reduce((p, c) => ({ ...p, ...c }));
+    return await this.save({ ...updated, id } as any);
   }
 
   async addRelation(relationDto: RelationDto<T>) {

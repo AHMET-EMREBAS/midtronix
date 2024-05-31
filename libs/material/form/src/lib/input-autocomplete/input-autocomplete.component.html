@@ -10,6 +10,7 @@
     [attr.data-testid]="testid()"
     [multiple]="multiple"
     [(ngModel)]="defaultValue"
+    (input)="inputEventHandler()"
   />
   <mat-autocomplete
     autoActiveFirstOption
@@ -17,8 +18,9 @@
     [displayWith]="displayWith"
     [autoSelectActiveOption]="true"
     (opened)="handleOpendedEvent()"
+    (optionSelected)="optionSelectedHandler($event)"
   >
-    @for (option of filteredOptions$ | async ; track option) {
+    @for (option of finterOptions$ | async ; track option) {
     <mat-option [value]="valueWith(option)">{{ option.name }}</mat-option>
     }
     <mat-option [value]="null">None</mat-option>

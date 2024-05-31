@@ -1,3 +1,10 @@
+export const PRODUCT_VIEW_PROPERTIES = [
+  'barcode',
+  'name',
+  'category',
+  'department',
+];
+
 export const SKU_VIEW_PROPERTIES = [
   'id',
   'skuId',

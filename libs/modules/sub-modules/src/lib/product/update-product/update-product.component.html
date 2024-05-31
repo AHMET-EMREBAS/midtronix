@@ -1,1 +1,36 @@
-<p>update-product works!</p>
+<!-- <ng-container *ngIf="productChange$ | async"></ng-container> -->
+
+<div class="container">
+  <mdtx-product-search
+    (selectedEvent)="selectedEventHandler($event)"
+  ></mdtx-product-search>
+
+  <!-- Edit quantity -->
+  <!-- Edit Price -->
+
+  <mat-tab-group>
+    <mat-tab label="Product">
+      <!-- Update name -->
+      <!-- Update barcode -->
+      <!-- Update description -->
+      <mdtx-product-form
+        [defaultValue]="activeProduct$ | async"
+        submitLabel="Update Product"
+        (submitEvent)="updateProductHandler($event)"
+      ></mdtx-product-form>
+    </mat-tab>
+
+    <mat-tab label="Price">
+      <div class="container">
+        <mdtx-price-level-search
+          (selectedEvent)="selectPriceLevelHandler($event)"
+        ></mdtx-price-level-search>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Quantity">
+      <!-- Select Store  -->
+      <!-- Update quantity by store-->
+    </mat-tab>
+  </mat-tab-group>
+</div>

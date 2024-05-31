@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy,
+  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -12,9 +12,10 @@ import { CommonFormModule } from '../form';
 import {
   MatAutocomplete,
   MatAutocompleteModule,
+  MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
 import { IInputOption } from '@mdtx/material/core';
-import { Observable, debounceTime, map, startWith } from 'rxjs';
+import { BehaviorSubject, debounceTime, map } from 'rxjs';
 @Component({
   selector: 'mdtx-input-autocomplete',
   standalone: true,
@@ -22,64 +23,75 @@ import { Observable, debounceTime, map, startWith } from 'rxjs';
   templateUrl: './input-autocomplete.component.html',
   styleUrl: './input-autocomplete.component.scss',
 })
-export class InputAutocompleteComponent
+export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   extends InputBaseComponent
-  implements OnInit
+  implements OnInit, AfterViewInit
 {
   @ViewChild('inputRef') inputRef!: MatAutocomplete;
   @Input() optionNameAsValue = false;
   @Input() override prefixIcon = 'event';
-  @Input() options!: IInputOption[];
+  @Input() options!: T[];
   @Input() multiple?: boolean = false;
-  @Input() defaultValue?: IInputOption;
+  @Input() defaultValue?: T;
 
   @Output() openedEvent = new EventEmitter();
+  @Output() optionSelectedEvent = new EventEmitter<T>();
 
-  filteredOptions$!: Observable<IInputOption[]>;
+  search$ = new BehaviorSubject<string>('');
+
+  finterOptions$ = this.search$.pipe(
+    debounceTime(1000),
+    map((search) => {
+      const result = this.options.filter((option) => {
+        const stringValue = JSON.stringify(option).toLowerCase();
+        return stringValue.includes(search);
+      });
+
+      return result;
+    })
+  );
 
   override ngOnInit(): void {
     super.ngOnInit();
 
     if (!this.options) throw new Error('Options is required!');
+  }
 
-    this.filteredOptions$ = this.inputControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(1000),
-      map((search: string) => {
-        if (
-          typeof search === 'string' &&
-          search.trim().length > 0 &&
-          this.options
-        ) {
-          const result = this.options.filter((option) => {
-            return option.name?.toLowerCase().includes(search?.toLowerCase());
-          });
-
-          if (result && result.length > 0)
-            this.inputControl.setValue(result[0]);
-
-          return result;
-        }
-        return this.options;
-      })
-    );
+  override ngAfterViewInit(): void {
+    super.ngAfterViewInit();
 
     if (this.defaultValue) {
       this.inputControl.setValue(this.defaultValue);
     }
   }
 
-  displayWith(option: IInputOption) {
+  displayWith(option: T) {
     return option && option.name;
   }
 
-  valueWith(option: IInputOption) {
+  valueWith(option: T) {
     if (this.optionNameAsValue) {
       return option && option.name;
     }
     return option;
   }
+
   handleOpendedEvent() {
     this.openedEvent.emit();
+  }
+
+  optionSelectedHandler(event: MatAutocompleteSelectedEvent) {
+    this.optionSelectedEvent.emit(event.option.value);
+  }
+
+  inputEventHandler() {
+    const value = this.inputControl.value;
+    if (typeof value === 'string') {
+      const searchString = value.trim().toLowerCase();
+      if (searchString.length > 0) {
+        this.inputEvent.emit(searchString);
+      }
+      this.search$.next(searchString);
+    }
   }
 }

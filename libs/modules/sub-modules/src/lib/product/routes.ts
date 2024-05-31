@@ -19,6 +19,7 @@ export const ProductRoutes: Routes = [
         { label: 'Dashboard', route: 'dashboard', icon: 'dashboard' },
         { divider: true },
         { label: 'Create Product', route: 'create', icon: 'add' },
+        { label: 'Update Product', route: 'update', icon: 'edit' },
         { label: 'View Products', route: 'view', icon: 'table' },
       ]),
     ],
@@ -51,7 +52,7 @@ export const ProductRoutes: Routes = [
       },
       {
         title: 'Update Product',
-        path: 'update/:id',
+        path: 'update',
         loadComponent: () => UpdateProductComponent,
       },
     ],

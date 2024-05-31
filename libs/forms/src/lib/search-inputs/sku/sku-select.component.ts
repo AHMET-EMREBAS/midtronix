@@ -15,7 +15,6 @@ import { InputSelectComponent } from '@mdtx/material/form';
 export class SkuSelectComponent {
   @Input() options!: IInputOption[];
   @Input() multiple = false;
-
   @Output() inputEvent = new EventEmitter<IInputOption[]>();
 
   inputEventHandler(event: IInputOption[]) {

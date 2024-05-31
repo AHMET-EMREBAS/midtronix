@@ -1,9 +1,9 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   Output,
 } from '@angular/core';
@@ -13,7 +13,7 @@ import { Observable, Subscription, debounceTime } from 'rxjs';
 
 @Component({ template: '' })
 export class BaseFormComponent
-  implements FormComponent, AfterViewInit, OnDestroy
+  implements FormComponent, AfterViewInit, OnDestroy, OnChanges
 {
   /**
    * FormGroup
@@ -55,16 +55,28 @@ export class BaseFormComponent
       this.changeEvent.emit(value);
     });
 
+    this.updateDefaultFormValue();
+  }
+
+  ngOnChanges() {
+    // console.log('BaseFormComponent Change OnChange');
+    this.updateDefaultFormValue();
+  }
+
+  updateDefaultFormValue() {
     if (this.defaultValue) {
       const entries = Object.entries(this.defaultValue);
 
       for (const [key, value] of entries) {
         const control = this.resourceFormGroup.get(key);
 
-        if (!control) {
-          throw new Error(`${key} control does not exist in form group!`);
+        // console.log('Default Value ', key, value);
+
+        if (control) {
+          control.setValue(value);
+        } else {
+          console.debug(`FormGroup does not have the key, ${key}`);
         }
-        control.setValue(value);
       }
     }
   }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
@@ -16,12 +17,13 @@ import { FormControl } from '@angular/forms';
       label="Search Category"
       prefixIcon="search"
       [inputControl]="inputControl"
+      [defaultValue]="inputControl.value ?? undefined"
     ></mdtx-input-autocomplete>
   `,
   providers: [CategoryService],
 })
 export class CategorySearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<any>('', []);
 
   constructor(protected readonly service: CategoryService) {}
 }

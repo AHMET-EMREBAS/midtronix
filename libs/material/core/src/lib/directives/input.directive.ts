@@ -10,7 +10,7 @@ export class InputDirective {
   private __typingTimer!: any;
   private __dirty?: boolean;
 
-  @Input() typingDebounceTime = 1000;
+  @Input() typingDebounceTime = 400;
 
   @HostListener('input')
   onInputHandler() {

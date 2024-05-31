@@ -3,8 +3,14 @@ import {
   PaginatorDto,
   RestRouteBuilder,
   RelationDto,
+  SearchDto,
 } from '@mdtx/core';
-import { CreateProductDto, Product, UpdateProductDto } from '@mdtx/database';
+import {
+  CreateProductDto,
+  Product,
+  SearchProductDto,
+  UpdateProductDto,
+} from '@mdtx/database';
 import { ProductService } from './product.service';
 
 const R = RestRouteBuilder.get('Product');
@@ -24,8 +30,11 @@ export class ProductController {
   }
 
   @R.FindAll()
-  findAll(@R.Query() paginator: PaginatorDto) {
-    return this.service.findAll({ ...paginator });
+  findAll(
+    @R.Query() paginator: PaginatorDto,
+    @R.Query() searchDto: SearchProductDto
+  ) {
+    return this.service.findAll({ ...paginator }, null, null, searchDto.search);
   }
 
   @R.FindOneById()

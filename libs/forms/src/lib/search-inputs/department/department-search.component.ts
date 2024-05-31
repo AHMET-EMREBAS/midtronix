@@ -1,13 +1,15 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { DepartmentService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
+import { IDepartment } from '@mdtx/common';
+import { IInputOption } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-department-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
     <mdtx-input-autocomplete
       *ngIf="service.asOptions$ | async as options"
@@ -16,12 +18,13 @@ import { FormControl } from '@angular/forms';
       label="Search Department"
       prefixIcon="search"
       [inputControl]="inputControl"
+      [defaultValue]="inputControl.value ?? undefined"
     ></mdtx-input-autocomplete>
   `,
   providers: [DepartmentService],
 })
-export class DepartmentSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+export class DepartmentSearchComponent<T extends IInputOption = IDepartment> {
+  @Input() inputControl = new FormControl<T | null>(null, []);
 
   constructor(protected readonly service: DepartmentService) {}
 }

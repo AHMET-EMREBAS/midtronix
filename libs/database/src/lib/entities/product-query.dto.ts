@@ -5,7 +5,23 @@ import {
   QueryProperty,
   CreateSearchDto,
 } from '@mdtx/core';
-import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES } from '@mdtx/common';
+import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES, IProduct } from '@mdtx/common';
+
+@Exclude()
+export class QueryProductDto
+  implements Pick<IProduct, 'upc' | 'name' | 'description'>
+{
+  name!: string;
+  upc!: string;
+  description!: string;
+}
+
+@Exclude()
+export class SearchProductDto extends CreateSearchDto([
+  'name',
+  'upc',
+  'description',
+]) {}
 
 @Exclude()
 export class QuerySkuViewDto implements IQuerySkuViewDto {
