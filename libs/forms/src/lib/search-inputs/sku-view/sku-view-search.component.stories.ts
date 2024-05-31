@@ -3,7 +3,7 @@ import {
   type Meta,
   type StoryObj,
 } from '@storybook/angular';
-import { ProductImageSearchComponent } from './product-image-search.component';
+import { SkuViewSearchComponent } from './sku-view-search.component';
 import { userEvent, waitFor, within } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -14,9 +14,9 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { storyBookHttpInterceptor } from '../../__base';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 
-const meta: Meta<ProductImageSearchComponent> = {
-  component: ProductImageSearchComponent,
-  title: 'ProductImageSearchComponent',
+const meta: Meta<SkuViewSearchComponent> = {
+  component: SkuViewSearchComponent,
+  title: 'SkuViewSearchComponent',
   decorators: [
     applicationConfig({
       providers: [
@@ -28,10 +28,10 @@ const meta: Meta<ProductImageSearchComponent> = {
         provideEntityData(
           {
             pluralNames: {
-              ProductImage: 'ProductImages',
+              SkuView: 'SkuViews',
             },
             entityMetadata: {
-              ProductImage: {},
+              SkuView: {},
             },
           },
           withEffects()
@@ -43,7 +43,7 @@ const meta: Meta<ProductImageSearchComponent> = {
 
 export default meta;
 
-type Story = StoryObj<ProductImageSearchComponent>;
+type Story = StoryObj<SkuViewSearchComponent>;
 
 export const Primary: Story = {
   args: {},
@@ -58,7 +58,7 @@ export const Heading: Story = {
 
     const findInput = (iname: string) => canvas.getByTestId(`input-${iname}`);
 
-    const searchInput = findInput('productImage');
+    const searchInput = findInput('skuView');
 
     const search = async (searchValue: string) => {
       await userEvent.clear(searchInput);
@@ -66,9 +66,9 @@ export const Heading: Story = {
     };
 
     for (const [i, s] of [
-      [1, 'productImage 1'],
-      [2, 'productImage 2'],
-      [3, 'productImage 3'],
+      [1, 'skuView 1'],
+      [2, 'skuView 2'],
+      [3, 'skuView 3'],
       [4, '1'],
       [5, '2'],
       [6, '3'],

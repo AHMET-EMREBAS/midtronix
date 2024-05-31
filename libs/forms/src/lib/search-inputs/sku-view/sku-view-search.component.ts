@@ -7,8 +7,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { IUserPhone } from '@mdtx/common';
-import { UserPhoneService } from '@mdtx/ngrx';
+import { ISkuView } from '@mdtx/common';
+import { SkuViewService } from '@mdtx/ngrx';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
@@ -20,7 +20,7 @@ import {
 } from 'rxjs';
 
 @Component({
-  selector: 'mdtx-user-phone-search',
+  selector: 'mdtx-sku-view-search',
   standalone: true,
   imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
@@ -30,25 +30,25 @@ import {
       *ngIf="options$ | async as options"
       [options]="options"
       [inputControl]="inputControl"
-      inputName="userPhone"
-      label="Search UserPhone"
+      inputName="skuView"
+      label="Search SkuView"
       prefixIcon="search"
       (optionSelectedEvent)="optionSelectedEventHandler($event)"
       (inputEvent)="inputEventHandler($event)"
       [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
   `,
-  providers: [UserPhoneService],
+  providers: [SkuViewService],
 })
-export class UserPhoneSearchComponent {
+export class SkuViewSearchComponent {
   @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
-  @Input() inputControl = new FormControl<IUserPhone | null>(null, []);
-  @Input() defaultValue?: IUserPhone;
-  @Output() changeEvent = new EventEmitter<IUserPhone>();
+  @Input() inputControl = new FormControl<ISkuView | null>(null, []);
+  @Input() defaultValue?: ISkuView;
+  @Output() changeEvent = new EventEmitter<ISkuView>();
 
   search$ = new BehaviorSubject<string>('');
 
-  options$: Observable<IUserPhone[]> = this.service.entities$;
+  options$: Observable<ISkuView[]> = this.service.entities$;
 
   searchItems$: Observable<any> = this.search$.pipe(
     debounceTime(400),
@@ -63,7 +63,7 @@ export class UserPhoneSearchComponent {
     })
   );
 
-  constructor(protected readonly service: UserPhoneService) {}
+  constructor(protected readonly service: SkuViewService) {}
 
   optionSelectedEventHandler(event: any) {
     this.changeEvent.emit(event);
