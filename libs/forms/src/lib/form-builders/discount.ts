@@ -20,8 +20,5 @@ export const DiscountFormBuilder = new FormGroupBuilder<ICreateDiscountDto>(
   .add('percent')
   .required()
 
-  .add('sku')
-  .required()
-
   .done()
   .lock();

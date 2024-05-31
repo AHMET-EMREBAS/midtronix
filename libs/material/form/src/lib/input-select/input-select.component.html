@@ -6,7 +6,7 @@
     [attr.data-testid]="testid()"
   >
     @for (o of options; track o) {
-    <mat-option [value]="o">{{ o.name }}</mat-option>
+    <mat-option [value]="o">{{ displayWith(o) }}</mat-option>
     }
   </mat-select>
 

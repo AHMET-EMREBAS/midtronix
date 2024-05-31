@@ -27,6 +27,7 @@ import {
 import { MatTabsModule } from '@angular/material/tabs';
 import {
   BehaviorSubject,
+  Observable,
   catchError,
   combineLatest,
   combineLatestAll,
@@ -63,7 +64,7 @@ import {
   ],
 })
 export class UpdateProductComponent implements AfterViewInit {
-  priceLevels$ = this.priceLevelService.entities$;
+  priceLevels$: Observable<IPriceLevel[]> = this.priceLevelService.entities$;
   productChange$ = new BehaviorSubject<IProduct | null>(null);
   priceLevelChange$ = new BehaviorSubject<IPriceLevel | null>(null);
   storeChange$ = new BehaviorSubject<IStore | null>(null);

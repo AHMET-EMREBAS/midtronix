@@ -1,2 +1,2 @@
 // @index('./*.component.ts', f => `export * from '${f.path}'`)
-export * from './taxrate-form.component';
+export * from './sku-search.component';

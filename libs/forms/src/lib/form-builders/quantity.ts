@@ -5,10 +5,6 @@ export const QuantityFormBuilder = new FormGroupBuilder<ICreateQuantityDto>(
   'Quantity Form'
 )
 
-  .add('sku')
-
-  .add('store')
-
   .add('quantity')
   .required()
   .min(0)

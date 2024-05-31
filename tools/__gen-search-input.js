@@ -8,6 +8,7 @@ const rns = [
   'role',
   'permission',
   'product',
+  'sku',
   'sku-view',
   'project',
   'sprint',

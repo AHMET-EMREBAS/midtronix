@@ -8,7 +8,6 @@ import {
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { DiscountFormBuilder } from '../../form-builders';
-import { SkuSearchComponent } from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-discount-form',
@@ -17,7 +16,6 @@ import { SkuSearchComponent } from '../../search-inputs';
     CommonFormModule,
     InputTextComponent,
     InputDateComponent,
-    SkuSearchComponent,
     InputNumberComponent
   ],
   templateUrl: './discount-form.component.html',

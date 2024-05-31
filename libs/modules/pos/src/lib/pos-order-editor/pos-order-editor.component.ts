@@ -10,10 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { FormControl, Validators } from '@angular/forms';
-import {
-  DiscountViewSearchComponent,
-  PriceLevelSearchComponent,
-} from '@mdtx/forms';
+import { PriceLevelSearchComponent } from '@mdtx/forms';
 import { IOrderViewRaw, IPriceLevel, IStore, QueryBuilder } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -33,7 +30,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatButtonModule,
     InputNumberComponent,
     PriceLevelSearchComponent,
-    DiscountViewSearchComponent,
     MatTabsModule,
   ],
   templateUrl: './pos-order-editor.component.html',
@@ -52,7 +48,6 @@ export class PosOrderEditorComponent implements AfterViewInit {
   @Input() taxrate!: number;
 
   @ViewChild('priceLevelSearch') priceLevelSearch!: PriceLevelSearchComponent;
-  @ViewChild('discountSearch') discountSearch!: DiscountViewSearchComponent;
 
   quantityControl = new FormControl(0, [Validators.min(1)]);
   unitPriceControl = new FormControl(0, [Validators.min(0)]);

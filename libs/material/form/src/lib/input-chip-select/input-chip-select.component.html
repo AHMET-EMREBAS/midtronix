@@ -11,16 +11,16 @@
       <div class="chip-list-group">
         @if(o.items){
 
-        <h4 style="text-align: center">{{ o.name }}</h4>
+        <h4 style="text-align: center">{{ displayWith(o) }}</h4>
         @for(so of o.items; track so){
         <div class="chip-list">
           <mat-chip-option #sub color="accent" [value]="so">
-            {{ so.name }}
+            {{ displayWith(so) }}
           </mat-chip-option>
         </div>
         } } @else {
         <mat-chip-option #main color="primary" [value]="o">
-          {{ o.name }}
+          {{ displayWith(o) }}
         </mat-chip-option>
         }
       </div>

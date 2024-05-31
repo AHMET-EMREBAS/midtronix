@@ -3,7 +3,7 @@
  */
 export interface IInputOption {
   id: number;
-  name: string;
+  name?: string;
   icon?: string;
   items?: IInputOption[];
 }

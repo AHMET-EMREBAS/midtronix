@@ -9,6 +9,7 @@ export * from './price-level';
 export * from './product';
 export * from './project';
 export * from './role';
+export * from './sku';
 export * from './sku-view';
 export * from './sprint';
 export * from './store';

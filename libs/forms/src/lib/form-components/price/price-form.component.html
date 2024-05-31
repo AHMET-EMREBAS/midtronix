@@ -1,16 +1,5 @@
 <form class="form-container" novalidate="true">
   <!-- Form Inputs  -->
-  <mdtx-sku-search
-    [inputControl]="control('sku')"
-    [options]="skuItems"
-    *ngIf="showSkuInput"
-  ></mdtx-sku-search>
-
-  <mdtx-price-level-search
-    [inputControl]="control('priceLevel')"
-    (changeEvent)="priceLevelChangeEvent.emit($event)"
-    *ngIf="showPriceLevel"
-  ></mdtx-price-level-search>
 
   <mdtx-input-number
     inputName="price"

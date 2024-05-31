@@ -27,29 +27,16 @@
           ></mdtx-input-number>
 
           <div class="actions">
-            <button mat-raised-button color="primary" (click)="updateUnitPrice()">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="updateUnitPrice()"
+            >
               Update Unit Price
             </button>
           </div>
         </div>
       </mat-tab>
-
-      <!-- <mat-tab label="Total">
-        <div class="container">
-          <mdtx-input-number
-            label="Subtotal"
-            inputName="subtotal"
-            prefixIcon="money"
-            [inputControl]="subtotalControl"
-          ></mdtx-input-number>
-
-          <div class="actions">
-            <button mat-raised-button color="primary" (click)="updateTotal()">
-              Update Total
-            </button>
-          </div>
-        </div>
-      </mat-tab> -->
     </mat-tab-group>
     <div class="actions" style="padding-left: 1em; padding-right: 1em">
       <button mat-stroked-button color="accent" (click)="closeEventHandler()">

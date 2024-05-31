@@ -13,7 +13,7 @@
         {{ o.icon ?? 'info' }}
       </mat-icon>
     </span>
-    <span matListItemLine>{{ o.name }}</span>
+    <span matListItemLine>{{ displayWith(o) }}</span>
   </mat-list-option>
   }
 </mat-selection-list>

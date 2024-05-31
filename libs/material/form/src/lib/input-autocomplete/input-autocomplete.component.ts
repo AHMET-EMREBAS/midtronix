@@ -14,8 +14,9 @@ import {
   MatAutocompleteModule,
   MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
-import { IInputOption } from '@mdtx/material/core';
 import { BehaviorSubject, debounceTime, map } from 'rxjs';
+import { IID } from '@mdtx/common';
+import { IInputOption } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-autocomplete',
   standalone: true,
@@ -33,7 +34,7 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   @Input() options!: T[];
   @Input() multiple?: boolean = false;
   @Input() defaultValue?: T;
-
+  @Input() labelKey?: string;
   @Output() openedEvent = new EventEmitter();
   @Output() optionSelectedEvent = new EventEmitter<T>();
 
@@ -66,12 +67,19 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   }
 
   displayWith(option: T) {
-    return option && option.name;
+    const label =
+      ((option as any) && (option as any).name) ||
+      (option as any)[this.labelKey ?? 'id'];
+
+    return label;
   }
 
   valueWith(option: T) {
     if (this.optionNameAsValue) {
-      return option && option.name;
+      return (
+        (option as any) &&
+        ((option as any).name || (option as any)[this.labelKey ?? 'id'])
+      );
     }
     return option;
   }

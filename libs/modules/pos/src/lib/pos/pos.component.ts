@@ -62,7 +62,6 @@ import {
   posEmployeeIdStore,
   posPriceLevelIdStore,
   posStoreIdStore,
-  posTaxrateStore,
 } from '../__stores';
 import { ActivatedRoute, Router } from '@angular/router';
 import { receiptTemplate } from './receipt-template';
