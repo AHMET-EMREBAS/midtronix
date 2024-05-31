@@ -1,4 +1,5 @@
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
   Component,
   EventEmitter,
@@ -6,10 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
-import { DepartmentService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
 import { IDepartment } from '@mdtx/common';
+import { DepartmentService } from '@mdtx/ngrx';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
   Observable,

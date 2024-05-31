@@ -1,4 +1,5 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
   Component,
   EventEmitter,
@@ -6,9 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
+import { IProduct } from '@mdtx/common';
 import { ProductService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
   Observable,
@@ -17,13 +18,13 @@ import {
   map,
   startWith,
 } from 'rxjs';
-import { IProduct } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-product-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
       #inputRef
       *ngIf="options$ | async as options"
@@ -34,28 +35,29 @@ import { IProduct } from '@mdtx/common';
       prefixIcon="search"
       (optionSelectedEvent)="optionSelectedEventHandler($event)"
       (inputEvent)="inputEventHandler($event)"
+      [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
-    <ng-container *ngIf="searchProduct$ | async"></ng-container>
   `,
   providers: [ProductService],
 })
 export class ProductSearchComponent {
   @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
-  @Input() inputControl = new FormControl('', []);
+  @Input() inputControl = new FormControl<IProduct | null>(null, []);
+  @Input() defaultValue?: IProduct;
   @Output() changeEvent = new EventEmitter<IProduct>();
 
   search$ = new BehaviorSubject<string>('');
 
   options$: Observable<IProduct[]> = this.service.entities$;
 
-  searchProduct$: Observable<any> = this.search$.pipe(
+  searchItems$: Observable<any> = this.search$.pipe(
     debounceTime(400),
     startWith(''),
     distinct(),
     map((search) => {
       const searchValue = search.trim().toLowerCase();
       return this.service.getWithQuery({
-        take: 50,
+        take: 10,
         search: searchValue,
       });
     })

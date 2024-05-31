@@ -1,4 +1,5 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
   Component,
   EventEmitter,
@@ -6,10 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
+import { IStore } from '@mdtx/common';
 import { StoreService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
-
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
   Observable,
@@ -17,14 +17,12 @@ import {
   distinct,
   map,
   startWith,
-  switchMap,
 } from 'rxjs';
-import { IStore } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-store-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
     <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
@@ -32,8 +30,8 @@ import { IStore } from '@mdtx/common';
       *ngIf="options$ | async as options"
       [options]="options"
       [inputControl]="inputControl"
-      inputName="priceLevel"
-      label="Search Price Level"
+      inputName="store"
+      label="Search Store"
       prefixIcon="search"
       (optionSelectedEvent)="optionSelectedEventHandler($event)"
       (inputEvent)="inputEventHandler($event)"
@@ -49,16 +47,17 @@ export class StoreSearchComponent {
   @Output() changeEvent = new EventEmitter<IStore>();
 
   search$ = new BehaviorSubject<string>('');
+
   options$: Observable<IStore[]> = this.service.entities$;
 
   searchItems$: Observable<any> = this.search$.pipe(
     debounceTime(400),
     startWith(''),
     distinct(),
-    switchMap((search) => {
+    map((search) => {
       const searchValue = search.trim().toLowerCase();
       return this.service.getWithQuery({
-        take: 50,
+        take: 10,
         search: searchValue,
       });
     })

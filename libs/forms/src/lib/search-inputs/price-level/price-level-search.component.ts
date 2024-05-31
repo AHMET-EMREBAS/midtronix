@@ -1,4 +1,5 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
   Component,
   EventEmitter,
@@ -6,10 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
-import { PriceLevelService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
 import { IPriceLevel } from '@mdtx/common';
+import { PriceLevelService } from '@mdtx/ngrx';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
   Observable,
@@ -17,13 +17,12 @@ import {
   distinct,
   map,
   startWith,
-  switchMap,
 } from 'rxjs';
 
 @Component({
   selector: 'mdtx-price-level-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
     <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
@@ -32,7 +31,7 @@ import {
       [options]="options"
       [inputControl]="inputControl"
       inputName="priceLevel"
-      label="Search Price Level"
+      label="Search PriceLevel"
       prefixIcon="search"
       (optionSelectedEvent)="optionSelectedEventHandler($event)"
       (inputEvent)="inputEventHandler($event)"
@@ -46,7 +45,7 @@ export class PriceLevelSearchComponent {
   @Input() inputControl = new FormControl<IPriceLevel | null>(null, []);
   @Input() defaultValue?: IPriceLevel;
   @Output() changeEvent = new EventEmitter<IPriceLevel>();
-  @Input() firstDefault?: boolean;
+
   search$ = new BehaviorSubject<string>('');
 
   options$: Observable<IPriceLevel[]> = this.service.entities$;
@@ -55,18 +54,12 @@ export class PriceLevelSearchComponent {
     debounceTime(400),
     startWith(''),
     distinct(),
-    switchMap((search) => {
+    map((search) => {
       const searchValue = search.trim().toLowerCase();
-
       return this.service.getWithQuery({
-        take: 50,
+        take: 10,
         search: searchValue,
       });
-    }),
-    map((data) => {
-      if (this.firstDefault) {
-        this.defaultValue = data[0];
-      }
     })
   );
 

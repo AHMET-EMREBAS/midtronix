@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
   Component,
   EventEmitter,
@@ -7,10 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
-import { CategoryService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
 import { ICategory } from '@mdtx/common';
+import { CategoryService } from '@mdtx/ngrx';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
   BehaviorSubject,
   Observable,
@@ -23,7 +22,7 @@ import {
 @Component({
   selector: 'mdtx-category-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
     <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
@@ -58,7 +57,7 @@ export class CategorySearchComponent {
     map((search) => {
       const searchValue = search.trim().toLowerCase();
       return this.service.getWithQuery({
-        take: 50,
+        take: 10,
         search: searchValue,
       });
     })

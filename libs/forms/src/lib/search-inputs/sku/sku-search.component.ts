@@ -1,83 +1,77 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { FormControl } from '@angular/forms';
 import {
-  AfterViewInit,
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
-  OnInit,
   Output,
-  signal,
+  ViewChild,
 } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
+import { ISku } from '@mdtx/common';
 import { SkuService } from '@mdtx/ngrx';
-import { FormControl } from '@angular/forms';
-import { ISku, ISkuRaw } from '@mdtx/common';
-import { IInputOption } from '@mdtx/material/core';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 import {
+  BehaviorSubject,
   Observable,
-  Subscription,
   debounceTime,
-  firstValueFrom,
+  distinct,
   map,
+  startWith,
 } from 'rxjs';
 
 @Component({
   selector: 'mdtx-sku-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
-      *ngIf="options"
       #inputRef
+      *ngIf="options$ | async as options"
       [options]="options"
+      [inputControl]="inputControl"
       inputName="sku"
       label="Search Sku"
       prefixIcon="search"
-      [inputControl]="inputControl"
-      [multiple]="multiple"
-      (openedEvent)="handleOpenedEvent()"
+      (optionSelectedEvent)="optionSelectedEventHandler($event)"
+      (inputEvent)="inputEventHandler($event)"
+      [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
   `,
   providers: [SkuService],
 })
-export class SkuSearchComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() options?: IInputOption[];
+export class SkuSearchComponent {
+  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
   @Input() inputControl = new FormControl<ISku | null>(null, []);
-  @Input() multiple = false;
-  @Input() defaultPriceLevel?: ISku;
-
+  @Input() defaultValue?: ISku;
   @Output() changeEvent = new EventEmitter<ISku>();
 
-  sub!: Subscription;
+  search$ = new BehaviorSubject<string>('');
+
+  options$: Observable<ISku[]> = this.service.entities$;
+
+  searchItems$: Observable<any> = this.search$.pipe(
+    debounceTime(400),
+    startWith(''),
+    distinct(),
+    map((search) => {
+      const searchValue = search.trim().toLowerCase();
+      return this.service.getWithQuery({
+        take: 10,
+        search: searchValue,
+      });
+    })
+  );
+
   constructor(protected readonly service: SkuService) {}
 
-  ngOnInit(): void {
-    if (this.defaultPriceLevel) {
-      this.inputControl.setValue(this.defaultPriceLevel);
+  optionSelectedEventHandler(event: any) {
+    this.changeEvent.emit(event);
+  }
+
+  inputEventHandler(event: any) {
+    if (typeof event === 'string') {
+      this.search$.next(event);
     }
-  }
-
-  async ngAfterViewInit() {
-    if (!this.options) {
-      this.options = await firstValueFrom(this.service.asOptions$);
-    }
-
-    this.sub = this.inputControl.valueChanges
-      .pipe(debounceTime(600))
-      .subscribe((data) => {
-        if (data) {
-          this.changeEvent.emit(data);
-        }
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
-  handleOpenedEvent() {
-    this.changeEvent.emit();
   }
 }

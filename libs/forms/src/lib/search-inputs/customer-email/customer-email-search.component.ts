@@ -1,27 +1,77 @@
-import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { InputAutocompleteComponent } from '@mdtx/material/form';
-import { CustomerEmailService } from '@mdtx/ngrx';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { FormControl } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { ICustomerEmail } from '@mdtx/common';
+import { CustomerEmailService } from '@mdtx/ngrx';
+import { InputAutocompleteComponent } from '@mdtx/material/form';
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  distinct,
+  map,
+  startWith,
+} from 'rxjs';
 
 @Component({
   selector: 'mdtx-customer-email-search',
   standalone: true,
-  imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
-      *ngIf="service.asOptions$ | async as options"
+      #inputRef
+      *ngIf="options$ | async as options"
       [options]="options"
-      inputName="customer-email"
+      [inputControl]="inputControl"
+      inputName="customerEmail"
       label="Search CustomerEmail"
       prefixIcon="search"
-      [inputControl]="inputControl"
+      (optionSelectedEvent)="optionSelectedEventHandler($event)"
+      (inputEvent)="inputEventHandler($event)"
+      [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
   `,
   providers: [CustomerEmailService],
 })
 export class CustomerEmailSearchComponent {
-  @Input() inputControl = new FormControl('', []);
+  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
+  @Input() inputControl = new FormControl<ICustomerEmail | null>(null, []);
+  @Input() defaultValue?: ICustomerEmail;
+  @Output() changeEvent = new EventEmitter<ICustomerEmail>();
+
+  search$ = new BehaviorSubject<string>('');
+
+  options$: Observable<ICustomerEmail[]> = this.service.entities$;
+
+  searchItems$: Observable<any> = this.search$.pipe(
+    debounceTime(400),
+    startWith(''),
+    distinct(),
+    map((search) => {
+      const searchValue = search.trim().toLowerCase();
+      return this.service.getWithQuery({
+        take: 10,
+        search: searchValue,
+      });
+    })
+  );
 
   constructor(protected readonly service: CustomerEmailService) {}
+
+  optionSelectedEventHandler(event: any) {
+    this.changeEvent.emit(event);
+  }
+
+  inputEventHandler(event: any) {
+    if (typeof event === 'string') {
+      this.search$.next(event);
+    }
+  }
 }
