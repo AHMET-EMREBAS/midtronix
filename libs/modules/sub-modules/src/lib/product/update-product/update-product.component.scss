@@ -4,3 +4,15 @@
   gap: 1em;
   padding: 1em;
 }
+
+.row {
+  display: flex;
+
+  flex-direction: row;
+  gap: 1em;
+
+  flex-wrap: wrap;
+  * {
+    flex-grow: 1;
+  }
+}

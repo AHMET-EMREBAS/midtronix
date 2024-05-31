@@ -1,19 +1,23 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
-  OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { PriceLevelService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
-import { IPriceLevelRaw } from '@mdtx/common';
-import { Observable, Subscription, debounceTime, map, startWith } from 'rxjs';
-import { IInputOption } from '@mdtx/material/core';
+import { IPriceLevel } from '@mdtx/common';
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  distinct,
+  map,
+  startWith,
+} from 'rxjs';
 
 @Component({
   selector: 'mdtx-price-level-search',
@@ -24,48 +28,49 @@ import { IInputOption } from '@mdtx/material/core';
       #inputRef
       *ngIf="options$ | async as options"
       [options]="options"
-      inputName="price-level"
-      label="Search PriceLevel"
-      prefixIcon="search"
-      [defaultValue]="defaultPriceLevel"
       [inputControl]="inputControl"
-      [defaultValue]="options[0]"
-      (inputEvent)="changeEvent.emit($event)"
+      inputName="priceLevel"
+      label="Search Price Level"
+      prefixIcon="search"
+      (optionSelectedEvent)="optionSelectedEventHandler($event)"
+      (inputEvent)="inputEventHandler($event)"
+      [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
   `,
   providers: [PriceLevelService],
 })
-export class PriceLevelSearchComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
-  options$!: Observable<IInputOption[]>;
-  @Input() inputControl = new FormControl<IPriceLevelRaw | null>(null, []);
+export class PriceLevelSearchComponent {
+  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
+  @Input() inputControl = new FormControl<IPriceLevel | null>(null, []);
+  @Input() defaultValue?: IPriceLevel;
+  @Output() changeEvent = new EventEmitter<IPriceLevel>();
 
-  @Input() defaultPriceLevel?: IPriceLevelRaw;
+  search$ = new BehaviorSubject<string>('');
 
-  @Output() changeEvent = new EventEmitter<IPriceLevelRaw>();
+  options$: Observable<IPriceLevel[]> = this.service.entities$;
 
-  sub!: Subscription;
+  searchProduct$: Observable<any> = this.search$.pipe(
+    debounceTime(400),
+    startWith(''),
+    distinct(),
+    map((search) => {
+      const searchValue = search.trim().toLowerCase();
+      return this.service.getWithQuery({
+        take: 50,
+        search: searchValue,
+      });
+    })
+  );
+
   constructor(protected readonly service: PriceLevelService) {}
 
-  ngOnInit(): void {
-    if (this.defaultPriceLevel) {
-      this.inputControl.setValue(this.defaultPriceLevel);
+  optionSelectedEventHandler(event: any) {
+    this.changeEvent.emit(event);
+  }
+
+  inputEventHandler(event: any) {
+    if (typeof event === 'string') {
+      this.search$.next(event);
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.sub = this.inputControl.valueChanges
-      .pipe(debounceTime(600))
-      .subscribe((data) => {
-        if (data) {
-          this.changeEvent.emit(data);
-        }
-      });
-    this.options$ = this.service.getWithQuery({ take: 1000000 });
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }

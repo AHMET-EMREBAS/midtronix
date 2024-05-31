@@ -42,7 +42,7 @@ import { IProduct } from '@mdtx/common';
 export class ProductSearchComponent {
   @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
   @Input() inputControl = new FormControl('', []);
-  @Output() selectedEvent = new EventEmitter<IProduct>();
+  @Output() changeEvent = new EventEmitter<IProduct>();
 
   search$ = new BehaviorSubject<string>('');
 
@@ -64,7 +64,7 @@ export class ProductSearchComponent {
   constructor(protected readonly service: ProductService) {}
 
   optionSelectedEventHandler(event: any) {
-    this.selectedEvent.emit(event);
+    this.changeEvent.emit(event);
   }
 
   inputEventHandler(event: any) {

@@ -1,12 +1,19 @@
 <!-- <ng-container *ngIf="productChange$ | async"></ng-container> -->
 
 <div class="container">
-  <mdtx-product-search
-    (selectedEvent)="selectedEventHandler($event)"
-  ></mdtx-product-search>
+  <div class="row">
+    <mdtx-product-search
+      (changeEvent)="selectProductEventHandler($event)"
+    ></mdtx-product-search>
 
-  <!-- Edit quantity -->
-  <!-- Edit Price -->
+    <mdtx-price-level-search
+      (changeEvent)="selectPriceLevelEventHandler($event)"
+    ></mdtx-price-level-search>
+
+    <mdtx-store-search
+      (changeEvent)="selectStoreEventHandler($event)"
+    ></mdtx-store-search>
+  </div>
 
   <mat-tab-group>
     <mat-tab label="Product">
@@ -20,17 +27,32 @@
       ></mdtx-product-form>
     </mat-tab>
 
-    <mat-tab label="Price">
-      <div class="container">
-        <mdtx-price-level-search
-          (selectedEvent)="selectPriceLevelHandler($event)"
-        ></mdtx-price-level-search>
-      </div>
-    </mat-tab>
+    <mat-tab label="Price And Quantity">
+      <mat-tab-group>
+        <mat-tab label="Price">
+          <div class="container">
+            <!-- Price form -->
+            <mdtx-price-form
+              [defaultValue]="activePrice$ | async"
+              [showPriceLevel]="false"
+              [showSkuInput]="false"
+            ></mdtx-price-form>
+          </div>
+        </mat-tab>
 
-    <mat-tab label="Quantity">
-      <!-- Select Store  -->
-      <!-- Update quantity by store-->
+        <mat-tab label="Quantity">
+          <div class="container">
+            <!-- <mdtx-store-search
+              (changeEvent)="selectStoreEventHandler($event)"
+            ></mdtx-store-search> -->
+
+            <!-- <mdtx-quantity-form
+              [defaultValue]="activeQuantity$ | async"
+              [showStoreInput]="false"
+            ></mdtx-quantity-form> -->
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </mat-tab>
   </mat-tab-group>
 </div>

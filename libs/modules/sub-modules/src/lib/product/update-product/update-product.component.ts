@@ -13,14 +13,17 @@ import {
   ProductFormComponent,
   ProductSearchComponent,
   QuantityFormComponent,
+  StoreSearchComponent,
 } from '@mdtx/forms';
-import { IPriceLevel, IProduct } from '@mdtx/common';
+import { IPriceLevel, IProduct, ISkuView, IStore } from '@mdtx/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import {
   BehaviorSubject,
   catchError,
   debounceTime,
+  forkJoin,
   map,
+  merge,
   of,
   switchMap,
 } from 'rxjs';
@@ -36,6 +39,7 @@ import {
     PriceFormComponent,
     QuantityFormComponent,
     PriceLevelSearchComponent,
+    StoreSearchComponent,
   ],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.scss',
@@ -51,12 +55,37 @@ export class UpdateProductComponent implements AfterViewInit {
   priceLevels$ = this.priceLevelService.entities$;
 
   productChange$ = new BehaviorSubject<IProduct | null>(null);
-  activeProduct$ = this.productChange$.pipe(debounceTime(500));
-  skues$ = this.activeProduct$.pipe(
-    switchMap((product) => {
-      if (product)
-        return this.skuViewService.getWithQuery({ productId: product.id });
+  priceLevelChange$ = new BehaviorSubject<IPriceLevel | null>(null);
+  storeChange$ = new BehaviorSubject<IStore | null>(null);
 
+  activeProduct$ = this.productChange$.pipe(debounceTime(500));
+  activePriceLevel$ = this.priceLevelChange$.pipe(debounceTime(500));
+  activePrice$ = merge(this.activeProduct$, this.activePriceLevel$).pipe(
+    debounceTime(500),
+    map(() => {
+      return of({ price: 100, cost: 100 });
+    })
+  );
+
+  skuChange$ = new BehaviorSubject<ISkuView | null>(null);
+
+  skues$ = merge(
+    this.productChange$,
+    this.priceLevelChange$,
+    this.storeChange$
+  ).pipe(
+    switchMap(() => {
+      const product = this.productChange$.getValue();
+      const priceLevel = this.priceLevelChange$.getValue();
+      const store = this.storeChange$.getValue();
+
+      if (product && priceLevel && store) {
+        return this.skuViewService.getWithQuery({
+          storeId: store.id,
+          priceLevelId: priceLevel.id,
+          productId: product.id,
+        });
+      }
       return of(null);
     })
   );
@@ -73,8 +102,20 @@ export class UpdateProductComponent implements AfterViewInit {
     this.priceLevelService.getWithQuery({ take: 1000 });
   }
 
-  selectedEventHandler(event: IProduct) {
+  selectProductEventHandler(event: IProduct) {
     this.productChange$.next(event);
+  }
+
+  selectPriceLevelEventHandler(event: any) {
+    console.log('Selected Price Level : ', event);
+
+    this.priceLevelChange$.next(event);
+  }
+
+  selectStoreEventHandler(event: any) {
+    console.log('Selected Store : ', event);
+
+    this.storeChange$.next(event);
   }
 
   updateProductHandler(event: any) {
@@ -94,9 +135,7 @@ export class UpdateProductComponent implements AfterViewInit {
       );
   }
 
-  priceFormCurrentValue(pl: IPriceLevel) {}
-
-  selectPriceLevelHandler(event: any) {
-    console.log('Price LEvel : ', event);
+  priceFormCurrentValue(pl: IPriceLevel) {
+    return {};
   }
 }
