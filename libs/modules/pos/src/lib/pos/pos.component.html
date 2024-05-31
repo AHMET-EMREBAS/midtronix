@@ -14,8 +14,8 @@
 
     <mdtx-price-level-search
       #priceLevelSearch
-      (changeEvent)="updatePriceLevel()"
       [defaultValue]="activePriceLevel"
+      (changeEvent)="updatePriceLevel($event)"
     ></mdtx-price-level-search>
   </ng-template>
 

@@ -31,6 +31,7 @@ import {
   CartService,
   OrderService,
   OrderViewService,
+  PriceLevelService,
   SaleService,
   SkuViewService,
 } from '@mdtx/ngrx';
@@ -98,6 +99,7 @@ import { receiptTemplate } from './receipt-template';
     OrderService,
     OrderViewService,
     SaleService,
+    PriceLevelService,
   ],
 })
 export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
@@ -146,6 +148,7 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     protected readonly orderViewService: OrderViewService,
     protected readonly cartService: CartService,
     protected readonly saleService: SaleService,
+    protected readonly priceLevelService: PriceLevelService,
     protected readonly router: Router,
     protected readonly route: ActivatedRoute
   ) {}
@@ -170,6 +173,10 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
 
     this.reloadOrderList();
     this.reloadProductList();
+
+    this.activePriceLevel = await firstValueFrom(
+      this.priceLevelService.getByKey(this.priceLevelId)
+    );
 
     this.sub = this.scanControl.valueChanges
       .pipe(
@@ -260,6 +267,8 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
       (e) => e.barcode === event.barcode
     );
 
+    console.log('Found Item : ', foundItem);
+    console.log('Active Price Level : ', this.activePriceLevel);
     if (foundItem) {
       const quantity = parseInt(foundItem.quantity + '') + 1;
       const id = foundItem.id;
@@ -283,8 +292,9 @@ export class PosComponent implements AfterViewInit, OnInit, OnDestroy {
     this.orderUnderUpdate = event;
   }
 
-  updatePriceLevel() {
-    const pl = this.priceLevelSearchRef.inputControl.value;
+  updatePriceLevel(event: IPriceLevel) {
+    console.log('Updating PriceLevel: ', event);
+    const pl = event;
 
     if (pl) {
       this.activePriceLevel = pl;

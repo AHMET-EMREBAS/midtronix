@@ -17,6 +17,7 @@ import {
   distinct,
   map,
   startWith,
+  switchMap,
 } from 'rxjs';
 
 @Component({
@@ -24,6 +25,7 @@ import {
   standalone: true,
   imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
       #inputRef
       *ngIf="options$ | async as options"
@@ -44,21 +46,27 @@ export class PriceLevelSearchComponent {
   @Input() inputControl = new FormControl<IPriceLevel | null>(null, []);
   @Input() defaultValue?: IPriceLevel;
   @Output() changeEvent = new EventEmitter<IPriceLevel>();
-
+  @Input() firstDefault?: boolean;
   search$ = new BehaviorSubject<string>('');
 
   options$: Observable<IPriceLevel[]> = this.service.entities$;
 
-  searchProduct$: Observable<any> = this.search$.pipe(
+  searchItems$: Observable<any> = this.search$.pipe(
     debounceTime(400),
     startWith(''),
     distinct(),
-    map((search) => {
+    switchMap((search) => {
       const searchValue = search.trim().toLowerCase();
+
       return this.service.getWithQuery({
         take: 50,
         search: searchValue,
       });
+    }),
+    map((data) => {
+      if (this.firstDefault) {
+        this.defaultValue = data[0];
+      }
     })
   );
 

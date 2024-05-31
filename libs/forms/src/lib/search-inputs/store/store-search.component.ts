@@ -1,63 +1,78 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
-  OnDestroy,
-  OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { InputAutocompleteComponent } from '@mdtx/material/form';
 import { StoreService } from '@mdtx/ngrx';
 import { FormControl } from '@angular/forms';
-import { IStoreRaw } from '@mdtx/common';
-import { Observable, Subscription, debounceTime } from 'rxjs';
-import { IInputOption } from '@mdtx/material/core';
+
+import {
+  BehaviorSubject,
+  Observable,
+  debounceTime,
+  distinct,
+  map,
+  startWith,
+  switchMap,
+} from 'rxjs';
+import { IStore } from '@mdtx/common';
 
 @Component({
   selector: 'mdtx-store-search',
   standalone: true,
   imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
+      #inputRef
       *ngIf="options$ | async as options"
       [options]="options"
-      inputName="store"
-      label="Search Store"
-      prefixIcon="search"
       [inputControl]="inputControl"
+      inputName="priceLevel"
+      label="Search Price Level"
+      prefixIcon="search"
+      (optionSelectedEvent)="optionSelectedEventHandler($event)"
+      (inputEvent)="inputEventHandler($event)"
+      [defaultValue]="defaultValue"
     ></mdtx-input-autocomplete>
   `,
   providers: [StoreService],
 })
-export class StoreSearchComponent implements OnInit, AfterViewInit, OnDestroy {
-  options$!: Observable<IInputOption[]>;
-  @Input() inputControl = new FormControl<IStoreRaw | null>(null, []);
-  @Input() defaultStore?: IStoreRaw;
+export class StoreSearchComponent {
+  @ViewChild('inputRef') inputRef!: InputAutocompleteComponent;
+  @Input() inputControl = new FormControl<IStore | null>(null, []);
+  @Input() defaultValue?: IStore;
+  @Output() changeEvent = new EventEmitter<IStore>();
 
-  @Output() changeEvent = new EventEmitter();
+  search$ = new BehaviorSubject<string>('');
+  options$: Observable<IStore[]> = this.service.entities$;
+
+  searchItems$: Observable<any> = this.search$.pipe(
+    debounceTime(400),
+    startWith(''),
+    distinct(),
+    switchMap((search) => {
+      const searchValue = search.trim().toLowerCase();
+      return this.service.getWithQuery({
+        take: 50,
+        search: searchValue,
+      });
+    })
+  );
+
   constructor(protected readonly service: StoreService) {}
 
-  ngOnInit(): void {
-    if (this.defaultStore) {
-      this.inputControl.setValue(this.defaultStore);
+  optionSelectedEventHandler(event: any) {
+    this.changeEvent.emit(event);
+  }
+
+  inputEventHandler(event: any) {
+    if (typeof event === 'string') {
+      this.search$.next(event);
     }
-  }
-  sub!: Subscription;
-
-  ngAfterViewInit(): void {
-    this.sub = this.inputControl.valueChanges
-      .pipe(debounceTime(600))
-      .subscribe((data) => {
-        if (data) {
-          this.changeEvent.emit(data);
-        }
-      });
-    this.options$ = this.service.asOptions$;
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
   }
 }
