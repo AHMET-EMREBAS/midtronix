@@ -15,17 +15,28 @@ import {
   QuantityFormComponent,
   StoreSearchComponent,
 } from '@mdtx/forms';
-import { IPriceLevel, IProduct, ISkuView, IStore } from '@mdtx/common';
+import {
+  ICreatePriceDto,
+  ICreateQuantityDto,
+  IPriceLevel,
+  IProduct,
+  IQuantity,
+  ISkuView,
+  IStore,
+} from '@mdtx/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import {
   BehaviorSubject,
   catchError,
+  combineLatest,
+  combineLatestAll,
   debounceTime,
   forkJoin,
   map,
   merge,
   of,
   switchMap,
+  zip,
 } from 'rxjs';
 
 @Component({
@@ -53,10 +64,10 @@ import {
 })
 export class UpdateProductComponent implements AfterViewInit {
   priceLevels$ = this.priceLevelService.entities$;
-
   productChange$ = new BehaviorSubject<IProduct | null>(null);
   priceLevelChange$ = new BehaviorSubject<IPriceLevel | null>(null);
   storeChange$ = new BehaviorSubject<IStore | null>(null);
+  activeQuantity$ = new BehaviorSubject<IQuantity | null>(null);
 
   activeProduct$ = this.productChange$.pipe(debounceTime(500));
   activePriceLevel$ = this.priceLevelChange$.pipe(debounceTime(500));
@@ -69,20 +80,46 @@ export class UpdateProductComponent implements AfterViewInit {
 
   skuChange$ = new BehaviorSubject<ISkuView | null>(null);
 
-  skues$ = merge(
+  skus$ = combineLatest([
     this.productChange$,
     this.priceLevelChange$,
-    this.storeChange$
-  ).pipe(
-    switchMap(() => {
-      const product = this.productChange$.getValue();
-      const priceLevel = this.priceLevelChange$.getValue();
-      const store = this.storeChange$.getValue();
-
+    this.storeChange$,
+  ]).pipe(
+    switchMap(([product, priceLevel, store]) => {
       if (product && priceLevel && store) {
         return this.skuViewService.getWithQuery({
           storeId: store.id,
           priceLevelId: priceLevel.id,
+          productId: product.id,
+        });
+      }
+      console.log('SKUS : ', product, priceLevel, store);
+      return of(null);
+    })
+  );
+
+  priceSkus$ = combineLatest([
+    this.productChange$,
+    this.priceLevelChange$,
+  ]).pipe(
+    switchMap(([product, priceLevel]) => {
+      if (product && priceLevel) {
+        return this.skuViewService.getWithQuery({
+          storeId: 1,
+          priceLevelId: priceLevel.id,
+          productId: product.id,
+        });
+      }
+      return of(null);
+    })
+  );
+
+  quantitySkus$ = combineLatest([this.productChange$, this.storeChange$]).pipe(
+    switchMap(([product, store]) => {
+      if (product && store) {
+        return this.skuViewService.getWithQuery({
+          storeId: store.id,
+          priceLevelId: 1,
           productId: product.id,
         });
       }
@@ -129,13 +166,19 @@ export class UpdateProductComponent implements AfterViewInit {
           console.log(err);
           return caught;
         }),
-        map((result) => {
+        map(() => {
           this.productChange$.next(null);
         })
       );
   }
 
-  priceFormCurrentValue(pl: IPriceLevel) {
-    return {};
+  updatePrice(id: number, event: Pick<ICreatePriceDto, 'price' | 'cost'>) {
+    console.log('Update Price: ', event);
+    this.priceService.update({ id, ...event });
+  }
+
+  updateQuantity(id: number, event: Pick<ICreateQuantityDto, 'quantity'>) {
+    console.log('Update Quantity: ', event);
+    this.quantityService.update({ id, ...event });
   }
 }

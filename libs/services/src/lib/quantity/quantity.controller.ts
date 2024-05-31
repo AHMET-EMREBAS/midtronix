@@ -40,6 +40,7 @@ export class QuantityController {
 
   @R.UpdateOne()
   updateOneById(@R.ParamID() id: number, @R.Body() body: UpdateQuantityDto) {
+    console.log(id, body);
     return this.service.updateOneById(id, body);
   }
 

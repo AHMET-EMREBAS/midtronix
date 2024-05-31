@@ -130,16 +130,24 @@ export class RepositoryService<T extends IID> {
 
   async updateOneById(id: number, entity: DeepPartial<T>): Promise<T> {
     const found = await this.findOneById(id);
-    const updated = Object.entries(entity)
+
+    const updatedRecords = Object.entries(entity)
       .map(([key, value]) => {
         if ((found as any)[key] === value) {
           return null;
         }
         return { [key]: value };
       })
-      .filter((e) => e)
-      .reduce((p, c) => ({ ...p, ...c }));
-    return await this.save({ ...updated, id } as any);
+      .filter((e) => e);
+
+    const updated =
+      updatedRecords.length > 0
+        ? updatedRecords?.reduce((p, c) => ({ ...p, ...c }))
+        : null;
+
+    if (updated) return await this.save({ ...updated, id } as any);
+
+    return found;
   }
 
   async addRelation(relationDto: RelationDto<T>) {
