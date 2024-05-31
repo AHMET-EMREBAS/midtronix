@@ -55,6 +55,7 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() cost!: number;
   @QueryProperty() barcode!: string;
   @QueryProperty() name!: string;
+  @QueryProperty() description!: string;
   @QueryProperty() priceLevelName!: string;
   @QueryProperty() storeName!: string;
   @QueryProperty() category!: string;

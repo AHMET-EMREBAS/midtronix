@@ -13,6 +13,7 @@ import {
   ProductFormComponent,
   ProductSearchComponent,
   QuantityFormComponent,
+  SkuFormComponent,
   StoreSearchComponent,
 } from '@mdtx/forms';
 import {
@@ -52,6 +53,7 @@ import {
     QuantityFormComponent,
     PriceLevelSearchComponent,
     StoreSearchComponent,
+    SkuFormComponent,
   ],
   templateUrl: './update-product.component.html',
   styleUrl: './update-product.component.scss',
@@ -81,20 +83,16 @@ export class UpdateProductComponent implements AfterViewInit {
 
   skuChange$ = new BehaviorSubject<ISkuView | null>(null);
 
-  skus$ = combineLatest([
-    this.productChange$,
-    this.priceLevelChange$,
-    this.storeChange$,
-  ]).pipe(
-    switchMap(([product, priceLevel, store]) => {
-      if (product && priceLevel && store) {
+  skuViews$ = combineLatest([this.productChange$]).pipe(
+    switchMap(([product]) => {
+      if (product) {
         return this.skuViewService.getWithQuery({
-          storeId: store.id,
-          priceLevelId: priceLevel.id,
+          storeId: 1,
+          priceLevelId: 1,
           productId: product.id,
         });
       }
-      console.log('SKUS : ', product, priceLevel, store);
+
       return of(null);
     })
   );
@@ -171,6 +169,10 @@ export class UpdateProductComponent implements AfterViewInit {
           this.productChange$.next(null);
         })
       );
+  }
+
+  updateSkuHandler(event: any) {
+    console.log('Update SKU: ', event);
   }
 
   updatePrice(id: number, event: Pick<ICreatePriceDto, 'price' | 'cost'>) {

@@ -7,17 +7,11 @@ import {
 } from '@mdtx/material/form';
 import { BaseFormComponent } from '../../__base';
 import { SkuFormBuilder } from '../../form-builders';
-import { ProductSearchComponent } from '../../search-inputs';
 
 @Component({
   selector: 'mdtx-sku-form',
   standalone: true,
-  imports: [
-    CommonFormModule,
-    InputTextComponent,
-    InputTextareaComponent,
-    ProductSearchComponent,
-  ],
+  imports: [CommonFormModule, InputTextComponent, InputTextareaComponent],
   templateUrl: './sku-form.component.html',
   styleUrl: './sku-form.component.scss',
 })

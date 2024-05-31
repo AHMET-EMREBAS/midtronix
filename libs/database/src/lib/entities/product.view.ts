@@ -142,6 +142,7 @@ export class SkuView implements ISkuView {
   @ViewColumn() skuId!: number;
   @ViewColumn() barcode!: string;
   @ViewColumn() name!: string;
+  @ViewColumn() description!: string;
   @ViewColumn() price!: number;
   @ViewColumn() cost!: number;
   @ViewColumn() taxrate!: number;

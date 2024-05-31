@@ -67,11 +67,14 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   }
 
   displayWith(option: T) {
-    const label =
-      ((option as any) && (option as any).name) ||
-      (option as any)[this.labelKey ?? 'id'];
+    if (option) {
+      const label = (option as any)[this.labelKey || 'name'];
 
-    return label;
+      if (!label) return option.id;
+
+      return label;
+    }
+    return 'None';
   }
 
   valueWith(option: T) {

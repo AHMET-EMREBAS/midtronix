@@ -1,6 +1,7 @@
 export const PRODUCT_VIEW_PROPERTIES = [
   'barcode',
   'name',
+  'description',
   'category',
   'department',
 ];
@@ -10,6 +11,7 @@ export const SKU_VIEW_PROPERTIES = [
   'skuId',
   'barcode',
   'name',
+  'description',
   'price',
   'cost',
   'priceLevelId',
@@ -28,6 +30,7 @@ export interface ISkuView {
   skuId: number;
   barcode: string;
   name: string;
+  description: string;
   price: number;
   cost: number;
   taxrate: number;
