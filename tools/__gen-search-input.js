@@ -28,6 +28,7 @@ const rns = [
   'price-level',
   'price',
   'quantity',
+  'purchase',
 ];
 
 for (const r of rns) {

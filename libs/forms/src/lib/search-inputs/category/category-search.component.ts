@@ -25,6 +25,7 @@ import {
   standalone: true,
   imports: [NgIf, AsyncPipe, InputAutocompleteComponent],
   template: `
+    <ng-container *ngIf="searchItems$ | async"></ng-container>
     <mdtx-input-autocomplete
       #inputRef
       *ngIf="options$ | async as options"
@@ -50,7 +51,7 @@ export class CategorySearchComponent {
 
   options$: Observable<ICategory[]> = this.service.entities$;
 
-  searchProduct$: Observable<any> = this.search$.pipe(
+  searchItems$: Observable<any> = this.search$.pipe(
     debounceTime(400),
     startWith(''),
     distinct(),
