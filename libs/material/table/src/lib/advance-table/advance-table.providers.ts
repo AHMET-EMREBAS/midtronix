@@ -1,30 +1,60 @@
-import { createClassProvider, createValueProvider } from '@mdtx/material/core';
+import { IID } from '@mdtx/common';
+import { IAdvanceTableDataService } from './advance-table-data.service';
 import {
   AdvanceTableBulkAction,
+  AdvanceTableColumn,
   AdvanceTableRowAction,
 } from './advance-table.types';
-import { IAdvanceTableDataService } from './advance-table-data.service';
-import { IID } from '@mdtx/common';
+import { InjectionToken, Provider, Type } from '@angular/core';
 
-export const {
-  provide: provideAdvanceTableColumns,
-  token: ADVANCE_TABLE_COLUMNS_TOKEN,
-} = createValueProvider<string[]>('AdvanceTableColumns');
+export const ADVANCE_TABLE_COLUMNS_TOKEN = new InjectionToken(
+  'ADVANCE_TABLE_COLUMNS_TOKEN'
+);
 
-export const {
-  provide: provideAdvanceTableRowActions,
-  token: ADVANCE_TABLE_ROW_ACTION_TOKEN,
-} = createValueProvider<AdvanceTableRowAction[]>('AdvanceTableRowAction');
+export function provideAdvanceTableColumns<T>(
+  useValue: AdvanceTableColumn<T>[]
+): Provider {
+  return {
+    provide: ADVANCE_TABLE_COLUMNS_TOKEN,
+    useValue,
+  };
+}
 
-export const {
-  provide: provideAdvanceTableBulkActions,
-  token: ADVANCE_TABLE_BULK_ACTION_TOKEN,
-} = createValueProvider<AdvanceTableBulkAction[]>('AdvanceTableBulkAction');
+export const ADVANCE_TABLE_ROW_ACTIONS_TOKEN = new InjectionToken(
+  'ADVANCE_TABLE_ROW_ACTIONS_TOKEN'
+);
 
-export const {
-  provide: provideAdvanceTableDataService,
-  token: ADVANCE_TABLE_DATA_SERVICE_TOKEN,
-} = (<T extends IID>() =>
-  createClassProvider<IAdvanceTableDataService<T>>(
-    'AdvanceTableDataService'
-  ))();
+export function provideAdvanceTableRowActions<T>(
+  useValue: AdvanceTableRowAction<T>[]
+): Provider {
+  return {
+    provide: ADVANCE_TABLE_ROW_ACTIONS_TOKEN,
+    useValue,
+  };
+}
+
+export const ADVANCE_TABLE_BULK_ACTIONS_TOKEN = new InjectionToken(
+  'ADVANCE_TABLE_BULK_ACTIONS_TOKEN'
+);
+
+export function provideAdvanceTableBulkActions<T>(
+  useValue: AdvanceTableBulkAction<T>[]
+): Provider {
+  return {
+    provide: ADVANCE_TABLE_BULK_ACTIONS_TOKEN,
+    useValue,
+  };
+}
+
+export const ADVANCE_TABLE_DATA_SERVICE_TOKEN = new InjectionToken(
+  'ADVANCE_TABLE_DATA_SERVICE_TOKEN'
+);
+
+export function provideAdvanceTableDataService<T extends IID>(
+  useClass: Type<IAdvanceTableDataService<T>>
+): Provider {
+  return {
+    provide: ADVANCE_TABLE_DATA_SERVICE_TOKEN,
+    useClass,
+  };
+}

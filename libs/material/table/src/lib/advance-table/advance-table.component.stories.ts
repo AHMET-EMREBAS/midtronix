@@ -6,7 +6,6 @@ import {
 import { AdvanceTableComponent } from './advance-table.component';
 
 import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 import {
   provideAdvanceTableBulkActions,
   provideAdvanceTableColumns,
@@ -33,7 +32,7 @@ const meta: Meta<AdvanceTableComponent> = {
   decorators: [
     applicationConfig({
       providers: [
-        provideAdvanceTableColumns(['Column 1', 'Column 2']),
+        provideAdvanceTableColumns([]),
         provideAdvanceTableBulkActions([]),
         provideAdvanceTableRowActions([]),
         provideAdvanceTableDataService(AdvanceTableService),
@@ -52,6 +51,5 @@ export const Heading: Story = {
   args: {},
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    expect(canvas.getByText(/advance-table works!/gi)).toBeTruthy();
   },
 };

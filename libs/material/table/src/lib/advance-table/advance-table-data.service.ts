@@ -1,8 +1,11 @@
 import { IID } from '@mdtx/common';
 import { Observable } from 'rxjs';
 
-export interface IAdvanceTableDataService<T extends IID> {
+export interface IAdvanceTableDataService<
+  T extends IID,
+  TQuery = Record<string, string>
+> {
   entities$: Observable<T[]>;
   count$: Observable<number>;
-  getWithQuery(query: Record<string, any>): Observable<T[]>;
+  getWithQuery(query: TQuery): Observable<T[]>;
 }

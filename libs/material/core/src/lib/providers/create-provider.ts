@@ -36,7 +36,7 @@ export function createValueProvider<T>(
 ): CreateProviderResult<T, Provider, InjectionToken<T>> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
-    provide(value: T) {
+    provide<P extends T>(value: P) {
       return {
         provide: token,
         useValue: value,
