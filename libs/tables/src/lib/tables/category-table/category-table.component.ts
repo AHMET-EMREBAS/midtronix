@@ -27,7 +27,7 @@ export class CategoryTableComponent extends BaseTableComponent<ICategoryRaw> {
 
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: CategoryService, protected readonly router: Router) {
+  constructor(service: CategoryService) {
     super(service);
   }
 }

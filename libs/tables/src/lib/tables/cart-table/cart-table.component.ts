@@ -26,7 +26,7 @@ export class CartTableComponent extends BaseTableComponent<ICartRaw> {
   override displayedColumns = CART_DISPLAY_COLUMNS;
   override pageSizeOptions = PAGE_SIZE_OPTIONS;
 
-  constructor(service: CartService, protected readonly router: Router) {
+  constructor(service: CartService) {
     super(service);
   }
 }

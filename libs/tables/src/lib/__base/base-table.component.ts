@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { IID } from '@mdtx/common';
 import { TableComponent, TableRow } from '@mdtx/material/table';
 import { CollectionBaseService } from '@mdtx/ngrx';
@@ -17,6 +18,7 @@ export class BaseTableComponent<T extends IID> implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
 
   @Output() addEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter<T>();
   @Output() deleteEvent = new EventEmitter<T[]>();
 
   count$ = this.service.metadata$.pipe(
@@ -57,7 +59,7 @@ export class BaseTableComponent<T extends IID> implements OnInit {
       skip: page.pageIndex * page.pageSize,
     });
   }
-  
+
   deleteSelection() {
     this.deleteEvent.emit(
       [...this.table.selectedItems.entries()].map(([, v]) => v)
@@ -82,5 +84,11 @@ export class BaseTableComponent<T extends IID> implements OnInit {
 
   addItem() {
     this.addEvent.emit();
+  }
+
+  editItem() {
+    if (this.selectedItems) {
+      this.editEvent.emit(this.selectedItems[0]);
+    }
   }
 }

@@ -8,6 +8,7 @@ import {
 } from '@mdtx/material/layout';
 import { HomeProductComponent } from './home-product/home-product.component';
 import { DashboardProductComponent } from './dashboard-product/dashboard-product.component';
+import { ProductEditorComponent } from '../common/product-editor/product-editor.component';
 export const ProductRoutes: Routes = [
   {
     title: 'Product Management',
@@ -53,7 +54,7 @@ export const ProductRoutes: Routes = [
       {
         title: 'Update Product',
         path: 'update',
-        loadComponent: () => UpdateProductComponent,
+        loadComponent: () => ProductEditorComponent,
       },
     ],
   },

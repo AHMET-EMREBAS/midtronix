@@ -1,10 +1,7 @@
-<mdtx-toolbar
+<mdtx-table-toolbar
   [leftToolbarItems]="leftToolbarItems"
   [rightToolbarItems]="rightToolbarItems"
-  (toolbarItemClickEvent)="handleToolbarClick($event)"
+  (clickEvent)="clickEventHandler($event)"
+  (searchEvent)="searchEventHandler($event)"
 >
-  <mdtx-input-search
-    toolbarRigthtContent
-    (searchEvent)="searchHandler($event)"
-  ></mdtx-input-search>
-</mdtx-toolbar>
+</mdtx-table-toolbar>

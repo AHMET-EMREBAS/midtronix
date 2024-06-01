@@ -26,7 +26,10 @@ export class ViewCategoryComponent {
   }
 
   deleteItems(items: ICategory[]) {
-    console.log(items, '<<< items to be deleted!');
     this.matDialog.open(DeleteCategoryComponent, { data: [...items] });
+  }
+
+  editItem(item: ICategory) {
+    this.router.navigate(['..', 'update', item.id], { relativeTo: this.route });
   }
 }

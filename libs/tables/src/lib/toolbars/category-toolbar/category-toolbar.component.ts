@@ -1,30 +1,33 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ToolbarComponent } from '@mdtx/material/toolbar';
+
 import { MenuItem } from '@mdtx/material/core';
 import { InputSearchComponent } from '@mdtx/material/form';
+import { TableToolbarComponent } from '../../table-toolbar/table-toolbar.component';
 @Component({
   selector: 'mdtx-category-toolbar',
   standalone: true,
-  imports: [ToolbarComponent, InputSearchComponent],
+  imports: [TableToolbarComponent, InputSearchComponent],
   templateUrl: './category-toolbar.component.html',
   styleUrl: './category-toolbar.component.scss',
 })
 export class CategoryToolbarComponent {
-  leftToolbarItems: MenuItem[] = [];
-  rightToolbarItems: MenuItem[] = [{ id: 1, title: `Delete`, icon: 'delete' }];
+  leftToolbarItems: MenuItem[] = [
+    {
+      id: 1,
+      title: 'Edit',
+      icon: 'edit',
+    },
+  ];
+
+  rightToolbarItems: MenuItem[] = [];
 
   @Output() deleteEvent = new EventEmitter();
   @Output() searchEvent = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
 
-  handleToolbarClick(event: MenuItem) {
-    switch (event.title) {
-      case 'Delete':
-        this.deleteEvent.emit();
-        return;
-    }
-  }
+  clickEventHandler(event: MenuItem) {}
 
-  searchHandler(searchString: string) {
+  searchEventHandler(searchString: string) {
     this.searchEvent.emit(searchString);
   }
 }

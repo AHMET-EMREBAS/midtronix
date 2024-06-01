@@ -1,11 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { <%- className %>FormComponent } from '@mdtx/forms';
+import { <%- className %>Service } from '@mdtx/ngrx';
+import { I<%- className %> } from '@mdtx/common';
+
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'mdtx-update-<%- fileName %>',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, <%- className %>FormComponent],
   templateUrl: './update-<%- fileName %>.component.html',
   styleUrl: './update-<%- fileName %>.component.scss',
+  providers: [<%- className %>Service],
 })
-export class Update<%- className %>Component {}
+export class Update<%- className %>Component implements OnInit {
+  defaultValue$!: Observable<I<%- className %>>;
+  itemId!: number;
+  constructor(
+    protected readonly service: <%- className %>Service,
+    protected readonly route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const __id = this.route.snapshot.paramMap.get('id');
+    if (__id) {
+      this.itemId = +__id;
+      this.defaultValue$ = this.service.getByKey(this.itemId);
+    }
+  }
+
+  handleSubmit(formValue: I<%- className %>) {
+    this.service.update({ ...formValue, id: this.itemId });
+  }
+}
