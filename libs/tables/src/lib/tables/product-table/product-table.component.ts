@@ -8,8 +8,9 @@ import {
   PRODUCT_PAGE_SIZE,
   PAGE_SIZE_OPTIONS,
 } from '../../table-options';
-import { IProductRaw } from '@mdtx/common';
+import { IProduct, IProductRaw } from '@mdtx/common';
 import { Router } from '@angular/router';
+import { provideAdvanceTableDataService, provideAdvanceTableOptions } from '@mdtx/material/table';
 
 @Component({
   selector: 'mdtx-product-table',
@@ -17,7 +18,16 @@ import { Router } from '@angular/router';
   imports: [...TableModules, ProductToolbarComponent],
   templateUrl: './product-table.component.html',
   styleUrl: './product-table.component.scss',
-  providers: [ProductService],
+  providers: [
+    ProductService,
+    provideAdvanceTableOptions<IProduct>({
+      columns: [{ name: 'id' }, { name: 'name' }],
+      displayColumns: [{ name: 'id' }, { name: 'name' }],
+      bulkActions: [],
+      rowActions: [],
+    }),
+    provideAdvanceTableDataService(ProductService)
+  ],
 })
 export class ProductTableComponent extends BaseTableComponent<IProductRaw> {
   override pageIndex = 0;

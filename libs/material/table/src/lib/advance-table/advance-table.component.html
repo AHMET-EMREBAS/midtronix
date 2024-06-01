@@ -1,5 +1,3 @@
-<ng-container *ngIf="query$ | async"></ng-container>
-
 <div class="table-container">
   <mat-form-field appearance="fill">
     <input
@@ -27,8 +25,13 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="editButtonClickEvent.emit(row)">
-          <mat-icon>edit</mat-icon>
+        <button
+          class="open-in-new-button"
+          mat-icon-button
+          (click)="openItemEditor(row)"
+          color="primary"
+        >
+          <mat-icon>open_in_new</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
@@ -36,9 +39,11 @@
     @for(c of __columns(); track c){
     <ng-container [matColumnDef]="c.name.toString()">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        {{ c.label || c.name }}
+        {{ c.label || c.name.toString() || '' | titlecase }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row[c.name] }} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        {{ c.displayValue ? c.displayValue(row) : row[c.name] }}
+      </mat-cell>
     </ng-container>
     }
 
@@ -55,5 +60,3 @@
     (page)="page$.next($event)"
   ></mat-paginator>
 </div>
-
-{{ columnNames() | json }}

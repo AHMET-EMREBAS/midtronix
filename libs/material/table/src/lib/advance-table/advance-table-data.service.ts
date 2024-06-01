@@ -5,6 +5,6 @@ import { Observable } from 'rxjs';
 
 export interface IAdvanceTableDataService<T extends IID> {
   entities$: Observable<T[]>;
-  count$: Observable<number>;
-  query(search: string, page: PageEvent, sort: Sort): Observable<T[]>;
+  countAll$: Observable<number>;
+  advanceQuery(search: string, page: PageEvent, sort: Sort): Observable<T[]>;
 }

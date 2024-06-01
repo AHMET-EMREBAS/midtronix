@@ -194,9 +194,9 @@ export class AdvanceTableService implements IAdvanceTableDataService<IID> {
     })
   );
 
-  count$: Observable<number> = of(data.length);
+  countAll$: Observable<number> = of(data.length);
 
-  query(search: string, page: PageEvent, sort: Sort) {
+  advanceQuery(search: string, page: PageEvent, sort: Sort) {
     this.search$.next(search);
     this.page$.next(page);
     this.sort$.next(sort);

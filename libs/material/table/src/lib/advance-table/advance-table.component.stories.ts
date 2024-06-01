@@ -12,6 +12,7 @@ import {
 } from './advance-table.providers';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AdvanceTableService } from './demo-advance-table.service';
+import { provideRouter } from '@angular/router';
 const meta: Meta<AdvanceTableComponent> = {
   component: AdvanceTableComponent,
   title: 'AdvanceTableComponent',
@@ -19,6 +20,7 @@ const meta: Meta<AdvanceTableComponent> = {
   decorators: [
     applicationConfig({
       providers: [
+        provideRouter([]),
         provideAnimations(),
         provideAdvanceTableOptions({
           columns: [{ name: 'id' }, { name: 'name' }, { name: 'category' }],
