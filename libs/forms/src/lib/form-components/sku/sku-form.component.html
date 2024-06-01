@@ -26,7 +26,7 @@
       [disabled]="isFormInvalid()"
       [attr.data-testid]="'submit'"
     >
-      Save Sku
+      {{ submitLabel || 'Save Sku' }}
     </button>
     <button
       mat-stroked-button

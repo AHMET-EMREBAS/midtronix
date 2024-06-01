@@ -1,5 +1,4 @@
 <mat-stepper #stepper [linear]="true">
-
   <mat-step #productStep>
     <ng-template matStepLabel> Product </ng-template>
     <ng-template matStepContent>
@@ -19,32 +18,9 @@
       [showSkuInput]="false"
     ></mdtx-price-form>
   </mat-step>
-
-  <mat-step #advancePriceStep>
-    <ng-template matStepLabel>Advance Price</ng-template>
-    <mdtx-price-form
-      *ngIf="skuPrices"
-      #advancePriceForm
-      (priceLevelChangeEvent)="priceLevelChangeEventHandler($event)"
-      (submitEvent)="handleAdvancePriceSubmit($event)"
-      [showSkuInput]="false"
-    ></mdtx-price-form>
-  </mat-step>
-
-  <mat-step #quantityStep>
-    <ng-template matStepLabel>Quantity</ng-template>
-    <mdtx-quantity-form
-      #quantityForm
-      (storeChangeEvent)="storeChangeEventHandler($event)"
-      (submitEvent)="handleQuantitySubmit($event)"
-      [showSkuInput]="false"
-    ></mdtx-quantity-form>
-  </mat-step>
-  
+<!-- 
   <mat-step #finalize>
     <p>Successfully created the product.</p>
-    <button mat-raised-button color="primary" (click)="reset()">
-      Done
-    </button>
-  </mat-step>
+    <button mat-raised-button color="primary" (click)="reset()">Done</button>
+  </mat-step> -->
 </mat-stepper>

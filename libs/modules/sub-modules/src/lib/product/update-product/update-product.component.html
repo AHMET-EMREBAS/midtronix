@@ -16,7 +16,7 @@
       <!-- Update description -->
       <mdtx-product-form
         [defaultValue]="activeProduct$ | async"
-        submitLabel="Update Product"
+        submitLabel="Update/Create Product"
         (submitEvent)="updateProductHandler($event)"
       ></mdtx-product-form>
     </mat-tab>
@@ -36,7 +36,7 @@
               description: sku.description
             }"
             submitLabel="Update SKU"
-            (submitEvent)="updateSkuHandler($event)"
+            (submitEvent)="updateSkuHandler(sku.skuId, $event)"
           ></mdtx-sku-form>
         </mat-tab>
         }

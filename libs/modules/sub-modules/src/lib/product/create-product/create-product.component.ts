@@ -68,16 +68,13 @@ export class CreateProductComponent implements AfterViewInit {
 
   @ViewChild('productForm') productForm!: ProductFormComponent;
   @ViewChild('priceForm') priceForm!: PriceFormComponent;
-  @ViewChild('advancePriceForm') advancePriceForm!: PriceFormComponent;
+  // @ViewChild('advancePriceForm') advancePriceForm!: PriceFormComponent;
 
   @ViewChild('quantityForm') quantityForm!: QuantityFormComponent;
 
   @ViewChild('stepper') stepper!: MatStepper;
-
   @ViewChild('productStep') productStep!: MatStep;
   @ViewChild('priceStep') priceStep!: MatStep;
-  @ViewChild('quantityStep') quantityStep!: MatStep;
-  @ViewChild('advancePriceStep') advancePriceStep!: MatStep;
 
   savedProduct!: IProduct;
 
@@ -93,9 +90,6 @@ export class CreateProductComponent implements AfterViewInit {
   async ngAfterViewInit() {
     this.productStep.completed = false;
     this.priceStep.completed = false;
-    this.quantityStep.completed = false;
-    this.advancePriceStep.completed = false;
-
     this.priceLevels = await firstValueFrom(this.priceLevelService.getAll());
   }
 
@@ -115,50 +109,13 @@ export class CreateProductComponent implements AfterViewInit {
             })
           )
       );
+
+      this.reset();
     }
 
     this.priceStep.completed = true;
     this.priceStep.editable = false;
     this.stepper.next();
-  }
-
-  async handleAdvancePriceSubmit(price: ICreatePriceDto) {
-    const found = this.skuPrices.find(
-      (e) => e.priceLevelId == price.priceLevel.id
-    );
-    await firstValueFrom(
-      this.priceService
-        .update({
-          id: found?.priceId,
-          cost: price.cost,
-          price: price.price,
-        })
-        .pipe(
-          catchError((err, caught) => {
-            alert('Could not update the price! Please try again!');
-            return of(null);
-          })
-        )
-    );
-    this.advancePriceStep.completed = true;
-  }
-
-  async handleQuantitySubmit(quantity: IQuantity) {
-    await firstValueFrom(
-      this.quantityService
-        .update({
-          id: this.currentSku.quantityId,
-          quantity: quantity.quantity,
-          store: this.currentStore,
-        })
-        .pipe(
-          catchError((err, caught) => {
-            alert('Could not update the price! Please try again!');
-            return of(null);
-          })
-        )
-    );
-    this.quantityStep.completed = true;
   }
 
   async handleProductSubmit(product: IProduct) {
@@ -205,72 +162,10 @@ export class CreateProductComponent implements AfterViewInit {
     console.log(event);
   }
 
-  async priceLevelChangeEventHandler(event: IPriceLevel) {
-    await firstValueFrom(
-      this.skuViewService
-        .getWithQuery({
-          priceLevelId: event.id,
-          productId: this.savedProduct.id,
-        })
-        .pipe(
-          catchError(() => {
-            alert('Something went wrong while getting the sku-views!');
-            return of(null);
-          }),
-          map((data) => {
-            if (data && data.length > 0) {
-              this.currentSku = data[0];
-
-              console.log('Current SKU :', data);
-              this.advancePriceForm
-                .control('price')
-                .setValue(this.currentSku.price);
-              this.advancePriceForm
-                .control('cost')
-                .setValue(this.currentSku.cost);
-            }
-
-            return data;
-          })
-        )
-    );
-  }
-
-  async storeChangeEventHandler(event: IStore) {
-    await firstValueFrom(
-      this.skuViewService
-        .getWithQuery({
-          productId: this.savedProduct.id,
-          storeId: event.id,
-        })
-        .pipe(
-          catchError(() => {
-            alert('Something went wrong while getting the sku-views!');
-            return of(null);
-          }),
-          map((data) => {
-            if (data && data.length > 0) {
-              this.currentStore = event;
-              this.currentSku = data[0];
-
-              console.log('Current SKU: ', this.currentSku);
-              console.log('Current Store: ', this.currentStore);
-              this.quantityForm
-                .control('quantity')
-                .setValue(this.currentSku.quantity);
-            }
-
-            return data;
-          })
-        )
-    );
-  }
-
   reset() {
-    this.priceForm.formReset();
     this.productForm.formReset();
+    this.priceForm.formReset();
     this.quantityForm.formReset();
-    this.advancePriceForm.formReset();
     this.stepper.reset();
   }
 }

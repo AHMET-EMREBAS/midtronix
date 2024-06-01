@@ -5,6 +5,7 @@ import {
   PriceService,
   ProductService,
   QuantityService,
+  SkuService,
   SkuViewService,
 } from '@mdtx/ngrx';
 import {
@@ -63,6 +64,7 @@ import {
     PriceLevelService,
     PriceService,
     SkuViewService,
+    SkuService,
   ],
 })
 export class UpdateProductComponent implements AfterViewInit {
@@ -131,6 +133,7 @@ export class UpdateProductComponent implements AfterViewInit {
     protected readonly quantityService: QuantityService,
     protected readonly priceService: PriceService,
     protected readonly skuViewService: SkuViewService,
+    protected readonly skuService: SkuService,
     protected readonly priceLevelService: PriceLevelService
   ) {}
 
@@ -155,24 +158,31 @@ export class UpdateProductComponent implements AfterViewInit {
   }
 
   updateProductHandler(event: any) {
-    this.productService
-      .update({
-        id: this.productChange$.getValue()?.id,
-        ...event,
-      })
-      .pipe(
-        catchError((err, caught) => {
-          console.log(err);
-          return caught;
-        }),
-        map(() => {
-          this.productChange$.next(null);
+    const id = this.productChange$.getValue()?.id;
+
+    if (id) {
+      this.productService
+        .update({
+          id,
+          ...event,
         })
-      );
+        .pipe(
+          catchError((err, caught) => {
+            console.log(err);
+            return caught;
+          }),
+          map(() => {
+            this.productChange$.next(null);
+          })
+        );
+    } else {
+      this.productService.add(event);
+    }
   }
 
-  updateSkuHandler(event: any) {
+  updateSkuHandler(id: number, event: any) {
     console.log('Update SKU: ', event);
+    this.skuService.update({ id, ...event });
   }
 
   updatePrice(id: number, event: Pick<ICreatePriceDto, 'price' | 'cost'>) {
