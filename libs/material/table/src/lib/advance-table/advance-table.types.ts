@@ -1,3 +1,5 @@
+import { IID } from '@mdtx/common';
+
 export type AdvanceTableRowAction<T> = {
   id: number;
   label: string;
@@ -20,4 +22,11 @@ export type AdvanceTableColumn<T> = {
   displayLabel?: (value: T) => string;
   displayValue?: (value: T) => string;
   onClick?: (value: T) => void;
+};
+
+export type AdvanceTableOptions<T extends IID> = {
+  columns: AdvanceTableColumn<T>[];
+  displayColumns: AdvanceTableColumn<T>[];
+  rowActions: AdvanceTableRowAction<T>[];
+  bulkActions: AdvanceTableBulkAction<T>[];
 };

@@ -1,9 +1,9 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Inject,
   Input,
+  Optional,
   Output,
   ViewChild,
 } from '@angular/core';
@@ -12,13 +12,14 @@ import {
   ADVANCE_TABLE_BULK_ACTIONS_TOKEN,
   ADVANCE_TABLE_COLUMNS_TOKEN,
   ADVANCE_TABLE_DATA_SERVICE_TOKEN,
+  ADVANCE_TABLE_OPTIONS_TOKEN,
   ADVANCE_TABLE_ROW_ACTIONS_TOKEN,
 } from './advance-table.providers';
-import { IAdvanceTableDataService } from './advance-table-data.service';
 import { IID } from '@mdtx/common';
 import {
   AdvanceTableBulkAction,
   AdvanceTableColumn,
+  AdvanceTableOptions,
   AdvanceTableRowAction,
 } from './advance-table.types';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import {
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AdvanceTableService } from './demo-advance-table.service';
 
 export type QueryType = {
   search: string;
@@ -68,12 +70,8 @@ export type QueryType = {
 })
 export class AdvanceTableComponent<T extends IID = IID> {
   selectedItemIds = new Set<number>();
-
   @ViewChild('tableRef') tableRef!: MatTable<T>;
   @ViewChild('paginatorRef') paginatorRef!: MatPaginator;
-
-  @Output() queryEvent = new EventEmitter<QueryType>();
-  @Output() editButtonClickEvent = new EventEmitter<T>();
 
   search$ = new BehaviorSubject<string>('');
 
@@ -84,30 +82,45 @@ export class AdvanceTableComponent<T extends IID = IID> {
     previousPageIndex: 0,
   });
 
+  count$ = this.service.count$;
+
   sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });
 
-  @Input() data?: T[];
-
-  query$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
+  data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
     debounceTime(600),
-    map(([search, page, sort]) => {
-      this.queryEvent.emit({ search, page, sort });
+    switchMap(([search, page, sort]) => {
+      return this.service.query(search, page, sort);
     })
   );
 
   constructor(
-    @Inject(ADVANCE_TABLE_COLUMNS_TOKEN)
-    public readonly columns: AdvanceTableColumn<T>[],
+    @Inject(ADVANCE_TABLE_OPTIONS_TOKEN)
+    public readonly options: AdvanceTableOptions<T>,
     @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)
-    public readonly service: IAdvanceTableDataService<T>,
-    @Inject(ADVANCE_TABLE_ROW_ACTIONS_TOKEN)
-    public readonly rowActions: AdvanceTableRowAction<T>[],
-    @Inject(ADVANCE_TABLE_BULK_ACTIONS_TOKEN)
-    public readonly bulkActions: AdvanceTableBulkAction<T>[]
+    public readonly service: AdvanceTableService
   ) {}
 
-  getColumnNames() {
-    return ['__firstColumn', ...this.columns.map((e) => e.name)];
+  __columns() {
+    return this.options.columns;
+  }
+  __displayColumns() {
+    return this.options.displayColumns;
+  }
+
+  __columnNames() {
+    return [...this.options.columns.map((e) => e.name)];
+  }
+
+  __displayedColumnNames() {
+    return this.options.displayColumns.map((e) => e.name);
+  }
+
+  columnNames() {
+    return ['__firstColumn', ...this.__columnNames()];
+  }
+
+  displayedColumnNames() {
+    return ['__firstColumn', ...this.__displayedColumnNames()];
   }
 
   pageChangeHandler(event: PageEvent) {
@@ -123,6 +136,10 @@ export class AdvanceTableComponent<T extends IID = IID> {
   }
 
   isSelected(row: T) {
-    return [];
+    return this.selectedItemIds.has(row.id);
+  }
+
+  select(row: T) {
+    this.selectedItemIds.add(row.id);
   }
 }

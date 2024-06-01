@@ -3,6 +3,7 @@ import { IAdvanceTableDataService } from './advance-table-data.service';
 import {
   AdvanceTableBulkAction,
   AdvanceTableColumn,
+  AdvanceTableOptions,
   AdvanceTableRowAction,
 } from './advance-table.types';
 import { InjectionToken, Provider, Type } from '@angular/core';
@@ -56,5 +57,18 @@ export function provideAdvanceTableDataService<T extends IID>(
   return {
     provide: ADVANCE_TABLE_DATA_SERVICE_TOKEN,
     useClass,
+  };
+}
+
+export const ADVANCE_TABLE_OPTIONS_TOKEN = new InjectionToken(
+  'ADVANCE_TABLE_OPTIONS_TOKEN'
+);
+
+export function provideAdvanceTableOptions<T extends IID>(
+  useValue: AdvanceTableOptions<T>
+): Provider {
+  return {
+    provide: ADVANCE_TABLE_OPTIONS_TOKEN,
+    useValue,
   };
 }

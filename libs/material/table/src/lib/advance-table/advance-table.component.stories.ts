@@ -7,10 +7,8 @@ import { AdvanceTableComponent } from './advance-table.component';
 
 import { within } from '@storybook/testing-library';
 import {
-  provideAdvanceTableBulkActions,
-  provideAdvanceTableColumns,
   provideAdvanceTableDataService,
-  provideAdvanceTableRowActions,
+  provideAdvanceTableOptions,
 } from './advance-table.providers';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AdvanceTableService } from './demo-advance-table.service';
@@ -22,13 +20,16 @@ const meta: Meta<AdvanceTableComponent> = {
     applicationConfig({
       providers: [
         provideAnimations(),
-        provideAdvanceTableColumns([
-          { name: 'id', label: '#' },
-          { name: 'name' },
-          { name: 'category' },
-        ]),
-        provideAdvanceTableBulkActions([]),
-        provideAdvanceTableRowActions([]),
+        provideAdvanceTableOptions({
+          columns: [{ name: 'id' }, { name: 'name' }, { name: 'category' }],
+          displayColumns: [
+            { name: 'id', label: '#' },
+            { name: 'name', label: 'name' },
+            { name: 'category', label: 'category' },
+          ],
+          bulkActions: [],
+          rowActions: [],
+        }),
         provideAdvanceTableDataService(AdvanceTableService),
       ],
     }),

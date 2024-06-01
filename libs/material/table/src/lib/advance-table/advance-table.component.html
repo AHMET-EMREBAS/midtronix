@@ -15,7 +15,7 @@
 
   <mat-table
     #tableRef
-    *ngIf="data"
+    *ngIf="data$ | async as data"
     [dataSource]="data"
     matSort
     matSortActive="created"
@@ -33,25 +33,27 @@
       </mat-cell>
     </ng-container>
 
-    @for(col of columns;track col){
-    <ng-container [matColumnDef]="col.name.toString()">
+    @for(c of __columns(); track c){
+    <ng-container [matColumnDef]="c.name.toString()">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        {{ col.label || col.name }}
+        {{ c.label || c.name }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row[col.name] }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row[c.name] }} </mat-cell>
     </ng-container>
     }
 
-    <mat-header-row *matHeaderRowDef="getColumnNames()"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: getColumnNames()"></mat-row>
+    <mat-header-row *matHeaderRowDef="columnNames()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnNames()"></mat-row>
   </mat-table>
 
   <mat-paginator
     #paginatorRef
-    [length]="service.count$ | async"
+    [length]="count$ | async"
     [pageIndex]="0"
     [pageSize]="4"
     [pageSizeOptions]="[4, 8, 12, 16, 20]"
     (page)="page$.next($event)"
   ></mat-paginator>
 </div>
+
+{{ columnNames() | json }}
