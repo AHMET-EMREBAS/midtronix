@@ -198,7 +198,7 @@ export const Heading: Story = {
         quantityId: 1,
         skuId: 1,
       },
-    ],
+    ] as any,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
