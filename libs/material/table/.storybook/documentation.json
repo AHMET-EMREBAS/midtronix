@@ -1,0 +1,867 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "SampleTableComponent",
+            "id": "component-SampleTableComponent-2bd1b681e48ce89b75ef9868b3941acb64238a2fa11f418078a9034b439776e4d5ae140a1740b581cbdac8358451979262bd9c9c56407d1cfd1b6404f33531d1",
+            "file": "libs/material/table/src/lib/sample-table/sample-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-sample-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sample-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "data",
+                    "defaultValue": "[\r\n    { id: 1, name: 'data 1', read: false },\r\n    { id: 2, name: 'data 2', read: true },\r\n    { id: 3, name: 'data 3', read: true },\r\n    { id: 4, name: 'data 4', read: false },\r\n    { id: 5, name: 'data 5', read: false },\r\n    { id: 6, name: 'data 6', read: false },\r\n    { id: 7, name: 'data 7', read: false },\r\n    { id: 8, name: 'data 8', read: false },\r\n    { id: 9, name: 'data 9', read: false },\r\n    { id: 10, name: 'data 10', read: false },\r\n    { id: 11, name: 'data 11', read: false },\r\n    { id: 12, name: 'data 12', read: false },\r\n    { id: 13, name: 'data 13', read: false },\r\n    { id: 14, name: 'data 14', read: false },\r\n    { id: 15, name: 'data 15', read: false },\r\n    { id: 16, name: 'data 16', read: false },\r\n    { id: 17, name: 'data 17', read: false },\r\n    { id: 18, name: 'data 18', read: false },\r\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "filteredData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<literal type[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 53
+                },
+                {
+                    "name": "paginator",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatPaginator",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "MatPaginator"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "searchControl",
+                    "defaultValue": "new FormControl('', [])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "deleteSelection",
+                    "args": [
+                        {
+                            "name": "items",
+                            "type": "Map<number | any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "items",
+                            "type": "Map<number | any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "filterData",
+                    "args": [
+                        {
+                            "name": "search",
+                            "type": "string | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "search",
+                            "type": "string | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "markAllRead",
+                    "args": [
+                        {
+                            "name": "items",
+                            "type": "Map<number | any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "items",
+                            "type": "Map<number | any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "paginateData",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 88,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "any[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "TableComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatToolbarModule",
+                    "type": "module"
+                },
+                {
+                    "name": "InputTextComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "MatPaginatorModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\r\n\r\nimport { TableComponent } from '../table/table.component';\r\nimport { CommonModule } from '@angular/common';\r\nimport { InputTextComponent } from '@mdtx/material/form';\r\nimport { FormControl } from '@angular/forms';\r\nimport { Observable, debounceTime, map, merge, startWith } from 'rxjs';\r\nimport { MatToolbarModule } from '@angular/material/toolbar';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';\r\n\r\n@Component({\r\n  selector: 'mdtx-sample-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    TableComponent,\r\n    MatButtonModule,\r\n    MatToolbarModule,\r\n    InputTextComponent,\r\n    MatPaginatorModule,\r\n  ],\r\n  templateUrl: './sample-table.component.html',\r\n  styleUrl: './sample-table.component.scss',\r\n})\r\nexport class SampleTableComponent implements AfterViewInit {\r\n  @ViewChild(MatPaginator) paginator!: MatPaginator;\r\n\r\n  searchControl = new FormControl('', []);\r\n\r\n  data = [\r\n    { id: 1, name: 'data 1', read: false },\r\n    { id: 2, name: 'data 2', read: true },\r\n    { id: 3, name: 'data 3', read: true },\r\n    { id: 4, name: 'data 4', read: false },\r\n    { id: 5, name: 'data 5', read: false },\r\n    { id: 6, name: 'data 6', read: false },\r\n    { id: 7, name: 'data 7', read: false },\r\n    { id: 8, name: 'data 8', read: false },\r\n    { id: 9, name: 'data 9', read: false },\r\n    { id: 10, name: 'data 10', read: false },\r\n    { id: 11, name: 'data 11', read: false },\r\n    { id: 12, name: 'data 12', read: false },\r\n    { id: 13, name: 'data 13', read: false },\r\n    { id: 14, name: 'data 14', read: false },\r\n    { id: 15, name: 'data 15', read: false },\r\n    { id: 16, name: 'data 16', read: false },\r\n    { id: 17, name: 'data 17', read: false },\r\n    { id: 18, name: 'data 18', read: false },\r\n  ];\r\n\r\n  filteredData!: Observable<{ id: number; name: string }[]>;\r\n\r\n  ngAfterViewInit(): void {\r\n    this.filteredData = merge(\r\n      this.searchControl.valueChanges,\r\n      this.paginator.page\r\n    ).pipe(\r\n      debounceTime(600),\r\n      startWith(''),\r\n      map(() => {\r\n        return this.filterData(this.searchControl.value);\r\n      }),\r\n      map((data) => {\r\n        return this.paginateData(data);\r\n      })\r\n    );\r\n  }\r\n\r\n  deleteSelection(items: Map<number, any>) {\r\n    for (const [key] of items) {\r\n      if (key) {\r\n        this.data = this.data.filter((e) => e.id != key);\r\n      }\r\n    }\r\n    this.searchControl.setValue('');\r\n  }\r\n\r\n  markAllRead(items: Map<number, any>) {\r\n    for (const [key] of items) {\r\n      if (key) {\r\n        this.data.filter((e) => e.id == key).map((e) => (e.read = true));\r\n      }\r\n    }\r\n  }\r\n\r\n  paginateData(data: any[]) {\r\n    const pageSize = this.paginator.pageSize;\r\n    const pageIndex = this.paginator.pageIndex;\r\n\r\n    if (this.paginator) {\r\n      return data.slice(pageIndex * pageSize, pageIndex * pageSize + pageSize);\r\n    }\r\n\r\n    return [];\r\n  }\r\n\r\n  filterData(search?: string | null) {\r\n    if (search) {\r\n      return this.data.filter((e) =>\r\n        e.name.toLowerCase().includes(search?.toLowerCase())\r\n      );\r\n    }\r\n    return this.data;\r\n  }\r\n}\r\n",
+            "styleUrl": "./sample-table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<mat-toolbar>\r\n  <div style=\"display: flex; gap: 1em\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"deleteSelection(table.selectedItems)\"\r\n    >\r\n      Delete Selection\r\n    </button>\r\n    <button\r\n      mat-raised-button\r\n      color=\"primary\"\r\n      (click)=\"markAllRead(table.selectedItems)\"\r\n    >\r\n      Mark All Read\r\n    </button>\r\n  </div>\r\n  <div style=\"flex-grow: 1\"></div>\r\n  <mdtx-input-text #search [inputControl]=\"searchControl\" prefixIcon=\"search\">\r\n  </mdtx-input-text>\r\n</mat-toolbar>\r\n\r\n<div style=\"max-height: 400px; overflow: auto\">\r\n  <mdtx-table\r\n    #table\r\n    [dataSource]=\"(filteredData | async)!\"\r\n    [columns]=\"['id', 'name', 'read']\"\r\n    [displayedColumns]=\"['id', 'name', 'read']\"\r\n    conditionalColumn=\"read\"\r\n  ></mdtx-table>\r\n  <mat-paginator\r\n    #paginator\r\n    style=\"position: sticky; bottom: 0px\"\r\n    [pageSizeOptions]=\"[2, 5, 7, 10, 12, 20]\"\r\n    [length]=\"data.length\"\r\n    [pageIndex]=\"0\"\r\n    [pageSize]=\"2\"\r\n    [showFirstLastButtons]=\"true\"\r\n  >\r\n  </mat-paginator>\r\n</div>\r\n"
+        },
+        {
+            "name": "TableComponent",
+            "id": "component-TableComponent-d897c01e759dc0f2038de7635f1f7e3ca1db0d712595c78a1d61b16f5c6687ab4b6d3d09fa7bcd950d5c427e20f4f405c1e641a07fc04233c19d80822a641fe0",
+            "file": "libs/material/table/src/lib/table/table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "columns",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 49,
+                    "type": "TableRow<T>[]",
+                    "decorators": []
+                },
+                {
+                    "name": "conditionalColumn",
+                    "defaultValue": "'id'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 52,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "dataSource",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 51,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "displayedColumns",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 50,
+                    "type": "TableRow<T>[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectionChange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "firstColumns",
+                    "defaultValue": "[\r\n    { name: 'first' },\r\n    { name: 'second' },\r\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TableRow<any>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 42,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "lastColumns",
+                    "defaultValue": "[{ name: 'last' }]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TableRow<any>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "modifierKind": [
+                        148
+                    ]
+                },
+                {
+                    "name": "selectedItems",
+                    "defaultValue": "new Map()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 47,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "colMetCondition",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 116,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "colNotMetContion",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 120,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getDisplayedColumns",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 124,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isAllSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isPartialSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 108,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectAll",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 86,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectItem",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Partial<MatCheckboxChange>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "item",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSortModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTableModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatMenuModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { MatTableModule } from '@angular/material/table';\r\nimport { MatSortModule } from '@angular/material/sort';\r\nimport {\r\n  MatCheckboxChange,\r\n  MatCheckboxModule,\r\n} from '@angular/material/checkbox';\r\n\r\nimport { MatIconModule } from '@angular/material/icon';\r\nimport { MatButtonModule } from '@angular/material/button';\r\nimport { MatMenuModule } from '@angular/material/menu';\r\nimport { slideInDownOnEnterAnimation } from 'angular-animations';\r\nimport { TableRow } from '../common';\r\n@Component({\r\n  selector: 'mdtx-table',\r\n  standalone: true,\r\n  imports: [\r\n    CommonModule,\r\n    MatSortModule,\r\n    MatButtonModule,\r\n    MatIconModule,\r\n    MatCheckboxModule,\r\n    MatTableModule,\r\n    MatMenuModule,\r\n  ],\r\n  templateUrl: './table.component.html',\r\n  styleUrl: './table.component.scss',\r\n  animations: [\r\n    slideInDownOnEnterAnimation({\r\n      anchor: 'enter',\r\n      duration: 500,\r\n      delay: 400,\r\n      animateChildren: 'after',\r\n    }),\r\n  ],\r\n})\r\nexport class TableComponent<T extends Record<string, any> = any>\r\n  implements OnInit\r\n{\r\n  readonly firstColumns: TableRow<any>[] = [\r\n    { name: 'first' },\r\n    { name: 'second' },\r\n  ];\r\n  readonly lastColumns: TableRow<any>[] = [{ name: 'last' }];\r\n  readonly selectedItems = new Map();\r\n\r\n  @Input() columns!: TableRow<T>[];\r\n  @Input() displayedColumns!: TableRow<T>[];\r\n  @Input() dataSource!: any[];\r\n  @Input() conditionalColumn = 'id';\r\n  @Output() selectionChange = new EventEmitter();\r\n\r\n  ngOnInit(): void {\r\n    if (this.columns) {\r\n      if (!this.displayedColumns) {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.columns,\r\n          ...this.lastColumns,\r\n        ];\r\n      } else {\r\n        this.displayedColumns = [\r\n          ...this.firstColumns,\r\n          ...this.displayedColumns,\r\n          ...this.lastColumns,\r\n        ];\r\n      }\r\n    }\r\n\r\n    if (!this.dataSource) {\r\n      this.dataSource = [];\r\n    }\r\n  }\r\n\r\n  selectItem(event: Partial<MatCheckboxChange>, item: any) {\r\n    if (event.checked) {\r\n      this.selectedItems.set(item.id, item);\r\n    } else {\r\n      this.selectedItems.delete(item.id);\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  selectAll(event: Partial<MatCheckboxChange>) {\r\n    if (event.checked) {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    } else {\r\n      this.dataSource.forEach((e) => {\r\n        this.selectItem(event, e);\r\n      });\r\n    }\r\n    this.selectionChange.emit(this.selectedItems);\r\n  }\r\n\r\n  isAllSelected() {\r\n    for (const a of this.dataSource) {\r\n      if (!this.selectedItems.get(a.id)) {\r\n        return false;\r\n      }\r\n    }\r\n    return true;\r\n  }\r\n\r\n  isPartialSelected() {\r\n    if (this.isAllSelected()) {\r\n      return false;\r\n    }\r\n\r\n    return this.selectedItems.size > 0;\r\n  }\r\n\r\n  colMetCondition(row: any) {\r\n    return row[this.conditionalColumn] == true;\r\n  }\r\n\r\n  colNotMetContion(row: any) {\r\n    return row[this.conditionalColumn] == false;\r\n  }\r\n\r\n  getDisplayedColumns() {\r\n    return this.displayedColumns.map((e) => e.name);\r\n  }\r\n}\r\n",
+            "styleUrl": "./table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"table-container\">\r\n  <table mat-table [dataSource]=\"dataSource\">\r\n    <!-- first Column -->\r\n    <ng-container matColumnDef=\"first\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n    <!-- First column ends -->\r\n\r\n    <!-- Second column -->\r\n    <ng-container matColumnDef=\"second\">\r\n      <th mat-header-cell *matHeaderCellDef>\r\n        <mat-checkbox\r\n          [checked]=\"isAllSelected()\"\r\n          [indeterminate]=\"isPartialSelected()\"\r\n          (change)=\"selectAll($event)\"\r\n          [attr.data-testid]=\"'select-all'\"\r\n        ></mat-checkbox>\r\n      </th>\r\n      <td mat-cell *matCellDef=\"let row\">\r\n        <mat-checkbox\r\n          [checked]=\"selectedItems.get(row.id)\"\r\n          (change)=\"selectItem($event, row)\"\r\n          [attr.data-testid]=\"'select-' + row.id\"\r\n        ></mat-checkbox>\r\n      </td>\r\n    </ng-container>\r\n\r\n    <!-- Columns -->\r\n    @for(col of columns; track col){\r\n    <ng-container [matColumnDef]=\"col.name\">\r\n      <th mat-header-cell *matHeaderCellDef>{{ col.label || col.name }}</th>\r\n      <td\r\n        mat-cell\r\n        *matCellDef=\"let row\"\r\n        [class.condition-not-met]=\"colNotMetContion(row)\"\r\n        [@enter]\r\n      >\r\n        {{ col.prefix || '' }} {{ col.map ? col.map(row) : row[col.name] }}\r\n        {{ col.suffix || '' }}\r\n      </td>\r\n    </ng-container>\r\n    }\r\n\r\n    <!-- Last column -->\r\n    <ng-container matColumnDef=\"last\">\r\n      <th mat-header-cell *matHeaderCellDef></th>\r\n      <td mat-cell *matCellDef=\"let row\"></td>\r\n    </ng-container>\r\n\r\n    <!-- Headers -->\r\n    <tr\r\n      mat-header-row\r\n      *matHeaderRowDef=\"getDisplayedColumns(); sticky: true\"\r\n    ></tr>\r\n    <tr mat-row *matRowDef=\"let row; columns: getDisplayedColumns()\"></tr>\r\n  </table>\r\n</div>\r\n"
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<SampleTableComponent>",
+                "defaultValue": "{\r\n  component: SampleTableComponent,\r\n  title: 'SampleTableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<TableComponent>",
+                "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {},\r\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    columns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    displayedColumns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1', category: { name: 'Cat 1' } },\r\n      { id: 2, name: 'item 2', category: { name: 'Cat 2' } },\r\n      { id: 3, name: 'item 3', category: { name: 'Cat 3' } },\r\n      { id: 4, name: 'item 4', category: { name: 'Cat 4' } },\r\n      { id: 5, name: 'item 5', category: { name: 'Cat 5' } },\r\n      { id: 6, name: 'item 6', category: { name: 'Cat 6' } },\r\n      { id: 7, name: 'item 7', category: { name: 'Cat 7' } },\r\n      { id: 8, name: 'item 8', category: { name: 'Cat 8' } },\r\n      { id: 9, name: 'item 9', category: { name: 'Cat 9' } },\r\n      { id: 10, name: 'item 10', category: { name: 'Cat 10' } },\r\n    ],\r\n  },\r\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<SampleTableComponent>",
+                "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<TableComponent>",
+                "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "TableRow",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/common/table-row.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<SampleTableComponent>",
+                    "defaultValue": "{\r\n  component: SampleTableComponent,\r\n  title: 'SampleTableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {},\r\n}"
+                }
+            ],
+            "libs/material/table/src/lib/table/table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<TableComponent>",
+                    "defaultValue": "{\r\n  component: TableComponent,\r\n  title: 'TableComponent',\r\n  decorators: [\r\n    applicationConfig({\r\n      providers: [provideAnimations()],\r\n    }),\r\n  ],\r\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    columns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    displayedColumns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1', category: { name: 'Cat 1' } },\r\n      { id: 2, name: 'item 2', category: { name: 'Cat 2' } },\r\n      { id: 3, name: 'item 3', category: { name: 'Cat 3' } },\r\n      { id: 4, name: 'item 4', category: { name: 'Cat 4' } },\r\n      { id: 5, name: 'item 5', category: { name: 'Cat 5' } },\r\n      { id: 6, name: 'item 6', category: { name: 'Cat 6' } },\r\n      { id: 7, name: 'item 7', category: { name: 'Cat 7' } },\r\n      { id: 8, name: 'item 8', category: { name: 'Cat 8' } },\r\n      { id: 9, name: 'item 9', category: { name: 'Cat 9' } },\r\n      { id: 10, name: 'item 10', category: { name: 'Cat 10' } },\r\n    ],\r\n  },\r\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<SampleTableComponent>",
+                    "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/table/src/lib/table/table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<TableComponent>",
+                    "file": "libs/material/table/src/lib/table/table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/material/table/src/lib/common/table-row.ts": [
+                {
+                    "name": "TableRow",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/common/table-row.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SampleTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/table/table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/17",
+                "status": "low"
+            }
+        ]
+    }
+}

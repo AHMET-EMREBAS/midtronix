@@ -1,5 +1,5 @@
-$lightGray: rgb(199, 198, 198);
-$darkGray: darken($lightGray, 20);
+$lightGray: rgb(233, 233, 233);
+$darkGray: darken($lightGray, 5%);
 tr:nth-child(even):not(:first-child):not(:has(th)) {
   background-color: $lightGray;
 }
