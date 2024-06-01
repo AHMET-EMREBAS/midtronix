@@ -17,3 +17,12 @@ table {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(83, 83, 83);
 }
+
+// 
+mat-header-cell:first-child,
+mat-cell:first-child {
+  max-width: 50px;
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+}

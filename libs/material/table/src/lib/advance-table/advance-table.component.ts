@@ -1,4 +1,12 @@
-import { AfterViewInit, Component, Inject, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ADVANCE_TABLE_BULK_ACTIONS_TOKEN,
@@ -34,6 +42,11 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+export type QueryType = {
+  search: string;
+  page: PageEvent;
+  sort: Sort;
+};
 @Component({
   selector: 'mdtx-advance-table',
   standalone: true,
@@ -54,10 +67,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrl: './advance-table.component.scss',
 })
 export class AdvanceTableComponent<T extends IID = IID> {
+  selectedItemIds = new Set<number>();
+
   @ViewChild('tableRef') tableRef!: MatTable<T>;
   @ViewChild('paginatorRef') paginatorRef!: MatPaginator;
 
+  @Output() queryEvent = new EventEmitter<QueryType>();
+  @Output() editButtonClickEvent = new EventEmitter<T>();
+
   search$ = new BehaviorSubject<string>('');
+
   page$ = new BehaviorSubject<PageEvent>({
     length: 0,
     pageIndex: 0,
@@ -67,10 +86,12 @@ export class AdvanceTableComponent<T extends IID = IID> {
 
   sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });
 
-  data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
+  @Input() data?: T[];
+
+  query$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
     debounceTime(600),
-    switchMap(([search, page, sort]) => {
-      return this.service.query(search, page, sort);
+    map(([search, page, sort]) => {
+      this.queryEvent.emit({ search, page, sort });
     })
   );
 
@@ -86,10 +107,22 @@ export class AdvanceTableComponent<T extends IID = IID> {
   ) {}
 
   getColumnNames() {
-    return this.columns.map((e) => e.name);
+    return ['__firstColumn', ...this.columns.map((e) => e.name)];
   }
 
   pageChangeHandler(event: PageEvent) {
     this.page$.next(event);
+  }
+
+  isAllSelected() {
+    return false;
+  }
+
+  isSomeSelected() {
+    return false;
+  }
+
+  isSelected(row: T) {
+    return [];
   }
 }

@@ -1,3 +1,5 @@
+<ng-container *ngIf="query$ | async"></ng-container>
+
 <div class="table-container">
   <mat-form-field appearance="fill">
     <input
@@ -13,7 +15,7 @@
 
   <mat-table
     #tableRef
-    *ngIf="data$ | async as data"
+    *ngIf="data"
     [dataSource]="data"
     matSort
     matSortActive="created"
@@ -21,19 +23,24 @@
     matSortDirection="desc"
     (matSortChange)="sort$.next($event)"
   >
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="__firstColumn">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        #
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="editButtonClickEvent.emit(row)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="name">
+    @for(col of columns;track col){
+    <ng-container [matColumnDef]="col.name.toString()">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        Name
+        {{ col.label || col.name }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row[col.name] }} </mat-cell>
     </ng-container>
+    }
 
     <mat-header-row *matHeaderRowDef="getColumnNames()"></mat-header-row>
     <mat-row *matRowDef="let row; columns: getColumnNames()"></mat-row>
