@@ -13,11 +13,11 @@ export type AdvanceTableBulkAction<T> = {
 };
 
 export type AdvanceTableColumn<T> = {
-  name: string;
+  name: keyof T;
   label?: string;
   prefix?: string;
   suffix?: string;
   displayLabel?: (value: T) => string;
   displayValue?: (value: T) => string;
-  onClick: (value: T) => void;
+  onClick?: (value: T) => void;
 };

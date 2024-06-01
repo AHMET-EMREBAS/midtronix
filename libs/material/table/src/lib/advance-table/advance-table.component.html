@@ -1,7 +1,50 @@
-Count: {{ service.count$ | async }}
-<br />
-Columns: {{ columns }}
-<br />
-Row Actions: {{ rowActions | json }}
-<br />
-Bulk Actions: {{ bulkActions | json }}
+<div class="table-container">
+  <mat-form-field appearance="fill">
+    <input
+      type="search"
+      #searchInput="ngModel"
+      ngModel
+      matInput
+      placeholder="Search"
+      autocomplete="off"
+      (input)="search$.next(searchInput.value)"
+    />
+  </mat-form-field>
+
+  <mat-table
+    #tableRef
+    *ngIf="data$ | async as data"
+    [dataSource]="data"
+    matSort
+    matSortActive="created"
+    matSortDisableClear
+    matSortDirection="desc"
+    (matSortChange)="sort$.next($event)"
+  >
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        #
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="getColumnNames()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: getColumnNames()"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    #paginatorRef
+    [length]="service.count$ | async"
+    [pageIndex]="0"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12, 16, 20]"
+    (page)="page$.next($event)"
+  ></mat-paginator>
+</div>

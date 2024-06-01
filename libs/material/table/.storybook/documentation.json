@@ -1,12 +1,341 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "IAdvanceTableDataService",
+            "id": "interface-IAdvanceTableDataService-b32a47e10c9b7949cd3f7f409b9ad660affa53b10d798b5e8d76e8e8a39f40da15b33395bc0f01aaf4ccf88c504b4b0f899e518683df7966853dd9af964e8b1c",
+            "file": "libs/material/table/src/lib/advance-table/advance-table-data.service.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { IID } from '@mdtx/common';\r\nimport { Observable } from 'rxjs';\r\n\r\nexport interface IAdvanceTableDataService<\r\n  T extends IID,\r\n  TQuery = Record<string, string>\r\n> {\r\n  entities$: Observable<T[]>;\r\n  count$: Observable<number>;\r\n  getWithQuery(query: TQuery): Observable<T[]>;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "count$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<number>",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "entities$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<T[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 173,
+            "methods": [
+                {
+                    "name": "getWithQuery",
+                    "args": [
+                        {
+                            "name": "query",
+                            "type": "TQuery",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<T[]>",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "query",
+                            "type": "TQuery",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "extends": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "AdvanceTableService",
+            "id": "class-AdvanceTableService-b9e8def801937613e29cf8239907e574fe84e6bf5c7a9b9cd23e9bb927ff2f77ca66f417d3155ffd4839843d08343cc0a9e1cee7e497887275495f005c3ab798",
+            "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import {\n  applicationConfig,\n  type Meta,\n  type StoryObj,\n} from '@storybook/angular';\nimport { AdvanceTableComponent } from './advance-table.component';\n\nimport { within } from '@storybook/testing-library';\nimport {\n  provideAdvanceTableBulkActions,\n  provideAdvanceTableColumns,\n  provideAdvanceTableDataService,\n  provideAdvanceTableRowActions,\n} from './advance-table.providers';\nimport { IAdvanceTableDataService } from './advance-table-data.service';\nimport { IID } from '@mdtx/common';\nimport { Observable, of } from 'rxjs';\n\nclass AdvanceTableService implements IAdvanceTableDataService<IID> {\n  entities$: Observable<IID[]> = of([]);\n  count$: Observable<number> = of(100);\n\n  getWithQuery(query: Record<string, any>): Observable<IID[]> {\n    throw new Error('Method not implemented.');\n  }\n}\n\nconst meta: Meta<AdvanceTableComponent> = {\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n};\nexport default meta;\ntype Story = StoryObj<AdvanceTableComponent>;\n\nexport const Primary: Story = {\n  args: {},\n};\n\nexport const Heading: Story = {\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n};\n",
+            "inputsClass": [],
+            "outputsClass": [],
+            "properties": [
+                {
+                    "name": "count$",
+                    "defaultValue": "of(100)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<number>",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "entities$",
+                    "defaultValue": "of([])",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<IID[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getWithQuery",
+                    "args": [
+                        {
+                            "name": "query",
+                            "type": "Record<string | any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<IID[]>",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "query",
+                            "type": "Record<string | any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "extends": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "IAdvanceTableDataService"
+            ]
+        }
+    ],
     "directives": [],
     "components": [
+        {
+            "name": "AdvanceTableComponent",
+            "id": "component-AdvanceTableComponent-473adc165557ccdcbeff8c0e10506885220ca1f9d9280b94de9ef9f23df82ebe77cbe54c1043c6deb12d4b384737ecf3e096b6de3011a2e39e079ec396887354",
+            "file": "libs/material/table/src/lib/advance-table/advance-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-advance-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./advance-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "bulkActions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AdvanceTableBulkAction<T>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "ADVANCE_TABLE_BULK_ACTIONS_TOKEN"
+                        }
+                    ],
+                    "modifierKind": [
+                        170,
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "columns",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "ADVANCE_TABLE_COLUMNS_TOKEN"
+                        }
+                    ],
+                    "modifierKind": [
+                        170,
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "rowActions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AdvanceTableRowAction<T>[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN"
+                        }
+                    ],
+                    "modifierKind": [
+                        170,
+                        125,
+                        148
+                    ]
+                },
+                {
+                    "name": "service",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IAdvanceTableDataService<T>",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "ADVANCE_TABLE_DATA_SERVICE_TOKEN"
+                        }
+                    ],
+                    "modifierKind": [
+                        170,
+                        125,
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  ADVANCE_TABLE_BULK_ACTIONS_TOKEN,\n  ADVANCE_TABLE_COLUMNS_TOKEN,\n  ADVANCE_TABLE_DATA_SERVICE_TOKEN,\n  ADVANCE_TABLE_ROW_ACTIONS_TOKEN,\n} from './advance-table.providers';\nimport { IAdvanceTableDataService } from './advance-table-data.service';\nimport { IID } from '@mdtx/common';\nimport {\n  AdvanceTableBulkAction,\n  AdvanceTableRowAction,\n} from './advance-table.types';\n\n@Component({\n  selector: 'mdtx-advance-table',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './advance-table.component.html',\n  styleUrl: './advance-table.component.scss',\n})\nexport class AdvanceTableComponent<T extends IID = IID> {\n  constructor(\n    @Inject(ADVANCE_TABLE_COLUMNS_TOKEN)\n    public readonly columns: string[],\n    @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)\n    public readonly service: IAdvanceTableDataService<T>,\n    @Inject(ADVANCE_TABLE_ROW_ACTIONS_TOKEN)\n    public readonly rowActions: AdvanceTableRowAction<T>[],\n    @Inject(ADVANCE_TABLE_BULK_ACTIONS_TOKEN)\n    public readonly bulkActions: AdvanceTableBulkAction<T>[]\n  ) {\n    console.log(columns);\n  }\n}\n",
+            "styleUrl": "./advance-table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "columns",
+                        "type": "string[]",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "service",
+                        "type": "IAdvanceTableDataService<T>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "rowActions",
+                        "type": "AdvanceTableRowAction<T>[]",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "bulkActions",
+                        "type": "AdvanceTableBulkAction<T>[]",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "columns",
+                        "type": "string[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "type": "IAdvanceTableDataService<T>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "rowActions",
+                        "type": "AdvanceTableRowAction<T>[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "bulkActions",
+                        "type": "AdvanceTableBulkAction<T>[]",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "Count: {{ service.count$ | async }}\n<br />\nColumns: {{ columns }}\n<br />\nRow Actions: {{ rowActions | json }}\n<br />\nBulk Actions: {{ bulkActions | json }}\n"
+        },
         {
             "name": "SampleTableComponent",
             "id": "component-SampleTableComponent-2bd1b681e48ce89b75ef9868b3941acb64238a2fa11f418078a9034b439776e4d5ae140a1740b581cbdac8358451979262bd9c9c56407d1cfd1b6404f33531d1",
@@ -572,6 +901,56 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "ADVANCE_TABLE_BULK_ACTIONS_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_BULK_ACTIONS_TOKEN'\r\n)"
+            },
+            {
+                "name": "ADVANCE_TABLE_COLUMNS_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_COLUMNS_TOKEN'\r\n)"
+            },
+            {
+                "name": "ADVANCE_TABLE_DATA_SERVICE_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_DATA_SERVICE_TOKEN'\r\n)"
+            },
+            {
+                "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_ROW_ACTIONS_TOKEN'\r\n)"
+            },
+            {
+                "name": "Heading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+            },
+            {
                 "name": "Heading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -590,6 +969,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: Primary.args,\r\n  play: async ({ canvasElement }) => {\r\n    const canvas = within(canvasElement);\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<AdvanceTableComponent>",
+                "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -615,6 +1004,16 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\n  args: {},\n}"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -632,8 +1031,163 @@
                 "defaultValue": "{\r\n  args: {\r\n    columns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    displayedColumns: [\r\n      { name: 'id' },\r\n      { name: 'name' },\r\n      { name: 'category', map: (e) => e.category.name },\r\n    ],\r\n    dataSource: [\r\n      { id: 1, name: 'item 1', category: { name: 'Cat 1' } },\r\n      { id: 2, name: 'item 2', category: { name: 'Cat 2' } },\r\n      { id: 3, name: 'item 3', category: { name: 'Cat 3' } },\r\n      { id: 4, name: 'item 4', category: { name: 'Cat 4' } },\r\n      { id: 5, name: 'item 5', category: { name: 'Cat 5' } },\r\n      { id: 6, name: 'item 6', category: { name: 'Cat 6' } },\r\n      { id: 7, name: 'item 7', category: { name: 'Cat 7' } },\r\n      { id: 8, name: 'item 8', category: { name: 'Cat 8' } },\r\n      { id: 9, name: 'item 9', category: { name: 'Cat 9' } },\r\n      { id: 10, name: 'item 10', category: { name: 'Cat 10' } },\r\n    ],\r\n  },\r\n}"
             }
         ],
-        "functions": [],
+        "functions": [
+            {
+                "name": "provideAdvanceTableBulkActions",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "provideAdvanceTableColumns",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "provideAdvanceTableDataService",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "useClass",
+                        "type": "Type",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "useClass",
+                        "type": "Type",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "provideAdvanceTableRowActions",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "useValue",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
         "typealiases": [
+            {
+                "name": "AdvanceTableBulkAction",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "AdvanceTableColumn",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "AdvanceTableRowAction",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<AdvanceTableComponent>",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
             {
                 "name": "Story",
                 "ctype": "miscellaneous",
@@ -670,6 +1224,80 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "libs/material/table/src/lib/advance-table/advance-table.providers.ts": [
+                {
+                    "name": "ADVANCE_TABLE_BULK_ACTIONS_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_BULK_ACTIONS_TOKEN'\r\n)"
+                },
+                {
+                    "name": "ADVANCE_TABLE_COLUMNS_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_COLUMNS_TOKEN'\r\n)"
+                },
+                {
+                    "name": "ADVANCE_TABLE_DATA_SERVICE_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_DATA_SERVICE_TOKEN'\r\n)"
+                },
+                {
+                    "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_ROW_ACTIONS_TOKEN'\r\n)"
+                }
+            ],
+            "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts": [
+                {
+                    "name": "Heading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<AdvanceTableComponent>",
+                    "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\n  args: {},\n}"
+                }
+            ],
             "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
                 {
                     "name": "Heading",
@@ -735,9 +1363,170 @@
                 }
             ]
         },
-        "groupedFunctions": {},
+        "groupedFunctions": {
+            "libs/material/table/src/lib/advance-table/advance-table.providers.ts": [
+                {
+                    "name": "provideAdvanceTableBulkActions",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "provideAdvanceTableColumns",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "provideAdvanceTableDataService",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "useClass",
+                            "type": "Type",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "useClass",
+                            "type": "Type",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "provideAdvanceTableRowActions",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "useValue",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "libs/material/table/src/lib/advance-table/advance-table.types.ts": [
+                {
+                    "name": "AdvanceTableBulkAction",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "AdvanceTableColumn",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
+                    "name": "AdvanceTableRowAction",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
+            "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<AdvanceTableComponent>",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
             "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts": [
                 {
                     "name": "Story",
@@ -784,6 +1573,143 @@
         "count": 0,
         "status": "low",
         "files": [
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table-data.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IAdvanceTableDataService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AdvanceTableService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Heading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdvanceTableComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideAdvanceTableBulkActions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideAdvanceTableColumns",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideAdvanceTableDataService",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideAdvanceTableRowActions",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ADVANCE_TABLE_BULK_ACTIONS_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ADVANCE_TABLE_COLUMNS_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ADVANCE_TABLE_DATA_SERVICE_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "libs/material/table/src/lib/sample-table/sample-table.component.stories.ts",
                 "type": "variable",
