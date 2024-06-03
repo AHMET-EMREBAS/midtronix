@@ -32,7 +32,6 @@ export * from './lib/sku-view';
 export * from './lib/sprint';
 export * from './lib/store';
 export * from './lib/task';
-export * from './lib/taxrate';
 export * from './lib/ticket';
 export * from './lib/user';
 export * from './lib/user-address';

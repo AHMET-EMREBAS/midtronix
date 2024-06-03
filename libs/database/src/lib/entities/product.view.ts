@@ -16,19 +16,28 @@ import { Manufacturer } from './manufacturer';
       .addSelect('main.upc', 'upc')
       .addSelect('c.name', 'category')
       .addSelect('d.name', 'department')
-
+      .addSelect('c.id', 'categoryId')
+      .addSelect('d.id', 'departmentId')
+      .addSelect('main.createdAt', 'createdAt')
+      .addSelect('main.updatedAt', 'updatedAt')
+      .addSelect('main.deletedAt', 'deletedAt')
       .from(Product, 'main')
       .leftJoin(Category, 'c', 'c.id = main.categoryId')
       .leftJoin(Department, 'd', 'd.id = main.departmentId');
   },
 })
 export class ProductView {
-  @ViewColumn() id: any;
-  @ViewColumn() name: any;
-  @ViewColumn() description: any;
-  @ViewColumn() upc: any;
-  @ViewColumn() category: any;
-  @ViewColumn() department: any;
+  @ViewColumn() id!: string;
+  @ViewColumn() name!: string;
+  @ViewColumn() description!: string;
+  @ViewColumn() upc!: string;
+  @ViewColumn() category!: string;
+  @ViewColumn() department!: string;
+  @ViewColumn() categoryId!: string;
+  @ViewColumn() departmentId!: string;
+  @ViewColumn() createdAt!: string;
+  @ViewColumn() updatedAt!: string;
+  @ViewColumn() deletedAt!: string;
 }
 
 /**

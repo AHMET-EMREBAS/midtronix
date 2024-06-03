@@ -32,15 +32,13 @@ import {
   Observable,
   catchError,
   combineLatest,
-  combineLatestAll,
   debounceTime,
-  forkJoin,
   map,
   merge,
   of,
   switchMap,
-  zip,
 } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mdtx-update-product',
@@ -134,11 +132,15 @@ export class UpdateProductComponent implements AfterViewInit {
     protected readonly priceService: PriceService,
     protected readonly skuViewService: SkuViewService,
     protected readonly skuService: SkuService,
-    protected readonly priceLevelService: PriceLevelService
+    protected readonly priceLevelService: PriceLevelService,
+    protected readonly route: ActivatedRoute
   ) {}
 
   ngAfterViewInit(): void {
+    console.log('----------After view init ? ');
     this.priceLevelService.getWithQuery({ take: 1000 });
+    const productId = this.route.snapshot.paramMap.get('id');
+    console.table({ productId });
   }
 
   selectProductEventHandler(event: IProduct) {

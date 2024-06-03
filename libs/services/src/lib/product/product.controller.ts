@@ -3,12 +3,12 @@ import {
   PaginatorDto,
   RestRouteBuilder,
   RelationDto,
-  SearchDto,
 } from '@mdtx/core';
 import {
   CreateProductDto,
   Product,
   SearchProductDto,
+  SortProductDto,
   UpdateProductDto,
 } from '@mdtx/database';
 import { ProductService } from './product.service';
@@ -32,9 +32,17 @@ export class ProductController {
   @R.FindAll()
   findAll(
     @R.Query() paginator: PaginatorDto,
-    @R.Query() searchDto: SearchProductDto
+    @R.Query() searchDto: SearchProductDto,
+    @R.Query() sortDto: SortProductDto
   ) {
-    return this.service.findAll({ ...paginator }, null, null, searchDto.search);
+    console.log(paginator, searchDto);
+    return this.service.findAll(
+      { ...paginator },
+      null,
+      null,
+      searchDto.search,
+      sortDto
+    );
   }
 
   @R.FindOneById()

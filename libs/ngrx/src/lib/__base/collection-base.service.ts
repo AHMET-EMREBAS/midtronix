@@ -1,5 +1,4 @@
 import {
-  EntityActionOptions,
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
   MergeStrategy,
@@ -11,8 +10,10 @@ import {
   RestApiPathBuilder,
   RestApiPaths,
 } from '@mdtx/common';
-import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 import { IInputOption } from '@mdtx/material/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 export class CollectionBaseService<
   T extends IID
 > extends EntityCollectionServiceBase<T> {
@@ -20,6 +21,7 @@ export class CollectionBaseService<
   readonly apiPaths!: RestApiPaths;
   readonly metadata$!: Observable<ResourceMetadata>;
   readonly asOptions$!: Observable<IInputOption[]>;
+
   constructor(
     entity: string,
     factory: EntityCollectionServiceElementsFactory,
@@ -93,5 +95,14 @@ export class CollectionBaseService<
     return this.httpClient.get<T[]>(
       'api/' + this.apiPaths.PLURAL_PATH + `?take=10000&${queryString}`
     );
+  }
+
+  advanceQuery(search: string, page: PageEvent, sort: Sort): Observable<T[]> {
+    return this.getWithQuery({
+      search,
+      take: page.pageSize,
+      skip: page.pageIndex * page.pageSize,
+      order: `${sort.active}:${sort.direction}`,
+    });
   }
 }

@@ -1,5 +1,12 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { IBaseEntity, IDescription, IID } from './__base';
+import { TableColumnOption } from '../table';
+import {
+  IBaseEntity,
+  IDescription,
+  IID,
+  INameTableOption,
+  wrapTableOptions,
+} from './__base';
 import { IManufacturerRaw } from './manufacturer';
 import { IImage } from './media';
 import { ICategoryRaw, IDepartmentRaw } from './meta';
@@ -23,6 +30,14 @@ export interface IProduct<
   manufacturers?: TManufacturer[];
 }
 
+export const ProductTableOption: TableColumnOption<IProduct> =
+  wrapTableOptions<IProduct>({
+    upc: { name: 'upc', label: 'barcode' },
+    category: { name: 'category' },
+    department: { name: 'department' },
+    description: { name: 'description' },
+  });
+
 export interface IRecord extends IDescription {}
 
 export interface ISku<TProduct extends IID = IID> extends IProductCommon {
@@ -44,7 +59,6 @@ export interface IQuantity<TSku extends IID = IID, TStore extends IID = IID>
   store: TStore;
 }
 
-
 export interface IProductImage<TOwner extends IID = IID>
   extends IImage<TOwner> {}
 
@@ -62,6 +76,3 @@ export type IPriceRaw = IPrice<ISkuRaw, IPriceLevelRaw>;
 export type IQuantityRaw = IQuantity<ISkuRaw, IStoreRaw>;
 export type IProductImageRaw = IProductImage<IProductRaw>;
 export type IProductVideoRaw = IProductVideo<IProductRaw>;
-
-
-

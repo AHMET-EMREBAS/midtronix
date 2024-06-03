@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DeepPartial,
-  Equal,
   FindOneOptions,
+  FindOptionsOrder,
   FindOptionsWhere,
   ILike,
   Repository,
 } from 'typeorm';
-import { PaginatorDto, RelationDto, UnsetRelationDto } from '../dto';
+import { PaginatorDto, RelationDto, SortDto, UnsetRelationDto } from '../dto';
 
 import { IID, ResourceMetadata } from '@mdtx/common';
 import {
@@ -33,7 +33,10 @@ export class RepositoryService<T extends IID> {
     })
     .map((e) => e.propertyName);
 
-  constructor(protected repository: Repository<T>) {}
+  constructor(
+    protected readonly repository: Repository<T>,
+    protected readonly viewRepository?: Repository<any>
+  ) {}
 
   protected __where(
     search: string | undefined
@@ -56,13 +59,31 @@ export class RepositoryService<T extends IID> {
     paginator: PaginatorDto,
     query: any = {},
     select?: any,
-    search?: any
+    search?: any,
+    sort?: SortDto
   ) {
     const where = search ?? query;
 
     console.log(where);
     const { take, skip } = paginator;
-    return await this.repository.find({ take, skip, select, where: where });
+
+    const orderBy = sort?.orderBy ?? 'id';
+    const orderDir = sort?.orderDir ?? 'ASC';
+
+    const queryObject = {
+      take,
+      skip,
+      select,
+      where: where,
+      order: { [orderBy]: orderDir } as FindOptionsOrder<T>,
+    };
+
+    console.log(queryObject);
+
+    if (this.viewRepository) {
+      return this.viewRepository.find(queryObject);
+    }
+    return await this.repository.find(queryObject);
   }
 
   async findOne(options: FindOneOptions<T>) {

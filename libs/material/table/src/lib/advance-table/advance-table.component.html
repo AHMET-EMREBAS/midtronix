@@ -42,7 +42,7 @@
         {{ c.label || c.name.toString() || '' | titlecase }}
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{ c.displayValue ? c.displayValue(row) : row[c.name] }}
+        {{ c.value ? c.value(row) : row[c.name] }}
       </mat-cell>
     </ng-container>
     }

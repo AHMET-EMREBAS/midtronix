@@ -42,7 +42,7 @@ import { Project, Sprint, Task } from './project';
 import { Ticket } from './ticket';
 import { Taxrate } from './taxrate';
 import { Discount } from './discount';
-import { SkuView } from './product.view';
+import { ProductView, SkuView } from './product.view';
 import { Sale, SaleView } from './sale';
 import { DiscountView } from './discount.view';
 import { Purchase } from './purchase';
@@ -125,6 +125,7 @@ export const ManufacturerPhoneEntities: Readonly<Type[]> = [
 
 export const ProductEntities: Readonly<Type[]> = [
   Product,
+  ProductView,
   Manufacturer,
   Category,
   Department,

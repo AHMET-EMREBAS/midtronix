@@ -4,6 +4,7 @@ import {
   Property,
   QueryProperty,
   CreateSearchDto,
+  CreateSortDto,
 } from '@mdtx/core';
 import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES, IProduct } from '@mdtx/common';
 
@@ -21,6 +22,20 @@ export class SearchProductDto extends CreateSearchDto([
   'name',
   'upc',
   'description',
+  'category',
+  'department',
+]) {}
+
+export class SortProductDto extends CreateSortDto([
+  'id',
+  'name',
+  'upc',
+  'category',
+  'department',
+  'description',
+  'createdAt',
+  'updatedAt',
+  'deletedAt',
 ]) {}
 
 @Exclude()

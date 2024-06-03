@@ -1,19 +1,17 @@
-import { IID } from '@mdtx/common';
-import { IAdvanceTableDataService } from './advance-table-data.service';
+import { IID, TableColumnOption } from '@mdtx/common';
+
 import {
   AdvanceTableBulkAction,
-  AdvanceTableColumn,
-  AdvanceTableOptions,
   AdvanceTableRowAction,
 } from './advance-table.types';
 import { InjectionToken, Provider, Type } from '@angular/core';
-
+import { CollectionBaseService } from '@mdtx/ngrx';
 export const ADVANCE_TABLE_COLUMNS_TOKEN = new InjectionToken(
   'ADVANCE_TABLE_COLUMNS_TOKEN'
 );
 
 export function provideAdvanceTableColumns<T>(
-  useValue: AdvanceTableColumn<T>[]
+  useValue: TableColumnOption<T>[]
 ): Provider {
   return {
     provide: ADVANCE_TABLE_COLUMNS_TOKEN,
@@ -52,7 +50,7 @@ export const ADVANCE_TABLE_DATA_SERVICE_TOKEN = new InjectionToken(
 );
 
 export function provideAdvanceTableDataService<T extends IID>(
-  useClass: Type<IAdvanceTableDataService<T>>
+  useClass: Type<CollectionBaseService<T>>
 ): Provider {
   return {
     provide: ADVANCE_TABLE_DATA_SERVICE_TOKEN,
@@ -65,7 +63,7 @@ export const ADVANCE_TABLE_OPTIONS_TOKEN = new InjectionToken(
 );
 
 export function provideAdvanceTableOptions<T extends IID>(
-  useValue: AdvanceTableOptions<T>
+  useValue: TableColumnOption<T>
 ): Provider {
   return {
     provide: ADVANCE_TABLE_OPTIONS_TOKEN,

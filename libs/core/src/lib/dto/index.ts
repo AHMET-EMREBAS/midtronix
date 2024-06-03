@@ -6,3 +6,5 @@ export * from './transformers';
 export * from './result';
 export * from './select-query';
 export * from './search';
+export * from './sort';
+

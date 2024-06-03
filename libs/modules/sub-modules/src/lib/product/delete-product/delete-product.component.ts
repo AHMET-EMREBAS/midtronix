@@ -1,10 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatDialog,
-  MatDialogClose,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { IProduct } from '@mdtx/common';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
 import { MatButtonModule } from '@angular/material/button';

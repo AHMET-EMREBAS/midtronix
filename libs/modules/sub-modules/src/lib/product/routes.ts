@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { CreateProductComponent } from './create-product/create-product.component';
-import { UpdateProductComponent } from './update-product/update-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import {
   ContentCenterLeftProvider,
@@ -54,6 +53,11 @@ export const ProductRoutes: Routes = [
       {
         title: 'Update Product',
         path: 'update',
+        loadComponent: () => ProductEditorComponent,
+      },
+      {
+        title: 'Update Product',
+        path: 'update/:id',
         loadComponent: () => ProductEditorComponent,
       },
     ],

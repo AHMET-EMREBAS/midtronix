@@ -11,6 +11,7 @@ import {
 } from '@mdtx/database';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AppSeedModule } from './app-seed.module';
 const modules = Object.values(Modules).filter((e) => e.name.endsWith('Module'));
 
 const isDev = process.env.NODE_ENV == 'development';
@@ -27,6 +28,8 @@ const isDev = process.env.NODE_ENV == 'development';
       username: 'postgres',
       password: 'password',
       autoLoadEntities: true,
+      synchronize: true,
+      dropSchema: true,
       subscribers: [
         CustomerSubscriber,
         ProductSubscriber,
@@ -37,6 +40,7 @@ const isDev = process.env.NODE_ENV == 'development';
       ],
     }),
     ...modules,
+    AppSeedModule,
   ],
 })
 export class AppModule {}

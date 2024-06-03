@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   PriceLevelService,
@@ -32,15 +32,14 @@ import {
   Observable,
   catchError,
   combineLatest,
-  combineLatestAll,
   debounceTime,
-  forkJoin,
+  firstValueFrom,
   map,
   merge,
   of,
   switchMap,
-  zip,
 } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mdtx-product-editor',
@@ -68,6 +67,8 @@ import {
   ],
 })
 export class ProductEditorComponent implements AfterViewInit {
+  @ViewChild('productSearch') productSearch!: ProductSearchComponent;
+
   priceLevels$: Observable<IPriceLevel[]> = this.priceLevelService.entities$;
   productChange$ = new BehaviorSubject<IProduct | null>(null);
   priceLevelChange$ = new BehaviorSubject<IPriceLevel | null>(null);
@@ -134,11 +135,23 @@ export class ProductEditorComponent implements AfterViewInit {
     protected readonly priceService: PriceService,
     protected readonly skuViewService: SkuViewService,
     protected readonly skuService: SkuService,
-    protected readonly priceLevelService: PriceLevelService
+    protected readonly priceLevelService: PriceLevelService,
+    protected readonly route: ActivatedRoute
   ) {}
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
     this.priceLevelService.getWithQuery({ take: 1000 });
+
+    const productId = this.route.snapshot.paramMap.get('id');
+    console.table({ productId });
+
+    if (productId) {
+      const found = await firstValueFrom(
+        this.productService.getByKey(productId)
+      );
+      this.productSearch.defaultValue = found;
+      this.productChange$.next(found);
+    }
   }
 
   selectProductEventHandler(event: IProduct) {

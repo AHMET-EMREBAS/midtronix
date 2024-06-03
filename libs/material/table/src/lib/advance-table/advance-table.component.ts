@@ -10,14 +10,19 @@ import {
   ADVANCE_TABLE_DATA_SERVICE_TOKEN,
   ADVANCE_TABLE_OPTIONS_TOKEN,
 } from './advance-table.providers';
-import { IID } from '@mdtx/common';
-import { AdvanceTableOptions } from './advance-table.types';
+import { IID, TableColumnOption } from '@mdtx/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { BehaviorSubject, combineLatest, debounceTime, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  debounceTime,
+  map,
+  switchMap,
+} from 'rxjs';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -26,8 +31,8 @@ import {
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { AdvanceTableService } from './demo-advance-table.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CollectionBaseService } from '@mdtx/ngrx';
 
 export type QueryType = {
   search: string;
@@ -67,7 +72,11 @@ export class AdvanceTableComponent<T extends IID = IID> {
     previousPageIndex: 0,
   });
 
-  count$ = this.service.countAll$;
+  count$ = this.service.metadata$.pipe(
+    map((meta) => {
+      return meta.count;
+    })
+  );
 
   sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });
 
@@ -91,26 +100,26 @@ export class AdvanceTableComponent<T extends IID = IID> {
 
   constructor(
     @Inject(ADVANCE_TABLE_OPTIONS_TOKEN)
-    public readonly options: AdvanceTableOptions<T>,
+    public readonly options: TableColumnOption<T>,
     @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)
-    public readonly service: AdvanceTableService,
+    public readonly service: CollectionBaseService<T>,
     public readonly router: Router,
     public readonly route: ActivatedRoute
   ) {}
 
   __columns() {
-    return this.options.columns;
+    return Object.values(this.options);
   }
   __displayColumns() {
-    return this.options.displayColumns;
+    return Object.values(this.options);
   }
 
   __columnNames() {
-    return [...this.options.columns.map((e) => e.name)];
+    return [...this.__columns().map((e) => e.name)];
   }
 
   __displayedColumnNames() {
-    return this.options.displayColumns.map((e) => e.name);
+    return [...this.__displayColumns().map((e) => e.name)];
   }
 
   columnNames() {

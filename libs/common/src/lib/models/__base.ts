@@ -1,3 +1,5 @@
+import { TableColumnOption } from '../table';
+
 export interface IID {
   id: number;
 }
@@ -9,6 +11,67 @@ export interface IBaseEntity extends IID {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date;
+}
+
+export const IBaseEntityTableOption: TableColumnOption<IBaseEntity> = {
+  id: { name: 'id', label: '#', order: 0 },
+  createdAt: {
+    name: 'createdAt',
+    label: 'Created',
+    value(v) {
+      return v ? new Date(v.createdAt).toLocaleDateString() : 'None';
+    },
+    order: 101,
+  },
+  deletedAt: {
+    name: 'deletedAt',
+    label: 'Deleted',
+    value(v) {
+      return v ? new Date(v.deletedAt).toLocaleDateString() : 'None';
+    },
+    order: 102,
+  },
+  updatedAt: {
+    name: 'updatedAt',
+    label: 'Updated',
+    value(v) {
+      return v ? new Date(v.updatedAt).toLocaleDateString() : 'None';
+    },
+    order: 103,
+  },
+};
+
+export function wrapTableOptions<T extends IBaseEntity>(
+  options: TableColumnOption<T>
+): TableColumnOption<T> {
+  return {
+    id: { name: 'id', label: '#', order: 0 },
+    ...options,
+    createdAt: {
+      name: 'createdAt',
+      label: 'Created',
+      value(v) {
+        return v ? new Date(v.createdAt).toLocaleDateString() : 'None';
+      },
+      order: 101,
+    },
+    deletedAt: {
+      name: 'deletedAt',
+      label: 'Deleted',
+      value(v) {
+        return v ? new Date(v.deletedAt).toLocaleDateString() : 'None';
+      },
+      order: 102,
+    },
+    updatedAt: {
+      name: 'updatedAt',
+      label: 'Updated',
+      value(v) {
+        return v ? new Date(v.updatedAt).toLocaleDateString() : 'None';
+      },
+      order: 103,
+    },
+  };
 }
 
 /**
@@ -24,6 +87,11 @@ export interface IOwner<TOwner extends IID> extends IBaseEntity {
 export interface IName extends IBaseEntity {
   name: string;
 }
+
+export const INameTableOption: TableColumnOption<IName> = {
+  ...IBaseEntityTableOption,
+  name: { name: 'name', order: 10 },
+};
 
 /**
  * Name and description and timestamp

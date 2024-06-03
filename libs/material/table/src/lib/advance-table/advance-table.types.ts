@@ -26,7 +26,7 @@ export type AdvanceTableColumn<T> = {
 
 export type AdvanceTableOptions<T extends IID> = {
   columns: AdvanceTableColumn<T>[];
-  displayColumns: AdvanceTableColumn<T>[];
+  displayColumns: Pick<AdvanceTableColumn<T>, 'name'>[];
   rowActions: AdvanceTableRowAction<T>[];
   bulkActions: AdvanceTableBulkAction<T>[];
 };
