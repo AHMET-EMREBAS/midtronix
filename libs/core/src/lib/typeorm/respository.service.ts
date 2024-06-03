@@ -1,13 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   DeepPartial,
+  FindManyOptions,
   FindOneOptions,
   FindOptionsOrder,
   FindOptionsWhere,
   ILike,
   Repository,
 } from 'typeorm';
-import { PaginatorDto, RelationDto, SortDto, UnsetRelationDto } from '../dto';
+import {
+  PaginatorDto,
+  RelationDto,
+  SearchDto,
+  SortDto,
+  UnsetRelationDto,
+} from '../dto';
 
 import { IID, ResourceMetadata } from '@mdtx/common';
 import {
@@ -58,27 +65,23 @@ export class RepositoryService<T extends IID> {
   async findAll(
     paginator: PaginatorDto,
     query: any = {},
-    select?: any,
-    search?: any,
-    sort?: SortDto
+    search: SearchDto,
+    sort: SortDto
   ) {
-    const where = search ?? query;
+    const where = search.search ?? query;
 
-    console.log(where);
     const { take, skip } = paginator;
 
     const orderBy = sort?.orderBy ?? 'id';
+
     const orderDir = sort?.orderDir ?? 'ASC';
 
-    const queryObject = {
+    const queryObject: FindManyOptions<T> = {
       take,
       skip,
-      select,
       where: where,
       order: { [orderBy]: orderDir } as FindOptionsOrder<T>,
     };
-
-    console.log(queryObject);
 
     if (this.viewRepository) {
       return this.viewRepository.find(queryObject);

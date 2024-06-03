@@ -1,7 +1,9 @@
-import { __StringType } from './types';
+import { Keys, StrProperty } from './types';
 
 export interface IID {
   id: number;
 }
 
-export type IIDString = __StringType<IID>;
+export type IIDString = StrProperty<IID>;
+
+export type IDKeys = Keys<IID, 'id'>;

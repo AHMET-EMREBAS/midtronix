@@ -85,6 +85,7 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
   quantityId!: string;
+  
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
   skuId!: string;
 

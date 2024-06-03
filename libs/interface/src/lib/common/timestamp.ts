@@ -1,4 +1,4 @@
-import { __StringType } from './types';
+import { Keys, StrProperty } from './types';
 
 export interface ITimestamp {
   createdAt: Date;
@@ -6,4 +6,9 @@ export interface ITimestamp {
   deletedAt: Date;
 }
 
-export type ITimestampString = __StringType<ITimestamp>;
+export type ITimestampString = StrProperty<ITimestamp>;
+
+export type TimestampKeys = Keys<
+  ITimestamp,
+  'createdAt' | 'updatedAt' | 'deletedAt'
+>;

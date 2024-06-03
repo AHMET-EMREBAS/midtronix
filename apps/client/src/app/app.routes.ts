@@ -1,7 +1,8 @@
 import { Route } from '@angular/router';
 
-import { WebsiteRoutes } from '@mdtx/modules/website';
+import { TemplateModule } from './template/template.module';
 
 export const appRoutes: Route[] = [
-  { path: '', loadChildren: () => WebsiteRoutes },
+  { path: '', loadChildren: () => TemplateModule },
+  // { path: '', loadChildren: () => WebsiteRoutes },
 ];

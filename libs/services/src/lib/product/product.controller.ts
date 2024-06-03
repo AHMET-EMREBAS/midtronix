@@ -36,13 +36,7 @@ export class ProductController {
     @R.Query() sortDto: SortProductDto
   ) {
     console.log(paginator, searchDto);
-    return this.service.findAll(
-      { ...paginator },
-      null,
-      null,
-      searchDto.search,
-      sortDto
-    );
+    return this.service.findAll({ ...paginator });
   }
 
   @R.FindOneById()

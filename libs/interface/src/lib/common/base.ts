@@ -1,7 +1,9 @@
-import { IID } from './id';
-import { ITimestamp } from './timestamp';
-import { __StringType } from './types';
+import { IDKeys, IID } from './id';
+import { ITimestamp, TimestampKeys } from './timestamp';
+import { Keys, StrProperty } from './types';
 
 export interface IBaseEntity extends IID, ITimestamp {}
 
-export type IBaseEntityString = __StringType<IBaseEntity>;
+export type IBaseEntityString = StrProperty<IBaseEntity>;
+
+export type BaseEntityKeys = Keys<IBaseEntity, IDKeys | TimestampKeys>;

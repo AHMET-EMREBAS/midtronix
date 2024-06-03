@@ -19,6 +19,8 @@ export {
   InsertEvent,
   EventSubscriber,
   UpdateEvent,
+  FindOptionsWhere,
+  FindOptionsOrder,
 } from 'typeorm';
 
 export function OneRelation<T extends IID>(

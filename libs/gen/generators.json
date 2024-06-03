@@ -54,6 +54,11 @@
       "factory": "./src/generators/all/generator",
       "schema": "./src/generators/all/schema.json",
       "description": "all generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
     }
   }
 }

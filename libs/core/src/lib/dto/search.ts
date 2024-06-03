@@ -1,14 +1,14 @@
 import { Exclude, Transform } from 'class-transformer';
 import { Property } from '../property';
-import { ILike } from 'typeorm';
+import { FindOptionsWhere, ILike } from 'typeorm';
 
 @Exclude()
 export class SearchDto {
   @Property({ type: 'string' })
-  search!: string;
+  search!: any;
 }
 
-export function CreateSearchDto(searchableColumns: string[]) {
+export function CreateSearchDto<T = any>(searchableColumns: (keyof T)[]) {
   @Exclude()
   class SearchDto {
     @Property({ type: 'string', noValidate: true })
@@ -20,7 +20,7 @@ export function CreateSearchDto(searchableColumns: string[]) {
       }
       return undefined;
     })
-    search!: string;
+    search!: FindOptionsWhere<T>;
   }
 
   return SearchDto;

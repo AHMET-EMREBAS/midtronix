@@ -3,6 +3,6 @@ import { Property } from '../property';
 
 @Exclude()
 export class IDDto {
-  @Property({ required: true, type: 'number' })
+  @Property({ type: 'number', required: true })
   id!: number;
 }

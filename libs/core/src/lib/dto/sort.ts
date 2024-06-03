@@ -17,8 +17,8 @@ export function CreateSortDto<T>(sortColumns: (keyof T)[]) {
       if (typeof value === 'string') {
         const [orderBy, orderDir] = value.split(':');
         if (orderBy && orderDir) {
-          obj.orderBy = orderBy;
-          obj.orderDir = orderDir;
+          obj.orderBy = orderBy ?? 'id';
+          obj.orderDir = orderDir ?? 'ASC';
         }
       }
       return undefined;
