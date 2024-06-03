@@ -10,10 +10,11 @@ import {
   RestApiPathBuilder,
   RestApiPaths,
 } from '@mdtx/common';
-import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
 import { IInputOption } from '@mdtx/material/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
+
 export class CollectionBaseService<
   T extends IID
 > extends EntityCollectionServiceBase<T> {
