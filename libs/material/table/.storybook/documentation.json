@@ -3,21 +3,21 @@
     "interfaces": [
         {
             "name": "IAdvanceTableDataService",
-            "id": "interface-IAdvanceTableDataService-b32a47e10c9b7949cd3f7f409b9ad660affa53b10d798b5e8d76e8e8a39f40da15b33395bc0f01aaf4ccf88c504b4b0f899e518683df7966853dd9af964e8b1c",
+            "id": "interface-IAdvanceTableDataService-c9f2bce641e491502a3fe658db41e6c05a21aaa84fae55ee4c69ba78bbfa6965f1a6a3f9a9a324bb18136b381f44692a19e6aa12f2a3845185e2c46d0476e801",
             "file": "libs/material/table/src/lib/advance-table/advance-table-data.service.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { IID } from '@mdtx/common';\r\nimport { Observable } from 'rxjs';\r\n\r\nexport interface IAdvanceTableDataService<\r\n  T extends IID,\r\n  TQuery = Record<string, string>\r\n> {\r\n  entities$: Observable<T[]>;\r\n  count$: Observable<number>;\r\n  getWithQuery(query: TQuery): Observable<T[]>;\r\n}\r\n",
+            "sourceCode": "import { PageEvent } from '@angular/material/paginator';\r\nimport { Sort } from '@angular/material/sort';\r\nimport { IID } from '@mdtx/common';\r\nimport { Observable } from 'rxjs';\r\n\r\nexport interface IAdvanceTableDataService<T extends IID> {\r\n  entities$: Observable<T[]>;\r\n  countAll$: Observable<number>;\r\n  advanceQuery(search: string, page: PageEvent, sort: Sort): Observable<T[]>;\r\n}\r\n",
             "properties": [
                 {
-                    "name": "count$",
+                    "name": "countAll$",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Observable<number>",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 8
                 },
                 {
                     "name": "entities$",
@@ -26,18 +26,30 @@
                     "type": "Observable<T[]>",
                     "optional": false,
                     "description": "",
-                    "line": 8
+                    "line": 7
                 }
             ],
             "indexSignatures": [],
             "kind": 173,
             "methods": [
                 {
-                    "name": "getWithQuery",
+                    "name": "advanceQuery",
                     "args": [
                         {
-                            "name": "query",
-                            "type": "TQuery",
+                            "name": "search",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "sort",
+                            "type": "Sort",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
@@ -45,13 +57,31 @@
                     "optional": false,
                     "returnType": "Observable<T[]>",
                     "typeParameters": [],
-                    "line": 10,
+                    "line": 9,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "query",
-                            "type": "TQuery",
+                            "name": "search",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "sort",
+                            "type": "Sort",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -70,57 +100,117 @@
     "classes": [
         {
             "name": "AdvanceTableService",
-            "id": "class-AdvanceTableService-b9e8def801937613e29cf8239907e574fe84e6bf5c7a9b9cd23e9bb927ff2f77ca66f417d3155ffd4839843d08343cc0a9e1cee7e497887275495f005c3ab798",
-            "file": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
+            "id": "class-AdvanceTableService-8f915a6d4e7afaf6739d02b37d18ef7f44d1c7e7db7fe9fcc42652d6aafee51c032ff2f4a9aee94487bdfabe0643bec986f6de9c8680ecb347b77c4c73bbca21",
+            "file": "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
-            "sourceCode": "import {\n  applicationConfig,\n  type Meta,\n  type StoryObj,\n} from '@storybook/angular';\nimport { AdvanceTableComponent } from './advance-table.component';\n\nimport { within } from '@storybook/testing-library';\nimport {\n  provideAdvanceTableBulkActions,\n  provideAdvanceTableColumns,\n  provideAdvanceTableDataService,\n  provideAdvanceTableRowActions,\n} from './advance-table.providers';\nimport { IAdvanceTableDataService } from './advance-table-data.service';\nimport { IID } from '@mdtx/common';\nimport { Observable, of } from 'rxjs';\n\nclass AdvanceTableService implements IAdvanceTableDataService<IID> {\n  entities$: Observable<IID[]> = of([]);\n  count$: Observable<number> = of(100);\n\n  getWithQuery(query: Record<string, any>): Observable<IID[]> {\n    throw new Error('Method not implemented.');\n  }\n}\n\nconst meta: Meta<AdvanceTableComponent> = {\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n};\nexport default meta;\ntype Story = StoryObj<AdvanceTableComponent>;\n\nexport const Primary: Story = {\n  args: {},\n};\n\nexport const Heading: Story = {\n  args: {},\n  play: async ({ canvasElement }) => {\n    const canvas = within(canvasElement);\n  },\n};\n",
+            "sourceCode": "import { IAdvanceTableDataService } from './advance-table-data.service';\r\nimport { IID } from '@mdtx/common';\r\nimport {\r\n  BehaviorSubject,\r\n  Observable,\r\n  combineLatest,\r\n  debounceTime,\r\n  map,\r\n  of,\r\n} from 'rxjs';\r\nimport { PageEvent } from '@angular/material/paginator';\r\nimport { Sort } from '@angular/material/sort';\r\n\r\nconst data = [\r\n  {\r\n    id: 1,\r\n    name: \"John's Object 1\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-03-01T11:26:07.723Z'),\r\n  },\r\n  {\r\n    id: 2,\r\n    name: \"Alice's Object 2\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-09T15:36:32.423Z'),\r\n  },\r\n  {\r\n    id: 3,\r\n    name: \"Bob's Object 3\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-07-21T05:47:03.519Z'),\r\n  },\r\n  {\r\n    id: 4,\r\n    name: \"Emma's Object 4\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-17T10:02:12.822Z'),\r\n  },\r\n  {\r\n    id: 5,\r\n    name: \"Oliver's Object 5\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-08-27T18:14:09.051Z'),\r\n  },\r\n  {\r\n    id: 6,\r\n    name: \"Sophia's Object 6\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-19T19:40:49.333Z'),\r\n  },\r\n  {\r\n    id: 7,\r\n    name: \"James's Object 7\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-11-27T17:52:16.028Z'),\r\n  },\r\n  {\r\n    id: 8,\r\n    name: \"Mia's Object 8\",\r\n    category: 'B40',\r\n    createdAt: new Date('2023-02-03T09:32:01.867Z'),\r\n  },\r\n  {\r\n    id: 9,\r\n    name: \"William's Object 9\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-04-27T07:28:22.381Z'),\r\n  },\r\n  {\r\n    id: 10,\r\n    name: \"Charlotte's Object 10\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-01-11T20:02:19.622Z'),\r\n  },\r\n  {\r\n    id: 11,\r\n    name: \"John's Object 11\",\r\n    category: 'B30',\r\n    createdAt: new Date('2023-01-20T07:55:47.206Z'),\r\n  },\r\n  {\r\n    id: 12,\r\n    name: \"Alice's Object 12\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-06-22T04:16:23.102Z'),\r\n  },\r\n  {\r\n    id: 13,\r\n    name: \"Bob's Object 13\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-05-02T17:09:14.341Z'),\r\n  },\r\n  {\r\n    id: 14,\r\n    name: \"Emma's Object 14\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-10-05T08:42:58.009Z'),\r\n  },\r\n  {\r\n    id: 15,\r\n    name: \"Oliver's Object 15\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-12-30T23:45:37.193Z'),\r\n  },\r\n  {\r\n    id: 16,\r\n    name: \"Sophia's Object 16\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-09-14T05:32:12.625Z'),\r\n  },\r\n  {\r\n    id: 17,\r\n    name: \"James's Object 17\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-03-25T14:09:08.914Z'),\r\n  },\r\n  {\r\n    id: 18,\r\n    name: \"Mia's Object 18\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-11-16T16:24:52.287Z'),\r\n  },\r\n  {\r\n    id: 19,\r\n    name: \"William's Object 19\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-05-29T11:38:49.932Z'),\r\n  },\r\n  {\r\n    id: 20,\r\n    name: \"Charlotte's Object 20\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-09T13:06:38.615Z'),\r\n  },\r\n];\r\n\r\nexport class AdvanceTableService implements IAdvanceTableDataService<IID> {\r\n  search$ = new BehaviorSubject<string>('');\r\n  page$ = new BehaviorSubject<PageEvent | null>(null);\r\n  sort$ = new BehaviorSubject<Sort | null>(null);\r\n\r\n  entities$: Observable<IID[]> = combineLatest([\r\n    this.search$,\r\n    this.page$,\r\n    this.sort$,\r\n  ]).pipe(\r\n    debounceTime(600),\r\n    map(([search, page, sort]) => {\r\n      const { pageIndex, pageSize } = page ?? {};\r\n      const { active, direction } = sort ?? {};\r\n\r\n      console.table({\r\n        pageIndex,\r\n        pageSize,\r\n        active,\r\n        direction,\r\n      });\r\n\r\n      return data\r\n        .filter((entity) => {\r\n          if (entity && search) {\r\n            const searchEach = (item: any, p: any) =>\r\n              item[p]\r\n                ?.toString()\r\n                .toLowerCase()\r\n                .includes(search?.toLowerCase().trim());\r\n\r\n            return Object.keys(entity)\r\n              .map((key) => {\r\n                return searchEach(entity, key);\r\n              })\r\n              .reduce((p, k) => p || k);\r\n          }\r\n\r\n          return true;\r\n        })\r\n        .sort((a, b) => {\r\n          if (active) {\r\n            const result =\r\n              (a as any)[active] < (b as any)[active]\r\n                ? -1\r\n                : (a as any)[active] > (b as any)[active]\r\n                ? 1\r\n                : 0;\r\n\r\n            return direction === 'asc' ? result : result * -1;\r\n          }\r\n          return 1;\r\n        })\r\n        .slice(\r\n          (pageIndex ?? 0) * (pageSize ?? 0),\r\n          (pageIndex ?? 0) * (pageSize ?? 0) + (pageSize ?? 10)\r\n        );\r\n    })\r\n  );\r\n\r\n  countAll$: Observable<number> = of(data.length);\r\n\r\n  advanceQuery(search: string, page: PageEvent, sort: Sort) {\r\n    this.search$.next(search);\r\n    this.page$.next(page);\r\n    this.sort$.next(sort);\r\n    return this.entities$;\r\n  }\r\n}\r\n",
             "inputsClass": [],
             "outputsClass": [],
             "properties": [
                 {
-                    "name": "count$",
-                    "defaultValue": "of(100)",
+                    "name": "countAll$",
+                    "defaultValue": "of(data.length)",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Observable<number>",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 197
                 },
                 {
                     "name": "entities$",
-                    "defaultValue": "of([])",
+                    "defaultValue": "combineLatest([\r\n    this.search$,\r\n    this.page$,\r\n    this.sort$,\r\n  ]).pipe(\r\n    debounceTime(600),\r\n    map(([search, page, sort]) => {\r\n      const { pageIndex, pageSize } = page ?? {};\r\n      const { active, direction } = sort ?? {};\r\n\r\n      console.table({\r\n        pageIndex,\r\n        pageSize,\r\n        active,\r\n        direction,\r\n      });\r\n\r\n      return data\r\n        .filter((entity) => {\r\n          if (entity && search) {\r\n            const searchEach = (item: any, p: any) =>\r\n              item[p]\r\n                ?.toString()\r\n                .toLowerCase()\r\n                .includes(search?.toLowerCase().trim());\r\n\r\n            return Object.keys(entity)\r\n              .map((key) => {\r\n                return searchEach(entity, key);\r\n              })\r\n              .reduce((p, k) => p || k);\r\n          }\r\n\r\n          return true;\r\n        })\r\n        .sort((a, b) => {\r\n          if (active) {\r\n            const result =\r\n              (a as any)[active] < (b as any)[active]\r\n                ? -1\r\n                : (a as any)[active] > (b as any)[active]\r\n                ? 1\r\n                : 0;\r\n\r\n            return direction === 'asc' ? result : result * -1;\r\n          }\r\n          return 1;\r\n        })\r\n        .slice(\r\n          (pageIndex ?? 0) * (pageSize ?? 0),\r\n          (pageIndex ?? 0) * (pageSize ?? 0) + (pageSize ?? 10)\r\n        );\r\n    })\r\n  )",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Observable<IID[]>",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 142
+                },
+                {
+                    "name": "page$",
+                    "defaultValue": "new BehaviorSubject<PageEvent | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 139
+                },
+                {
+                    "name": "search$",
+                    "defaultValue": "new BehaviorSubject<string>('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 138
+                },
+                {
+                    "name": "sort$",
+                    "defaultValue": "new BehaviorSubject<Sort | null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 140
                 }
             ],
             "methods": [
                 {
-                    "name": "getWithQuery",
+                    "name": "advanceQuery",
                     "args": [
                         {
-                            "name": "query",
-                            "type": "Record<string | any>",
+                            "name": "search",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "sort",
+                            "type": "Sort",
                             "deprecated": false,
                             "deprecationMessage": ""
                         }
                     ],
                     "optional": false,
-                    "returnType": "Observable<IID[]>",
+                    "returnType": "Observable<{}>",
                     "typeParameters": [],
-                    "line": 23,
+                    "line": 199,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "name": "query",
-                            "type": "Record<string | any>",
+                            "name": "search",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "page",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "sort",
+                            "type": "Sort",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -143,7 +233,7 @@
     "components": [
         {
             "name": "AdvanceTableComponent",
-            "id": "component-AdvanceTableComponent-473adc165557ccdcbeff8c0e10506885220ca1f9d9280b94de9ef9f23df82ebe77cbe54c1043c6deb12d4b384737ecf3e096b6de3011a2e39e079ec396887354",
+            "id": "component-AdvanceTableComponent-5b2dbff172a2eec5cc006832c47b060843bd3edd32ed901657f08542987720e3133c44c8a9b46cf33c240b4757b04d9cb17369bd57631fb1811ad1fe7b281dbb",
             "file": "libs/material/table/src/lib/advance-table/advance-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -162,17 +252,37 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "bulkActions",
+                    "name": "count$",
+                    "defaultValue": "this.service.countAll$",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "AdvanceTableBulkAction<T>[]",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 32,
+                    "line": 64
+                },
+                {
+                    "name": "data$",
+                    "defaultValue": "combineLatest([this.search$, this.page$, this.sort$]).pipe(\n    debounceTime(600),\n    switchMap(([search, page, sort]) => {\n      return this.service.advanceQuery(search, page, sort);\n    })\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 68
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "AdvanceTableOptions<T>",
+                    "optional": false,
+                    "description": "",
+                    "line": 77,
                     "decorators": [
                         {
                             "name": "Inject",
-                            "stringifiedArguments": "ADVANCE_TABLE_BULK_ACTIONS_TOKEN"
+                            "stringifiedArguments": "ADVANCE_TABLE_OPTIONS_TOKEN"
                         }
                     ],
                     "modifierKind": [
@@ -182,53 +292,87 @@
                     ]
                 },
                 {
-                    "name": "columns",
+                    "name": "page$",
+                    "defaultValue": "new BehaviorSubject<PageEvent>({\n    length: 0,\n    pageIndex: 0,\n    pageSize: 4,\n    previousPageIndex: 0,\n  })",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string[]",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 26,
+                    "line": 57
+                },
+                {
+                    "name": "paginatorRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatPaginator",
+                    "optional": false,
+                    "description": "",
+                    "line": 53,
                     "decorators": [
                         {
-                            "name": "Inject",
-                            "stringifiedArguments": "ADVANCE_TABLE_COLUMNS_TOKEN"
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'paginatorRef'"
                         }
                     ],
                     "modifierKind": [
-                        170,
+                        170
+                    ]
+                },
+                {
+                    "name": "route",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ActivatedRoute",
+                    "optional": false,
+                    "description": "",
+                    "line": 81,
+                    "modifierKind": [
                         125,
                         148
                     ]
                 },
                 {
-                    "name": "rowActions",
+                    "name": "router",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "AdvanceTableRowAction<T>[]",
+                    "type": "Router",
                     "optional": false,
                     "description": "",
-                    "line": 30,
-                    "decorators": [
-                        {
-                            "name": "Inject",
-                            "stringifiedArguments": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN"
-                        }
-                    ],
+                    "line": 80,
                     "modifierKind": [
-                        170,
                         125,
                         148
                     ]
+                },
+                {
+                    "name": "search$",
+                    "defaultValue": "new BehaviorSubject<string>('')",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 55
+                },
+                {
+                    "name": "selectedItemIds",
+                    "defaultValue": "new Set<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 51
                 },
                 {
                     "name": "service",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "IAdvanceTableDataService<T>",
+                    "type": "AdvanceTableService",
                     "optional": false,
                     "description": "",
-                    "line": 28,
+                    "line": 79,
                     "decorators": [
                         {
                             "name": "Inject",
@@ -240,8 +384,383 @@
                         125,
                         148
                     ]
+                },
+                {
+                    "name": "sort$",
+                    "defaultValue": "new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 66
+                },
+                {
+                    "name": "tableRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MatTable<T>",
+                    "optional": false,
+                    "description": "",
+                    "line": 52,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tableRef'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
                 }
             ],
+            "methodsClass": [
+                {
+                    "name": "__columnNames",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 91,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__columns",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__displayColumns",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 87,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "__displayedColumnNames",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "columnNames",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 99,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "displayedColumnNames",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "{}",
+                    "typeParameters": [],
+                    "line": 103,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isAllSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 111,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isSelected",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 119,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isSomeSelected",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 115,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "openItemEditor",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 127,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "pageChangeHandler",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 107,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "PageEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "select",
+                    "args": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 123,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "row",
+                            "type": "T",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatInputModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatFormFieldModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatTableModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatIconModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatButtonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatCheckboxModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatPaginatorModule",
+                    "type": "module"
+                },
+                {
+                    "name": "MatSortModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Inject, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  ADVANCE_TABLE_DATA_SERVICE_TOKEN,\n  ADVANCE_TABLE_OPTIONS_TOKEN,\n} from './advance-table.providers';\nimport { IID } from '@mdtx/common';\nimport { AdvanceTableOptions } from './advance-table.types';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatTable, MatTableModule } from '@angular/material/table';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { BehaviorSubject, combineLatest, debounceTime, switchMap } from 'rxjs';\nimport {\n  MatPaginator,\n  MatPaginatorModule,\n  PageEvent,\n} from '@angular/material/paginator';\nimport { MatSortModule, Sort } from '@angular/material/sort';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { AdvanceTableService } from './demo-advance-table.service';\nimport { ActivatedRoute, Router } from '@angular/router';\n\nexport type QueryType = {\n  search: string;\n  page: PageEvent;\n  sort: Sort;\n};\n@Component({\n  selector: 'mdtx-advance-table',\n  standalone: true,\n  imports: [\n    CommonModule,\n    FormsModule,\n    ReactiveFormsModule,\n    MatInputModule,\n    MatFormFieldModule,\n    MatTableModule,\n    MatIconModule,\n    MatButtonModule,\n    MatCheckboxModule,\n    MatPaginatorModule,\n    MatSortModule,\n  ],\n  templateUrl: './advance-table.component.html',\n  styleUrl: './advance-table.component.scss',\n})\nexport class AdvanceTableComponent<T extends IID = IID> {\n  selectedItemIds = new Set<number>();\n  @ViewChild('tableRef') tableRef!: MatTable<T>;\n  @ViewChild('paginatorRef') paginatorRef!: MatPaginator;\n\n  search$ = new BehaviorSubject<string>('');\n\n  page$ = new BehaviorSubject<PageEvent>({\n    length: 0,\n    pageIndex: 0,\n    pageSize: 4,\n    previousPageIndex: 0,\n  });\n\n  count$ = this.service.countAll$;\n\n  sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });\n\n  data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(\n    debounceTime(600),\n    switchMap(([search, page, sort]) => {\n      return this.service.advanceQuery(search, page, sort);\n    })\n  );\n\n  constructor(\n    @Inject(ADVANCE_TABLE_OPTIONS_TOKEN)\n    public readonly options: AdvanceTableOptions<T>,\n    @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)\n    public readonly service: AdvanceTableService,\n    public readonly router: Router,\n    public readonly route: ActivatedRoute\n  ) {}\n\n  __columns() {\n    return this.options.columns;\n  }\n  __displayColumns() {\n    return this.options.displayColumns;\n  }\n\n  __columnNames() {\n    return [...this.options.columns.map((e) => e.name)];\n  }\n\n  __displayedColumnNames() {\n    return this.options.displayColumns.map((e) => e.name);\n  }\n\n  columnNames() {\n    return ['__firstColumn', ...this.__columnNames()];\n  }\n\n  displayedColumnNames() {\n    return ['__firstColumn', ...this.__displayedColumnNames()];\n  }\n\n  pageChangeHandler(event: PageEvent) {\n    this.page$.next(event);\n  }\n\n  isAllSelected() {\n    return false;\n  }\n\n  isSomeSelected() {\n    return false;\n  }\n\n  isSelected(row: T) {\n    return this.selectedItemIds.has(row.id);\n  }\n\n  select(row: T) {\n    this.selectedItemIds.add(row.id);\n  }\n\n  openItemEditor(row: T) {\n    this.router.navigate(['..', 'update', row.id], { relativeTo: this.route });\n  }\n}\n",
+            "styleUrl": "./advance-table.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "options",
+                        "type": "AdvanceTableOptions<T>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "service",
+                        "type": "AdvanceTableService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 73,
+                "jsdoctags": [
+                    {
+                        "name": "options",
+                        "type": "AdvanceTableOptions<T>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "service",
+                        "type": "AdvanceTableService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"table-container\">\n  <mat-form-field appearance=\"fill\">\n    <input\n      type=\"search\"\n      #searchInput=\"ngModel\"\n      ngModel\n      matInput\n      placeholder=\"Search\"\n      autocomplete=\"off\"\n      (input)=\"search$.next(searchInput.value)\"\n    />\n  </mat-form-field>\n\n  <mat-table\n    #tableRef\n    *ngIf=\"data$ | async as data\"\n    [dataSource]=\"data\"\n    matSort\n    matSortActive=\"created\"\n    matSortDisableClear\n    matSortDirection=\"desc\"\n    (matSortChange)=\"sort$.next($event)\"\n  >\n    <ng-container matColumnDef=\"__firstColumn\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>\n      </mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">\n        <button\n          class=\"open-in-new-button\"\n          mat-icon-button\n          (click)=\"openItemEditor(row)\"\n          color=\"primary\"\n        >\n          <mat-icon>open_in_new</mat-icon>\n        </button>\n      </mat-cell>\n    </ng-container>\n\n    @for(c of __columns(); track c){\n    <ng-container [matColumnDef]=\"c.name.toString()\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>\n        {{ c.label || c.name.toString() || '' | titlecase }}\n      </mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">\n        {{ c.displayValue ? c.displayValue(row) : row[c.name] }}\n      </mat-cell>\n    </ng-container>\n    }\n\n    <mat-header-row *matHeaderRowDef=\"columnNames()\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumnNames()\"></mat-row>\n  </mat-table>\n\n  <mat-paginator\n    #paginatorRef\n    [length]=\"count$ | async\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"4\"\n    [pageSizeOptions]=\"[4, 8, 12, 16, 20]\"\n    (page)=\"page$.next($event)\"\n  ></mat-paginator>\n</div>\n"
+        },
+        {
+            "name": "SampleAdvanceTableComponent",
+            "id": "component-SampleAdvanceTableComponent-06964d5473c4c64b08a710805cdced760ce54f420c279e37099f88aba30e4aa30caf8722a19c817cf5af0708fef7ce4f27b9a38a92d8b832b0d077960c5e4504",
+            "file": "libs/material/table/src/lib/sample-advance-table/sample-advance-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mdtx-sample-advance-table",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./sample-advance-table.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -257,84 +776,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Inject } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {\n  ADVANCE_TABLE_BULK_ACTIONS_TOKEN,\n  ADVANCE_TABLE_COLUMNS_TOKEN,\n  ADVANCE_TABLE_DATA_SERVICE_TOKEN,\n  ADVANCE_TABLE_ROW_ACTIONS_TOKEN,\n} from './advance-table.providers';\nimport { IAdvanceTableDataService } from './advance-table-data.service';\nimport { IID } from '@mdtx/common';\nimport {\n  AdvanceTableBulkAction,\n  AdvanceTableRowAction,\n} from './advance-table.types';\n\n@Component({\n  selector: 'mdtx-advance-table',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './advance-table.component.html',\n  styleUrl: './advance-table.component.scss',\n})\nexport class AdvanceTableComponent<T extends IID = IID> {\n  constructor(\n    @Inject(ADVANCE_TABLE_COLUMNS_TOKEN)\n    public readonly columns: string[],\n    @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)\n    public readonly service: IAdvanceTableDataService<T>,\n    @Inject(ADVANCE_TABLE_ROW_ACTIONS_TOKEN)\n    public readonly rowActions: AdvanceTableRowAction<T>[],\n    @Inject(ADVANCE_TABLE_BULK_ACTIONS_TOKEN)\n    public readonly bulkActions: AdvanceTableBulkAction<T>[]\n  ) {\n    console.log(columns);\n  }\n}\n",
-            "styleUrl": "./advance-table.component.scss",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'mdtx-sample-advance-table',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './sample-advance-table.component.html',\n  styleUrl: './sample-advance-table.component.scss',\n})\nexport class SampleAdvanceTableComponent {}\n",
+            "styleUrl": "./sample-advance-table.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "columns",
-                        "type": "string[]",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "service",
-                        "type": "IAdvanceTableDataService<T>",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "rowActions",
-                        "type": "AdvanceTableRowAction<T>[]",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    },
-                    {
-                        "name": "bulkActions",
-                        "type": "AdvanceTableBulkAction<T>[]",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 23,
-                "jsdoctags": [
-                    {
-                        "name": "columns",
-                        "type": "string[]",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "service",
-                        "type": "IAdvanceTableDataService<T>",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "rowActions",
-                        "type": "AdvanceTableRowAction<T>[]",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    },
-                    {
-                        "name": "bulkActions",
-                        "type": "AdvanceTableBulkAction<T>[]",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "extends": [],
-            "templateData": "Count: {{ service.count$ | async }}\n<br />\nColumns: {{ columns }}\n<br />\nRow Actions: {{ rowActions | json }}\n<br />\nBulk Actions: {{ bulkActions | json }}\n"
+            "templateData": "<p>sample-advance-table works!</p>\n"
         },
         {
             "name": "SampleTableComponent",
@@ -931,6 +1379,16 @@
                 "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_DATA_SERVICE_TOKEN'\r\n)"
             },
             {
+                "name": "ADVANCE_TABLE_OPTIONS_TOKEN",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_OPTIONS_TOKEN'\r\n)"
+            },
+            {
                 "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -939,6 +1397,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_ROW_ACTIONS_TOKEN'\r\n)"
+            },
+            {
+                "name": "data",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\r\n  {\r\n    id: 1,\r\n    name: \"John's Object 1\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-03-01T11:26:07.723Z'),\r\n  },\r\n  {\r\n    id: 2,\r\n    name: \"Alice's Object 2\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-09T15:36:32.423Z'),\r\n  },\r\n  {\r\n    id: 3,\r\n    name: \"Bob's Object 3\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-07-21T05:47:03.519Z'),\r\n  },\r\n  {\r\n    id: 4,\r\n    name: \"Emma's Object 4\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-17T10:02:12.822Z'),\r\n  },\r\n  {\r\n    id: 5,\r\n    name: \"Oliver's Object 5\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-08-27T18:14:09.051Z'),\r\n  },\r\n  {\r\n    id: 6,\r\n    name: \"Sophia's Object 6\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-19T19:40:49.333Z'),\r\n  },\r\n  {\r\n    id: 7,\r\n    name: \"James's Object 7\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-11-27T17:52:16.028Z'),\r\n  },\r\n  {\r\n    id: 8,\r\n    name: \"Mia's Object 8\",\r\n    category: 'B40',\r\n    createdAt: new Date('2023-02-03T09:32:01.867Z'),\r\n  },\r\n  {\r\n    id: 9,\r\n    name: \"William's Object 9\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-04-27T07:28:22.381Z'),\r\n  },\r\n  {\r\n    id: 10,\r\n    name: \"Charlotte's Object 10\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-01-11T20:02:19.622Z'),\r\n  },\r\n  {\r\n    id: 11,\r\n    name: \"John's Object 11\",\r\n    category: 'B30',\r\n    createdAt: new Date('2023-01-20T07:55:47.206Z'),\r\n  },\r\n  {\r\n    id: 12,\r\n    name: \"Alice's Object 12\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-06-22T04:16:23.102Z'),\r\n  },\r\n  {\r\n    id: 13,\r\n    name: \"Bob's Object 13\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-05-02T17:09:14.341Z'),\r\n  },\r\n  {\r\n    id: 14,\r\n    name: \"Emma's Object 14\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-10-05T08:42:58.009Z'),\r\n  },\r\n  {\r\n    id: 15,\r\n    name: \"Oliver's Object 15\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-12-30T23:45:37.193Z'),\r\n  },\r\n  {\r\n    id: 16,\r\n    name: \"Sophia's Object 16\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-09-14T05:32:12.625Z'),\r\n  },\r\n  {\r\n    id: 17,\r\n    name: \"James's Object 17\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-03-25T14:09:08.914Z'),\r\n  },\r\n  {\r\n    id: 18,\r\n    name: \"Mia's Object 18\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-11-16T16:24:52.287Z'),\r\n  },\r\n  {\r\n    id: 19,\r\n    name: \"William's Object 19\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-05-29T11:38:49.932Z'),\r\n  },\r\n  {\r\n    id: 20,\r\n    name: \"Charlotte's Object 20\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-09T13:06:38.615Z'),\r\n  },\r\n]"
             },
             {
                 "name": "Heading",
@@ -978,7 +1446,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<AdvanceTableComponent>",
-                "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
+                "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideRouter([]),\n        provideAnimations(),\n        provideAdvanceTableOptions({\n          columns: [{ name: 'id' }, { name: 'name' }, { name: 'category' }],\n          displayColumns: [\n            { name: 'id', label: '#' },\n            { name: 'name', label: 'name' },\n            { name: 'category', label: 'category' },\n          ],\n          bulkActions: [],\n          rowActions: [],\n        }),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
             },
             {
                 "name": "meta",
@@ -1116,6 +1584,35 @@
                 ]
             },
             {
+                "name": "provideAdvanceTableOptions",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "useValue",
+                        "type": "AdvanceTableOptions",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Provider",
+                "jsdoctags": [
+                    {
+                        "name": "useValue",
+                        "type": "AdvanceTableOptions",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            {
                 "name": "provideAdvanceTableRowActions",
                 "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
                 "ctype": "miscellaneous",
@@ -1167,11 +1664,33 @@
                 "kind": 187
             },
             {
+                "name": "AdvanceTableOptions",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
                 "name": "AdvanceTableRowAction",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "literal type",
                 "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
+                "name": "QueryType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "libs/material/table/src/lib/advance-table/advance-table.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1256,6 +1775,16 @@
                     "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_DATA_SERVICE_TOKEN'\r\n)"
                 },
                 {
+                    "name": "ADVANCE_TABLE_OPTIONS_TOKEN",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_OPTIONS_TOKEN'\r\n)"
+                },
+                {
                     "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
@@ -1264,6 +1793,18 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "new InjectionToken(\r\n  'ADVANCE_TABLE_ROW_ACTIONS_TOKEN'\r\n)"
+                }
+            ],
+            "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts": [
+                {
+                    "name": "data",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\r\n  {\r\n    id: 1,\r\n    name: \"John's Object 1\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-03-01T11:26:07.723Z'),\r\n  },\r\n  {\r\n    id: 2,\r\n    name: \"Alice's Object 2\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-09T15:36:32.423Z'),\r\n  },\r\n  {\r\n    id: 3,\r\n    name: \"Bob's Object 3\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-07-21T05:47:03.519Z'),\r\n  },\r\n  {\r\n    id: 4,\r\n    name: \"Emma's Object 4\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-17T10:02:12.822Z'),\r\n  },\r\n  {\r\n    id: 5,\r\n    name: \"Oliver's Object 5\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-08-27T18:14:09.051Z'),\r\n  },\r\n  {\r\n    id: 6,\r\n    name: \"Sophia's Object 6\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-03-19T19:40:49.333Z'),\r\n  },\r\n  {\r\n    id: 7,\r\n    name: \"James's Object 7\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-11-27T17:52:16.028Z'),\r\n  },\r\n  {\r\n    id: 8,\r\n    name: \"Mia's Object 8\",\r\n    category: 'B40',\r\n    createdAt: new Date('2023-02-03T09:32:01.867Z'),\r\n  },\r\n  {\r\n    id: 9,\r\n    name: \"William's Object 9\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-04-27T07:28:22.381Z'),\r\n  },\r\n  {\r\n    id: 10,\r\n    name: \"Charlotte's Object 10\",\r\n    category: 'B20',\r\n    createdAt: new Date('2023-01-11T20:02:19.622Z'),\r\n  },\r\n  {\r\n    id: 11,\r\n    name: \"John's Object 11\",\r\n    category: 'B30',\r\n    createdAt: new Date('2023-01-20T07:55:47.206Z'),\r\n  },\r\n  {\r\n    id: 12,\r\n    name: \"Alice's Object 12\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-06-22T04:16:23.102Z'),\r\n  },\r\n  {\r\n    id: 13,\r\n    name: \"Bob's Object 13\",\r\n    category: 'B10',\r\n    createdAt: new Date('2022-05-02T17:09:14.341Z'),\r\n  },\r\n  {\r\n    id: 14,\r\n    name: \"Emma's Object 14\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-10-05T08:42:58.009Z'),\r\n  },\r\n  {\r\n    id: 15,\r\n    name: \"Oliver's Object 15\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-12-30T23:45:37.193Z'),\r\n  },\r\n  {\r\n    id: 16,\r\n    name: \"Sophia's Object 16\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-09-14T05:32:12.625Z'),\r\n  },\r\n  {\r\n    id: 17,\r\n    name: \"James's Object 17\",\r\n    category: 'B10',\r\n    createdAt: new Date('2023-03-25T14:09:08.914Z'),\r\n  },\r\n  {\r\n    id: 18,\r\n    name: \"Mia's Object 18\",\r\n    category: 'B20',\r\n    createdAt: new Date('2022-11-16T16:24:52.287Z'),\r\n  },\r\n  {\r\n    id: 19,\r\n    name: \"William's Object 19\",\r\n    category: 'B30',\r\n    createdAt: new Date('2022-05-29T11:38:49.932Z'),\r\n  },\r\n  {\r\n    id: 20,\r\n    name: \"Charlotte's Object 20\",\r\n    category: 'B40',\r\n    createdAt: new Date('2022-10-09T13:06:38.615Z'),\r\n  },\r\n]"
                 }
             ],
             "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts": [
@@ -1285,7 +1826,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Meta<AdvanceTableComponent>",
-                    "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideAdvanceTableColumns([]),\n        provideAdvanceTableBulkActions([]),\n        provideAdvanceTableRowActions([]),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
+                    "defaultValue": "{\n  component: AdvanceTableComponent,\n  title: 'AdvanceTableComponent',\n\n  decorators: [\n    applicationConfig({\n      providers: [\n        provideRouter([]),\n        provideAnimations(),\n        provideAdvanceTableOptions({\n          columns: [{ name: 'id' }, { name: 'name' }, { name: 'category' }],\n          displayColumns: [\n            { name: 'id', label: '#' },\n            { name: 'name', label: 'name' },\n            { name: 'category', label: 'category' },\n          ],\n          bulkActions: [],\n          rowActions: [],\n        }),\n        provideAdvanceTableDataService(AdvanceTableService),\n      ],\n    }),\n  ],\n}"
                 },
                 {
                     "name": "Primary",
@@ -1449,6 +1990,35 @@
                     ]
                 },
                 {
+                    "name": "provideAdvanceTableOptions",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "useValue",
+                            "type": "AdvanceTableOptions",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Provider",
+                    "jsdoctags": [
+                        {
+                            "name": "useValue",
+                            "type": "AdvanceTableOptions",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "provideAdvanceTableRowActions",
                     "file": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
                     "ctype": "miscellaneous",
@@ -1503,11 +2073,35 @@
                     "kind": 187
                 },
                 {
+                    "name": "AdvanceTableOptions",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                },
+                {
                     "name": "AdvanceTableRowAction",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "literal type",
                     "file": "libs/material/table/src/lib/advance-table/advance-table.types.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
+            "libs/material/table/src/lib/advance-table/advance-table.component.ts": [
+                {
+                    "name": "QueryType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "libs/material/table/src/lib/advance-table/advance-table.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1584,15 +2178,6 @@
             },
             {
                 "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
-                "type": "class",
-                "linktype": "classe",
-                "name": "AdvanceTableService",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/material/table/src/lib/advance-table/advance-table.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1627,7 +2212,7 @@
                 "linktype": "component",
                 "name": "AdvanceTableComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/26",
                 "status": "low"
             },
             {
@@ -1656,6 +2241,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
                 "name": "provideAdvanceTableDataService",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "provideAdvanceTableOptions",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -1705,7 +2300,45 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "ADVANCE_TABLE_OPTIONS_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/advance-table.providers.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "ADVANCE_TABLE_ROW_ACTIONS_TOKEN",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AdvanceTableService",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/advance-table/demo-advance-table.service.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "data",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/material/table/src/lib/sample-advance-table/sample-advance-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SampleAdvanceTableComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

@@ -1,4 +1,10 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ADVANCE_TABLE_DATA_SERVICE_TOKEN,
@@ -68,9 +74,20 @@ export class AdvanceTableComponent<T extends IID = IID> {
   data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
     debounceTime(600),
     switchMap(([search, page, sort]) => {
+      this.changeEvent.emit({
+        search,
+        page,
+        sort,
+      });
       return this.service.advanceQuery(search, page, sort);
     })
   );
+
+  @Output() changeEvent = new EventEmitter<{
+    search: string;
+    page: PageEvent;
+    sort: Sort;
+  }>();
 
   constructor(
     @Inject(ADVANCE_TABLE_OPTIONS_TOKEN)
