@@ -1,39 +1,21 @@
-import { TableColumnOption } from '../table';
-
 export interface IID {
-  id: any;
+  id: number;
 }
 
-/**
- * Timestamp and id
- */
 export interface IBaseEntity extends IID {
-  createdAt: any;
-  updatedAt: any;
-  deletedAt: any;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
 }
 
-/**
- * Owner and timestamp
- */
 export interface IOwner<TOwner extends IID> extends IBaseEntity {
   owner: TOwner;
 }
 
-/**
- * Name and timestamp
- */
 export interface IName extends IBaseEntity {
   name: string;
 }
 
-export const INameTableOption: TableColumnOption<IName> = {
-  name: { name: 'name', order: 10 },
-};
-
-/**
- * Name and description and timestamp
- */
 export interface IDescription extends IName {
   description?: string;
 }

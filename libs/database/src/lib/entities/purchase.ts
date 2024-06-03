@@ -60,8 +60,8 @@ export class PurchaseSubscriber implements EntitySubscriberInterface<Purchase> {
     console.log('Purchase : ', purchase);
 
     if (purchase) {
-      const skuId = purchase.sku.id;
-      const storeId = 1;
+      const skuId = purchase.sku.id + '';
+      const storeId = 1 + '';
 
       const skuViewRepo = event.manager.getRepository(SkuView);
 
@@ -75,7 +75,7 @@ export class PurchaseSubscriber implements EntitySubscriberInterface<Purchase> {
         const quantityRepo = event.manager.getRepository(Quantity);
 
         await quantityRepo.increment(
-          { id: skuView?.quantityId },
+          { id: skuView?.quantityId ? +skuView.quantity : undefined },
           'quantity',
           purchase.quantity
         );

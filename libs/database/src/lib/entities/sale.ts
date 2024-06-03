@@ -97,13 +97,13 @@ export class SaleSubscriber implements EntitySubscriberInterface<ISale> {
 
       for (const order of orders) {
         const foundSkuView = await skuViewRepo.findOneBy({
-          skuId: order.skuId,
-          storeId: cart.store.id,
+          skuId: order.skuId + '',
+          storeId: cart.store.id + '',
         });
 
         if (foundSkuView) {
           const quantity = await quantityRepo.findOneBy({
-            id: foundSkuView.quantityId,
+            id: +foundSkuView.quantityId,
           });
           if (quantity) {
             console.log('Updating Quantity : ', quantity);

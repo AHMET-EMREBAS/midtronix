@@ -1,3 +1,6 @@
+import { PropertyType } from '../types/type';
+import { IBaseEntity } from './__base';
+
 export const PRODUCT_VIEW_PROPERTIES = [
   'barcode',
   'name',
@@ -25,25 +28,24 @@ export const SKU_VIEW_PROPERTIES = [
   'productUpc',
 ];
 
-export interface ISkuView {
-  id: number;
-  skuId: number;
+export interface ISkuView extends PropertyType<IBaseEntity, string> {
+  skuId: string;
   barcode: string;
   name: string;
   description: string;
-  price: number;
-  cost: number;
-  taxrate: number;
-  priceId: number;
-  priceLevelId: number;
+  price: string;
+  cost: string;
+  taxrate: string;
+  priceId: string;
+  priceLevelId: string;
   priceLevelName: string;
-  storeId: number;
-  quantity: number;
-  quantityId: number;
+  storeId: string;
+  quantity: string;
+  quantityId: string;
   storeName: string;
   category: string;
   department: string;
-  productId: number;
+  productId: string;
   productUpc: string;
 }
 

@@ -90,7 +90,7 @@ export class RepositoryService<T extends IID> {
     return this.repository.findOne(options);
   }
 
-  async findOneById(id: T['id']) {
+  async findOneById(id: any) {
     const found = await this.repository.findOneBy({
       id,
     } as FindOptionsWhere<T>);

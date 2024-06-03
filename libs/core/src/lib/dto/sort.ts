@@ -9,7 +9,7 @@ export class SortDto {
   orderDir!: string;
 }
 
-export function CreateSortDto(sortColumns: string[]) {
+export function CreateSortDto<T>(sortColumns: (keyof T)[]) {
   @Exclude()
   class __SortDto extends SortDto {
     @Property({ type: 'string', noValidate: true })

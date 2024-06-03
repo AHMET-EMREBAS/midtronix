@@ -1,11 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import { TableColumnOption } from '../table';
 import {
   IBaseEntity,
   IDescription,
   IID,
-  INameTableOption,
-  wrapTableOptions,
 } from './__base';
 import { IManufacturerRaw } from './manufacturer';
 import { IImage } from './media';
@@ -29,14 +26,6 @@ export interface IProduct<
   department?: TDepartment;
   manufacturers?: TManufacturer[];
 }
-
-export const ProductTableOption: TableColumnOption<IProduct> =
-  wrapTableOptions<IProduct>({
-    upc: { name: 'upc', label: 'barcode' },
-    category: { name: 'category' },
-    department: { name: 'department' },
-    description: { name: 'description' },
-  });
 
 export interface IRecord extends IDescription {}
 

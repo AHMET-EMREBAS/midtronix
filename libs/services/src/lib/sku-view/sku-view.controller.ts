@@ -4,6 +4,7 @@ import {
   QuerySkuViewDto,
   SearchSkuViewDto,
   SelectSkuViewDto,
+  SortSkuViewDto,
 } from '@mdtx/database';
 
 const R = RestRouteBuilder.get('SkuView');
@@ -29,13 +30,15 @@ export class SkuViewController {
     @R.Query() paginator: PaginatorDto,
     @R.Query() querySkuViewDto: QuerySkuViewDto,
     @R.Query() selectQueryDto: SelectSkuViewDto,
-    @R.Query() searchDto: SearchSkuViewDto
+    @R.Query() searchDto: SearchSkuViewDto,
+    @R.Query() sortDto: SortSkuViewDto
   ) {
     return this.service.findAll(
       paginator,
       querySkuViewDto,
       selectQueryDto.select,
-      searchDto.search
+      searchDto.search,
+      sortDto
     );
   }
 

@@ -1,10 +1,9 @@
 import { ICategory } from '../models';
 import { EntityMetadata } from './__common';
-import { IDEntityMeta, TimestampEntityMeta } from './__base';
+import { CreateMetadata } from './__base';
 
-export const CategoryMeta: EntityMetadata<ICategory> = {
+export const CategoryMeta: EntityMetadata<ICategory> = CreateMetadata({
   properties: {
-    ...IDEntityMeta.properties,
     name: {
       type: 'string',
       label: 'Category',
@@ -15,8 +14,5 @@ export const CategoryMeta: EntityMetadata<ICategory> = {
         required: true,
       },
     },
-    ...TimestampEntityMeta.properties,
   },
-};
-
-
+});

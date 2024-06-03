@@ -49,3 +49,4 @@ export type __EntityPropertyMetadata<T> = {
 export type EntityMetadata<T> = Readonly<{
   properties: Record<keyof T, __EntityPropertyMetadata<T>>;
 }>;
+

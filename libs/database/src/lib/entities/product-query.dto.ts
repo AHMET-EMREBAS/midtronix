@@ -6,7 +6,12 @@ import {
   CreateSearchDto,
   CreateSortDto,
 } from '@mdtx/core';
-import { IQuerySkuViewDto, SKU_VIEW_PROPERTIES, IProduct } from '@mdtx/common';
+import {
+  IQuerySkuViewDto,
+  SKU_VIEW_PROPERTIES,
+  IProduct,
+  ISkuView,
+} from '@mdtx/common';
 
 @Exclude()
 export class QueryProductDto
@@ -26,10 +31,41 @@ export class SearchProductDto extends CreateSearchDto([
   'department',
 ]) {}
 
-export class SortProductDto extends CreateSortDto([
+@Exclude()
+export class SortProductDto extends CreateSortDto<IProduct>([
   'id',
   'name',
   'upc',
+  'category',
+  'department',
+  'description',
+  'createdAt',
+  'updatedAt',
+  'deletedAt',
+]) {}
+
+@Exclude()
+export class SortSkuViewDto extends CreateSortDto<ISkuView>([
+  'id',
+  'name',
+  'barcode',
+  'priceLevelName',
+  'storeName',
+  'category',
+  'department',
+  'description',
+  'createdAt',
+  'updatedAt',
+  'deletedAt',
+]) {}
+
+@Exclude()
+export class SearchSkuViewDto extends CreateSearchDto([
+  'id',
+  'name',
+  'barcode',
+  'priceLevelName',
+  'storeName',
   'category',
   'department',
   'description',
@@ -45,29 +81,29 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
     maxLength: 10,
     minLength: 1,
   })
-  id!: number;
+  id!: string;
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  quantityId!: number;
+  quantityId!: string;
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  skuId!: number;
+  skuId!: string;
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  storeId!: number;
+  storeId!: string;
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  productId!: number;
+  productId!: string;
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  priceLevelId!: number;
+  priceLevelId!: string;
 
   @Property({ type: 'string', maxLength: 10, minLength: 1 })
-  priceId!: number;
+  priceId!: string;
 
-  @QueryProperty() taxrate!: number;
-  @QueryProperty() quantity!: number;
-  @QueryProperty() price!: number;
-  @QueryProperty() cost!: number;
+  @QueryProperty() taxrate!: string;
+  @QueryProperty() quantity!: string;
+  @QueryProperty() price!: string;
+  @QueryProperty() cost!: string;
   @QueryProperty() barcode!: string;
   @QueryProperty() name!: string;
   @QueryProperty() description!: string;
@@ -76,10 +112,10 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
   @QueryProperty() category!: string;
   @QueryProperty() department!: string;
   @QueryProperty() productUpc!: string;
+  @QueryProperty() createdAt!: string;
+  @QueryProperty() updatedAt!: string;
+  @QueryProperty() deletedAt!: string;
 }
 
 @Exclude()
 export class SelectSkuViewDto extends CreateSelectQuery(SKU_VIEW_PROPERTIES) {}
-
-@Exclude()
-export class SearchSkuViewDto extends CreateSearchDto(SKU_VIEW_PROPERTIES) {}

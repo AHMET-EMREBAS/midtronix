@@ -139,6 +139,11 @@ export class PriceView implements IPriceView {
       .addSelect('productView.department', 'department')
       .addSelect('productView.id', 'productId')
       .addSelect('productView.upc', 'productUpc')
+
+      .addSelect('main.createdAt', 'createdAt')
+      .addSelect('main.updatedAt', 'updatedAt')
+      .addSelect('main.deletedAt', 'deletedAt')
+
       .from(Sku, 'main')
       .leftJoin(ProductView, 'productView', 'productView.id = main.productId')
       .leftJoin(PriceView, 'priceView', 'priceView.skuId = main.id')
@@ -146,25 +151,28 @@ export class PriceView implements IPriceView {
   },
 })
 export class SkuView implements ISkuView {
-  @ViewColumn() quantityId!: number;
-  @ViewColumn() id!: number;
-  @ViewColumn() skuId!: number;
+  @ViewColumn() quantityId!: string;
+  @ViewColumn() id!: string;
+  @ViewColumn() skuId!: string;
   @ViewColumn() barcode!: string;
   @ViewColumn() name!: string;
   @ViewColumn() description!: string;
-  @ViewColumn() price!: number;
-  @ViewColumn() cost!: number;
-  @ViewColumn() taxrate!: number;
-  @ViewColumn() priceId!: number;
-  @ViewColumn() priceLevelId!: number;
+  @ViewColumn() price!: string;
+  @ViewColumn() cost!: string;
+  @ViewColumn() taxrate!: string;
+  @ViewColumn() priceId!: string;
+  @ViewColumn() priceLevelId!: string;
   @ViewColumn() priceLevelName!: string;
-  @ViewColumn() storeId!: number;
-  @ViewColumn() quantity!: number;
+  @ViewColumn() storeId!: string;
+  @ViewColumn() quantity!: string;
   @ViewColumn() storeName!: string;
   @ViewColumn() category!: string;
   @ViewColumn() department!: string;
-  @ViewColumn() productId!: number;
+  @ViewColumn() productId!: string;
   @ViewColumn() productUpc!: string;
+  @ViewColumn() createdAt!: string;
+  @ViewColumn() updatedAt!: string;
+  @ViewColumn() deletedAt!: string;
 }
 
 export const SkuViewEntities: Readonly<Type<any>[]> = [

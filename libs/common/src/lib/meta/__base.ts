@@ -5,7 +5,7 @@ export const IdPropertyMeta: __EntityPropertyMetadata<IID> = {};
 
 export const IDEntityMeta: EntityMetadata<IID> = {
   properties: {
-    id: {  label: '#', prefixIcon: 'id' },
+    id: { label: '#', prefixIcon: 'id' },
   },
 };
 
@@ -43,3 +43,15 @@ export const TimestampEntityMeta: EntityMetadata<Omit<IBaseEntity, 'id'>> = {
     },
   },
 };
+
+export function CreateMetadata<T>(
+  metadata: EntityMetadata<Omit<T, keyof IBaseEntity>>
+): EntityMetadata<T> {
+  return {
+    properties: {
+      ...IDEntityMeta.properties,
+      ...metadata.properties,
+      ...TimestampEntityMeta.properties,
+    },
+  } as EntityMetadata<T>;
+}
