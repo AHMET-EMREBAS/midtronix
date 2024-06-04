@@ -8,4 +8,5 @@ export * from './localstore';
 export * from './modules';
 export * from './pipes';
 export * from './providers';
+export * from './service';
 export * from './types';

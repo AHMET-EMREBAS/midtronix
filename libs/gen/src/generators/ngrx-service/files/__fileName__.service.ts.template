@@ -1,20 +1,11 @@
-import { I<%- className %>Raw } from '@mdtx/common';
-import { CollectionBaseService } from '../__base';
+import { I<%- className %> } from '@mdtx/common';
 import { Injectable } from '@angular/core';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
-import { HttpClient } from '@angular/common/http';
-import { <%- constantName %>_OPTION_COLUMN } from '../option-columns';
+import { CollectionBaseService } from '@mdtx/material/core';
 
 @Injectable()
-export class <%- className %>Service extends CollectionBaseService<I<%- className %>Raw> {
-
-  static readonly ENTITY_NAME = '<%- className %>';
-  static readonly ENTITY_PLURAL_NAME = '<%- pluralClassName %>';
-
-  constructor(
-    factory: EntityCollectionServiceElementsFactory,
-    httpClient: HttpClient
-  ) {
-    super('<%- className %>', factory, httpClient, <%- constantName %>_OPTION_COLUMN);
+export class <%- className %>Service extends CollectionBaseService<I<%- className %>> {
+  constructor(factory: EntityCollectionServiceElementsFactory) {
+    super('<%- className %>', factory);
   }
 }

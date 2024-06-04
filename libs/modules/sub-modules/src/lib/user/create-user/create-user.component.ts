@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserFormComponent } from '@mdtx/forms';
-import { IUser } from '@mdtx/common';
+import { ICreateUserDto, IUser } from '@mdtx/common';
 import { UserService } from '@mdtx/ngrx';
 @Component({
   selector: 'mdtx-create-user',
@@ -13,7 +13,7 @@ import { UserService } from '@mdtx/ngrx';
 })
 export class CreateUserComponent {
   constructor(protected readonly service: UserService) {}
-  handleSubmit(user: IUser) {
-    this.service.add(user);
+  handleSubmit(user: ICreateUserDto) {
+    this.service.addOne(user);
   }
 }
