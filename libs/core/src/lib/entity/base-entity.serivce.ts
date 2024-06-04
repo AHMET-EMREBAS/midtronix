@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IID } from '@mdtx/common';
 import { DeepPartial, FindOptionsWhere, Repository } from 'typeorm';
 import { BaseGeneralQuery } from '../dto';

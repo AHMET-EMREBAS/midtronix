@@ -17,7 +17,6 @@ import { SampleModule } from '@mdtx/resources';
       username: 'postgres',
       password: 'password',
       autoLoadEntities: true,
-
       synchronize: true,
       dropSchema: true,
     }),
