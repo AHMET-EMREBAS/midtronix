@@ -4,26 +4,6 @@ import { ICustomer } from './customer';
 import { ISku } from './product';
 import { IUser } from './user';
 
-/**
- * @param owner customer
- * @param user employee
- * @param store
- * @param note string
- * @param discountTotal number
- * @param subtotal number
- * @param total number
- */
-export interface ICart<
-  TCustomer extends IID = IID,
-  TUser extends IID = IID,
-  TStore extends IID = IID
-> extends IBaseEntity {
-  employee: TUser;
-  customer: TCustomer;
-  store: TStore;
-  note?: string;
-  checkout?: boolean;
-}
 
 /**
  * @param id

@@ -9,7 +9,7 @@ import {
   ViewColumn,
   ViewEntity,
 } from '@mdtx/core';
-import { Cart } from './cart';
+import { Cart } from './cart/cart';
 import { IID, ISale, ISaleView } from '@mdtx/common';
 import { User } from './user';
 import { Customer } from './customer';

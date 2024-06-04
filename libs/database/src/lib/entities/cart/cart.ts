@@ -1,9 +1,9 @@
 import { ICart } from '@mdtx/common';
 import { Column, Entity, OneRelation } from '@mdtx/core';
-import { User } from './user';
-import { Customer } from './customer';
-import { BaseEntity } from './__base';
-import { Store } from './store';
+import { User } from '../user';
+import { Customer } from '../customer';
+import { BaseEntity } from '../__base';
+import { Store } from '../store';
 
 @Entity()
 export class Cart extends BaseEntity implements ICart<Customer, User, Store> {

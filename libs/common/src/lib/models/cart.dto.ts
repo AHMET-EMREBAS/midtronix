@@ -6,4 +6,4 @@ export interface ICreateOrderDto
   extends Omit<IOrder<IID, IID>, keyof IBaseEntity | 'total' | 'subtotal'> {}
 
 export interface ICreateCartDto
-  extends Omit<ICart<IID, IID>, keyof IBaseEntity> {}
+  extends Pick<ICart, 'note' | 'customer' | 'store'> {}

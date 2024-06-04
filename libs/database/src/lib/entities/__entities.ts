@@ -1,5 +1,5 @@
-import { Cart } from './cart';
-import { CartView } from './cart.view';
+import { Cart } from './cart/cart';
+import { CartView } from './cart/cart.view';
 import {
   Customer,
   CustomerAccount,

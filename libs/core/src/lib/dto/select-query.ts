@@ -1,10 +1,14 @@
 import { UnprocessableEntityException } from '@nestjs/common';
-import { Transform } from 'class-transformer';
+import { Exclude, Transform } from 'class-transformer';
 import { isArray, isIn } from 'class-validator';
 import { Property } from '../property';
 
-export function CreateSelectQuery(properties: string[]) {
-  class SelectQuery {
+export class SelectDto<T> {
+  select!: (keyof T)[];
+}
+
+export function CreateSelectDto(properties: string[]) {
+  class SelectDto {
     @Property({ type: 'string', isArray: true, noValidate: true })
     @Transform(({ value }) => {
       if (typeof value === 'string') {
@@ -30,5 +34,5 @@ export function CreateSelectQuery(properties: string[]) {
     select!: string[];
   }
 
-  return SelectQuery;
+  return SelectDto;
 }

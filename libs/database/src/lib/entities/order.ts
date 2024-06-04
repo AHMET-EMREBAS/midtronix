@@ -10,7 +10,7 @@ import {
   UpdateEvent,
 } from '@mdtx/core';
 import { Sku } from './product';
-import { Cart } from './cart';
+import { Cart } from './cart/cart';
 
 /**
  * @param sku

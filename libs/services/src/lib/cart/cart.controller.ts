@@ -3,29 +3,46 @@ import {
   PaginatorDto,
   RestRouteBuilder,
   RelationDto,
+  InjectRepository,
+  Repository,
+  SelectDto,
 } from '@mdtx/core';
 import { CreateCartDto, Cart, UpdateCartDto } from '@mdtx/database';
-import { CartService } from './cart.service';
+
 
 const R = RestRouteBuilder.get('Cart');
 
 @R.Controler()
 export class CartController {
-  constructor(protected readonly service: CartService) {}
+  constructor(
+    @InjectRepository(Cart) protected readonly repo: Repository<Cart>
+  ) {}
 
   @R.Metadata()
-  metadata() {
-    return this.service.metadata();
+  async metadata() {
+    return {
+      count: await this.repo.count(),
+    };
   }
 
   @R.SaveOne()
-  save(@R.Body() body: CreateCartDto) {
-    return this.service.save(body);
+  async save(@R.Body() body: CreateCartDto) {
+    return await this.repo.save(body);
   }
 
   @R.FindAll()
-  findAll(@R.Query() paginator: PaginatorDto) {
-    return this.service.findAll({ ...paginator });
+  findAll(
+    @R.Query() paginator: PaginatorDto,
+    @R.Query() select: SelectDto<Cart>
+  ) {
+    const { take, skip, withDeleted } = paginator;
+
+    return this.repo.find({
+      take,
+      skip,
+      withDeleted,
+      select: select.select,
+    });
   }
 
   @R.FindOneById()

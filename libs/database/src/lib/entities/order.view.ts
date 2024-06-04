@@ -2,7 +2,7 @@ import { IOrderView } from '@mdtx/common';
 import { ViewEntity, ViewColumn } from '@mdtx/core';
 import { Order } from './order';
 import { SkuView } from './product.view';
-import { Cart } from './cart';
+import { Cart } from './cart/cart';
 
 @ViewEntity({
   expression(ds) {

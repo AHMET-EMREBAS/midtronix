@@ -1,5 +1,5 @@
 import {
-  CreateSelectQuery,
+  CreateSelectDto,
   Exclude,
   Property,
   QueryProperty,
@@ -64,7 +64,7 @@ export class QuerySkuViewDto implements IQuerySkuViewDto {
 }
 
 @Exclude()
-export class SelectSkuViewDto extends CreateSelectQuery(SKU_VIEW_PROPERTIES) {}
+export class SelectSkuViewDto extends CreateSelectDto(SKU_VIEW_PROPERTIES) {}
 
 @Exclude()
 export class SearchSkuViewDto extends CreateSearchDto(SKU_VIEW_PROPERTIES) {}

@@ -22,3 +22,7 @@ export class PaginatorDto {
   @BooleanTransformer()
   withDeleted?: boolean;
 }
+
+
+
+
