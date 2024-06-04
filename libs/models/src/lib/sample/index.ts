@@ -2,4 +2,5 @@
 export * from './sample-view.dto';
 export * from './sample-view';
 export * from './sample.dto';
+export * from './sample.metadata';
 export * from './sample';

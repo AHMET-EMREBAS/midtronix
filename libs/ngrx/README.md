@@ -1,3 +1,0 @@
-# ngrx
-
-NgRX collection services

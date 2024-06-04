@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { applyDecorators } from '@nestjs/common';
 import {
   ApiProperty,
@@ -24,8 +25,10 @@ import {
   IsDate,
   Length,
   IsOptional,
+  IsObject,
+  ValidateNested,
 } from 'class-validator';
-import { Exclude, Expose } from 'class-transformer';
+import { Exclude, Expose, Type } from 'class-transformer';
 import {
   IsLessThan,
   IsLessThanOrEqual,
@@ -35,6 +38,7 @@ import {
 import {
   BooleanTransformer,
   DateTransformer,
+  DefaultValueTransformer,
   IntegerTransformer,
   NumberTransformer,
   StringTransformer,
@@ -45,7 +49,16 @@ export type ApiPropertyType =
   | 'number'
   | 'boolean'
   | 'integer'
-  | 'date';
+  | 'date'
+  | 'object';
+
+export type StringFormat =
+  | 'email'
+  | 'password'
+  | 'phone'
+  | 'ean'
+  | 'barcode'
+  | 'name';
 
 export function resolveSwaggerType(type: ApiPropertyType) {
   return type === 'date' ? 'string' : type;
@@ -59,6 +72,7 @@ export type ApiPropertyOptions = __ApiPropertyOptions & {
   lessThan?: string;
   moreThanOrEqual?: string;
   lessThanOrEqual?: string;
+  target?: any;
 };
 
 export function Property(options: ApiPropertyOptions) {
@@ -92,12 +106,18 @@ export function Property(options: ApiPropertyOptions) {
     lessThan,
     moreThanOrEqual,
     lessThanOrEqual,
+    default: defaultValue,
+    target,
   } = options;
 
   if (exclude === true) {
     decorators.push(Exclude());
   } else {
     decorators.push(Expose());
+  }
+
+  if (isArray) {
+    decorators.push(ValidateNested(vo));
   }
 
   // ######################### Validators Start ######################
@@ -107,7 +127,12 @@ export function Property(options: ApiPropertyOptions) {
   else if (type === 'number') decorators.push(IsNumber(undefined, vo));
   else if (type === 'integer') decorators.push(IsInt(vo));
   else if (type === 'boolean') decorators.push(IsBoolean(vo));
-  else if (type === 'date') decorators.push(IsDate());
+  else if (type === 'date') decorators.push(IsDate(vo));
+  else if (type === 'object') {
+    decorators.push(IsObject(vo));
+    if (!target) throw new Error('target is required for object property');
+    decorators.push(Type(() => target));
+  }
 
   // ########################## Type Validators End ######################
 
@@ -140,11 +165,13 @@ export function Property(options: ApiPropertyOptions) {
   if (moreThan != undefined) decorators.push(IsMoreThan(moreThan));
   if (lessThan != undefined) decorators.push(IsLessThan(lessThan));
 
-  if (moreThanOrEqual != undefined)
+  if (moreThanOrEqual != undefined) {
     decorators.push(IsMoreThanOrEqual(moreThanOrEqual));
+  }
 
-  if (lessThanOrEqual != undefined)
+  if (lessThanOrEqual != undefined) {
     decorators.push(IsLessThanOrEqual(lessThanOrEqual));
+  }
 
   if (enums && enums.length > 0) decorators.push(IsIn(enums));
 
@@ -158,6 +185,10 @@ export function Property(options: ApiPropertyOptions) {
   else if (type === 'boolean') decorators.push(BooleanTransformer);
   else if (type === 'date') decorators.push(DateTransformer);
   else if (type === 'string') decorators.push(StringTransformer);
+
+  if (defaultValue != undefined) {
+    decorators.push(DefaultValueTransformer(defaultValue));
+  }
 
   // ############################## Trasnformers End ########################
 

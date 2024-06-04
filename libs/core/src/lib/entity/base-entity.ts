@@ -1,5 +1,4 @@
 import {
-  Column,
   CreateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
@@ -7,6 +6,7 @@ import {
   ViewColumn,
 } from 'typeorm';
 import { IBaseEntity, IBaseView } from '@mdtx/common';
+import { BooleanColumn, IntegerColumn } from '../column';
 
 /**
  * ALl entitites extends this class
@@ -16,10 +16,11 @@ export class BaseEntity implements IBaseEntity {
   @CreateDateColumn() createdAt!: Date;
   @UpdateDateColumn() updatedAt!: Date;
 
+  
   @DeleteDateColumn() deletedAt!: Date;
-  @Column({ type: 'int' }) createdBy!: number;
-  @Column({ type: 'int' }) updatedBy!: number;
-  @Column({ type: 'int' }) active!: boolean;
+  @IntegerColumn() createdBy!: number;
+  @IntegerColumn() updatedBy!: number;
+  @BooleanColumn() active!: boolean;
 }
 
 export class BaseView implements IBaseView {

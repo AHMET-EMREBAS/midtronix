@@ -17,7 +17,6 @@
     "paths": {
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
-      "@mdtx/database": ["libs/database/src/index.ts"],
       "@mdtx/entities": ["libs/entities/src/index.ts"],
       "@mdtx/forms": ["libs/forms/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
@@ -44,9 +43,9 @@
       "@mdtx/modules/search": ["libs/modules/search/src/index.ts"],
       "@mdtx/modules/sub-modules": ["libs/modules/sub-modules/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
-      "@mdtx/ngrx": ["libs/ngrx/src/index.ts"],
-      "@mdtx/services": ["libs/services/src/index.ts"],
-      "@mdtx/tables": ["libs/tables/src/index.ts"],
+  
+      "@mdtx/resources": ["libs/resources/src/index.ts"],
+
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },

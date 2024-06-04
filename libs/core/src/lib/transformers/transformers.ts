@@ -47,3 +47,11 @@ export const StringTransformer = Transform(({ value }) => {
   }
   return value;
 });
+
+export const DefaultValueTransformer = <T>(defaultValue: T) =>
+  Transform(({ value }) => {
+    if (value == undefined) {
+      return defaultValue;
+    }
+    return value;
+  });

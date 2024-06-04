@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
-
+import { SampleModule } from '@mdtx/resources';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
@@ -16,9 +16,11 @@ import { isDevMode } from '@mdtx/core';
       username: 'postgres',
       password: 'password',
       autoLoadEntities: true,
+
       synchronize: true,
       dropSchema: true,
     }),
+    SampleModule,
   ],
 })
 export class AppModule {}

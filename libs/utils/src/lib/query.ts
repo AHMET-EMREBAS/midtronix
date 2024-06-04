@@ -1,3 +1,22 @@
+const OperatorList = [
+  'eq',
+  'mt',
+  'lt',
+  'mte',
+  'lte',
+  'sw',
+  'ew',
+  'cn',
+  'in',
+  'neq',
+  'nmt',
+  'nlt',
+  'nsw',
+  'new',
+  'ncn',
+  'nin',
+];
+
 export enum QueryOperator {
   EQUAL = 'eq',
   MORE_THAN = 'mt',
@@ -146,12 +165,14 @@ export function parseQueryInput(
   queryInput: string
 ): Omit<QueryInput, 'property'> | undefined {
   const [operator, value] = queryInput.split(':');
-
-  if (operator && value)
-    return {
-      operator,
-      value,
-    };
+  if (operator && value ) {
+    if (OperatorList.includes(operator)) {
+      return {
+        operator,
+        value,
+      };
+    }
+  }
 
   return undefined;
 }
