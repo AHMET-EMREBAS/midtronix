@@ -2,14 +2,18 @@ import { Transform } from 'class-transformer';
 
 export const IntegerTransformer = Transform(({ value }) => {
   if (typeof value === 'string') {
-    return parseInt(value) || undefined;
+    const pvalue = parseInt(value);
+    if (isNaN(pvalue)) return undefined;
+    return pvalue;
   }
   return value;
 });
 
 export const NumberTransformer = Transform(({ value }) => {
   if (typeof value === 'string') {
-    return parseFloat(value) || undefined;
+    const pvalue = parseFloat(value);
+    if (isNaN(pvalue)) return undefined;
+    return pvalue;
   }
   return value;
 });

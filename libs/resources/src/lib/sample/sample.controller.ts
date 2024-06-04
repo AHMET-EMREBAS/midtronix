@@ -13,6 +13,11 @@ export class SampleController {
     return this.service.findAll(query);
   }
 
+  @R.FindOneById()
+  findOneById(@R.ParamID() id: number) {
+    return this.service.findOneById(id);
+  }
+
   @R.SaveOne()
   saveOne(@R.Body() entity: CreateSampleDto) {
     return this.service.saveOne(entity);

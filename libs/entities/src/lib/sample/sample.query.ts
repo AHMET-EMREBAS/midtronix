@@ -14,7 +14,7 @@ import { AllPropertyType, IBaseQueryDto } from '@mdtx/common';
 import { SampleMetadata } from '@mdtx/models';
 
 @Exclude()
-export class __WhereSampleQuery
+export class WhereSampleQuery
   extends BaseWhereQuery<Sample>
   implements Omit<AllPropertyType<Sample, FindOperator<any>>, 'id'>
 {
@@ -25,13 +25,13 @@ export class __WhereSampleQuery
 @Exclude()
 export class QuerySample
   extends BaseGeneralQuery
-  implements IBaseQueryDto<__WhereSampleQuery, __WhereSampleQuery>
+  implements IBaseQueryDto<WhereSampleQuery, WhereSampleQuery>
 {
   @SearchProperty<Sample>(SampleMetadata.fields())
-  search!: __WhereSampleQuery;
+  search!: WhereSampleQuery;
 
-  @Property({ type: 'object', target: __WhereSampleQuery })
-  where!: __WhereSampleQuery;
+  @Property({ type: 'object', target: WhereSampleQuery })
+  where!: WhereSampleQuery;
 
   @OrderProperty<Sample>(SampleMetadata.fields())
   order: any;

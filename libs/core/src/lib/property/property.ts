@@ -82,9 +82,10 @@ export function Property(options: ApiPropertyOptions) {
 
   const vo: ValidationOptions = { each: isArray };
 
+  const { target, ...apiPropertyOptions } = options;
   const decorators: PropertyDecorator[] = [
     ApiProperty({
-      ...options,
+      ...apiPropertyOptions,
       required,
       nullable,
       type: resolveSwaggerType(options.type),
@@ -107,7 +108,6 @@ export function Property(options: ApiPropertyOptions) {
     moreThanOrEqual,
     lessThanOrEqual,
     default: defaultValue,
-    target,
   } = options;
 
   if (exclude === true) {
