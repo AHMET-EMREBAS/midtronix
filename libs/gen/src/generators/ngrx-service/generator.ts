@@ -7,7 +7,7 @@ export async function ngrxServiceGenerator(
   tree: Tree,
   options: NgrxServiceGeneratorSchema
 ) {
-  const projectRoot = `libs/ngrx/src/lib/services`;
+  const projectRoot = `libs/modules/ngrx/src/lib/services`;
 
   const allNames = names(options.name);
   generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {

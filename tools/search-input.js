@@ -52,5 +52,5 @@ const message = ['message', 'notification'];
 const all = [...customer, ...user, ...inventory, ...project, ...message];
 
 for (const r of all) {
-  execSync(`npx nx g @mdtx/gen:ngrx-service ${r}`);
+  execSync(`npx nx g @mdtx/gen:search-input ${r}`);
 }

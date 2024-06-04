@@ -8,7 +8,7 @@ export async function searchInputGenerator(
   tree: Tree,
   options: SearchInputGeneratorSchema
 ) {
-  const projectRoot = `libs/forms/src/lib/search-inputs`;
+  const projectRoot = `libs/modules/search/src/lib/search`;
 
   const allNames = names(options.name);
 

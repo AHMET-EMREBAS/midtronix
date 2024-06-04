@@ -34,7 +34,7 @@ import {
   PriceLevelService,
   SaleService,
   SkuViewService,
-} from '@mdtx/ngrx';
+} from '@mdtx/modules/ngrx';
 import {
   PosProductCardComponent,
   PosProductCardListComponent,

@@ -10,15 +10,14 @@ import {
 import { CommonModule } from '@angular/common';
 import { InputNumberComponent } from '@mdtx/material/form';
 import { FormControl, Validators } from '@angular/forms';
-import { PriceLevelSearchComponent } from '@mdtx/forms';
-import { IOrderViewRaw, IPriceLevel, IStore, QueryBuilder } from '@mdtx/common';
+import { PriceLevelSearchComponent } from '@mdtx/modules/forms';
+import { IOrderViewRaw } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import {
-  DiscountViewService,
   OrderService,
   OrderViewService,
   SkuViewService,
-} from '@mdtx/ngrx';
+} from '@mdtx/modules/ngrx';
 import { firstValueFrom } from 'rxjs';
 import { MatTabsModule } from '@angular/material/tabs';
 
@@ -34,12 +33,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   ],
   templateUrl: './pos-order-editor.component.html',
   styleUrl: './pos-order-editor.component.scss',
-  providers: [
-    OrderService,
-    SkuViewService,
-    DiscountViewService,
-    OrderViewService,
-  ],
+  providers: [OrderService, SkuViewService, OrderViewService],
 })
 export class PosOrderEditorComponent implements AfterViewInit {
   @Input() activeOrder!: IOrderViewRaw;
@@ -59,7 +53,6 @@ export class PosOrderEditorComponent implements AfterViewInit {
 
   constructor(
     protected readonly skuViewService: SkuViewService,
-    protected readonly discountViewService: DiscountViewService,
     protected readonly orderService: OrderService,
     protected readonly orderViewService: OrderViewService
   ) {}
@@ -83,34 +76,6 @@ export class PosOrderEditorComponent implements AfterViewInit {
     this.closeEvent.emit();
   }
 
-  // async updateOrder() {
-  //   const quantity = parseInt(this.quantityControl.value + '') ?? 1;
-  //   const unitPrice = parseFloat(this.unitPriceControl.value + '');
-
-  //   await firstValueFrom(
-  //     this.orderService.update({
-  //       id: this.activeOrder.id,
-  //       quantity,
-  //       unitPrice,
-  //     })
-  //   );
-
-  //   this.updateEvent.emit();
-  // }
-
-  // updateTotal() {
-  //   const __subtotal = this.subtotalControl.value;
-  //   const __quantity = this.quantityControl.value;
-
-  //   if (__subtotal && __quantity) {
-  //     const subtotal = parseFloat(__subtotal + '');
-  //     const quantity = parseFloat(__quantity + '');
-  //     const price = parseFloat((subtotal / quantity).toFixed(2));
-
-  //     this.unitPriceControl.setValue(price);
-  //     this.updateOrder();
-  //   }
-  // }
   updateQuantity() {
     const quantity = this.quantityControl.value;
 
@@ -127,23 +92,4 @@ export class PosOrderEditorComponent implements AfterViewInit {
       this.updateEvent.emit();
     }
   }
-
-  // async updatePriceLevel() {
-  //   const priceLevel = this.priceLevelSearch.inputControl.value;
-
-  //   if (priceLevel) {
-  //     const foundPriceLevels = await firstValueFrom(
-  //       this.skuViewService.query({
-  //         barcode: QueryBuilder.EQUAL(this.activeOrder.barcode),
-  //         priceLevelId: priceLevel.id,
-  //         storeId: this.storeId,
-  //       })
-  //     );
-  //     const found = foundPriceLevels[0];
-  //     if (found) {
-  //       this.unitPriceControl.setValue(found.price);
-  //       this.updateOrder();
-  //     }
-  //   }
-  // }
 }
