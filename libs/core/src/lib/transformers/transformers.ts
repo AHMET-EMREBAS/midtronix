@@ -1,0 +1,49 @@
+import { Transform } from 'class-transformer';
+
+export const IntegerTransformer = Transform(({ value }) => {
+  if (typeof value === 'string') {
+    return parseInt(value) || undefined;
+  }
+  return value;
+});
+
+export const NumberTransformer = Transform(({ value }) => {
+  if (typeof value === 'string') {
+    return parseFloat(value) || undefined;
+  }
+  return value;
+});
+
+export const BooleanTransformer = Transform(({ value }) => {
+  if (typeof value === 'string') {
+    if (value === 'true') {
+      return true;
+    } else if (value === 'false') {
+      return false;
+    }
+    return undefined;
+  }
+  return value;
+});
+
+export const DateTransformer = Transform(({ value }) => {
+  if (typeof value === 'string') {
+    const dateValue = new Date(value);
+    if (isNaN(dateValue.getTime())) {
+      return undefined;
+    }
+    return dateValue;
+  }
+  return value;
+});
+
+export const StringTransformer = Transform(({ value }) => {
+  if (typeof value === 'string') {
+    const newValue = value.trim().toLowerCase();
+    if (newValue.length > 0) {
+      return newValue;
+    }
+    return undefined;
+  }
+  return value;
+});

@@ -1,83 +1,165 @@
+import { applyDecorators } from '@nestjs/common';
 import {
-  applyDecorators,
   ApiProperty,
+  ApiPropertyOptions as __ApiPropertyOptions,
+} from '@nestjs/swagger';
+import {
+  MinLength,
+  MaxLength,
+  Min,
+  Max,
+  IsNotEmpty,
+  ValidationOptions,
   ArrayMaxSize,
   ArrayMinSize,
-  IsArray,
-  IsNotEmpty,
+  IsEmail,
+  IsStrongPassword,
+  IsPhoneNumber,
+  IsEAN,
+  IsIn,
+  IsString,
+  IsNumber,
+  IsInt,
+  IsBoolean,
+  IsDate,
+  Length,
   IsOptional,
-  ValidationOptions,
-  Exclude,
-  Expose,
-  Transform,
-} from '../__external';
-import { PropertyOptions } from './types';
-import { __StringProperty } from './string';
-import { __NumberProperty } from './number';
-import { __BooleanProperty } from './boolean';
-import { __DateProperty } from './date';
-import { __ObjectProperty } from './object';
+} from 'class-validator';
+import { Exclude, Expose } from 'class-transformer';
+import {
+  IsLessThan,
+  IsLessThanOrEqual,
+  IsMoreThan,
+  IsMoreThanOrEqual,
+} from '../validators';
+import {
+  BooleanTransformer,
+  DateTransformer,
+  IntegerTransformer,
+  NumberTransformer,
+  StringTransformer,
+} from '../transformers';
 
-export function Property(options?: PropertyOptions) {
-  options = {
-    ...options,
-    type: options?.type ?? 'string',
-    required: options?.required ?? false,
-    nullable: options?.required === true ? false : true,
-    isArray: options?.isArray ?? false,
-    description: options?.description ?? undefined,
-    example: options?.example ?? undefined,
-    default: options?.default ?? undefined,
-    format: options?.format ?? options?.type ?? 'string',
-  };
+export type ApiPropertyType =
+  | 'string'
+  | 'number'
+  | 'boolean'
+  | 'integer'
+  | 'date';
+
+export function resolveSwaggerType(type: ApiPropertyType) {
+  return type === 'date' ? 'string' : type;
+}
+
+export type ApiPropertyOptions = __ApiPropertyOptions & {
+  type: ApiPropertyType;
+  exclude?: true;
+  enum?: string[];
+  moreThan?: string;
+  lessThan?: string;
+  moreThanOrEqual?: string;
+  lessThanOrEqual?: string;
+};
+
+export function Property(options: ApiPropertyOptions) {
+  const required = options.required === true;
+  const nullable = !required;
+  const isArray = options.isArray === true;
+
+  const vo: ValidationOptions = { each: isArray };
 
   const decorators: PropertyDecorator[] = [
     ApiProperty({
       ...options,
-      type: options.type === 'date' ? 'string' : options.type,
+      required,
+      nullable,
+      type: resolveSwaggerType(options.type),
     }),
   ];
 
-  const push = (pd: PropertyDecorator) => {
-    decorators.push(pd);
-  };
+  const {
+    type,
+    exclude,
+    minLength,
+    maxLength,
+    minimum,
+    maximum,
+    maxItems,
+    minItems,
+    enum: enums,
+    format,
+    moreThan,
+    lessThan,
+    moreThanOrEqual,
+    lessThanOrEqual,
+  } = options;
 
-  const { type, isArray, required, minItems, maxItems, noValidate, exclude } =
-    options;
-
-  const validationOptions: ValidationOptions = { each: isArray };
-
-  if (exclude) push(Exclude());
-  else push(Expose());
-
-  if (noValidate) {
-    return applyDecorators(...decorators);
-  }
-  // Required or optional validation
-  if (required) push(IsNotEmpty(validationOptions));
-  else push(IsOptional(validationOptions));
-
-  // Array validation
-  if (isArray) {
-    push(IsArray());
-    if (minItems) push(ArrayMinSize(minItems));
-    if (maxItems) push(ArrayMaxSize(maxItems));
+  if (exclude === true) {
+    decorators.push(Exclude());
+  } else {
+    decorators.push(Expose());
   }
 
-  if (type === 'string') push(__StringProperty(options));
-  else if (type === 'number') push(__NumberProperty(options));
-  else if (type === 'boolean') push(__BooleanProperty(options));
-  else if (type === 'date') push(__DateProperty(options));
-  else if (type === 'object') push(__ObjectProperty(options));
+  // ######################### Validators Start ######################
 
-  if (options.default) {
-    push(
-      Transform(({ value }) => {
-        if (value == undefined) return options.default;
-        return value;
-      })
-    );
+  // ########################## Type Validators ######################
+  if (type === 'string') decorators.push(IsString(vo));
+  else if (type === 'number') decorators.push(IsNumber(undefined, vo));
+  else if (type === 'integer') decorators.push(IsInt(vo));
+  else if (type === 'boolean') decorators.push(IsBoolean(vo));
+  else if (type === 'date') decorators.push(IsDate());
+
+  // ########################## Type Validators End ######################
+
+  if (required) {
+    decorators.push(IsNotEmpty(vo));
+  } else {
+    decorators.push(IsOptional(vo));
   }
+
+  if (minLength) decorators.push(MinLength(minLength, vo));
+  if (maxLength) decorators.push(MaxLength(maxLength, vo));
+  if (minimum) decorators.push(Min(minimum, vo));
+  if (maximum) decorators.push(Max(maximum, vo));
+  if (maxItems) decorators.push(ArrayMaxSize(maxItems, vo));
+  if (minItems) decorators.push(ArrayMinSize(minItems, vo));
+
+  // ########################## Format validators start #########################
+
+  if (format === 'email') decorators.push(IsEmail(undefined, vo));
+  if (format === 'password') decorators.push(IsStrongPassword(undefined, vo));
+  if (format === 'phone') decorators.push(IsPhoneNumber(undefined, vo));
+  if (format === 'ean') decorators.push(IsEAN(vo));
+  if (format === 'barcode') decorators.push(Length(6, 13, vo));
+  if (format === 'name') decorators.push(Length(3, 50, vo));
+
+  // ########################## Format validators end #########################
+
+  // ######################### Comparison validators start ####################
+
+  if (moreThan != undefined) decorators.push(IsMoreThan(moreThan));
+  if (lessThan != undefined) decorators.push(IsLessThan(lessThan));
+
+  if (moreThanOrEqual != undefined)
+    decorators.push(IsMoreThanOrEqual(moreThanOrEqual));
+
+  if (lessThanOrEqual != undefined)
+    decorators.push(IsLessThanOrEqual(lessThanOrEqual));
+
+  if (enums && enums.length > 0) decorators.push(IsIn(enums));
+
+  // ######################### Comparison validators end ####################
+
+  // ######################### Validators End ######################
+
+  // ############################## Trasnformers ########################
+  if (type === 'integer') decorators.push(IntegerTransformer);
+  else if (type === 'number') decorators.push(NumberTransformer);
+  else if (type === 'boolean') decorators.push(BooleanTransformer);
+  else if (type === 'date') decorators.push(DateTransformer);
+  else if (type === 'string') decorators.push(StringTransformer);
+
+  // ############################## Trasnformers End ########################
 
   return applyDecorators(...decorators);
 }
