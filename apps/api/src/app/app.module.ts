@@ -4,6 +4,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
 import { SampleModule } from '@mdtx/resources';
+
 @Module({
   imports: [
     ServeStaticModule.forRoot({
