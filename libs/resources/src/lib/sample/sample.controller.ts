@@ -1,5 +1,10 @@
-import { CreateBasicController } from '@mdtx/core';
-import { CreateSampleDto, QuerySample, UdpateSampleDto } from '@mdtx/entities';
+import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
+import {
+  CreateSampleDto,
+  QuerySample,
+  Sample,
+  UdpateSampleDto,
+} from '@mdtx/entities';
 import { ISample } from '@mdtx/models';
 
 // const R = RestRouteBuilder.get('Sample');
@@ -56,8 +61,17 @@ import { ISample } from '@mdtx/models';
 //   }
 // }
 
-export class SampleControler extends CreateBasicController(
-  'Sample',
+export const SampleRRB = RestRouteBuilder.get('Sample');
+
+@SampleRRB.Controler()
+export class SampleController extends CreateBasicController<
+  Sample,
+  CreateSampleDto,
+  UdpateSampleDto,
+  QuerySample
+>(
+  SampleRRB,
+
   CreateSampleDto,
   UdpateSampleDto,
   QuerySample

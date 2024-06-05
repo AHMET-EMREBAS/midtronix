@@ -1,66 +1,65 @@
-import { IBaseQueryDto, IID } from '@mdtx/common';
+import { IID } from '@mdtx/common';
 import { BasicController } from './basic.controller';
 import { Type } from '@nestjs/common';
-import { DeepPartial } from 'typeorm';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
 import { RestRouteBuilder } from '../rest';
+import { DeepPartial } from 'typeorm';
+import { BaseGeneralQuery } from '../dto';
 
 export function CreateBasicController<
-  T extends IID = IID,
-  C extends DeepPartial<T> = DeepPartial<T>,
-  U extends DeepPartial<T> = DeepPartial<T>,
-  Q extends IBaseQueryDto = IBaseQueryDto
+  T extends IID,
+  C extends DeepPartial<T>,
+  U extends DeepPartial<T>,
+  Q extends BaseGeneralQuery
 >(
-  resourceName: string,
-  createDto: C,
-  udpateDto: U,
-  queryDto: Q
+  RRB: RestRouteBuilder,
+  createDto: Type<C>,
+  udpateDto: Type<U>,
+  queryDto: Type<Q>
 ): Type<BasicController<T, C, U, Q>> {
-  const R = RestRouteBuilder.get(resourceName);
-
-  @R.Controler()
+  @RRB.Controler()
   class DynamicController extends BasicController<T, C, U, Q> {
-    constructor(service: BaseEntityService<T, C, U, Q>) {
+    constructor(service: BaseEntityService<T>) {
       super(service);
     }
 
-    @R.FindAll(queryDto)
-    override findAll(@R.Query() query: Q) {
+    @RRB.FindAll(queryDto)
+    override findAll(@RRB.Query() query: Q) {
       return this.service.findAll(query);
     }
 
-    @R.FindOneById()
-    override findOneById(@R.ParamID() id: number) {
+    @RRB.FindOneById()
+    override findOneById(@RRB.ParamID() id: number) {
       return this.service.findOneById(id);
     }
 
-    @R.SaveOne(createDto)
-    override saveOne(@R.Body() entity: C) {
+    @RRB.SaveOne(createDto)
+    override saveOne(@RRB.Body() entity: C) {
       return this.service.saveOne(entity);
     }
 
-    @R.UpdateOne(udpateDto)
-    override updateOne(@R.ParamID() id: number, @R.Body() entity: U) {
+    @RRB.UpdateOne(udpateDto)
+    override updateOne(@RRB.ParamID() id: number, @RRB.Body() entity: U) {
       return this.service.updateOne(id, entity);
     }
 
-    @R.DeleteOne()
-    override deleteOne(@R.ParamID() id: number) {
+    @RRB.DeleteOne()
+    override deleteOne(@RRB.ParamID() id: number) {
       return this.service.deleteOneById(id);
     }
 
-    @R.AddRelation()
-    override addRelation(@R.Body() relationDto: RelationDto) {
+    @RRB.AddRelation()
+    override addRelation(@RRB.Body() relationDto: RelationDto) {
       return this.service.addRelation(relationDto);
     }
 
-    @R.SetRelation()
-    override setRelation(@R.Body() relationDto: RelationDto) {
+    @RRB.SetRelation()
+    override setRelation(@RRB.Body() relationDto: RelationDto) {
       return this.service.setRelation(relationDto);
     }
 
-    @R.UnsetRelation()
-    override unsetRelation(@R.Body() relationDto: UnsetRelationDto) {
+    @RRB.UnsetRelation()
+    override unsetRelation(@RRB.Body() relationDto: UnsetRelationDto) {
       return this.service.unsetRelation(relationDto);
     }
   }

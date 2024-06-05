@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IID } from '@mdtx/common';
-import { DeepPartial, FindOptionsWhere, Repository } from 'typeorm';
-import { BaseGeneralQuery } from '../dto';
+import {
+  DeepPartial,
+  FindManyOptions,
+  FindOptionsWhere,
+  Repository,
+} from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { AdvanceLogger } from '../logger';
 
-export class BaseEntityService<
-  T extends IID,
-  CreateDto extends DeepPartial<T>,
-  UpdateDto extends DeepPartial<T>,
-  Query extends BaseGeneralQuery
-> {
+export class BaseEntityService<T extends IID> {
   protected readonly logger!: AdvanceLogger;
 
   constructor(protected readonly repo: Repository<T>) {
@@ -29,7 +28,7 @@ export class BaseEntityService<
     this.logger.debug(method, payload);
   }
 
-  findAll(query: Query) {
+  findAll(query?: FindManyOptions<T>) {
     this.log(this.findAll.name, query);
     return this.repo.find(query);
   }
@@ -44,12 +43,12 @@ export class BaseEntityService<
     return this.repo.findOneBy({ [key]: value } as FindOptionsWhere<T>);
   }
 
-  saveOne(entity: CreateDto) {
+  saveOne(entity: DeepPartial<T>) {
     this.log(this.saveOne.name, entity);
     return this.repo.save({ ...entity });
   }
 
-  updateOne(id: number, entity: UpdateDto) {
+  updateOne(id: number, entity: DeepPartial<T>) {
     this.log(this.updateOne.name, { id, ...entity });
     return this.repo.save({ id, ...entity });
   }

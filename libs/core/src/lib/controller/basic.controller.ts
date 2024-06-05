@@ -1,29 +1,22 @@
-import { IBaseQueryDto, IID } from '@mdtx/common';
+import { IID } from '@mdtx/common';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
-import { DeepPartial } from 'typeorm';
-import { BaseGeneralQuery } from '../dto';
 import { AdvanceLogger } from '../logger';
+import { DeepPartial, FindManyOptions } from 'typeorm';
 
 export class BasicController<
   T extends IID,
   CreateDto extends DeepPartial<T>,
   UpdateDto extends DeepPartial<T>,
-  Query extends IBaseQueryDto
+  Query extends FindManyOptions<T>
 > {
   protected readonly logger!: AdvanceLogger;
-  constructor(
-    protected readonly service: BaseEntityService<
-      T,
-      CreateDto,
-      UpdateDto,
-      Query
-    >
-  ) {
+  constructor(protected readonly service: BaseEntityService<T>) {
     this.logger = new AdvanceLogger(this.service.entityName() + 'Controller');
   }
 
   findAll(query: Query) {
     this.logger.debug(this.findAll.name, query);
+
     return this.service.findAll(query);
   }
 
