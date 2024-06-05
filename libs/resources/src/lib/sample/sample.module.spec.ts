@@ -1,4 +1,4 @@
-import { DataSource, Equal, Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { Sample, SampleView } from '@mdtx/entities';
 
 describe('SampleModule', () => {
