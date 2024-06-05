@@ -1,4 +1,4 @@
-import { CustomDecorator } from '@nestjs/common';
+import { CustomDecorator, ExecutionContext } from '@nestjs/common';
 import { createMetadata } from '../metadata';
 
 export enum ResourceActions {
@@ -11,12 +11,24 @@ export enum ResourceActions {
 
 // Is public, permission, role, scope, resoucename
 
-export const PublicMeta = createMetadata('IsPublic');
+export const PublicMetadata = createMetadata('IsPublic');
 export const ResourceNameMeta = createMetadata('ResourceName');
 export const RoleMeta = createMetadata('RequiredRole');
 export const PermissionMeta = createMetadata('RequiredPermission');
 export const ScopeMeta = createMetadata('RequiredScope');
 export const AppMeta = createMetadata('RequiredApp');
+
+export function PublicResource() {
+  return PublicMetadata.set(true);
+}
+
+export function RequiredRole(roleName: string) {
+  return RoleMeta.set(roleName);
+}
+
+export function RequiredPermission(permissionName: string) {
+  return PermissionMeta.set(permissionName);
+}
 
 export function createPermissionString(
   action: ResourceActions,

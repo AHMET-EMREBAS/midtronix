@@ -58,7 +58,8 @@ export type StringFormat =
   | 'phone'
   | 'ean'
   | 'barcode'
-  | 'name';
+  | 'name'
+  | 'uuid';
 
 export function resolveSwaggerType(type: ApiPropertyType) {
   return type === 'date' ? 'string' : type;
@@ -73,6 +74,8 @@ export type ApiPropertyOptions = __ApiPropertyOptions & {
   moreThanOrEqual?: string;
   lessThanOrEqual?: string;
   target?: any;
+
+  format?: StringFormat;
 };
 
 export function Property(options: ApiPropertyOptions) {
