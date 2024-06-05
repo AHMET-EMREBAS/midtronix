@@ -6,6 +6,7 @@ import {
   QueryOperatorProperty,
   BaseWhereQuery,
   OrderProperty,
+  WhereProperty,
 } from '@mdtx/core';
 import { Exclude, Transform, instanceToInstance } from 'class-transformer';
 import { Sample } from './sample.entity';
@@ -30,13 +31,7 @@ export class QuerySample
   @SearchProperty<Sample>(SampleMetadata.fields())
   search!: WhereSampleQuery;
 
-  @Property({ type: 'object', target: WhereSampleQuery })
-  @Transform(({ obj }) => {
-    return instanceToInstance(new WhereSampleQuery(obj), {
-      exposeUnsetFields: false,
-      excludeExtraneousValues: true,
-    });
-  })
+  @WhereProperty(WhereSampleQuery)
   where!: WhereSampleQuery;
 
   @OrderProperty<Sample>(SampleMetadata.fields())
