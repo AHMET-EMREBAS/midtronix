@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiBody,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
   ApiOkResponse,
@@ -108,11 +109,12 @@ export class RestRouteBuilder {
     );
   }
 
-  SaveOne() {
+  SaveOne(type?: any) {
     return applyDecorators(
       Post(this.AP.SINGULAR_PATH),
       ApiOperation({ summary: `Save one ${this.className} ` }),
       ApiCreatedResponse({ description: 'Success' }),
+      ApiBody({ type }),
       this.RP.CanWrite(),
       this.CommonResponses()
     );
@@ -128,11 +130,12 @@ export class RestRouteBuilder {
     );
   }
 
-  UpdateOne() {
+  UpdateOne(type?: any) {
     return applyDecorators(
       Put(this.AP.BY_ID_PATH),
       ApiOperation({ summary: `Update one ${this.className} by id` }),
       ApiOkResponse({ description: 'Success' }),
+      ApiBody({ type }),
       this.RP.CanUpdate(),
       this.CommonResponses()
     );

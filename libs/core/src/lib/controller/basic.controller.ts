@@ -1,4 +1,4 @@
-import { IID } from '@mdtx/common';
+import { IBaseQueryDto, IID } from '@mdtx/common';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
 import { DeepPartial } from 'typeorm';
 import { BaseGeneralQuery } from '../dto';
@@ -8,7 +8,7 @@ export class BasicController<
   T extends IID,
   CreateDto extends DeepPartial<T>,
   UpdateDto extends DeepPartial<T>,
-  Query extends BaseGeneralQuery
+  Query extends IBaseQueryDto
 > {
   protected readonly logger!: AdvanceLogger;
   constructor(
@@ -62,7 +62,3 @@ export class BasicController<
     return this.service.unsetRelation(relationDto);
   }
 }
-
-
-
-

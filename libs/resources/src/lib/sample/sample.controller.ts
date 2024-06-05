@@ -1,18 +1,5 @@
-import {
-  AdvanceLogger,
-  BasicController,
-  CreateBasicController,
-  RelationDto,
-  RestRouteBuilder,
-  UnsetRelationDto,
-} from '@mdtx/core';
-import { SampleService } from './sample.service';
-import {
-  CreateSampleDto,
-  QuerySample,
-  Sample,
-  UdpateSampleDto,
-} from '@mdtx/entities';
+import { CreateBasicController } from '@mdtx/core';
+import { CreateSampleDto, QuerySample, UdpateSampleDto } from '@mdtx/entities';
 import { ISample } from '@mdtx/models';
 
 // const R = RestRouteBuilder.get('Sample');
@@ -69,5 +56,9 @@ import { ISample } from '@mdtx/models';
 //   }
 // }
 
-
-export class SampleControler extends CreateBasicController<ISample, CreateSampleDto, UdpateSampleDto, QuerySample>("Sample", CreateSampleDto, UdpateSampleDto, QuerySample);
+export class SampleControler extends CreateBasicController(
+  'Sample',
+  CreateSampleDto,
+  UdpateSampleDto,
+  QuerySample
+) {}

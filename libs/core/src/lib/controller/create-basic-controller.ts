@@ -1,16 +1,15 @@
-import { IID } from '@mdtx/common';
+import { IBaseQueryDto, IID } from '@mdtx/common';
 import { BasicController } from './basic.controller';
-import { BaseGeneralQuery } from '../dto';
 import { Type } from '@nestjs/common';
 import { DeepPartial } from 'typeorm';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
 import { RestRouteBuilder } from '../rest';
 
 export function CreateBasicController<
-  T extends IID,
-  C extends DeepPartial<T>,
-  U extends DeepPartial<T>,
-  Q extends BaseGeneralQuery
+  T extends IID = IID,
+  C extends DeepPartial<T> = DeepPartial<T>,
+  U extends DeepPartial<T> = DeepPartial<T>,
+  Q extends IBaseQueryDto = IBaseQueryDto
 >(
   resourceName: string,
   createDto: C,
@@ -35,12 +34,12 @@ export function CreateBasicController<
       return this.service.findOneById(id);
     }
 
-    @R.SaveOne()
+    @R.SaveOne(createDto)
     override saveOne(@R.Body() entity: C) {
       return this.service.saveOne(entity);
     }
 
-    @R.UpdateOne()
+    @R.UpdateOne(udpateDto)
     override updateOne(@R.ParamID() id: number, @R.Body() entity: U) {
       return this.service.updateOne(id, entity);
     }
