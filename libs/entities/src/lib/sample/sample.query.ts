@@ -27,7 +27,7 @@ export class QuerySample
   extends BaseGeneralQuery
   implements IBaseQueryDto<WhereSampleQuery, WhereSampleQuery>
 {
-  @SearchProperty<Sample>(SampleMetadata.fields())
+  @SearchProperty<Sample>(['name'])
   search!: WhereSampleQuery;
 
   @WhereProperty(WhereSampleQuery)

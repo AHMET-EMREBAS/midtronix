@@ -4,9 +4,13 @@ import { Expose, Transform } from 'class-transformer';
 import { IsOptional, isArray } from 'class-validator';
 import { ILike } from 'typeorm';
 
+
+
+
 /**
  * Transform search string into FindOptionsWhere (Query operators)
- * @param searchables
+ * @important 
+ * @param searchables must be string column 
  * @returns
  */
 export function SearchProperty<T>(searchables: (keyof T)[]) {
@@ -15,6 +19,7 @@ export function SearchProperty<T>(searchables: (keyof T)[]) {
     IsOptional(),
     Expose(),
     Transform(({ value }) => {
+      console.log('Search Value : ', value);
       if (typeof value === 'string') {
         const search = value.trim().toLowerCase();
 
@@ -31,12 +36,16 @@ export function SearchProperty<T>(searchables: (keyof T)[]) {
         //  Multiple Or Search
         return searchables
           .map((e) => {
+            console.log('Search Operators #######################');
             return search
               .filter((searchValue) => typeof searchValue === 'string')
               .map((searchValue) => searchValue.trim().toLowerCase())
               .filter((searchValue) => searchValue.length > 0)
               .map((searchValue) => {
-                return { [e]: ILike(`%${searchValue}%`) };
+                const result = { [e]: ILike(`%${searchValue}%`) };
+                console.table(result);
+
+                return result;
               });
           })
           .flat();
