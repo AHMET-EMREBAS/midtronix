@@ -3,6 +3,7 @@ import { IID } from '@mdtx/common';
 import { DeepPartial, FindOptionsWhere, Repository } from 'typeorm';
 import { BaseGeneralQuery } from '../dto';
 import { RelationDto, UnsetRelationDto } from './relation-dto';
+import { AdvanceLogger } from '../logger';
 
 export class BaseEntityService<
   T extends IID,
@@ -10,11 +11,18 @@ export class BaseEntityService<
   UdpateDto extends DeepPartial<T>,
   Query extends BaseGeneralQuery
 > {
-  constructor(protected readonly repo: Repository<T>) {}
+  protected readonly logger!: AdvanceLogger;
 
-  protected log(method: string, msg: any) {
-    console.table({ entity: `${this.repo.metadata.targetName}`, method });
-    console.table(msg);
+  constructor(protected readonly repo: Repository<T>) {
+    this.logger = new AdvanceLogger(repo.metadata.targetName);
+  }
+
+  protected context(suffix = '') {
+    return this.repo.metadata.targetName + ' ' + suffix;
+  }
+
+  protected log(method: string, payload: any) {
+    this.logger.debug(method, payload);
   }
 
   findAll(query: Query) {
@@ -23,34 +31,34 @@ export class BaseEntityService<
   }
 
   findOneById(id: T['id']) {
-    this.log('findOneById', id);
+    this.log(this.findOneById.name, { id });
 
     return this.repo.findOneBy({ id } as FindOptionsWhere<T>);
   }
 
   findOneBy<P extends keyof T>(key: P, value: T[P]) {
-    this.log('findOneBy', { key, value });
+    this.log(this.findOneBy.name, { key, value });
 
     return this.repo.findOneBy({ [key]: value } as FindOptionsWhere<T>);
   }
 
   saveOne(entity: CreateDto) {
-    this.log('saveOne', entity);
+    this.log(this.saveOne.name, entity);
     return this.repo.save({ ...entity });
   }
 
   updateOne(id: number, entity: UdpateDto) {
-    this.log('updateOne', { id, entity });
+    this.log(this.updateOne.name, { id, ...entity });
     return this.repo.save({ id, ...entity });
   }
 
   deleteOneById(id: number) {
-    this.log('deleteOne', id);
+    this.log(this.deleteOneById.name, { id });
     return this.repo.softDelete(id);
   }
 
   addRelation(relationDto: RelationDto) {
-    this.log('addRelation', relationDto);
+    this.log(this.addRelation.name, { ...relationDto });
     return this.repo
       .createQueryBuilder()
       .relation(relationDto.relationName)
@@ -59,7 +67,7 @@ export class BaseEntityService<
   }
 
   setRelation(relationDto: RelationDto) {
-    this.log('setRelation', relationDto);
+    this.log(this.setRelation.name, { ...relationDto });
     return this.repo
       .createQueryBuilder()
       .relation(relationDto.relationName)
@@ -68,7 +76,7 @@ export class BaseEntityService<
   }
 
   removeRelation(relationDto: RelationDto) {
-    this.log('removeRelation', relationDto);
+    this.log(this.removeRelation.name, { ...relationDto });
     return this.repo
       .createQueryBuilder()
       .relation(relationDto.relationName)
@@ -77,7 +85,7 @@ export class BaseEntityService<
   }
 
   unsetRelation(relationDto: UnsetRelationDto) {
-    this.log('unsetRelation', relationDto);
+    this.log(this.unsetRelation.name, { ...relationDto });
     return this.repo
       .createQueryBuilder()
       .relation(relationDto.relationName)
