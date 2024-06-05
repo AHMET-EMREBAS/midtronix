@@ -204,7 +204,7 @@ export class RestRouteBuilder {
     return Param(this.validationPipe);
   }
 
-  Auth() {
-    return AuthParam(this.validationPipe);
+  AuthParam() {
+    return AuthParam();
   }
 }

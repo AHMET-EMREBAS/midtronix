@@ -23,7 +23,7 @@ export function CreateBasicController<
     @RRB.FindAll(queryDto)
     override findAll(
       @RRB.Query(queryDto) query: Q,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.findAll(query, authDto);
     }
@@ -31,7 +31,7 @@ export function CreateBasicController<
     @RRB.FindOneById()
     override findOneById(
       @RRB.ParamID() id: number,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.findOneById(id, authDto);
     }
@@ -39,7 +39,7 @@ export function CreateBasicController<
     @RRB.SaveOne(createDto)
     override saveOne(
       @RRB.Body(createDto) entity: C,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.saveOne(entity, authDto);
     }
@@ -48,7 +48,7 @@ export function CreateBasicController<
     override updateOne(
       @RRB.ParamID() id: number,
       @RRB.Body(udpateDto) entity: U,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.updateOne(id, entity, authDto);
     }
@@ -56,7 +56,7 @@ export function CreateBasicController<
     @RRB.DeleteOne()
     override deleteOneById(
       @RRB.ParamID() id: number,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.deleteOneById(id, authDto);
     }
@@ -64,7 +64,7 @@ export function CreateBasicController<
     @RRB.AddRelation()
     override addRelation(
       @RRB.Body() relationDto: RelationDto,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.addRelation(relationDto, authDto);
     }
@@ -72,7 +72,7 @@ export function CreateBasicController<
     @RRB.SetRelation()
     override setRelation(
       @RRB.Body() relationDto: RelationDto,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.setRelation(relationDto, authDto);
     }
@@ -80,7 +80,7 @@ export function CreateBasicController<
     @RRB.UnsetRelation()
     override unsetRelation(
       @RRB.Body() relationDto: UnsetRelationDto,
-      @RRB.Auth() authDto: AuthDto
+      @RRB.AuthParam() authDto: AuthDto
     ) {
       return super.unsetRelation(relationDto, authDto);
     }
