@@ -85,6 +85,7 @@ export class RestRouteBuilder {
       Get(this.AP.PLURAL_PATH),
       ApiOperation({ summary: `Find all ${this.className} by query` }),
       ApiOkResponse({ description: 'Success' }),
+      ApiQuery({ type }),
       this.RP.CanRead(),
       ApiQuery({ type }),
       this.CommonResponses()
@@ -111,14 +112,11 @@ export class RestRouteBuilder {
     );
   }
 
-  SaveOne(requestBody?: any) {
+  SaveOne(type?: any) {
     return applyDecorators(
       Post(this.AP.SINGULAR_PATH),
-      ApiOperation({
-        summary: `Save one ${this.className}`,
-        requestBody,
-      }),
-      ApiBody({ type: requestBody }),
+      ApiOperation({ summary: `Save one ${this.className}` }),
+      ApiBody({ type }),
       ApiCreatedResponse({ description: 'Success' }),
       this.RP.CanWrite(),
       this.CommonResponses()
@@ -135,14 +133,12 @@ export class RestRouteBuilder {
     );
   }
 
-  UpdateOne(requestBody?: any) {
+  UpdateOne(type?: any) {
     return applyDecorators(
       Put(this.AP.BY_ID_PATH),
-      ApiOperation({
-        summary: `Update one ${this.className} by id`,
-        requestBody,
-      }),
+      ApiOperation({ summary: `Update one ${this.className} by id` }),
       ApiOkResponse({ description: 'Success' }),
+      ApiBody({ type }),
       this.RP.CanUpdate(),
       this.CommonResponses()
     );
@@ -188,8 +184,10 @@ export class RestRouteBuilder {
     );
   }
 
-  Query() {
-    return Query(this.validationPipe);
+  Query(expectedType?: Type) {
+    return Query(
+      expectedType ? CreateValidationPipe(expectedType) : this.validationPipe
+    );
   }
 
   Body(expectedType?: Type) {

@@ -1,14 +1,14 @@
-import { IID } from '@mdtx/common';
+import { IBaseQueryDto, IID } from '@mdtx/common';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
 import { AdvanceLogger } from '../logger';
-import { DeepPartial, FindManyOptions } from 'typeorm';
 import { AuthDto } from '../auth';
+import { DeepPartial } from 'typeorm';
 
 export class BasicController<
   T extends IID,
   CreateDto extends DeepPartial<T>,
   UpdateDto extends DeepPartial<T>,
-  Query extends FindManyOptions<T>
+  Query extends IBaseQueryDto
 > {
   protected readonly logger!: AdvanceLogger;
 

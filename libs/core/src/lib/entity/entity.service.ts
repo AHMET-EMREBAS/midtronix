@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IID } from '@mdtx/common';
+import { IBaseQueryDto, IID } from '@mdtx/common';
 import {
   DeepPartial,
   FindManyOptions,
@@ -60,9 +60,19 @@ export class BaseEntityService<T extends IID = IID> {
     this.logger.error(method, payload);
   }
 
-  findAll(query?: FindManyOptions<T>) {
+  findAll(query?: IBaseQueryDto) {
     this.log(this.findAll.name, query);
-    return this.repo.find(query);
+
+    if (query) {
+      const { search, order, skip, take, where, withDeleted } = query;
+      return this.repo.find({
+        take,
+        skip,
+        withDeleted,
+        order,
+      });
+    }
+    return this.repo.find({ take: 100 });
   }
 
   async findOneById(id: T['id']) {

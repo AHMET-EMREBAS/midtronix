@@ -21,7 +21,10 @@ export function CreateBasicController<
   @RRB.Controler()
   class DynamicController extends BasicController<T, C, U, Q> {
     @RRB.FindAll(queryDto)
-    override findAll(@RRB.Query() query: Q, @RRB.Auth() authDto: AuthDto) {
+    override findAll(
+      @RRB.Query(queryDto) query: Q,
+      @RRB.Auth() authDto: AuthDto
+    ) {
       return super.findAll(query, authDto);
     }
 
