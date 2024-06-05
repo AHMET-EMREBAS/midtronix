@@ -4,16 +4,44 @@ import {
   DeepPartial,
   FindManyOptions,
   FindOptionsWhere,
+  ILike,
   Repository,
 } from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { AdvanceLogger } from '../logger';
+import {
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
+import { InputValidationException } from '../error';
 
 export class BaseEntityService<T extends IID = IID> {
-  protected readonly logger!: AdvanceLogger;
+  private readonly metadata = this.repo.metadata;
+  private readonly uniqueColumns = this.metadata.uniques.map(
+    (e) => e.columns[0].propertyName
+  );
 
+  protected readonly logger!: AdvanceLogger;
   constructor(protected readonly repo: Repository<T>) {
     this.logger = new AdvanceLogger(repo.metadata.targetName + 'Service');
+  }
+
+  private async isUniqueEntity(entity: DeepPartial<T>) {
+    for (const u of this.uniqueColumns) {
+      const newValue = (entity as any)[u];
+
+      if (newValue) {
+        const foundItem = await this.repo.findOneBy({
+          [u]: ILike(newValue),
+        } as any);
+
+        if (foundItem) {
+          throw new InputValidationException([
+            { property: u, constraints: { isUniuque: `${u} must be unique!` } },
+          ]);
+        }
+      }
+    }
   }
 
   entityName() {
@@ -28,6 +56,10 @@ export class BaseEntityService<T extends IID = IID> {
     this.logger.debug(method, payload);
   }
 
+  protected error(method: string, payload: any) {
+    this.logger.error(method, payload);
+  }
+
   findAll(query?: FindManyOptions<T>) {
     this.log(this.findAll.name, query);
     return this.repo.find(query);
@@ -35,22 +67,43 @@ export class BaseEntityService<T extends IID = IID> {
 
   async findOneById(id: T['id']) {
     this.log(this.findOneById.name, { id });
-    return await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
+    const found = await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
+    if (!found) throw new NotFoundException();
+
+    return found;
   }
 
-  findOneBy<P extends keyof T>(key: P, value: T[P]) {
+  async findOneBy<P extends keyof T>(key: P, value: T[P]) {
     this.log(this.findOneBy.name, { key, value });
-    return this.repo.findOneBy({ [key]: value } as FindOptionsWhere<T>);
+    const found = await this.repo.findOneBy({
+      [key]: value,
+    } as FindOptionsWhere<T>);
+
+    if (!found) throw new NotFoundException();
+
+    return found;
   }
 
-  saveOne(entity: DeepPartial<T>) {
+  async saveOne(entity: DeepPartial<T>) {
     this.log(this.saveOne.name, entity);
-    return this.repo.save({ ...entity });
+
+    await this.isUniqueEntity(entity);
+    try {
+      return await this.repo.save({ ...entity });
+    } catch (err) {
+      this.error(this.saveOne.name, err);
+      throw new UnprocessableEntityException((err as any).detail);
+    }
   }
 
-  updateOne(id: number, entity: DeepPartial<T>) {
+  async updateOne(id: number, entity: DeepPartial<T>) {
     this.log(this.updateOne.name, { id, ...entity });
-    return this.repo.save({ id, ...entity });
+
+    try {
+      return await this.repo.save({ id, ...entity });
+    } catch (err) {
+      throw new UnprocessableEntityException((err as any).detail);
+    }
   }
 
   deleteOneById(id: number) {

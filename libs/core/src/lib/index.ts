@@ -5,6 +5,7 @@ export * from './controller';
 export * from './dto';
 export * from './entity';
 export * from './env';
+export * from './error';
 export * from './logger';
 export * from './metadata';
 export * from './property';

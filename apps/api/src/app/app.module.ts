@@ -7,6 +7,7 @@ import { SampleModule } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { EntitySubscriber } from './entity.subscriber';
 import { AppEventHandler } from './app.events';
+
 @Module({
   imports: [
     EventEmitterModule.forRoot({
@@ -18,10 +19,11 @@ import { AppEventHandler } from './app.events';
       renderPath: isDevMode('client-app', ''),
     }),
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      database: 'testdb',
-      username: 'postgres',
-      password: 'password',
+      type: 'better-sqlite3',
+      database: 'tmp/database/dev.sqlite',
+      // database: 'testdb',
+      // username: 'postgres',
+      // password: 'password',
       autoLoadEntities: true,
       subscribers: [EntitySubscriber],
       synchronize: true,

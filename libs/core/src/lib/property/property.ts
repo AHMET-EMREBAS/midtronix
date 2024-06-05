@@ -152,11 +152,12 @@ export function Property(options: ApiPropertyOptions) {
   // ########################## Format validators start #########################
 
   if (format === 'email') decorators.push(IsEmail(undefined, vo));
-  if (format === 'password') decorators.push(IsStrongPassword(undefined, vo));
-  if (format === 'phone') decorators.push(IsPhoneNumber(undefined, vo));
-  if (format === 'ean') decorators.push(IsEAN(vo));
-  if (format === 'barcode') decorators.push(Length(6, 13, vo));
-  if (format === 'name') decorators.push(Length(3, 50, vo));
+  else if (format === 'password')
+    decorators.push(IsStrongPassword(undefined, vo));
+  else if (format === 'phone') decorators.push(IsPhoneNumber(undefined, vo));
+  else if (format === 'ean') decorators.push(IsEAN(vo));
+  else if (format === 'barcode') decorators.push(Length(6, 13, vo));
+  else if (format === 'name') decorators.push(Length(3, 50, vo));
 
   // ########################## Format validators end #########################
 

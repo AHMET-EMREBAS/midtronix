@@ -115,7 +115,8 @@ export class RestRouteBuilder {
       Post(this.AP.SINGULAR_PATH),
       ApiOperation({ summary: `Save one ${this.className} ` }),
       ApiCreatedResponse({ description: 'Success' }),
-      ApiBody({ type }),
+      ApiBody({ schema: type }),
+
       this.RP.CanWrite(),
       this.CommonResponses()
     );

@@ -13,6 +13,17 @@ export class AdvanceLogger extends Logger {
     super.debug(message);
     console.table({ payload });
   }
+
+  override error(
+    message: any,
+    stack?: string | undefined,
+    context?: string | undefined
+  ): void;
+  override error(message: any, ...optionalParams: any[]): void;
+  override error(message: unknown, error: any): void {
+    super.debug(message);
+    console.table({ error });
+  }
 }
 
 export function provideAdvanceLogger(context: string): Provider {
