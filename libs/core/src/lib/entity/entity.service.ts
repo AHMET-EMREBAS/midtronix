@@ -9,7 +9,7 @@ import {
 import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { AdvanceLogger } from '../logger';
 
-export class BaseEntityService<T extends IID> {
+export class BaseEntityService<T extends IID = IID> {
   protected readonly logger!: AdvanceLogger;
 
   constructor(protected readonly repo: Repository<T>) {
@@ -33,9 +33,9 @@ export class BaseEntityService<T extends IID> {
     return this.repo.find(query);
   }
 
-  findOneById(id: T['id']) {
+  async findOneById(id: T['id']) {
     this.log(this.findOneById.name, { id });
-    return this.repo.findOneBy({ id } as FindOptionsWhere<T>);
+    return await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
   }
 
   findOneBy<P extends keyof T>(key: P, value: T[P]) {

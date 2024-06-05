@@ -1,10 +1,11 @@
 import { IID } from '@mdtx/common';
 import { BasicController } from './basic.controller';
 import { Type } from '@nestjs/common';
-import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
+import { RelationDto, UnsetRelationDto } from '../entity';
 import { RestRouteBuilder } from '../rest';
 import { DeepPartial } from 'typeorm';
 import { BaseGeneralQuery } from '../dto';
+import { AuthDto } from '../auth';
 
 export function CreateBasicController<
   T extends IID,
@@ -19,48 +20,63 @@ export function CreateBasicController<
 ): Type<BasicController<T, C, U, Q>> {
   @RRB.Controler()
   class DynamicController extends BasicController<T, C, U, Q> {
-    constructor(service: BaseEntityService<T>) {
-      super(service);
-    }
-
     @RRB.FindAll(queryDto)
-    override findAll(@RRB.Query() query: Q) {
-      return this.service.findAll(query);
+    override findAll(@RRB.Query() query: Q, @RRB.Auth() authDto: AuthDto) {
+      return super.findAll(query, authDto);
     }
 
     @RRB.FindOneById()
-    override findOneById(@RRB.ParamID() id: number) {
-      return this.service.findOneById(id);
+    override findOneById(
+      @RRB.ParamID() id: number,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.findOneById(id, authDto);
     }
 
     @RRB.SaveOne(createDto)
-    override saveOne(@RRB.Body() entity: C) {
-      return this.service.saveOne(entity);
+    override saveOne(@RRB.Body() entity: C, @RRB.Auth() authDto: AuthDto) {
+      return super.saveOne(entity, authDto);
     }
 
     @RRB.UpdateOne(udpateDto)
-    override updateOne(@RRB.ParamID() id: number, @RRB.Body() entity: U) {
-      return this.service.updateOne(id, entity);
+    override updateOne(
+      @RRB.ParamID() id: number,
+      @RRB.Body() entity: U,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.updateOne(id, entity, authDto);
     }
 
     @RRB.DeleteOne()
-    override deleteOne(@RRB.ParamID() id: number) {
-      return this.service.deleteOneById(id);
+    override deleteOneById(
+      @RRB.ParamID() id: number,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.deleteOneById(id, authDto);
     }
 
     @RRB.AddRelation()
-    override addRelation(@RRB.Body() relationDto: RelationDto) {
-      return this.service.addRelation(relationDto);
+    override addRelation(
+      @RRB.Body() relationDto: RelationDto,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.addRelation(relationDto, authDto);
     }
 
     @RRB.SetRelation()
-    override setRelation(@RRB.Body() relationDto: RelationDto) {
-      return this.service.setRelation(relationDto);
+    override setRelation(
+      @RRB.Body() relationDto: RelationDto,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.setRelation(relationDto, authDto);
     }
 
     @RRB.UnsetRelation()
-    override unsetRelation(@RRB.Body() relationDto: UnsetRelationDto) {
-      return this.service.unsetRelation(relationDto);
+    override unsetRelation(
+      @RRB.Body() relationDto: UnsetRelationDto,
+      @RRB.Auth() authDto: AuthDto
+    ) {
+      return super.unsetRelation(relationDto, authDto);
     }
   }
 

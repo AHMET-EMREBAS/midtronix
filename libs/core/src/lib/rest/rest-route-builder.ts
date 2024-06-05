@@ -21,6 +21,7 @@ import {
   ApiUnprocessableEntityResponse,
 } from '@nestjs/swagger';
 import {
+  AuthParam,
   PermissionBuilder,
   ResourceNameMeta,
   ResourcePermissions,
@@ -195,5 +196,9 @@ export class RestRouteBuilder {
 
   Param() {
     return Param(this.validationPipe);
+  }
+
+  Auth() {
+    return AuthParam(this.validationPipe);
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, Provider } from '@nestjs/common';
 
 @Injectable()
 export class AdvanceLogger extends Logger {
@@ -13,4 +13,11 @@ export class AdvanceLogger extends Logger {
     super.debug(message);
     console.table({ payload });
   }
+}
+
+export function provideAdvanceLogger(context: string): Provider {
+  return {
+    provide: AdvanceLogger,
+    useValue: new AdvanceLogger(context),
+  };
 }

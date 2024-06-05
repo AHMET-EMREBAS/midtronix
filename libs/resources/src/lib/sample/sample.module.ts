@@ -8,12 +8,6 @@ import { SampleController } from './sample.controller';
 @Module({
   imports: [TypeOrmModule.forFeature([Sample, SampleView])],
   controllers: [SampleController],
-  providers: [
-    SampleService,
-    {
-      provide: AdvanceLogger,
-      useValue: new AdvanceLogger(SampleModule.name),
-    },
-  ],
+  providers: [SampleService, AdvanceLogger],
 })
 export class SampleModule {}
