@@ -80,6 +80,7 @@ export class BaseEntityService<T extends IID = IID> {
         });
       } catch (err) {
         this.error(this.findAll.name, query);
+        this.error(this.findAll.name, err);
         throw new InternalServerErrorException();
       }
     }

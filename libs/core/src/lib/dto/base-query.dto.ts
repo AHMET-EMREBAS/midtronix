@@ -29,21 +29,21 @@ export class BaseWhereQuery<T>
   extends BaseDto<BaseWhereQuery<T>>
   implements Omit<AllPropertyType<IBaseEntity, FindOperator<T>>, 'id'>
 {
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'date' })
   createdAt!: FindOperator<T>;
 
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'date' })
   updatedAt!: FindOperator<T>;
 
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'date' })
   deletedAt!: FindOperator<T>;
 
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'integer' })
   createdBy!: FindOperator<T>;
 
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'integer' })
   updatedBy!: FindOperator<T>;
 
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'boolean' })
   active!: FindOperator<T>;
 }

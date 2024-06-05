@@ -15,10 +15,21 @@ export class SampleModule implements OnModuleInit {
 
   async onModuleInit() {
     if (isDevMode(true, false)) {
-      await this.service.saveOne({ name: 'sample 1' });
-      await this.service.saveOne({ name: 'some 2' });
-      await this.service.saveOne({ name: 'other 3' });
-      await this.service.saveOne({ name: 'default 55' });
+      const timeout = 1000;
+
+      setTimeout(async () => {
+        await this.service.saveOne({ name: 'sample 1' });
+      }, timeout);
+
+      setTimeout(async () => {
+        await this.service.saveOne({ name: 'some 2' });
+      }, timeout * 2);
+      setTimeout(async () => {
+        await this.service.saveOne({ name: 'other 3' });
+      }, timeout * 3);
+      setTimeout(async () => {
+        await this.service.saveOne({ name: 'default 55' });
+      }, timeout * 4);
     }
   }
 }

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  Property,
   BaseGeneralQuery,
   SearchProperty,
   QueryOperatorProperty,
@@ -8,7 +7,7 @@ import {
   OrderProperty,
   WhereProperty,
 } from '@mdtx/core';
-import { Exclude, Transform, instanceToInstance } from 'class-transformer';
+import { Exclude } from 'class-transformer';
 import { Sample } from './sample.entity';
 import { FindOperator } from 'typeorm';
 import { AllPropertyType, IBaseQueryDto } from '@mdtx/common';
@@ -19,7 +18,7 @@ export class WhereSampleQuery
   extends BaseWhereQuery<Sample>
   implements Omit<AllPropertyType<Sample, FindOperator<any>>, 'id'>
 {
-  @QueryOperatorProperty()
+  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 

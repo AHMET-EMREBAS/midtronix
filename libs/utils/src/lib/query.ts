@@ -165,7 +165,8 @@ export function parseQueryInput(
   queryInput: string
 ): Omit<QueryInput, 'property'> | undefined {
   if (typeof queryInput === 'string') {
-    const [operator, value] = queryInput.split(':');
+    const [operator, ...preValue] = queryInput.split(':');
+    const value = preValue.join(':');
     if (operator && value) {
       if (OperatorList.includes(operator)) {
         return {
