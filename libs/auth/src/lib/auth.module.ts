@@ -1,13 +1,16 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module, Type } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SSOService } from './ssto.service';
+import { AuthUserService } from './auth-user.service';
+import { provideAuthUserService } from './auth.provider';
 
 @Module({
   imports: [
-    ConfigModule,
+    ConfigModule.forFeature(() => ({})),
     JwtModule.registerAsync({
       inject: [ConfigService],
+      extraProviders: [ConfigService],
       useFactory(service: ConfigService) {
         return {
           secret: service.getOrThrow('JWT_SECRET'),
@@ -21,4 +24,11 @@ import { SSOService } from './ssto.service';
 
   providers: [SSOService],
 })
-export class AuthModule {}
+export class AuthModule {
+  static configure(userService: Type<AuthUserService>): DynamicModule {
+    return {
+      module: AuthModule,
+      providers: [provideAuthUserService(userService)],
+    };
+  }
+}

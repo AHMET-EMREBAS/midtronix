@@ -10,6 +10,7 @@ import { AppEventHandler } from './app.events';
 import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from '@mdtx/auth';
+import { MockUserService } from './mock-user.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -35,7 +36,7 @@ import { AuthModule } from '@mdtx/auth';
       logger: 'debug',
       logging: isDevMode(true, false),
     }),
-    AuthModule,
+    AuthModule.configure(MockUserService),
     SampleModule,
   ],
   providers: [AppEventHandler, EventEmitter2, EntitySubscriber],

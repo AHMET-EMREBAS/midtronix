@@ -1,6 +1,12 @@
+export interface AuthPermission {
+  id: number;
+  name: string;
+}
+
 export interface AuthRole {
   id: number;
   name: string;
+  permissions: AuthPermission[];
 }
 
 export interface AuthCredentials {

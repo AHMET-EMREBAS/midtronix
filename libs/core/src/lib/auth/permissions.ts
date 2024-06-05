@@ -1,4 +1,4 @@
-import { CustomDecorator, ExecutionContext } from '@nestjs/common';
+import { CustomDecorator } from '@nestjs/common';
 import { createMetadata } from '../metadata';
 
 export enum ResourceActions {

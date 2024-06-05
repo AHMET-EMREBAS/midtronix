@@ -7,6 +7,8 @@ import { LoginWithSSO } from './dto/login-sso.dto';
 import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SSOService } from './ssto.service';
+import { AuthCredentials } from '@mdtx/common';
+import { JwtPayload } from './jwt-payload';
 
 @Injectable()
 export class AuthService {
@@ -16,8 +18,14 @@ export class AuthService {
     protected readonly ssoService: SSOService
   ) {}
 
-  protected sign(id: number) {
+  sign(id: number) {
     return this.jwt.sign({ id });
+  }
+
+  async verify(token: string) {
+    const result = await this.jwt.verify<JwtPayload>(token);
+    
+    return result;
   }
 
   async login(body: LoginDto) {
