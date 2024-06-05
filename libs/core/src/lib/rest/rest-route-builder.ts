@@ -87,7 +87,6 @@ export class RestRouteBuilder {
       ApiOkResponse({ description: 'Success' }),
       ApiQuery({ type }),
       this.RP.CanRead(),
-      ApiQuery({ type }),
       this.CommonResponses()
     );
   }
@@ -184,10 +183,8 @@ export class RestRouteBuilder {
     );
   }
 
-  Query(expectedType?: Type) {
-    return Query(
-      expectedType ? CreateValidationPipe(expectedType) : this.validationPipe
-    );
+  Query(expectedType: Type) {
+    return Query(CreateValidationPipe(expectedType));
   }
 
   Body(expectedType?: Type) {

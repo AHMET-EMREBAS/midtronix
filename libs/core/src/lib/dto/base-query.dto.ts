@@ -3,6 +3,7 @@ import { Property } from '../property';
 import { Exclude } from 'class-transformer';
 import { FindOperator } from 'typeorm';
 import { QueryOperatorProperty } from '../query';
+import { BaseDto } from './base.dto';
 
 /**
  * Generic Query
@@ -25,6 +26,7 @@ export class BaseGeneralQuery
  * Specific Query
  */
 export class BaseWhereQuery<T>
+  extends BaseDto<BaseWhereQuery<T>>
   implements Omit<AllPropertyType<IBaseEntity, FindOperator<T>>, 'id'>
 {
   @QueryOperatorProperty()

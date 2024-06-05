@@ -116,10 +116,6 @@ export function Property(options: ApiPropertyOptions) {
     decorators.push(Expose());
   }
 
-  if (isArray) {
-    decorators.push(ValidateNested(vo));
-  }
-
   // ######################### Validators Start ######################
 
   // ########################## Type Validators ######################
@@ -130,8 +126,12 @@ export function Property(options: ApiPropertyOptions) {
   else if (type === 'date') decorators.push(IsDate(vo));
   else if (type === 'object') {
     decorators.push(IsObject(vo));
-    if (!target) throw new Error('target is required for object property');
+    if (!target) {
+      throw new Error('target is required for object property');
+    }
     decorators.push(Type(() => target));
+
+    decorators.push(ValidateNested(vo));
   }
 
   // ########################## Type Validators End ######################

@@ -164,13 +164,15 @@ export function createQuery(query: QueryInput) {
 export function parseQueryInput(
   queryInput: string
 ): Omit<QueryInput, 'property'> | undefined {
-  const [operator, value] = queryInput.split(':');
-  if (operator && value ) {
-    if (OperatorList.includes(operator)) {
-      return {
-        operator,
-        value,
-      };
+  if (typeof queryInput === 'string') {
+    const [operator, value] = queryInput.split(':');
+    if (operator && value) {
+      if (OperatorList.includes(operator)) {
+        return {
+          operator,
+          value,
+        };
+      }
     }
   }
 

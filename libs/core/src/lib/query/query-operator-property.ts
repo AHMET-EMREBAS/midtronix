@@ -20,59 +20,64 @@ export function QueryOperatorProperty() {
     IsOptional(),
     Expose(),
     Transform(({ value }) => {
+      console.log('----------------------QueryOperator : ', value);
       const query = parseQueryInput(value);
       if (typeof value === 'string') {
         if (query) {
           if (query.value && query.operator) {
             const queryValue = query.value;
-            switch (query.operator) {
-              case QueryOperator.CONTAIN:
-                return ILike(`%${queryValue}%`);
-              case QueryOperator.END_WITH:
-                return ILike(`${queryValue}%`);
-              case QueryOperator.START_WITH:
-                return ILike(`%${queryValue}`);
-              case QueryOperator.EQUAL:
-                return Equal(queryValue);
-              case QueryOperator.LESS_THAN:
-                return LessThan(queryValue);
-              case QueryOperator.LESS_THAN_OR_EQUAL:
-                return LessThanOrEqual(queryValue);
-              case QueryOperator.MORE_THAN:
-                return MoreThan(queryValue);
-              case QueryOperator.MORE_THAN_OR_EQUAL:
-                return MoreThanOrEqual(queryValue);
+            if (queryValue) {
+              switch (query.operator) {
+                case QueryOperator.CONTAIN:
+                  return ILike(`%${queryValue}%`);
+                case QueryOperator.END_WITH:
+                  return ILike(`${queryValue}%`);
+                case QueryOperator.START_WITH:
+                  return ILike(`%${queryValue}`);
+                case QueryOperator.EQUAL:
+                  return Equal(queryValue);
+                case QueryOperator.LESS_THAN:
+                  return LessThan(queryValue);
+                case QueryOperator.LESS_THAN_OR_EQUAL:
+                  return LessThanOrEqual(queryValue);
+                case QueryOperator.MORE_THAN:
+                  return MoreThan(queryValue);
+                case QueryOperator.MORE_THAN_OR_EQUAL:
+                  return MoreThanOrEqual(queryValue);
 
-              case QueryOperator.NOT_CONTAIN:
-                return Not(ILike(`%${queryValue}%`));
-              case QueryOperator.NOT_END_WITH:
-                return Not(ILike(`${queryValue}%`));
-              case QueryOperator.NOT_START_WITH:
-                return Not(ILike(`%${queryValue}`));
-              case QueryOperator.NOT_EQUAL:
-                return Not(Equal(queryValue));
-              case QueryOperator.NOT_LESS_THAN:
-                return Not(LessThan(queryValue));
-              case QueryOperator.NOT_MORE_THAN:
-                return Not(MoreThan(queryValue));
+                case QueryOperator.NOT_CONTAIN:
+                  return Not(ILike(`%${queryValue}%`));
+                case QueryOperator.NOT_END_WITH:
+                  return Not(ILike(`${queryValue}%`));
+                case QueryOperator.NOT_START_WITH:
+                  return Not(ILike(`%${queryValue}`));
+                case QueryOperator.NOT_EQUAL:
+                  return Not(Equal(queryValue));
+                case QueryOperator.NOT_LESS_THAN:
+                  return Not(LessThan(queryValue));
+                case QueryOperator.NOT_MORE_THAN:
+                  return Not(MoreThan(queryValue));
+              }
             }
           }
         }
       } else if (isArray(value)) {
         if (query) {
           const queryValue = query.value;
-          switch (query?.operator) {
-            case QueryOperator.IN: {
-              if (typeof queryValue == 'string') {
-                return In(queryValue.split(','));
+          if (queryValue) {
+            switch (query?.operator) {
+              case QueryOperator.IN: {
+                if (typeof queryValue == 'string') {
+                  return In(queryValue.split(','));
+                }
+                return undefined;
               }
-              return undefined;
-            }
-            case QueryOperator.NOT_IN: {
-              if (typeof queryValue == 'string') {
-                return Not(In(queryValue.split(',')));
+              case QueryOperator.NOT_IN: {
+                if (typeof queryValue == 'string') {
+                  return Not(In(queryValue.split(',')));
+                }
+                return undefined;
               }
-              return undefined;
             }
           }
         }

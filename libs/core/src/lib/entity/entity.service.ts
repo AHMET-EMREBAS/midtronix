@@ -1,15 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IBaseQueryDto, IID } from '@mdtx/common';
-import {
-  DeepPartial,
-  FindManyOptions,
-  FindOptionsWhere,
-  ILike,
-  Repository,
-} from 'typeorm';
+import { DeepPartial, FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { AdvanceLogger } from '../logger';
 import {
+  InternalServerErrorException,
   NotFoundException,
   UnprocessableEntityException,
 } from '@nestjs/common';
@@ -22,6 +17,7 @@ export class BaseEntityService<T extends IID = IID> {
   );
 
   protected readonly logger!: AdvanceLogger;
+
   constructor(protected readonly repo: Repository<T>) {
     this.logger = new AdvanceLogger(repo.metadata.targetName + 'Service');
   }
@@ -31,14 +27,23 @@ export class BaseEntityService<T extends IID = IID> {
       const newValue = (entity as any)[u];
 
       if (newValue) {
-        const foundItem = await this.repo.findOneBy({
-          [u]: ILike(newValue),
-        } as any);
+        try {
+          const foundItem = await this.repo.findOneBy({
+            [u]: ILike(newValue),
+          } as any);
 
-        if (foundItem) {
-          throw new InputValidationException([
-            { property: u, constraints: { isUniuque: `${u} must be unique!` } },
-          ]);
+          if (foundItem) {
+            this.error(this.isUniqueEntity.name, foundItem);
+            throw new InputValidationException([
+              {
+                property: u,
+                constraints: { isUniuque: `${u} must be unique!` },
+              },
+            ]);
+          }
+        } catch (err) {
+          this.error(this.isUniqueEntity.name, err);
+          throw new InternalServerErrorException();
         }
       }
     }
@@ -60,49 +65,70 @@ export class BaseEntityService<T extends IID = IID> {
     this.logger.error(method, payload);
   }
 
-  findAll(query?: IBaseQueryDto) {
+  async findAll(query?: IBaseQueryDto) {
     this.log(this.findAll.name, query);
-
     if (query) {
       const { search, order, skip, take, where, withDeleted } = query;
-      return this.repo.find({
-        take,
-        skip,
-        withDeleted,
-        order,
-      });
+      const whereObj = where ?? search;
+      try {
+        return await this.repo.find({
+          take,
+          skip,
+          withDeleted,
+          order,
+          where: whereObj,
+        });
+      } catch (err) {
+        this.error(this.findAll.name, query);
+        throw new InternalServerErrorException();
+      }
     }
-    return this.repo.find({ take: 100 });
+    return await this.repo.find({ take: 100 });
   }
 
   async findOneById(id: T['id']) {
     this.log(this.findOneById.name, { id });
-    const found = await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
-    if (!found) throw new NotFoundException();
+    let found: T | null;
+    try {
+      found = await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
+    } catch (err) {
+      this.error(this.findOneById.name, { id });
+      throw new InternalServerErrorException();
+    }
 
-    return found;
+    if (found) return found;
+
+    throw new NotFoundException();
   }
 
   async findOneBy<P extends keyof T>(key: P, value: T[P]) {
     this.log(this.findOneBy.name, { key, value });
-    const found = await this.repo.findOneBy({
-      [key]: value,
-    } as FindOptionsWhere<T>);
 
-    if (!found) throw new NotFoundException();
+    let found: T | null;
 
-    return found;
+    try {
+      found = await this.repo.findOneBy({
+        [key]: value,
+      } as FindOptionsWhere<T>);
+    } catch (err) {
+      this.error(this.findOneBy.name, { key, value, err });
+      throw new InternalServerErrorException();
+    }
+    if (found) return found;
+
+    throw new NotFoundException();
   }
 
   async saveOne(entity: DeepPartial<T>) {
     this.log(this.saveOne.name, entity);
 
     await this.isUniqueEntity(entity);
+
     try {
       return await this.repo.save({ ...entity });
     } catch (err) {
       this.error(this.saveOne.name, err);
-      throw new UnprocessableEntityException((err as any).detail);
+      throw new InternalServerErrorException((err as any).detail);
     }
   }
 
@@ -112,13 +138,20 @@ export class BaseEntityService<T extends IID = IID> {
     try {
       return await this.repo.save({ id, ...entity });
     } catch (err) {
-      throw new UnprocessableEntityException((err as any).detail);
+      this.error(this.updateOne.name, { id, ...entity });
+      throw new InternalServerErrorException();
     }
   }
 
-  deleteOneById(id: number) {
+  async deleteOneById(id: number) {
     this.log(this.deleteOneById.name, { id });
-    return this.repo.softDelete(id);
+
+    try {
+      return await this.repo.softDelete(id);
+    } catch (err) {
+      this.error(this.deleteOneById.name, { id });
+      throw new InternalServerErrorException();
+    }
   }
 
   addRelation(relationDto: RelationDto) {

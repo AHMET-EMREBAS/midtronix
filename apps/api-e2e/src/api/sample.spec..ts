@@ -1,45 +1,8 @@
 import axios from 'axios';
-import { RestApiPathBuilder } from '@mdtx/common';
+import { RestApiPathBuilder } from '@mdtx/utils';
 const viewNames = ['DiscountView', 'OrderView', 'SkuView'];
 
-const entityNames = [
-  'Cart',
-  'Category',
-  'Customer',
-  'CustomerAccount',
-  'CustomerAddress',
-  'CustomerEmail',
-  'CustomerPermission',
-  'CustomerPhone',
-  'CustomerRole',
-  'Department',
-  'Discount',
-  'Manufacturer',
-  'Message',
-  'Notification',
-  'Order',
-  'Permission',
-  'Price',
-  'PriceLevel',
-  'Product',
-  'ProductImage',
-  'ProductVideo',
-  'Project',
-  'Purchase',
-  'Quantity',
-  'Role',
-  'Sale',
-  'Sku',
-  'Sprint',
-  'Store',
-  'Task',
-  'Taxrate',
-  'Ticket',
-  'User',
-  'UserAddress',
-  'UserEmail',
-  'UserPhone',
-].map((e) => {
+const entityNames = ['Sample'].map((e) => {
   return RestApiPathBuilder.get(e);
 });
 
