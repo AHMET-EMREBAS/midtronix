@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { RestApiPathBuilder } from '@mdtx/utils';
-const viewNames = ['DiscountView', 'OrderView', 'SkuView'];
 
 const entityNames = ['Sample'].map((e) => {
   return RestApiPathBuilder.get(e);
@@ -11,6 +10,7 @@ const singularIDPaths = entityNames.map((e) => e.SINGULAR_PATH + '/-1');
 const singularPostPaths = entityNames.map((e) => e.SINGULAR_PATH);
 
 const metadataPaths = entityNames.map((e) => e.METADATA_PATH);
+
 describe('API', () => {
   describe('Smoke', () => {
     it.each(pluralPaths)(`GET /api/%s`, async (value) => {
@@ -67,7 +67,7 @@ describe('API', () => {
         const res = error.response;
         expect(res.status).toBe(422);
         expect(res.data).toBeTruthy();
-        expect(res.data.message).toBe('Invalid Input');
+        expect(res.data.message).toBe('Input Validation Error');
       }
     });
   });

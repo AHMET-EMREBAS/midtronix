@@ -10,12 +10,13 @@ import { AppModule } from './app/app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  app.enableCors({ origin: '*' });
 
   app.enableVersioning({
     type: VersioningType.URI,
+    prefix: 'v',
   });
+  app.setGlobalPrefix(globalPrefix);
+  app.enableCors({ origin: '*' });
 
   const config = new DocumentBuilder().setTitle('Api').build();
   const doc = SwaggerModule.createDocument(app, config);

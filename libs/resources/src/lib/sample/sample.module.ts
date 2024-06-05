@@ -4,9 +4,9 @@ import { Sample, SampleView } from '@mdtx/entities';
 import { SampleService } from './sample.service';
 import { AdvanceLogger, isDevMode } from '@mdtx/core';
 import { SampleController } from './sample.controller';
-
+import { EventEmitterModule } from '@nestjs/event-emitter';
 @Module({
-  imports: [TypeOrmModule.forFeature([Sample, SampleView])],
+  imports: [EventEmitterModule, TypeOrmModule.forFeature([Sample, SampleView])],
   controllers: [SampleController],
   providers: [SampleService, AdvanceLogger],
 })

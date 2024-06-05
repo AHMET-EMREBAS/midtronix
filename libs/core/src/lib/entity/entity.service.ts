@@ -6,8 +6,9 @@ import { AdvanceLogger } from '../logger';
 import {
   InternalServerErrorException,
   NotFoundException,
-  UnprocessableEntityException,
 } from '@nestjs/common';
+
+import { EventEmitter2 } from '@nestjs/event-emitter';
 import { InputValidationException } from '../error';
 
 export class BaseEntityService<T extends IID = IID> {
@@ -18,7 +19,10 @@ export class BaseEntityService<T extends IID = IID> {
 
   protected readonly logger!: AdvanceLogger;
 
-  constructor(protected readonly repo: Repository<T>) {
+  constructor(
+    protected readonly repo: Repository<T>,
+    protected readonly event: EventEmitter2
+  ) {
     this.logger = new AdvanceLogger(repo.metadata.targetName + 'Service');
   }
 
@@ -120,13 +124,23 @@ export class BaseEntityService<T extends IID = IID> {
     throw new NotFoundException();
   }
 
+  protected eventName(methodName: string) {
+    return `${this.entityName()}.${methodName}`;
+  }
+
+  protected emit(methodName: string, value: any) {
+    return this.event.emit(this.eventName(methodName), value);
+  }
+
   async saveOne(entity: DeepPartial<T>) {
     this.log(this.saveOne.name, entity);
 
     await this.isUniqueEntity(entity);
 
     try {
-      return await this.repo.save({ ...entity });
+      const result = await this.repo.save({ ...entity });
+      this.emit(this.saveOne.name, result);
+      return result;
     } catch (err) {
       this.error(this.saveOne.name, err);
       throw new InternalServerErrorException((err as any).detail);
@@ -136,8 +150,11 @@ export class BaseEntityService<T extends IID = IID> {
   async updateOne(id: number, entity: DeepPartial<T>) {
     this.log(this.updateOne.name, { id, ...entity });
 
+    const found = await this.findOneById(id);
     try {
-      return await this.repo.save({ id, ...entity });
+      await this.repo.save({ id, ...entity });
+      this.emit(this.updateOne.name, { found, ...entity });
+      return { ...found, ...entity };
     } catch (err) {
       this.error(this.updateOne.name, { id, ...entity });
       throw new InternalServerErrorException();
@@ -147,47 +164,98 @@ export class BaseEntityService<T extends IID = IID> {
   async deleteOneById(id: number) {
     this.log(this.deleteOneById.name, { id });
 
+    const found = await this.findOneById(id);
     try {
-      return await this.repo.softDelete(id);
+      await this.repo.softDelete(id);
+
+      this.emit(this.deleteOneById.name, found);
+      return found;
     } catch (err) {
       this.error(this.deleteOneById.name, { id });
       throw new InternalServerErrorException();
     }
   }
 
-  addRelation(relationDto: RelationDto) {
+  async addRelation(relationDto: RelationDto) {
     this.log(this.addRelation.name, { ...relationDto });
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationDto.relationName)
-      .of(relationDto.id)
-      .add(relationDto.relationId);
+
+    try {
+      await this.repo
+        .createQueryBuilder()
+        .relation(relationDto.relationName)
+        .of(relationDto.id)
+        .add(relationDto.relationId);
+
+      const found = await this.findOneById(relationDto.id);
+
+      this.emit(this.addRelation.name, found);
+      return found;
+    } catch (err) {
+      this.error(this.addRelation.name, relationDto);
+      throw new InternalServerErrorException();
+    }
   }
 
-  setRelation(relationDto: RelationDto) {
+  async setRelation(relationDto: RelationDto) {
     this.log(this.setRelation.name, { ...relationDto });
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationDto.relationName)
-      .of(relationDto.id)
-      .set(relationDto.relationId);
+
+    try {
+      await this.repo
+        .createQueryBuilder()
+        .relation(relationDto.relationName)
+        .of(relationDto.id)
+        .set(null);
+
+      const found = await this.findOneById(relationDto.id);
+
+      this.emit(this.setRelation.name, found);
+
+      return found;
+    } catch (err) {
+      this.error(this.setRelation.name, relationDto);
+      throw new InternalServerErrorException();
+    }
   }
 
-  removeRelation(relationDto: RelationDto) {
+  async removeRelation(relationDto: RelationDto) {
     this.log(this.removeRelation.name, { ...relationDto });
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationDto.relationName)
-      .of(relationDto.id)
-      .remove(relationDto.relationId);
+
+    try {
+      await this.repo
+        .createQueryBuilder()
+        .relation(relationDto.relationName)
+        .of(relationDto.id)
+        .remove(relationDto.relationId);
+
+      const found = await this.findOneById(relationDto.id);
+
+      this.emit(this.removeRelation.name, found);
+
+      return found;
+    } catch (err) {
+      this.error(this.removeRelation.name, relationDto);
+      throw new InternalServerErrorException();
+    }
   }
 
-  unsetRelation(relationDto: UnsetRelationDto) {
+  async unsetRelation(relationDto: UnsetRelationDto) {
     this.log(this.unsetRelation.name, { ...relationDto });
-    return this.repo
-      .createQueryBuilder()
-      .relation(relationDto.relationName)
-      .of(relationDto.id)
-      .set(null);
+
+    try {
+      await this.repo
+        .createQueryBuilder()
+        .relation(relationDto.relationName)
+        .of(relationDto.id)
+        .set(null);
+
+      const found = await this.findOneById(relationDto.id);
+
+      this.emit(this.unsetRelation.name, found);
+
+      return found;
+    } catch (err) {
+      this.error(this.unsetRelation.name, relationDto);
+      throw new InternalServerErrorException();
+    }
   }
 }
