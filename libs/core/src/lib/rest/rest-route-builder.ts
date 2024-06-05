@@ -6,6 +6,7 @@ import {
   Get,
   Post,
   Put,
+  Type,
   applyDecorators,
 } from '@nestjs/common';
 
@@ -27,7 +28,7 @@ import {
   ResourcePermissions,
 } from '../auth';
 import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
-import { ValidationPipe } from '../dto';
+import { CreateValidationPipe, ValidationPipe } from '../dto';
 
 export class RestRouteBuilder {
   protected readonly AP: RestApiPaths;
@@ -110,13 +111,15 @@ export class RestRouteBuilder {
     );
   }
 
-  SaveOne(type?: any) {
+  SaveOne(requestBody?: any) {
     return applyDecorators(
       Post(this.AP.SINGULAR_PATH),
-      ApiOperation({ summary: `Save one ${this.className} ` }),
+      ApiOperation({
+        summary: `Save one ${this.className}`,
+        requestBody,
+      }),
+      ApiBody({ type: requestBody }),
       ApiCreatedResponse({ description: 'Success' }),
-      ApiBody({ schema: type }),
-
       this.RP.CanWrite(),
       this.CommonResponses()
     );
@@ -132,12 +135,14 @@ export class RestRouteBuilder {
     );
   }
 
-  UpdateOne(type?: any) {
+  UpdateOne(requestBody?: any) {
     return applyDecorators(
       Put(this.AP.BY_ID_PATH),
-      ApiOperation({ summary: `Update one ${this.className} by id` }),
+      ApiOperation({
+        summary: `Update one ${this.className} by id`,
+        requestBody,
+      }),
       ApiOkResponse({ description: 'Success' }),
-      ApiBody({ type }),
       this.RP.CanUpdate(),
       this.CommonResponses()
     );
@@ -187,8 +192,10 @@ export class RestRouteBuilder {
     return Query(this.validationPipe);
   }
 
-  Body() {
-    return Body(this.validationPipe);
+  Body(expectedType?: Type) {
+    return Body(
+      expectedType ? CreateValidationPipe(expectedType) : this.validationPipe
+    );
   }
 
   ParamID() {

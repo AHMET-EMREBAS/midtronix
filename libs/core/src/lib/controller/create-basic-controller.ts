@@ -34,14 +34,17 @@ export function CreateBasicController<
     }
 
     @RRB.SaveOne(createDto)
-    override saveOne(@RRB.Body() entity: C, @RRB.Auth() authDto: AuthDto) {
+    override saveOne(
+      @RRB.Body(createDto) entity: C,
+      @RRB.Auth() authDto: AuthDto
+    ) {
       return super.saveOne(entity, authDto);
     }
 
     @RRB.UpdateOne(udpateDto)
     override updateOne(
       @RRB.ParamID() id: number,
-      @RRB.Body() entity: U,
+      @RRB.Body(udpateDto) entity: U,
       @RRB.Auth() authDto: AuthDto
     ) {
       return super.updateOne(id, entity, authDto);
