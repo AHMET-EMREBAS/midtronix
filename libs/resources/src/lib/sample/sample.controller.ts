@@ -1,4 +1,8 @@
-import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
+import {
+  ApiVersion,
+  CreateBasicController,
+  RestRouteBuilder,
+} from '@mdtx/core';
 import {
   CreateSampleDto,
   QuerySample,
@@ -7,7 +11,7 @@ import {
 } from '@mdtx/entities';
 import { SampleService } from './sample.service';
 
-export const SampleRRB = RestRouteBuilder.get('Sample');
+export const SampleRRB = RestRouteBuilder.get('Sample', ApiVersion.v1);
 
 @SampleRRB.Controler()
 export class SampleController extends CreateBasicController<

@@ -29,20 +29,22 @@ import {
 } from '../auth';
 import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
 import { CreateValidationPipe, ValidationPipe } from '../dto';
+import { ApiVersion } from '../version';
 
 export class RestRouteBuilder {
   protected readonly AP: RestApiPaths;
   protected readonly RP: ResourcePermissions;
   private constructor(
     protected readonly className: string,
-    protected readonly validationPipe: typeof ValidationPipe
+    protected readonly validationPipe: typeof ValidationPipe,
+    protected readonly version: ApiVersion = ApiVersion.v1
   ) {
     this.AP = RestApiPathBuilder.get(className);
     this.RP = PermissionBuilder.get(className);
   }
 
-  static get(className: string, validationPipe = ValidationPipe) {
-    return new RestRouteBuilder(className, validationPipe);
+  static get(className: string, version = ApiVersion.v1) {
+    return new RestRouteBuilder(className, ValidationPipe, version);
   }
 
   protected CommonResponses() {
@@ -57,7 +59,7 @@ export class RestRouteBuilder {
 
   Controler() {
     return applyDecorators(
-      Controller(),
+      Controller(this.version),
       ResourceNameMeta.set(this.className),
       ApiTags(this.className + 'Controller')
     );

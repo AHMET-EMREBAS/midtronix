@@ -14,3 +14,4 @@ export * from './relation';
 export * from './rest';
 export * from './transformers';
 export * from './validators';
+export * from './version';
