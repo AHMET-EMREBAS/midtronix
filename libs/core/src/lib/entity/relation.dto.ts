@@ -14,9 +14,9 @@ export class RelationDto<
   T extends IID = any,
   P = keyof T extends string ? keyof T : string
 > {
-  @Property({ type: 'number', required: true }) id!: T['id'];
+  @Property({ type: 'number', required: true, minimum: 1 }) id!: T['id'];
   @Property({ type: 'string', required: true }) relationName!: P;
-  @Property({ type: 'number', required: true }) relationId!: number;
+  @Property({ type: 'number', required: true, minimum: 1 }) relationId!: number;
 }
 
 /**
@@ -28,7 +28,7 @@ export class UnsetRelationDto<
   T extends IID = IID,
   P = keyof T extends string ? keyof T : string
 > {
-  @Property({ type: 'number', required: true }) id!: T['id'];
+  @Property({ type: 'number', required: true, minimum: 1 }) id!: T['id'];
   @Property({ type: 'string', required: true }) relationName!: P;
 }
 

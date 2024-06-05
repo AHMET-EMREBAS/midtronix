@@ -180,6 +180,7 @@ export class BaseEntityService<T extends IID = IID> {
   async addRelation(relationDto: RelationDto) {
     this.log(this.addRelation.name, { ...relationDto });
 
+    await this.findOneById(relationDto.id);
     try {
       await this.repo
         .createQueryBuilder()
@@ -199,7 +200,7 @@ export class BaseEntityService<T extends IID = IID> {
 
   async setRelation(relationDto: RelationDto) {
     this.log(this.setRelation.name, { ...relationDto });
-
+    await this.findOneById(relationDto.id);
     try {
       await this.repo
         .createQueryBuilder()
@@ -220,7 +221,7 @@ export class BaseEntityService<T extends IID = IID> {
 
   async removeRelation(relationDto: RelationDto) {
     this.log(this.removeRelation.name, { ...relationDto });
-
+    await this.findOneById(relationDto.id);
     try {
       await this.repo
         .createQueryBuilder()
@@ -241,7 +242,7 @@ export class BaseEntityService<T extends IID = IID> {
 
   async unsetRelation(relationDto: UnsetRelationDto) {
     this.log(this.unsetRelation.name, { ...relationDto });
-
+    await this.findOneById(relationDto.id);
     try {
       await this.repo
         .createQueryBuilder()
