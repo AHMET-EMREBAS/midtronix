@@ -7,9 +7,12 @@ import { SampleModule } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { EntitySubscriber } from './entity.subscriber';
 import { AppEventHandler } from './app.events';
+import { ConfigModule } from '@nestjs/config';
 
+import { AuthModule } from '@mdtx/auth';
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     EventEmitterModule.forRoot({
       global: true,
       delimiter: '.',
@@ -32,6 +35,7 @@ import { AppEventHandler } from './app.events';
       logger: 'debug',
       logging: isDevMode(true, false),
     }),
+    AuthModule,
     SampleModule,
   ],
   providers: [AppEventHandler, EventEmitter2, EntitySubscriber],

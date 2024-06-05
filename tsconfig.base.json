@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mdtx/auth": ["libs/auth/src/index.ts"],
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/entities": ["libs/entities/src/index.ts"],
@@ -43,9 +44,7 @@
       "@mdtx/modules/search": ["libs/modules/search/src/index.ts"],
       "@mdtx/modules/sub-modules": ["libs/modules/sub-modules/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
-  
       "@mdtx/resources": ["libs/resources/src/index.ts"],
-
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }
   },
