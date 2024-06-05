@@ -1,9 +1,13 @@
 import { Exclude } from 'class-transformer';
 import { BaseEntity } from '../entity';
 import { Property } from '../property';
+import { BaseDto } from './base.dto';
 
 @Exclude()
-export class BaseCreateDto implements Pick<BaseEntity, 'active'> {
+export class BaseCreateDto<T>
+  extends BaseDto<T>
+  implements Pick<BaseEntity, 'active'>
+{
   @Property({ type: 'boolean' })
   active!: boolean;
 }

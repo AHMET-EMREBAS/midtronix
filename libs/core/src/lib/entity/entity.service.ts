@@ -31,23 +31,24 @@ export class BaseEntityService<T extends IID = IID> {
       const newValue = (entity as any)[u];
 
       if (newValue) {
+        let foundItem: T | null;
         try {
-          const foundItem = await this.repo.findOneBy({
+          foundItem = await this.repo.findOneBy({
             [u]: ILike(newValue),
           } as any);
-
-          if (foundItem) {
-            this.error(this.isUniqueEntity.name, foundItem);
-            throw new InputValidationException([
-              {
-                property: u,
-                constraints: { isUniuque: `${u} must be unique!` },
-              },
-            ]);
-          }
         } catch (err) {
           this.error(this.isUniqueEntity.name, err);
           throw new InternalServerErrorException();
+        }
+
+        if (foundItem) {
+          this.error(this.isUniqueEntity.name, foundItem);
+          throw new InputValidationException([
+            {
+              property: u,
+              constraints: { isUniuque: `${u} must be unique!` },
+            },
+          ]);
         }
       }
     }
