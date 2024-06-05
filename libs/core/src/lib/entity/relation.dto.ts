@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Exclude } from 'class-transformer';
 import { Property } from '../property';
 import { OmitType } from '@nestjs/swagger';

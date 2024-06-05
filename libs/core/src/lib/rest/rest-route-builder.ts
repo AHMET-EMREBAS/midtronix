@@ -14,6 +14,7 @@ import {
   ApiInternalServerErrorResponse,
   ApiOkResponse,
   ApiOperation,
+  ApiQuery,
   ApiTags,
   ApiUnauthorizedResponse,
   ApiUnprocessableEntityResponse,
@@ -41,7 +42,7 @@ export class RestRouteBuilder {
     return new RestRouteBuilder(className, validationPipe);
   }
 
-  protected __common() {
+  protected CommonResponses() {
     return applyDecorators(
       ApiInternalServerErrorResponse({ description: 'Internal Server Error!' }),
       ApiUnauthorizedResponse({ description: 'User not authorized!' }),
@@ -64,7 +65,7 @@ export class RestRouteBuilder {
       Get(this.AP.METADATA_PATH),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanRead(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -72,17 +73,18 @@ export class RestRouteBuilder {
     return applyDecorators(
       Get(this.AP.COUNT_PATH),
       this.RP.CanRead(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
-  FindAll() {
+  FindAll(type?: any) {
     return applyDecorators(
       Get(this.AP.PLURAL_PATH),
       ApiOperation({ summary: `Find all ${this.className} by query` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanRead(),
-      this.__common()
+      ApiQuery({ type }),
+      this.CommonResponses()
     );
   }
 
@@ -92,7 +94,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Find one ${this.className} by id` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanRead(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -102,7 +104,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Find one ${this.className} by query` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanRead(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -112,7 +114,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Save one ${this.className} ` }),
       ApiCreatedResponse({ description: 'Success' }),
       this.RP.CanWrite(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -122,7 +124,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Delete one ${this.className} by id` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanDelete(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -132,7 +134,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Update one ${this.className} by id` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanUpdate(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -142,7 +144,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Add relatin to  ${this.className}` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanUpdate(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -152,7 +154,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Remove relatin from  ${this.className}` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanUpdate(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -162,7 +164,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Set relatin to  ${this.className}` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanWrite(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 
@@ -172,7 +174,7 @@ export class RestRouteBuilder {
       ApiOperation({ summary: `Unset relatin from  ${this.className}` }),
       ApiOkResponse({ description: 'Success' }),
       this.RP.CanDelete(),
-      this.__common()
+      this.CommonResponses()
     );
   }
 

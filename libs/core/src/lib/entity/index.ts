@@ -1,4 +1,4 @@
 // @index('./*', f => `export * from '${f.path}'`)
-export * from './base-entity.serivce';
-export * from './base-entity';
-export * from './relation-dto';
+export * from './base';
+export * from './entity.service';
+export * from './relation.dto';
