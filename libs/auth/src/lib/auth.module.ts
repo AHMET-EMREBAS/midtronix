@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SSOService } from './ssto.service';
 import { AuthUserService } from './auth-user.service';
 import { provideAuthUserService } from './auth.provider';
+import { isDevMode } from '@mdtx/core';
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [
@@ -12,16 +14,18 @@ import { provideAuthUserService } from './auth.provider';
       inject: [ConfigService],
       extraProviders: [ConfigService],
       useFactory(service: ConfigService) {
-        return {
-          secret: service.getOrThrow('JWT_SECRET'),
-          signOptions: {
-            expiresIn: service.getOrThrow('JWT_EXPIRES_IN'),
-          },
-        };
+        const secret = service.getOrThrow('JWT_SECRET');
+        const expiresIn = service.getOrThrow('JWT_EXPIRES_IN');
+
+        if (isDevMode(true, false)) {
+          console.table({ secret, expiresIn });
+        }
+        return { secret, signOptions: { expiresIn } };
       },
     }),
   ],
 
+  controllers: [AuthController],
   providers: [SSOService],
 })
 export class AuthModule {

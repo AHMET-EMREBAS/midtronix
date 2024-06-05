@@ -5,6 +5,7 @@ import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiOperation,
+  ApiTags,
 } from '@nestjs/swagger';
 import { LoginDto } from './dto';
 
@@ -21,7 +22,9 @@ export function Login() {
 export function Logout() {
   return applyDecorators(ApiOperation({ summary: 'Logout' }), Post('logout'));
 }
-@Controller(ApiVersion.v1)
+
+@ApiTags(AuthController.name)
+@Controller(`${ApiVersion.v1}/auth`)
 export class AuthController {
   constructor(protected readonly service: AuthService) {}
 

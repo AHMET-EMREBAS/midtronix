@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),

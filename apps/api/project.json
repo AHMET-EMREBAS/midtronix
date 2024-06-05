@@ -18,7 +18,8 @@
         "assets": [
           "apps/api/src/assets",
           "apps/api/src/public",
-          "apps/api/src/package.json"
+          "apps/api/src/package.json",
+          "apps/api/src/.env"
         ],
         "webpackConfig": "apps/api/webpack.config.js"
       }
