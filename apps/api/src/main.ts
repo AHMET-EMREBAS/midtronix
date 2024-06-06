@@ -6,12 +6,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
 
   app.setGlobalPrefix(globalPrefix);
+  app.use(helmet());
   app.enableCors({ origin: '*' });
 
   const config = new DocumentBuilder()
