@@ -10,14 +10,11 @@ import {
 import { Exclude } from 'class-transformer';
 import { Sample } from './sample.entity';
 import { FindOperator } from 'typeorm';
-import { AllPropertyType, IBaseQueryDto } from '@mdtx/common';
+import { IBaseQueryDto } from '@mdtx/common';
 import { SampleMetadata } from '@mdtx/models';
 
 @Exclude()
-export class WhereSampleQuery
-  extends BaseWhereQuery<Sample>
-  implements Omit<AllPropertyType<Sample, FindOperator<any>>, 'id'>
-{
+export class WhereSampleQuery extends BaseWhereQuery<Sample> {
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }

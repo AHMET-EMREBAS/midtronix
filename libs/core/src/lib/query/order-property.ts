@@ -9,7 +9,6 @@ export function OrderProperty<T>(properties: (keyof T)[]) {
     IsOptional(),
     Expose(),
     Transform(({ value }) => {
-      console.log('----------------Order: ', value);
       if (typeof value === 'string') {
         const [k, v] = value.split(':');
 

@@ -35,9 +35,9 @@ describe('Sample', () => {
       IQuerySampleDto
     >('Sample', API_PREFIX, { headers: { Authorization: bearerToken } });
 
-    await httpClient.saveOne({ id: 1, name: 'Sample 1' });
-    await httpClient.saveOne({ id: 2, name: 'Sample 2' });
-    await httpClient.saveOne({ id: 3, name: 'Sample 3' });
+    await httpClient.saveOne({ name: 'Test data 1' });
+    await httpClient.saveOne({ name: 'Test data 2' });
+    await httpClient.saveOne({ name: 'Test data 3' });
   });
 
   it(`GET api/v1/samples`, async () => {
@@ -47,14 +47,30 @@ describe('Sample', () => {
   });
 
   it(`GET api/v1/sample/1`, async () => {
-    const data = await httpClient.findOneById(1);
-    expect(data).toBeTruthy();
+    const [first, ...rest] = await httpClient.findAll({
+      take: 1,
+      name: 'cn:Test data 1',
+    });
+    const data = await httpClient.findOneById(first.id);
+
+    expect(data.name).toBe('Test data 1');
     expect(data.name).toBeTruthy();
   });
 
   it(`PUT api/v1/sample/1`, async () => {
-    const data = await httpClient.updateOne(1, { name: 'Updated value' });
-    expect(data).toBeTruthy();
-    expect(data.name).toBe('Updated value');
+    const [first] = await httpClient.findAll({ name: 'cn:Test data', take: 1 });
+
+    const result = await httpClient.updateOne(first.id, {
+      name: 'Test data updated',
+    });
+    expect(result).toBeTruthy();
+    expect(result.name).toBe('Test data updated');
+  });
+
+  afterAll(async () => {
+    const foundItems = await httpClient.findAll({ name: 'cn:Test data' });
+    for (const f of foundItems) {
+      await httpClient.deleteOneById(f.id);
+    }
   });
 });

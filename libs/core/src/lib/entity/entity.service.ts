@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IBaseQueryDto, IID } from '@mdtx/common';
+import { IBaseEntity, IBaseQueryDto, IID } from '@mdtx/common';
 import { DeepPartial, FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { AdvanceLogger } from '../logger';
@@ -31,11 +31,15 @@ export class BaseEntityService<T extends IID = IID> {
       const newValue = (entity as any)[u];
 
       if (newValue) {
-        let foundItem: T | null;
+        let foundItem: T;
         try {
-          foundItem = await this.repo.findOneBy({
-            [u]: ILike(newValue),
-          } as any);
+          const foundItems = await this.repo.find({
+            where: { [u]: ILike(newValue) } as any,
+            withDeleted: true,
+            take: 1,
+          });
+
+          foundItem = foundItems[0];
         } catch (err) {
           this.error(this.isUniqueEntity.name, err);
           throw new InternalServerErrorException();
