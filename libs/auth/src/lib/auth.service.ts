@@ -77,7 +77,10 @@ export class AuthService {
     userId: number,
     body: UpdatePasswordDto
   ): Promise<UpdatePasswordResult> {
+    this.logger.debug(this.updatePassword.name, { userId, body });
     const foundUser = await this.userService.findOneById(userId);
+
+    this.logger.debug(this.updatePassword.name, foundUser);
 
     if (await compare(body.password, foundUser.password)) {
       await this.userService.updatePassword(userId, body.newPassword);

@@ -10,6 +10,7 @@ import { AdvanceLogger, PermissionMeta, PublicMetadata } from '@mdtx/core';
 import { Request } from 'express';
 import { AuthUserService } from '../auth-user.service';
 import { InjectAuthUserService } from '../auth.provider';
+import { AuthEnums } from '@mdtx/common';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -45,6 +46,8 @@ export class AuthGuard implements CanActivate {
 
         this.logger.debug('User Details', user);
         this.logger.debug('Required Permission', requiredPermission);
+
+        (request as any)[AuthEnums.USER] = user;
 
         if (requiredPermission) {
           for (const role of user.roles) {

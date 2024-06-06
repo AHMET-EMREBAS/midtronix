@@ -89,10 +89,10 @@ export class HttpClient<
     return this.parseResult(res);
   }
 
-  async saveOne(entity: CreateDto | { id?: number }) {
+  async saveOne(entity: CreateDto) {
     const res = await axios.post<CreateDto, AxiosResponse<T>>(
       this.__singular(),
-      entity,
+      { ...entity },
       this.config()
     );
     return this.parseResult(res);
