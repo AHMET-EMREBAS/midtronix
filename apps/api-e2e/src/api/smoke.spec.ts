@@ -11,21 +11,26 @@ const singularPostPaths = entityNames.map((e) => e.SINGULAR_PATH);
 
 const metadataPaths = entityNames.map((e) => e.METADATA_PATH);
 
+function rpath(resourcePath: string) {
+  return `api/v1/${resourcePath}`;
+}
+
 describe('API', () => {
   describe('Smoke', () => {
-    it.each(pluralPaths)(`GET /api/%s`, async (value) => {
-      const res = await axios.get(`/api/${value}`);
+    it.each(pluralPaths)(`GET /api/v1/%s`, async (value) => {
+      const res = await axios.get(rpath(value));
       expect(res.status).toBe(200);
       expect(res.data).toBeTruthy();
     });
-    it.each(metadataPaths)(`GET /api/%s`, async (value) => {
-      const res = await axios.get(`/api/${value}`);
+    it.each(metadataPaths)(`GET /api/v1/%s`, async (value) => {
+      const res = await axios.get(rpath(value));
       expect(res.status).toBe(200);
       expect(res.data).toBeTruthy();
     });
-    it.each(singularIDPaths)(`GET /api/%s`, async (value) => {
+    
+    it.each(singularIDPaths)(`GET /api/v1/%s`, async (value) => {
       try {
-        const result = await axios.get(`/api/${value}`);
+        const result = await axios.get(rpath(value));
         fail(result);
       } catch (error) {
         const res = error.response;
@@ -35,9 +40,9 @@ describe('API', () => {
       }
     });
 
-    it.each(singularIDPaths)(`DELETE /api/%s`, async (value) => {
+    it.each(singularIDPaths)(`DELETE /api/v1/%s`, async (value) => {
       try {
-        const result = await axios.delete(`/api/${value}`);
+        const result = await axios.delete(rpath(value));
         fail(result);
       } catch (error) {
         const res = error.response;
@@ -47,9 +52,9 @@ describe('API', () => {
       }
     });
 
-    it.each(singularIDPaths)(`PUT /api/%s`, async (value) => {
+    it.each(singularIDPaths)(`PUT /api/v1/%s`, async (value) => {
       try {
-        const result = await axios.put(`/api/${value}`);
+        const result = await axios.put(rpath(value));
         fail(result);
       } catch (error) {
         const res = error.response;
@@ -59,9 +64,9 @@ describe('API', () => {
       }
     });
 
-    it.each(singularPostPaths)(`POST /api/%s`, async (value) => {
+    it.each(singularPostPaths)(`POST /api/v1/%s`, async (value) => {
       try {
-        const result = await axios.post(`/api/${value}`);
+        const result = await axios.post(rpath(value));
         fail(result);
       } catch (error) {
         const res = error.response;

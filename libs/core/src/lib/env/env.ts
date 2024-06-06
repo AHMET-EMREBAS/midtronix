@@ -6,6 +6,6 @@ export function isTesting() {
   return mode() === 'test';
 }
 
-export function isDevMode() {
-  return mode() === 'development' || isTesting();
+export function isDevMode<T>(devValue: T, prodValue: T) {
+  return mode() === 'development' ? devValue : prodValue;
 }

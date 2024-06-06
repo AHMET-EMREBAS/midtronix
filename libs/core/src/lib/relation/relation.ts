@@ -22,7 +22,7 @@ export function OwnerRelation<T extends IID>(target: Type<T>) {
       {
         eager: false,
         onDelete: 'CASCADE',
-        nullable: false,
+        nullable: true,
       }
     ),
     JoinColumn()

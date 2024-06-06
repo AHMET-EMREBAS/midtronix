@@ -45,34 +45,43 @@ export type ResourcePermissions = {
   CanManage: () => CustomDecorator;
 };
 
+export type RawPermissions = {
+  READ: string;
+  WRITE: string;
+  UPDATE: string;
+  DELETE: string;
+  MANAGE: string;
+};
+
+export function createRawPermissions(resourceName: string): RawPermissions {
+  return {
+    DELETE: createPermissionString(ResourceActions.DELETE, resourceName),
+    MANAGE: createPermissionString(ResourceActions.MANAGE, resourceName),
+    READ: createPermissionString(ResourceActions.READ, resourceName),
+    UPDATE: createPermissionString(ResourceActions.UPDATE, resourceName),
+    WRITE: createPermissionString(ResourceActions.WRITE, resourceName),
+  };
+}
+
 export class PermissionBuilder {
   private readonly resoucePermissions: ResourcePermissions;
+  private readonly rawPermissions: RawPermissions;
   private constructor(protected readonly resourceName: string) {
+    this.rawPermissions = createRawPermissions(resourceName);
     this.resoucePermissions = {
-      CanDelete: () =>
-        PermissionMeta.set(
-          createPermissionString(ResourceActions.DELETE, resourceName)
-        ),
-      CanManage: () =>
-        PermissionMeta.set(
-          createPermissionString(ResourceActions.MANAGE, resourceName)
-        ),
-      CanRead: () =>
-        PermissionMeta.set(
-          createPermissionString(ResourceActions.READ, resourceName)
-        ),
-      CanUpdate: () =>
-        PermissionMeta.set(
-          createPermissionString(ResourceActions.UPDATE, resourceName)
-        ),
-      CanWrite: () =>
-        PermissionMeta.set(
-          createPermissionString(ResourceActions.WRITE, resourceName)
-        ),
+      CanDelete: () => PermissionMeta.set(this.rawPermissions.DELETE),
+      CanManage: () => PermissionMeta.set(this.rawPermissions.MANAGE),
+      CanRead: () => PermissionMeta.set(this.rawPermissions.READ),
+      CanUpdate: () => PermissionMeta.set(this.rawPermissions.UPDATE),
+      CanWrite: () => PermissionMeta.set(this.rawPermissions.WRITE),
     };
   }
 
   static get(resourceName: string): ResourcePermissions {
     return new PermissionBuilder(resourceName).resoucePermissions;
+  }
+
+  static raw(resourceName: string): RawPermissions {
+    return createRawPermissions(resourceName);
   }
 }

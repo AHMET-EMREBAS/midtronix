@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
   ApiInternalServerErrorResponse,
@@ -61,6 +62,7 @@ export class RestRouteBuilder {
     return applyDecorators(
       Controller(this.version),
       ResourceNameMeta.set(this.className),
+      ApiBearerAuth(),
       ApiTags(this.className + 'Controller')
     );
   }

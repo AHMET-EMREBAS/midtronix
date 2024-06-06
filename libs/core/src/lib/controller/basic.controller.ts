@@ -52,6 +52,12 @@ export class BasicController<
     return this.service.addRelation(relationDto);
   }
 
+  removeRelation(relationDto: RelationDto, authDto: AuthDto) {
+    this.logger.debug(this.removeRelation.name, { ...relationDto });
+    this.logger.debug(this.removeRelation.name, authDto);
+    return this.service.removeRelation(relationDto);
+  }
+
   setRelation(relationDto: RelationDto, authDto: AuthDto) {
     this.logger.debug(this.updateOne.name, { ...relationDto });
     this.logger.debug(this.updateOne.name, authDto);

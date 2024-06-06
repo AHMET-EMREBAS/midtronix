@@ -69,6 +69,14 @@ export function CreateBasicController<
       return super.addRelation(relationDto, authDto);
     }
 
+    @RRB.RemoveRelation()
+    override removeRelation(
+      @RRB.Body() relationDto: RelationDto,
+      @RRB.AuthParam() authDto: AuthDto
+    ) {
+      return super.removeRelation(relationDto, authDto);
+    }
+
     @RRB.SetRelation()
     override setRelation(
       @RRB.Body() relationDto: RelationDto,

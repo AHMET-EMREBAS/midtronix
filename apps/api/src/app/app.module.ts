@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthGuard, AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
 import { APP_GUARD } from '@nestjs/core';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -48,5 +49,6 @@ import { APP_GUARD } from '@nestjs/core';
       useClass: AuthGuard,
     },
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
