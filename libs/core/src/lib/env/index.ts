@@ -1,1 +1,1 @@
-export * from './isdevmode';
+export * from './env';
