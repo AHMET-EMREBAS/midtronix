@@ -1,8 +1,4 @@
-import {
-  ApiVersion,
-  CreateBasicController,
-  RestRouteBuilder,
-} from '@mdtx/core';
+import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
 import {
   CreateSampleDto,
   QuerySample,
@@ -10,6 +6,9 @@ import {
   UdpateSampleDto,
 } from '@mdtx/entities';
 import { SampleService } from './sample.service';
+
+import { ApiVersion } from '@mdtx/common';
+
 export const SampleRRB = RestRouteBuilder.get('Sample', ApiVersion.v1);
 
 @SampleRRB.Controler()

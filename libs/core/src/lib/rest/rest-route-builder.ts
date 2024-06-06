@@ -30,7 +30,7 @@ import {
 } from '../auth';
 import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
 import { CreateValidationPipe, ValidationPipe } from '../dto';
-import { ApiVersion } from '../version';
+import { ApiVersion } from '@mdtx/common';
 
 export class RestRouteBuilder {
   protected readonly AP: RestApiPaths;
@@ -63,7 +63,7 @@ export class RestRouteBuilder {
       Controller(this.version),
       ResourceNameMeta.set(this.className),
       ApiBearerAuth(),
-      ApiTags(this.className + 'Controller')
+      ApiTags(`${this.className}Controller-${this.version}`)
     );
   }
 

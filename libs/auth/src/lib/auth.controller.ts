@@ -1,14 +1,23 @@
-import { ApiVersion, PublicResource, UserId, ValidationPipe } from '@mdtx/core';
-import { Body, Controller, Post, applyDecorators } from '@nestjs/common';
+import {
+  AdvanceLogger,
+  AuthRouteBuilder,
+  PublicResource,
+  UpdatePasswordResult,
+  UserId,
+  ValidationPipe,
+} from '@mdtx/core';
+import { Body, Post, Res, applyDecorators } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
   ApiBadRequestResponse,
   ApiNotFoundResponse,
   ApiOperation,
-  ApiTags,
 } from '@nestjs/swagger';
-import { LoginDto, SSOLoginDto } from './dto';
-
+import { ForgotPasswordDto, LoginDto, SSOLoginDto } from './dto';
+import { Response } from 'express';
+import { AuthCredentials, AuthEnums } from '@mdtx/common';
+import { UpdatePasswordDto } from './dto/update-password.dto';
+import { AuthUserService } from './auth-user.service';
 export function Login() {
   return applyDecorators(
     ApiOperation({ summary: 'login' }),
@@ -33,23 +42,45 @@ export function Logout() {
   return applyDecorators(ApiOperation({ summary: 'Logout' }), Post('logout'));
 }
 
-@ApiTags(AuthController.name)
-@Controller(`${ApiVersion.v1}/auth`)
+const R = AuthRouteBuilder.get();
+@R.Controler()
 export class AuthController {
-  constructor(protected readonly service: AuthService) {}
-
-  @Login()
-  async login(@Body(ValidationPipe) loginDto: LoginDto) {
-    return await this.service.login(loginDto);
+  protected logger: AdvanceLogger;
+  constructor(protected readonly service: AuthService) {
+    this.logger = new AdvanceLogger('Auth');
   }
 
-  @SSOLogin()
-  async ssoLogin(@Body(ValidationPipe) ssoLoginDto: SSOLoginDto) {
-    return await this.service.ssoLogin(ssoLoginDto);
+  @R.Login()
+  async login(@Body(ValidationPipe) body: LoginDto) {
+    this.logger.debug(this.login.name, body);
+    return await this.service.login(body);
   }
 
-  @Logout()
-  logout(@UserId() userId: number) {
-    return;
+  @R.ForgotPassword()
+  async forgotPassword(@Body(ValidationPipe) body: ForgotPasswordDto) {
+    this.logger.debug(this.forgotPassword.name, body);
+    return await this.service.forgotPassword(body);
+  }
+
+  @R.LoginWithSSO()
+  async loginWithSSO(@Body(ValidationPipe) body: SSOLoginDto) {
+    this.logger.debug(this.loginWithSSO.name, body);
+    return await this.service.ssoLogin(body);
+  }
+
+  @R.Logout()
+  logout(@Res() res: Response) {
+    this.logger.debug(this.logout.name);
+    res.clearCookie(AuthEnums.ACCESS_TOKEN_NAME);
+    res.end({ message: 'See you later.' });
+  }
+
+  @R.UpdatePassword()
+  updatePassword(
+    @UserId() userId: number,
+    @Body(ValidationPipe) body: UpdatePasswordDto
+  ) {
+    this.logger.debug(this.updatePassword.name, { userId, body });
+    return this.service.updatePassword(userId, body);
   }
 }

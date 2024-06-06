@@ -8,14 +8,20 @@ import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SSOService } from './ssto.service';
 import { JwtPayload } from './jwt-payload';
+import { UpdatePasswordDto } from './dto/update-password.dto';
+import { AdvanceLogger, UpdatePasswordResult } from '@mdtx/core';
+import { AuthEnums } from '@mdtx/common';
 
 @Injectable()
 export class AuthService {
+  protected logger: AdvanceLogger;
   constructor(
     @InjectAuthUserService() protected readonly userService: AuthUserService,
     protected readonly jwt: JwtService,
     protected readonly ssoService: SSOService
-  ) {}
+  ) {
+    this.logger = new AdvanceLogger(AuthService.name);
+  }
 
   sign(id: number) {
     return this.jwt.sign({ id });
@@ -23,7 +29,6 @@ export class AuthService {
 
   async verify(token: string) {
     const result = await this.jwt.verify<JwtPayload>(token);
-
     return result;
   }
 
@@ -33,18 +38,15 @@ export class AuthService {
 
     const { password: hashedPassword } = found;
 
-    console.table({
-      outUsername,
-      outPassword,
-      hashedPassword,
-    });
+    this.logger.debug(this.login.name, { body, found });
     const isPasswordMatch = await compare(outPassword, hashedPassword);
-
     if (isPasswordMatch) {
-      const authtoken = await this.sign(found.id);
-      return { authtoken };
+      const token = await this.sign(found.id);
+      this.logger.debug('Signed the token', { token });
+      return { [AuthEnums.ACCESS_TOKEN_NAME]: token };
     }
 
+    this.logger.debug('Wrong password');
     throw new BadRequestException('Password does not match!');
   }
 
@@ -52,6 +54,7 @@ export class AuthService {
     const { username } = body;
     await this.userService.findOneByUsername(username);
 
+    this.logger.debug("Recovery email is sent to user' email.");
     return {
       message: `Recovery email is sent to your email address ${username}`,
     };
@@ -62,9 +65,25 @@ export class AuthService {
     const sso = this.ssoService.get(body.username);
 
     if (sso && sso === body.sso) {
-      return this.sign(user.id);
+      const token = this.sign(user.id);
+      this.logger.debug('Signed the token'), {};
+      return { [AuthEnums.ACCESS_TOKEN_NAME]: token };
     }
 
     throw new BadRequestException('SSO does not match');
+  }
+
+  async updatePassword(
+    userId: number,
+    body: UpdatePasswordDto
+  ): Promise<UpdatePasswordResult> {
+    const foundUser = await this.userService.findOneById(userId);
+
+    if (await compare(body.password, foundUser.password)) {
+      await this.userService.updatePassword(userId, body.newPassword);
+      return { message: 'Successfully updated the password' };
+    }
+
+    throw new BadRequestException('Wrong Password');
   }
 }

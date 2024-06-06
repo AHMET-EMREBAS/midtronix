@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { ConfigService } from '@nestjs/config';
-import { CommonKeys } from '@mdtx/common';
+import { AuthEnums } from '@mdtx/common';
 import favicon = require('serve-favicon');
 
 export type BootstrapOptions = {
@@ -64,16 +64,16 @@ export async function bootNestApplication(appModule: Type, appName: string) {
     .addBearerAuth({
       type: 'http',
       scheme: 'Bearer',
-      name: CommonKeys.BEARER,
+      name: AuthEnums.BEARER,
     })
     .addGlobalParameters({
       in: 'header',
-      name: CommonKeys.X_OAUTH_API_KEY,
+      name: AuthEnums.X_OAUTH_API_KEY,
       description: 'OAuth api key',
     })
     .addGlobalParameters({
       in: 'header',
-      name: CommonKeys.X_ORGNAME,
+      name: AuthEnums.X_ORGNAME,
       description: 'Organization name',
       example: 'main',
     })

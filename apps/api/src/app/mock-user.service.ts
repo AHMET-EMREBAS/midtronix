@@ -1,6 +1,6 @@
 import { AuthUserService } from '@mdtx/auth';
 import { AuthCredentials } from '@mdtx/common';
-import { PermissionBuilder } from '@mdtx/core';
+import { PermissionBuilder, UpdatePasswordResult } from '@mdtx/core';
 import { NotFoundException } from '@nestjs/common';
 
 import { genSaltSync, hashSync } from 'bcrypt';
@@ -60,5 +60,17 @@ export class MockUserService implements AuthUserService {
       return new Promise((res) => res(found));
     }
     throw new NotFoundException();
+  }
+
+  async updatePassword(
+    userId: number,
+    newPassword: string
+  ): Promise<UpdatePasswordResult> {
+    const foundUser = await this.findOneById(userId);
+
+    foundUser.password = hashSync(newPassword, genSaltSync(8));
+
+    return { message: 'Updated password' };
+    throw new Error('Method not implemented.');
   }
 }

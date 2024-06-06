@@ -5,6 +5,6 @@
     "declaration": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "../utils/src/lib/query.ts", "../utils/src/lib/res-api-path-builder.ts"],
+  "include": ["src/**/*.ts", "../utils/src/lib/query.ts", "../utils/src/lib/rest-api-path-builder.ts", "../utils/src/lib/auth-api-path-builder.ts", "../utils/src/lib/auth-path.spec.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
