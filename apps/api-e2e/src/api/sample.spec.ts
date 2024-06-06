@@ -1,4 +1,3 @@
-import {} from '@mdtx/core';
 import { ApiVersion, HttpClient } from '@mdtx/common';
 import {
   ISample,

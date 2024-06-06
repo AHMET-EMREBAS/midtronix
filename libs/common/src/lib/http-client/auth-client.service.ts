@@ -44,7 +44,7 @@ export class AuthClientService {
   async logout() {
     const res = await axios.post<any, AxiosResponse<ILogoutResult>>(
       this.__path(this.apiPaths.LogoutPath),
-      {},
+      undefined,
       this.__config()
     );
     return this.parseResult(res);

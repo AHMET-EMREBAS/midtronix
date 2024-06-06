@@ -65,7 +65,7 @@ export class AuthRouteBuilder {
   Logout() {
     return applyDecorators(
       ApiOperation({ summary: 'Logout' }),
-      Get(this.AP.LogoutPath),
+      Post(this.AP.LogoutPath),
       ApiOkResponse({ description: 'success', type: LogoutResult }),
       ApiBearerAuth(AuthEnums.BEARER),
       this.CommonResponses()

@@ -72,7 +72,8 @@ export class AuthController {
   logout(@Res() res: Response) {
     this.logger.debug(this.logout.name);
     res.clearCookie(AuthEnums.ACCESS_TOKEN_NAME);
-    res.end({ message: 'See you later.' });
+    res.send({ message: 'See you later.' });
+    res.end();
   }
 
   @R.UpdatePassword()
