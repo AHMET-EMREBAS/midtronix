@@ -1,4 +1,4 @@
-import { Logger, NestApplicationOptions, Type } from '@nestjs/common';
+import { LogLevel, Logger, NestApplicationOptions, Type } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ClassConstructor } from 'class-transformer';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -22,8 +22,18 @@ export type BootstrapOptions = {
   globalPrefix?: string;
 };
 
+const loglevels: LogLevel[] = [
+  'error',
+  'warn',
+  'debug',
+  'log',
+  'fatal',
+  'verbose',
+];
+
 export function createHttpsConfiguration(): NestApplicationOptions {
   return {
+    logger: loglevels,
     httpsOptions: {
       cert: readFileSync(join(__dirname, 'cert.pem')),
       key: readFileSync(join(__dirname, 'key.pem')),
@@ -35,7 +45,12 @@ export async function bootNestApplication(appModule: Type, appName: string) {
   const createApp = async (https = false) =>
     await NestFactory.create(
       appModule,
-      https ? createHttpsConfiguration() : undefined
+
+      https
+        ? createHttpsConfiguration()
+        : {
+            logger: loglevels,
+          }
     );
 
   const context = await createApp();

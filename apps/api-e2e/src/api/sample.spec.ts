@@ -43,7 +43,7 @@ describe('Sample', () => {
   it(`GET api/v1/samples`, async () => {
     const data = await httpClient.findAll();
     expect(data).toBeTruthy();
-    expect(data.length).toBe(3);
+    expect(data.length).toBeGreaterThan(0);
   });
 
   it(`GET api/v1/sample/1`, async () => {

@@ -10,7 +10,7 @@ export class AdvanceLogger extends Logger {
   override debug(message: any, context?: string | undefined): void;
   override debug(message: any, ...optionalParams: any[]): void;
   override debug(message: unknown, payload?: unknown): void {
-    super.debug(message);
+    super.log(message);
     console.table({ payload });
   }
 
@@ -21,7 +21,7 @@ export class AdvanceLogger extends Logger {
   ): void;
   override error(message: any, ...optionalParams: any[]): void;
   override error(message: unknown, error: any): void {
-    super.debug(message);
+    super.log(message);
     console.table({ error });
   }
 }
