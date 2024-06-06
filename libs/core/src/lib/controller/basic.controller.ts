@@ -16,6 +16,12 @@ export class BasicController<
     this.logger = new AdvanceLogger(this.service.entityName() + 'Controller');
   }
 
+  count(query: Query, authDto: AuthDto) {
+    this.logger.debug(this.count.name, query);
+    this.logger.debug(this.count.name, authDto);
+    return this.service.count(query);
+  }
+
   findAll(query: Query, authDto: AuthDto) {
     this.logger.debug(this.findAll.name, query);
     this.logger.debug(this.findAll.name, authDto);

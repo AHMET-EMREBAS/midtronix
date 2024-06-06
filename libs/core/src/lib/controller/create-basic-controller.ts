@@ -20,6 +20,14 @@ export function CreateBasicController<
 ): Type<BasicController<T, C, U, Q>> {
   @RRB.Controler()
   class DynamicController extends BasicController<T, C, U, Q> {
+
+    @RRB.Count(queryDto)
+    override count(query: Q, authDto: AuthDto) {
+      this.logger.debug(this.count.name, query);
+      this.logger.debug(this.count.name, authDto);
+      return super.count(query, authDto);
+    }
+
     @RRB.FindAll(queryDto)
     override findAll(
       @RRB.Query(queryDto) query: Q,

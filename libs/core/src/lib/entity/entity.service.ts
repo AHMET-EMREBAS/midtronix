@@ -74,6 +74,13 @@ export class BaseEntityService<T extends IID = IID> {
     this.logger.error(method, payload);
   }
 
+  async count(
+    query: Omit<IBaseQueryDto, 'take' | 'skip' | 'withDeleted' | 'order'>
+  ) {
+    this.log(this.count.name, query);
+    return await this.repo.count(query);
+  }
+
   async findAll(query?: IBaseQueryDto) {
     this.log(this.findAll.name, query);
     if (query) {

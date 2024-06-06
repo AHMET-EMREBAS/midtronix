@@ -21,6 +21,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
   ApiUnprocessableEntityResponse,
+  OmitType,
 } from '@nestjs/swagger';
 import {
   AuthParam,
@@ -29,7 +30,7 @@ import {
   ResourcePermissions,
 } from '../auth';
 import { Body, Param, ParseIntPipe, Query } from '@nestjs/common';
-import { CreateValidationPipe, ValidationPipe } from '../dto';
+import { BaseGeneralQuery, CreateValidationPipe, ValidationPipe } from '../dto';
 import { ApiVersion } from '@mdtx/common';
 
 export class RestRouteBuilder {
@@ -76,15 +77,19 @@ export class RestRouteBuilder {
     );
   }
 
-  Count() {
+  Count(type?: Type<any>) {
     return applyDecorators(
       Get(this.AP.COUNT_PATH),
+      ApiOperation({ summary: `Count all ${this.className}` }),
       this.RP.CanRead(),
+      ApiQuery({
+        type: type && OmitType(type, ['withDeleted', 'take', 'skip', 'order']),
+      }),
       this.CommonResponses()
     );
   }
 
-  FindAll(type?: any) {
+  FindAll(type?: Type<any>) {
     return applyDecorators(
       Get(this.AP.PLURAL_PATH),
       ApiOperation({ summary: `Find all ${this.className} by query` }),
