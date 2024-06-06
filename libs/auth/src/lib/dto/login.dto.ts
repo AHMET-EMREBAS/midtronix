@@ -1,9 +1,9 @@
-import { ILogin } from '@mdtx/common';
+import { ILoginDto } from '@mdtx/common';
 import { Property } from '@mdtx/core';
 import { Exclude } from 'class-transformer';
 
 @Exclude()
-export class LoginDto implements ILogin {
+export class LoginDto implements ILoginDto {
   @Property({ type: 'string', format: 'email' })
   username!: string;
 

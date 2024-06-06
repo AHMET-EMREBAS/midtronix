@@ -13,7 +13,7 @@ import {
   ApiNotFoundResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ForgotPasswordDto, LoginDto, SSOLoginDto } from './dto';
+import { ForgotPasswordDto, LoginDto, LoginWithSSODto } from './dto';
 import { Response } from 'express';
 import { AuthCredentials, AuthEnums } from '@mdtx/common';
 import { UpdatePasswordDto } from './dto/update-password.dto';
@@ -63,7 +63,7 @@ export class AuthController {
   }
 
   @R.LoginWithSSO()
-  async loginWithSSO(@Body(ValidationPipe) body: SSOLoginDto) {
+  async loginWithSSO(@Body(ValidationPipe) body: LoginWithSSODto) {
     this.logger.debug(this.loginWithSSO.name, body);
     return await this.service.ssoLogin(body);
   }

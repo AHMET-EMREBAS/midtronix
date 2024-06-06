@@ -3,7 +3,7 @@ import { AuthUserService } from './auth-user.service';
 import { InjectAuthUserService } from './auth.provider';
 import { LoginDto } from './dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
-import { SSOLoginDto } from './dto/login-sso.dto';
+import { LoginWithSSODto } from './dto/login-sso.dto';
 import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SSOService } from './ssto.service';
@@ -60,7 +60,7 @@ export class AuthService {
     };
   }
 
-  async ssoLogin(body: SSOLoginDto) {
+  async ssoLogin(body: LoginWithSSODto) {
     const user = await this.userService.findOneByUsername(body.username);
     const sso = this.ssoService.get(body.username);
 

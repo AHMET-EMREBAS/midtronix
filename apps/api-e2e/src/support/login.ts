@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios';
 import { bearer } from './bearer';
-import { ILogin, ILoginResult } from '@mdtx/common';
+import { ILoginDto, ILoginResult } from '@mdtx/common';
 
 /**
  * Returns bearer token
  * @returns
  */
 export async function loginAndGetBearerToken(): Promise<string> {
-  const res = await axios.post<ILogin, AxiosResponse<ILoginResult>>(
+  const res = await axios.post<ILoginDto, AxiosResponse<ILoginResult>>(
     'api/v1/auth/login',
     {
       username: 'user@example.com',

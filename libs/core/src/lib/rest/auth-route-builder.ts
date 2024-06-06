@@ -19,10 +19,10 @@ import {
 } from '../auth';
 import { ValidationPipe } from '../dto';
 import { ApiVersion, AuthEnums } from '@mdtx/common';
-import { AuthApiPathBuilder } from '@mdtx/utils';
+import { AuthApiPathBuilder, AuthApiPaths } from '@mdtx/utils';
 
 export class AuthRouteBuilder {
-  protected readonly AP: AuthApiPathBuilder;
+  protected readonly AP: AuthApiPaths;
 
   private constructor(
     protected readonly validationPipe: typeof ValidationPipe,
