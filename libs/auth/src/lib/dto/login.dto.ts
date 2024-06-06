@@ -7,6 +7,6 @@ export class LoginDto implements ILogin {
   @Property({ type: 'string', format: 'email' })
   username!: string;
 
-  @Property({ type: 'string', format: 'password' })
+  @Property({ type: 'string' })
   password!: string;
 }

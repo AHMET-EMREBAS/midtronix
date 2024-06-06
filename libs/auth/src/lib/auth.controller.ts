@@ -7,7 +7,7 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { LoginDto } from './dto';
+import { LoginDto, SSOLoginDto } from './dto';
 
 export function Login() {
   return applyDecorators(
@@ -16,6 +16,16 @@ export function Login() {
     ApiBadRequestResponse({ description: 'Password does not match!' }),
     PublicResource(),
     Post('login')
+  );
+}
+
+export function SSOLogin() {
+  return applyDecorators(
+    ApiOperation({ summary: 'Login with sso' }),
+    ApiNotFoundResponse({ description: 'User not found!' }),
+    ApiBadRequestResponse({ description: 'SSO does not match!' }),
+    PublicResource(),
+    Post('sso-login')
   );
 }
 
@@ -31,6 +41,11 @@ export class AuthController {
   @Login()
   async login(@Body(ValidationPipe) loginDto: LoginDto) {
     return await this.service.login(loginDto);
+  }
+
+  @SSOLogin()
+  async ssoLogin(@Body(ValidationPipe) ssoLoginDto: SSOLoginDto) {
+    return await this.service.ssoLogin(ssoLoginDto);
   }
 
   @Logout()

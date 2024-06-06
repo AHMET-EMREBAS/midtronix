@@ -14,7 +14,21 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   app.enableCors({ origin: '*' });
 
-  const config = new DocumentBuilder().setTitle('Api').build();
+  const config = new DocumentBuilder()
+    .setTitle('Api')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'Bearer',
+      name: 'bearer',
+    })
+    .addGlobalParameters({
+      in: 'header',
+      name: 'x-orgname',
+      description: 'Organization name',
+      example: 'main',
+    })
+
+    .build();
   const doc = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, doc);
 

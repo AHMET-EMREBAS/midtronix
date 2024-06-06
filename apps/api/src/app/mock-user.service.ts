@@ -8,19 +8,19 @@ export class MockUserService implements AuthUserService {
   protected readonly users: AuthCredentials[] = [
     {
       id: 1,
-      username: 'user1@gmail.com',
+      username: 'user@example.com',
       password: hashSync('!Password123', genSaltSync(8)),
       roles: [],
     },
     {
       id: 2,
-      username: 'user2@gmail.com',
+      username: 'user2@example.com',
       password: hashSync('!Password123', genSaltSync(8)),
       roles: [],
     },
     {
       id: 3,
-      username: 'user3@gmail.com',
+      username: 'user3@example.com',
       password: hashSync('!Password123', genSaltSync(8)),
       roles: [],
     },

@@ -10,7 +10,6 @@ import {
   UdpateSampleDto,
 } from '@mdtx/entities';
 import { SampleService } from './sample.service';
-
 export const SampleRRB = RestRouteBuilder.get('Sample', ApiVersion.v1);
 
 @SampleRRB.Controler()

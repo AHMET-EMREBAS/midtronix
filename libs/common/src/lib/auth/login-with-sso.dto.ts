@@ -1,4 +1,4 @@
-export interface ILoginWithSSODto {
+export interface ISSOLoginDto {
   username: string;
   sso: string;
 }

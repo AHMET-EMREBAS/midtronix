@@ -3,11 +3,10 @@ import { AuthUserService } from './auth-user.service';
 import { InjectAuthUserService } from './auth.provider';
 import { LoginDto } from './dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
-import { LoginWithSSO } from './dto/login-sso.dto';
+import { SSOLoginDto } from './dto/login-sso.dto';
 import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SSOService } from './ssto.service';
-import { AuthCredentials } from '@mdtx/common';
 import { JwtPayload } from './jwt-payload';
 
 @Injectable()
@@ -24,7 +23,7 @@ export class AuthService {
 
   async verify(token: string) {
     const result = await this.jwt.verify<JwtPayload>(token);
-    
+
     return result;
   }
 
@@ -32,8 +31,14 @@ export class AuthService {
     const { username: outUsername, password: outPassword } = body;
     const found = await this.userService.findOneByUsername(outUsername);
 
-    const { password } = found;
-    const isPasswordMatch = await compare(outPassword, password);
+    const { password: hashedPassword } = found;
+
+    console.table({
+      outUsername,
+      outPassword,
+      hashedPassword,
+    });
+    const isPasswordMatch = await compare(outPassword, hashedPassword);
 
     if (isPasswordMatch) {
       const authtoken = await this.sign(found.id);
@@ -52,7 +57,7 @@ export class AuthService {
     };
   }
 
-  async loginWithSSO(body: LoginWithSSO) {
+  async ssoLogin(body: SSOLoginDto) {
     const user = await this.userService.findOneByUsername(body.username);
     const sso = this.ssoService.get(body.username);
 

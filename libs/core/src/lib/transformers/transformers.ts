@@ -43,7 +43,7 @@ export const DateTransformer = Transform(({ value }) => {
 
 export const StringTransformer = Transform(({ value }) => {
   if (typeof value === 'string') {
-    const newValue = value.trim().toLowerCase();
+    const newValue = value.trim();
     if (newValue.length > 0) {
       return newValue;
     }

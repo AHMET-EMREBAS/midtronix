@@ -3,9 +3,14 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SSOService } from './ssto.service';
 import { AuthUserService } from './auth-user.service';
-import { provideAuthUserService } from './auth.provider';
+import {
+  getAuthUserServiceToken,
+  provideAuthUserService,
+} from './auth.provider';
 import { isDevMode } from '@mdtx/core';
 import { AuthController } from './auth.controller';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './guards';
 
 @Module({
   imports: [
@@ -26,13 +31,15 @@ import { AuthController } from './auth.controller';
   ],
 
   controllers: [AuthController],
-  providers: [SSOService],
+  providers: [SSOService, AuthService, AuthGuard],
+  exports: [AuthService],
 })
 export class AuthModule {
   static configure(userService: Type<AuthUserService>): DynamicModule {
     return {
       module: AuthModule,
       providers: [provideAuthUserService(userService)],
+      exports: [AuthModule, getAuthUserServiceToken()],
     };
   }
 }

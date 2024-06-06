@@ -5,12 +5,12 @@ import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
 import { SampleModule } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
-import { EntitySubscriber } from './entity.subscriber';
-import { AppEventHandler } from './app.events';
+import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
 
-import { AuthModule } from '@mdtx/auth';
+import { AuthGuard, AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -31,7 +31,7 @@ import { MockUserService } from './mock-user.service';
       // type: 'better-sqlite3',
       // database: 'tmp/database/dev.sqlite',
       autoLoadEntities: true,
-      subscribers: [EntitySubscriber],
+      subscribers: [],
       synchronize: true,
       dropSchema: true,
       logger: 'debug',
@@ -40,6 +40,13 @@ import { MockUserService } from './mock-user.service';
     AuthModule.configure(MockUserService),
     SampleModule,
   ],
-  providers: [AppEventHandler, EventEmitter2, EntitySubscriber],
+  providers: [
+    AppEventService,
+    EventEmitter2,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
 })
 export class AppModule {}

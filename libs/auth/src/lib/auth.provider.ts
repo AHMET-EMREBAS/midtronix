@@ -1,14 +1,17 @@
 import { Inject, Provider, Type } from '@nestjs/common';
 import { AuthUserService } from './auth-user.service';
 
+export function getAuthUserServiceToken() {
+  return 'AuthUserService';
+}
 export function provideAuthUserService(
   useClass: Type<AuthUserService>
 ): Provider {
   return {
-    provide: 'AuthUserService',
+    provide: getAuthUserServiceToken(),
     useClass,
   };
 }
 export function InjectAuthUserService() {
-  return Inject('AuthUserService');
+  return Inject(getAuthUserServiceToken());
 }
