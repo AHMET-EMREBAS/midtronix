@@ -4,6 +4,7 @@ import { RestApiPathBuilder, RestApiPaths } from '@mdtx/utils';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { IID } from '../base';
 import { ICountResponse } from '../response';
+import { ResourceHttpClientHelper } from './resource-http-client-helper';
 export class ResourceHttpClient<
   T extends IID = any,
   CreateDto = any,
@@ -11,111 +12,63 @@ export class ResourceHttpClient<
   Query = any
 > {
   readonly apiPaths: RestApiPaths;
+  protected readonly helper!: ResourceHttpClientHelper;
 
   constructor(
-    public readonly entityName: string,
-    public readonly prefix: string,
-    public readonly axiosConfig?: AxiosRequestConfig
+    protected readonly entityName: string,
+    protected readonly prefix: string,
+    protected readonly axiosConfig?: AxiosRequestConfig
   ) {
     this.apiPaths = RestApiPathBuilder.get(entityName);
+    this.helper = new ResourceHttpClientHelper(prefix, this.apiPaths);
   }
 
-  config(): AxiosRequestConfig | undefined {
+  protected config(): AxiosRequestConfig | undefined {
     return this.axiosConfig;
   }
-
-  __path(path: string) {
-    return `${this.prefix}/${path}`;
-  }
-
-  __query(query?: any) {
-    if (query) {
-      return (
-        '/?' +
-        Object.entries(query)
-          .map(([key, value]) => {
-            return `${encodeURIComponent(key)}=${encodeURIComponent(
-              value + ''
-            )}`;
-          })
-          .join('&')
-      );
-    }
-
-    return '';
-  }
-
   protected parseResult<T>(res: AxiosResponse<T>) {
     return res.data;
   }
 
-  __idpath(id: number) {
-    return this.__path(this.apiPaths.BY_ID_PATH.replace(':id', id + ''));
-  }
-
-  __singular(query?: any) {
-    return this.__path(this.apiPaths.SINGULAR_PATH) + this.__query(query);
-  }
-
-  __plural(query?: any) {
-    return this.__path(this.apiPaths.PLURAL_PATH) + this.__query(query);
-  }
-
-  __relationPath(relationDto: IRelationDto) {
-    const { id, relationId, relationName } = relationDto;
-    const path = this.apiPaths.RELATION_NAME_AND_ID_PATH.replace(':id', id + '')
-      .replace(':relationId', relationId + '')
-      .replace(':relationName', relationName + '');
-    return path;
-  }
-
-  __unsetRelationPath(relationDto: IUnsetRelationDto) {
-    const { id, relationName } = relationDto;
-    const path = this.apiPaths.RELATION_NAME_AND_ID_PATH.replace(
-      ':id',
-      id + ''
-    ).replace(':relationName', relationName + '');
-    return path;
-  }
-
   async count(query?: Query) {
-    const path = this.apiPaths.COUNT_PATH + this.__query(query);
+    const path =
+      this.helper.path(this.apiPaths.COUNT_PATH) + this.helper.query(query);
     const res = await axios.get<ICountResponse>(path);
     return this.parseResult(res);
   }
 
   async findAll(query?: Query) {
-    const path = this.__plural(query);
+    const path = this.helper.plural(query);
     const res = await axios.get<T[]>(path, this.config());
     return this.parseResult(res);
   }
 
-  async findOneById(id: number) {
-    const res = await axios.get<T>(this.__idpath(id), this.config());
+  async findOneById(id: T['id']) {
+    const res = await axios.get<T>(this.helper.idpath(id), this.config());
     return this.parseResult(res);
   }
 
   async saveOne(entity: CreateDto) {
     const res = await axios.post<CreateDto, AxiosResponse<T>>(
-      this.__singular(),
+      this.helper.singular(),
       { ...entity },
       this.config()
     );
     return this.parseResult(res);
   }
 
-  async updateOne(id: number, entity: UpdateDto): Promise<T> {
+  async updateOne(id: T['id'], entity: UpdateDto): Promise<T> {
     const res = await axios.put<UpdateDto, AxiosResponse<T>>(
-      this.__idpath(id),
+      this.helper.idpath(id),
       entity,
       this.config()
     );
     return this.parseResult(res);
   }
 
-  async deleteOneById(id: number): Promise<T> {
+  async deleteOneById(id: T['id']): Promise<T> {
     const res = await axios.delete<any, AxiosResponse<T>>(
-      this.__idpath(id),
+      this.helper.idpath(id),
       this.config()
     );
     return this.parseResult(res);
@@ -123,7 +76,7 @@ export class ResourceHttpClient<
 
   async addRelation(relationDto: IRelationDto): Promise<T> {
     const res = await axios.put<IRelationDto, AxiosResponse<T>>(
-      this.__relationPath(relationDto),
+      this.helper.relationPath(relationDto),
       this.config()
     );
     return this.parseResult(res);
@@ -131,7 +84,7 @@ export class ResourceHttpClient<
 
   async removeRelation(relationDto: IRelationDto): Promise<T> {
     const res = await axios.delete<IRelationDto, AxiosResponse<T>>(
-      this.__relationPath(relationDto),
+      this.helper.relationPath(relationDto),
       this.config()
     );
     return this.parseResult(res);
@@ -139,7 +92,7 @@ export class ResourceHttpClient<
 
   async setRelation(relationDto: IRelationDto): Promise<T> {
     const res = await axios.post<IRelationDto, AxiosResponse<T>>(
-      this.__relationPath(relationDto),
+      this.helper.relationPath(relationDto),
       this.config()
     );
     return this.parseResult(res);
@@ -147,7 +100,7 @@ export class ResourceHttpClient<
 
   async unsetRelation(relationDto: IUnsetRelationDto): Promise<T> {
     const res = await axios.delete<IUnsetRelationDto, AxiosResponse<T>>(
-      this.__unsetRelationPath(relationDto),
+      this.helper.unsetRelationPath(relationDto),
       this.config()
     );
     return this.parseResult(res);

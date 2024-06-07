@@ -1,4 +1,4 @@
-import { ApiVersion, HttpClient } from '@mdtx/common';
+import { ApiVersion, ResourceHttpClient } from '@mdtx/common';
 import {
   ISample,
   IQuerySampleDto,
@@ -11,7 +11,7 @@ const API_PREFIX = `api/${ApiVersion.v1}`;
 
 describe('Sample', () => {
   let d1, d2, d3;
-  let httpClient: HttpClient<
+  let httpClient: ResourceHttpClient<
     ISample,
     ICreateSampleDto,
     IUpdateSampleDto,
@@ -21,7 +21,7 @@ describe('Sample', () => {
   beforeAll(async () => {
     const bearerToken = await loginAndGetBearerToken();
 
-    httpClient = new HttpClient<
+    httpClient = new ResourceHttpClient<
       ISample,
       ICreateSampleDto,
       IUpdateSampleDto,

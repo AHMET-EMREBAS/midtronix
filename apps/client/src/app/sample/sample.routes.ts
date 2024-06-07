@@ -5,15 +5,15 @@ import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 
 export const SampleRoutes: Routes = [
+  { path: '', redirectTo: 'view', pathMatch: 'full' },
   {
-    path: '',
+    path: 'view',
     loadComponent() {
       return ViewAllComponent;
     },
   },
-
   {
-    path: ':id',
+    path: 'view/:id',
 
     loadComponent() {
       return ViewOneComponent;
@@ -21,13 +21,13 @@ export const SampleRoutes: Routes = [
   },
 
   {
-    path: 'create',
+    path: 'editor',
     loadComponent() {
       return CreateComponent;
     },
   },
   {
-    path: 'update/:id',
+    path: 'editor/:id',
     loadComponent() {
       return UpdateComponent;
     },

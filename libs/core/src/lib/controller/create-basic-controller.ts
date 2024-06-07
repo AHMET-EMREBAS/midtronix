@@ -4,14 +4,14 @@ import { Type } from '@nestjs/common';
 import { RelationDto, UnsetRelationDto } from '../service';
 import { RestRouteBuilder } from '../rest';
 import { DeepPartial } from 'typeorm';
-import { BaseGeneralQuery } from '../dto';
+import { BasePaginatorQueryDto } from '../dto';
 import { AuthDto } from '../auth';
 
 export function CreateBasicController<
   T extends IID,
   C extends DeepPartial<T>,
   U extends DeepPartial<T>,
-  Q extends BaseGeneralQuery
+  Q extends BasePaginatorQueryDto
 >(
   RRB: RestRouteBuilder,
   entity: Type<T>,

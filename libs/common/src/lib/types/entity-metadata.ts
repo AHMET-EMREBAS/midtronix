@@ -1,13 +1,13 @@
 import { IBaseEntity, IBaseView } from '../base';
 import { PropertyMetadata } from './property-metadata';
 
-export type EntityMetadata<T> = Record<keyof T, () => PropertyMetadata<T>>;
-
 export type CommonMetadata<T> = {
   fields: () => (keyof T)[];
   tableColumns: () => PropertyMetadata<T>[];
   tableDisplayedColumns: () => PropertyMetadata<T>[];
 };
+
+export type EntityMetadata<T> = Record<keyof T, () => PropertyMetadata<T>>;
 
 export class BaseEntityMetadata<T extends IBaseEntity>
   implements CommonMetadata<T>

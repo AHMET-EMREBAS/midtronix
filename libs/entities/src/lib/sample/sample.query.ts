@@ -1,35 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  BaseGeneralQuery,
+  BasePaginatorQueryDto,
   SearchProperty,
   QueryOperatorProperty,
-  BaseWhereQuery,
+  BaseWhereQueryDto,
   OrderProperty,
   WhereProperty,
 } from '@mdtx/core';
 import { Exclude } from 'class-transformer';
 import { Sample } from './sample.entity';
 import { FindOperator } from 'typeorm';
-import { IBaseQueryDto } from '@mdtx/common';
-import { SampleMetadata } from '@mdtx/models';
+
+import { SampleMetadataInstance } from './sample.metata';
 
 @Exclude()
-export class WhereSampleQuery extends BaseWhereQuery<Sample> {
+export class SampleWhereQueryDto extends BaseWhereQueryDto<Sample> {
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 
 @Exclude()
-export class QuerySample
-  extends BaseGeneralQuery
-  implements IBaseQueryDto<WhereSampleQuery, WhereSampleQuery>
-{
+export class SampleQueryDto extends BasePaginatorQueryDto {
   @SearchProperty<Sample>(['name'])
-  search!: WhereSampleQuery;
+  search!: SampleWhereQueryDto;
 
-  @WhereProperty(WhereSampleQuery)
-  where!: WhereSampleQuery;
+  @WhereProperty(SampleWhereQueryDto)
+  where!: SampleWhereQueryDto;
 
-  @OrderProperty<Sample>(SampleMetadata.fields())
+  @OrderProperty<Sample>(SampleMetadataInstance.fields())
   order: any;
 }

@@ -6,10 +6,7 @@ import {
 import { AdvanceTableComponent } from './advance-table.component';
 
 import { within } from '@storybook/testing-library';
-import {
-  provideAdvanceTableDataService,
-  provideAdvanceTableMetadata,
-} from './advance-table.providers';
+import { provideAdvanceTableMetadata } from './advance-table.providers';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
@@ -66,8 +63,7 @@ const meta: Meta<AdvanceTableComponent> = {
         ),
         provideRouter([]),
         provideAnimations(),
-        provideAdvanceTableMetadata(SampleMetadata),
-        provideAdvanceTableDataService(SampleService),
+        provideAdvanceTableMetadata(new SampleMetadata()),
       ],
     }),
   ],

@@ -6,10 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ADVANCE_TABLE_DATA_SERVICE_TOKEN,
-  ADVANCE_TABLE_METADATA_TOKEN,
-} from './advance-table.providers';
+
 import { IID } from '@mdtx/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTable, MatTableModule } from '@angular/material/table';
@@ -32,8 +29,12 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CollectionBaseService } from '@mdtx/ngrx';
 import { EntityMetadata } from '@ngrx/data';
+import { CollectionBaseService } from '@mdtx/material/core';
+import {
+  getAdvanceTableCollectionServiceToken,
+  getAdvanceTableMetadataToken,
+} from './advance-table.providers';
 
 export type QueryType = {
   search: string;
@@ -73,11 +74,7 @@ export class AdvanceTableComponent<T extends IID = IID> {
     previousPageIndex: 0,
   });
 
-  count$ = this.service.metadata$.pipe(
-    map((meta) => {
-      return meta.count;
-    })
-  );
+  count$ = this.service.count().then((count) => count.count);
 
   sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });
 
@@ -89,7 +86,13 @@ export class AdvanceTableComponent<T extends IID = IID> {
         page,
         sort,
       });
-      return this.service.advanceQuery(search, page, sort);
+      return this.service.getWithQuery({
+        take: page.pageSize,
+        skip: page.pageIndex * page.pageSize,
+        withDeleted: page.pageSize,
+        search,
+        order: `${sort.active}:${sort.direction}`,
+      });
     })
   );
 
@@ -100,9 +103,10 @@ export class AdvanceTableComponent<T extends IID = IID> {
   }>();
 
   constructor(
-    @Inject(ADVANCE_TABLE_METADATA_TOKEN)
-    public readonly metadata: EntityMetadata<T>,
-    @Inject(ADVANCE_TABLE_DATA_SERVICE_TOKEN)
+    @Inject(getAdvanceTableMetadataToken())
+    protected readonly metadata: EntityMetadata<T>,
+
+    @Inject(getAdvanceTableCollectionServiceToken())
     public readonly service: CollectionBaseService<T>,
     public readonly router: Router,
     public readonly route: ActivatedRoute

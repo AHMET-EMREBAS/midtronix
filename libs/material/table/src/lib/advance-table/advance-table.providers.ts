@@ -1,7 +1,18 @@
 import { EntityMetadata } from '@mdtx/common';
-import { createClassProvider } from '@mdtx/material/core';
+import {
+  CollectionBaseService,
+  createClassProvider,
+  createValueProvider,
+} from '@mdtx/material/core';
 
 export const {
   provide: provideAdvanceTableMetadata,
   token: getAdvanceTableMetadataToken,
-} = createClassProvider<EntityMetadata<any>>('ADVANCE_TABLE_METADATA');
+} = createValueProvider<EntityMetadata<unknown>>('ADVANCE_TABLE_METADATA');
+
+export const {
+  provide: provideAdvanceTableCollectionService,
+  token: getAdvanceTableCollectionServiceToken,
+} = createClassProvider<CollectionBaseService<any>>(
+  'ADVANCE_TABLE_COLLECTION_SERVICE'
+);

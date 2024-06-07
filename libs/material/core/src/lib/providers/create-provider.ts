@@ -1,7 +1,7 @@
 import { Inject, InjectionToken, Provider, Type } from '@angular/core';
 
 export interface CreateClassProviderResult<T> {
-  provide(useClass: Type<T>): Provider;
+  provide(value: T): Provider;
   inject(): PropertyDecorator;
   token(): InjectionToken<T>;
 }
@@ -13,7 +13,7 @@ export interface CreateClassProviderResult<T> {
  */
 export function createClassProvider<T>(
   tokenPrefix: string
-): CreateClassProviderResult<T> {
+): CreateClassProviderResult<Type<T>> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
     provide(value: Type<T>) {
@@ -41,7 +41,7 @@ export function createValueProvider<T>(
 ): CreateClassProviderResult<T> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
-    provide(value: Type<T>) {
+    provide<T>(value: T) {
       return {
         provide: token,
         useValue: value,

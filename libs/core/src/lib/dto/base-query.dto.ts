@@ -9,7 +9,7 @@ import { BaseDto } from './base.dto';
  * Generic Query
  */
 @Exclude()
-export class BaseGeneralQuery
+export class BasePaginatorQueryDto
   implements Omit<IBaseQueryDto, 'where' | 'search' | 'order'>
 {
   @Property({ type: 'number', default: 200 })
@@ -25,9 +25,9 @@ export class BaseGeneralQuery
 /**
  * Specific Query
  */
-export class BaseWhereQuery<T>
-  extends BaseDto<BaseWhereQuery<T>>
-  implements Omit<AllPropertyType<IBaseEntity, FindOperator<T>>, 'id'>
+export class BaseWhereQueryDto<T>
+  extends BaseDto<BaseWhereQueryDto<T>>
+  implements AllPropertyType<Omit<IBaseEntity, 'id'>, FindOperator<T>>
 {
   @QueryOperatorProperty({ type: 'date' })
   createdAt!: FindOperator<T>;

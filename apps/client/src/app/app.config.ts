@@ -9,15 +9,24 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 import { httpInterceptors } from './app.interceptors';
 import { provideEffects } from '@ngrx/effects';
+import { provideEntityData } from '@ngrx/data';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideStore(),
-    provideEffects([]),
-    provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
-    provideRouter(appRoutes, withHashLocation()),
     provideClientHydration(),
     provideHttpClient(withInterceptors(httpInterceptors)),
+    provideStore(),
+    provideEffects([]),
+    provideEntityData({
+      pluralNames: {
+        Sample: 'Samples',
+      },
+      entityMetadata: {
+        Sample: {},
+      },
+    }),
+    provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
+    provideRouter(appRoutes, withHashLocation()),
     provideAnimationsAsync(),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),

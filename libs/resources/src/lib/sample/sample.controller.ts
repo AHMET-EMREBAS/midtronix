@@ -1,7 +1,7 @@
 import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
 import {
   CreateSampleDto,
-  QuerySample,
+  SampleQueryDto,
   Sample,
   UdpateSampleDto,
 } from '@mdtx/entities';
@@ -16,8 +16,8 @@ export class SampleController extends CreateBasicController<
   Sample,
   CreateSampleDto,
   UdpateSampleDto,
-  QuerySample
->(SampleRRB, Sample, CreateSampleDto, UdpateSampleDto, QuerySample) {
+  SampleQueryDto
+>(SampleRRB, Sample, CreateSampleDto, UdpateSampleDto, SampleQueryDto) {
   constructor(service: SampleService) {
     super(service);
   }

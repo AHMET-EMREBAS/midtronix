@@ -5,7 +5,7 @@ import {
 } from '@mdtx/common';
 import { ISample } from './sample';
 
-class ___SampleMetadata
+export class SampleMetadata
   extends BaseEntityMetadata<ISample>
   implements EntityMetadata<ISample>
 {
@@ -27,9 +27,3 @@ class ___SampleMetadata
     return [this.name(), ...super.tableDisplayedColumns()];
   }
 }
-
-/**
- * Provides metadata for the entity
- * Property name, label, UI preferances (form and table preferances)
- */
-export const SampleMetadata = new ___SampleMetadata();
