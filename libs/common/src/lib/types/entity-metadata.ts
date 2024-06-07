@@ -11,8 +11,8 @@ export type EntityMetadata<T> = AllPropertyType<
   tableDisplayedColumns: () => (keyof T)[];
 };
 
-export class __BaseEntityMetadata implements EntityMetadata<IBaseEntity> {
-  fields(): (keyof IBaseEntity)[] {
+export class __BaseEntityMetadata<T extends IBaseEntity> {
+  fields(): (keyof T)[] {
     return [
       'id',
       'active',
@@ -23,7 +23,7 @@ export class __BaseEntityMetadata implements EntityMetadata<IBaseEntity> {
       'updatedBy',
     ];
   }
-  tableColumns(): (keyof IBaseEntity)[] {
+  tableColumns(): (keyof T)[] {
     return [
       'id',
       'active',
@@ -35,7 +35,7 @@ export class __BaseEntityMetadata implements EntityMetadata<IBaseEntity> {
     ];
   }
 
-  tableDisplayedColumns(): (keyof IBaseEntity)[] {
+  tableDisplayedColumns(): (keyof T)[] {
     return [
       'id',
       'active',

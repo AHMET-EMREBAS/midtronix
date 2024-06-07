@@ -2,25 +2,29 @@ import {
   BaseEntityMetadata,
   EntityMetadata,
   PropertyMetadata,
+  __BaseEntityMetadata,
 } from '@mdtx/common';
 import { ISample } from './sample';
 
-class ___SampleMetadata implements EntityMetadata<ISample> {
+class ___SampleMetadata
+  extends __BaseEntityMetadata<ISample>
+  implements EntityMetadata<ISample>
+{
   name(): PropertyMetadata<ISample> {
     return {
       label: 'Sample Name',
     };
   }
 
-  fields(): (keyof ISample)[] {
+  override fields(): (keyof ISample)[] {
     return ['name', ...BaseEntityMetadata.fields()];
   }
 
-  tableColumns(): (keyof ISample)[] {
+  override tableColumns(): (keyof ISample)[] {
     return ['name', ...BaseEntityMetadata.tableColumns()];
   }
 
-  tableDisplayedColumns(): (keyof ISample)[] {
+  override tableDisplayedColumns(): (keyof ISample)[] {
     return ['name', ...BaseEntityMetadata.tableDisplayedColumns()];
   }
 }

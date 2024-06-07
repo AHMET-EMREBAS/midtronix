@@ -1,0 +1,62 @@
+<div class="table-container">
+  <mat-form-field appearance="fill">
+    <input
+      type="search"
+      #searchInput="ngModel"
+      ngModel
+      matInput
+      placeholder="Search"
+      autocomplete="off"
+      (input)="search$.next(searchInput.value)"
+    />
+  </mat-form-field>
+
+  <mat-table
+    #tableRef
+    *ngIf="data$ | async as data"
+    [dataSource]="data"
+    matSort
+    matSortActive="created"
+    matSortDisableClear
+    matSortDirection="desc"
+    (matSortChange)="sort$.next($event)"
+  >
+    <ng-container matColumnDef="__firstColumn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button
+          class="open-in-new-button"
+          mat-icon-button
+          (click)="openItemEditor(row)"
+          color="primary"
+        >
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    @for(c of __columns(); track c){
+    <ng-container [matColumnDef]="c.name.toString()">
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        {{ c.label || c.name.toString() || '' | titlecase }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        {{ c.value ? c.value(row) : row[c.name] }}
+      </mat-cell>
+    </ng-container>
+    }
+
+    <mat-header-row *matHeaderRowDef="columnNames()"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnNames()"></mat-row>
+  </mat-table>
+
+  <mat-paginator
+    #paginatorRef
+    [length]="count$ | async"
+    [pageIndex]="0"
+    [pageSize]="4"
+    [pageSizeOptions]="[4, 8, 12, 16, 20]"
+    (page)="page$.next($event)"
+  ></mat-paginator>
+</div>
