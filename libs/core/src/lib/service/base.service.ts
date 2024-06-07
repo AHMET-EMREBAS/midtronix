@@ -5,6 +5,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
+import { CountResponse } from '../response';
 
 export class BaseService<T extends AllPropertyType<IID, any>> {
   protected readonly metadata = this.repo.metadata;
@@ -19,19 +20,28 @@ export class BaseService<T extends AllPropertyType<IID, any>> {
     return this.metadata.targetName;
   }
 
-  protected log(method: string, payload: any) {
+  protected log(method: string, payload: unknown) {
     this.logger.debug(method, payload);
   }
 
-  protected error(method: string, payload: any) {
+  protected error(method: string, payload: unknown) {
     this.logger.error(method, payload);
   }
 
   async count(
     query: Omit<IBaseQueryDto, 'take' | 'skip' | 'withDeleted' | 'order'>
-  ) {
+  ): Promise<CountResponse> {
     this.log(this.count.name, query);
-    return await this.repo.count(query);
+
+    try {
+      const count = await this.repo.count(query);
+
+      return { count };
+    } catch (err) {
+      this.error(this.count.name, query);
+      this.error(this.count.name, err);
+      throw new InternalServerErrorException();
+    }
   }
 
   async findAll(query?: IBaseQueryDto) {

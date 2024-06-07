@@ -1,7 +1,7 @@
 import { IID } from '@mdtx/common';
 import { BasicController } from './basic.controller';
 import { Type } from '@nestjs/common';
-import { RelationDto, UnsetRelationDto } from '../entity';
+import { RelationDto, UnsetRelationDto } from '../service';
 import { RestRouteBuilder } from '../rest';
 import { DeepPartial } from 'typeorm';
 import { BaseGeneralQuery } from '../dto';

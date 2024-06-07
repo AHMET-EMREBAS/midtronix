@@ -2,12 +2,12 @@ import { AuthApiPathBuilder, AuthApiPaths } from '@mdtx/utils';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import {
   IForgotPasswordDto,
-  IForgotPasswordResult,
+  IForgotPasswordResponse,
   ILoginDto,
-  ILoginResult,
-  ILogoutResult,
+  ILoginResponse,
+  ILogoutResponse,
   IUpdatePasswordDto,
-  IUpdatePasswordResult,
+  IUpdatePasswordResponse,
 } from '../auth';
 
 export class AuthClientService {
@@ -33,7 +33,7 @@ export class AuthClientService {
   }
 
   async login(body: ILoginDto) {
-    const res = await axios.post<ILoginDto, AxiosResponse<ILoginResult>>(
+    const res = await axios.post<ILoginDto, AxiosResponse<ILoginResponse>>(
       this.__path(this.apiPaths.LoginPath),
       body,
       this.__config()
@@ -42,7 +42,7 @@ export class AuthClientService {
   }
 
   async logout() {
-    const res = await axios.post<any, AxiosResponse<ILogoutResult>>(
+    const res = await axios.post<any, AxiosResponse<ILogoutResponse>>(
       this.__path(this.apiPaths.LogoutPath),
       undefined,
       this.__config()
@@ -51,7 +51,7 @@ export class AuthClientService {
   }
 
   async forgotPassword(body: IForgotPasswordDto) {
-    const res = await axios.post<any, AxiosResponse<IForgotPasswordResult>>(
+    const res = await axios.post<any, AxiosResponse<IForgotPasswordResponse>>(
       this.__path(this.apiPaths.ForgotPasswordPath),
       body,
       this.__config()
@@ -60,7 +60,7 @@ export class AuthClientService {
   }
 
   async updatePassword(body: IUpdatePasswordDto) {
-    const res = await axios.post<any, AxiosResponse<IUpdatePasswordResult>>(
+    const res = await axios.post<any, AxiosResponse<IUpdatePasswordResponse>>(
       this.__path(this.apiPaths.UpdatePasswordPath),
       body,
       this.__config()

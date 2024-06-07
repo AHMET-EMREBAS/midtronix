@@ -1,5 +1,5 @@
 import { AllPropertyType, IBaseQueryDto, IID } from '@mdtx/common';
-import { BaseViewEntityService } from '../entity';
+import { BaseViewEntityService } from '../service';
 import { AdvanceLogger } from '../logger';
 import { AuthDto } from '../auth';
 

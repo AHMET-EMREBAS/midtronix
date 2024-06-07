@@ -1,5 +1,5 @@
 import { IBaseQueryDto, IID } from '@mdtx/common';
-import { BaseEntityService, RelationDto, UnsetRelationDto } from '../entity';
+import { BaseEntityService, RelationDto, UnsetRelationDto } from '../service';
 import { AdvanceLogger } from '../logger';
 import { AuthDto } from '../auth';
 import { DeepPartial } from 'typeorm';

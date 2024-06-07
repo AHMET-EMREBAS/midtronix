@@ -1,8 +1,9 @@
-export class MessageResponse {
-  message!: string;
+/* eslint-disable @typescript-eslint/no-empty-interface */
+export interface IMessageResponse {
+  message: string;
 }
 
-export class IContraintsResponse {}
+export interface IContraintsResponse {}
 
 export interface IInputValidationResponse {
   property: string;
