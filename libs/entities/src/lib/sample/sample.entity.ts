@@ -1,6 +1,5 @@
 import { ISample } from '@mdtx/models';
-import { BaseEntity, UniqueColumn } from '@mdtx/core';
-import { Entity } from 'typeorm';
+import { BaseEntity, UniqueColumn, Entity } from '@mdtx/core';
 
 @Entity()
 export class Sample extends BaseEntity implements ISample {

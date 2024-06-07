@@ -1,6 +1,8 @@
 import { DataSource, Repository } from 'typeorm';
 import { Sample, SampleView } from '@mdtx/entities';
-
+import { Test } from '@nestjs/testing';
+import { SampleModule } from './sample.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 describe('SampleModule', () => {
   let ds: DataSource;
 
@@ -8,6 +10,18 @@ describe('SampleModule', () => {
   let sampleViewRepo: Repository<SampleView>;
 
   beforeAll(async () => {
+    Test.createTestingModule({
+      imports: [
+        TypeOrmModule.forRoot({
+          type: 'better-sqlite3',
+          database: 'tmp/database/sample-module.sqlite',
+          autoLoadEntities: true,
+          synchronize: true,
+          dropSchema: true,
+        }),
+        SampleModule,
+      ],
+    });
     ds = await new DataSource({
       type: 'better-sqlite3',
       database: 'tmp/database/sample-module.sqlite',

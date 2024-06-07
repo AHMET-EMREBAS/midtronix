@@ -1,17 +1,17 @@
-import { IBaseEntity } from '../base';
-import { AllPropertyType } from './all-property-type';
+import { IBaseEntity, IBaseView } from '../base';
 import { PropertyMetadata } from './property-metadata';
 
-export type EntityMetadata<T> = AllPropertyType<
-  Omit<T, keyof IBaseEntity>,
-  () => PropertyMetadata<T>
-> & {
+export type EntityMetadata<T> = Record<keyof T, () => PropertyMetadata<T>>;
+
+export type CommonMetadata<T> = {
   fields: () => (keyof T)[];
-  tableColumns: () => (keyof T)[];
-  tableDisplayedColumns: () => (keyof T)[];
+  tableColumns: () => PropertyMetadata<T>[];
+  tableDisplayedColumns: () => PropertyMetadata<T>[];
 };
 
-export class __BaseEntityMetadata<T extends IBaseEntity> {
+export class BaseEntityMetadata<T extends IBaseEntity>
+  implements CommonMetadata<T>
+{
   fields(): (keyof T)[] {
     return [
       'id',
@@ -23,31 +23,27 @@ export class __BaseEntityMetadata<T extends IBaseEntity> {
       'updatedBy',
     ];
   }
-  tableColumns(): (keyof T)[] {
+  tableColumns(): PropertyMetadata<T>[] {
     return [
-      'id',
-      'active',
-      'createdAt',
-      'updatedAt',
-      'deletedAt',
-      'createdBy',
-      'updatedBy',
+      this.id(),
+      this.createdAt(),
+      this.updatedAt(),
+      this.deletedAt(),
+      this.active(),
     ];
   }
 
-  tableDisplayedColumns(): (keyof T)[] {
+  tableDisplayedColumns(): PropertyMetadata<T>[] {
     return [
-      'id',
-      'active',
-      'createdAt',
-      'updatedAt',
-      'deletedAt',
-      'createdBy',
-      'updatedBy',
+      this.id(),
+      this.createdAt(),
+      this.updatedAt(),
+      this.deletedAt(),
+      this.active(),
     ];
   }
 
-  createdAt(): PropertyMetadata<IBaseEntity> {
+  createdAt(): PropertyMetadata<T> {
     return {
       label: 'Created',
       mapValue(value) {
@@ -58,7 +54,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity> {
       },
     };
   }
-  updatedAt(): PropertyMetadata<IBaseEntity> {
+  updatedAt(): PropertyMetadata<T> {
     return {
       label: 'Updated',
       mapValue(value) {
@@ -69,7 +65,8 @@ export class __BaseEntityMetadata<T extends IBaseEntity> {
       },
     };
   }
-  deletedAt(): PropertyMetadata<IBaseEntity> {
+
+  deletedAt(): PropertyMetadata<T> {
     return {
       label: 'Deleted',
       mapValue(value) {
@@ -81,28 +78,123 @@ export class __BaseEntityMetadata<T extends IBaseEntity> {
     };
   }
 
-  createdBy(): PropertyMetadata<IBaseEntity> {
+  createdBy(): PropertyMetadata<T> {
     return {
       label: 'Creator',
     };
   }
 
-  updatedBy(): PropertyMetadata<IBaseEntity> {
+  updatedBy(): PropertyMetadata<T> {
     return {
       label: 'Updator',
     };
   }
-  active(): PropertyMetadata<IBaseEntity> {
+
+  active(): PropertyMetadata<T> {
     return {
       label: 'Created',
     };
   }
 
-  id(): PropertyMetadata<IBaseEntity> {
+  id(): PropertyMetadata<T> {
     return {
       label: '#',
+      prefixIcon: 'numbers',
     };
   }
 }
 
-export const BaseEntityMetadata = new __BaseEntityMetadata();
+export class BaseViewMetadata<T extends IBaseView>
+  implements CommonMetadata<T>
+{
+  fields(): (keyof T)[] {
+    return [
+      'id',
+      'active',
+      'createdAt',
+      'updatedAt',
+      'deletedAt',
+      'createdBy',
+      'updatedBy',
+    ];
+  }
+  tableColumns(): PropertyMetadata<T>[] {
+    return [
+      this.id(),
+      this.createdAt(),
+      this.updatedAt(),
+      this.deletedAt(),
+      this.active(),
+    ];
+  }
+
+  tableDisplayedColumns(): PropertyMetadata<T>[] {
+    return [
+      this.id(),
+      this.createdAt(),
+      this.updatedAt(),
+      this.deletedAt(),
+      this.active(),
+    ];
+  }
+
+  createdAt(): PropertyMetadata<T> {
+    return {
+      label: 'Created',
+      mapValue(value) {
+        if (value) {
+          return new Date(value.createdAt).toLocaleDateString();
+        }
+        return '';
+      },
+    };
+  }
+  updatedAt(): PropertyMetadata<T> {
+    return {
+      label: 'Updated',
+      mapValue(value) {
+        if (value) {
+          return new Date(value.updatedAt).toLocaleDateString();
+        }
+        return '';
+      },
+    };
+  }
+
+  deletedAt(): PropertyMetadata<T> {
+    return {
+      label: 'Deleted',
+      mapValue(value) {
+        if (value) {
+          return new Date(value.deletedAt).toLocaleDateString();
+        }
+        return '';
+      },
+    };
+  }
+
+  createdBy(): PropertyMetadata<T> {
+    return {
+      label: 'Creator',
+    };
+  }
+
+  updatedBy(): PropertyMetadata<T> {
+    return {
+      label: 'Updator',
+    };
+  }
+
+  active(): PropertyMetadata<T> {
+    return {
+      label: 'Created',
+    };
+  }
+
+  id(): PropertyMetadata<T> {
+    return {
+      label: '#',
+      prefixIcon: 'numbers',
+    };
+  }
+}

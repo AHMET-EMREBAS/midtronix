@@ -17,7 +17,7 @@ export class SampleController extends CreateBasicController<
   CreateSampleDto,
   UdpateSampleDto,
   QuerySample
->(SampleRRB, CreateSampleDto, UdpateSampleDto, QuerySample) {
+>(SampleRRB, Sample, CreateSampleDto, UdpateSampleDto, QuerySample) {
   constructor(service: SampleService) {
     super(service);
   }

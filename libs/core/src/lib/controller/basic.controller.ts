@@ -28,7 +28,7 @@ export class BasicController<
     return this.service.findAll(query);
   }
 
-  findOneById(id: number, authDto: AuthDto) {
+  findOneById(id: T['id'], authDto: AuthDto) {
     this.logger.debug(this.findOneById.name, { id });
     this.logger.debug(this.findOneById.name, authDto);
     return this.service.findOneById(id);
@@ -40,13 +40,13 @@ export class BasicController<
     return this.service.saveOne(entity);
   }
 
-  updateOne(id: number, entity: UpdateDto, authDto: AuthDto) {
+  updateOne(id: T['id'], entity: UpdateDto, authDto: AuthDto) {
     this.logger.debug(this.updateOne.name, { id, ...entity });
     this.logger.debug(this.updateOne.name, authDto);
     return this.service.updateOne(id, entity);
   }
 
-  deleteOneById(id: number, authDto: AuthDto) {
+  deleteOneById(id: T['id'], authDto: AuthDto) {
     this.logger.debug(this.updateOne.name, { id });
     this.logger.debug(this.updateOne.name, authDto);
     return this.service.deleteOneById(id);

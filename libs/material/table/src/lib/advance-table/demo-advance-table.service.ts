@@ -1,4 +1,3 @@
-import { IAdvanceTableDataService } from './advance-table-data.service';
 import { IID } from '@mdtx/common';
 import {
   BehaviorSubject,
@@ -134,7 +133,7 @@ const data = [
   },
 ];
 
-export class AdvanceTableService implements IAdvanceTableDataService<IID> {
+export class AdvanceTableService {
   search$ = new BehaviorSubject<string>('');
   page$ = new BehaviorSubject<PageEvent | null>(null);
   sort$ = new BehaviorSubject<Sort | null>(null);

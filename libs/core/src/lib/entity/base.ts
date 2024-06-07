@@ -3,24 +3,42 @@ import {
   DeleteDateColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  ViewColumn,
 } from 'typeorm';
 import { IBaseEntity, IBaseView } from '@mdtx/common';
-import { BooleanColumn, IntegerColumn } from '../column';
+import { BooleanColumn, IntegerColumn, ViewColumn } from '../typeorm';
+import { Property } from '../property';
 
 /**
  * ALl entitites extends this class
  */
 export class BaseEntity implements IBaseEntity {
-  @PrimaryGeneratedColumn() id!: number;
-  @CreateDateColumn() createdAt!: Date;
-  @UpdateDateColumn() updatedAt!: Date;
+  @PrimaryGeneratedColumn()
+  @Property({ type: 'number' })
+  id!: number;
 
-  
-  @DeleteDateColumn() deletedAt!: Date;
-  @IntegerColumn() createdBy!: number;
-  @IntegerColumn() updatedBy!: number;
-  @BooleanColumn() active!: boolean;
+  @CreateDateColumn()
+  @Property({ type: 'date' })
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  @Property({ type: 'date' })
+  updatedAt!: Date;
+
+  @DeleteDateColumn()
+  @Property({ type: 'date' })
+  deletedAt!: Date;
+
+  @IntegerColumn()
+  @Property({ type: 'number' })
+  createdBy!: number;
+
+  @IntegerColumn()
+  @Property({ type: 'number' })
+  updatedBy!: number;
+
+  @BooleanColumn()
+  @Property({ type: 'boolean' })
+  active!: boolean;
 }
 
 export class BaseView implements IBaseView {

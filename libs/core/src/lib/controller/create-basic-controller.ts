@@ -14,21 +14,19 @@ export function CreateBasicController<
   Q extends BaseGeneralQuery
 >(
   RRB: RestRouteBuilder,
+  entity: Type<T>,
   createDto: Type<C>,
   udpateDto: Type<U>,
   queryDto: Type<Q>
 ): Type<BasicController<T, C, U, Q>> {
   @RRB.Controler()
   class DynamicController extends BasicController<T, C, U, Q> {
-
     @RRB.Count(queryDto)
     override count(query: Q, authDto: AuthDto) {
-      this.logger.debug(this.count.name, query);
-      this.logger.debug(this.count.name, authDto);
       return super.count(query, authDto);
     }
 
-    @RRB.FindAll(queryDto)
+    @RRB.FindAll(queryDto, entity)
     override findAll(
       @RRB.Query(queryDto) query: Q,
       @RRB.AuthParam() authDto: AuthDto
@@ -36,7 +34,7 @@ export function CreateBasicController<
       return super.findAll(query, authDto);
     }
 
-    @RRB.FindOneById()
+    @RRB.FindOneById(entity)
     override findOneById(
       @RRB.ParamID() id: number,
       @RRB.AuthParam() authDto: AuthDto
@@ -44,7 +42,7 @@ export function CreateBasicController<
       return super.findOneById(id, authDto);
     }
 
-    @RRB.SaveOne(createDto)
+    @RRB.SaveOne(createDto, entity)
     override saveOne(
       @RRB.Body(createDto) entity: C,
       @RRB.AuthParam() authDto: AuthDto

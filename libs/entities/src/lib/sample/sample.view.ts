@@ -1,6 +1,6 @@
-import { BaseView } from '@mdtx/core';
+import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
 import { ISampleView } from '@mdtx/models';
-import { ViewColumn, ViewEntity } from 'typeorm';
+
 import { Sample } from './sample.entity';
 
 @ViewEntity({

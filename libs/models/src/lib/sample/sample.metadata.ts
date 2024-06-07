@@ -1,13 +1,12 @@
 import {
-  BaseEntityMetadata,
   EntityMetadata,
   PropertyMetadata,
-  __BaseEntityMetadata,
+  BaseEntityMetadata,
 } from '@mdtx/common';
 import { ISample } from './sample';
 
 class ___SampleMetadata
-  extends __BaseEntityMetadata<ISample>
+  extends BaseEntityMetadata<ISample>
   implements EntityMetadata<ISample>
 {
   name(): PropertyMetadata<ISample> {
@@ -17,15 +16,15 @@ class ___SampleMetadata
   }
 
   override fields(): (keyof ISample)[] {
-    return ['name', ...BaseEntityMetadata.fields()];
+    return ['name', ...super.fields()];
   }
 
-  override tableColumns(): (keyof ISample)[] {
-    return ['name', ...BaseEntityMetadata.tableColumns()];
+  override tableColumns(): PropertyMetadata<ISample>[] {
+    return [this.name(), ...super.tableColumns()];
   }
 
-  override tableDisplayedColumns(): (keyof ISample)[] {
-    return ['name', ...BaseEntityMetadata.tableDisplayedColumns()];
+  override tableDisplayedColumns(): PropertyMetadata<ISample>[] {
+    return [this.name(), ...super.tableDisplayedColumns()];
   }
 }
 

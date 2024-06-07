@@ -1,29 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IBaseEntity, IBaseQueryDto, IID } from '@mdtx/common';
-import { DeepPartial, FindOptionsWhere, ILike, Repository } from 'typeorm';
+import { IID } from '@mdtx/common';
+import { DeepPartial, ILike, Repository } from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
-import { AdvanceLogger } from '../logger';
-import {
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
-
+import { InternalServerErrorException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { BaseService } from './base.service';
 import { InputValidationException } from '../error';
 
-export class BaseEntityService<T extends IID = IID> {
-  private readonly metadata = this.repo.metadata;
+export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
   private readonly uniqueColumns = this.metadata.uniques.map(
     (e) => e.columns[0].propertyName
   );
 
-  protected readonly logger!: AdvanceLogger;
-
-  constructor(
-    protected readonly repo: Repository<T>,
-    protected readonly event: EventEmitter2
-  ) {
-    this.logger = new AdvanceLogger(repo.metadata.targetName + 'Service');
+  constructor(repo: Repository<T>, protected readonly event: EventEmitter2) {
+    super(repo);
   }
 
   private async isUniqueEntity(entity: DeepPartial<T>) {
@@ -56,84 +46,6 @@ export class BaseEntityService<T extends IID = IID> {
         }
       }
     }
-  }
-
-  entityName() {
-    return this.repo.metadata.targetName;
-  }
-
-  protected context(suffix = '') {
-    return this.repo.metadata.targetName + ' ' + suffix;
-  }
-
-  protected log(method: string, payload: any) {
-    this.logger.debug(method, payload);
-  }
-
-  protected error(method: string, payload: any) {
-    this.logger.error(method, payload);
-  }
-
-  async count(
-    query: Omit<IBaseQueryDto, 'take' | 'skip' | 'withDeleted' | 'order'>
-  ) {
-    this.log(this.count.name, query);
-    return await this.repo.count(query);
-  }
-
-  async findAll(query?: IBaseQueryDto) {
-    this.log(this.findAll.name, query);
-    if (query) {
-      const { search, order, skip, take, where, withDeleted } = query;
-      const whereObj = where ?? search;
-      try {
-        return await this.repo.find({
-          take,
-          skip,
-          withDeleted,
-          order,
-          where: whereObj,
-        });
-      } catch (err) {
-        this.error(this.findAll.name, query);
-        this.error(this.findAll.name, err);
-        throw new InternalServerErrorException();
-      }
-    }
-    return await this.repo.find({ take: 100 });
-  }
-
-  async findOneById(id: T['id']) {
-    this.log(this.findOneById.name, { id });
-    let found: T | null;
-    try {
-      found = await this.repo.findOneBy({ id } as FindOptionsWhere<T>);
-    } catch (err) {
-      this.error(this.findOneById.name, { id });
-      throw new InternalServerErrorException();
-    }
-
-    if (found) return found;
-
-    throw new NotFoundException();
-  }
-
-  async findOneBy<P extends keyof T>(key: P, value: T[P]) {
-    this.log(this.findOneBy.name, { key, value });
-
-    let found: T | null;
-
-    try {
-      found = await this.repo.findOneBy({
-        [key]: value,
-      } as FindOptionsWhere<T>);
-    } catch (err) {
-      this.error(this.findOneBy.name, { key, value, err });
-      throw new InternalServerErrorException();
-    }
-    if (found) return found;
-
-    throw new NotFoundException();
   }
 
   protected eventName(methodName: string) {

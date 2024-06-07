@@ -1,5 +1,5 @@
 import { Inject, Provider, Type } from '@nestjs/common';
-import { BaseEntityService } from './entity.service';
+import { BaseEntityService } from './base-entity.service';
 
 export function entityServiceToken(entity: Type) {
   return `${entity.name}_SERVICE`.toUpperCase();
