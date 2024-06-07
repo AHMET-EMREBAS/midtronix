@@ -1,3 +1,5 @@
+import { KeyOf } from './keysof';
+
 export type StatusClass =
   | 'succes'
   | 'error'
@@ -6,7 +8,7 @@ export type StatusClass =
   | 'current';
 
 export type PropertyMetadata<T> = {
-  name?: keyof T;
+  name: KeyOf<T>;
   label?: string;
   prefixText?: string;
   suffixText?: string;
@@ -17,9 +19,10 @@ export type PropertyMetadata<T> = {
   maxlength?: number;
   min?: number;
   max?: number;
-  moreThanProperty?: keyof T;
-  lessThanProperty?: keyof T;
-  equalToProperty?: keyof T;
+  moreThanProperty?: KeyOf<T>;
+  lessThanProperty?: KeyOf<T>;
+  equalToProperty?: KeyOf<T>;
   mapValue?: (value: T) => string;
   statusClass?: (value: T) => StatusClass;
+  order?: number;
 };

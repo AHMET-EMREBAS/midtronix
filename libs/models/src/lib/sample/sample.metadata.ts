@@ -2,6 +2,8 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseEntityMetadata,
+  TableFields,
+  KeyOf,
 } from '@mdtx/common';
 import { ISample } from './sample';
 
@@ -11,19 +13,21 @@ export class SampleMetadata
 {
   name(): PropertyMetadata<ISample> {
     return {
-      label: 'Sample Name',
+      name: 'name',
+      label: 'Name',
+      order: 201,
     };
   }
 
-  override fields(): (keyof ISample)[] {
-    return ['name', ...super.fields()];
+  override propertyNames(): KeyOf<ISample>[] {
+    return [this.name().name, ...super.propertyNames()];
+  }
+
+  override tableColumnNames(): TableFields<ISample> {
+    return [...super.tableColumnNames()];
   }
 
   override tableColumns(): PropertyMetadata<ISample>[] {
     return [this.name(), ...super.tableColumns()];
-  }
-
-  override tableDisplayedColumns(): PropertyMetadata<ISample>[] {
-    return [this.name(), ...super.tableDisplayedColumns()];
   }
 }

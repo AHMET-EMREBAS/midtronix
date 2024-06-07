@@ -1,18 +1,39 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IBaseEntity, IBaseView } from '../base';
+import { KeyOf } from './keysof';
 import { PropertyMetadata } from './property-metadata';
 
+export type TableFields<T> = (KeyOf<T> | 'firstColumn' | 'lastColumn')[];
 export type CommonMetadata<T> = {
-  fields: () => (keyof T)[];
+  /**
+   * Table column names
+   * @returns
+   */
+  tableColumnNames: () => TableFields<T>;
+
+  /**
+   * Table/Form field metadata
+   * @returns
+   */
   tableColumns: () => PropertyMetadata<T>[];
-  tableDisplayedColumns: () => PropertyMetadata<T>[];
+
+  /**
+   * For search functionality
+   * @returns
+   */
+  propertyNames: () => KeyOf<T>[];
 };
 
 export type EntityMetadata<T> = Record<keyof T, () => PropertyMetadata<T>>;
 
-export class BaseEntityMetadata<T extends IBaseEntity>
+export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   implements CommonMetadata<T>
 {
-  fields(): (keyof T)[] {
+  /**
+   * For Order/Query Dto Creation
+   * @returns
+   */
+  propertyNames(): KeyOf<T>[] {
     return [
       'id',
       'active',
@@ -23,28 +44,41 @@ export class BaseEntityMetadata<T extends IBaseEntity>
       'updatedBy',
     ];
   }
+
+  tableColumnNames(): TableFields<T> {
+    return this.sortedTableColumns().map((e) => {
+      return e.name;
+    });
+  }
+
   tableColumns(): PropertyMetadata<T>[] {
     return [
       this.id(),
       this.createdAt(),
       this.updatedAt(),
       this.deletedAt(),
+      this.createdBy(),
+      this.updatedBy(),
       this.active(),
     ];
   }
 
-  tableDisplayedColumns(): PropertyMetadata<T>[] {
-    return [
-      this.id(),
-      this.createdAt(),
-      this.updatedAt(),
-      this.deletedAt(),
-      this.active(),
-    ];
+  sortedTableColumns() {
+    return this.tableColumns()
+      .map((e) => {
+        if (e.order) return e;
+        return { ...e, order: 21 };
+      })
+      .sort((p, c) => {
+        if (!p.order || !c.order)
+          throw new Error('order property is required!');
+        return p.order > c.order ? 1 : p.order < c.order ? -1 : 0;
+      });
   }
 
   createdAt(): PropertyMetadata<T> {
     return {
+      name: 'createdAt',
       label: 'Created',
       mapValue(value) {
         if (value) {
@@ -52,10 +86,12 @@ export class BaseEntityMetadata<T extends IBaseEntity>
         }
         return '';
       },
+      order: 301,
     };
   }
   updatedAt(): PropertyMetadata<T> {
     return {
+      name: 'updatedAt',
       label: 'Updated',
       mapValue(value) {
         if (value) {
@@ -63,11 +99,13 @@ export class BaseEntityMetadata<T extends IBaseEntity>
         }
         return '';
       },
+      order: 302,
     };
   }
 
   deletedAt(): PropertyMetadata<T> {
     return {
+      name: 'deletedAt',
       label: 'Deleted',
       mapValue(value) {
         if (value) {
@@ -75,126 +113,66 @@ export class BaseEntityMetadata<T extends IBaseEntity>
         }
         return '';
       },
+      order: 303,
     };
   }
 
   createdBy(): PropertyMetadata<T> {
     return {
+      name: 'createdBy',
       label: 'Creator',
+      order: 304,
     };
   }
 
   updatedBy(): PropertyMetadata<T> {
     return {
+      name: 'updatedBy',
       label: 'Updator',
+      order: 305,
     };
   }
 
   active(): PropertyMetadata<T> {
     return {
+      name: 'active',
       label: 'Created',
+      order: 306,
     };
   }
 
   id(): PropertyMetadata<T> {
     return {
+      name: 'id',
       label: '#',
       prefixIcon: 'numbers',
+      order: 101,
+    };
+  }
+
+  firstColumn(): PropertyMetadata<any> {
+    return {
+      name: 'firstColumn',
+      label: 'Fist Column',
+      order: 100,
+    };
+  }
+
+  lastColumn(): PropertyMetadata<any> {
+    return {
+      name: 'lastColumn',
+      label: 'Last Column',
+      order: 601,
     };
   }
 }
+
+export class BaseEntityMetadata<T extends IBaseEntity>
+  extends __BaseEntityMetadata<T>
+  implements CommonMetadata<T> {}
 
 export class BaseViewMetadata<T extends IBaseView>
-  implements CommonMetadata<T>
-{
-  fields(): (keyof T)[] {
-    return [
-      'id',
-      'active',
-      'createdAt',
-      'updatedAt',
-      'deletedAt',
-      'createdBy',
-      'updatedBy',
-    ];
-  }
-  tableColumns(): PropertyMetadata<T>[] {
-    return [
-      this.id(),
-      this.createdAt(),
-      this.updatedAt(),
-      this.deletedAt(),
-      this.active(),
-    ];
-  }
+  extends __BaseEntityMetadata<T>
+  implements CommonMetadata<T> {}
 
-  tableDisplayedColumns(): PropertyMetadata<T>[] {
-    return [
-      this.id(),
-      this.createdAt(),
-      this.updatedAt(),
-      this.deletedAt(),
-      this.active(),
-    ];
-  }
-
-  createdAt(): PropertyMetadata<T> {
-    return {
-      label: 'Created',
-      mapValue(value) {
-        if (value) {
-          return new Date(value.createdAt).toLocaleDateString();
-        }
-        return '';
-      },
-    };
-  }
-  updatedAt(): PropertyMetadata<T> {
-    return {
-      label: 'Updated',
-      mapValue(value) {
-        if (value) {
-          return new Date(value.updatedAt).toLocaleDateString();
-        }
-        return '';
-      },
-    };
-  }
-
-  deletedAt(): PropertyMetadata<T> {
-    return {
-      label: 'Deleted',
-      mapValue(value) {
-        if (value) {
-          return new Date(value.deletedAt).toLocaleDateString();
-        }
-        return '';
-      },
-    };
-  }
-
-  createdBy(): PropertyMetadata<T> {
-    return {
-      label: 'Creator',
-    };
-  }
-
-  updatedBy(): PropertyMetadata<T> {
-    return {
-      label: 'Updator',
-    };
-  }
-
-  active(): PropertyMetadata<T> {
-    return {
-      label: 'Created',
-    };
-  }
-
-  id(): PropertyMetadata<T> {
-    return {
-      label: '#',
-      prefixIcon: 'numbers',
-    };
-  }
-}
+export type ClientEntityMetadata<T extends IBaseEntity> = BaseEntityMetadata<T>;

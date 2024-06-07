@@ -2,6 +2,8 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
+  TableFields,
+  KeyOf,
 } from '@mdtx/common';
 import { ISampleView } from './sample-view';
 
@@ -10,24 +12,25 @@ export class SampleViewMetadata
   implements EntityMetadata<ISampleView>
 {
   sampleId(): PropertyMetadata<ISampleView> {
-    return { label: 'Sample Id', suffixIcon: 'numbers' };
+    return { name: 'sampleId', label: 'Sample Id', suffixIcon: 'numbers' };
   }
   name(): PropertyMetadata<ISampleView> {
     return {
+      name: 'name',
       label: 'Sample Name',
       suffixIcon: 'info',
     };
   }
 
-  override fields(): (keyof ISampleView)[] {
-    return ['name', ...super.fields()];
+  override tableColumnNames(): TableFields<ISampleView> {
+    return ['name', ...super.tableColumnNames()];
+  }
+
+  override propertyNames(): KeyOf<ISampleView>[] {
+    return [this.name().name, this.sampleId().name, ...super.propertyNames()];
   }
 
   override tableColumns(): PropertyMetadata<ISampleView>[] {
     return [this.name(), this.sampleId(), ...super.tableColumns()];
-  }
-
-  override tableDisplayedColumns(): PropertyMetadata<ISampleView>[] {
-    return [this.name(), this.sampleId(), ...super.tableDisplayedColumns()];
   }
 }

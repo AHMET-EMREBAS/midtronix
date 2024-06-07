@@ -2,24 +2,25 @@ import {
   Component,
   EventEmitter,
   Inject,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { IID } from '@mdtx/common';
+import {
+  ClientEntityMetadata,
+  IBaseEntity,
+  KeyOf,
+  PropertyMetadata,
+  TableFields,
+} from '@mdtx/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import {
-  BehaviorSubject,
-  combineLatest,
-  debounceTime,
-  map,
-  switchMap,
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, debounceTime, switchMap } from 'rxjs';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -29,7 +30,6 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EntityMetadata } from '@ngrx/data';
 import { CollectionBaseService } from '@mdtx/material/core';
 import {
   getAdvanceTableCollectionServiceToken,
@@ -60,7 +60,12 @@ export type QueryType = {
   templateUrl: './advance-table.component.html',
   styleUrl: './advance-table.component.scss',
 })
-export class AdvanceTableComponent<T extends IID = IID> {
+export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
+  tableColumnNames!: TableFields<T>;
+  firstColumn!: PropertyMetadata<T>;
+  lastColumn!: PropertyMetadata<T>;
+  sortedTableColumns!: PropertyMetadata<T>[];
+
   selectedItemIds = new Set<number>();
   @ViewChild('tableRef') tableRef!: MatTable<T>;
   @ViewChild('paginatorRef') paginatorRef!: MatPaginator;
@@ -86,7 +91,7 @@ export class AdvanceTableComponent<T extends IID = IID> {
         page,
         sort,
       });
-      return this.service.getWithQuery({
+      return this.service.findAll({
         take: page.pageSize,
         skip: page.pageIndex * page.pageSize,
         withDeleted: page.pageSize,
@@ -104,7 +109,7 @@ export class AdvanceTableComponent<T extends IID = IID> {
 
   constructor(
     @Inject(getAdvanceTableMetadataToken())
-    protected readonly metadata: EntityMetadata<T>,
+    protected readonly metadata: ClientEntityMetadata<T>,
 
     @Inject(getAdvanceTableCollectionServiceToken())
     public readonly service: CollectionBaseService<T>,
@@ -112,27 +117,11 @@ export class AdvanceTableComponent<T extends IID = IID> {
     public readonly route: ActivatedRoute
   ) {}
 
-  __columns() {
-    return Object.values(this.metadata);
-  }
-  __displayColumns() {
-    return Object.values(this.metadata);
-  }
-
-  __columnNames() {
-    return [...this.__columns().map((e) => e.name)];
-  }
-
-  __displayedColumnNames() {
-    return [...this.__displayColumns().map((e) => e.name)];
-  }
-
-  columnNames() {
-    return ['__firstColumn', ...this.__columnNames()];
-  }
-
-  displayedColumnNames() {
-    return ['__firstColumn', ...this.__displayedColumnNames()];
+  ngOnInit(): void {
+    this.tableColumnNames = this.metadata.tableColumnNames();
+    this.firstColumn = this.metadata.firstColumn();
+    this.lastColumn = this.metadata.lastColumn();
+    this.sortedTableColumns = this.metadata.sortedTableColumns();
   }
 
   pageChangeHandler(event: PageEvent) {
@@ -156,6 +145,6 @@ export class AdvanceTableComponent<T extends IID = IID> {
   }
 
   openItemEditor(row: T) {
-    this.router.navigate(['..', 'update', row.id], { relativeTo: this.route });
+    this.router.navigate(['..', 'editor', row.id], { relativeTo: this.route });
   }
 }

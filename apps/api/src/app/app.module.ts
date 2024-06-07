@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
-import { SampleModule } from '@mdtx/resources';
+import { SampleModule, SampleService } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
@@ -50,4 +50,31 @@ import { AppController } from './app.controller';
   ],
   controllers: [AppController],
 })
-export class AppModule {}
+export class AppModule implements OnModuleInit {
+  constructor(protected readonly service: SampleService) {}
+
+  async onModuleInit() {
+    let i = 1;
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'sample 1' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'sample 2' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'sample 3' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'sample 4' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'other 5' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'other 6' });
+    }, i++ * 1000);
+    setTimeout(async () => {
+      await this.service.saveOne({ name: 'other 7' });
+    }, i++ * 1000);
+  }
+}

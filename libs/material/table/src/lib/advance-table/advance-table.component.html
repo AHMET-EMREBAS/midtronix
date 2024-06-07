@@ -1,4 +1,5 @@
 <div class="table-container">
+  {{ sortedTableColumns | json }}
   <mat-form-field appearance="fill">
     <input
       type="search"
@@ -8,6 +9,7 @@
       placeholder="Search"
       autocomplete="off"
       (input)="search$.next(searchInput.value)"
+      style="width: 100%"
     />
   </mat-form-field>
 
@@ -21,8 +23,10 @@
     matSortDirection="desc"
     (matSortChange)="sort$.next($event)"
   >
-    <ng-container matColumnDef="__firstColumn">
+    <!-- First column -->
+    <ng-container [matColumnDef]="firstColumn.name">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        {{ firstColumn.label }}
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button
@@ -36,19 +40,37 @@
       </mat-cell>
     </ng-container>
 
-    @for(c of __columns(); track c){
-    <ng-container [matColumnDef]="c.name.toString()">
+    @for(c of sortedTableColumns; track c){
+    <ng-container [matColumnDef]="c.name">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        {{ c.label || c.name.toString() || '' | titlecase }}
+        {{ c.label || c.name || '' | titlecase }}
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        {{ c.value ? c.value(row) : row[c.name] }}
+        {{ c.mapValue ? c.mapValue(row) : row[c.name] }}
       </mat-cell>
     </ng-container>
     }
 
-    <mat-header-row *matHeaderRowDef="columnNames()"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumnNames()"></mat-row>
+    <!-- Last Column -->
+    <ng-container [matColumnDef]="lastColumn.name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+        {{ lastColumn.label }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button
+          class="open-in-new-button"
+          mat-icon-button
+          (click)="openItemEditor(row)"
+          color="primary"
+        >
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Header configuration -->
+    <mat-header-row *matHeaderRowDef="tableColumnNames"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: tableColumnNames"></mat-row>
   </mat-table>
 
   <mat-paginator

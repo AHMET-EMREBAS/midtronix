@@ -16,7 +16,7 @@ import { CommonFormModule } from './common-form.module';
   template: `
     <form [formGroup]="resourceFormGroup" novalidate>
       <ng-content></ng-content>
-      <div class="row sm-col">
+      <div class="actions">
         <button mat-raised-button color="primary" (click)="formSubmit()">
           Save Product
         </button>

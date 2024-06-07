@@ -38,6 +38,7 @@ export class CollectionBaseService<
   }
 
   findAll(query?: Q) {
+    this.clearCache();
     return this.getWithQuery(query || {}, {
       isOptimistic: false,
       mergeStrategy: MergeStrategy.OverwriteChanges,

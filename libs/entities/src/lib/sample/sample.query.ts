@@ -27,6 +27,6 @@ export class SampleQueryDto extends BasePaginatorQueryDto {
   @WhereProperty(SampleWhereQueryDto)
   where!: SampleWhereQueryDto;
 
-  @OrderProperty<Sample>(SampleMetadataInstance.fields())
+  @OrderProperty<Sample>(SampleMetadataInstance.propertyNames())
   order: any;
 }

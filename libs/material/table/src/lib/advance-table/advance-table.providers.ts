@@ -1,4 +1,4 @@
-import { EntityMetadata } from '@mdtx/common';
+import { ClientEntityMetadata } from '@mdtx/common';
 import {
   CollectionBaseService,
   createClassProvider,
@@ -8,7 +8,7 @@ import {
 export const {
   provide: provideAdvanceTableMetadata,
   token: getAdvanceTableMetadataToken,
-} = createValueProvider<EntityMetadata<unknown>>('ADVANCE_TABLE_METADATA');
+} = createValueProvider<ClientEntityMetadata<any>>('ADVANCE_TABLE_METADATA');
 
 export const {
   provide: provideAdvanceTableCollectionService,
