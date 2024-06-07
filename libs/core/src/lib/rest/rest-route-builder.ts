@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 
 import {
+  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
@@ -35,8 +36,10 @@ import { CreateValidationPipe, ValidationPipe } from '../dto';
 import { ApiVersion } from '@mdtx/common';
 import {
   CountResponse,
+  UnprocessableEntityResponse,
   InternalServerErrorResponse,
   MessageResponse,
+  UnauthorizedResponse,
 } from '../response';
 
 export class RestRouteBuilder {
@@ -58,15 +61,19 @@ export class RestRouteBuilder {
   protected CommonResponses() {
     return applyDecorators(
       ApiInternalServerErrorResponse({
-        description: 'Internal Server Error!',
-        type: MessageResponse,
+        description: 'Internal Server Error',
+        type: InternalServerErrorResponse,
       }),
       ApiUnauthorizedResponse({
-        description: 'User not authorized!',
-        type: MessageResponse,
+        description: 'Unauthorized',
+        type: UnauthorizedResponse,
       }),
       ApiUnprocessableEntityResponse({
-        description: 'Input validation error or Unique constraint!',
+        description: 'Input Validation Error',
+        type: UnprocessableEntityResponse,
+      }),
+      ApiBadRequestResponse({
+        description: 'Bad Request',
         type: MessageResponse,
       })
     );

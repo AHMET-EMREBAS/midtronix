@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { BaseEntity } from '../entity';
+import { BaseEntity } from '../service';
 import { Property } from '../property';
 import { BaseDto } from './base.dto';
 

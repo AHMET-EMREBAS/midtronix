@@ -50,7 +50,7 @@ export function CreateBasicController<
       return super.saveOne(entity, authDto);
     }
 
-    @RRB.UpdateOne(udpateDto)
+    @RRB.UpdateOne(udpateDto, entity)
     override updateOne(
       @RRB.ParamID() id: number,
       @RRB.Body(udpateDto) entity: U,
@@ -59,7 +59,7 @@ export function CreateBasicController<
       return super.updateOne(id, entity, authDto);
     }
 
-    @RRB.DeleteOne()
+    @RRB.DeleteOne(entity)
     override deleteOneById(
       @RRB.ParamID() id: number,
       @RRB.AuthParam() authDto: AuthDto
@@ -67,7 +67,7 @@ export function CreateBasicController<
       return super.deleteOneById(id, authDto);
     }
 
-    @RRB.AddRelation()
+    @RRB.AddRelation(entity)
     override addRelation(
       @RRB.Body() relationDto: RelationDto,
       @RRB.AuthParam() authDto: AuthDto
@@ -75,7 +75,7 @@ export function CreateBasicController<
       return super.addRelation(relationDto, authDto);
     }
 
-    @RRB.RemoveRelation()
+    @RRB.RemoveRelation(entity)
     override removeRelation(
       @RRB.Body() relationDto: RelationDto,
       @RRB.AuthParam() authDto: AuthDto
@@ -83,7 +83,7 @@ export function CreateBasicController<
       return super.removeRelation(relationDto, authDto);
     }
 
-    @RRB.SetRelation()
+    @RRB.SetRelation(entity)
     override setRelation(
       @RRB.Body() relationDto: RelationDto,
       @RRB.AuthParam() authDto: AuthDto
@@ -91,7 +91,7 @@ export function CreateBasicController<
       return super.setRelation(relationDto, authDto);
     }
 
-    @RRB.UnsetRelation()
+    @RRB.UnsetRelation(entity)
     override unsetRelation(
       @RRB.Body() relationDto: UnsetRelationDto,
       @RRB.AuthParam() authDto: AuthDto

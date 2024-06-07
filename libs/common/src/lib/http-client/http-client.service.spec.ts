@@ -1,8 +1,8 @@
-import { HttpClient } from './http-client.service';
-describe('HttpClientService', () => {
-  let httpClient: HttpClient<any, any, any, any>;
+import { ResourceHttpClient } from './resource-http-client.service';
+describe('ResourceHttpClientService', () => {
+  let httpClient: ResourceHttpClient<any, any, any, any>;
   beforeAll(() => {
-    httpClient = new HttpClient('Sample', 'api/v1');
+    httpClient = new ResourceHttpClient('Sample', 'api/v1');
   });
 
   it('should resolve paths correctly', () => {

@@ -1,5 +1,10 @@
 import { Inject, InjectionToken, Provider, Type } from '@angular/core';
-import { CreateProviderResult } from '@mdtx/common';
+
+export interface CreateClassProviderResult<T> {
+  provide(useClass: Type<T>): Provider;
+  inject(): PropertyDecorator;
+  token(): InjectionToken<T>;
+}
 
 /**
  * Create a class provider, injector, and token function
@@ -8,7 +13,7 @@ import { CreateProviderResult } from '@mdtx/common';
  */
 export function createClassProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<Type<T>, Provider, InjectionToken<T>> {
+): CreateClassProviderResult<T> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
     provide(value: Type<T>) {
@@ -33,10 +38,10 @@ export function createClassProvider<T>(
  */
 export function createValueProvider<T>(
   tokenPrefix: string
-): CreateProviderResult<T, Provider, InjectionToken<T>> {
+): CreateClassProviderResult<T> {
   const token = new InjectionToken<T>(tokenPrefix);
   return {
-    provide(value: T) {
+    provide(value: Type<T>) {
       return {
         provide: token,
         useValue: value,

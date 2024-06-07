@@ -10,7 +10,7 @@ import {
   IUpdatePasswordResponse,
 } from '../auth';
 
-export class AuthClientService {
+export class AuthHttpClient {
   readonly apiPaths!: AuthApiPaths;
 
   constructor(

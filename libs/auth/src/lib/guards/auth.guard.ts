@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   CanActivate,
   ExecutionContext,
   Injectable,
   Logger,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from '../auth.service';
 import { Reflector } from '@nestjs/core';
@@ -63,14 +65,16 @@ export class AuthGuard implements CanActivate {
           this.logger.debug('User does not have permission!', {
             permission: 0,
           });
-          return false;
+          throw new UnauthorizedException(
+            'You do not have sufficient privileges for the operation!'
+          );
         } else {
           return true;
         }
       }
     }
 
-    return false;
+    throw new UnauthorizedException('You do not have a sesssion!');
   }
 
   extractAuthToken(request: Request) {

@@ -1,14 +1,23 @@
 import {
   Type,
+  UnprocessableEntityException,
   ValidationPipeOptions,
   ValidationPipe as __ValidationPipe,
 } from '@nestjs/common';
-import { InputValidationException } from '../error';
+import { InputValidationError } from '../response';
 
 const validationPipeOptions: ValidationPipeOptions = {
   transform: true,
   exceptionFactory(errors) {
-    return new InputValidationException(errors);
+    throw new UnprocessableEntityException({
+      message: 'Invalid Input',
+      errors: errors.map((e) => {
+        return new InputValidationError({
+          property: e.property,
+          constraints: e.constraints ?? {},
+        });
+      }),
+    });
   },
 
   transformOptions: {

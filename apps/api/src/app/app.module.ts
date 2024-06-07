@@ -7,9 +7,10 @@ import { SampleModule } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthModule } from '@mdtx/auth';
+import { AuthGuard, AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
 import { AppController } from './app.controller';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -39,7 +40,14 @@ import { AppController } from './app.controller';
     AuthModule.configure(MockUserService),
     SampleModule,
   ],
-  providers: [AppEventService, EventEmitter2],
+  providers: [
+    AppEventService,
+    EventEmitter2,
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+  ],
   controllers: [AppController],
 })
 export class AppModule {}

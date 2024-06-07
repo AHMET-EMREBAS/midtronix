@@ -3,8 +3,8 @@ import { IRelationDto, IUnsetRelationDto } from '../relation';
 import { RestApiPathBuilder, RestApiPaths } from '@mdtx/utils';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { IID } from '../base';
-
-export class HttpClient<
+import { ICountResponse } from '../response';
+export class ResourceHttpClient<
   T extends IID = any,
   CreateDto = any,
   UpdateDto = any,
@@ -76,6 +76,12 @@ export class HttpClient<
       id + ''
     ).replace(':relationName', relationName + '');
     return path;
+  }
+
+  async count(query?: Query) {
+    const path = this.apiPaths.COUNT_PATH + this.__query(query);
+    const res = await axios.get<ICountResponse>(path);
+    return this.parseResult(res);
   }
 
   async findAll(query?: Query) {

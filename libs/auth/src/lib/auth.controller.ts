@@ -2,7 +2,6 @@ import {
   AdvanceLogger,
   AuthRouteBuilder,
   PublicResource,
-  UpdatePasswordResult,
   UserId,
   ValidationPipe,
 } from '@mdtx/core';
@@ -15,9 +14,8 @@ import {
 } from '@nestjs/swagger';
 import { ForgotPasswordDto, LoginDto, LoginWithSSODto } from './dto';
 import { Response } from 'express';
-import { AuthCredentials, AuthEnums } from '@mdtx/common';
+import { AuthEnums } from '@mdtx/common';
 import { UpdatePasswordDto } from './dto/update-password.dto';
-import { AuthUserService } from './auth-user.service';
 export function Login() {
   return applyDecorators(
     ApiOperation({ summary: 'login' }),

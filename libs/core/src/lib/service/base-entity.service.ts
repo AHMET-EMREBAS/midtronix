@@ -5,7 +5,7 @@ import { RelationDto, UnsetRelationDto } from './relation.dto';
 import { InternalServerErrorException } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { BaseService } from './base.service';
-import { InputValidationException } from '../error';
+import { UnprocessableEntityResponse } from '../response';
 
 export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
   private readonly uniqueColumns = this.metadata.uniques.map(
@@ -37,12 +37,15 @@ export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
 
         if (foundItem) {
           this.error(this.isUniqueEntity.name, foundItem);
-          throw new InputValidationException([
-            {
-              property: u,
-              constraints: { isUniuque: `${u} must be unique!` },
-            },
-          ]);
+          throw new UnprocessableEntityResponse({
+            message: `${u} must be unique!`,
+            errors: [
+              {
+                property: u,
+                constraints: { isUnique: `${u} must be unique!` },
+              },
+            ],
+          });
         }
       }
     }

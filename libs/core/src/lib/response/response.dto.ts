@@ -10,29 +10,85 @@ export class MessageResponse {
   message!: string;
 }
 
-class ContraintsResponse {}
+class ContraintsResponse implements Partial<IContraintsResponse> {
+  isNotEmpty?: string;
+  minLength?: string;
+  maxLength?: string;
+  max?: string;
+  min?: string;
+  isEmail?: string;
+  isUnique?: string;
+  isPhone?: string;
+  isLength?: string;
+}
 
-class InputValidationResponse implements IInputValidationResponse {
+export class InputValidationError implements IInputValidationResponse {
   @Property({ type: 'string' })
   property!: string;
 
   @Property({ type: 'object', target: ContraintsResponse })
-  constraints!: IContraintsResponse;
+  constraints!: Partial<IContraintsResponse>;
+
+  constructor(obj: InputValidationError) {
+    Object.assign(this, obj);
+  }
 }
 
-export class InputValidationResponses implements IInputValidationResponses {
-  @Property({ type: 'string' })
+export class UnprocessableEntityResponse implements IInputValidationResponses {
+  @Property({ type: 'string', example: 'Invalid input!' })
   message!: string;
+  @Property({
+    type: 'object',
+    target: InputValidationError,
+    isArray: true,
+    example: [
+      {
+        property: '(propertyName)',
+        constraints: {
+          isUnique: '(propertyName) must be unique!',
+          minLength:
+            '(propertyName) must be longer than or equal to 3 characters',
+          maxLength:
+            '(propertyName) must be shorter than or equal to 30 characters',
+          isEmail: '(propertyName) must be valid email!',
+          isStrongPassword: '(propertyName) must be strong password',
+        },
+      },
+      {
+        property: '(anotherProperty)',
+        constraints: {
+          minLength:
+            '(anotherProperty) should be longer than or equal to 50 characters!',
+        },
+      },
+    ],
+  })
+  errors!: InputValidationError[];
 
-  @Property({ type: 'object', target: InputValidationResponse, isArray: true })
-  errors!: InputValidationResponse[];
+  constructor(obj: UnprocessableEntityResponse) {
+    Object.assign(this, obj);
+  }
 }
 
 export class CountResponse {
-  @Property({ type: 'number' })
+  @Property({ type: 'number', example: '500' })
   count!: number;
 }
 
-export class NotFoundErrorResponse extends MessageResponse {}
+export class NotFoundErrorResponse extends MessageResponse {
+  @Property({ type: 'string', example: 'Sample Not Found' })
+  override message!: string;
+}
 
-export class InternalServerErrorResponse extends MessageResponse {}
+export class UnauthorizedResponse extends MessageResponse {
+  @Property({ type: 'string', example: 'You are not autorized' })
+  override message!: string;
+}
+
+export class InternalServerErrorResponse extends MessageResponse {
+  @Property({
+    type: 'string',
+    example: 'Sorry, something went wrong. Please, try again.',
+  })
+  override message!: string;
+}
