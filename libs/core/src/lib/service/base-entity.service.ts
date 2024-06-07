@@ -2,7 +2,10 @@
 import { IID } from '@mdtx/common';
 import { DeepPartial, ILike, Repository } from 'typeorm';
 import { RelationDto, UnsetRelationDto } from './relation.dto';
-import { InternalServerErrorException } from '@nestjs/common';
+import {
+  InternalServerErrorException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { BaseService } from './base.service';
 import { UnprocessableEntityResponse } from '../response';
@@ -32,20 +35,25 @@ export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
           foundItem = foundItems[0];
         } catch (err) {
           this.error(this.isUniqueEntity.name, err);
-          throw new InternalServerErrorException();
+          throw new InternalServerErrorException(
+            'Something went wrong searching the entitites for unique check!'
+          );
         }
 
         if (foundItem) {
           this.error(this.isUniqueEntity.name, foundItem);
-          throw new UnprocessableEntityResponse({
-            message: `${u} must be unique!`,
-            errors: [
-              {
-                property: u,
-                constraints: { isUnique: `${u} must be unique!` },
-              },
-            ],
-          });
+
+          throw new UnprocessableEntityException(
+            new UnprocessableEntityResponse({
+              message: `${u} must be unique!`,
+              errors: [
+                {
+                  property: u,
+                  constraints: { isUnique: `${u} must be unique!` },
+                },
+              ],
+            })
+          );
         }
       }
     }

@@ -1,16 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory,
+  MergeStrategy,
 } from '@ngrx/data';
 import {
   ResourceHttpClientFactory,
   IID,
   ResourceHttpClient,
   IBaseCountQuery,
+  IClientQueryDto,
 } from '@mdtx/common';
 
 export class CollectionBaseService<
-  T extends IID
+  T extends IID = any,
+  C extends Partial<T> = any,
+  U extends Partial<T> = any,
+  Q extends IClientQueryDto<T> = any
 > extends EntityCollectionServiceBase<T> {
   private readonly resourceHttpClient: ResourceHttpClient;
 
@@ -25,5 +31,28 @@ export class CollectionBaseService<
 
   count(query?: IBaseCountQuery<T, T, T>) {
     return this.resourceHttpClient.count(query);
+  }
+
+  saveOne(entity: C) {
+    return this.add(entity as unknown as T);
+  }
+
+  findAll(query?: Q) {
+    return this.getWithQuery(query || {}, {
+      isOptimistic: false,
+      mergeStrategy: MergeStrategy.OverwriteChanges,
+    });
+  }
+
+  deleteOneById(id: T['id']) {
+    return this.delete(id, { isOptimistic: false });
+  }
+
+  updateOne(id: T['id'], entity: U) {
+    return this.update({ id, ...entity }, { isOptimistic: false });
+  }
+
+  resouceClient() {
+    return this.resouceClient;
   }
 }

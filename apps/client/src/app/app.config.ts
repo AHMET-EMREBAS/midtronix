@@ -9,7 +9,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideMatFormFieldOptions } from '@mdtx/material/core';
 import { httpInterceptors } from './app.interceptors';
 import { provideEffects } from '@ngrx/effects';
-import { provideEntityData } from '@ngrx/data';
+import { provideEntityData, withEffects } from '@ngrx/data';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,14 +17,17 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors(httpInterceptors)),
     provideStore(),
     provideEffects([]),
-    provideEntityData({
-      pluralNames: {
-        Sample: 'Samples',
+    provideEntityData(
+      {
+        pluralNames: {
+          Sample: 'Samples',
+        },
+        entityMetadata: {
+          Sample: {},
+        },
       },
-      entityMetadata: {
-        Sample: {},
-      },
-    }),
+      withEffects()
+    ),
     provideMatFormFieldOptions({ appearance: 'outline', color: 'primary' }),
     provideRouter(appRoutes, withHashLocation()),
     provideAnimationsAsync(),

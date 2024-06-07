@@ -16,7 +16,7 @@ import { CommonFormModule } from './common-form.module';
   template: `
     <form [formGroup]="resourceFormGroup" novalidate>
       <ng-content></ng-content>
-      <div class="actions">
+      <div class="row sm-col">
         <button mat-raised-button color="primary" (click)="formSubmit()">
           Save Product
         </button>
@@ -30,7 +30,6 @@ import { CommonFormModule } from './common-form.module';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements AfterViewInit {
-  
   @Input() resourceFormGroup!: FormGroup;
 
   @Output() submitEvent = new EventEmitter();

@@ -13,6 +13,6 @@ export const {
 export const {
   provide: provideAdvanceTableCollectionService,
   token: getAdvanceTableCollectionServiceToken,
-} = createClassProvider<CollectionBaseService<any>>(
+} = createClassProvider<CollectionBaseService>(
   'ADVANCE_TABLE_COLLECTION_SERVICE'
 );
