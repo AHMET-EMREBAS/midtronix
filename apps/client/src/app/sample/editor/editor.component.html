@@ -1,0 +1,8 @@
+<form [formGroup]="formGroup">
+  @for(input of formFields; track input){ @if(input.type ==='boolean'){
+  <mdtx-input-checkbox [label]="input.label!"></mdtx-input-checkbox>
+  } @else if(input.type ==='string'){
+  <mdtx-input-text [label]="input.label!"></mdtx-input-text>
+  } }
+  <div class="actions"></div>
+</form>

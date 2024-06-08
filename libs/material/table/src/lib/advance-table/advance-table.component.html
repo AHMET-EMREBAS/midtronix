@@ -1,17 +1,18 @@
 <div class="table-container">
-  {{ sortedTableColumns | json }}
-  <mat-form-field appearance="fill">
-    <input
-      type="search"
-      #searchInput="ngModel"
-      ngModel
-      matInput
-      placeholder="Search"
-      autocomplete="off"
-      (input)="search$.next(searchInput.value)"
-      style="width: 100%"
-    />
-  </mat-form-field>
+  <div class="search-container">
+    <mat-form-field appearance="fill">
+      <input
+        type="search"
+        #searchInput="ngModel"
+        ngModel
+        matInput
+        placeholder="Search"
+        autocomplete="off"
+        (input)="search$.next(searchInput.value)"
+        style="width: 100%"
+      />
+    </mat-form-field>
+  </div>
 
   <mat-table
     #tableRef
@@ -26,9 +27,18 @@
     <!-- First column -->
     <ng-container [matColumnDef]="firstColumn.name">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        {{ firstColumn.label }}
+        <mat-checkbox
+          [indeterminate]="isSomeSelected(data)"
+          [checked]="isAllSelected(data)"
+          (change)="selectAll($event, data)"
+        ></mat-checkbox>
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
+        <mat-checkbox
+          (change)="toggleSelect($event, row)"
+          [checked]="isSelected(row)"
+        >
+        </mat-checkbox>
         <button
           class="open-in-new-button"
           mat-icon-button
@@ -45,7 +55,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
         {{ c.label || c.name || '' | titlecase }}
       </mat-header-cell>
-      <mat-cell *matCellDef="let row">
+      <mat-cell
+        *matCellDef="let row"
+        [class]="c.statusClass && c.statusClass(row)"
+      >
         {{ c.mapValue ? c.mapValue(row) : row[c.name] }}
       </mat-cell>
     </ng-container>
@@ -54,16 +67,15 @@
     <!-- Last Column -->
     <ng-container [matColumnDef]="lastColumn.name">
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-        {{ lastColumn.label }}
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button
           class="open-in-new-button"
           mat-icon-button
           (click)="openItemEditor(row)"
-          color="primary"
+          color="accent"
         >
-          <mat-icon>open_in_new</mat-icon>
+          <mat-icon>settings</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

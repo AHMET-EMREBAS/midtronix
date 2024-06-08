@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import {
   InputTextComponent,
   InputCheckboxComponent,
 } from '@mdtx/material/form';
+import { CollectionBaseService } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-create',
   standalone: true,
@@ -19,10 +25,9 @@ import {
   styleUrl: './create.component.scss',
 })
 export class CreateComponent {
-  formGroup = this.builder.group({
-    name: [''],
-    active: [''],
-  });
-
-  constructor(protected readonly builder: FormBuilder) {}
+  constructor(
+    protected readonly service: CollectionBaseService,
+    protected readonly builder: FormBuilder,
+    protected readonly formGroup: FormGroup
+  ) {}
 }

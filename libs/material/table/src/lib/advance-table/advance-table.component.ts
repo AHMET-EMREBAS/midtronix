@@ -5,6 +5,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -19,8 +20,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { BehaviorSubject, combineLatest, debounceTime, switchMap } from 'rxjs';
+import {
+  MatCheckboxChange,
+  MatCheckboxModule,
+} from '@angular/material/checkbox';
+import {
+  BehaviorSubject,
+  combineLatest,
+  debounceTime,
+  map,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -30,11 +42,13 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CollectionBaseService } from '@mdtx/material/core';
 import {
-  getAdvanceTableCollectionServiceToken,
-  getAdvanceTableMetadataToken,
-} from './advance-table.providers';
+  CollectionBaseService,
+  LocalStore,
+  getEntityMetadataToken,
+} from '@mdtx/material/core';
+
+import { InputAutocompleteComponent } from '@mdtx/material/form';
 
 export type QueryType = {
   search: string;
@@ -55,20 +69,23 @@ export type QueryType = {
     MatButtonModule,
     MatCheckboxModule,
     MatPaginatorModule,
+    InputAutocompleteComponent,
     MatSortModule,
   ],
   templateUrl: './advance-table.component.html',
   styleUrl: './advance-table.component.scss',
 })
 export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
+  selectedItemsStore!: LocalStore;
   tableColumnNames!: TableFields<T>;
   firstColumn!: PropertyMetadata<T>;
   lastColumn!: PropertyMetadata<T>;
   sortedTableColumns!: PropertyMetadata<T>[];
 
-  selectedItemIds = new Set<number>();
   @ViewChild('tableRef') tableRef!: MatTable<T>;
   @ViewChild('paginatorRef') paginatorRef!: MatPaginator;
+
+  selectedItems = new Set<number>();
 
   search$ = new BehaviorSubject<string>('');
 
@@ -108,40 +125,74 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
   }>();
 
   constructor(
-    @Inject(getAdvanceTableMetadataToken())
+    @Inject(getEntityMetadataToken())
     protected readonly metadata: ClientEntityMetadata<T>,
-
-    @Inject(getAdvanceTableCollectionServiceToken())
     public readonly service: CollectionBaseService<T>,
     public readonly router: Router,
     public readonly route: ActivatedRoute
-  ) {}
+  ) {
+    this.selectedItemsStore = LocalStore.createStore(
+      service.entityName + 'SelectedItems'
+    );
+  }
 
   ngOnInit(): void {
+    const selectedItemsInStore = this.selectedItemsStore.get();
+    if (selectedItemsInStore) {
+      this.selectedItems = new Set(JSON.parse(selectedItemsInStore));
+    }
+
     this.tableColumnNames = this.metadata.tableColumnNames();
     this.firstColumn = this.metadata.firstColumn();
     this.lastColumn = this.metadata.lastColumn();
-    this.sortedTableColumns = this.metadata.sortedTableColumns();
+    this.sortedTableColumns = this.metadata.sortedColumns();
   }
 
   pageChangeHandler(event: PageEvent) {
     this.page$.next(event);
   }
 
-  isAllSelected() {
+  isAllSelected(data: T[]) {
+    if (data.length === this.selectedItems.size) {
+      return true;
+    }
     return false;
   }
 
-  isSomeSelected() {
+  isSomeSelected(data: T[]) {
+    if (this.isAllSelected(data)) {
+      return false;
+    } else {
+      if (this.selectedItems.size > 0) {
+        return true;
+      }
+    }
     return false;
   }
 
   isSelected(row: T) {
-    return this.selectedItemIds.has(row.id);
+    return this.selectedItems.has(row.id);
   }
 
-  select(row: T) {
-    this.selectedItemIds.add(row.id);
+  toggleSelect(event: MatCheckboxChange, row: T) {
+    console.log('Selecting Item : ', row);
+    if (event.checked) {
+      this.selectedItems.add(row.id);
+      this.selectedItemsStore.set(
+        JSON.stringify([...this.selectedItems.values()])
+      );
+    } else {
+      this.selectedItemsStore.set(
+        JSON.stringify([...this.selectedItems.values()])
+      );
+      this.selectedItems.delete(row.id);
+    }
+  }
+
+  selectAll(event: MatCheckboxChange, data: T[]) {
+    for (const item of data) {
+      this.toggleSelect(event, item);
+    }
   }
 
   openItemEditor(row: T) {

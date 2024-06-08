@@ -20,11 +20,11 @@
         "assets": [
           "apps/client/src/favicon.ico",
           "apps/client/src/assets",
+          "apps/client/src/fonts.css",
           "apps/client/src/manifest.webmanifest"
         ],
         "styles": [
           "apps/client/src/styles.scss",
-          "apps/client/src/fonts.css",
           "node_modules/quill/dist/quill.snow.css"
         ],
         "scripts": [],

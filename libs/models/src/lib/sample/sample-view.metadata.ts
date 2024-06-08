@@ -30,7 +30,7 @@ export class SampleViewMetadata
     return [this.name().name, this.sampleId().name, ...super.propertyNames()];
   }
 
-  override tableColumns(): PropertyMetadata<ISampleView>[] {
-    return [this.name(), this.sampleId(), ...super.tableColumns()];
+  override columns(): PropertyMetadata<ISampleView>[] {
+    return [this.name(), this.sampleId(), ...super.columns()];
   }
 }

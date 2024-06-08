@@ -10,9 +10,5 @@ const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 export class SampleService extends CollectionBaseService<ISample> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
     super('Sample', factory, httpClientFactory);
-
-    // // this.saveOne({ name: 'sample 1' });
-
-    // this.findAll({});
   }
 }

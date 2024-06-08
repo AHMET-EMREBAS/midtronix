@@ -1,11 +1,8 @@
 import { Routes } from '@angular/router';
-import { ViewAllComponent } from './view-all/view-all.component';
-import { ViewOneComponent } from './view-one/view-one.component';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
-import { SampleMetadata } from '@mdtx/models';
+import { EditorComponent } from './editor/editor.component';
+import { AdvanceTableComponent } from '@mdtx/material/table';
 
-export const SampleRoutes: Routes = [
+export const ClientResourceRoutes: Routes = [
   {
     path: '',
     redirectTo: 'view',
@@ -14,27 +11,19 @@ export const SampleRoutes: Routes = [
   {
     path: 'view',
     loadComponent() {
-      return ViewAllComponent;
+      return AdvanceTableComponent;
     },
   },
-  {
-    path: 'view/:id',
-
-    loadComponent() {
-      return ViewOneComponent;
-    },
-  },
-
   {
     path: 'editor',
     loadComponent() {
-      return CreateComponent;
+      return EditorComponent;
     },
   },
   {
     path: 'editor/:id',
     loadComponent() {
-      return UpdateComponent;
+      return EditorComponent;
     },
   },
 ];

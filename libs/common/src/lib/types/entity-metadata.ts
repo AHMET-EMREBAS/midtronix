@@ -15,7 +15,7 @@ export type CommonMetadata<T> = {
    * Table/Form field metadata
    * @returns
    */
-  tableColumns: () => PropertyMetadata<T>[];
+  columns: () => PropertyMetadata<T>[];
 
   /**
    * For search functionality
@@ -46,12 +46,16 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   }
 
   tableColumnNames(): TableFields<T> {
-    return this.sortedTableColumns().map((e) => {
-      return e.name;
-    });
+    return [
+      'firstColumn',
+      ...this.sortedColumns().map((e) => {
+        return e.name;
+      }),
+      'lastColumn',
+    ];
   }
 
-  tableColumns(): PropertyMetadata<T>[] {
+  columns(): PropertyMetadata<T>[] {
     return [
       this.id(),
       this.createdAt(),
@@ -63,8 +67,8 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
     ];
   }
 
-  sortedTableColumns() {
-    return this.tableColumns()
+  sortedColumns() {
+    return this.columns()
       .map((e) => {
         if (e.order) return e;
         return { ...e, order: 21 };
@@ -136,8 +140,16 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   active(): PropertyMetadata<T> {
     return {
       name: 'active',
-      label: 'Created',
+      label: 'Active',
       order: 306,
+      type: 'boolean',
+      inputType: 'checkbox',
+      statusClass(value: any) {
+        if (value.active === true) {
+          return 'succes';
+        }
+        return 'attention';
+      },
     };
   }
 
