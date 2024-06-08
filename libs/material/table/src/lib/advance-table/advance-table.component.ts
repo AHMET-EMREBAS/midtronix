@@ -150,7 +150,7 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
     });
 
     this.sortBy = this.sortByStore.get() || 'id';
-    this.sortDir = this.sortDirStore.get<SortDirection>()  || 'asc';
+    this.sortDir = this.sortDirStore.get<SortDirection>() || 'asc';
 
     this.sort$ = new BehaviorSubject<Sort>({
       active: this.sortBy,
@@ -217,15 +217,17 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
         JSON.stringify([...this.selectedItems.values()])
       );
     } else {
+      this.selectedItems.delete(row.id);
+
       this.selectedItemsStore.set(
         JSON.stringify([...this.selectedItems.values()])
       );
-      this.selectedItems.delete(row.id);
     }
   }
 
   selectAll(event: MatCheckboxChange, data: T[]) {
     for (const item of data) {
+      console.log('Updating ... ', event.checked, item);
       this.toggleSelect(event, item);
     }
   }
