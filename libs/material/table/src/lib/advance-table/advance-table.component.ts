@@ -232,6 +232,6 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
   }
 
   openItemEditor(row: T) {
-    this.router.navigate(['..', 'editor', row.id], { relativeTo: this.route });
+    this.router.navigate(['editor', row.id], { relativeTo: this.route });
   }
 }

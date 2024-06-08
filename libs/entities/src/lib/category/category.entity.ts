@@ -1,8 +1,8 @@
-import { BaseEntity, UniqueColumn } from '@mdtx/core';
-import { Entity } from 'typeorm';
+import { ICategory } from '@mdtx/models';
+import { BaseEntity, UniqueColumn, Entity, StringColumn } from '@mdtx/core';
 
 @Entity()
-export class Category extends BaseEntity {
+export class Category extends BaseEntity implements ICategory {
   @UniqueColumn()
   name!: string;
 }

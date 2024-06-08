@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/schema",
-  "$id": "NgrxService",
+  "$id": "Client",
   "title": "",
   "type": "object",
   "properties": {

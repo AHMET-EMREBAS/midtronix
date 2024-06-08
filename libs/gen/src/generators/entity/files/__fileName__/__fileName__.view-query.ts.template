@@ -25,9 +25,6 @@ export class <%- className %>ViewWhereQueryDto
   <%- propertyName %>Id!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
-  category!: FindOperator<string>;
-
-  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 

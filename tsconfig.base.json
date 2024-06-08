@@ -45,6 +45,7 @@
       "@mdtx/modules/search": ["libs/modules/search/src/index.ts"],
       "@mdtx/modules/sub-modules": ["libs/modules/sub-modules/src/index.ts"],
       "@mdtx/modules/website": ["libs/modules/website/src/index.ts"],
+      "@mdtx/resource-clients": ["libs/resource-clients/src/index.ts"],
       "@mdtx/resources": ["libs/resources/src/index.ts"],
       "@mdtx/utils": ["libs/utils/src/index.ts"]
     }

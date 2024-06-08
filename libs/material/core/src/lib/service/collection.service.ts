@@ -6,14 +6,13 @@ import {
 } from '@ngrx/data';
 import {
   ResourceHttpClientFactory,
-  IID,
   ResourceHttpClient,
   IBaseCountQuery,
   IClientQueryDto,
 } from '@mdtx/common';
 
 export class CollectionBaseService<
-  T extends IID = any,
+  T extends { id: any } = any,
   C extends Partial<T> = any,
   U extends Partial<T> = any,
   Q extends IClientQueryDto<T> = any

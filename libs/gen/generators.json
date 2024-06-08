@@ -19,6 +19,11 @@
       "factory": "./src/generators/entity/generator",
       "schema": "./src/generators/entity/schema.json",
       "description": "entity generator"
+    },
+    "client": {
+      "factory": "./src/generators/client/generator",
+      "schema": "./src/generators/client/schema.json",
+      "description": "client generator"
     }
   }
 }

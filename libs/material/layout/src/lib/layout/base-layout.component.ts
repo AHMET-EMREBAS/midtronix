@@ -81,13 +81,10 @@ export class BaseLayoutComponent {
   contentBottom!: QueryList<LayoutContentBottomDirective>;
   @ContentChildren(LayoutContentCenterDirective)
   contentCenter!: QueryList<LayoutContentCenterDirective>;
-
   @ContentChildren(LayoutContentCenterRightDirective)
   contentCenterRight!: QueryList<LayoutContentCenterDirective>;
-
   @ContentChildren(LayoutContentCenterLeftDirective)
   contentCenterLeft!: QueryList<LayoutContentCenterDirective>;
-
   @ContentChildren(LayoutSidenavRightTopDirective)
   sidenavRightTop!: QueryList<LayoutSidenavRightTopDirective>;
   @ContentChildren(LayoutSidenavRightBottomDirective)

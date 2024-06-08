@@ -15,7 +15,7 @@ export function IntegerColumn(options?: ApiPropertyOptions) {
 export function StringColumn(options?: ApiPropertyOptions) {
   return applyDecorators(
     Property({ type: 'string', ...options }),
-    __Column({ type: 'varchar', default: 'Not Set' })
+    __Column({ type: 'varchar', default: 'Not Set', nullable: true })
   );
 }
 
@@ -33,7 +33,7 @@ export function DateColumn(options?: ApiPropertyOptions) {
 export function BooleanColumn(options?: ApiPropertyOptions) {
   return applyDecorators(
     Property({ type: 'boolean', ...options }),
-    __Column({ type: 'boolean', default: false })
+    __Column({ type: 'boolean', default: false, nullable: true })
   );
 }
 

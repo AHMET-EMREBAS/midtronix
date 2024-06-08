@@ -21,11 +21,79 @@ export const appConfig: ApplicationConfig = {
       {
         pluralNames: {
           Sample: 'Samples',
+
+          Store: 'Stores',
+          Product: 'Products',
           Category: 'Categories',
+          Department: 'Departments',
+          Supplier: 'Suppliers',
+          Manufacturer: 'Manufacturer',
+          Sku: 'Skus',
+          Price: 'Prices',
+          Quantity: 'Quantities',
+          PriceLevel: 'PriceLevels',
+          Order: 'Orders',
+          Cart: 'Carts',
+
+          User: 'Users',
+          Role: 'Roles',
+          Permission: 'Permissions',
+
+          UserEmail: 'UserEmails',
+          UserPhone: 'UserPhones',
+          UserAddress: 'UserAddresss',
+
+          Customer: 'Customers',
+          CustomerRole: 'CustomerRoles',
+          CustomerPermission: 'CustomerPermissions',
+
+          CustomerEmail: 'CustomerEmails',
+          CustomerPhone: 'CustomerPhones',
+          CustomerAddress: 'CustomerAddresss',
+
+          Project: 'Projects',
+          Task: 'Tasks',
+          Sprint: 'Sprints',
+
+          Message: 'Messages',
+          Notification: 'Notification',
         },
         entityMetadata: {
           Sample: {},
+
+          Store: {},
+          Product: {},
           Category: {},
+          Department: {},
+          Supplier: {},
+          Manufacturer: {},
+          Sku: {},
+          Price: {},
+          Quantity: {},
+          PriceLevel: {},
+          Order: {},
+          Cart: {},
+
+          User: {},
+          Role: {},
+          Permission: {},
+          UserEmail: {},
+          UserPhone: {},
+          UserAddress: {},
+
+          Customer: {},
+          CustomerRole: {},
+          CustomerPermission: {},
+          CustomerEmail: {},
+          CustomerPhone: {},
+          CustomerAddress: {},
+
+          Project: {},
+          Task: {},
+          Sprint: {},
+
+          Message: {},
+          Notification: {},
         },
       },
       withEffects()

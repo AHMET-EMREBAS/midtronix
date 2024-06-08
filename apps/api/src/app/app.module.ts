@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
-import { SampleModule, SampleService } from '@mdtx/resources';
+import { CategoryModule, SampleModule, SampleService } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
@@ -31,7 +31,6 @@ import { AppController } from './app.controller';
       // type: 'better-sqlite3',
       // database: 'tmp/database/dev.sqlite',
       autoLoadEntities: true,
-      subscribers: [],
       synchronize: true,
       dropSchema: true,
       logger: 'debug',
@@ -39,6 +38,7 @@ import { AppController } from './app.controller';
     }),
     AuthModule.configure(MockUserService),
     SampleModule,
+    CategoryModule,
   ],
   providers: [
     AppEventService,

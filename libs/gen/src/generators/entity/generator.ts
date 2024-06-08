@@ -6,7 +6,7 @@ export async function entityGenerator(
   tree: Tree,
   options: EntityGeneratorSchema
 ) {
-  const projectRoot = `libs/${options.name}`;
+  const projectRoot = `libs/entities/src/lib`;
 
   const N = names(options.name);
 
