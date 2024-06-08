@@ -26,6 +26,10 @@ export type CommonMetadata<T> = {
 
 export type EntityMetadata<T> = Record<keyof T, () => PropertyMetadata<T>>;
 
+function __date(dateString: string) {
+  const date = new Date(dateString);
+  return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+}
 export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   implements CommonMetadata<T>
 {
@@ -98,10 +102,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       name: 'updatedAt',
       label: 'Updated',
       mapValue(value) {
-        if (value) {
-          return new Date(value.updatedAt).toLocaleDateString();
-        }
-        return '';
+        return __date(value);
       },
       order: 302,
     };
@@ -146,7 +147,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       inputType: 'checkbox',
       statusClass(value: any) {
         if (value.active === true) {
-          return 'succes';
+          return 'success';
         }
         return 'attention';
       },

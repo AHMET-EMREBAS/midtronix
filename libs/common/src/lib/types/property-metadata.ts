@@ -1,7 +1,7 @@
 import { KeyOf } from './keysof';
 
 export type StatusClass =
-  | 'succes'
+  | 'success'
   | 'error'
   | 'warning'
   | 'attention'
