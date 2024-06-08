@@ -22,7 +22,7 @@
     matSortActive="created"
     matSortDisableClear
     matSortDirection="desc"
-    (matSortChange)="sort$.next($event)"
+    (matSortChange)="sortChangeHandler($event)"
   >
     <!-- First column -->
     <ng-container [matColumnDef]="firstColumn.name">
@@ -69,14 +69,15 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button
+        <!-- Last Column Content -->
+        <!-- <button
           class="open-in-new-button"
           mat-icon-button
           (click)="openItemEditor(row)"
           color="accent"
         >
           <mat-icon>settings</mat-icon>
-        </button>
+        </button> -->
       </mat-cell>
     </ng-container>
 
@@ -88,9 +89,9 @@
   <mat-paginator
     #paginatorRef
     [length]="count$ | async"
-    [pageIndex]="0"
-    [pageSize]="4"
-    [pageSizeOptions]="[4, 8, 12, 16, 20]"
-    (page)="page$.next($event)"
+    [pageIndex]="pageIndex"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageChangeHandler($event)"
   ></mat-paginator>
 </div>

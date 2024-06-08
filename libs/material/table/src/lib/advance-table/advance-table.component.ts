@@ -5,14 +5,12 @@ import {
   OnInit,
   Output,
   ViewChild,
-  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
   ClientEntityMetadata,
   IBaseEntity,
-  KeyOf,
   PropertyMetadata,
   TableFields,
 } from '@mdtx/common';
@@ -26,19 +24,17 @@ import {
 } from '@angular/material/checkbox';
 import {
   BehaviorSubject,
+  Observable,
   combineLatest,
   debounceTime,
-  map,
-  of,
   switchMap,
-  tap,
 } from 'rxjs';
 import {
   MatPaginator,
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
-import { MatSortModule, Sort } from '@angular/material/sort';
+import { MatSortModule, Sort, SortDirection } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -76,7 +72,20 @@ export type QueryType = {
   styleUrl: './advance-table.component.scss',
 })
 export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
+  pageIndex = 0;
+  pageSize = 0;
+
+  sortBy = 'id';
+  sortDir: SortDirection = 'asc';
+
+  pageSizeOptions = [2, 4, 6, 8, 10, 20, 30, 40, 50, 100];
+
+  sortByStore!: LocalStore;
+  sortDirStore!: LocalStore;
   selectedItemsStore!: LocalStore;
+  pageIndexStore!: LocalStore;
+  pageSizeStore!: LocalStore;
+
   tableColumnNames!: TableFields<T>;
   firstColumn!: PropertyMetadata<T>;
   lastColumn!: PropertyMetadata<T>;
@@ -88,35 +97,11 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
   selectedItems = new Set<number>();
 
   search$ = new BehaviorSubject<string>('');
-
-  page$ = new BehaviorSubject<PageEvent>({
-    length: 0,
-    pageIndex: 0,
-    pageSize: 4,
-    previousPageIndex: 0,
-  });
+  page$!: BehaviorSubject<PageEvent>;
+  sort$!: BehaviorSubject<Sort>;
+  data$!: Observable<T[]>;
 
   count$ = this.service.count().then((count) => count.count);
-
-  sort$ = new BehaviorSubject<Sort>({ active: 'id', direction: 'asc' });
-
-  data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
-    debounceTime(600),
-    switchMap(([search, page, sort]) => {
-      this.changeEvent.emit({
-        search,
-        page,
-        sort,
-      });
-      return this.service.findAll({
-        take: page.pageSize,
-        skip: page.pageIndex * page.pageSize,
-        withDeleted: page.pageSize,
-        search,
-        order: `${sort.active}:${sort.direction}`,
-      });
-    })
-  );
 
   @Output() changeEvent = new EventEmitter<{
     search: string;
@@ -131,9 +116,16 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
     public readonly router: Router,
     public readonly route: ActivatedRoute
   ) {
+    const entityName = service.entityName;
+
     this.selectedItemsStore = LocalStore.createStore(
-      service.entityName + 'SelectedItems'
+      `${entityName}SelectedItems`
     );
+
+    this.pageIndexStore = LocalStore.createStore(`${entityName}PageIndex`);
+    this.pageSizeStore = LocalStore.createStore(`${entityName}PageSize`);
+    this.sortByStore = LocalStore.createStore(`${entityName}SortBy`);
+    this.sortDirStore = LocalStore.createStore(`${entityName}SortDir`);
   }
 
   ngOnInit(): void {
@@ -146,10 +138,54 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
     this.firstColumn = this.metadata.firstColumn();
     this.lastColumn = this.metadata.lastColumn();
     this.sortedTableColumns = this.metadata.sortedColumns();
+
+    this.pageIndex = this.pageIndexStore.int() ?? 0;
+    this.pageSize = this.pageSizeStore.int() ?? 4;
+
+    this.page$ = new BehaviorSubject<PageEvent>({
+      pageIndex: this.pageIndex,
+      pageSize: this.pageSize,
+      length: 1000,
+      previousPageIndex: 1,
+    });
+
+    this.sortBy = this.sortByStore.get() || 'id';
+    this.sortDir = this.sortDirStore.get<SortDirection>()  || 'asc';
+
+    this.sort$ = new BehaviorSubject<Sort>({
+      active: this.sortBy,
+      direction: this.sortDir,
+    });
+
+    this.data$ = combineLatest([this.search$, this.page$, this.sort$]).pipe(
+      debounceTime(600),
+      switchMap(([search, page, sort]) => {
+        this.changeEvent.emit({
+          search,
+          page,
+          sort,
+        });
+        return this.service.findAll({
+          take: page.pageSize,
+          skip: page.pageIndex * page.pageSize,
+          withDeleted: page.pageSize,
+          search,
+          order: `${sort.active}:${sort.direction}`,
+        });
+      })
+    );
   }
 
   pageChangeHandler(event: PageEvent) {
+    this.pageIndexStore.set(event.pageIndex + '');
+    this.pageSizeStore.set(event.pageSize + '');
     this.page$.next(event);
+  }
+
+  sortChangeHandler(event: Sort) {
+    this.sortByStore.set(event.active);
+    this.sortDirStore.set(event.direction);
+    this.sort$.next(event);
   }
 
   isAllSelected(data: T[]) {
@@ -175,7 +211,6 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
   }
 
   toggleSelect(event: MatCheckboxChange, row: T) {
-    console.log('Selecting Item : ', row);
     if (event.checked) {
       this.selectedItems.add(row.id);
       this.selectedItemsStore.set(

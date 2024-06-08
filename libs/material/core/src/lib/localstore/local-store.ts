@@ -36,8 +36,8 @@ export class LocalStore implements ILocalStore {
     return new LocalStore(key, options);
   }
 
-  get() {
-    return localStorage.getItem(this.key);
+  get<T extends string>() {
+    return localStorage.getItem(this.key) as T;
   }
 
   set(value: string) {
@@ -47,5 +47,23 @@ export class LocalStore implements ILocalStore {
 
   remove() {
     return localStorage.removeItem(this.key);
+  }
+
+  int() {
+    const value = localStorage.getItem(this.key);
+    if (value) return parseInt(value);
+    return null;
+  }
+
+  date() {
+    const value = localStorage.getItem(this.key);
+    if (value) return new Date(value);
+    return null;
+  }
+
+  obj() {
+    const value = localStorage.getItem(this.key);
+    if (value) return JSON.parse(value);
+    return null;
   }
 }
