@@ -21,9 +21,11 @@ export const appConfig: ApplicationConfig = {
       {
         pluralNames: {
           Sample: 'Samples',
+          Category: 'Categories',
         },
         entityMetadata: {
           Sample: {},
+          Category: {},
         },
       },
       withEffects()

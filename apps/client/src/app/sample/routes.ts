@@ -22,13 +22,3 @@ export const ClientResourceRoutes: Routes = [
     },
   },
 ];
-
-// @Component({
-//   selector: 'mdtx-view-all',
-//   standalone: true,
-//   imports: [CommonModule, AdvanceTableComponent],
-//   templateUrl: './view-all.component.html',
-//   styleUrl: './view-all.component.scss',
-
-// })
-// export class ViewAllComponent {}

@@ -1,1 +1,0 @@
-<mdtx-<%- fileName %>-form (submitEvent)="handleSubmit($event)"></mdtx-<%- fileName %>-form>

@@ -1,0 +1,24 @@
+import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
+import {
+  Create<%- className %>Dto,
+  <%- className %>QueryDto,
+  <%- className %>,
+  Udpate<%- className %>Dto,
+} from '@mdtx/entities';
+import { <%- className %>Service } from './<%- fileName %>.service';
+
+import { ApiVersion } from '@mdtx/common';
+
+export const <%- className %>RRB = RestRouteBuilder.get('<%- className %>', ApiVersion.v1);
+
+@<%- className %>RRB.Controler()
+export class <%- className %>Controller extends CreateBasicController<
+  <%- className %>,
+  Create<%- className %>Dto,
+  Udpate<%- className %>Dto,
+  <%- className %>QueryDto
+>(<%- className %>RRB, <%- className %>, Create<%- className %>Dto, Udpate<%- className %>Dto, <%- className %>QueryDto) {
+  constructor(service: <%- className %>Service) {
+    super(service);
+  }
+}

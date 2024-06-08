@@ -3,13 +3,13 @@ import { SampleQueryDto, SampleView } from '@mdtx/entities';
 import { SampleService } from './sample.service';
 import { ApiVersion } from '@mdtx/common';
 
-export const SampleRRB = RestRouteBuilder.get(SampleView.name, ApiVersion.v1);
+export const SampleViewRRB = RestRouteBuilder.get(SampleView.name, ApiVersion.v1);
 
-@SampleRRB.Controler()
+@SampleViewRRB.Controler()
 export class SampleViewController extends CreateBasicViewController<
   SampleView,
   SampleQueryDto
->(SampleRRB, SampleView, SampleQueryDto) {
+>(SampleViewRRB, SampleView, SampleQueryDto) {
   constructor(service: SampleService) {
     super(service);
   }

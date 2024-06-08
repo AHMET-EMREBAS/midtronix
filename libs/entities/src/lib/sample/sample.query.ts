@@ -17,6 +17,9 @@ import { SampleMetadataInstance } from './sample.metata';
 export class SampleWhereQueryDto extends BaseWhereQueryDto<Sample> {
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  category!: FindOperator<string>;
 }
 
 @Exclude()

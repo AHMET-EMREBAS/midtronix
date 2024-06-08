@@ -1,5 +1,0 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-import { StringifyType } from '@mdtx/common';
-import { I<%- className %>View } from './sample-view';
-
-export interface IQuery<%- className %>ViewDto extends StringifyType<I<%- className %>View> {}

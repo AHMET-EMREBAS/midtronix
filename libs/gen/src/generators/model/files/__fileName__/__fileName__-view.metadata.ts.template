@@ -1,0 +1,37 @@
+import {
+  EntityMetadata,
+  PropertyMetadata,
+  BaseViewMetadata,
+  TableFields,
+  KeyOf,
+} from '@mdtx/common';
+import { I<%- className %>View } from './<%- fileName %>-view';
+
+export class <%- className %>ViewMetadata
+  extends BaseViewMetadata<I<%- className %>View>
+  implements EntityMetadata<I<%- className %>View>
+{
+
+  <%- fileName %>Id(): PropertyMetadata<I<%- className %>View> {
+    return { name: '<%- fileName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
+  }
+  name(): PropertyMetadata<I<%- className %>View> {
+    return {
+      name: 'name',
+      label: '<%- className %> Name',
+      suffixIcon: 'info',
+    };
+  }
+
+  override tableColumnNames(): TableFields<I<%- className %>View> {
+    return ['name', ...super.tableColumnNames()];
+  }
+
+  override propertyNames(): KeyOf<I<%- className %>View>[] {
+    return [this.name().name, this.<%- fileName %>Id().name, ...super.propertyNames()];
+  }
+
+  override columns(): PropertyMetadata<I<%- className %>View>[] {
+    return [this.name(), this.<%- fileName %>Id(), ...super.columns()];
+  }
+}

@@ -1,0 +1,12 @@
+import { <%- className %>View } from '@mdtx/entities';
+import { Injectable } from '@nestjs/common';
+import { BaseViewEntityService } from '@mdtx/core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+@Injectable()
+export class <%- className %>ViewService extends BaseViewEntityService<<%- className %>View> {
+  constructor(@InjectRepository(<%- className %>View) repo: Repository<<%- className %>View>) {
+    super(repo);
+  }
+}

@@ -1,5 +1,0 @@
-<mdtx-<%- fileName %>-form
-  *ngIf="defaultValue$ | async as defaultValue"
-  [defaultValue]="defaultValue"
-  (submitEvent)="handleSubmit($event)"
-></mdtx-<%- fileName %>-form>

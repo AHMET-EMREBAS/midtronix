@@ -10,6 +10,9 @@ export class CreateSampleDto
 {
   @Property({ type: 'string', format: 'name', required: true })
   name!: string;
+
+  @Property({ type: 'string', enum: ['First', 'Second', 'Third'] })
+  category!: string;
 }
 
 @Exclude()

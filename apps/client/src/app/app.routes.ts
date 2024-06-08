@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { ClientResourceRoutes } from './sample/routes';
-import { SampleService } from './sample/service';
-import { SampleMetadata } from '@mdtx/models';
+import { CategoryService, SampleService } from './sample/service';
+import { CategoryMetadata, SampleMetadata } from '@mdtx/models';
 import { FormBuilder } from '@angular/forms';
 import {
   provideCollectionService,
@@ -18,6 +18,15 @@ const __sampleFormGroup = sampleMetadata
 
 const sampleFormGroup = new FormBuilder().group(__sampleFormGroup);
 
+const categoryMetadata = new CategoryMetadata();
+
+const __categoryFormGroup = categoryMetadata
+  .formFields()
+  .map((e) => ({ [e.name]: e.control }))
+  .reduce((p, c) => ({ ...p, ...c }));
+
+const categoryFormGroup = new FormBuilder().group(__categoryFormGroup);
+
 export const appRoutes: Route[] = [
   {
     path: 'samples',
@@ -25,14 +34,15 @@ export const appRoutes: Route[] = [
       provideEntityMetadata(sampleMetadata),
       provideCollectionService(SampleService),
       provideFormGroup(sampleFormGroup),
-
-      {
-        provide: 'some',
-        useFactory(service: SampleService) {
-          service.entityActions$.subscribe(console.log);
-          return null;
-        },
-      },
+    ],
+    loadChildren: () => ClientResourceRoutes,
+  },
+  {
+    path: 'categories',
+    providers: [
+      provideEntityMetadata(categoryMetadata),
+      provideCollectionService(CategoryService),
+      provideFormGroup(categoryFormGroup),
     ],
     loadChildren: () => ClientResourceRoutes,
   },

@@ -1,64 +1,24 @@
 {
   "generators": {
-    "resource": {
-      "factory": "./src/generators/resource/generator",
-      "schema": "./src/generators/resource/schema.json",
-      "description": "Generate Api Resources"
-    },
-    "form-builder": {
-      "factory": "./src/generators/form-builder/generator",
-      "schema": "./src/generators/form-builder/schema.json",
-      "description": "Generate client form builder that provides form specifications"
-    },
     "ngrx-service": {
       "factory": "./src/generators/ngrx-service/generator",
       "schema": "./src/generators/ngrx-service/schema.json",
       "description": "ngrx-service generator"
     },
-    "form": {
-      "factory": "./src/generators/form/generator",
-      "schema": "./src/generators/form/schema.json",
-      "description": "form generator"
-    },
-    "search-input": {
-      "factory": "./src/generators/search-input/generator",
-      "schema": "./src/generators/search-input/schema.json",
-      "description": "search-input generator"
-    },
-    "option-column": {
-      "factory": "./src/generators/option-column/generator",
-      "schema": "./src/generators/option-column/schema.json",
-      "description": "option-column generator"
-    },
-    "toolbar": {
-      "factory": "./src/generators/toolbar/generator",
-      "schema": "./src/generators/toolbar/schema.json",
-      "description": "toolbar generator"
-    },
-    "table": {
-      "factory": "./src/generators/table/generator",
-      "schema": "./src/generators/table/schema.json",
-      "description": "table generator"
-    },
-    "table-option": {
-      "factory": "./src/generators/table-option/generator",
-      "schema": "./src/generators/table-option/schema.json",
-      "description": "table-option generator"
-    },
-    "client-resource": {
-      "factory": "./src/generators/client-resource/generator",
-      "schema": "./src/generators/client-resource/schema.json",
-      "description": "client-resource generator"
-    },
-    "all": {
-      "factory": "./src/generators/all/generator",
-      "schema": "./src/generators/all/schema.json",
-      "description": "all generator"
-    },
     "model": {
       "factory": "./src/generators/model/generator",
       "schema": "./src/generators/model/schema.json",
       "description": "model generator"
+    },
+    "rest": {
+      "factory": "./src/generators/rest/generator",
+      "schema": "./src/generators/rest/schema.json",
+      "description": "rest generator"
+    },
+    "entity": {
+      "factory": "./src/generators/entity/generator",
+      "schema": "./src/generators/entity/schema.json",
+      "description": "entity generator"
     }
   }
 }

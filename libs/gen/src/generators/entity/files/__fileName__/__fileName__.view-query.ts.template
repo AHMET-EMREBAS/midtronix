@@ -1,0 +1,44 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  BasePaginatorQueryDto,
+  SearchProperty,
+  QueryOperatorProperty,
+  BaseWhereQueryDto,
+  OrderProperty,
+  WhereProperty,
+} from '@mdtx/core';
+import { Exclude } from 'class-transformer';
+import { FindOperator } from 'typeorm';
+
+import { I<%- className %>View } from '@mdtx/models';
+import { <%- className %>View } from './<%- fileName %>.view';
+import { AllPropertyType, IBaseEntity } from '@mdtx/common';
+import { <%- className %>MetadataInstance } from './<%- fileName %>.metata';
+
+@Exclude()
+export class <%- className %>ViewWhereQueryDto
+  extends BaseWhereQueryDto<<%- className %>View>
+  implements
+    AllPropertyType<Omit<I<%- className %>View, keyof IBaseEntity>, FindOperator<string>>
+{
+  @QueryOperatorProperty({ type: 'string' })
+  <%- propertyName %>Id!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  category!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  name!: FindOperator<string>;
+}
+
+@Exclude()
+export class <%- className %>ViewQueryDto extends BasePaginatorQueryDto {
+  @SearchProperty(['name', '<%- propertyName %>Id'])
+  search!: <%- className %>ViewWhereQueryDto;
+
+  @WhereProperty(<%- className %>ViewWhereQueryDto)
+  where!: <%- className %>ViewWhereQueryDto;
+
+  @OrderProperty(<%- className %>MetadataInstance.propertyNames())
+  order: any;
+}

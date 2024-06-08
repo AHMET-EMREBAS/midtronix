@@ -1,0 +1,10 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+import { PickKeys } from '@mdtx/common';
+import { I<%- className %> } from './<%- fileName %>';
+
+export type <%- className %>QueryFields = PickKeys<I<%- className %>, keyof I<%- className %>>;
+
+export interface ICreate<%- className %>Dto
+  extends Pick<I<%- className %>, 'name' | 'active'> {}
+
+export interface IUpdate<%- className %>Dto extends Partial<ICreate<%- className %>Dto> {}

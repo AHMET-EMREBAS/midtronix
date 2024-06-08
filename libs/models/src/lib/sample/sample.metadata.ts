@@ -15,6 +15,8 @@ export class SampleMetadata
     return {
       name: 'category',
       label: 'Category',
+      type: 'string',
+      inputType: 'select-one-enum',
       enum: ['First', 'Second', 'Third'],
     };
   }
@@ -44,6 +46,6 @@ export class SampleMetadata
   }
 
   override formFields() {
-    return [this.name(), this.active()];
+    return [this.name(), this.category(), this.active()];
   }
 }

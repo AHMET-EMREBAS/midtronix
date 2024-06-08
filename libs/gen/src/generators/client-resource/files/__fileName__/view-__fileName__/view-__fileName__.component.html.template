@@ -1,4 +1,0 @@
-<mdtx-<%- fileName %>-table
-  (addEvent)="createItem()"
-  (deleteEvent)="deleteItems($event)"
-></mdtx-<%- fileName %>-table>

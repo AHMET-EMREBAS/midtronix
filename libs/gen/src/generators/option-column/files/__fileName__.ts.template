@@ -1,3 +1,0 @@
-import { I<%- className %> } from '@mdtx/common';
-
-export const <%- constantName %>_OPTION_COLUMN: keyof I<%- className %> = '<%- columnName %>';

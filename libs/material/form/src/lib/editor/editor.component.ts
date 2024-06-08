@@ -18,6 +18,7 @@ import { InputTextareaComponent } from '../input-textarea/input-textarea.compone
 import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';
 import { InputSelectComponent } from '../input-select/input-select.component';
 import { InputListSelectComponent } from '../input-list-select/input-list-select.component';
+import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum.component';
 @Component({
   selector: 'mdtx-editor',
   standalone: true,
@@ -32,6 +33,7 @@ import { InputListSelectComponent } from '../input-list-select/input-list-select
     InputAutocompleteComponent,
     InputSelectComponent,
     InputListSelectComponent,
+    InputSelectEnumComponent,
     MatButtonModule,
     MatIconModule,
   ],

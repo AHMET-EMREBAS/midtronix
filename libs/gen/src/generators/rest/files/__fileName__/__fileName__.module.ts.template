@@ -1,0 +1,20 @@
+import { Module, OnModuleInit } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { <%- className %>, <%- className %>View } from '@mdtx/entities';
+import { <%- className %>Service } from './<%- fileName %>.service';
+import { <%- className %>Controller } from './<%- fileName %>.controller';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { <%- className %>ViewService } from './<%- fileName %>-view.service';
+import { <%- className %>ViewController } from './<%- fileName %>-view.controller';
+
+@Module({
+  imports: [EventEmitterModule, TypeOrmModule.forFeature([<%- className %>, <%- className %>View])],
+  controllers: [<%- className %>Controller, <%- className %>ViewController],
+  providers: [<%- className %>Service, <%- className %>ViewService],
+  exports: [<%- className %>Service, <%- className %>ViewService],
+})
+export class <%- className %>Module implements OnModuleInit {
+  async onModuleInit() {
+    // TODO:
+  }
+}

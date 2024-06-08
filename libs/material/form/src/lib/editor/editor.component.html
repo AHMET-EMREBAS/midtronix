@@ -19,14 +19,23 @@
   ></mdtx-input-text>
 
   <!-- Selectc One -->
-  } @else if(input.inputType ==='select-one'){
+  } @else if(input.inputType ==='select-one-enum'){
 
-  <mdtx-input-select
+
+  <!-- Enum is required! -->
+  @if(input.enum){
+
+  <mdtx-input-select-enum
     [inputName]="input.name || 'NoName'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
-    [prefixIcon]="input.prefixIcon || 'info'"
-  ></mdtx-input-select>
+    [options]="input.enum"
+  ></mdtx-input-select-enum>
+  } @else {
+  <p class="error">Enum property is required for select inputs!</p>
+  }
+
+  <!-- Select Input -->
   }
 
   <!-- End of the foor loop -->

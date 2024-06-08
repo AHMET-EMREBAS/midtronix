@@ -18,14 +18,16 @@ export type PropertyType =
 
 export type InputType =
   | 'text'
+  | 'number'
+  | 'button-toggle'
   | 'textarea'
   | 'checkbox'
-  | 'select-one'
-  | 'select-many'
-  | 'autocomplete'
+  | 'autocomplete-one'
   | 'autocomplete-many'
-  | 'select-entity'
-  | 'select-many-entity';
+  | 'select-one-entity'
+  | 'select-many-entity'
+  | 'select-one-enum'
+  | 'select-many-enum';
 
 export type StringFormat =
   | 'email'
@@ -35,6 +37,11 @@ export type StringFormat =
   | 'barcode'
   | 'name'
   | 'uuid';
+
+export type IInputOption = {
+  id: number;
+  name: string;
+};
 
 export type PropertyMetadata<T, FormControl = any> = {
   name: KeyOf<T>;

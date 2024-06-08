@@ -1,0 +1,8 @@
+import { I<%- className %> } from '@mdtx/models';
+import { BaseEntity, UniqueColumn, Entity, StringColumn } from '@mdtx/core';
+
+@Entity()
+export class <%- className %> extends BaseEntity implements I<%- className %> {
+  @UniqueColumn()
+  name!: string;
+}

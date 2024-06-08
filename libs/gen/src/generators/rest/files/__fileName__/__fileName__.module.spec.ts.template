@@ -1,0 +1,51 @@
+import { DataSource, Repository } from 'typeorm';
+import { <%- className %>, <%- className %>View } from '@mdtx/entities';
+import { Test } from '@nestjs/testing';
+import { <%- className %>Module } from './<%- fileName %>.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+describe('<%- className %>Module', () => {
+  let ds: DataSource;
+
+  let <%- fileName %>Repo: Repository<<%- className %>>;
+  let <%- fileName %>ViewRepo: Repository<<%- className %>View>;
+
+  beforeAll(async () => {
+    Test.createTestingModule({
+      imports: [
+        TypeOrmModule.forRoot({
+          type: 'better-sqlite3',
+          database: 'tmp/database/<%- fileName %>-module.sqlite',
+          autoLoadEntities: true,
+          synchronize: true,
+          dropSchema: true,
+        }),
+        <%- className %>Module,
+      ],
+    });
+    ds = await new DataSource({
+      type: 'better-sqlite3',
+      database: 'tmp/database/<%- fileName %>-module.sqlite',
+      entities: [<%- className %>, <%- className %>View],
+      synchronize: true,
+      dropSchema: true,
+    }).initialize();
+
+    <%- fileName %>Repo = ds.getRepository(<%- className %>);
+    <%- fileName %>ViewRepo = ds.getRepository(<%- className %>View);
+  });
+
+  it('should initialize datasource', () => {
+    expect(ds).toBeTruthy();
+    expect(<%- fileName %>Repo).toBeTruthy();
+    expect(<%- fileName %>ViewRepo).toBeTruthy();
+  });
+
+  it('should get data', async () => {
+    expect(await <%- fileName %>Repo.find()).toBeTruthy();
+    expect(await <%- fileName %>ViewRepo.find()).toBeTruthy();
+  });
+
+  afterAll(() => {
+    ds.destroy();
+  });
+});

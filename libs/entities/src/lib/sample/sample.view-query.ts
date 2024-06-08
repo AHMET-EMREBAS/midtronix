@@ -25,6 +25,9 @@ export class SampleViewWhereQueryDto
   sampleId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
+  category!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 

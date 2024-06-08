@@ -1,0 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  BasePaginatorQueryDto,
+  SearchProperty,
+  QueryOperatorProperty,
+  BaseWhereQueryDto,
+  OrderProperty,
+  WhereProperty,
+} from '@mdtx/core';
+import { Exclude } from 'class-transformer';
+import { <%- className %> } from './<%- fileName %>.entity';
+import { FindOperator } from 'typeorm';
+
+import { <%- className %>MetadataInstance } from './<%- fileName %>.metata';
+
+@Exclude()
+export class <%- className %>WhereQueryDto extends BaseWhereQueryDto<<%- className %>> {
+  @QueryOperatorProperty({ type: 'string' })
+  name!: FindOperator<string>;
+  
+}
+
+@Exclude()
+export class <%- className %>QueryDto extends BasePaginatorQueryDto {
+  @SearchProperty<<%- className %>>(['name'])
+  search!: <%- className %>WhereQueryDto;
+
+  @WhereProperty(<%- className %>WhereQueryDto)
+  where!: <%- className %>WhereQueryDto;
+
+  @OrderProperty<<%- className %>>(<%- className %>MetadataInstance.propertyNames())
+  order: any;
+}

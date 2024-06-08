@@ -7,7 +7,6 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Icon } from '@mdtx/material/core';
@@ -15,9 +14,7 @@ import { Icon } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-base',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './input-base.component.html',
-  styleUrl: './input-base.component.scss',
+  template: '',
 })
 export class InputBaseComponent implements OnInit, AfterViewInit {
   @Input() inputControl!: FormControl;

@@ -218,7 +218,6 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
       );
     } else {
       this.selectedItems.delete(row.id);
-
       this.selectedItemsStore.set(
         JSON.stringify([...this.selectedItems.values()])
       );

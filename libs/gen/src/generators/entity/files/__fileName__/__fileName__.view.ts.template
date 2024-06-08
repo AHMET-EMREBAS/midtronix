@@ -1,0 +1,27 @@
+import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
+import { I<%- className %>View } from '@mdtx/models';
+
+import { <%- className %> } from './<%- fileName %>.entity';
+
+@ViewEntity({
+  expression(ds) {
+    return ds
+      .createQueryBuilder()
+      .select('ROW_NUMBER() OVER ()', 'id')
+      .addSelect('main.id', '<%- fileName %>Id')
+      .addSelect('main.name', 'name')
+      .addSelect('main.category', 'category')
+      .addSelect('main.createdAt', 'createdAt')
+      .addSelect('main.updatedAt', 'updatedAt')
+      .addSelect('main.deletedAt', 'deletedAt')
+      .addSelect('main.active', 'active')
+      .addSelect('main.createdBy', 'createdBy')
+      .addSelect('main.updatedBy', 'updatedBy')
+      .from(<%- className %>, 'main');
+  },
+})
+export class <%- className %>View extends BaseView implements I<%- className %>View {
+  @ViewColumn() category!: string;
+  @ViewColumn() name!: string;
+  @ViewColumn() <%- fileName %>Id!: string;
+}
