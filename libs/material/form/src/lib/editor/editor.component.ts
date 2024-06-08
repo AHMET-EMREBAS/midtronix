@@ -7,7 +7,7 @@ import {
   CollectionBaseService,
   getEntityMetadataToken,
 } from '@mdtx/material/core';
-import { debounceTime, firstValueFrom } from 'rxjs';
+import { Subscription, debounceTime, firstValueFrom } from 'rxjs';
 import { ClientEntityMetadata, PropertyMetadata } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +19,8 @@ import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomp
 import { InputSelectComponent } from '../input-select/input-select.component';
 import { InputListSelectComponent } from '../input-list-select/input-list-select.component';
 import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum.component';
+
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'mdtx-editor',
   standalone: true,
@@ -36,6 +38,7 @@ import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum
     InputSelectEnumComponent,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
@@ -47,12 +50,15 @@ export class EditorComponent implements OnInit {
   isUpdateForm = false;
   entityId?: string;
 
+  sub!: Subscription;
+
   constructor(
     public readonly formGroup: FormGroup,
     protected readonly service: CollectionBaseService,
     @Inject(getEntityMetadataToken())
     protected readonly metadata: ClientEntityMetadata<any>,
-    protected readonly route: ActivatedRoute
+    protected readonly route: ActivatedRoute,
+    protected readonly snackbar: MatSnackBar
   ) {}
 
   async ngOnInit() {
@@ -70,7 +76,7 @@ export class EditorComponent implements OnInit {
       }
     }
 
-    this.formFields = this.metadata.formControls().map((e) => {
+    this.formFields = this.metadata.formFields().map((e) => {
       return {
         ...e,
         control: this.formGroup.get(e.name),
@@ -79,6 +85,15 @@ export class EditorComponent implements OnInit {
 
     this.formGroup.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
       console.log('Form Value: ', value);
+    });
+
+    this.sub = this.service.entityActions$.subscribe((event) => {
+      this.snackbar.open(event.type);
+      if (event.type.endsWith('success')) {
+        this.formGroup.reset();
+      } else {
+        console.log(event.payload);
+      }
     });
   }
 

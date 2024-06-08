@@ -62,7 +62,9 @@ export const SampleRoute: Route = {
   path: 'sample',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
-    ContentCenterLeftProvider.provide([{ label: 'Add', icon: 'add' }]),
+    ContentCenterLeftProvider.provide([
+      { label: 'Add', icon: 'add', route: 'editor' },
+    ]),
     provideCollectionService(SampleService),
     provideEntityMetadata(__SampleMetadata),
     provideFormGroup(SampleFormGroup),

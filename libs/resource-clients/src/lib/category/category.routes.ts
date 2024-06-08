@@ -41,6 +41,7 @@ export const __CategoryFormGroup = __CategoryMetadata
   .formFields()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
+  
 
 export const CategoryFormGroup = new FormBuilder().group(__CategoryFormGroup);
 
@@ -57,6 +58,8 @@ export const CategorySubRoutes: Routes = [
     ],
   },
 ];
+
+console.log(__CategoryFormGroup);
 
 export const CategoryRoute: Route = {
   path: 'category',

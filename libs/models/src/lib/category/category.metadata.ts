@@ -4,6 +4,7 @@ import {
   BaseEntityMetadata,
   TableFields,
   KeyOf,
+  ValidatorBuilder,
 } from '@mdtx/common';
 import { ICategory } from './category';
 
@@ -21,6 +22,10 @@ export class CategoryMetadata
       minlength: 3,
       maxlength: 50,
       order: 201,
+      control: [
+        '',
+        new ValidatorBuilder('name').minLength(3).maxLength(50).build(),
+      ],
     };
   }
 

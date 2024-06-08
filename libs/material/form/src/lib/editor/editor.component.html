@@ -1,4 +1,5 @@
 <form class="p-1em col fit-content ac-center sm-full">
+  {{ formGroup.errors | json }}
   @for(input of formFields; track input){
   <!-- For loop start  -->
 
@@ -20,7 +21,6 @@
 
   <!-- Selectc One -->
   } @else if(input.inputType ==='select-one-enum'){
-
 
   <!-- Enum is required! -->
   @if(input.enum){
