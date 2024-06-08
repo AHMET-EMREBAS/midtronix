@@ -1,13 +1,8 @@
 import { Routes } from '@angular/router';
-import { EditorComponent } from './editor/editor.component';
 import { AdvanceTableComponent } from '@mdtx/material/table';
+import { EditorComponent } from '@mdtx/material/form';
 
 export const ClientResourceRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'view',
-    pathMatch: 'full',
-  },
   {
     path: 'view',
     loadComponent() {

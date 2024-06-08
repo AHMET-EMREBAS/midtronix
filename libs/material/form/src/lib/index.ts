@@ -1,4 +1,5 @@
 // @index('./**/*.{component,module}.ts', f => `export * from '${f.path}'`)
+export * from './editor/editor.component'
 export * from './form/common-form.module'
 export * from './form/form.component'
 export * from './form/sample-form.component'

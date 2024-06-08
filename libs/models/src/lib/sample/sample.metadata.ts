@@ -11,6 +11,13 @@ export class SampleMetadata
   extends BaseEntityMetadata<ISample>
   implements EntityMetadata<ISample>
 {
+  category(): PropertyMetadata<ISample> {
+    return {
+      name: 'category',
+      label: 'Category',
+      enum: ['First', 'Second', 'Third'],
+    };
+  }
   name(): PropertyMetadata<ISample> {
     return {
       name: 'name',
@@ -25,7 +32,7 @@ export class SampleMetadata
   }
 
   override propertyNames(): KeyOf<ISample>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [this.name().name, this.category().name, ...super.propertyNames()];
   }
 
   override tableColumnNames(): TableFields<ISample> {
@@ -34,5 +41,9 @@ export class SampleMetadata
 
   override columns(): PropertyMetadata<ISample>[] {
     return [this.name(), ...super.columns()];
+  }
+
+  override formFields() {
+    return [this.name(), this.active()];
   }
 }

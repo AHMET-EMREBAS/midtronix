@@ -67,11 +67,37 @@ export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
     return this.event.emit(this.eventName(methodName), value);
   }
 
+  protected async onlyDifference(
+    id: number,
+    comming: DeepPartial<T>
+  ): Promise<DeepPartial<T>> {
+    const found = await this.findOneById(id);
+
+    const onlyDifferent = Object.entries(comming).filter(([k, v]) => {
+      if (v != undefined) {
+        return v != (found as any)[k];
+      }
+      return false;
+    });
+
+    console.log('Only Difference');
+    console.table(onlyDifferent);
+
+    const updatedEntity = (onlyDifferent.length > 0
+      ? onlyDifferent
+          .map(([key, value]) => ({ [key]: value }))
+          .reduce((p, c) => ({ ...p, ...c }))
+      : null) as unknown as DeepPartial<T>;
+
+    console.log('updated Entity');
+    console.table(updatedEntity);
+
+    return updatedEntity;
+  }
+
   async saveOne(entity: DeepPartial<T>) {
     this.log(this.saveOne.name, entity);
-
     await this.isUniqueEntity(entity);
-
     try {
       const result = await this.repo.save({ ...entity });
       this.emit(this.saveOne.name, result);
@@ -85,15 +111,19 @@ export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
   async updateOne(id: number, entity: DeepPartial<T>) {
     this.log(this.updateOne.name, { id, ...entity });
 
-    const found = await this.findOneById(id);
-    try {
-      await this.repo.save({ id, ...entity });
-      this.emit(this.updateOne.name, { found, ...entity });
-      return { ...found, ...entity };
-    } catch (err) {
-      this.error(this.updateOne.name, { id, ...entity });
-      throw new InternalServerErrorException();
+    const updatedEntity = await this.onlyDifference(id, entity);
+
+    if (updatedEntity) {
+      try {
+        await this.repo.save({ id, ...updatedEntity });
+        this.emit(this.updateOne.name, { updatedEntity, ...entity });
+        return { ...updatedEntity, ...entity };
+      } catch (err) {
+        this.error(this.updateOne.name, { id, ...entity });
+        throw new InternalServerErrorException();
+      }
     }
+    return updatedEntity;
   }
 
   async deleteOneById(id: number) {

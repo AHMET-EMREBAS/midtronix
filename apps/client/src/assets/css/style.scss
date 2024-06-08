@@ -1,3 +1,96 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: Roboto, Verdana, Geneva, Tahoma, Arial;
+}
+
+$_justify: (
+  start: flex-start,
+  end: flex-end,
+  around: space-around,
+  between: space-between,
+  evenly: space-evenly,
+  stretch: stretch,
+  center: center,
+);
+
+.flex {
+  display: flex;
+}
+
+.row {
+  @extend .flex;
+  flex-direction: row;
+}
+
+.col {
+  @extend .flex;
+  flex-direction: column;
+}
+
+.container {
+  @extend .row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@each $k, $v in $_justify {
+  .#{$k} {
+    justify-content: #{$v};
+  }
+
+  .a-#{$k} {
+    align-items: #{$v};
+  }
+
+  .ac-#{$k} {
+    align-content: #{$v};
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(lightblue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(lightblue);
+}
+/* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
+::-webkit-scrollbar-thumb:active {
+  background: var(lightblue);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(royalblue);
+}
+
+::-webkit-scrollbar-track:active {
+  background-color: var(royalblue);
+}
+::-webkit-scrollbar-track:hover {
+  background-color: var(royalblue);
+}
+
+/* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
+::-webkit-scrollbar-corner {
+  background: var(lightblue);
+}
+
 @font-face {
   font-family: Material Icons;
   font-style: normal;
@@ -150,3 +243,28 @@
 .material-icons.fill {
   font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 48;
 } /*# sourceMappingURL=style.css.map */
+
+@media screen and (max-width: 600px) {
+  .sm-col {
+    display: flex;
+    flex-direction: column;
+
+    * {
+      width: 100%;
+      flex-grow: 1;
+    }
+  }
+}
+
+// Width
+.full {
+  width: 100%;
+}
+
+.half {
+  width: 50%;
+}
+
+.fit-content {
+  width: fit-content;
+}

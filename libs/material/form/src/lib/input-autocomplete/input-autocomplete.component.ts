@@ -15,7 +15,6 @@ import {
   MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
 import { BehaviorSubject, debounceTime, map } from 'rxjs';
-import { IID } from '@mdtx/common';
 import { IInputOption } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-autocomplete',

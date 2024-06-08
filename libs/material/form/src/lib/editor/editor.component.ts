@@ -2,14 +2,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  InputTextComponent,
-  InputCheckboxComponent,
-  InputTextareaComponent,
-  InputAutocompleteComponent,
-  InputSelectComponent,
-  InputListSelectComponent,
-} from '@mdtx/material/form';
+
 import {
   CollectionBaseService,
   getEntityMetadataToken,
@@ -19,6 +12,12 @@ import { ClientEntityMetadata, PropertyMetadata } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { InputTextComponent } from '../input-text/input-text.component';
+import { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';
+import { InputTextareaComponent } from '../input-textarea/input-textarea.component';
+import { InputAutocompleteComponent } from '../input-autocomplete/input-autocomplete.component';
+import { InputSelectComponent } from '../input-select/input-select.component';
+import { InputListSelectComponent } from '../input-list-select/input-list-select.component';
 @Component({
   selector: 'mdtx-editor',
   standalone: true,
@@ -26,9 +25,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     CommonModule,
     RouterModule,
     FormsModule,
-
     ReactiveFormsModule,
-
     InputTextComponent,
     InputCheckboxComponent,
     InputTextareaComponent,
@@ -36,7 +33,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     InputSelectComponent,
     InputListSelectComponent,
     MatButtonModule,
-
     MatIconModule,
   ],
   templateUrl: './editor.component.html',

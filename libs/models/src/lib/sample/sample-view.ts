@@ -3,5 +3,6 @@ import { IBaseView } from '@mdtx/common';
 
 export interface ISampleView extends IBaseView {
   name: string;
+  category: string;
   sampleId: string;
 }

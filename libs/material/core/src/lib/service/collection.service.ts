@@ -34,7 +34,7 @@ export class CollectionBaseService<
   }
 
   saveOne(entity: C) {
-    return this.add(entity as unknown as T);
+    return this.add(entity as unknown as T, { isOptimistic: false });
   }
 
   findAll(query?: Q) {

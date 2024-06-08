@@ -10,6 +10,7 @@ import { Sample } from './sample.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'sampleId')
       .addSelect('main.name', 'name')
+      .addSelect('main.category', 'category')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')
@@ -20,6 +21,7 @@ import { Sample } from './sample.entity';
   },
 })
 export class SampleView extends BaseView implements ISampleView {
+  @ViewColumn() category!: string;
   @ViewColumn() name!: string;
   @ViewColumn() sampleId!: string;
 }

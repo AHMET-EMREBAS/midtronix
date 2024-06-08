@@ -2,6 +2,7 @@
 import { IBaseEntity, IBaseView } from '../base';
 import { KeyOf } from './keysof';
 import { PropertyMetadata } from './property-metadata';
+import { ValidatorBuilder } from './validators';
 
 export type TableFields<T> = (KeyOf<T> | 'firstColumn' | 'lastColumn')[];
 export type CommonMetadata<T> = {
@@ -102,7 +103,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       name: 'updatedAt',
       label: 'Updated',
       mapValue(value) {
-        return __date(value);
+        return __date(value.updatedAt + '');
       },
       order: 302,
     };
@@ -114,7 +115,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       label: 'Deleted',
       mapValue(value) {
         if (value) {
-          return new Date(value.deletedAt).toLocaleDateString();
+          return __date(value.deletedAt + '');
         }
         return '';
       },
@@ -177,6 +178,26 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       label: 'Last Column',
       order: 601,
     };
+  }
+
+  formFields(): PropertyMetadata<any>[] {
+    throw new Error('Not Implemented');
+  }
+
+  formControls(): PropertyMetadata<any>[] {
+    return this.formFields().map((e) => {
+      const validators = new ValidatorBuilder(e.name);
+      if (e.min) validators.min(e.min);
+      if (e.max) validators.max(e.max);
+      if (e.minlength) validators.minLength(e.minlength);
+      if (e.maxlength) validators.maxLength(e.maxlength);
+      if (e.format === 'email') validators.email();
+      if (e.required) validators.required();
+      return {
+        ...e,
+        control: ['', validators.build().filter((e) => e)],
+      };
+    });
   }
 }
 

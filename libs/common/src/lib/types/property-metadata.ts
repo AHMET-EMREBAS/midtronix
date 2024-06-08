@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyOf } from './keysof';
 
 export type StatusClass =
@@ -26,6 +27,15 @@ export type InputType =
   | 'select-entity'
   | 'select-many-entity';
 
+export type StringFormat =
+  | 'email'
+  | 'password'
+  | 'phone'
+  | 'ean'
+  | 'barcode'
+  | 'name'
+  | 'uuid';
+
 export type PropertyMetadata<T, FormControl = any> = {
   name: KeyOf<T>;
   type?: PropertyType;
@@ -51,4 +61,7 @@ export type PropertyMetadata<T, FormControl = any> = {
   inline?: boolean;
   block?: boolean;
   control?: FormControl;
+  format?: StringFormat;
+  groupName?: string;
+  enum?: string[];
 };

@@ -11,6 +11,13 @@ export class SampleViewMetadata
   extends BaseViewMetadata<ISampleView>
   implements EntityMetadata<ISampleView>
 {
+  category(): PropertyMetadata<ISampleView> {
+    return {
+      name: 'category',
+      label: 'Category',
+      suffixIcon: 'category',
+    };
+  }
   sampleId(): PropertyMetadata<ISampleView> {
     return { name: 'sampleId', label: 'Sample Id', suffixIcon: 'numbers' };
   }

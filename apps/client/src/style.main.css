@@ -1,0 +1,480 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  font-family: Roboto, Verdana, Geneva, Tahoma, Arial;
+}
+
+.flex, .col, .row, .container {
+  display: flex;
+}
+
+.row, .container {
+  flex-direction: row;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.container {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.start {
+  justify-content: flex-start;
+}
+
+.a-start {
+  align-items: flex-start;
+}
+
+.ac-start {
+  align-content: flex-start;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.a-end {
+  align-items: flex-end;
+}
+
+.ac-end {
+  align-content: flex-end;
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.a-around {
+  align-items: space-around;
+}
+
+.ac-around {
+  align-content: space-around;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.a-between {
+  align-items: space-between;
+}
+
+.ac-between {
+  align-content: space-between;
+}
+
+.evenly {
+  justify-content: space-evenly;
+}
+
+.a-evenly {
+  align-items: space-evenly;
+}
+
+.ac-evenly {
+  align-content: space-evenly;
+}
+
+.stretch {
+  justify-content: stretch;
+}
+
+.a-stretch {
+  align-items: stretch;
+}
+
+.ac-stretch {
+  align-content: stretch;
+}
+
+.center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.ac-center {
+  align-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(lightblue);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(lightblue);
+}
+
+/* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
+::-webkit-scrollbar-thumb:active {
+  background: var(lightblue);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(royalblue);
+}
+
+::-webkit-scrollbar-track:active {
+  background-color: var(royalblue);
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var(royalblue);
+}
+
+/* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
+::-webkit-scrollbar-corner {
+  background: var(lightblue);
+}
+
+@font-face {
+  font-family: Material Icons;
+  font-style: normal;
+  font-weight: 100 700;
+  src: url(./assets/fonts/material-symbols.woff2) format("woff2");
+}
+@font-face {
+  font-family: Handjet;
+  src: url(./assets/fonts/Handjet/Handjet-VariableFont.ttf);
+}
+@font-face {
+  font-family: Roboto;
+  src: url(./assets/fonts/Roboto_Flex/RobotoFlex.ttf);
+}
+@font-face {
+  font-family: Special Elite;
+  src: url(./assets/fonts/Special_Elite/SpecialElite-Regular.ttf);
+}
+@font-face {
+  font-family: Josefin Sans;
+  src: url(./assets/fonts/Josefin_Sans/JosefinSans-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Josefin Sans;
+  font-style: italic;
+  src: url(./assets/fonts/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Lobster;
+  src: url(./assets/fonts/Lobster/Lobster-Regular.ttf);
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url(./assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: Rubik Dirt;
+  src: url(./assets/fonts/Rubik_Dirt/RubikDirt-Regular.ttf);
+}
+@font-face {
+  font-family: Rubik Iso;
+  src: url(./assets/fonts/Rubik_Iso/RubikIso-Regular.ttf);
+}
+@font-face {
+  font-family: Black Ops One;
+  src: url(./assets/fonts/Black_Ops_One/BlackOpsOne-Regular.ttf);
+}
+@font-face {
+  font-family: Concert One;
+  src: url(./assets/fonts/Concert_One/ConcertOne-Regular.ttf);
+}
+@font-face {
+  font-family: Tourney;
+  src: url(./assets/fonts/Tourney/Tourney-VariableFont_wdth.ttf);
+}
+@font-face {
+  font-family: Tourney;
+  font-style: italic;
+  src: url(./assets/fonts/Tourney/Tourney-Italic-VariableFont_wdth.ttf);
+}
+@font-face {
+  font-family: Dancing Script;
+  src: url(./assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf);
+}
+/** Fonts */
+:root {
+  --font-roboto: Roboto, Verdana;
+  --font-comfortaa: Comfortaa, Verdana;
+  --font-josefin-sans: Josefin Sans, Verdana;
+  --font-concert-one: Concert One, Verdana;
+  --font-special-elite: Special Elite, Verdana;
+  --font-tourney: Tourney, Verdana;
+  --font-rubik-iso: Rubik Iso, Verdana;
+  --font-rubik-dirt: Rubik Dirt, Verdana;
+  --font-lobster: Lobster, Verdana;
+  --font-dancing-script: Dancing Script, Verdana;
+  --font-black-ops-one: Black Ops One, Verdana;
+  --font-handjet: Handjet, Verdana;
+  --font-icon: Material Icons, Verdana;
+}
+
+.font-roboto {
+  font-family: Roboto, Verdana;
+}
+
+.font-comfortaa {
+  font-family: Comfortaa, Verdana;
+}
+
+.font-josefin-sans {
+  font-family: Josefin Sans, Verdana;
+}
+
+.font-concert-one {
+  font-family: Concert One, Verdana;
+}
+
+.font-special-elite {
+  font-family: Special Elite, Verdana;
+}
+
+.font-tourney {
+  font-family: Tourney, Verdana;
+}
+
+.font-rubik-iso {
+  font-family: Rubik Iso, Verdana;
+}
+
+.font-rubik-dirt {
+  font-family: Rubik Dirt, Verdana;
+}
+
+.font-lobster {
+  font-family: Lobster, Verdana;
+}
+
+.font-dancing-script {
+  font-family: Dancing Script, Verdana;
+}
+
+.font-black-ops-one {
+  font-family: Black Ops One, Verdana;
+}
+
+.font-handjet {
+  font-family: Handjet, Verdana;
+}
+
+.font-icon {
+  font-family: Material Icons, Verdana;
+}
+
+.material-icons {
+  font-family: Material Icons;
+  font-weight: normal;
+  font-style: normal;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons.fill {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+} 
+@media screen and (max-width: 600px) {
+  .sm-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .sm-col * {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
+.full {
+  width: 100%;
+}
+
+.half {
+  width: 50%;
+}
+
+.fit-content {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.p-0em {
+  padding: 0em;
+}
+
+.px-0em {
+  padding-left: 0em;
+  padding-right: 0em;
+}
+
+.py-0em {
+  padding-top: 0em;
+  padding-bottom: 0em;
+}
+
+.gap-0em {
+  gap: 0em;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.p-1em {
+  padding: 1em;
+}
+
+.px-1em {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.py-1em {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.gap-1em {
+  gap: 1em;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.p-2em {
+  padding: 2em;
+}
+
+.px-2em {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.py-2em {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.gap-2em {
+  gap: 2em;
+}
+
+.grow-2 {
+  flex-grow: 2;
+}
+
+.p-3em {
+  padding: 3em;
+}
+
+.px-3em {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.py-3em {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.gap-3em {
+  gap: 3em;
+}
+
+.grow-3 {
+  flex-grow: 3;
+}
+
+.p-4em {
+  padding: 4em;
+}
+
+.px-4em {
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
+.py-4em {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.gap-4em {
+  gap: 4em;
+}
+
+.grow-4 {
+  flex-grow: 4;
+}
+
+.p-5em {
+  padding: 5em;
+}
+
+.px-5em {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+.py-5em {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.gap-5em {
+  gap: 5em;
+}
+
+.grow-5 {
+  flex-grow: 5;
+}
+
+.p-6em {
+  padding: 6em;
+}
+
+.px-6em {
+  padding-left: 6em;
+  padding-right: 6em;
+}
+
+.py-6em {
+  padding-top: 6em;
+  padding-bottom: 6em;
+}
+
+.gap-6em {
+  gap: 6em;
+}
+
+.grow-6 {
+  flex-grow: 6;
+}/*# sourceMappingURL=style.main.css.map */
