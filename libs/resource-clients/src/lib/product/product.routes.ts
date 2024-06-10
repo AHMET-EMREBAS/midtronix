@@ -62,6 +62,7 @@ export const ProductSubRoutes: Routes = [
 
 export const ProductRoute: Route = {
   path: 'product',
+  title: 'Product',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([

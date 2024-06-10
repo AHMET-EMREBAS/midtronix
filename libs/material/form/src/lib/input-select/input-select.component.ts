@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonFormModule } from '../form';
 import { MatSelectModule } from '@angular/material/select';
 import { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';

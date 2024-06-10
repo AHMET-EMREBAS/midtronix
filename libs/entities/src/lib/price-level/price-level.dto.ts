@@ -10,6 +10,12 @@ export class CreatePriceLevelDto
 {
   @Property({ type: 'string', format: 'name', required: true })
   name!: string;
+
+  @Property({ type: 'string', maxLength: 400 })
+  description!: string;
+
+  @Property({ type: 'number', minimum: 0, required: true })
+  taxrate!: number;
 }
 
 @Exclude()

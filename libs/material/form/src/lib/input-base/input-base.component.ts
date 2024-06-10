@@ -23,6 +23,8 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   @Input() hint = '';
   @Input() serverSideError = '';
   @Input() prefixIcon?: Icon;
+  @Input() defaultValue?: any;
+
   @Output() inputEvent = new EventEmitter();
 
   $valueChange!: Observable<any>;
@@ -30,6 +32,9 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     if (!this.inputControl) this.inputControl = new FormControl('');
+
+    if (this.defaultValue != undefined)
+      this.inputControl.setValue(this.defaultValue);
   }
 
   ngAfterViewInit(): void {

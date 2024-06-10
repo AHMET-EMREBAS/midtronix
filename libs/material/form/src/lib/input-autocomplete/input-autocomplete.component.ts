@@ -15,7 +15,7 @@ import {
   MatAutocompleteSelectedEvent,
 } from '@angular/material/autocomplete';
 import { BehaviorSubject, debounceTime, map } from 'rxjs';
-import { IInputOption } from '@mdtx/material/core';
+import { IInputOption, LocalStore } from '@mdtx/material/core';
 @Component({
   selector: 'mdtx-input-autocomplete',
   standalone: true,
@@ -32,8 +32,10 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   @Input() override prefixIcon = 'event';
   @Input() options!: T[];
   @Input() multiple?: boolean = false;
-  @Input() defaultValue?: T;
+  @Input() override defaultValue?: T;
   @Input() labelKey?: string;
+  @Input() entityName?: string;
+
   @Output() openedEvent = new EventEmitter();
   @Output() optionSelectedEvent = new EventEmitter<T>();
 
@@ -53,6 +55,19 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
 
   override ngOnInit(): void {
     super.ngOnInit();
+    if (this.entityName) {
+      const storeName = this.entityName + '.all';
+      const entityStore = LocalStore.createStore(this.entityName + '.all');
+
+      const entities = entityStore.obj<T[]>();
+      if (entities) {
+        this.options = entities;
+      } else {
+        throw new Error(
+          `${this.entityName} entities are not found in the store ${storeName}`
+        );
+      }
+    }
 
     if (!this.options) throw new Error('Options is required!');
   }

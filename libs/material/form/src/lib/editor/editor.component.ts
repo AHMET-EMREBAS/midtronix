@@ -5,6 +5,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   CollectionBaseService,
+  LocalStore,
   getEntityMetadataToken,
 } from '@mdtx/material/core';
 import { Subscription, debounceTime, firstValueFrom } from 'rxjs';
@@ -23,6 +24,7 @@ import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DataServiceError, EntityActionPayload } from '@ngrx/data';
 import { Title } from '@angular/platform-browser';
+import { InputNumberComponent } from '../input-number/input-number.component';
 
 @Component({
   selector: 'mdtx-editor',
@@ -33,6 +35,7 @@ import { Title } from '@angular/platform-browser';
     FormsModule,
     ReactiveFormsModule,
     InputTextComponent,
+    InputNumberComponent,
     InputCheckboxComponent,
     InputTextareaComponent,
     InputAutocompleteComponent,
@@ -47,6 +50,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './editor.component.scss',
 })
 export class EditorComponent implements OnInit, OnDestroy {
+  editorStore: LocalStore;
   submitted = false;
   formFields!: PropertyMetadata<any>[];
   submitLabel = 'Save';
@@ -68,25 +72,32 @@ export class EditorComponent implements OnInit, OnDestroy {
     protected readonly title: Title
   ) {
     this.entityName = service.entityName;
+    this.editorStore = LocalStore.createStore(service.entityName + 'Editor');
+  }
+
+  setFormValue(formValue: any) {
+    for (const [k, v] of Object.entries(formValue)) {
+      const control = this.formGroup.get(k);
+      if (control) {
+        control.setValue(v);
+      }
+    }
   }
 
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    if (id) {
+    const localStoreValue = this.editorStore.obj();
+
+    if (localStoreValue) {
+      this.setFormValue(localStoreValue);
+    } else if (id) {
       this.submitLabel = 'Update';
       this.messagePrefix = 'Updated';
-
       this.entityId = id;
       this.isUpdateForm = true;
       const value = await firstValueFrom(this.service.getByKey(id));
-
-      for (const [k, v] of Object.entries(value)) {
-        const control = this.formGroup.get(k);
-        if (control) {
-          control.setValue(v);
-        }
-      }
+      this.setFormValue(value);
     }
 
     this.formFields = this.metadata.formFieldsWithController().map((e) => {
@@ -95,46 +106,15 @@ export class EditorComponent implements OnInit, OnDestroy {
     });
 
     this.formGroup.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
-      console.log('Form Value: ', value);
+      this.editorStore.set(JSON.stringify(value));
     });
 
     this.sub = this.service.entityActions$.subscribe((event) => {
+      console.log(event.type);
       if (event.type.endsWith('success')) {
-        this.formGroup.reset();
-
-        this.snackbar.open(
-          `${this.messagePrefix} ${this.entityName}`,
-          undefined,
-          {
-            panelClass: 'success-snackbar',
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-            duration: 3000,
-          }
-        );
-        if (this.messagePrefix === 'Updated') {
-          this.router.navigate(['..'], { relativeTo: this.route });
-        }
+        this.successHandler();
       } else {
-        const err = event.payload as EntityActionPayload<DataServiceError>;
-        const __error = err.data?.error?.error?.error;
-        const errors = __error?.errors;
-        const errorMessage = __error?.message;
-        this.snackbar.open(errorMessage, undefined, {
-          panelClass: 'error-snackbar',
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          duration: 3000,
-        });
-
-        if (errors) {
-          for (const e of errors) {
-            const control = this.formGroup.get(e.property);
-            control?.markAsDirty();
-            control?.markAsTouched();
-            control?.setErrors(e.constraints);
-          }
-        }
+        this.failiureHandler(event.payload);
       }
     });
 
@@ -156,5 +136,45 @@ export class EditorComponent implements OnInit, OnDestroy {
   resetForm() {
     this.formGroup.reset();
     this.formGroup.markAsUntouched();
+    this.editorStore.remove();
+  }
+
+  failiureHandler(payload: any) {
+    const err = payload as EntityActionPayload<DataServiceError>;
+    const __error = err.data?.error?.error?.error;
+    const errors = __error?.errors;
+    const errorMessage = __error?.message;
+    this.snackbar.open(errorMessage, undefined, {
+      panelClass: 'error-snackbar',
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 3000,
+    });
+
+    if (errors) {
+      for (const e of errors) {
+        const control = this.formGroup.get(e.property);
+        control?.markAsDirty();
+        control?.markAsTouched();
+        control?.setErrors(e.constraints);
+      }
+    }
+  }
+
+  successHandler() {
+    this.formGroup.reset();
+
+    this.editorStore.remove();
+
+    this.snackbar.open(`${this.messagePrefix} ${this.entityName}`, undefined, {
+      panelClass: 'success-snackbar',
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 3000,
+    });
+
+    if (this.messagePrefix === 'Updated') {
+      this.router.navigate(['..'], { relativeTo: this.route });
+    }
   }
 }

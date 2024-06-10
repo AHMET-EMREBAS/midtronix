@@ -21,13 +21,6 @@ export class SampleViewMetadata
   sampleId(): PropertyMetadata<ISampleView> {
     return { name: 'sampleId', label: 'Sample Id', suffixIcon: 'numbers' };
   }
-  name(): PropertyMetadata<ISampleView> {
-    return {
-      name: 'name',
-      label: 'Sample Name',
-      suffixIcon: 'info',
-    };
-  }
 
   override tableColumnNames(): TableFields<ISampleView> {
     return ['name', ...super.tableColumnNames()];

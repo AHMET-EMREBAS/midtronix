@@ -23,7 +23,8 @@ export class InputEnumSelectBaseComponent<T>
   @Input() override prefixIcon = 'event';
   @Input() options!: T[];
   @Input() multiple?: boolean = false;
-  @Input() defaultValue?: T;
+
+  @Input() override defaultValue?: T;
   @Output() openedEvent = new EventEmitter();
   @Output() optionSelectedEvent = new EventEmitter<T>();
 

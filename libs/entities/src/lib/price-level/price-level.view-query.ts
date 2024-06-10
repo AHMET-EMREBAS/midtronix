@@ -24,11 +24,18 @@ export class PriceLevelViewWhereQueryDto
       FindOperator<string>
     >
 {
+  id?: any;
   @QueryOperatorProperty({ type: 'string' })
   priceLevelId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
+  taxrate!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  description!: FindOperator<string>;
 }
 
 @Exclude()

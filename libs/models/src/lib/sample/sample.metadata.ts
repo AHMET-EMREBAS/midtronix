@@ -21,19 +21,6 @@ export class SampleMetadata
     };
   }
 
-  name(): PropertyMetadata<ISample> {
-    return {
-      name: 'name',
-      label: 'Name',
-      type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
-    };
-  }
-
   override propertyNames(): KeyOf<ISample>[] {
     return [this.name().name, this.category().name, ...super.propertyNames()];
   }

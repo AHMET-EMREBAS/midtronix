@@ -21,6 +21,7 @@ import { Supplier } from './supplier.entity';
   },
 })
 export class SupplierView extends BaseView implements ISupplierView {
+  @ViewColumn() description!: string;
   @ViewColumn() name!: string;
   @ViewColumn() supplierId!: string;
 }

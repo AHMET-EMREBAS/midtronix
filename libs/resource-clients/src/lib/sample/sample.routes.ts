@@ -60,6 +60,7 @@ export const SampleSubRoutes: Routes = [
 
 export const SampleRoute: Route = {
   path: 'sample',
+  title: 'Sample',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([

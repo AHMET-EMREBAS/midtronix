@@ -23,4 +23,6 @@ import { PriceLevel } from './price-level.entity';
 export class PriceLevelView extends BaseView implements IPriceLevelView {
   @ViewColumn() name!: string;
   @ViewColumn() priceLevelId!: string;
+  @ViewColumn() description!: string;
+  @ViewColumn() taxrate!: string;
 }

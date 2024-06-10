@@ -71,4 +71,6 @@ export type PropertyMetadata<T, FormControl = any> = {
   format?: StringFormat;
   groupName?: string;
   enum?: string[];
+  entityName?: string;
+  labelKey?: KeyOf<T>;
 };

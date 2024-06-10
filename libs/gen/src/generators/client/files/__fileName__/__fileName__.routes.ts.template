@@ -62,6 +62,7 @@ export const <%- className %>SubRoutes: Routes = [
 
 export const <%- className %>Route: Route = {
   path: '<%- fileName %>',
+  title: '<%- className %>',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([{ label: 'Add', icon: 'add', route: 'editor' },]),

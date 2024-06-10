@@ -1,4 +1,4 @@
-import { IID } from '@mdtx/common';
+import { IBaseEntity, IID } from '@mdtx/common';
 import { BasicController } from './basic.controller';
 import { Type } from '@nestjs/common';
 import { RelationDto, UnsetRelationDto } from '../service';
@@ -8,7 +8,7 @@ import { BasePaginatorQueryDto } from '../dto';
 import { AuthDto } from '../auth';
 
 export function CreateBasicController<
-  T extends IID,
+  T extends IBaseEntity,
   C extends DeepPartial<T>,
   U extends DeepPartial<T>,
   Q extends BasePaginatorQueryDto

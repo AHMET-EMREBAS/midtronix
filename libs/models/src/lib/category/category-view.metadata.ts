@@ -14,13 +14,6 @@ export class CategoryViewMetadata
   categoryId(): PropertyMetadata<ICategoryView> {
     return { name: 'categoryId', label: 'Category Id', suffixIcon: 'numbers' };
   }
-  name(): PropertyMetadata<ICategoryView> {
-    return {
-      name: 'name',
-      label: 'Category Name',
-      suffixIcon: 'info',
-    };
-  }
 
   override tableColumnNames(): TableFields<ICategoryView> {
     return ['name', ...super.tableColumnNames()];

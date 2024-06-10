@@ -6,18 +6,33 @@ import { isDevMode } from '@mdtx/core';
 import {
   CategoryModule,
   SampleModule,
-  SampleService,
   StoreModule,
   SupplierModule,
   PriceLevelModule,
+  ProductModule,
+  PriceLevelService,
+  StoreService,
+  SupplierService,
+  CategoryService,
+  DepartmentService,
+  DepartmentModule,
+  ManufacturerService,
+  ManufacturerModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthGuard, AuthModule } from '@mdtx/auth';
+import { AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
 import { AppController } from './app.controller';
-import { APP_GUARD } from '@nestjs/core';
+import {
+  Categories,
+  Departments,
+  Manufacturers,
+  PriceLevels,
+  Stores,
+  Suppliers,
+} from './seed';
 
 @Module({
   imports: [
@@ -46,9 +61,12 @@ import { APP_GUARD } from '@nestjs/core';
     AuthModule.configure(MockUserService),
     SampleModule,
     CategoryModule,
+    DepartmentModule,
     SupplierModule,
     StoreModule,
     PriceLevelModule,
+    ProductModule,
+    ManufacturerModule,
   ],
   providers: [
     AppEventService,
@@ -61,30 +79,84 @@ import { APP_GUARD } from '@nestjs/core';
   controllers: [AppController],
 })
 export class AppModule implements OnModuleInit {
-  constructor(protected readonly service: SampleService) {}
+  constructor(
+    protected readonly priceLevelService: PriceLevelService,
+    protected readonly storeService: StoreService,
+    protected readonly supplierService: SupplierService,
+    protected readonly categoryService: CategoryService,
+    protected readonly departmentService: DepartmentService,
+    protected readonly manufacturerService: ManufacturerService
+  ) {}
 
   async onModuleInit() {
-    let i = 1;
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'sample 1' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'sample 2' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'sample 3' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'sample 4' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'other 5' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'other 6' });
-    }, i++ * 1000);
-    setTimeout(async () => {
-      await this.service.saveOne({ name: 'other 7' });
-    }, i++ * 1000);
+    Categories.forEach((e) => {
+      try {
+        this.categoryService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+    Departments.forEach((e) => {
+      try {
+        this.departmentService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    PriceLevels.forEach((e) => {
+      try {
+        this.priceLevelService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    Manufacturers.forEach((e) => {
+      try {
+        this.manufacturerService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    Suppliers.forEach((e) => {
+      try {
+        this.supplierService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    Stores.forEach((e) => {
+      try {
+        this.storeService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    // let i = 1;
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'sample 1' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'sample 2' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'sample 3' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'sample 4' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'other 5' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'other 6' });
+    // }, i++ * 1000);
+    // setTimeout(async () => {
+    //   await this.service.saveOne({ name: 'other 7' });
+    // }, i++ * 1000);
   }
 }

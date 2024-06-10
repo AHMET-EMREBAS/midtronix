@@ -3,5 +3,6 @@ import { IBaseView } from '@mdtx/common';
 
 export interface ISupplierView extends IBaseView {
   name: string;
+  description: string;
   supplierId: string;
 }

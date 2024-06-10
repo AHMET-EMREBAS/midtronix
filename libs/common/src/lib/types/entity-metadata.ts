@@ -2,9 +2,10 @@
 import { IBaseEntity, IBaseView } from '../base';
 import { KeyOf } from './keysof';
 import { PropertyMetadata } from './property-metadata';
-import { ValidatorBuilder, ValidatorFn } from './validators';
+import { ValidatorBuilder } from './validators';
 
 export type TableFields<T> = (KeyOf<T> | 'firstColumn' | 'lastColumn')[];
+
 export type CommonMetadata<T> = {
   /**
    * Table column names
@@ -176,6 +177,31 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       label: '#',
       prefixIcon: 'numbers',
       order: 101,
+    };
+  }
+
+  description(): PropertyMetadata<T> {
+    return {
+      name: 'description' as KeyOf<T>,
+      label: 'Description',
+      type: 'string',
+      inputType: 'textarea',
+      prefixIcon: 'description',
+      maxlength: 400,
+      order: 202,
+    };
+  }
+
+  name(): PropertyMetadata<T> {
+    return {
+      name: 'name' as KeyOf<T>,
+      label: 'Name',
+      type: 'string',
+      inputType: 'text',
+      required: true,
+      minlength: 3,
+      maxlength: 50,
+      order: 201,
     };
   }
 

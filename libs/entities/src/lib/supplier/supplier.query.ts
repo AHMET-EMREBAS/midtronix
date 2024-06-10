@@ -12,11 +12,20 @@ import { Supplier } from './supplier.entity';
 import { FindOperator } from 'typeorm';
 
 import { SupplierMetadataInstance } from './supplier.metata';
+import { AllPropertyType, IBaseEntity } from '@mdtx/common';
+import { ISupplier } from '@mdtx/models';
 
 @Exclude()
-export class SupplierWhereQueryDto extends BaseWhereQueryDto<Supplier> {
+export class SupplierWhereQueryDto
+  extends BaseWhereQueryDto<Supplier>
+  implements
+    AllPropertyType<Omit<ISupplier, keyof IBaseEntity>, FindOperator<string>>
+{
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  description!: FindOperator<string>;
 }
 
 @Exclude()

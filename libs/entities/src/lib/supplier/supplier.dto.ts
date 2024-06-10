@@ -10,6 +10,9 @@ export class CreateSupplierDto
 {
   @Property({ type: 'string', format: 'name', required: true })
   name!: string;
+
+  @Property({ type: 'string', maxLength: 400 })
+  description!: string;
 }
 
 @Exclude()

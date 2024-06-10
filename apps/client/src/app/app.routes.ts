@@ -9,6 +9,8 @@ import {
   SupplierRoute,
   StoreRoute,
   PriceLevelRoute,
+  ProductRoute,
+  ManufacturerRoute,
 } from '@mdtx/resource-clients';
 
 export const appRoutes: Route[] = [
@@ -23,14 +25,14 @@ export const appRoutes: Route[] = [
           icon: 'info',
         },
         {
+          route: 'product',
+          label: 'Product',
+          icon: 'inventory',
+        },
+        {
           route: 'category',
           label: 'Category',
           icon: 'category',
-        },
-        {
-          route: 'supplier',
-          label: 'Supplier',
-          icon: 'box',
         },
         {
           route: 'store',
@@ -42,6 +44,16 @@ export const appRoutes: Route[] = [
           label: 'PriceLevel',
           icon: 'layers',
         },
+        {
+          route: 'supplier',
+          label: 'Supplier',
+          icon: 'box',
+        },
+        {
+          route: 'manufacturer',
+          label: 'Manufacturer',
+          icon: 'factory',
+        },
       ]),
     ],
     children: [
@@ -50,6 +62,8 @@ export const appRoutes: Route[] = [
       SupplierRoute,
       StoreRoute,
       PriceLevelRoute,
+      ProductRoute,
+      ManufacturerRoute,
     ],
   },
 ];

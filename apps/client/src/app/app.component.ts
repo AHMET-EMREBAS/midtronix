@@ -1,12 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {
+  CategoryService,
+  PriceLevelService,
+  SupplierService,
+} from '@mdtx/resource-clients';
 
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   standalone: true,
-  imports: [RouterModule, MatSnackBarModule],
+  imports: [RouterModule],
   selector: 'mdtx-root',
   template: `<router-outlet></router-outlet>`,
   styleUrl: './app.component.scss',
+  providers: [CategoryService, SupplierService, PriceLevelService],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(
+    protected readonly categoryService: CategoryService,
+    protected readonly supplierService: SupplierService,
+    protected readonly priceLevelService: PriceLevelService
+  ) {}
+
+  async ngOnInit() {
+    this.categoryService.saveAllToLocalStore();
+    this.supplierService.saveAllToLocalStore();
+    this.priceLevelService.saveAllToLocalStore();
+  }
+}

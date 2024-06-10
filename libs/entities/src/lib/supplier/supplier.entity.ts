@@ -5,4 +5,7 @@ import { BaseEntity, UniqueColumn, Entity, StringColumn } from '@mdtx/core';
 export class Supplier extends BaseEntity implements ISupplier {
   @UniqueColumn()
   name!: string;
+
+  @StringColumn()
+  description!: string;
 }

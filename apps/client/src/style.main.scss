@@ -65,32 +65,32 @@ $_justify: (
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(lightblue);
+  background: crimson;
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(lightblue);
+  background: crimson;
 }
 /* Style the scrollbar thumb when it's in an active state (e.g., when scrolling) */
 ::-webkit-scrollbar-thumb:active {
-  background: var(lightblue);
+  background: crimson;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(royalblue);
+  background-color: royalblue;
 }
 
 ::-webkit-scrollbar-track:active {
-  background-color: var(royalblue);
+  background-color: royalblue;
 }
 ::-webkit-scrollbar-track:hover {
-  background-color: var(royalblue);
+  background-color: royalblue;
 }
 
 /* Style the scrollbar corner (the intersection between the horizontal and vertical scrollbars) */
 ::-webkit-scrollbar-corner {
-  background: var(lightblue);
+  background: crimson;
 }
 
 @font-face {

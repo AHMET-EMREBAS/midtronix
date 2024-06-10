@@ -10,27 +10,19 @@ export class SupplierMetadata
   extends BaseEntityMetadata<ISupplier>
   implements EntityMetadata<ISupplier>
 {
-  name(): PropertyMetadata<ISupplier> {
-    return {
-      name: 'name',
-      label: 'Name',
-      type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
-    };
-  }
   override propertyNames(): KeyOf<ISupplier>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.description().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<ISupplier>[] {
-    return [this.name(), ...super.columns()];
+    return [this.name(), this.description(), ...super.columns()];
   }
 
   protected override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [this.name(), this.description(), ...super.formFields()];
   }
 }

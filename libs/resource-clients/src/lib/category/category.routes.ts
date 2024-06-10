@@ -62,6 +62,7 @@ export const CategorySubRoutes: Routes = [
 
 export const CategoryRoute: Route = {
   path: 'category',
+  title: 'Category',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([

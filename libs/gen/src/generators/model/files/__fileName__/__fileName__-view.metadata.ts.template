@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { I<%- className %>View } from './<%- fileName %>-view';
@@ -21,10 +20,6 @@ export class <%- className %>ViewMetadata
       label: '<%- className %> Name',
       suffixIcon: 'info',
     };
-  }
-
-  override tableColumnNames(): TableFields<I<%- className %>View> {
-    return ['name', ...super.tableColumnNames()];
   }
 
   override propertyNames(): KeyOf<I<%- className %>View>[] {

@@ -9,6 +9,7 @@ import {
   BooleanColumn,
   IntegerColumn,
   StringColumn,
+  UniqueColumn,
   ViewColumn,
 } from '../typeorm';
 import { Property } from '../property';
@@ -41,7 +42,7 @@ export class BaseEntity implements IBaseEntity {
   @Property({ type: 'number' })
   updatedBy!: number;
 
-  @BooleanColumn()
+  @BooleanColumn({ default: true })
   @Property({ type: 'boolean' })
   active!: boolean;
 

@@ -10,18 +10,6 @@ export class CategoryMetadata
   extends BaseEntityMetadata<ICategory>
   implements EntityMetadata<ICategory>
 {
-  name(): PropertyMetadata<ICategory> {
-    return {
-      name: 'name',
-      label: 'Name',
-      type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
-    };
-  }
   override propertyNames(): KeyOf<ICategory>[] {
     return [this.name().name, ...super.propertyNames()];
   }

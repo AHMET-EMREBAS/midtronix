@@ -4,37 +4,45 @@
 
   @if(input.inputType ==='checkbox'){
   <mdtx-input-checkbox
-    [inputName]="input.name || 'NoName'"
+    [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
+    [defaultValue]="true"
   ></mdtx-input-checkbox>
 
   <!-- TExt input -->
   } @else if(input.inputType ==='text'){
   <mdtx-input-text
-    [inputName]="input.name || 'NoName'"
+    [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
     [prefixIcon]="input.prefixIcon || 'info'"
   ></mdtx-input-text>
 
-  <!-- Selectc One -->
   } @else if(input.inputType ==='textarea') {
 
   <mdtx-input-textarea
-    [inputName]="input.name || 'NoName'"
+    [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
     [prefixIcon]="input.prefixIcon || 'info'"
   ></mdtx-input-textarea>
 
+  } @else if(input.inputType ==='number'){
+
+  <mdtx-input-number
+    [inputName]="input.name || 'Not set'"
+    [label]="input.label || 'Not set'"
+    [inputControl]="input.control"
+    [prefixIcon]="input.prefixIcon || 'numbers'"
+  ></mdtx-input-number>
   } @else if(input.inputType ==='select-one-enum'){
 
-  <!-- Enum is required! -->
+  <!-- ENum -->
   @if(input.enum){
 
   <mdtx-input-select-enum
-    [inputName]="input.name || 'NoName'"
+    [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
     [options]="input.enum"
@@ -42,13 +50,21 @@
   } @else {
   <p class="error">Enum property is required for select inputs!</p>
   }
+  <!-- Select one entity -->
+  } @else if(input.inputType ==='select-one-entity'){
 
-  <!-- Select Input -->
+  <mdtx-input-autocomplete
+    [inputName]="input.name || 'Not Set'"
+    [label]="input.label || 'Not set'"
+    [inputControl]="input.control"
+    [entityName]="input.entityName"
+    [labelKey]="input.labelKey"
+  ></mdtx-input-autocomplete>
   }
 
   <!-- End of the foor loop -->
   }
-  <div class="row sm-col gap-1em py-1em">
+  <div class="row sm-col gap-1em py-1em actions">
     <button
       mat-raised-button
       color="primary"

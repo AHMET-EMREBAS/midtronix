@@ -14,13 +14,6 @@ export class StoreViewMetadata
   storeId(): PropertyMetadata<IStoreView> {
     return { name: 'storeId', label: 'Store Id', suffixIcon: 'numbers' };
   }
-  name(): PropertyMetadata<IStoreView> {
-    return {
-      name: 'name',
-      label: 'Store Name',
-      suffixIcon: 'info',
-    };
-  }
 
   override tableColumnNames(): TableFields<IStoreView> {
     return ['name', ...super.tableColumnNames()];

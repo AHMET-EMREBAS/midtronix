@@ -11,15 +11,56 @@ export class ProductViewMetadata
   extends BaseViewMetadata<IProductView>
   implements EntityMetadata<IProductView>
 {
+  brand(): PropertyMetadata<IProductView> {
+    return {
+      name: 'brand',
+      label: 'Brand',
+    };
+  }
+
+  upc(): PropertyMetadata<IProductView> {
+    return {
+      name: 'upc',
+      label: 'Upc',
+    };
+  }
+
+  price(): PropertyMetadata<IProductView> {
+    return {
+      name: 'price',
+      label: 'Price',
+    };
+  }
+
+  cost(): PropertyMetadata<IProductView> {
+    return {
+      name: 'cost',
+      label: 'Cost',
+    };
+  }
+
+  quantity(): PropertyMetadata<IProductView> {
+    return {
+      name: 'quantity',
+      label: 'Quantity',
+    };
+  }
+
+  supplier(): PropertyMetadata<IProductView> {
+    return {
+      name: 'supplier',
+      label: 'Supplier',
+    };
+  }
+  category(): PropertyMetadata<IProductView> {
+    return {
+      name: 'category',
+      label: 'Category',
+    };
+  }
+
   productId(): PropertyMetadata<IProductView> {
     return { name: 'productId', label: 'Product Id', suffixIcon: 'numbers' };
-  }
-  name(): PropertyMetadata<IProductView> {
-    return {
-      name: 'name',
-      label: 'Product Name',
-      suffixIcon: 'info',
-    };
   }
 
   override tableColumnNames(): TableFields<IProductView> {

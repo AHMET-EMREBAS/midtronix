@@ -64,6 +64,7 @@ export const PriceLevelSubRoutes: Routes = [
 
 export const PriceLevelRoute: Route = {
   path: 'price-level',
+  title: 'Price Level',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([

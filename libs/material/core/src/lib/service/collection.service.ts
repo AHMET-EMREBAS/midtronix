@@ -10,6 +10,8 @@ import {
   IBaseCountQuery,
   IClientQueryDto,
 } from '@mdtx/common';
+import { firstValueFrom } from 'rxjs';
+import { LocalStore } from '../localstore';
 
 export class CollectionBaseService<
   T extends { id: any } = any,
@@ -17,6 +19,7 @@ export class CollectionBaseService<
   U extends Partial<T> = any,
   Q extends IClientQueryDto<T> = any
 > extends EntityCollectionServiceBase<T> {
+  private readonly allEntitiesStore: LocalStore;
   private readonly resourceHttpClient: ResourceHttpClient;
 
   constructor(
@@ -26,6 +29,7 @@ export class CollectionBaseService<
   ) {
     super(entity, factory);
     this.resourceHttpClient = httpClientFactory.create(entity);
+    this.allEntitiesStore = LocalStore.createStore(`${entity}.all`);
   }
 
   count(query?: IBaseCountQuery<T, T, T>) {
@@ -54,5 +58,16 @@ export class CollectionBaseService<
 
   resouceClient() {
     return this.resouceClient;
+  }
+
+  async saveAllToLocalStore() {
+    const entities = await firstValueFrom(
+      this.getAll({ mergeStrategy: MergeStrategy.IgnoreChanges })
+    );
+    this.allEntitiesStore.set(JSON.stringify(entities));
+  }
+
+  getAllFromLocalStore() {
+    return this.allEntitiesStore.obj<T[]>();
   }
 }

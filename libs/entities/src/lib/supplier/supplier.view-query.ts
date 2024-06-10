@@ -24,11 +24,15 @@ export class SupplierViewWhereQueryDto
       FindOperator<string>
     >
 {
+  id?: any;
   @QueryOperatorProperty({ type: 'string' })
   supplierId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  description!: FindOperator<string>;
 }
 
 @Exclude()

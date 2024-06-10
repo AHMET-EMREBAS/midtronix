@@ -10,31 +10,6 @@ export class ProductMetadata
   extends BaseEntityMetadata<IProduct>
   implements EntityMetadata<IProduct>
 {
-  name(): PropertyMetadata<IProduct> {
-    return {
-      name: 'name',
-      label: 'Name',
-      type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
-    };
-  }
-
-  description(): PropertyMetadata<IProduct> {
-    return {
-      name: 'description',
-      label: 'Description',
-      type: 'string',
-      inputType: 'textarea',
-      prefixIcon: 'description',
-      maxlength: 400,
-      order: 202,
-    };
-  }
-
   upc(): PropertyMetadata<IProduct> {
     return {
       name: 'upc',
@@ -98,42 +73,79 @@ export class ProductMetadata
     };
   }
 
-  supplier(): PropertyMetadata<IProduct> {
-    return {
-      name: 'supplier',
-      type: 'object',
-      inputType: 'select-one-entity',
-      required: false,
-      prefixIcon: 'trolley',
-      mapValue(value) {
-        return value.supplier.name;
-      },
-      order: 231,
-    };
-  }
-
   category(): PropertyMetadata<IProduct> {
     return {
       name: 'category',
       type: 'string',
+      label: 'Category',
       inputType: 'select-one-entity',
       prefixIcon: 'category',
-      required: true,
+      entityName: 'Category',
+      labelKey: 'name',
+      order: 231,
       mapValue(value) {
-        return value.category.name;
+        return value.category?.name;
       },
+    };
+  }
+  supplier(): PropertyMetadata<IProduct> {
+    return {
+      name: 'supplier',
+      label: 'Supplier',
+      type: 'object',
+      inputType: 'select-one-entity',
+      prefixIcon: 'trolley',
+      entityName: 'Supplier',
+      labelKey: 'name',
+      mapValue(value) {
+        return value.supplier?.name;
+      },
+      order: 232,
     };
   }
 
   override propertyNames(): KeyOf<IProduct>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.upc().name,
+      this.brand().name,
+      this.category().name,
+      this.supplier().name,
+      this.cost().name,
+      this.price().name,
+      this.quantity().name,
+      this.description().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IProduct>[] {
-    return [this.name(), ...super.columns()];
+    return [
+      this.name(),
+      this.upc(),
+      this.brand(),
+      this.category(),
+      this.supplier(),
+      this.cost(),
+      this.price(),
+      this.quantity(),
+      this.description(),
+      ...super.columns(),
+    ];
   }
 
   protected override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [
+      this.name(),
+      this.upc(),
+      this.brand(),
+      this.category(),
+      this.supplier(),
+      this.cost(),
+      this.price(),
+      this.quantity(),
+      this.description(),
+      ...super.formFields(),
+    ];
   }
 }

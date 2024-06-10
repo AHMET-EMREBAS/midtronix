@@ -61,7 +61,7 @@ export class LocalStore implements ILocalStore {
     return null;
   }
 
-  obj() {
+  obj<T>(): T | null {
     const value = localStorage.getItem(this.key);
     if (value) return JSON.parse(value);
     return null;

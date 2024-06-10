@@ -5,6 +5,6 @@ import { I<%- className %> } from './<%- fileName %>';
 export type <%- className %>QueryFields = PickKeys<I<%- className %>, keyof I<%- className %>>;
 
 export interface ICreate<%- className %>Dto
-  extends OmitForCreateDto<I%- className %> {} {}
+  extends OmitForCreateDto<I<%- className %>> {} 
 
 export interface IUpdate<%- className %>Dto extends Partial<ICreate<%- className %>Dto> {}

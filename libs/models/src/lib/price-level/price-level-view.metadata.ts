@@ -11,18 +11,16 @@ export class PriceLevelViewMetadata
   extends BaseViewMetadata<IPriceLevelView>
   implements EntityMetadata<IPriceLevelView>
 {
+  taxrate(): PropertyMetadata<IPriceLevelView> {
+    return {
+      name: 'taxrate',
+      label: 'Taxrate',
+    };
+  }
   priceLevelId(): PropertyMetadata<IPriceLevelView> {
     return {
       name: 'priceLevelId',
       label: 'PriceLevel Id',
-      suffixIcon: 'numbers',
-    };
-  }
-  name(): PropertyMetadata<IPriceLevelView> {
-    return {
-      name: 'name',
-      label: 'PriceLevel Name',
-      suffixIcon: 'info',
     };
   }
 

@@ -10,13 +10,25 @@ import {
 import { Exclude } from 'class-transformer';
 import { PriceLevel } from './price-level.entity';
 import { FindOperator } from 'typeorm';
-
 import { PriceLevelMetadataInstance } from './price-level.metata';
+import { AllPropertyType, IBaseEntity } from '@mdtx/common';
+import { IPriceLevel } from '@mdtx/models';
 
 @Exclude()
-export class PriceLevelWhereQueryDto extends BaseWhereQueryDto<PriceLevel> {
+export class PriceLevelWhereQueryDto
+  extends BaseWhereQueryDto<PriceLevel>
+  implements
+    AllPropertyType<Omit<IPriceLevel, keyof IBaseEntity>, FindOperator<string>>
+{
+  id?: any;
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  description!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'number' })
+  taxrate!: FindOperator<string>;
 }
 
 @Exclude()

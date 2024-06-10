@@ -2,6 +2,7 @@
   labelPosition="before"
   [formControl]="inputControl"
   [attr.data-testid]="testid()"
+  [checked]="defaultValue"
 >
   {{ label || inputName | titlecase }}
 </mat-checkbox>

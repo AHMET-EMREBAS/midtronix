@@ -2,7 +2,9 @@ import { applyDecorators } from '@nestjs/common';
 import { Column as __Column } from 'typeorm';
 import { ApiPropertyOptions, Property } from '../property';
 
-export function IntegerColumn(options?: ApiPropertyOptions) {
+export type ApiColumnOptions = Partial<ApiPropertyOptions>;
+
+export function IntegerColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'integer', ...options }),
     __Column({
@@ -12,21 +14,21 @@ export function IntegerColumn(options?: ApiPropertyOptions) {
   );
 }
 
-export function NumberColumn(options?: ApiPropertyOptions) {
+export function NumberColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'number', ...options }),
     __Column({ type: 'numeric', default: 0 })
   );
 }
 
-export function StringColumn(options?: ApiPropertyOptions) {
+export function StringColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'string', ...options }),
     __Column({ type: 'varchar', default: 'Not Set', nullable: true })
   );
 }
 
-export function DateColumn(options?: ApiPropertyOptions) {
+export function DateColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'date', ...options }),
     __Column({
@@ -37,14 +39,14 @@ export function DateColumn(options?: ApiPropertyOptions) {
   );
 }
 
-export function BooleanColumn(options?: ApiPropertyOptions) {
+export function BooleanColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'boolean', ...options }),
-    __Column({ type: 'boolean', default: false, nullable: true })
+    __Column({ type: 'boolean', default: options?.default, nullable: true })
   );
 }
 
-export function UniqueColumn(options?: ApiPropertyOptions) {
+export function UniqueColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'string', description: 'Unique test value', ...options }),
     __Column({ type: 'varchar', unique: true })

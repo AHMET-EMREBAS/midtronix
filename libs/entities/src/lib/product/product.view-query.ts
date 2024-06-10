@@ -25,6 +25,30 @@ export class ProductViewWhereQueryDto
     >
 {
   @QueryOperatorProperty({ type: 'string' })
+  description!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  brand!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  upc!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  price!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  cost!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  quantity!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  supplier!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  category!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   productId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })

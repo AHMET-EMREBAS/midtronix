@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
           Category: 'Categories',
           Department: 'Departments',
           Supplier: 'Suppliers',
-          Manufacturer: 'Manufacturer',
+          Manufacturer: 'Manufacturers',
           Sku: 'Skus',
           Price: 'Prices',
           Quantity: 'Quantities',

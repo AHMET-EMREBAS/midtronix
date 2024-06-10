@@ -1,11 +1,11 @@
-import { IBaseQueryDto, IID } from '@mdtx/common';
+import { IBaseEntity, IBaseQueryDto, IID } from '@mdtx/common';
 import { BaseEntityService, RelationDto, UnsetRelationDto } from '../service';
 import { AdvanceLogger } from '../logger';
 import { AuthDto } from '../auth';
 import { DeepPartial } from 'typeorm';
 
 export class BasicController<
-  T extends IID,
+  T extends IBaseEntity,
   CreateDto extends DeepPartial<T>,
   UpdateDto extends DeepPartial<T>,
   Query extends IBaseQueryDto
@@ -37,13 +37,20 @@ export class BasicController<
   saveOne(entity: CreateDto, authDto: AuthDto) {
     this.logger.debug(this.saveOne.name, entity);
     this.logger.debug(this.saveOne.name, authDto);
-    return this.service.saveOne(entity);
+    return this.service.saveOne({
+      ...entity,
+      createdBy: authDto.userId,
+      updatedBy: authDto.userId,
+    });
   }
 
   updateOne(id: T['id'], entity: UpdateDto, authDto: AuthDto) {
     this.logger.debug(this.updateOne.name, { id, ...entity });
     this.logger.debug(this.updateOne.name, authDto);
-    return this.service.updateOne(id, entity);
+    return this.service.updateOne(id, {
+      ...entity,
+      updatedBy: authDto.userId,
+    });
   }
 
   deleteOneById(id: T['id'], authDto: AuthDto) {
