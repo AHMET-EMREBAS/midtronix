@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseEntityMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { ISupplier } from './supplier';
@@ -23,20 +22,15 @@ export class SupplierMetadata
       order: 201,
     };
   }
-
   override propertyNames(): KeyOf<ISupplier>[] {
     return [this.name().name, ...super.propertyNames()];
-  }
-
-  override tableColumnNames(): TableFields<ISupplier> {
-    return [...super.tableColumnNames()];
   }
 
   override columns(): PropertyMetadata<ISupplier>[] {
     return [this.name(), ...super.columns()];
   }
 
-  override formFields() {
+  protected override formFields() {
     return [this.name(), ...super.formFields()];
   }
 }

@@ -7,6 +7,7 @@ import {
   CategoryRoute,
   SampleRoute,
   SupplierRoute,
+  StoreRoute,
 } from '@mdtx/resource-clients';
 
 export const appRoutes: Route[] = [
@@ -30,8 +31,13 @@ export const appRoutes: Route[] = [
           label: 'Supplier',
           icon: 'box',
         },
+        {
+          route: 'store',
+          label: 'Store',
+          icon: 'store',
+        },
       ]),
     ],
-    children: [SampleRoute, CategoryRoute, SupplierRoute],
+    children: [SampleRoute, CategoryRoute, SupplierRoute, StoreRoute],
   },
 ];

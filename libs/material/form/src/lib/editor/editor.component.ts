@@ -47,6 +47,7 @@ import { Title } from '@angular/platform-browser';
   styleUrl: './editor.component.scss',
 })
 export class EditorComponent implements OnInit, OnDestroy {
+  submitted = false;
   formFields!: PropertyMetadata<any>[];
   submitLabel = 'Save';
   resetLabel = 'Reset';
@@ -88,11 +89,9 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.formFields = this.metadata.formFields().map((e) => {
-      return {
-        ...e,
-        control: this.formGroup.get(e.name),
-      };
+    this.formFields = this.metadata.formFieldsWithController().map((e) => {
+      const control = this.formGroup.get(e.name);
+      return { ...e, control };
     });
 
     this.formGroup.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
@@ -130,7 +129,10 @@ export class EditorComponent implements OnInit, OnDestroy {
 
         if (errors) {
           for (const e of errors) {
-            this.formGroup.get(e.property)?.setErrors(e.constraints);
+            const control = this.formGroup.get(e.property);
+            control?.markAsDirty();
+            control?.markAsTouched();
+            control?.setErrors(e.constraints);
           }
         }
       }

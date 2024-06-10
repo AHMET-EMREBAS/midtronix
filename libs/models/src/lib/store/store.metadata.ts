@@ -4,6 +4,7 @@ import {
   BaseEntityMetadata,
   TableFields,
   KeyOf,
+  ValidatorBuilder,
 } from '@mdtx/common';
 import { IStore } from './store';
 
@@ -37,6 +38,6 @@ export class StoreMetadata
   }
 
   override formFields() {
-    return [this.name(), this.active()];
+    return [this.name(), ...super.formFields()];
   }
 }

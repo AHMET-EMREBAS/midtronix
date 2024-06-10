@@ -23,5 +23,4 @@ import { Category } from './category.entity';
 export class CategoryView extends BaseView implements ICategoryView {
   @ViewColumn() name!: string;
   @ViewColumn() categoryId!: string;
-
 }

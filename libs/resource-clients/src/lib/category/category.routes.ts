@@ -17,6 +17,8 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
+  SidenavLeftCenterProvider,
+  ToolbarLeftProvider,
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
@@ -38,10 +40,9 @@ export const __CategoryMetadata = new CategoryMetadata();
 export const __CategoryViewMetadata = new CategoryViewMetadata();
 
 export const __CategoryFormGroup = __CategoryMetadata
-  .formFields()
+  .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
-  
 
 export const CategoryFormGroup = new FormBuilder().group(__CategoryFormGroup);
 
@@ -58,8 +59,6 @@ export const CategorySubRoutes: Routes = [
     ],
   },
 ];
-
-console.log(__CategoryFormGroup);
 
 export const CategoryRoute: Route = {
   path: 'category',

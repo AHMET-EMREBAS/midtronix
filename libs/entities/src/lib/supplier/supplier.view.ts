@@ -10,6 +10,7 @@ import { Supplier } from './supplier.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'supplierId')
       .addSelect('main.name', 'name')
+      .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')

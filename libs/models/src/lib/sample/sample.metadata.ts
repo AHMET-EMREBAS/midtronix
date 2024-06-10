@@ -4,7 +4,6 @@ import {
   BaseEntityMetadata,
   TableFields,
   KeyOf,
-  ValidatorBuilder,
 } from '@mdtx/common';
 import { ISample } from './sample';
 
@@ -19,13 +18,6 @@ export class SampleMetadata
       type: 'string',
       inputType: 'select-one-enum',
       enum: ['First', 'Second', 'Third'],
-      control: [
-        '',
-        new ValidatorBuilder('category')
-          .required()
-          .isIn(['First', 'Second', 'Third'])
-          .build(),
-      ],
     };
   }
 
@@ -39,10 +31,6 @@ export class SampleMetadata
       minlength: 3,
       maxlength: 50,
       order: 201,
-      control: [
-        '',
-        new ValidatorBuilder('name').minLength(3).maxLength(50).build(),
-      ],
     };
   }
 

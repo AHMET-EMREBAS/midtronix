@@ -40,7 +40,7 @@ export const __<%- className %>Metadata = new <%- className %>Metadata();
 export const __<%- className %>ViewMetadata = new <%- className %>ViewMetadata();
 
 export const __<%- className %>FormGroup = __<%- className %>Metadata
-  .formFields()
+  .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
 

@@ -2,6 +2,7 @@
 import { IBaseEntity, IBaseView } from '../base';
 import { KeyOf } from './keysof';
 import { PropertyMetadata } from './property-metadata';
+import { ValidatorBuilder, ValidatorFn } from './validators';
 
 export type TableFields<T> = (KeyOf<T> | 'firstColumn' | 'lastColumn')[];
 export type CommonMetadata<T> = {
@@ -154,6 +155,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
         }
         return 'attention';
       },
+      control: ['', new ValidatorBuilder('active').build()],
     };
   }
 
@@ -164,6 +166,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 307,
       type: 'string',
       inputType: 'textarea',
+      control: ['', new ValidatorBuilder('notes').maxLength(400).build()],
     };
   }
 
@@ -192,8 +195,30 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
     };
   }
 
-  formFields(): PropertyMetadata<any>[] {
+  protected formFields(): PropertyMetadata<any>[] {
     return [this.notes(), this.active()];
+  }
+
+  formFieldsWithController() {
+    return this.formFields().map((e) => {
+      const builder = new ValidatorBuilder(e.name);
+
+      if (e.min != undefined) builder.min(e.min);
+      if (e.max != undefined) builder.max(e.max);
+      if (e.minlength != undefined) builder.minLength(e.minlength);
+      if (e.maxlength != undefined) builder.maxLength(e.maxlength);
+
+      if (e.format == 'email') builder.email();
+      else if (e.format == 'barcode') builder.maxLength(13).minLength(8);
+      else if (e.format == 'name') builder.maxLength(50).minLength(3);
+      else if (e.format == 'password') builder.password();
+      else if (e.format == 'phone') builder.phone();
+
+      return {
+        ...e,
+        control: [null, builder.build()],
+      };
+    });
   }
 }
 

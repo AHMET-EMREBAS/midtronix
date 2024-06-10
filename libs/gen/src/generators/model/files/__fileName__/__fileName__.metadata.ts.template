@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseEntityMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { I<%- className %> } from './<%- fileName %>';
@@ -23,20 +22,15 @@ export class <%- className %>Metadata
       order: 201,
     };
   }
-
   override propertyNames(): KeyOf<I<%- className %>>[] {
-    return [this.name().name,  ...super.propertyNames()];
-  }
-
-  override tableColumnNames(): TableFields<I<%- className %>> {
-    return [...super.tableColumnNames()];
+    return [this.name().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<I<%- className %>>[] {
     return [this.name(), ...super.columns()];
   }
 
-  override formFields() {
-    return [this.name(),  ...super.formFields()];
+  protected override formFields() {
+    return [this.name(), ...super.formFields()];
   }
 }

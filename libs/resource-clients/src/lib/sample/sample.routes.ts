@@ -38,7 +38,7 @@ export const __SampleMetadata = new SampleMetadata();
 export const __SampleViewMetadata = new SampleViewMetadata();
 
 export const __SampleFormGroup = __SampleMetadata
-  .formFields()
+  .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
 

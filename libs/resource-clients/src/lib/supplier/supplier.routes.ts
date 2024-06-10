@@ -40,7 +40,7 @@ export const __SupplierMetadata = new SupplierMetadata();
 export const __SupplierViewMetadata = new SupplierViewMetadata();
 
 export const __SupplierFormGroup = __SupplierMetadata
-  .formFields()
+  .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
 
