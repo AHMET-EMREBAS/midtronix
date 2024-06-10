@@ -11,9 +11,12 @@ export class PriceLevelViewMetadata
   extends BaseViewMetadata<IPriceLevelView>
   implements EntityMetadata<IPriceLevelView>
 {
-
-  price-levelId(): PropertyMetadata<IPriceLevelView> {
-    return { name: 'price-levelId', label: 'PriceLevel Id', suffixIcon: 'numbers' };
+  priceLevelId(): PropertyMetadata<IPriceLevelView> {
+    return {
+      name: 'priceLevelId',
+      label: 'PriceLevel Id',
+      suffixIcon: 'numbers',
+    };
   }
   name(): PropertyMetadata<IPriceLevelView> {
     return {
@@ -28,10 +31,14 @@ export class PriceLevelViewMetadata
   }
 
   override propertyNames(): KeyOf<IPriceLevelView>[] {
-    return [this.name().name, this.price-levelId().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.priceLevelId().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IPriceLevelView>[] {
-    return [this.name(), this.price-levelId(), ...super.columns()];
+    return [this.name(), this.priceLevelId(), ...super.columns()];
   }
 }

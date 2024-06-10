@@ -12,7 +12,7 @@ export class <%- className %>ViewMetadata
   implements EntityMetadata<I<%- className %>View>
 {
 
-  <%- fileName %>Id(): PropertyMetadata<I<%- className %>View> {
+  <%- propertyName %>Id(): PropertyMetadata<I<%- className %>View> {
     return { name: '<%- propertyName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
   }
   name(): PropertyMetadata<I<%- className %>View> {
