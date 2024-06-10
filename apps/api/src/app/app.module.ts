@@ -7,7 +7,9 @@ import {
   CategoryModule,
   SampleModule,
   SampleService,
+  StoreModule,
   SupplierModule,
+  PriceLevelModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -45,6 +47,8 @@ import { APP_GUARD } from '@nestjs/core';
     SampleModule,
     CategoryModule,
     SupplierModule,
+    StoreModule,
+    PriceLevelModule,
   ],
   providers: [
     AppEventService,

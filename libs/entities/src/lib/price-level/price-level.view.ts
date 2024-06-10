@@ -1,14 +1,14 @@
 import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
-import { I<%- className %>View } from '@mdtx/models';
+import { IPriceLevelView } from '@mdtx/models';
 
-import { <%- className %> } from './<%- fileName %>.entity';
+import { PriceLevel } from './price-level.entity';
 
 @ViewEntity({
   expression(ds) {
     return ds
       .createQueryBuilder()
       .select('ROW_NUMBER() OVER ()', 'id')
-      .addSelect('main.id', '<%- propertyName %>Id')
+      .addSelect('main.id', 'priceLevelId')
       .addSelect('main.name', 'name')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
@@ -17,10 +17,10 @@ import { <%- className %> } from './<%- fileName %>.entity';
       .addSelect('main.active', 'active')
       .addSelect('main.createdBy', 'createdBy')
       .addSelect('main.updatedBy', 'updatedBy')
-      .from(<%- className %>, 'main');
+      .from(PriceLevel, 'main');
   },
 })
-export class <%- className %>View extends BaseView implements I<%- className %>View {
+export class PriceLevelView extends BaseView implements IPriceLevelView {
   @ViewColumn() name!: string;
-  @ViewColumn() <%- propertyName %>Id!: string;
+  @ViewColumn() priceLevelId!: string;
 }

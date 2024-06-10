@@ -13,7 +13,7 @@ export class <%- className %>ViewMetadata
 {
 
   <%- fileName %>Id(): PropertyMetadata<I<%- className %>View> {
-    return { name: '<%- fileName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
+    return { name: '<%- propertyName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
   }
   name(): PropertyMetadata<I<%- className %>View> {
     return {
@@ -28,10 +28,10 @@ export class <%- className %>ViewMetadata
   }
 
   override propertyNames(): KeyOf<I<%- className %>View>[] {
-    return [this.name().name, this.<%- fileName %>Id().name, ...super.propertyNames()];
+    return [this.name().name, this.<%- propertyName %>Id().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<I<%- className %>View>[] {
-    return [this.name(), this.<%- fileName %>Id(), ...super.columns()];
+    return [this.name(), this.<%- propertyName %>Id(), ...super.columns()];
   }
 }

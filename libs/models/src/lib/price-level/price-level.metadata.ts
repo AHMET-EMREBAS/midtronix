@@ -4,13 +4,13 @@ import {
   BaseEntityMetadata,
   KeyOf,
 } from '@mdtx/common';
-import { IStore } from './store';
+import { IPriceLevel } from './price-level';
 
-export class StoreMetadata
-  extends BaseEntityMetadata<IStore>
-  implements EntityMetadata<IStore>
+export class PriceLevelMetadata
+  extends BaseEntityMetadata<IPriceLevel>
+  implements EntityMetadata<IPriceLevel>
 {
-  name(): PropertyMetadata<IStore> {
+  name(): PropertyMetadata<IPriceLevel> {
     return {
       name: 'name',
       label: 'Name',
@@ -22,11 +22,11 @@ export class StoreMetadata
       order: 201,
     };
   }
-  override propertyNames(): KeyOf<IStore>[] {
+  override propertyNames(): KeyOf<IPriceLevel>[] {
     return [this.name().name, ...super.propertyNames()];
   }
 
-  override columns(): PropertyMetadata<IStore>[] {
+  override columns(): PropertyMetadata<IPriceLevel>[] {
     return [this.name(), ...super.columns()];
   }
 

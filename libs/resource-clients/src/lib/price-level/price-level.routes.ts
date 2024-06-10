@@ -7,12 +7,12 @@ import {
   provideFormGroup,
 } from '@mdtx/material/core';
 import { FormBuilder } from '@angular/forms';
-import { StoreMetadata, StoreViewMetadata } from '@mdtx/models';
+import { PriceLevelMetadata, PriceLevelViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
 import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
-import { IStore, IStoreView } from '@mdtx/models';
+import { IPriceLevel, IPriceLevelView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
@@ -23,30 +23,32 @@ import {
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
-export class StoreService extends CollectionBaseService<IStore> {
+export class PriceLevelService extends CollectionBaseService<IPriceLevel> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Store', factory, httpClientFactory);
+    super('PriceLevel', factory, httpClientFactory);
   }
 }
 
 @Injectable()
-export class StoreViewService extends CollectionBaseService<IStoreView> {
+export class PriceLevelViewService extends CollectionBaseService<IPriceLevelView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('StoreView', factory, httpClientFactory);
+    super('PriceLevelView', factory, httpClientFactory);
   }
 }
 
-export const __StoreMetadata = new StoreMetadata();
-export const __StoreViewMetadata = new StoreViewMetadata();
+export const __PriceLevelMetadata = new PriceLevelMetadata();
+export const __PriceLevelViewMetadata = new PriceLevelViewMetadata();
 
-export const __StoreFormGroup = __StoreMetadata
+export const __PriceLevelFormGroup = __PriceLevelMetadata
   .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
 
-export const StoreFormGroup = new FormBuilder().group(__StoreFormGroup);
+export const PriceLevelFormGroup = new FormBuilder().group(
+  __PriceLevelFormGroup
+);
 
-export const StoreSubRoutes: Routes = [
+export const PriceLevelSubRoutes: Routes = [
   { path: '', loadComponent: () => AdvanceTableComponent },
   { path: 'editor', loadComponent: () => EditorComponent },
   { path: 'editor/:id', loadComponent: () => EditorComponent },
@@ -54,22 +56,22 @@ export const StoreSubRoutes: Routes = [
     path: 'views',
     loadComponent: () => AdvanceTableComponent,
     providers: [
-      provideEntityMetadata(__StoreViewMetadata),
-      provideCollectionService(StoreViewService),
+      provideEntityMetadata(__PriceLevelViewMetadata),
+      provideCollectionService(PriceLevelViewService),
     ],
   },
 ];
 
-export const StoreRoute: Route = {
-  path: 'store',
+export const PriceLevelRoute: Route = {
+  path: 'price-level',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
-    provideCollectionService(StoreService),
-    provideEntityMetadata(__StoreMetadata),
-    provideFormGroup(StoreFormGroup),
+    provideCollectionService(PriceLevelService),
+    provideEntityMetadata(__PriceLevelMetadata),
+    provideFormGroup(PriceLevelFormGroup),
   ],
-  children: [...StoreSubRoutes],
+  children: [...PriceLevelSubRoutes],
 };

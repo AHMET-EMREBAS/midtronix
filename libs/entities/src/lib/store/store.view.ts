@@ -10,6 +10,7 @@ import { Store } from './store.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'storeId')
       .addSelect('main.name', 'name')
+      .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')
