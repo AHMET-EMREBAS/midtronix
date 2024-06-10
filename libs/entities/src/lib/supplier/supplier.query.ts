@@ -30,7 +30,7 @@ export class SupplierWhereQueryDto
 
 @Exclude()
 export class SupplierQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Supplier>(['name'])
+  @SearchProperty<Supplier>(['name', 'description', 'notes'])
   search!: SupplierWhereQueryDto;
 
   @WhereProperty(SupplierWhereQueryDto)

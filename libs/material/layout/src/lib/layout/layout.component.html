@@ -113,7 +113,7 @@
       </div>
 
       <!-- Center Content  -->
-      <div class="row full" style="height: 100%">
+      <div class="row full">
         <!-- Center left  -->
         <div class="col grow-1" *ngIf="contentCenterLeft.length > 0">
           <mdtx-template-outlet
@@ -122,7 +122,7 @@
         </div>
 
         <!-- CENTER -->
-        <div class="col full content-center" *ngIf="contentCenter.length > 0">
+        <div class="col full" *ngIf="contentCenter.length > 0">
           <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>
         </div>
 

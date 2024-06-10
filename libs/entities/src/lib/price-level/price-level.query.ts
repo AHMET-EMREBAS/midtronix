@@ -33,7 +33,7 @@ export class PriceLevelWhereQueryDto
 
 @Exclude()
 export class PriceLevelQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<PriceLevel>(['name'])
+  @SearchProperty<PriceLevel>(['name', 'description', 'notes'])
   search!: PriceLevelWhereQueryDto;
 
   @WhereProperty(PriceLevelWhereQueryDto)

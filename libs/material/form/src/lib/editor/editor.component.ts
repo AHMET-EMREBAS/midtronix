@@ -48,6 +48,18 @@ import { InputNumberComponent } from '../input-number/input-number.component';
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
+
+  styles: [
+    `
+      :host {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 88vh;
+      }
+    `,
+  ],
 })
 export class EditorComponent implements OnInit, OnDestroy {
   editorStore: LocalStore;
@@ -86,18 +98,17 @@ export class EditorComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
     const localStoreValue = this.editorStore.obj();
 
-    if (localStoreValue) {
-      this.setFormValue(localStoreValue);
-    } else if (id) {
+    if (id) {
       this.submitLabel = 'Update';
       this.messagePrefix = 'Updated';
       this.entityId = id;
       this.isUpdateForm = true;
       const value = await firstValueFrom(this.service.getByKey(id));
       this.setFormValue(value);
+    } else if (localStoreValue) {
+      this.setFormValue(localStoreValue);
     }
 
     this.formFields = this.metadata.formFieldsWithController().map((e) => {
@@ -162,9 +173,8 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   successHandler() {
-    this.formGroup.reset();
-
-    this.editorStore.remove();
+    if (!this.isUpdateForm) this.formGroup.reset();
+    if (!this.isUpdateForm) this.editorStore.remove();
 
     this.snackbar.open(`${this.messagePrefix} ${this.entityName}`, undefined, {
       panelClass: 'success-snackbar',
@@ -172,9 +182,5 @@ export class EditorComponent implements OnInit, OnDestroy {
       verticalPosition: 'top',
       duration: 3000,
     });
-
-    if (this.messagePrefix === 'Updated') {
-      this.router.navigate(['..'], { relativeTo: this.route });
-    }
   }
 }

@@ -11,14 +11,18 @@ export class ManufacturerMetadata
   implements EntityMetadata<IManufacturer>
 {
   override propertyNames(): KeyOf<IManufacturer>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.description().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IManufacturer>[] {
-    return [this.name(), ...super.columns()];
+    return [this.name(), this.description(), ...super.columns()];
   }
 
   protected override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [this.name(), this.description(), ...super.formFields()];
   }
 }

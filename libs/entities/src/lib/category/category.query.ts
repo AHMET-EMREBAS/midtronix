@@ -21,7 +21,7 @@ export class CategoryWhereQueryDto extends BaseWhereQueryDto<Category> {
 
 @Exclude()
 export class CategoryQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Category>(['name'])
+  @SearchProperty<Category>(['name', 'notes'])
   search!: CategoryWhereQueryDto;
 
   @WhereProperty(CategoryWhereQueryDto)

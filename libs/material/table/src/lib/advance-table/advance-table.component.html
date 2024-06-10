@@ -1,4 +1,4 @@
-<div class="col p-1em">
+<div class="table-container col">
   <div class="search-container">
     <mat-form-field appearance="fill">
       <input
@@ -87,6 +87,7 @@
     <mat-row *matRowDef="let row; columns: tableColumnNames"></mat-row>
   </mat-table>
 
+  <div class="grow-1"></div>
   <mat-paginator
     #paginatorRef
     [length]="count$ | async"

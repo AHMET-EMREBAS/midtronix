@@ -33,7 +33,7 @@ export class CategoryViewWhereQueryDto
 
 @Exclude()
 export class CategoryViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'categoryId'])
+  @SearchProperty(['name', 'notes', 'categoryId'])
   search!: CategoryViewWhereQueryDto;
 
   @WhereProperty(CategoryViewWhereQueryDto)

@@ -34,7 +34,7 @@ export class ManufacturerViewWhereQueryDto
 
 @Exclude()
 export class ManufacturerViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'manufacturerId'])
+  @SearchProperty(['name', 'manufacturerId', ''])
   search!: ManufacturerViewWhereQueryDto;
 
   @WhereProperty(ManufacturerViewWhereQueryDto)

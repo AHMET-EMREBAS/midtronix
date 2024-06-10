@@ -1,3 +1,4 @@
+import { sentenceCase } from '@mdtx/utils';
 import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
@@ -35,7 +36,9 @@ export class ___ComparisonValidator implements ValidatorConstraintInterface {
 
   defaultMessage(args: ValidationArguments) {
     const otherPropertyName = args.constraints[0];
-    return `${args.property} must be ${args.constraints[1]} ${otherPropertyName}`;
+    const c = sentenceCase(args.constraints[1]);
+
+    return `${args.property} must be ${c} ${otherPropertyName}`;
   }
 }
 

@@ -16,6 +16,13 @@ export function splitByUppercase(className: string) {
   return result.join('');
 }
 
+export function sentenceCase(className: string) {
+  return splitByUppercase(className)
+    .split('_')
+    .map((e) => e.toLowerCase())
+    .join(' ');
+}
+
 function uppercaseFirst(name: string) {
   if (name) return name && [name[0].toUpperCase(), name.slice(1)].join('');
 

@@ -26,7 +26,7 @@ export class DepartmentWhereQueryDto
 
 @Exclude()
 export class DepartmentQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Department>(['name'])
+  @SearchProperty<Department>(['name', 'notes'])
   search!: DepartmentWhereQueryDto;
 
   @WhereProperty(DepartmentWhereQueryDto)
