@@ -24,6 +24,11 @@
       "factory": "./src/generators/client/generator",
       "schema": "./src/generators/client/schema.json",
       "description": "client generator"
+    },
+    "all": {
+      "factory": "./src/generators/all/generator",
+      "schema": "./src/generators/all/schema.json",
+      "description": "all generator"
     }
   }
 }

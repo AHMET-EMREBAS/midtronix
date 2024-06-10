@@ -3,7 +3,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { isDevMode } from '@mdtx/core';
-import { CategoryModule, SampleModule, SampleService } from '@mdtx/resources';
+import {
+  CategoryModule,
+  SampleModule,
+  SampleService,
+  SupplierModule,
+} from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
@@ -39,6 +44,7 @@ import { APP_GUARD } from '@nestjs/core';
     AuthModule.configure(MockUserService),
     SampleModule,
     CategoryModule,
+    SupplierModule,
   ],
   providers: [
     AppEventService,

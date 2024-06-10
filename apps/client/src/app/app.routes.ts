@@ -3,7 +3,11 @@ import {
   AppLayoutComponent,
   SidenavLeftTopProvider,
 } from '@mdtx/material/layout';
-import { CategoryRoute, SampleRoute } from '@mdtx/resource-clients';
+import {
+  CategoryRoute,
+  SampleRoute,
+  SupplierRoute,
+} from '@mdtx/resource-clients';
 
 export const appRoutes: Route[] = [
   {
@@ -21,8 +25,13 @@ export const appRoutes: Route[] = [
           label: 'Category',
           icon: 'category',
         },
+        {
+          route: 'supplier',
+          label: 'Supplier',
+          icon: 'box',
+        },
       ]),
     ],
-    children: [SampleRoute, CategoryRoute],
+    children: [SampleRoute, CategoryRoute, SupplierRoute],
   },
 ];
