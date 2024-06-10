@@ -9,7 +9,10 @@ import { PriceLevelService } from './price-level.service';
 
 import { ApiVersion } from '@mdtx/common';
 
-export const PriceLevelRRB = RestRouteBuilder.get('PriceLevel', ApiVersion.v1);
+export const PriceLevelRRB = RestRouteBuilder.get(
+  PriceLevel.name,
+  ApiVersion.v1
+);
 
 @PriceLevelRRB.Controler()
 export class PriceLevelController extends CreateBasicController<

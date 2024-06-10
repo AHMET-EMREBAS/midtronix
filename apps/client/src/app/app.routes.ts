@@ -8,6 +8,7 @@ import {
   SampleRoute,
   SupplierRoute,
   StoreRoute,
+  PriceLevelRoute,
 } from '@mdtx/resource-clients';
 
 export const appRoutes: Route[] = [
@@ -36,8 +37,19 @@ export const appRoutes: Route[] = [
           label: 'Store',
           icon: 'store',
         },
+        {
+          route: 'price-level',
+          label: 'PriceLevel',
+          icon: 'layers',
+        },
       ]),
     ],
-    children: [SampleRoute, CategoryRoute, SupplierRoute, StoreRoute],
+    children: [
+      SampleRoute,
+      CategoryRoute,
+      SupplierRoute,
+      StoreRoute,
+      PriceLevelRoute,
+    ],
   },
 ];

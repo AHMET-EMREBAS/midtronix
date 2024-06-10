@@ -1,15 +1,15 @@
 import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
 import {
-  CreateCategoryDto,
-  CategoryQueryDto,
   Category,
+  CreateCategoryDto,
   UdpateCategoryDto,
+  CategoryQueryDto,
 } from '@mdtx/entities';
 import { CategoryService } from './category.service';
 
 import { ApiVersion } from '@mdtx/common';
 
-export const CategoryRRB = RestRouteBuilder.get('Category', ApiVersion.v1);
+export const CategoryRRB = RestRouteBuilder.get(Category.name, ApiVersion.v1);
 
 @CategoryRRB.Controler()
 export class CategoryController extends CreateBasicController<

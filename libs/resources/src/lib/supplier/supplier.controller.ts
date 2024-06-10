@@ -1,15 +1,15 @@
 import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
 import {
-  CreateSupplierDto,
-  SupplierQueryDto,
   Supplier,
+  CreateSupplierDto,
   UdpateSupplierDto,
+  SupplierQueryDto,
 } from '@mdtx/entities';
 import { SupplierService } from './supplier.service';
 
 import { ApiVersion } from '@mdtx/common';
 
-export const SupplierRRB = RestRouteBuilder.get('Supplier', ApiVersion.v1);
+export const SupplierRRB = RestRouteBuilder.get(Supplier.name, ApiVersion.v1);
 
 @SupplierRRB.Controler()
 export class SupplierController extends CreateBasicController<
