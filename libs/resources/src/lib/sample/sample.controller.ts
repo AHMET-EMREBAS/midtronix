@@ -9,7 +9,7 @@ import { SampleService } from './sample.service';
 
 import { ApiVersion } from '@mdtx/common';
 
-export const SampleRRB = RestRouteBuilder.get('Sample', ApiVersion.v1);
+export const SampleRRB = RestRouteBuilder.get(Sample.name, ApiVersion.v1);
 
 @SampleRRB.Controler()
 export class SampleController extends CreateBasicController<

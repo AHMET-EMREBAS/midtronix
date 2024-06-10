@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +21,8 @@ import { InputListSelectComponent } from '../input-list-select/input-list-select
 import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum.component';
 
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { DataServiceError, EntityActionPayload } from '@ngrx/data';
+
 @Component({
   selector: 'mdtx-editor',
   standalone: true,
@@ -43,13 +45,13 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss',
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, OnDestroy {
   formFields!: PropertyMetadata<any>[];
   submitLabel = 'Save';
   resetLabel = 'Reset';
   isUpdateForm = false;
   entityId?: string;
-
+  entityName!: string;
   sub!: Subscription;
 
   constructor(
@@ -59,7 +61,9 @@ export class EditorComponent implements OnInit {
     protected readonly metadata: ClientEntityMetadata<any>,
     protected readonly route: ActivatedRoute,
     protected readonly snackbar: MatSnackBar
-  ) {}
+  ) {
+    this.entityName = service.entityName;
+  }
 
   async ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -68,6 +72,7 @@ export class EditorComponent implements OnInit {
       this.entityId = id;
       this.isUpdateForm = true;
       const value = await firstValueFrom(this.service.getByKey(id));
+
       for (const [k, v] of Object.entries(value)) {
         const control = this.formGroup.get(k);
         if (control) {
@@ -88,13 +93,37 @@ export class EditorComponent implements OnInit {
     });
 
     this.sub = this.service.entityActions$.subscribe((event) => {
-      this.snackbar.open(event.type);
       if (event.type.endsWith('success')) {
         this.formGroup.reset();
+        this.snackbar.open(`Created new ${this.entityName}`, undefined, {
+          panelClass: 'success-snackbar',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000,
+        });
       } else {
-        console.log(event.payload);
+        const err = event.payload as EntityActionPayload<DataServiceError>;
+        const __error = err.data?.error?.error?.error;
+        const errors = __error?.errors;
+        const errorMessage = __error?.message;
+        this.snackbar.open(errorMessage, undefined, {
+          panelClass: 'error-snackbar',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 3000,
+        });
+
+        if (errors) {
+          for (const e of errors) {
+            this.formGroup.get(e.property)?.setErrors(e.constraints);
+          }
+        }
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   submitForm() {

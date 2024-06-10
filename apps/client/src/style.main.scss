@@ -304,3 +304,18 @@ $_justify: (
 mat-form-field {
   width: 100%;
 }
+
+.success-snackbar > * {
+  background-color: rgb(15, 92, 15) !important;
+  color: white !important;
+}
+
+.error-snackbar > * {
+  background-color: rgb(117, 13, 34) !important;
+  color: white !important;
+}
+
+.warning-snackbar > * {
+  background-color: rgb(214, 182, 0) !important;
+  color: white !important;
+}

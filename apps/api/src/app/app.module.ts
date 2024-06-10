@@ -10,7 +10,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthGuard, AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
 import { AppController } from './app.controller';
-// import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
