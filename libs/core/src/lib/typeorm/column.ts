@@ -12,6 +12,13 @@ export function IntegerColumn(options?: ApiPropertyOptions) {
   );
 }
 
+export function NumberColumn(options?: ApiPropertyOptions) {
+  return applyDecorators(
+    Property({ type: 'number', ...options }),
+    __Column({ type: 'numeric', default: 0 })
+  );
+}
+
 export function StringColumn(options?: ApiPropertyOptions) {
   return applyDecorators(
     Property({ type: 'string', ...options }),
