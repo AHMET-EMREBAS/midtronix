@@ -19,6 +19,15 @@
   ></mdtx-input-text>
 
   <!-- Selectc One -->
+  } @else if(input.inputType ==='textarea') {
+
+  <mdtx-input-textarea
+    [inputName]="input.name || 'NoName'"
+    [label]="input.label || 'Not set'"
+    [inputControl]="input.control"
+    [prefixIcon]="input.prefixIcon || 'info'"
+  ></mdtx-input-textarea>
+
   } @else if(input.inputType ==='select-one-enum'){
 
   <!-- Enum is required! -->

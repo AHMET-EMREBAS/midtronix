@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseView } from '@mdtx/common';
 
-export interface ISampleView extends IBaseView {
+export interface ISupplierView extends IBaseView {
   name: string;
-  category: string;
-  notes: string;
-  sampleId: string;
+  supplierId: string;
 }

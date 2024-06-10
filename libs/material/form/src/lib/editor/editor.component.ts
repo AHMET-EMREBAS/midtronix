@@ -11,7 +11,7 @@ import { Subscription, debounceTime, firstValueFrom } from 'rxjs';
 import { ClientEntityMetadata, PropertyMetadata } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { InputTextComponent } from '../input-text/input-text.component';
 import { InputCheckboxComponent } from '../input-checkbox/input-checkbox.component';
 import { InputTextareaComponent } from '../input-textarea/input-textarea.component';
@@ -22,6 +22,7 @@ import { InputSelectEnumComponent } from '../input-select-enum/input-select-enum
 
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DataServiceError, EntityActionPayload } from '@ngrx/data';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'mdtx-editor',
@@ -53,6 +54,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   entityId?: string;
   entityName!: string;
   sub!: Subscription;
+  messagePrefix = 'Created';
 
   constructor(
     public readonly formGroup: FormGroup,
@@ -60,7 +62,9 @@ export class EditorComponent implements OnInit, OnDestroy {
     @Inject(getEntityMetadataToken())
     protected readonly metadata: ClientEntityMetadata<any>,
     protected readonly route: ActivatedRoute,
-    protected readonly snackbar: MatSnackBar
+    protected readonly router: Router,
+    protected readonly snackbar: MatSnackBar,
+    protected readonly title: Title
   ) {
     this.entityName = service.entityName;
   }
@@ -69,6 +73,9 @@ export class EditorComponent implements OnInit, OnDestroy {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
+      this.submitLabel = 'Update';
+      this.messagePrefix = 'Updated';
+
       this.entityId = id;
       this.isUpdateForm = true;
       const value = await firstValueFrom(this.service.getByKey(id));
@@ -95,12 +102,20 @@ export class EditorComponent implements OnInit, OnDestroy {
     this.sub = this.service.entityActions$.subscribe((event) => {
       if (event.type.endsWith('success')) {
         this.formGroup.reset();
-        this.snackbar.open(`Created new ${this.entityName}`, undefined, {
-          panelClass: 'success-snackbar',
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          duration: 3000,
-        });
+
+        this.snackbar.open(
+          `${this.messagePrefix} ${this.entityName}`,
+          undefined,
+          {
+            panelClass: 'success-snackbar',
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration: 3000,
+          }
+        );
+        if (this.messagePrefix === 'Updated') {
+          this.router.navigate(['..'], { relativeTo: this.route });
+        }
       } else {
         const err = event.payload as EntityActionPayload<DataServiceError>;
         const __error = err.data?.error?.error?.error;
@@ -120,6 +135,8 @@ export class EditorComponent implements OnInit, OnDestroy {
         }
       }
     });
+
+    this.title.setTitle(`${this.submitLabel} ${this.entityName}`);
   }
 
   ngOnDestroy(): void {

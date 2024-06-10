@@ -42,6 +42,6 @@ export class CategoryMetadata
   }
 
   override formFields() {
-    return [this.name(), this.active()];
+    return [this.name(), ...super.formFields()];
   }
 }

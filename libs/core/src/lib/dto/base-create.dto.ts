@@ -10,4 +10,7 @@ export class BaseCreateDto<T>
 {
   @Property({ type: 'boolean' })
   active!: boolean;
+
+  @Property({ type: 'string' })
+  notes!: string;
 }

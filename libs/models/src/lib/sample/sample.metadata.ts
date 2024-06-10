@@ -28,6 +28,7 @@ export class SampleMetadata
       ],
     };
   }
+
   name(): PropertyMetadata<ISample> {
     return {
       name: 'name',
@@ -58,6 +59,6 @@ export class SampleMetadata
   }
 
   override formFields() {
-    return [this.name(), this.category(), this.active()];
+    return [this.name(), this.category(), ...super.formFields()];
   }
 }

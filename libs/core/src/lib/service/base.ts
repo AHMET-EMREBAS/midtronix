@@ -5,7 +5,12 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { IBaseEntity, IBaseView } from '@mdtx/common';
-import { BooleanColumn, IntegerColumn, ViewColumn } from '../typeorm';
+import {
+  BooleanColumn,
+  IntegerColumn,
+  StringColumn,
+  ViewColumn,
+} from '../typeorm';
 import { Property } from '../property';
 
 /**
@@ -39,6 +44,10 @@ export class BaseEntity implements IBaseEntity {
   @BooleanColumn()
   @Property({ type: 'boolean' })
   active!: boolean;
+
+  @StringColumn()
+  @Property({ type: 'string' })
+  notes!: string;
 }
 
 export class BaseView implements IBaseView {
@@ -49,4 +58,5 @@ export class BaseView implements IBaseView {
   @ViewColumn() createdBy!: string;
   @ViewColumn() updatedBy!: string;
   @ViewColumn() active!: string;
+  @ViewColumn() notes!: string;
 }

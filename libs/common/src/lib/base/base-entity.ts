@@ -17,6 +17,7 @@ export interface IEntityMonitor {
 
 export interface IBaseEntity extends IID, ITimestamp, IEntityMonitor {
   active: boolean;
+  notes: string;
 }
 
 export type IBaseView = StringifyType<IBaseEntity>;

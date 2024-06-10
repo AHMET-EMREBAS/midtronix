@@ -46,4 +46,7 @@ export class BaseWhereQueryDto<T>
 
   @QueryOperatorProperty({ type: 'boolean' })
   active!: FindOperator<T>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  notes!: FindOperator<T>;
 }

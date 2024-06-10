@@ -40,6 +40,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   propertyNames(): KeyOf<T>[] {
     return [
       'id',
+      'notes',
       'active',
       'createdAt',
       'updatedAt',
@@ -68,6 +69,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       this.createdBy(),
       this.updatedBy(),
       this.active(),
+      this.notes(),
     ];
   }
 
@@ -97,6 +99,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 301,
     };
   }
+
   updatedAt(): PropertyMetadata<T> {
     return {
       name: 'updatedAt',
@@ -154,6 +157,16 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
     };
   }
 
+  notes(): PropertyMetadata<T> {
+    return {
+      name: 'notes',
+      label: 'Notes',
+      order: 307,
+      type: 'string',
+      inputType: 'textarea',
+    };
+  }
+
   id(): PropertyMetadata<T> {
     return {
       name: 'id',
@@ -180,7 +193,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   }
 
   formFields(): PropertyMetadata<any>[] {
-    throw new Error('Not Implemented');
+    return [this.notes(), this.active()];
   }
 }
 
