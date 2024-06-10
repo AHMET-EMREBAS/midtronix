@@ -37,6 +37,6 @@ export class <%- className %>Metadata
   }
 
   override formFields() {
-    return [this.name(),  this.active()];
+    return [this.name(),  ...super.formFields()];
   }
 }

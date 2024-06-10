@@ -5,13 +5,13 @@ import {
   TableFields,
   KeyOf,
 } from '@mdtx/common';
-import { ISupplier } from './supplier';
+import { IStore } from './store';
 
-export class SupplierMetadata
-  extends BaseEntityMetadata<ISupplier>
-  implements EntityMetadata<ISupplier>
+export class StoreMetadata
+  extends BaseEntityMetadata<IStore>
+  implements EntityMetadata<IStore>
 {
-  name(): PropertyMetadata<ISupplier> {
+  name(): PropertyMetadata<IStore> {
     return {
       name: 'name',
       label: 'Name',
@@ -24,19 +24,19 @@ export class SupplierMetadata
     };
   }
 
-  override propertyNames(): KeyOf<ISupplier>[] {
+  override propertyNames(): KeyOf<IStore>[] {
     return [this.name().name, ...super.propertyNames()];
   }
 
-  override tableColumnNames(): TableFields<ISupplier> {
+  override tableColumnNames(): TableFields<IStore> {
     return [...super.tableColumnNames()];
   }
 
-  override columns(): PropertyMetadata<ISupplier>[] {
+  override columns(): PropertyMetadata<IStore>[] {
     return [this.name(), ...super.columns()];
   }
 
   override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [this.name(), this.active()];
   }
 }
