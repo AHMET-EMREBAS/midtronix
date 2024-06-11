@@ -32,7 +32,7 @@ import {
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthModule } from '@mdtx/auth';
+import { AuthGuard, AuthModule } from '@mdtx/auth';
 import { MockUserService } from './mock-user.service';
 import { AppController } from './app.controller';
 import {
@@ -47,6 +47,7 @@ import {
 } from './seed';
 import { Roles } from './seed/roles';
 import { User } from '@mdtx/entities';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -92,10 +93,10 @@ import { User } from '@mdtx/entities';
   providers: [
     AppEventService,
     EventEmitter2,
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: AuthGuard,
-    // },
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
   ],
   controllers: [AppController],
 })

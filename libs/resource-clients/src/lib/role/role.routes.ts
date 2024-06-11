@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  AuthTokenStore,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -21,7 +22,14 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
+
+const token = AuthTokenStore.get();
+
+const httpClientFactory = new ResourceHttpClientFactory(`api/v1`, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 @Injectable()
 export class RoleService extends CollectionBaseService<IRole> {

@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { ProductMetadata, ProductViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IProduct, IProductView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class ProductService extends CollectionBaseService<IProduct> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Product', factory, httpClientFactory);
+    super('Product', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class ProductViewService extends CollectionBaseService<IProductView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('ProductView', factory, httpClientFactory);
+    super('ProductView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

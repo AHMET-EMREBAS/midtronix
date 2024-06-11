@@ -26,6 +26,7 @@ export class ResourceHttpClient<
   protected config(): AxiosRequestConfig | undefined {
     return this.axiosConfig;
   }
+  
   protected parseResult<T>(res: AxiosResponse<T>) {
     return res.data;
   }
@@ -33,7 +34,7 @@ export class ResourceHttpClient<
   async count(query?: Query) {
     const path =
       this.helper.path(this.apiPaths.COUNT_PATH) + this.helper.query(query);
-    const res = await axios.get<ICountResponse>(path);
+    const res = await axios.get<ICountResponse>(path, this.config());
     return this.parseResult(res);
   }
 

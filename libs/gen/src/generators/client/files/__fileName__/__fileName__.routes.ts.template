@@ -1,7 +1,11 @@
 import { Route, Routes } from '@angular/router';
-import { AdvanceTableComponent, provideActionButtonHandler } from '@mdtx/material/table';
+import {
+  AdvanceTableComponent,
+  provideActionButtonHandler,
+} from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -10,27 +14,25 @@ import { FormBuilder } from '@angular/forms';
 import { <%- className %>Metadata, <%- className %>ViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { I<%- className %>, I<%- className %>View } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
-  ModuleLayoutComponent
+  ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class <%- className %>Service extends CollectionBaseService<I<%- className %>> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('<%- className %>', factory, httpClientFactory);
+    super('<%- className %>', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class <%- className %>ViewService extends CollectionBaseService<I<%- className %>View> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('<%- className %>View', factory, httpClientFactory);
+    super('<%- className %>View', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

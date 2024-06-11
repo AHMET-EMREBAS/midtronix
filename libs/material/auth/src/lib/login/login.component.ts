@@ -10,13 +10,13 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { ILoginResponse, ValidatorBuilder } from '@mdtx/common';
+import { ValidatorBuilder } from '@mdtx/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService, AuthTokenStore } from '@mdtx/material/core';
-import { firstValueFrom } from 'rxjs';
-import { AxiosError } from 'axios';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'mdtx-login',
   standalone: true,
@@ -29,6 +29,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     InputTextComponent,
     InputPasswordComponent,
     MatSnackBarModule,
+    RouterModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -63,7 +64,7 @@ export class LoginComponent {
         const result = await this.authService.login({ username, password });
 
         AuthTokenStore.set(result.accesstoken);
-        
+
         this.snackbar.open('Wellcome.', undefined, {
           horizontalPosition: 'center',
           verticalPosition: 'top',

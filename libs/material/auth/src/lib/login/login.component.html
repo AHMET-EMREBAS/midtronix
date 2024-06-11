@@ -1,10 +1,11 @@
-<form class="login-form">
+<form>
   <mdtx-input-text
     inputName="username"
     label="Username"
     [inputControl]="username"
     prefixIcon="email"
   ></mdtx-input-text>
+
   <mdtx-input-password
     inputName="password"
     label="Password"
@@ -12,7 +13,27 @@
     prefixIcon="email"
   ></mdtx-input-password>
 
-  <div class="login-form-actions">
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  <div class="actions">
+    <button type="button" mat-raised-button color="primary" (click)="login()">
+      Login
+    </button>
+
+    <button
+      type="button"
+      mat-raised-button
+      color="accent"
+      [routerLink]="['../', 'forgot-password']"
+    >
+      Forgot Password
+    </button>
+
+    <button
+      type="button"
+      mat-raised-button
+      color="accent"
+      [routerLink]="['../', 'login-with-sso']"
+    >
+      Login With SSO
+    </button>
   </div>
 </form>

@@ -5,6 +5,7 @@ import {
   IForgotPasswordResponse,
   ILoginDto,
   ILoginResponse,
+  ILoginWithSSODto,
   ILogoutResponse,
   IUpdatePasswordDto,
   IUpdatePasswordResponse,
@@ -62,6 +63,15 @@ export class AuthHttpClient {
   async updatePassword(body: IUpdatePasswordDto) {
     const res = await axios.post<any, AxiosResponse<IUpdatePasswordResponse>>(
       this.__path(this.apiPaths.UpdatePasswordPath),
+      body,
+      this.__config()
+    );
+    return this.parseResult(res);
+  }
+
+  async loginWithSSO(body: ILoginWithSSODto) {
+    const res = await axios.post<any, AxiosResponse<ILoginResponse>>(
+      this.__path(this.apiPaths.LoginWithSSOPath),
       body,
       this.__config()
     );

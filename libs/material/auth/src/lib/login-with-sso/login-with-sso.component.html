@@ -1,1 +1,21 @@
-<p>login-with-sso works!</p>
+<form>
+  <mdtx-input-text
+    inputName="username"
+    label="Email"
+    [inputControl]="username"
+    prefixIcon="email"
+  ></mdtx-input-text>
+
+  <mdtx-input-text
+    inputName="sso"
+    label="One Time Login Code"
+    [inputControl]="sso"
+    prefixIcon="passkey"
+  ></mdtx-input-text>
+
+  <div class="actions">
+    <button type="button" mat-raised-button color="primary" (click)="submit()">
+      Login With SSO
+    </button>
+  </div>
+</form>

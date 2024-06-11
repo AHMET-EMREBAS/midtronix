@@ -20,10 +20,11 @@ import {
   AddressRoute,
   DepartmentRoute,
 } from '@mdtx/resource-clients';
-import { LoginComponent } from '@mdtx/material/auth';
+import { AuthRoute, LoginComponent } from '@mdtx/material/auth';
 export const appRoutes: Route[] = [
+  AuthRoute,
   {
-    path: '',
+    path: 'inventory',
     loadComponent: () => AppLayoutComponent,
     providers: [
       SidenavLeftTopProvider.provide([
@@ -91,10 +92,6 @@ export const appRoutes: Route[] = [
       ]),
     ],
     children: [
-      {
-        path: 'auth',
-        children: [{ path: 'login', loadComponent: () => LoginComponent }],
-      },
       ProductRoute,
       CategoryRoute,
       DepartmentRoute,
