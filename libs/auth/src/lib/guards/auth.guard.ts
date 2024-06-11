@@ -12,7 +12,7 @@ import { AdvanceLogger, PermissionMeta, PublicMetadata } from '@mdtx/core';
 import { Request } from 'express';
 import { AuthUserService } from '../auth-user.service';
 import { InjectAuthUserService } from '../auth.provider';
-import { AuthEnums } from '@mdtx/common';
+import { AuthCredentials, AuthEnums } from '@mdtx/common';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -44,6 +44,11 @@ export class AuthGuard implements CanActivate {
 
       if (payload) {
         const user = await this.userService.findOneById(payload.id);
+
+        if (this.isAdmin(user)) {
+          return true;
+        }
+
         const requiredPermission = PermissionMeta.get(ctx, this.reflector);
 
         this.logger.debug('User Details', user);
@@ -82,5 +87,13 @@ export class AuthGuard implements CanActivate {
       request.cookies?.authorization ??
       request.headers?.authorization?.split(' ').pop()
     );
+  }
+
+  isAdmin(user: AuthCredentials) {
+    return !!user.roles.find((e) => e.name === 'Admin');
+  }
+
+  isAnalist(user: AuthCredentials) {
+    return !!user.roles.find((e) => e.name === 'Analist');
   }
 }
