@@ -21,15 +21,15 @@ form {
   width: 100%;
   flex-grow: 1;
 }
-.error {
-  background-color: crimson;
-  color: white;
-}
+// .error {
+//   background-color: crimson;
+//   color: white;
+// }
 
-.success {
-  background-color: green;
-  color: white;
-}
+// .success {
+//   background-color: green;
+//   color: white;
+// }
 
 @media screen and (max-width: 600px) {
   form {

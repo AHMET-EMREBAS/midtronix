@@ -11,7 +11,7 @@ import { isDevMode } from '@mdtx/core';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './guards';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     ConfigModule.forFeature(() => ({})),
@@ -35,9 +35,13 @@ import { AuthGuard } from './guards';
   exports: [AuthService],
 })
 export class AuthModule {
-  static configure(userService: Type<AuthUserService>): DynamicModule {
+  static configure(
+    entities: Type<any>[],
+    userService: Type<AuthUserService>
+  ): DynamicModule {
     return {
       module: AuthModule,
+      imports: [TypeOrmModule.forFeature(entities)],
       providers: [provideAuthUserService(userService)],
       exports: [AuthModule, getAuthUserServiceToken()],
     };

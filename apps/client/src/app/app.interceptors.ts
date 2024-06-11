@@ -1,24 +1,16 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { isDevMode } from '@angular/core';
+import { AuthTokenStore } from '@mdtx/material/core';
+
+const baseURL = isDevMode() ? 'http://localhost:3000/' : '';
 
 export const httpInterceptors: HttpInterceptorFn[] = [
   (req, next) => {
-    console.log(':::::::::::::::::: ', req.url);
-    if (isDevMode()) {
-      const headers = req.headers.append(
-        'Authorization',
-        'Bearer SOmetoken goes here'
-      );
-      req = req.clone({
-        url: 'http://localhost:3000/' + req.url.replace('api', 'api/v1'),
-        headers,
-      });
-
-      if (req.url) {
-        return next(req);
-      }
-    }
-
+    const token = AuthTokenStore.get();
+    const headers = req.headers.append('Authorization', `Bearer ${token}`);
+    const newURL = baseURL + req.url.replace('api', 'api/v1');
+    req = req.clone({ url: newURL, headers });
+    
     return next(req);
   },
 ];

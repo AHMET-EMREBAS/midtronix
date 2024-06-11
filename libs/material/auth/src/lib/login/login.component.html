@@ -1,1 +1,18 @@
-<p>login works!</p>
+<form class="login-form">
+  <mdtx-input-text
+    inputName="username"
+    label="Username"
+    [inputControl]="username"
+    prefixIcon="email"
+  ></mdtx-input-text>
+  <mdtx-input-password
+    inputName="password"
+    label="Password"
+    [inputControl]="password"
+    prefixIcon="email"
+  ></mdtx-input-password>
+
+  <div class="login-form-actions">
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  </div>
+</form>

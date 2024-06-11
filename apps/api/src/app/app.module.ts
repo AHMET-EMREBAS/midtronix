@@ -46,6 +46,7 @@ import {
   Users,
 } from './seed';
 import { Roles } from './seed/roles';
+import { User } from '@mdtx/entities';
 
 @Module({
   imports: [
@@ -71,7 +72,7 @@ import { Roles } from './seed/roles';
       logger: 'debug',
       logging: isDevMode(true, false),
     }),
-    AuthModule.configure(MockUserService),
+    AuthModule.configure([User], UserService),
     SampleModule,
     CategoryModule,
     DepartmentModule,

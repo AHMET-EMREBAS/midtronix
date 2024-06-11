@@ -20,7 +20,7 @@ import {
   AddressRoute,
   DepartmentRoute,
 } from '@mdtx/resource-clients';
-
+import { LoginComponent } from '@mdtx/material/auth';
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -91,6 +91,10 @@ export const appRoutes: Route[] = [
       ]),
     ],
     children: [
+      {
+        path: 'auth',
+        children: [{ path: 'login', loadComponent: () => LoginComponent }],
+      },
       ProductRoute,
       CategoryRoute,
       DepartmentRoute,
