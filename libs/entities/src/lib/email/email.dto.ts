@@ -8,8 +8,8 @@ export class CreateEmailDto
   extends BaseCreateDto<CreateEmailDto>
   implements ICreateEmailDto
 {
-  @Property({ type: 'string', format: 'name', required: true })
-  name!: string;
+  @Property({ type: 'string', format: 'email', required: true })
+  email!: string;
 }
 
 @Exclude()

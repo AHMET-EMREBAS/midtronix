@@ -18,15 +18,18 @@ import { IEmail } from '@mdtx/models';
 export class EmailWhereQueryDto
   extends BaseWhereQueryDto<Email>
   implements
-    AllPropertyType<Omit<IEmail, keyof IBaseEntity>, FindOperator<string>>
+    AllPropertyType<
+      Omit<IEmail, keyof IBaseEntity | 'user'>,
+      FindOperator<string>
+    >
 {
   @QueryOperatorProperty({ type: 'string' })
-  name!: FindOperator<string>;
+  email!: FindOperator<string>;
 }
 
 @Exclude()
 export class EmailQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Email>(['name'])
+  @SearchProperty<Email>(['email'])
   search!: EmailWhereQueryDto;
 
   @WhereProperty(EmailWhereQueryDto)

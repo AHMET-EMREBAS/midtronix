@@ -22,7 +22,13 @@ export class EmailViewWhereQueryDto
     AllPropertyType<Omit<IEmailView, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  email!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   emailId!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  userId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;

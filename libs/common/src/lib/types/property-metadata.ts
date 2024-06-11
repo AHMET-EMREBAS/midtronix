@@ -62,6 +62,7 @@ export type PropertyMetadata<T, FormControl = any> = {
   moreThanProperty?: KeyOf<T>;
   lessThanProperty?: KeyOf<T>;
   equalToProperty?: KeyOf<T>;
+  when?: (value: T) => boolean;
   mapValue?: (value: T) => string;
   statusClass?: (value: T) => StatusClass;
   order?: number;

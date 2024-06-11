@@ -2,6 +2,7 @@
 import { IBaseView } from '@mdtx/common';
 
 export interface IEmailView extends IBaseView {
-  name: string;
+  email: string;
+  userId: string;
   emailId: string;
 }

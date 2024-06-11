@@ -3,7 +3,6 @@ import {
   PropertyMetadata,
   BaseEntityMetadata,
   KeyOf,
-  USA_STATES,
 } from '@mdtx/common';
 import { IAddress } from './address';
 
@@ -18,7 +17,7 @@ export class AddressMetadata
       type: 'string',
       inputType: 'text',
       prefixIcon: 'streetview',
-      order: 201,
+      order: 211,
     };
   }
 
@@ -29,7 +28,7 @@ export class AddressMetadata
       inputType: 'text',
       type: 'string',
       prefixIcon: 'location_city',
-      order: 202,
+      order: 212,
     };
   }
 
@@ -37,11 +36,10 @@ export class AddressMetadata
     return {
       name: 'state',
       label: 'state',
-      inputType: 'select-one-enum',
-      enum: [...USA_STATES],
+      inputType: 'text',
       type: 'string',
       prefixIcon: 'flag',
-      order: 203,
+      order: 213,
     };
   }
 
@@ -52,9 +50,10 @@ export class AddressMetadata
       type: 'string',
       inputType: 'text',
       prefixIcon: 'local_post_office',
-      order: 204,
+      order: 214,
     };
   }
+
   country(): PropertyMetadata<IAddress> {
     return {
       name: 'country',
@@ -62,18 +61,16 @@ export class AddressMetadata
       inputType: 'text',
       type: 'string',
       prefixIcon: 'flag',
-      order: 205,
+      order: 215,
     };
   }
 
-  user(): PropertyMetadata<IAddress> {
+  override user(): PropertyMetadata<IAddress> {
     return {
-      name: 'user',
-      label: 'user',
-      type: 'string',
-      inputType: 'select-one-entity',
-      prefixIcon: 'person',
-      order: 206,
+      ...super.user(),
+      mapValue(value) {
+        return value.user.id + '';
+      },
     };
   }
 
@@ -100,7 +97,6 @@ export class AddressMetadata
       this.state(),
       this.country(),
       this.zip(),
-      this.user(),
       ...super.formFields(),
     ];
   }

@@ -1,8 +1,12 @@
 import { IEmail } from '@mdtx/models';
-import { BaseEntity, UniqueColumn, Entity, StringColumn } from '@mdtx/core';
+import { BaseEntity, Entity, OwnerRelation, UniqueColumn } from '@mdtx/core';
+import { User } from '../user';
 
 @Entity()
 export class Email extends BaseEntity implements IEmail {
   @UniqueColumn()
-  name!: string;
+  email!: string;
+  
+  @OwnerRelation(User)
+  user!: User;
 }

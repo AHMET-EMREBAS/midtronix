@@ -168,6 +168,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 101,
     };
   }
+
   name(): PropertyMetadata<T> {
     return {
       name: 'name' as KeyOf<T>,
@@ -202,6 +203,18 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       control: ['', new ValidatorBuilder('notes').maxLength(400).build()],
     };
   }
+
+  user(): PropertyMetadata<T> {
+    return {
+      name: 'user' as KeyOf<T>,
+      label: 'user',
+      type: 'string',
+      inputType: 'select-one-entity',
+      prefixIcon: 'person',
+      order: 201,
+    };
+  }
+
   firstColumn(): PropertyMetadata<any> {
     return {
       name: 'firstColumn',
