@@ -85,15 +85,19 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
     }
   }
 
-  displayWith(option: T) {
+  displayWith() {
     if (this.isEnumValue) {
-      return option;
-    } else if (option) {
-      const label = (option as any)[this.labelKey || 'name'];
-      if (!label) return option.id;
-      return label;
+      return (option: any) => option;
+    } else {
+      return (option: any) => {
+        if (option) {
+          const label = (option as any)[this.labelKey || 'name'];
+          if (!label) return option.id;
+          return label;
+        }
+        return null;
+      };
     }
-    return 'None';
   }
 
   valueWith(option: T) {
@@ -113,7 +117,6 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   }
 
   optionSelectedHandler(event: MatAutocompleteSelectedEvent) {
-    console.log(event.option);
     this.optionSelectedEvent.emit(event.option.value);
   }
 
