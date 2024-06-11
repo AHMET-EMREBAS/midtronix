@@ -31,3 +31,21 @@ export const ResourceNames: string[] = [
   'Supplier',
   'User',
 ];
+
+export const ResourceViewNames: string[] = [
+  'AddressView',
+  'CategoryView',
+  'CustomerView',
+  'DepartmentView',
+  'EmailView',
+  'ManufacturerView',
+  'PermissionView',
+  'PhoneView',
+  'PriceLevelView',
+  'ProductView',
+  'RoleView',
+  'SampleView',
+  'StoreView',
+  'SupplierView',
+  'UserView',
+];

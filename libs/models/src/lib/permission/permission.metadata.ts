@@ -39,7 +39,12 @@ export class PermissionMetadata
   }
 
   override propertyNames(): KeyOf<IPermission>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.resourceName().name,
+      this.actionName().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IPermission>[] {

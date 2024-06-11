@@ -4,9 +4,7 @@ import {
   ResourceNames,
 } from '@mdtx/common';
 import { createPermissionString } from '@mdtx/core';
-import { Permission } from '@mdtx/entities';
 import { IPermission } from '@mdtx/models';
-import { Repository } from 'typeorm';
 
 function createPermissions(): IPermission[] {
   return ResourceNames.map((r) => {

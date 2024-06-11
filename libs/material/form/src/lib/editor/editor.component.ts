@@ -25,6 +25,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { DataServiceError, EntityActionPayload } from '@ngrx/data';
 import { Title } from '@angular/platform-browser';
 import { InputNumberComponent } from '../input-number/input-number.component';
+import { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';
 
 @Component({
   selector: 'mdtx-editor',
@@ -42,6 +43,7 @@ import { InputNumberComponent } from '../input-number/input-number.component';
     InputSelectComponent,
     InputListSelectComponent,
     InputSelectEnumComponent,
+    InputChipSelectComponent,
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,

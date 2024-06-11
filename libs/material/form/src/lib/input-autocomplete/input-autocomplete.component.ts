@@ -38,6 +38,7 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   @Input() isEnumValue?: boolean;
   @Output() openedEvent = new EventEmitter();
   @Output() optionSelectedEvent = new EventEmitter<T>();
+  @Input() groupBy?: string;
 
   search$ = new BehaviorSubject<string>('');
 

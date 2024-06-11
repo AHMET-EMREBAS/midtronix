@@ -27,7 +27,8 @@ export type InputType =
   | 'select-one-entity'
   | 'select-many-entity'
   | 'select-one-enum'
-  | 'select-many-enum';
+  | 'select-many-enum'
+  | 'chip-select';
 
 export type StringFormat =
   | 'email'

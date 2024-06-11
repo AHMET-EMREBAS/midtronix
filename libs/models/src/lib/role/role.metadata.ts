@@ -17,8 +17,8 @@ export class RoleMetadata
       suffixIcon: 'shield',
       type: 'object',
       isArray: true,
-      inputType: 'select-many-entity',
       entityName: 'Permission',
+      inputType: 'chip-select',
       mapValue(value) {
         return value.permissions.map((e) => e.name).join(', ');
       },
