@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { PriceLevelMetadata, PriceLevelViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IPriceLevel, IPriceLevelView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class PriceLevelService extends CollectionBaseService<IPriceLevel> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('PriceLevel', factory, httpClientFactory);
+    super('PriceLevel', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class PriceLevelViewService extends CollectionBaseService<IPriceLevelView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('PriceLevelView', factory, httpClientFactory);
+    super('PriceLevelView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

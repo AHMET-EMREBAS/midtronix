@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { DepartmentMetadata, DepartmentViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IDepartment, IDepartmentView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class DepartmentService extends CollectionBaseService<IDepartment> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Department', factory, httpClientFactory);
+    super('Department', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class DepartmentViewService extends CollectionBaseService<IDepartmentView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('DepartmentView', factory, httpClientFactory);
+    super('DepartmentView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

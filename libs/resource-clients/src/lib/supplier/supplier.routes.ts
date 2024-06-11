@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { SupplierMetadata, SupplierViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { ISupplier, ISupplierView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class SupplierService extends CollectionBaseService<ISupplier> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Supplier', factory, httpClientFactory);
+    super('Supplier', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class SupplierViewService extends CollectionBaseService<ISupplierView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('SupplierView', factory, httpClientFactory);
+    super('SupplierView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

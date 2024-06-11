@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { SampleMetadata, SampleViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { ISample, ISampleView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class SampleService extends CollectionBaseService<ISample> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Sample', factory, httpClientFactory);
+    super('Sample', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class SampleViewService extends CollectionBaseService<ISampleView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('SampleView', factory, httpClientFactory);
+    super('SampleView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

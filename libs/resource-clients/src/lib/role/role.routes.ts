@@ -5,7 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
-  AuthTokenStore,
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -14,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { RoleMetadata, RoleViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IRole, IRoleView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -23,25 +22,17 @@ import {
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
 
-const token = AuthTokenStore.get();
-
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`, {
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-});
-
 @Injectable()
 export class RoleService extends CollectionBaseService<IRole> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Role', factory, httpClientFactory);
+    super('Role', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class RoleViewService extends CollectionBaseService<IRoleView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('RoleView', factory, httpClientFactory);
+    super('RoleView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

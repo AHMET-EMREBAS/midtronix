@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { PermissionMetadata, PermissionViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IPermission, IPermissionView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class PermissionService extends CollectionBaseService<IPermission> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Permission', factory, httpClientFactory);
+    super('Permission', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class PermissionViewService extends CollectionBaseService<IPermissionView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('PermissionView', factory, httpClientFactory);
+    super('PermissionView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

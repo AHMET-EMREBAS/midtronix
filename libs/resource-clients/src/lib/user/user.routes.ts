@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { UserMetadata, UserViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IUser, IUserView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class UserService extends CollectionBaseService<IUser> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('User', factory, httpClientFactory);
+    super('User', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class UserViewService extends CollectionBaseService<IUserView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('UserView', factory, httpClientFactory);
+    super('UserView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

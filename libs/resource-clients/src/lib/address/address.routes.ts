@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { AddressMetadata, AddressViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IAddress, IAddressView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class AddressService extends CollectionBaseService<IAddress> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Address', factory, httpClientFactory);
+    super('Address', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class AddressViewService extends CollectionBaseService<IAddressView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('AddressView', factory, httpClientFactory);
+    super('AddressView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { PhoneMetadata, PhoneViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IPhone, IPhoneView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class PhoneService extends CollectionBaseService<IPhone> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Phone', factory, httpClientFactory);
+    super('Phone', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class PhoneViewService extends CollectionBaseService<IPhoneView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('PhoneView', factory, httpClientFactory);
+    super('PhoneView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

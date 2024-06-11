@@ -5,6 +5,7 @@ import {
 } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
+  DefaultResourceHttpClientFactoryInstance,
   provideCollectionService,
   provideEntityMetadata,
   provideFormGroup,
@@ -13,7 +14,6 @@ import { FormBuilder } from '@angular/forms';
 import { EmailMetadata, EmailViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
-import { ResourceHttpClientFactory } from '@mdtx/common';
 import { CollectionBaseService } from '@mdtx/material/core';
 import { IEmail, IEmailView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
@@ -21,19 +21,18 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
-const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
 @Injectable()
 export class EmailService extends CollectionBaseService<IEmail> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Email', factory, httpClientFactory);
+    super('Email', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
 export class EmailViewService extends CollectionBaseService<IEmailView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('EmailView', factory, httpClientFactory);
+    super('EmailView', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 

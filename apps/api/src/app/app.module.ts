@@ -93,10 +93,10 @@ import { APP_GUARD } from '@nestjs/core';
   providers: [
     AppEventService,
     EventEmitter2,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
   ],
   controllers: [AppController],
 })
