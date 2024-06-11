@@ -21,12 +21,12 @@ export class PhoneWhereQueryDto
     AllPropertyType<Omit<IPhone, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
-  name!: FindOperator<string>;
+  phone!: FindOperator<string>;
 }
 
 @Exclude()
 export class PhoneQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Phone>(['name'])
+  @SearchProperty<Phone>(['phone'])
   search!: PhoneWhereQueryDto;
 
   @WhereProperty(PhoneWhereQueryDto)

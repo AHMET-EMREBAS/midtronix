@@ -22,10 +22,13 @@ export class PhoneViewWhereQueryDto
     AllPropertyType<Omit<IPhoneView, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  userId!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   phoneId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
-  name!: FindOperator<string>;
+  phone!: FindOperator<string>;
 }
 
 @Exclude()

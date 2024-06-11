@@ -17,8 +17,6 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
-  SidenavLeftCenterProvider,
-  ToolbarLeftProvider,
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
@@ -49,7 +47,10 @@ export const CategoryFormGroup = new FormBuilder().group(__CategoryFormGroup);
 export const CategorySubRoutes: Routes = [
   { path: '', loadComponent: () => AdvanceTableComponent },
   { path: 'editor', loadComponent: () => EditorComponent },
-  { path: 'editor/:id', loadComponent: () => EditorComponent },
+  {
+    path: 'editor/:id',
+    loadComponent: () => EditorComponent,
+  },
   {
     path: 'views',
     loadComponent: () => AdvanceTableComponent,
@@ -66,6 +67,7 @@ export const CategoryRoute: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(CategoryService),

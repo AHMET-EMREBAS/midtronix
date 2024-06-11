@@ -64,10 +64,11 @@ export const PriceLevelSubRoutes: Routes = [
 
 export const PriceLevelRoute: Route = {
   path: 'price-level',
-  title: 'Price Level',
+  title: 'PriceLevel',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(PriceLevelService),

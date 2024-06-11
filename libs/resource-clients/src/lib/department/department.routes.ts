@@ -68,6 +68,7 @@ export const DepartmentRoute: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(DepartmentService),

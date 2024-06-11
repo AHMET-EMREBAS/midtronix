@@ -1,8 +1,12 @@
 import { IPhone } from '@mdtx/models';
-import { BaseEntity, UniqueColumn, Entity, StringColumn } from '@mdtx/core';
+import { BaseEntity, Entity, OwnerRelation, StringColumn } from '@mdtx/core';
+import { User } from '../user';
 
 @Entity()
 export class Phone extends BaseEntity implements IPhone {
-  @UniqueColumn()
-  name!: string;
+  @StringColumn()
+  phone!: string;
+
+  @OwnerRelation(User)
+  user!: User;
 }

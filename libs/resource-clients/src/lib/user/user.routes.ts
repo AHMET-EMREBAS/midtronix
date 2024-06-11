@@ -66,6 +66,7 @@ export const UserRoute: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(UserService),

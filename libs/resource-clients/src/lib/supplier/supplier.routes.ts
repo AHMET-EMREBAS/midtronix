@@ -62,9 +62,11 @@ export const SupplierSubRoutes: Routes = [
 
 export const SupplierRoute: Route = {
   path: 'supplier',
+  title: 'Supplier',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(SupplierService),

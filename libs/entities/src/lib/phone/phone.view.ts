@@ -2,6 +2,7 @@ import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
 import { IPhoneView } from '@mdtx/models';
 
 import { Phone } from './phone.entity';
+import { User } from '../user';
 
 @ViewEntity({
   expression(ds) {
@@ -9,7 +10,8 @@ import { Phone } from './phone.entity';
       .createQueryBuilder()
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'phoneId')
-      .addSelect('main.name', 'name')
+      .addSelect('user.id', 'userId')
+      .addSelect('main.phone', 'phone')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
@@ -17,10 +19,12 @@ import { Phone } from './phone.entity';
       .addSelect('main.active', 'active')
       .addSelect('main.createdBy', 'createdBy')
       .addSelect('main.updatedBy', 'updatedBy')
-      .from(Phone, 'main');
+      .from(Phone, 'main')
+      .leftJoin(User, 'user', 'user.id = main.userId');
   },
 })
 export class PhoneView extends BaseView implements IPhoneView {
-  @ViewColumn() name!: string;
+  @ViewColumn() phone!: string;
   @ViewColumn() phoneId!: string;
+  @ViewColumn() userId!: string;
 }

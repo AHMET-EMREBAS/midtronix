@@ -8,8 +8,8 @@ export class CreatePhoneDto
   extends BaseCreateDto<CreatePhoneDto>
   implements ICreatePhoneDto
 {
-  @Property({ type: 'string', format: 'name', required: true })
-  name!: string;
+  @Property({ type: 'string', format: 'phone', required: true })
+  phone!: string;
 }
 
 @Exclude()

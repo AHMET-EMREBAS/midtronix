@@ -17,6 +17,8 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
+  SidenavLeftCenterProvider,
+  ToolbarLeftProvider,
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
@@ -64,6 +66,7 @@ export const AddressRoute: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
+      { label: 'View', icon: 'table', route: './' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(AddressService),

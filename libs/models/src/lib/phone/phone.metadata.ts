@@ -10,15 +10,28 @@ export class PhoneMetadata
   extends BaseEntityMetadata<IPhone>
   implements EntityMetadata<IPhone>
 {
+  phone(): PropertyMetadata<IPhone> {
+    return {
+      name: 'phone',
+      label: 'Phone Number',
+      type: 'string',
+      inputType: 'text',
+      format: 'phone',
+      suffixIcon: 'phone',
+      required: true,
+      order: 201,
+    };
+  }
+
   override propertyNames(): KeyOf<IPhone>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [this.phone().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<IPhone>[] {
-    return [this.name(), ...super.columns()];
+    return [this.phone(), ...super.columns()];
   }
 
   protected override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [this.phone(), ...super.formFields()];
   }
 }

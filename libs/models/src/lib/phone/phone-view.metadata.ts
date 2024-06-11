@@ -10,15 +10,22 @@ export class PhoneViewMetadata
   extends BaseViewMetadata<IPhoneView>
   implements EntityMetadata<IPhoneView>
 {
+  userId(): PropertyMetadata<IPhoneView> {
+    return { name: 'userId', label: 'User Id', suffixIcon: 'numbers' };
+  }
+  
+  phone(): PropertyMetadata<IPhoneView> {
+    return { name: 'phone', label: 'Phone', suffixIcon: 'phone' };
+  }
   phoneId(): PropertyMetadata<IPhoneView> {
     return { name: 'phoneId', label: 'Phone Id', suffixIcon: 'numbers' };
   }
 
   override propertyNames(): KeyOf<IPhoneView>[] {
-    return [this.name().name, this.phoneId().name, ...super.propertyNames()];
+    return [this.phone().name, this.phoneId().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<IPhoneView>[] {
-    return [this.name(), this.phoneId(), ...super.columns()];
+    return [this.phone(), this.phoneId(), ...super.columns()];
   }
 }

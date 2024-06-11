@@ -2,6 +2,7 @@
 import { IBaseView } from '@mdtx/common';
 
 export interface IPhoneView extends IBaseView {
-  name: string;
+  phone: string;
   phoneId: string;
+  userId: string;
 }
