@@ -1,5 +1,5 @@
-import { ICreatePhoneDto } from '@mdtx/models';
-import { BaseCreateDto, Property } from '@mdtx/core';
+import { ICreatePhoneDto, IUser } from '@mdtx/models';
+import { BaseCreateDto, IDDto, Property } from '@mdtx/core';
 import { Exclude } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
 
@@ -10,6 +10,9 @@ export class CreatePhoneDto
 {
   @Property({ type: 'string', format: 'phone', required: true })
   phone!: string;
+
+  @Property({ type: 'object', target: IDDto, required: true })
+  user!: IUser;
 }
 
 @Exclude()

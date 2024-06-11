@@ -30,6 +30,10 @@ export class UserMetadata
       entityName: 'Role',
       inputType: 'select-many-entity',
       order: 202,
+
+      mapValue(value) {
+        return value.roles?.map((e) => e.name).join(', ');
+      },
     };
   }
   password(): PropertyMetadata<IUser> {

@@ -18,7 +18,10 @@ import { IPhone } from '@mdtx/models';
 export class PhoneWhereQueryDto
   extends BaseWhereQueryDto<Phone>
   implements
-    AllPropertyType<Omit<IPhone, keyof IBaseEntity>, FindOperator<string>>
+    AllPropertyType<
+      Omit<IPhone, keyof IBaseEntity | 'user'>,
+      FindOperator<string>
+    >
 {
   @QueryOperatorProperty({ type: 'string' })
   phone!: FindOperator<string>;
