@@ -10,15 +10,33 @@ export class RoleMetadata
   extends BaseEntityMetadata<IRole>
   implements EntityMetadata<IRole>
 {
+  permissions(): PropertyMetadata<IRole> {
+    return {
+      name: 'permissions',
+      label: 'Permissions',
+      suffixIcon: 'shield',
+      type: 'object',
+      isArray: true,
+      inputType: 'select-many-entity',
+      mapValue(value) {
+        return value.permissions.map((e) => e.name).join(', ');
+      },
+      order: 202,
+    };
+  }
   override propertyNames(): KeyOf<IRole>[] {
-    return [this.name().name, ...super.propertyNames()];
+    return [
+      this.name().name,
+      this.permissions().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IRole>[] {
-    return [this.name(), ...super.columns()];
+    return [this.name(), this.permissions(), ...super.columns()];
   }
 
   protected override formFields() {
-    return [this.name(), ...super.formFields()];
+    return [this.name(), this.permissions(), ...super.formFields()];
   }
 }

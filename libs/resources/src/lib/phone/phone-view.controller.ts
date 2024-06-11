@@ -1,6 +1,6 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { PhoneQueryDto, PhoneView } from '@mdtx/entities';
-import { PhoneService } from './phone.service';
+import { PhoneViewService } from './phone-view.service';
 import { ApiVersion } from '@mdtx/common';
 
 export const PhoneViewRRB = RestRouteBuilder.get(PhoneView.name, ApiVersion.v1);
@@ -10,7 +10,7 @@ export class PhoneViewController extends CreateBasicViewController<
   PhoneView,
   PhoneQueryDto
 >(PhoneViewRRB, PhoneView, PhoneQueryDto) {
-  constructor(service: PhoneService) {
+  constructor(service: PhoneViewService) {
     super(service);
   }
 }

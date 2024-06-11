@@ -1,13 +1,7 @@
 import { CustomDecorator } from '@nestjs/common';
 import { createMetadata } from '../metadata';
+import { ResourceActions } from '@mdtx/common';
 
-export enum ResourceActions {
-  READ = 'READ',
-  WRITE = 'WRITE',
-  UPDATE = 'UPDATE',
-  DELETE = 'DELETE',
-  MANAGE = 'MANAGE',
-}
 
 // Is public, permission, role, scope, resoucename
 

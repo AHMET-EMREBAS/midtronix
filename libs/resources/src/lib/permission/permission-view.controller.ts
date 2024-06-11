@@ -1,6 +1,6 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { PermissionQueryDto, PermissionView } from '@mdtx/entities';
-import { PermissionService } from './permission.service';
+import { PermissionViewService } from './permission-view.service';
 import { ApiVersion } from '@mdtx/common';
 
 export const PermissionViewRRB = RestRouteBuilder.get(
@@ -13,7 +13,7 @@ export class PermissionViewController extends CreateBasicViewController<
   PermissionView,
   PermissionQueryDto
 >(PermissionViewRRB, PermissionView, PermissionQueryDto) {
-  constructor(service: PermissionService) {
+  constructor(service: PermissionViewService) {
     super(service);
   }
 }

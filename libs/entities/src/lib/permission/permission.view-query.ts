@@ -25,6 +25,12 @@ export class PermissionViewWhereQueryDto
     >
 {
   @QueryOperatorProperty({ type: 'string' })
+  resourceName!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  actionName!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   permissionId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })

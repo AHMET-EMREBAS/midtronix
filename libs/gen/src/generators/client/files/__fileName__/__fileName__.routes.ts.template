@@ -66,7 +66,8 @@ export const <%- className %>Route: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
-      { label: 'View', icon: 'table', route: './' },
+      { label: 'Entity', icon: 'table', route: './' },
+      { label: 'View', icon: 'table_view', route: 'view' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(<%- className %>Service),

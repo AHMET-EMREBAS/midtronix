@@ -12,11 +12,12 @@ export class CategoryViewMetadata
   implements EntityMetadata<ICategoryView>
 {
   categoryId(): PropertyMetadata<ICategoryView> {
-    return { name: 'categoryId', label: 'Category Id', suffixIcon: 'numbers' };
-  }
-
-  override tableColumnNames(): TableFields<ICategoryView> {
-    return ['name', ...super.tableColumnNames()];
+    return {
+      name: 'categoryId',
+      label: 'Category Id',
+      suffixIcon: 'numbers',
+      order: 202,
+    };
   }
 
   override propertyNames(): KeyOf<ICategoryView>[] {

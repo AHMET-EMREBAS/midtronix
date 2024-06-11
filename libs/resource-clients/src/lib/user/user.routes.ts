@@ -17,8 +17,6 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
-  SidenavLeftCenterProvider,
-  ToolbarLeftProvider,
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 

@@ -1,6 +1,6 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { PriceLevelQueryDto, PriceLevelView } from '@mdtx/entities';
-import { PriceLevelService } from './price-level.service';
+import { PriceLevelViewService } from './price-level-view.service';
 import { ApiVersion } from '@mdtx/common';
 
 export const PriceLevelViewRRB = RestRouteBuilder.get(
@@ -13,7 +13,7 @@ export class PriceLevelViewController extends CreateBasicViewController<
   PriceLevelView,
   PriceLevelQueryDto
 >(PriceLevelViewRRB, PriceLevelView, PriceLevelQueryDto) {
-  constructor(service: PriceLevelService) {
+  constructor(service: PriceLevelViewService) {
     super(service);
   }
 }

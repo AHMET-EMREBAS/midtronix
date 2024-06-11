@@ -22,6 +22,12 @@ export class RoleViewWhereQueryDto
     AllPropertyType<Omit<IRoleView, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  permissionId!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  permission!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   roleId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })

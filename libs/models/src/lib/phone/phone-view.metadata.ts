@@ -11,14 +11,25 @@ export class PhoneViewMetadata
   implements EntityMetadata<IPhoneView>
 {
   userId(): PropertyMetadata<IPhoneView> {
-    return { name: 'userId', label: 'User Id', suffixIcon: 'numbers' };
+    return {
+      name: 'userId',
+      label: 'User Id',
+      suffixIcon: 'numbers',
+      order: 231,
+    };
+  }
+
+  phone(): PropertyMetadata<IPhoneView> {
+    return { name: 'phone', label: 'Phone', suffixIcon: 'phone', order: 202 };
   }
   
-  phone(): PropertyMetadata<IPhoneView> {
-    return { name: 'phone', label: 'Phone', suffixIcon: 'phone' };
-  }
   phoneId(): PropertyMetadata<IPhoneView> {
-    return { name: 'phoneId', label: 'Phone Id', suffixIcon: 'numbers' };
+    return {
+      name: 'phoneId',
+      label: 'Phone Id',
+      suffixIcon: 'numbers',
+      order: 201,
+    };
   }
 
   override propertyNames(): KeyOf<IPhoneView>[] {

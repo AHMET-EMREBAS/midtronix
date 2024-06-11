@@ -1,10 +1,12 @@
 form {
   display: flex;
   flex-direction: row;
-  align-content: flex-start;
   flex-wrap: wrap;
   gap: 1em;
-  height: 89vh;
+  width: fit-content;
+
+  max-height: 84vh;
+  overflow: auto;
   * {
     flex-grow: 1;
     min-width: 20%;
@@ -19,7 +21,6 @@ form {
   width: 100%;
   flex-grow: 1;
 }
-
 .error {
   background-color: crimson;
   color: white;

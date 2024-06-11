@@ -15,6 +15,7 @@ export class ManufacturerViewMetadata
       name: 'manufacturerId',
       label: 'Manufacturer Id',
       suffixIcon: 'numbers',
+      order: 231,
     };
   }
 

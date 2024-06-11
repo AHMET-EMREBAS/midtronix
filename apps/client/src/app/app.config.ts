@@ -21,83 +21,175 @@ export const appConfig: ApplicationConfig = {
       {
         pluralNames: {
           Product: 'Products',
+          ProductView: 'ProductViews',
+
           Sku: 'Skus',
+          SkuView: 'SkuViews',
+
           Price: 'Prices',
+          PriceView: 'PriceViews',
+
           Quantity: 'Quantities',
+          QuantityView: 'QuantityViews',
+
           Order: 'Orders',
+          OrderView: 'OrderViews',
+
           Cart: 'Carts',
+          CartView: 'CartViews',
           //
+          //VViewiew
           Store: 'Stores',
+          StoreView: 'StoreViews',
           //
+          //VViewiew
           PriceLevel: 'PriceLevels',
+          PriceLevelView: 'PriceLevelViews',
+
           Category: 'Categories',
+          CategoryView: 'CategoryViews',
+
           Department: 'Departments',
+          DepartmentView: 'DepartmentViews',
           //
+          //VViewiew
           Supplier: 'Suppliers',
+          SupplierView: 'SupplierViews',
+
           Manufacturer: 'Manufacturers',
+          ManufacturerView: 'ManufacturerViews',
           //
+          //VViewiew
           User: 'Users',
+          UserView: 'UserViews',
+
           Role: 'Roles',
+          RoleView: 'RoleViews',
+
           Permission: 'Permissions',
+          PermissionView: 'PermissionViews',
           //
+          //VViewiew
           Email: 'Emails',
+          EmailView: 'EmailViews',
+
           Phone: 'Phones',
+          PhoneView: 'PhoneViews',
+
           Address: 'Addresses',
+          AddressView: 'AddresseViews',
           //
+          //VViewiew
           Customer: 'Customers',
+          CustomerView: 'CustomerViews',
+
           CustomerRole: 'CustomerRoles',
+          CustomerRoleView: 'CustomerRoleViews',
+
           CustomerPermission: 'CustomerPermissions',
+          CustomerPermissionView: 'CustomerPermissionViews',
           //
+          //VViewiew
           CustomerEmail: 'CustomerEmails',
+          CustomerEmailView: 'CustomerEmailViews',
+
           CustomerPhone: 'CustomerPhones',
+          CustomerPhoneView: 'CustomerPhoneViews',
+
           CustomerAddress: 'CustomerAddresss',
+          CustomerAddressView: 'CustomerAddressViews',
           //
+          //VViewiew
           Project: 'Projects',
+          ProjectView: 'ProjectViews',
           Task: 'Tasks',
+          TaskView: 'TaskViews',
           Sprint: 'Sprints',
+          SprintView: 'SprintViews',
           //
+          //VViewiew
           Message: 'Messages',
+          MessageView: 'MessageViews',
           Notification: 'Notifications',
+          NotificationView: 'NotificationViews',
         },
         entityMetadata: {
           Product: {},
+          ProductView: {},
           Sku: {},
+          SkuView: {},
           Price: {},
+          PriceView: {},
           Quantity: {},
+          QuantityView: {},
           Order: {},
+          OrderView: {},
           Cart: {},
+          CartView: {},
           //:{},
+          //:{},View
           Store: {},
+          StoreView: {},
           //:{},
+          //:{},View
           PriceLevel: {},
+          PriceLevelView: {},
           Category: {},
+          CategoryView: {},
           Department: {},
+          DepartmentView: {},
           //:{},
+          //:{},View
           Supplier: {},
+          SupplierView: {},
           Manufacturer: {},
+          ManufacturerView: {},
           //:{},
+          //:{},View
           User: {},
+          UserView: {},
           Role: {},
+          RoleView: {},
           Permission: {},
+          PermissionView: {},
           //:{},
+          //:{},View
           Email: {},
+          EmailView: {},
           Phone: {},
+          PhoneView: {},
           Address: {},
+          AddressView: {},
           //:{},
+          //:{},View
           Customer: {},
+          CustomerView: {},
           CustomerRole: {},
+          CustomerRoleView: {},
           CustomerPermission: {},
+          CustomerPermissionView: {},
           //:{},
+          //:{},View
           CustomerEmail: {},
+          CustomerEmailView: {},
           CustomerPhone: {},
+          CustomerPhoneView: {},
           CustomerAddress: {},
+          CustomerAddressView: {},
           //:{},
+          //:{},View
           Project: {},
+          ProjectView: {},
           Task: {},
+          TaskView: {},
           Sprint: {},
+          SprintView: {},
           //:{},
+          //:{},View
           Message: {},
+          MessageView: {},
           Notification: {},
+          NotificationView: {},
         },
       },
       withEffects()

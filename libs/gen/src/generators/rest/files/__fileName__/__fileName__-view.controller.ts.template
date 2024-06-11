@@ -1,6 +1,6 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { <%- className %>QueryDto, <%- className %>View } from '@mdtx/entities';
-import { <%- className %>Service } from './<%- fileName %>.service';
+import { <%- className %>ViewService } from './<%- fileName %>-view.service';
 import { ApiVersion } from '@mdtx/common';
 
 export const <%- className %>ViewRRB = RestRouteBuilder.get(<%- className %>View.name, ApiVersion.v1);
@@ -10,7 +10,7 @@ export class <%- className %>ViewController extends CreateBasicViewController<
   <%- className %>View,
   <%- className %>QueryDto
 >(<%- className %>ViewRRB, <%- className %>View, <%- className %>QueryDto) {
-  constructor(service: <%- className %>Service) {
+  constructor(service: <%- className %>ViewService) {
     super(service);
   }
 }

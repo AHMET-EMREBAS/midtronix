@@ -10,6 +10,8 @@ import { Permission } from './permission.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'permissionId')
       .addSelect('main.name', 'name')
+      .addSelect('main.resourceName', 'resourceName')
+      .addSelect('main.actionName', 'actionName')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
@@ -23,4 +25,6 @@ import { Permission } from './permission.entity';
 export class PermissionView extends BaseView implements IPermissionView {
   @ViewColumn() name!: string;
   @ViewColumn() permissionId!: string;
+  @ViewColumn() resourceName!: string;
+  @ViewColumn() actionName!: string;
 }

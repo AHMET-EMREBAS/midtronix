@@ -20,6 +20,9 @@ export class RoleWhereQueryDto
   implements
     AllPropertyType<Omit<IRole, keyof IBaseEntity>, FindOperator<string>>
 {
+  @Exclude()
+  permissions!: FindOperator<string>;
+
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }

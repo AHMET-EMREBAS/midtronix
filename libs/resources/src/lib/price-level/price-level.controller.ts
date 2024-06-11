@@ -1,9 +1,9 @@
 import { CreateBasicController, RestRouteBuilder } from '@mdtx/core';
 import {
-  CreatePriceLevelDto,
-  PriceLevelQueryDto,
   PriceLevel,
+  CreatePriceLevelDto,
   UdpatePriceLevelDto,
+  PriceLevelQueryDto,
 } from '@mdtx/entities';
 import { PriceLevelService } from './price-level.service';
 

@@ -193,6 +193,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 202,
     };
   }
+  
   notes(): PropertyMetadata<T> {
     return {
       name: 'notes',

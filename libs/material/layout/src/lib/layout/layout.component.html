@@ -1,6 +1,10 @@
 <div #screen="mdtxViewport" mdtxViewport class="main-container">
   <!-- ################### TOOLBAR START -->
-  <mat-toolbar color="primary" *ngIf="showToolbar">
+  <mat-toolbar
+    color="primary"
+    *ngIf="showToolbar"
+    style="height: 8vh !important"
+  >
     <div class="row center full">
       <div class="row center a-center">
         <!-- Left sidenav toggle -->
@@ -113,21 +117,21 @@
       </div>
 
       <!-- Center Content  -->
-      <div class="row full">
+      <div class="row">
         <!-- Center left  -->
-        <div class="col grow-1" *ngIf="contentCenterLeft.length > 0">
+        <div *ngIf="contentCenterLeft.length > 0">
           <mdtx-template-outlet
             [items]="contentCenterLeft"
           ></mdtx-template-outlet>
         </div>
 
         <!-- CENTER -->
-        <div class="col full" *ngIf="contentCenter.length > 0">
+        <div class="center-content" *ngIf="contentCenter.length > 0">
           <mdtx-template-outlet [items]="contentCenter"></mdtx-template-outlet>
         </div>
 
         <!-- Center Right  -->
-        <div class="col full" *ngIf="contentTop.length > 0">
+        <div *ngIf="contentTop.length > 0">
           <mdtx-template-outlet
             [items]="contentCenterRight"
           ></mdtx-template-outlet>
@@ -145,7 +149,11 @@
   <!-- ######################### SIDENAV CONTAINER END -->
 
   <!-- ################################ STATUSBAR START -->
-  <mat-toolbar color="accent" *ngIf="showStatusbar">
+  <mat-toolbar
+    color="accent"
+    *ngIf="showStatusbar"
+    style="height: 8vh !important"
+  >
     <div class="row" *ngIf="statusbarLeft.length > 0">
       <mdtx-template-outlet [items]="statusbarLeft"></mdtx-template-outlet>
     </div>

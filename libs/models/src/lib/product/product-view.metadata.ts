@@ -15,6 +15,7 @@ export class ProductViewMetadata
     return {
       name: 'brand',
       label: 'Brand',
+      order: 221,
     };
   }
 
@@ -22,6 +23,7 @@ export class ProductViewMetadata
     return {
       name: 'upc',
       label: 'Upc',
+      order: 211,
     };
   }
 
@@ -29,6 +31,7 @@ export class ProductViewMetadata
     return {
       name: 'price',
       label: 'Price',
+      order: 241,
     };
   }
 
@@ -36,6 +39,7 @@ export class ProductViewMetadata
     return {
       name: 'cost',
       label: 'Cost',
+      order: 240,
     };
   }
 
@@ -43,6 +47,7 @@ export class ProductViewMetadata
     return {
       name: 'quantity',
       label: 'Quantity',
+      order: 250,
     };
   }
 
@@ -50,28 +55,56 @@ export class ProductViewMetadata
     return {
       name: 'supplier',
       label: 'Supplier',
+      order: 261,
     };
   }
+
   category(): PropertyMetadata<IProductView> {
     return {
       name: 'category',
       label: 'Category',
+      order: 260,
     };
   }
 
   productId(): PropertyMetadata<IProductView> {
-    return { name: 'productId', label: 'Product Id', suffixIcon: 'numbers' };
-  }
-
-  override tableColumnNames(): TableFields<IProductView> {
-    return ['name', ...super.tableColumnNames()];
+    return {
+      name: 'productId',
+      label: 'Product Id',
+      suffixIcon: 'numbers',
+      order: 201,
+    };
   }
 
   override propertyNames(): KeyOf<IProductView>[] {
-    return [this.name().name, this.productId().name, ...super.propertyNames()];
+    return [
+      this.productId().name,
+      this.name().name,
+      this.upc().name,
+      this.brand().name,
+      this.category().name,
+      this.supplier().name,
+      this.cost().name,
+      this.price().name,
+      this.quantity().name,
+      this.description().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<IProductView>[] {
-    return [this.name(), this.productId(), ...super.columns()];
+    return [
+      this.productId(),
+      this.name(),
+      this.upc(),
+      this.brand(),
+      this.category(),
+      this.supplier(),
+      this.cost(),
+      this.price(),
+      this.quantity(),
+      this.description(),
+      ...super.columns(),
+    ];
   }
 }

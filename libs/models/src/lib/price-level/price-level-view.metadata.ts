@@ -15,19 +15,19 @@ export class PriceLevelViewMetadata
     return {
       name: 'taxrate',
       label: 'Taxrate',
+      order: 202,
     };
   }
+
   priceLevelId(): PropertyMetadata<IPriceLevelView> {
     return {
       name: 'priceLevelId',
       label: 'PriceLevel Id',
+      order: 203,
     };
   }
 
-  override tableColumnNames(): TableFields<IPriceLevelView> {
-    return ['name', ...super.tableColumnNames()];
-  }
-
+  
   override propertyNames(): KeyOf<IPriceLevelView>[] {
     return [
       this.name().name,

@@ -6,20 +6,26 @@ mdtx-template-outlet {
 .main-container {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  // border: 10px solid orange;
 }
 
-mat-sidenav-container {
-  height: 100%;
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.content-center {
-  overflow: auto;
-  height: 100%;
+.center-content {
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
+  height: 84vh !important;
+  overflow: hidden;
 }
 
 mat-sidenav-content {
-  overflow: hidden !important;
+  overflow: hidden;
 }

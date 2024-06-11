@@ -1,7 +1,7 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { CategoryQueryDto, CategoryView } from '@mdtx/entities';
-import { CategoryService } from './category.service';
 import { ApiVersion } from '@mdtx/common';
+import { CategoryViewService } from './category-view.service';
 
 export const CategoryViewRRB = RestRouteBuilder.get(
   CategoryView.name,
@@ -13,7 +13,7 @@ export class CategoryViewController extends CreateBasicViewController<
   CategoryView,
   CategoryQueryDto
 >(CategoryViewRRB, CategoryView, CategoryQueryDto) {
-  constructor(service: CategoryService) {
+  constructor(service: CategoryViewService) {
     super(service);
   }
 }

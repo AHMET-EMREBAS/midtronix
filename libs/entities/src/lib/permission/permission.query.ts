@@ -21,12 +21,18 @@ export class PermissionWhereQueryDto
     AllPropertyType<Omit<IPermission, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  resourceName!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  actionName!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 
 @Exclude()
 export class PermissionQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Permission>(['name'])
+  @SearchProperty<Permission>(['name', 'resourceName', 'actionName'])
   search!: PermissionWhereQueryDto;
 
   @WhereProperty(PermissionWhereQueryDto)
