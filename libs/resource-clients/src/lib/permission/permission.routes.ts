@@ -1,5 +1,8 @@
 import { Route, Routes } from '@angular/router';
-import { AdvanceTableComponent } from '@mdtx/material/table';
+import {
+  AdvanceTableComponent,
+  provideActionButtonHandler,
+} from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
   provideCollectionService,
@@ -17,8 +20,6 @@ import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
-  SidenavLeftCenterProvider,
-  ToolbarLeftProvider,
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
@@ -53,11 +54,12 @@ export const PermissionSubRoutes: Routes = [
   { path: 'editor', loadComponent: () => EditorComponent },
   { path: 'editor/:id', loadComponent: () => EditorComponent },
   {
-    path: 'views',
+    path: 'view',
     loadComponent: () => AdvanceTableComponent,
     providers: [
       provideEntityMetadata(__PermissionViewMetadata),
       provideCollectionService(PermissionViewService),
+      provideActionButtonHandler((id: any) => ['../', 'editor', id]),
     ],
   },
 ];
@@ -68,7 +70,8 @@ export const PermissionRoute: Route = {
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
-      { label: 'View', icon: 'table', route: './' },
+      { label: 'Entity', icon: 'table', route: './' },
+      { label: 'View', icon: 'table_view', route: 'view' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
     provideCollectionService(PermissionService),

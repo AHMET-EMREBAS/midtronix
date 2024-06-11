@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { IDepartmentView } from './department-view';
@@ -16,12 +15,8 @@ export class DepartmentViewMetadata
       name: 'departmentId',
       label: 'Department Id',
       suffixIcon: 'numbers',
-      order: 231,
+      order: 300,
     };
-  }
-
-  override tableColumnNames(): TableFields<IDepartmentView> {
-    return ['name', ...super.tableColumnNames()];
   }
 
   override propertyNames(): KeyOf<IDepartmentView>[] {

@@ -3,7 +3,9 @@ import {
   EventEmitter,
   Inject,
   OnInit,
+  Optional,
   Output,
+  Provider,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -51,6 +53,22 @@ export type QueryType = {
   page: PageEvent;
   sort: Sort;
 };
+
+/**
+ * Return
+ */
+export type ActionButtonClickHandler = (id: number) => string[];
+
+export const ACTION_BUTTON_TOKEN = 'ActionButtonClickHandlerToken';
+export function provideActionButtonHandler(
+  useValue: ActionButtonClickHandler
+): Provider {
+  return {
+    provide: ACTION_BUTTON_TOKEN,
+    useValue,
+  };
+}
+
 @Component({
   selector: 'mdtx-advance-table',
   standalone: true,
@@ -115,8 +133,14 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
     protected readonly metadata: ClientEntityMetadata<T>,
     public readonly service: CollectionBaseService<T>,
     public readonly router: Router,
-    public readonly route: ActivatedRoute
+    public readonly route: ActivatedRoute,
+    @Optional()
+    @Inject(ACTION_BUTTON_TOKEN)
+    protected readonly actionButtonHander: ActionButtonClickHandler
   ) {
+    if (!this.actionButtonHander)
+      this.actionButtonHander = (id: any) => ['editor', id];
+
     const entityName = service.entityName;
 
     this.selectedItemsStore = LocalStore.createStore(
@@ -233,6 +257,8 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
   }
 
   openItemEditor(row: T) {
-    this.router.navigate(['editor', row.id], { relativeTo: this.route });
+    this.router.navigate(this.actionButtonHander(row.id), {
+      relativeTo: this.route,
+    });
   }
 }

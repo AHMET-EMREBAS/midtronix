@@ -10,6 +10,7 @@ import { Supplier } from './supplier.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'supplierId')
       .addSelect('main.name', 'name')
+      .addSelect('main.description', 'description')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
@@ -21,7 +22,7 @@ import { Supplier } from './supplier.entity';
   },
 })
 export class SupplierView extends BaseView implements ISupplierView {
-  @ViewColumn() description!: string;
   @ViewColumn() name!: string;
+  @ViewColumn() description!: string;
   @ViewColumn() supplierId!: string;
 }

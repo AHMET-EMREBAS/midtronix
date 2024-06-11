@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { IStoreView } from './store-view';
@@ -13,10 +12,6 @@ export class StoreViewMetadata
 {
   storeId(): PropertyMetadata<IStoreView> {
     return { name: 'storeId', label: 'Store Id', suffixIcon: 'numbers' };
-  }
-
-  override tableColumnNames(): TableFields<IStoreView> {
-    return ['name', ...super.tableColumnNames()];
   }
 
   override propertyNames(): KeyOf<IStoreView>[] {

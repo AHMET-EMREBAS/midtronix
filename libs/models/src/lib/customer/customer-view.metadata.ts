@@ -11,12 +11,7 @@ export class CustomerViewMetadata
   implements EntityMetadata<ICustomerView>
 {
   customerId(): PropertyMetadata<ICustomerView> {
-    return {
-      name: 'customerId',
-      label: 'Customer Id',
-      suffixIcon: 'numbers',
-      order: 231,
-    };
+    return { name: 'customerId', label: 'Customer Id', suffixIcon: 'numbers' };
   }
 
   override propertyNames(): KeyOf<ICustomerView>[] {

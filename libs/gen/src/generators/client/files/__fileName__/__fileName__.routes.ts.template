@@ -1,5 +1,5 @@
 import { Route, Routes } from '@angular/router';
-import { AdvanceTableComponent } from '@mdtx/material/table';
+import { AdvanceTableComponent, provideActionButtonHandler } from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
   provideCollectionService,
@@ -16,9 +16,7 @@ import { I<%- className %>, I<%- className %>View } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
-  ModuleLayoutComponent,
-  SidenavLeftCenterProvider,
-  ToolbarLeftProvider,
+  ModuleLayoutComponent
 } from '@mdtx/material/layout';
 const httpClientFactory = new ResourceHttpClientFactory(`api/v1`);
 
@@ -51,11 +49,12 @@ export const <%- className %>SubRoutes: Routes = [
   { path: 'editor', loadComponent: () => EditorComponent },
   { path: 'editor/:id', loadComponent: () => EditorComponent },
   {
-    path: 'views',
+    path: 'view',
     loadComponent: () => AdvanceTableComponent,
     providers: [
       provideEntityMetadata(__<%- className %>ViewMetadata),
       provideCollectionService(<%- className %>ViewService),
+      provideActionButtonHandler((id: any) => ['../', 'editor', id]),
     ],
   },
 ];

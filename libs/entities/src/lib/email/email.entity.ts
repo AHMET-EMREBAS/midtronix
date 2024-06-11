@@ -6,7 +6,7 @@ import { User } from '../user';
 export class Email extends BaseEntity implements IEmail {
   @UniqueColumn()
   email!: string;
-  
+
   @OwnerRelation(User)
   user!: User;
 }

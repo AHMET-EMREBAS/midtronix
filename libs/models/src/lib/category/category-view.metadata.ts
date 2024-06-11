@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { ICategoryView } from './category-view';
@@ -16,7 +15,7 @@ export class CategoryViewMetadata
       name: 'categoryId',
       label: 'Category Id',
       suffixIcon: 'numbers',
-      order: 202,
+      order: 300,
     };
   }
 

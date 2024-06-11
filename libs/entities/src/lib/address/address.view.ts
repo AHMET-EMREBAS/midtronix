@@ -1,6 +1,5 @@
 import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
 import { IAddressView } from '@mdtx/models';
-
 import { Address } from './address.entity';
 import { User } from '../user';
 

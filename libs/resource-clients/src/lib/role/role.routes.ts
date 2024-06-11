@@ -1,5 +1,8 @@
 import { Route, Routes } from '@angular/router';
-import { AdvanceTableComponent } from '@mdtx/material/table';
+import {
+  AdvanceTableComponent,
+  provideActionButtonHandler,
+} from '@mdtx/material/table';
 import { EditorComponent } from '@mdtx/material/form';
 import {
   provideCollectionService,
@@ -54,6 +57,7 @@ export const RoleSubRoutes: Routes = [
     providers: [
       provideEntityMetadata(__RoleViewMetadata),
       provideCollectionService(RoleViewService),
+      provideActionButtonHandler((id: any) => ['../', 'editor', id]),
     ],
   },
 ];

@@ -24,7 +24,6 @@ export class SupplierViewWhereQueryDto
       FindOperator<string>
     >
 {
-  id?: any;
   @QueryOperatorProperty({ type: 'string' })
   supplierId!: FindOperator<string>;
 

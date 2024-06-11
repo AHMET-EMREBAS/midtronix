@@ -77,7 +77,7 @@ export const appConfig: ApplicationConfig = {
           PhoneView: 'PhoneViews',
 
           Address: 'Addresses',
-          AddressView: 'AddresseViews',
+          AddressView: 'AddressViews',
           //
           //VViewiew
           Customer: 'Customers',

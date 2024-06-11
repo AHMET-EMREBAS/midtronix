@@ -5,6 +5,7 @@
     [formControl]="inputControl"
     [multiple]="multiple"
     [attr.data-testid]="testid()"
+    #chipList
   >
     <div style="display: flex; flex-direction: row; gap: 1em; flex-wrap: wrap">
       @for (o of options; track o) {

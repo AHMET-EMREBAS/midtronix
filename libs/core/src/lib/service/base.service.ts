@@ -60,6 +60,7 @@ export class BaseService<T extends AllPropertyType<IID, any>> {
       } catch (err) {
         this.error(this.findAll.name, query);
         this.error(this.findAll.name, err);
+        console.log(err);
         throw new InternalServerErrorException();
       }
     }
