@@ -25,6 +25,7 @@ export class RoleMetadata
       order: 202,
     };
   }
+  
   override propertyNames(): KeyOf<IRole>[] {
     return [
       this.name().name,

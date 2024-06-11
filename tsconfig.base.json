@@ -23,6 +23,7 @@
       "@mdtx/forms": ["libs/forms/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
       "@mdtx/material": ["libs/material/src/index.ts"],
+      "@mdtx/material/auth": ["libs/material/auth/src/index.ts"],
       "@mdtx/material/barcode": ["libs/material/barcode/src/index.ts"],
       "@mdtx/material/button": ["libs/material/button/src/index.ts"],
       "@mdtx/material/card": ["libs/material/card/src/index.ts"],
