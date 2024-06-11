@@ -10,18 +10,6 @@ export class <%- className %>Metadata
   extends BaseEntityMetadata<I<%- className %>>
   implements EntityMetadata<I<%- className %>>
 {
-  name(): PropertyMetadata<I<%- className %>> {
-    return {
-      name: 'name',
-      label: 'Name',
-      type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
-    };
-  }
   override propertyNames(): KeyOf<I<%- className %>>[] {
     return [this.name().name, ...super.propertyNames()];
   }

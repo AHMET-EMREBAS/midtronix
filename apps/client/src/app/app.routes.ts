@@ -11,6 +11,14 @@ import {
   PriceLevelRoute,
   ProductRoute,
   ManufacturerRoute,
+  RoleRoute,
+  EmailRoute,
+  PhoneRoute,
+  UserRoute,
+  CustomerRoute,
+  PermissionRoute,
+  AddressRoute,
+  DepartmentRoute,
 } from '@mdtx/resource-clients';
 
 export const appRoutes: Route[] = [
@@ -20,20 +28,41 @@ export const appRoutes: Route[] = [
     providers: [
       SidenavLeftTopProvider.provide([
         {
-          route: 'sample',
-          label: 'Sample',
-          icon: 'info',
-        },
-        {
           route: 'product',
           label: 'Product',
           icon: 'inventory',
         },
+
+        { divider: true },
         {
           route: 'category',
           label: 'Category',
           icon: 'category',
         },
+
+        {
+          route: 'department',
+          label: 'Department',
+          icon: 'category',
+        },
+
+        { divider: true },
+
+        {
+          route: 'supplier',
+          label: 'Supplier',
+          icon: 'box',
+        },
+        {
+          route: 'manufacturer',
+          label: 'Manufacturer',
+          icon: 'factory',
+        },
+
+        {
+          divider: true,
+        },
+
         {
           route: 'store',
           label: 'Store',
@@ -45,25 +74,43 @@ export const appRoutes: Route[] = [
           icon: 'layers',
         },
         {
-          route: 'supplier',
-          label: 'Supplier',
-          icon: 'box',
+          divider: true,
         },
-        {
-          route: 'manufacturer',
-          label: 'Manufacturer',
-          icon: 'factory',
-        },
+        { route: 'user', label: 'User', icon: 'security' },
+        { route: 'role', label: 'Role', icon: 'badge' },
+        { route: 'permission', label: 'Permission', icon: 'policy' },
+
+        { divider: true },
+
+        { route: 'address', label: 'Address', icon: 'map' },
+        { route: 'email', label: 'Email', icon: 'email' },
+        { route: 'phone', label: 'Phone', icon: 'phone' },
+        { divider: true },
+
+        { route: 'customer', label: 'Customer', icon: 'groups' },
       ]),
     ],
     children: [
-      SampleRoute,
+      ProductRoute,
       CategoryRoute,
+      DepartmentRoute,
+      //
       SupplierRoute,
+      ManufacturerRoute,
+      //
       StoreRoute,
       PriceLevelRoute,
-      ProductRoute,
-      ManufacturerRoute,
+      //
+      UserRoute,
+      RoleRoute,
+      PermissionRoute,
+
+      //
+      AddressRoute,
+      EmailRoute,
+      PhoneRoute,
+      //
+      CustomerRoute,
     ],
   },
 ];

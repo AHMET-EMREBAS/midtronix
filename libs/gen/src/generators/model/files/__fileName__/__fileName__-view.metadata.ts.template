@@ -14,13 +14,6 @@ export class <%- className %>ViewMetadata
   <%- propertyName %>Id(): PropertyMetadata<I<%- className %>View> {
     return { name: '<%- propertyName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
   }
-  name(): PropertyMetadata<I<%- className %>View> {
-    return {
-      name: 'name',
-      label: '<%- className %> Name',
-      suffixIcon: 'info',
-    };
-  }
 
   override propertyNames(): KeyOf<I<%- className %>View>[] {
     return [this.name().name, this.<%- propertyName %>Id().name, ...super.propertyNames()];

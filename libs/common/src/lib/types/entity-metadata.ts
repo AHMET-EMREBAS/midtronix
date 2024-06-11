@@ -160,23 +160,24 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
     };
   }
 
-  notes(): PropertyMetadata<T> {
-    return {
-      name: 'notes',
-      label: 'Notes',
-      order: 307,
-      type: 'string',
-      inputType: 'textarea',
-      control: ['', new ValidatorBuilder('notes').maxLength(400).build()],
-    };
-  }
-
   id(): PropertyMetadata<T> {
     return {
       name: 'id',
       label: '#',
       prefixIcon: 'numbers',
       order: 101,
+    };
+  }
+  name(): PropertyMetadata<T> {
+    return {
+      name: 'name' as KeyOf<T>,
+      label: 'Name',
+      type: 'string',
+      inputType: 'text',
+      required: true,
+      minlength: 3,
+      maxlength: 50,
+      order: 201,
     };
   }
 
@@ -191,20 +192,16 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 202,
     };
   }
-
-  name(): PropertyMetadata<T> {
+  notes(): PropertyMetadata<T> {
     return {
-      name: 'name' as KeyOf<T>,
-      label: 'Name',
+      name: 'notes',
+      label: 'Notes',
+      order: 307,
       type: 'string',
-      inputType: 'text',
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-      order: 201,
+      inputType: 'textarea',
+      control: ['', new ValidatorBuilder('notes').maxLength(400).build()],
     };
   }
-
   firstColumn(): PropertyMetadata<any> {
     return {
       name: 'firstColumn',

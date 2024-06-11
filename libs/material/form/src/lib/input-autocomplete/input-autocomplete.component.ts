@@ -35,7 +35,7 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   @Input() override defaultValue?: T;
   @Input() labelKey?: string;
   @Input() entityName?: string;
-
+  @Input() isEnumValue?: boolean;
   @Output() openedEvent = new EventEmitter();
   @Output() optionSelectedEvent = new EventEmitter<T>();
 
@@ -44,7 +44,7 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   finterOptions$ = this.search$.pipe(
     debounceTime(1000),
     map((search) => {
-      const result = this.options.filter((option) => {
+      const result = this.options?.filter((option) => {
         const stringValue = JSON.stringify(option).toLowerCase();
         return stringValue.includes(search);
       });
@@ -55,21 +55,26 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
 
   override ngOnInit(): void {
     super.ngOnInit();
-    if (this.entityName) {
-      const storeName = this.entityName + '.all';
-      const entityStore = LocalStore.createStore(this.entityName + '.all');
 
-      const entities = entityStore.obj<T[]>();
-      if (entities) {
-        this.options = entities;
-      } else {
-        throw new Error(
-          `${this.entityName} entities are not found in the store ${storeName}`
-        );
+    if (this.isEnumValue) {
+      if (!this.options) {
+        throw new Error('options is required!');
+      }
+    } else if (!this.options) {
+      if (this.entityName) {
+        const storeName = this.entityName + '.all';
+        const entityStore = LocalStore.createStore(this.entityName + '.all');
+
+        const entities = entityStore.obj<T[]>();
+        if (entities) {
+          this.options = entities;
+        } else {
+          throw new Error(
+            `${this.entityName} entities are not found in the store ${storeName}`
+          );
+        }
       }
     }
-
-    if (!this.options) throw new Error('Options is required!');
   }
 
   override ngAfterViewInit(): void {
@@ -81,18 +86,20 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   }
 
   displayWith(option: T) {
-    if (option) {
+    if (this.isEnumValue) {
+      return option;
+    } else if (option) {
       const label = (option as any)[this.labelKey || 'name'];
-
       if (!label) return option.id;
-
       return label;
     }
     return 'None';
   }
 
   valueWith(option: T) {
-    if (this.optionNameAsValue) {
+    if (this.isEnumValue) {
+      return option;
+    } else if (this.optionNameAsValue) {
       return (
         (option as any) &&
         ((option as any).name || (option as any)[this.labelKey ?? 'id'])
@@ -106,6 +113,7 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
   }
 
   optionSelectedHandler(event: MatAutocompleteSelectedEvent) {
+    console.log(event.option);
     this.optionSelectedEvent.emit(event.option.value);
   }
 

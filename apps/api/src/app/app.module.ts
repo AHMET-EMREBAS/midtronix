@@ -18,6 +18,13 @@ import {
   DepartmentModule,
   ManufacturerService,
   ManufacturerModule,
+  RoleModule,
+  UserModule,
+  EmailModule,
+  AddressModule,
+  PhoneModule,
+  CustomerModule,
+  PermissionModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -67,6 +74,13 @@ import {
     PriceLevelModule,
     ProductModule,
     ManufacturerModule,
+    RoleModule,
+    UserModule,
+    EmailModule,
+    AddressModule,
+    PhoneModule,
+    CustomerModule,
+    PermissionModule,
   ],
   providers: [
     AppEventService,
