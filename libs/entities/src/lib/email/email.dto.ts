@@ -1,5 +1,5 @@
-import { ICreateEmailDto } from '@mdtx/models';
-import { BaseCreateDto, Property } from '@mdtx/core';
+import { ICreateEmailDto, IUser } from '@mdtx/models';
+import { BaseCreateDto, IDDto, Property } from '@mdtx/core';
 import { Exclude } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
 
@@ -10,6 +10,9 @@ export class CreateEmailDto
 {
   @Property({ type: 'string', format: 'email', required: true })
   email!: string;
+
+  @Property({ type: 'object', required: true, target: IDDto })
+  user!: IUser;
 }
 
 @Exclude()

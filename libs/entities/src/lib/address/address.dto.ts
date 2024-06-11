@@ -13,7 +13,7 @@ export class CreateAddressDto
   @Property({ type: 'string', required: true, minLength: 1 }) state!: string;
   @Property({ type: 'string', required: true, minLength: 1 }) country!: string;
   @Property({ type: 'string', required: true, minLength: 1 }) zip!: string;
-  @Property({ type: 'object', target: IDDto }) user!: IUser;
+  @Property({ type: 'object', target: IDDto, required: true }) user!: IUser;
 }
 
 @Exclude()
