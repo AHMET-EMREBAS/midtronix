@@ -25,6 +25,7 @@ import {
   PhoneModule,
   CustomerModule,
   PermissionModule,
+  PermissionService,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -39,6 +40,7 @@ import {
   PriceLevels,
   Stores,
   Suppliers,
+  Permissions,
 } from './seed';
 
 @Module({
@@ -99,60 +101,69 @@ export class AppModule implements OnModuleInit {
     protected readonly supplierService: SupplierService,
     protected readonly categoryService: CategoryService,
     protected readonly departmentService: DepartmentService,
-    protected readonly manufacturerService: ManufacturerService
+    protected readonly manufacturerService: ManufacturerService,
+    protected readonly permissionService: PermissionService
   ) {}
 
   async onModuleInit() {
-    Categories.forEach((e) => {
+    Permissions.forEach(async (e) => {
       try {
-        this.categoryService.saveOne(e);
-      } catch (err) {
-        // NONE
-      }
-    });
-    Departments.forEach((e) => {
-      try {
-        this.departmentService.saveOne(e);
+        await this.permissionService.saveOne(e);
       } catch (err) {
         // NONE
       }
     });
 
-    PriceLevels.forEach((e) => {
+    Categories.forEach(async (e) => {
       try {
-        this.priceLevelService.saveOne(e);
+        await this.categoryService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+    Departments.forEach(async (e) => {
+      try {
+        await this.departmentService.saveOne(e);
       } catch (err) {
         // NONE
       }
     });
 
-    Manufacturers.forEach((e) => {
+    PriceLevels.forEach(async (e) => {
       try {
-        this.manufacturerService.saveOne(e);
+        await this.priceLevelService.saveOne(e);
       } catch (err) {
         // NONE
       }
     });
 
-    Suppliers.forEach((e) => {
+    Manufacturers.forEach(async (e) => {
       try {
-        this.supplierService.saveOne(e);
+        await this.manufacturerService.saveOne(e);
       } catch (err) {
         // NONE
       }
     });
 
-    Stores.forEach((e) => {
+    Suppliers.forEach(async (e) => {
       try {
-        this.storeService.saveOne(e);
+        await this.supplierService.saveOne(e);
       } catch (err) {
         // NONE
       }
     });
 
-    // let i = 1;
+    Stores.forEach(async (e) => {
+      try {
+        await this.storeService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    // letasync  i = 1;
     // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'sample 1' });
+    //   awaitawait  this.service.saveOne({ name: 'sample 1' });
     // }, i++ * 1000);
     // setTimeout(async () => {
     //   await this.service.saveOne({ name: 'sample 2' });

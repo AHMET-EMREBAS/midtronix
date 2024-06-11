@@ -15,7 +15,6 @@ export class PermissionViewMetadata
       name: 'resourceName',
       label: 'Resource Name',
       suffixIcon: 'database',
-
       order: 202,
     };
   }
@@ -35,8 +34,7 @@ export class PermissionViewMetadata
       name: 'permissionId',
       label: 'Permission Id',
       suffixIcon: 'numbers',
-
-      order: 204,
+      order: 200,
     };
   }
 

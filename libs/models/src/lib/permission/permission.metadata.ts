@@ -21,6 +21,7 @@ export class PermissionMetadata
       type: 'string',
       inputType: 'select-one-enum',
       enum: [...ResourceNames],
+      order: 202,
     };
   }
 
@@ -33,15 +34,21 @@ export class PermissionMetadata
       type: 'string',
       inputType: 'select-one-enum',
       enum: [...ResourceActionList],
+      order: 203,
     };
   }
-  
+
   override propertyNames(): KeyOf<IPermission>[] {
     return [this.name().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<IPermission>[] {
-    return [this.actionName(), this.resourceName(), ...super.columns()];
+    return [
+      this.name(),
+      this.actionName(),
+      this.resourceName(),
+      ...super.columns(),
+    ];
   }
 
   protected override formFields() {

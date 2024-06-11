@@ -18,6 +18,7 @@ export class RoleMetadata
       type: 'object',
       isArray: true,
       inputType: 'select-many-entity',
+      entityName: 'Permission',
       mapValue(value) {
         return value.permissions.map((e) => e.name).join(', ');
       },

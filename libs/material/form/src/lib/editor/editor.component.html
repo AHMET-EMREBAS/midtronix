@@ -61,6 +61,16 @@
     [entityName]="input.entityName"
     [labelKey]="input.labelKey"
   ></mdtx-input-autocomplete>
+  } @else if(input.inputType ==='select-many-entity'){
+
+  <mdtx-input-autocomplete
+    [inputName]="input.name || 'Not Set'"
+    [label]="input.label || 'Not set'"
+    [inputControl]="input.control"
+    [entityName]="input.entityName"
+    [labelKey]="input.labelKey"
+  ></mdtx-input-autocomplete>
+
   }
 
   <!-- End of the foor loop -->

@@ -11,13 +11,13 @@ export class CreatePermissionDto
 {
   @Property({ type: 'string', required: true, enum: [...ResourceNames] })
   resourceName!: string;
-  
+
   @Property({ type: 'string', required: true, enum: [...ResourceActionList] })
   actionName!: string;
 
   @Property({ type: 'string', format: 'name', required: false })
   @Transform(({ obj }) => {
-    return createPermissionString(obj.action, obj.resourceName);
+    return createPermissionString(obj.actionName, obj.resourceName);
   })
   name!: string;
 }
