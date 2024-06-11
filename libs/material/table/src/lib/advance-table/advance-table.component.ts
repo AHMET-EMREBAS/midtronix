@@ -72,6 +72,7 @@ export type QueryType = {
   styleUrl: './advance-table.component.scss',
 })
 export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
+  withDeleted = false;
   pageIndex = 0;
   pageSize = 0;
 
@@ -168,7 +169,7 @@ export class AdvanceTableComponent<T extends IBaseEntity> implements OnInit {
         return this.service.findAll({
           take: page.pageSize,
           skip: page.pageIndex * page.pageSize,
-          withDeleted: page.pageSize,
+          withDeleted: this.withDeleted,
           search,
           order: `${sort.active}:${sort.direction}`,
         });

@@ -27,6 +27,7 @@ import {
   PermissionModule,
   PermissionService,
   RoleService,
+  UserService,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -42,6 +43,7 @@ import {
   Stores,
   Suppliers,
   Permissions,
+  Users,
 } from './seed';
 import { Roles } from './seed/roles';
 
@@ -105,7 +107,8 @@ export class AppModule implements OnModuleInit {
     protected readonly departmentService: DepartmentService,
     protected readonly manufacturerService: ManufacturerService,
     protected readonly permissionService: PermissionService,
-    protected readonly roleService: RoleService
+    protected readonly roleService: RoleService,
+    protected readonly userService: UserService
   ) {}
 
   async onModuleInit() {
@@ -161,6 +164,14 @@ export class AppModule implements OnModuleInit {
     Stores.forEach(async (e) => {
       try {
         await this.storeService.saveOne(e);
+      } catch (err) {
+        // NONE
+      }
+    });
+
+    Users.forEach(async (e) => {
+      try {
+        await this.userService.saveOne(e);
       } catch (err) {
         // NONE
       }

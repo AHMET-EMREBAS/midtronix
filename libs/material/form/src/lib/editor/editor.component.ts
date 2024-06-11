@@ -26,6 +26,7 @@ import { DataServiceError, EntityActionPayload } from '@ngrx/data';
 import { Title } from '@angular/platform-browser';
 import { InputNumberComponent } from '../input-number/input-number.component';
 import { InputChipSelectComponent } from '../input-chip-select/input-chip-select.component';
+import { InputPasswordComponent } from '../input-password/input-password.component';
 
 @Component({
   selector: 'mdtx-editor',
@@ -44,6 +45,7 @@ import { InputChipSelectComponent } from '../input-chip-select/input-chip-select
     InputListSelectComponent,
     InputSelectEnumComponent,
     InputChipSelectComponent,
+    InputPasswordComponent,
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,

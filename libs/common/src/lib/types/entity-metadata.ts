@@ -36,7 +36,8 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
   implements CommonMetadata<T>
 {
   /**
-   * For Order/Query Dto Creation
+   * Properties that can be ordered and searched,
+   * For relation fields, only properties that return primitive value
    * @returns
    */
   propertyNames(): KeyOf<T>[] {
@@ -193,7 +194,7 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
       order: 202,
     };
   }
-  
+
   notes(): PropertyMetadata<T> {
     return {
       name: 'notes',

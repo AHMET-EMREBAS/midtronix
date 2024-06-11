@@ -19,6 +19,7 @@ export type PropertyType =
 export type InputType =
   | 'text'
   | 'number'
+  | 'password'
   | 'button-toggle'
   | 'textarea'
   | 'checkbox'

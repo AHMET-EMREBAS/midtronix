@@ -21,12 +21,18 @@ export class UserWhereQueryDto
     AllPropertyType<Omit<IUser, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
-  name!: FindOperator<string>;
+  username!: FindOperator<string>;
+
+  @Exclude()
+  password!: FindOperator<string>;
+
+  @Exclude()
+  roles!: FindOperator<string>;
 }
 
 @Exclude()
 export class UserQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<User>(['name'])
+  @SearchProperty<User>(['username'])
   search!: UserWhereQueryDto;
 
   @WhereProperty(UserWhereQueryDto)

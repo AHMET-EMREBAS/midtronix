@@ -2,6 +2,7 @@
 import { IBaseView } from '@mdtx/common';
 
 export interface IUserView extends IBaseView {
-  name: string;
   userId: string;
+  username: string;
+  roles: string;
 }

@@ -21,21 +21,20 @@ export class UserViewWhereQueryDto
   implements
     AllPropertyType<Omit<IUserView, keyof IBaseEntity>, FindOperator<string>>
 {
-  @QueryOperatorProperty({ type: 'string' })
-  userId!: FindOperator<string>;
+  @QueryOperatorProperty({ type: 'string' }) username!: FindOperator<string>;
 
-  @QueryOperatorProperty({ type: 'string' })
-  name!: FindOperator<string>;
+  @QueryOperatorProperty({ type: 'string' }) roles!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' }) userId!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' }) name!: FindOperator<string>;
 }
 
 @Exclude()
 export class UserViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'userId'])
-  search!: UserViewWhereQueryDto;
+  @SearchProperty(['name', 'userId']) search!: UserViewWhereQueryDto;
 
-  @WhereProperty(UserViewWhereQueryDto)
-  where!: UserViewWhereQueryDto;
+  @WhereProperty(UserViewWhereQueryDto) where!: UserViewWhereQueryDto;
 
-  @OrderProperty(UserMetadataInstance.propertyNames())
-  order: any;
+  @OrderProperty(UserMetadataInstance.propertyNames()) order: any;
 }
