@@ -1,3 +1,4 @@
-import { AddressMetadata } from '@mdtx/models';
+import { AddressMetadata, AddressViewMetadata } from '@mdtx/models';
 
 export const AddressMetadataInstance = new AddressMetadata();
+export const AddressViewMetadataInstance = new AddressViewMetadata();

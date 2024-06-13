@@ -28,6 +28,7 @@ import {
   PermissionService,
   RoleService,
   UserService,
+  ProductService,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -44,6 +45,7 @@ import {
   Suppliers,
   Permissions,
   Users,
+  Products,
 } from './seed';
 import { Roles } from './seed/roles';
 import { User } from '@mdtx/entities';
@@ -61,12 +63,12 @@ import { APP_GUARD } from '@nestjs/core';
       renderPath: isDevMode('client-app', ''),
     }),
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      database: 'testdb',
-      username: 'postgres',
-      password: 'password',
-      // type: 'better-sqlite3',
-      // database: 'tmp/database/dev.sqlite',
+      // type: 'postgres',
+      // database: 'testdb',
+      // username: 'postgres',
+      // password: 'password',
+      type: 'better-sqlite3',
+      database: 'tmp/database/dev.sqlite',
       autoLoadEntities: true,
       synchronize: true,
       dropSchema: true,
@@ -110,7 +112,8 @@ export class AppModule implements OnModuleInit {
     protected readonly manufacturerService: ManufacturerService,
     protected readonly permissionService: PermissionService,
     protected readonly roleService: RoleService,
-    protected readonly userService: UserService
+    protected readonly userService: UserService,
+    protected readonly productService: ProductService
   ) {}
 
   async onModuleInit() {
@@ -176,6 +179,14 @@ export class AppModule implements OnModuleInit {
         await this.userService.saveOne(e);
       } catch (err) {
         // NONE
+      }
+    });
+
+    Products.forEach(async (e) => {
+      try {
+        await this.productService.saveOne(e);
+      } catch (err) {
+        console.log(err);
       }
     });
 

@@ -1,0 +1,4 @@
+import { <%- className %>Metadata, <%- className %>ViewMetadata } from '@mdtx/models';
+
+export const <%- className %>MetadataInstance = new <%- className %>Metadata();
+export const <%- className %>ViewMetadataInstance = new <%- className %>ViewMetadata();

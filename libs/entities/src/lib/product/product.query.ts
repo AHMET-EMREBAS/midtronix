@@ -30,7 +30,7 @@ export class ProductWhereQueryDto
 
   @Exclude()
   supplier!: FindOperator<string>;
-  
+
   @Exclude()
   category!: FindOperator<string>;
 
@@ -40,7 +40,16 @@ export class ProductWhereQueryDto
 
 @Exclude()
 export class ProductQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Product>(['name'])
+  @SearchProperty<Product>([
+    'name',
+    'description',
+    'brand',
+    'upc',
+    'notes',
+    'price',
+    'cost',
+    'quantity',
+  ])
   search!: ProductWhereQueryDto;
 
   @WhereProperty(ProductWhereQueryDto)

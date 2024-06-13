@@ -1,4 +1,4 @@
-import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
+import { BaseView, ViewColumn, ViewEntity, ViewNumberColumn } from '@mdtx/core';
 import { IProductView } from '@mdtx/models';
 
 import { Product } from './product.entity';
@@ -37,9 +37,9 @@ export class ProductView extends BaseView implements IProductView {
   @ViewColumn() description!: string;
   @ViewColumn() brand!: string;
   @ViewColumn() upc!: string;
-  @ViewColumn() price!: string;
-  @ViewColumn() cost!: string;
-  @ViewColumn() quantity!: string;
+  @ViewNumberColumn() price!: number;
+  @ViewNumberColumn() cost!: number;
+  @ViewNumberColumn() quantity!: number;
   @ViewColumn() supplier!: string;
   @ViewColumn() category!: string;
   @ViewColumn() productId!: string;

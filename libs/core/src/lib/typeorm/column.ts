@@ -8,8 +8,8 @@ export function IntegerColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'integer', ...options }),
     __Column({
-      type: 'int',
-      default: 0,
+      type: 'varchar',
+      nullable: true,
     })
   );
 }
@@ -17,7 +17,18 @@ export function IntegerColumn(options?: ApiColumnOptions) {
 export function NumberColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'number', ...options }),
-    __Column({ type: 'numeric', default: 0 })
+    __Column({
+      type: 'varchar',
+      nullable: true,
+      transformer: {
+        to(value) {
+          return value;
+        },
+        from(value) {
+          return value ? parseFloat(value) : value;
+        },
+      },
+    })
   );
 }
 

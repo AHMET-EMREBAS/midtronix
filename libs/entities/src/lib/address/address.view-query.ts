@@ -13,7 +13,7 @@ import { FindOperator } from 'typeorm';
 import { IAddressView } from '@mdtx/models';
 import { AddressView } from './address.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { AddressMetadataInstance } from './address.metata';
+import { AddressViewMetadataInstance } from './address.metata';
 
 @Exclude()
 export class AddressViewWhereQueryDto
@@ -43,6 +43,6 @@ export class AddressViewQueryDto extends BasePaginatorQueryDto {
   @WhereProperty(AddressViewWhereQueryDto)
   where!: AddressViewWhereQueryDto;
 
-  @OrderProperty(AddressMetadataInstance.propertyNames())
+  @OrderProperty(AddressViewMetadataInstance.propertyNames())
   order: any;
 }

@@ -1,5 +1,5 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
-import { ProductQueryDto, ProductView } from '@mdtx/entities';
+import { ProductView, ProductViewQueryDto } from '@mdtx/entities';
 import { ProductViewService } from './product-view.service';
 import { ApiVersion } from '@mdtx/common';
 
@@ -11,8 +11,8 @@ export const ProductViewRRB = RestRouteBuilder.get(
 @ProductViewRRB.Controler()
 export class ProductViewController extends CreateBasicViewController<
   ProductView,
-  ProductQueryDto
->(ProductViewRRB, ProductView, ProductQueryDto) {
+  ProductViewQueryDto
+>(ProductViewRRB, ProductView, ProductViewQueryDto) {
   constructor(service: ProductViewService) {
     super(service);
   }

@@ -7,9 +7,9 @@ export interface IProductView extends IBaseView {
   brand: string;
   description: string;
   upc: string;
-  price: string;
-  cost: string;
-  quantity: string;
+  price: number;
+  cost: number;
+  quantity: number;
   supplier: string;
   category: string;
 }

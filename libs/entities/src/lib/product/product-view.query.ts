@@ -13,7 +13,7 @@ import { FindOperator } from 'typeorm';
 import { IProductView } from '@mdtx/models';
 import { ProductView } from './product.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { ProductMetadataInstance } from './product.metata';
+import { ProductViewMetadataInstance } from './product.metata';
 
 @Exclude()
 export class ProductViewWhereQueryDto
@@ -57,12 +57,24 @@ export class ProductViewWhereQueryDto
 
 @Exclude()
 export class ProductViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'productId'])
+  @SearchProperty<ProductView>([
+    'name',
+    'productId',
+    'description',
+    'brand',
+    'upc',
+    'notes',
+    'price',
+    'cost',
+    'quantity',
+    'supplier',
+    'category',
+  ])
   search!: ProductViewWhereQueryDto;
 
   @WhereProperty(ProductViewWhereQueryDto)
   where!: ProductViewWhereQueryDto;
 
-  @OrderProperty(ProductMetadataInstance.propertyNames())
+  @OrderProperty(ProductViewMetadataInstance.propertyNames())
   order: any;
 }

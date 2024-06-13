@@ -22,6 +22,7 @@ export class Product extends BaseEntity implements IProduct {
   @NumberColumn() quantity!: number;
 
   @StringColumn() brand!: string;
+  
   @OneRelation(Supplier) supplier!: ISupplier;
   @OneRelation(Category) category!: ICategory;
 }

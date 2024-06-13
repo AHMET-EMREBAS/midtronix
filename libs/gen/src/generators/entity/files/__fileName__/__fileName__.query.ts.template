@@ -10,7 +10,7 @@ import {
 import { Exclude } from 'class-transformer';
 import { <%- className %> } from './<%- fileName %>.entity';
 import { FindOperator } from 'typeorm';
-import { <%- className %>MetadataInstance } from './<%- fileName %>.metata';
+import { <%- className %>MetadataInstance } from './<%- fileName %>.meta';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
 import { I<%- className %> } from '@mdtx/models';
 

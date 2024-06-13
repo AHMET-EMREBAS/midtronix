@@ -13,7 +13,8 @@ import { FindOperator } from 'typeorm';
 import { I<%- className %>View } from '@mdtx/models';
 import { <%- className %>View } from './<%- fileName %>.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { <%- className %>MetadataInstance } from './<%- fileName %>.metata';
+
+import { <%- className %>ViewMetadataInstance } from './product.meta';
 
 @Exclude()
 export class <%- className %>ViewWhereQueryDto
@@ -30,12 +31,12 @@ export class <%- className %>ViewWhereQueryDto
 
 @Exclude()
 export class <%- className %>ViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', '<%- propertyName %>Id'])
+  @SearchProperty<<%- className %>View>(['name', '<%- propertyName %>Id'])
   search!: <%- className %>ViewWhereQueryDto;
 
   @WhereProperty(<%- className %>ViewWhereQueryDto)
   where!: <%- className %>ViewWhereQueryDto;
 
-  @OrderProperty(<%- className %>MetadataInstance.propertyNames())
+  @OrderProperty(<%- className %>ViewMetadataInstance.propertyNames())
   order: any;
 }

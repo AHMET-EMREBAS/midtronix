@@ -2,7 +2,6 @@ import {
   EntityMetadata,
   PropertyMetadata,
   BaseViewMetadata,
-  TableFields,
   KeyOf,
 } from '@mdtx/common';
 import { IProductView } from './product-view';
