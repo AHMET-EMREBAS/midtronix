@@ -24,12 +24,20 @@ export class SerialNumberWhereQueryDto
     >
 {
   @QueryOperatorProperty({ type: 'string' })
+  status!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
+  serialNumber!: FindOperator<string>;
+
+  @Exclude() product!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
 }
 
 @Exclude()
 export class SerialNumberQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<SerialNumber>(['name'])
+  @SearchProperty<SerialNumber>(['serialNumber', 'status'])
   search!: SerialNumberWhereQueryDto;
 
   @WhereProperty(SerialNumberWhereQueryDto)
