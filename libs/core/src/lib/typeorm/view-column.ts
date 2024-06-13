@@ -25,3 +25,19 @@ export function ViewNumberColumn(options?: ApiOperationOptions) {
     })
   );
 }
+
+export function ViewBooleanColumn(options?: ApiOperationOptions) {
+  return applyDecorators(
+    Property({ type: 'boolean', ...options }),
+    __ViewColumn({
+      transformer: {
+        from(value) {
+          return value == 1;
+        },
+        to(value) {
+          return value;
+        },
+      },
+    })
+  );
+}

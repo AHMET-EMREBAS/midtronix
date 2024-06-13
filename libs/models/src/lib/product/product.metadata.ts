@@ -17,7 +17,6 @@ export class ProductMetadata
       type: 'string',
       inputType: 'text',
       prefixIcon: 'barcode',
-      required: true,
       maxlength: 13,
       minlength: 8,
       order: 203,
@@ -104,6 +103,16 @@ export class ProductMetadata
     };
   }
 
+  serialNumberRequired(): PropertyMetadata<IProduct> {
+    return {
+      name: 'serialNumberRequired',
+      label: 'Serial Number',
+      type: 'boolean',
+      inputType: 'checkbox',
+      order: 301,
+    };
+  }
+
   override propertyNames(): KeyOf<IProduct>[] {
     return [
       this.name().name,
@@ -115,6 +124,7 @@ export class ProductMetadata
       this.price().name,
       this.quantity().name,
       this.description().name,
+      this.serialNumberRequired().name,
       ...super.propertyNames(),
     ];
   }
@@ -130,6 +140,7 @@ export class ProductMetadata
       this.price(),
       this.quantity(),
       this.description(),
+      this.serialNumberRequired(),
       ...super.columns(),
     ];
   }
@@ -145,6 +156,7 @@ export class ProductMetadata
       this.price(),
       this.quantity(),
       this.description(),
+      this.serialNumberRequired(),
       ...super.formFields(),
     ];
   }

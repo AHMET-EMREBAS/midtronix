@@ -31,7 +31,7 @@ export class <%- className %>ViewWhereQueryDto
 
 @Exclude()
 export class <%- className %>ViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<<%- className %>View>(['name', '<%- propertyName %>Id'])
+  @SearchProperty<<%- className %>View>(['name', 'eid'])
   search!: <%- className %>ViewWhereQueryDto;
 
   @WhereProperty(<%- className %>ViewWhereQueryDto)

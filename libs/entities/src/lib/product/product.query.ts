@@ -21,6 +21,9 @@ export class ProductWhereQueryDto
   implements
     AllPropertyType<Omit<IProduct, keyof IBaseEntity>, FindOperator<string>>
 {
+  @QueryOperatorProperty({ type: 'string' })
+  serialNumberRequired!: FindOperator<string>;
+
   @QueryOperatorProperty({ type: 'string' }) brand!: FindOperator<string>;
   @QueryOperatorProperty({ type: 'string' }) description!: FindOperator<string>;
   @QueryOperatorProperty({ type: 'string' }) upc!: FindOperator<string>;

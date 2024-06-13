@@ -11,15 +11,15 @@ export class <%- className %>ViewMetadata
   implements EntityMetadata<I<%- className %>View>
 {
 
-  <%- propertyName %>Id(): PropertyMetadata<I<%- className %>View> {
-    return { name: '<%- propertyName %>Id', label: '<%- className %> Id', suffixIcon: 'numbers' };
+  eid(): PropertyMetadata<I<%- className %>View> {
+    return { name: 'eid', label: '<%- className %> Id', suffixIcon: 'numbers', order:245 };
   }
 
   override propertyNames(): KeyOf<I<%- className %>View>[] {
-    return [this.name().name, this.<%- propertyName %>Id().name, ...super.propertyNames()];
+    return [this.name().name, this.eid().name, ...super.propertyNames()];
   }
 
   override columns(): PropertyMetadata<I<%- className %>View>[] {
-    return [this.name(), this.<%- propertyName %>Id(), ...super.columns()];
+    return [this.name(), this.eid(), ...super.columns()];
   }
 }

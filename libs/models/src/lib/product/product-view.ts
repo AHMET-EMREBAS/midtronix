@@ -3,7 +3,8 @@ import { IBaseView } from '@mdtx/common';
 
 export interface IProductView extends IBaseView {
   name: string;
-  productId: string;
+  eid: string;
+  serialNumberRequired: boolean;
   brand: string;
   description: string;
   upc: string;

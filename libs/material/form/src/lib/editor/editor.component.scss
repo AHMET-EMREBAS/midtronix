@@ -4,8 +4,9 @@ form {
   flex-wrap: wrap;
   gap: 1em;
   width: fit-content;
+  align-content: flex-start;
 
-  max-height: 84vh;
+  height: 84vh;
   overflow: auto;
   * {
     flex-grow: 1;
@@ -15,6 +16,8 @@ form {
     flex-grow: 1;
     width: 100% !important;
   }
+
+  // border: 10px solid red;
 }
 
 .actions {
@@ -33,8 +36,10 @@ form {
 
 @media screen and (max-width: 600px) {
   form {
-    flex-direction: column;
-    width: 100%;
+    flex-direction: column !important;
+    width: 400px !important;
+    height: 84vh;
+    overflow-y: auto;
 
     * {
       flex-grow: 1;

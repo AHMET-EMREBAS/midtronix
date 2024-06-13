@@ -34,6 +34,9 @@ export class CreateProductDto
 
   @Property({ type: 'object', target: IDDto })
   category!: ICategory;
+
+  @Property({ type: 'boolean', required: false })
+  serialNumberRequired!: boolean;
 }
 
 @Exclude()

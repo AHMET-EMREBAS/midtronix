@@ -66,18 +66,25 @@ export class ProductViewMetadata
     };
   }
 
-  productId(): PropertyMetadata<IProductView> {
+  eid(): PropertyMetadata<IProductView> {
     return {
-      name: 'productId',
-      label: 'Product Id',
+      name: 'eid',
+      label: 'id',
       suffixIcon: 'numbers',
       order: 201,
     };
   }
 
+  serialNumberRequired(): PropertyMetadata<IProductView> {
+    return {
+      name: 'serialNumberRequired',
+      label: 'Serial',
+      order: 301,
+    };
+  }
   override propertyNames(): KeyOf<IProductView>[] {
     return [
-      this.productId().name,
+      this.eid().name,
       this.name().name,
       this.upc().name,
       this.brand().name,
@@ -87,13 +94,14 @@ export class ProductViewMetadata
       this.price().name,
       this.quantity().name,
       this.description().name,
+      this.serialNumberRequired().name,
       ...super.propertyNames(),
     ];
   }
 
   override columns(): PropertyMetadata<IProductView>[] {
     return [
-      this.productId(),
+      this.eid(),
       this.name(),
       this.upc(),
       this.brand(),
@@ -103,6 +111,7 @@ export class ProductViewMetadata
       this.price(),
       this.quantity(),
       this.description(),
+      this.serialNumberRequired(),
       ...super.columns(),
     ];
   }

@@ -25,6 +25,9 @@ export class ProductViewWhereQueryDto
     >
 {
   @QueryOperatorProperty({ type: 'string' })
+  serialNumberRequired!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   description!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
@@ -49,7 +52,7 @@ export class ProductViewWhereQueryDto
   category!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
-  productId!: FindOperator<string>;
+  eid!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;
@@ -59,7 +62,8 @@ export class ProductViewWhereQueryDto
 export class ProductViewQueryDto extends BasePaginatorQueryDto {
   @SearchProperty<ProductView>([
     'name',
-    'productId',
+    'eid',
+    'serialNumberRequired',
     'description',
     'brand',
     'upc',

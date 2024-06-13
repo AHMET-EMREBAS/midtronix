@@ -6,6 +6,7 @@ import {
   StringColumn,
   OneRelation,
   NumberColumn,
+  BooleanColumn,
 } from '@mdtx/core';
 import { Supplier } from '../supplier';
 import { Category } from '../category';
@@ -22,7 +23,9 @@ export class Product extends BaseEntity implements IProduct {
   @NumberColumn() quantity!: number;
 
   @StringColumn() brand!: string;
-  
+
+  @BooleanColumn() serialNumberRequired!: boolean;
+
   @OneRelation(Supplier) supplier!: ISupplier;
   @OneRelation(Category) category!: ICategory;
 }

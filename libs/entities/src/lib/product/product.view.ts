@@ -1,4 +1,10 @@
-import { BaseView, ViewColumn, ViewEntity, ViewNumberColumn } from '@mdtx/core';
+import {
+  BaseView,
+  ViewBooleanColumn,
+  ViewColumn,
+  ViewEntity,
+  ViewNumberColumn,
+} from '@mdtx/core';
 import { IProductView } from '@mdtx/models';
 
 import { Product } from './product.entity';
@@ -10,7 +16,7 @@ import { Supplier } from '../supplier';
     return ds
       .createQueryBuilder()
       .select('ROW_NUMBER() OVER ()', 'id')
-      .addSelect('main.id', 'productId')
+      .addSelect('main.id', 'eid')
       .addSelect('main.name', 'name')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
@@ -22,6 +28,7 @@ import { Supplier } from '../supplier';
       .addSelect('main.price', 'price')
       .addSelect('main.cost', 'cost')
       .addSelect('main.quantity', 'quantity')
+      .addSelect('main.serialNumberRequired', 'serialNumberRequired')
       .addSelect('supplier.name', 'supplier')
       .addSelect('category.name', 'category')
       .addSelect('main.active', 'active')
@@ -33,6 +40,7 @@ import { Supplier } from '../supplier';
   },
 })
 export class ProductView extends BaseView implements IProductView {
+  @ViewBooleanColumn() serialNumberRequired!: boolean;
   @ViewColumn() name!: string;
   @ViewColumn() description!: string;
   @ViewColumn() brand!: string;
@@ -42,5 +50,5 @@ export class ProductView extends BaseView implements IProductView {
   @ViewNumberColumn() quantity!: number;
   @ViewColumn() supplier!: string;
   @ViewColumn() category!: string;
-  @ViewColumn() productId!: string;
+  @ViewColumn() eid!: string;
 }

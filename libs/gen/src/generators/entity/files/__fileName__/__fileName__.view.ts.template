@@ -8,7 +8,7 @@ import { <%- className %> } from './<%- fileName %>.entity';
     return ds
       .createQueryBuilder()
       .select('ROW_NUMBER() OVER ()', 'id')
-      .addSelect('main.id', '<%- propertyName %>Id')
+      .addSelect('main.id', 'eid)
       .addSelect('main.name', 'name')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
@@ -22,5 +22,5 @@ import { <%- className %> } from './<%- fileName %>.entity';
 })
 export class <%- className %>View extends BaseView implements I<%- className %>View {
   @ViewColumn() name!: string;
-  @ViewNumberColumn() <%- propertyName %>Id!: number;
+  @ViewNumberColumn() eid!: number;
 }
