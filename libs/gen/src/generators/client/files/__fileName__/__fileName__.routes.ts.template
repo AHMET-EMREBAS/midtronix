@@ -47,10 +47,11 @@ export const __<%- className %>FormGroup = __<%- className %>Metadata
 export const <%- className %>FormGroup = new FormBuilder().group(__<%- className %>FormGroup);
 
 export const <%- className %>SubRoutes: Routes = [
-  { path: '', loadComponent: () => AdvanceTableComponent },
-  { path: 'editor', loadComponent: () => EditorComponent },
-  { path: 'editor/:id', loadComponent: () => EditorComponent },
+  { title: '<%- className %> View', path: '', loadComponent: () => AdvanceTableComponent },
+  { title: 'New <%- className %>',  path: 'editor', loadComponent: () => EditorComponent },
+  { title: 'Edit <%- className %>', path: 'editor/:id', loadComponent: () => EditorComponent },
   {
+    title: '<%- className %> View Table',
     path: 'view',
     loadComponent: () => AdvanceTableComponent,
     providers: [

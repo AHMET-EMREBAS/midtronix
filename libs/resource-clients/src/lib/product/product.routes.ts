@@ -59,6 +59,7 @@ export const ProductSubRoutes: Routes = [
     loadComponent: () => EditorComponent,
   },
   {
+    title: 'View Products',
     path: 'view',
     loadComponent: () => AdvanceTableComponent,
     providers: [
