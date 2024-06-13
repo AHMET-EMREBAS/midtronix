@@ -51,6 +51,7 @@ export class SerialNumberViewQueryDto extends BasePaginatorQueryDto {
     'serialNumber',
     'status',
     'productId',
+    'notes',
     'eid',
   ])
   search!: SerialNumberViewWhereQueryDto;
