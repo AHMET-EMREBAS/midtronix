@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '@mdtx/material/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterEvent,
+  RouterModule,
+} from '@angular/router';
+import { AuthService, RouteHistoryStore } from '@mdtx/material/core';
 import {
   CategoryService,
   PermissionService,
@@ -8,6 +13,7 @@ import {
   RoleService,
   SupplierService,
 } from '@mdtx/resource-clients';
+import { Subscription } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -24,7 +30,8 @@ import {
     AuthService,
   ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+  sub!: Subscription;
   constructor(
     protected readonly categoryService: CategoryService,
     protected readonly supplierService: SupplierService,
@@ -43,9 +50,23 @@ export class AppComponent implements OnInit {
       this.priceLevelService.saveAllToLocalStore();
       this.permissionService.saveAllToLocalStore();
       this.roleService.saveAllToLocalStore();
-      this.router.navigate(['app']);
+
+      const routeHistory = RouteHistoryStore.obj<string[]>() || ['app'];
+      this.router.navigate(routeHistory);
     } catch (err) {
       this.router.navigate(['auth', 'login']);
     }
+
+    this.sub = this.router.events.subscribe((events) => {
+      if (events.type === 1) {
+        RouteHistoryStore.set(
+          JSON.stringify((events as NavigationEnd).url.split('/'))
+        );
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }
