@@ -13,3 +13,4 @@ export * from './sample';
 export * from './store';
 export * from './supplier';
 export * from './user';
+export * from './serial-number';
