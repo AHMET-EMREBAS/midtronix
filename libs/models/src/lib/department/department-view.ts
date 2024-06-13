@@ -3,5 +3,5 @@ import { IBaseView } from '@mdtx/common';
 
 export interface IDepartmentView extends IBaseView {
   name: string;
-  departmentId: string;
+  departmentId: number;
 }

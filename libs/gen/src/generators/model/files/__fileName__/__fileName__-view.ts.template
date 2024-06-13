@@ -3,5 +3,5 @@ import { IBaseView } from '@mdtx/common';
 
 export interface I<%- className %>View extends IBaseView {
   name: string;
-  <%- propertyName %>Id: string;
+  <%- propertyName %>Id: number;
 }

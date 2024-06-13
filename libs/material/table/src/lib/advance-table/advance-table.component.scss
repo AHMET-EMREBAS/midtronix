@@ -97,10 +97,11 @@ mat-row .mat-column-active {
 }
 
 .table-container {
-  overflow: auto;
   max-width: 100%;
+  height: 84vh;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 mat-paginator {

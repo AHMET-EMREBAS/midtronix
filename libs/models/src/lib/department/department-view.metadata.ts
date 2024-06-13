@@ -15,7 +15,7 @@ export class DepartmentViewMetadata
       name: 'departmentId',
       label: 'Department Id',
       suffixIcon: 'numbers',
-      order: 300,
+      order: 200,
     };
   }
 

@@ -10,7 +10,7 @@ import {
 import { Exclude } from 'class-transformer';
 import { Department } from './department.entity';
 import { FindOperator } from 'typeorm';
-import { DepartmentMetadataInstance } from './department.metata';
+import { DepartmentMetadataInstance } from './department.meta';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
 import { IDepartment } from '@mdtx/models';
 
@@ -26,7 +26,7 @@ export class DepartmentWhereQueryDto
 
 @Exclude()
 export class DepartmentQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<Department>(['name', 'notes'])
+  @SearchProperty<Department>(['name'])
   search!: DepartmentWhereQueryDto;
 
   @WhereProperty(DepartmentWhereQueryDto)

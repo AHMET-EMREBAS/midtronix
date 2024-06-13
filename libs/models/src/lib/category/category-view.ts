@@ -3,5 +3,5 @@ import { IBaseView } from '@mdtx/common';
 
 export interface ICategoryView extends IBaseView {
   name: string;
-  categoryId: string;
+  categoryId: number;
 }

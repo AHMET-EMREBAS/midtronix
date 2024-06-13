@@ -1,4 +1,4 @@
-import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
+import { BaseView, ViewColumn, ViewEntity, ViewNumberColumn } from '@mdtx/core';
 import { ICategoryView } from '@mdtx/models';
 
 import { Category } from './category.entity';
@@ -22,5 +22,5 @@ import { Category } from './category.entity';
 })
 export class CategoryView extends BaseView implements ICategoryView {
   @ViewColumn() name!: string;
-  @ViewColumn() categoryId!: string;
+  @ViewNumberColumn() categoryId!: number;
 }

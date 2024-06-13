@@ -13,7 +13,8 @@ import { FindOperator } from 'typeorm';
 import { IDepartmentView } from '@mdtx/models';
 import { DepartmentView } from './department.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { DepartmentMetadataInstance } from './department.metata';
+
+import { DepartmentViewMetadataInstance } from './department.meta';
 
 @Exclude()
 export class DepartmentViewWhereQueryDto
@@ -33,12 +34,12 @@ export class DepartmentViewWhereQueryDto
 
 @Exclude()
 export class DepartmentViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'notes', 'departmentId'])
+  @SearchProperty<DepartmentView>(['name', 'departmentId'])
   search!: DepartmentViewWhereQueryDto;
 
   @WhereProperty(DepartmentViewWhereQueryDto)
   where!: DepartmentViewWhereQueryDto;
 
-  @OrderProperty(DepartmentMetadataInstance.propertyNames())
+  @OrderProperty(DepartmentViewMetadataInstance.propertyNames())
   order: any;
 }

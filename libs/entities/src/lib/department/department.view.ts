@@ -1,4 +1,4 @@
-import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
+import { BaseView, ViewColumn, ViewEntity, ViewNumberColumn } from '@mdtx/core';
 import { IDepartmentView } from '@mdtx/models';
 
 import { Department } from './department.entity';
@@ -22,5 +22,5 @@ import { Department } from './department.entity';
 })
 export class DepartmentView extends BaseView implements IDepartmentView {
   @ViewColumn() name!: string;
-  @ViewColumn() departmentId!: string;
+  @ViewNumberColumn() departmentId!: number;
 }

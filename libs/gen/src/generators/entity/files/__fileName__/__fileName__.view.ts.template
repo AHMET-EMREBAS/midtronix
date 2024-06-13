@@ -1,4 +1,4 @@
-import { BaseView, ViewColumn, ViewEntity } from '@mdtx/core';
+import { BaseView, ViewColumn, ViewEntity,ViewNumberColumn } from '@mdtx/core';
 import { I<%- className %>View } from '@mdtx/models';
 
 import { <%- className %> } from './<%- fileName %>.entity';
@@ -22,5 +22,5 @@ import { <%- className %> } from './<%- fileName %>.entity';
 })
 export class <%- className %>View extends BaseView implements I<%- className %>View {
   @ViewColumn() name!: string;
-  @ViewColumn() <%- propertyName %>Id!: string;
+  @ViewNumberColumn() <%- propertyName %>Id!: number;
 }
