@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '@mdtx/material/core';
 import {
   CategoryService,
   PermissionService,
@@ -20,6 +21,7 @@ import {
     PriceLevelService,
     PermissionService,
     RoleService,
+    AuthService,
   ],
 })
 export class AppComponent implements OnInit {
@@ -28,7 +30,9 @@ export class AppComponent implements OnInit {
     protected readonly supplierService: SupplierService,
     protected readonly priceLevelService: PriceLevelService,
     protected readonly permissionService: PermissionService,
-    protected readonly roleService: RoleService
+    protected readonly roleService: RoleService,
+    protected readonly authService: AuthService,
+    protected readonly router: Router
   ) {}
 
   async ngOnInit() {
@@ -37,5 +41,12 @@ export class AppComponent implements OnInit {
     this.priceLevelService.saveAllToLocalStore();
     this.permissionService.saveAllToLocalStore();
     this.roleService.saveAllToLocalStore();
+
+    try {
+      await this.authService.hasSession();
+      this.router.navigate(['app']);
+    } catch (err) {
+      this.router.navigate(['auth', 'login']);
+    }
   }
 }

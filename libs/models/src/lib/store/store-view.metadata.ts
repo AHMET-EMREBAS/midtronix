@@ -11,7 +11,12 @@ export class StoreViewMetadata
   implements EntityMetadata<IStoreView>
 {
   storeId(): PropertyMetadata<IStoreView> {
-    return { name: 'storeId', label: 'Store Id', suffixIcon: 'numbers' };
+    return {
+      name: 'storeId',
+      label: 'Store Id',
+      suffixIcon: 'numbers',
+      order: 200,
+    };
   }
 
   override propertyNames(): KeyOf<IStoreView>[] {

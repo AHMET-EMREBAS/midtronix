@@ -24,12 +24,20 @@ export class AuthService {
   }
 
   sign(id: number) {
-    return this.jwt.sign({ id });
+    try {
+      return this.jwt.sign({ id });
+    } catch (err) {
+      return null;
+    }
   }
 
   async verify(token: string) {
-    const result = await this.jwt.verify<JwtPayload>(token);
-    return result;
+    try {
+      const result = await this.jwt.verify<JwtPayload>(token);
+      return result;
+    } catch (err) {
+      return null;
+    }
   }
 
   async login(body: LoginDto) {

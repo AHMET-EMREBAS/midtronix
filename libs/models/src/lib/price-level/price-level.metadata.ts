@@ -14,6 +14,8 @@ export class PriceLevelMetadata
     return {
       name: 'taxrate',
       label: 'Taxrate',
+      type: 'number',
+      inputType: 'number',
       prefixIcon: 'money',
       min: 0,
       order: 203,

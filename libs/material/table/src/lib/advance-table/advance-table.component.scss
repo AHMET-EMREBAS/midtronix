@@ -28,6 +28,7 @@ mat-row:nth-child(odd) {
 
 .mat-column-firstColumn {
   max-width: 100px !important;
+  min-width: 100px !important;
   text-align: center;
   background-color: rgb(223, 223, 223);
   padding: 0px;
@@ -105,4 +106,13 @@ mat-row .mat-column-active {
 mat-paginator {
   position: sticky;
   bottom: 0px;
+}
+
+@media screen and (max-width: 800px) {
+  .mat-column-createdAt,
+  .mat-column-updatedAt,
+  .mat-column-deletedAt {
+    // width: 0px !important;
+    // visibility: collapse;
+  }
 }

@@ -1,3 +1,14 @@
-<div class="auth-container">
-  <router-outlet></router-outlet>
-</div>
+<mat-tab-group #authTabs mat-stretch-tabs>
+  <mat-tab #loginTab label="Login">
+    <mdtx-login></mdtx-login>
+  </mat-tab>
+  <mat-tab #ssoTab label="SSO Login">
+    <mdtx-login-with-sso></mdtx-login-with-sso>
+  </mat-tab>
+  <mat-tab #forgotTab label="Forgot Password">
+    <mdtx-forgot-password></mdtx-forgot-password>
+  </mat-tab>
+  <mat-tab #resetTab label="Reset Password">
+    <mdtx-reset-password></mdtx-reset-password>
+  </mat-tab>
+</mat-tab-group>

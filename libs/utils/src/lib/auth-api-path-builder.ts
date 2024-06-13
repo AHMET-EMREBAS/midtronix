@@ -7,6 +7,7 @@ export type AuthApiPaths = {
   LogoutAllPath: string;
   HasPermissionPath: string;
   UpdatePasswordPath: string;
+  HasSessionPath: string;
 };
 
 export class AuthApiPathBuilder {
@@ -18,6 +19,7 @@ export class AuthApiPathBuilder {
   readonly LogoutAllPath = 'logout-all';
   readonly HasPermissionPath = 'has-permission';
   readonly UpdatePasswordPath = 'update-password';
+  readonly HasSessionPath = 'has-session';
 
   static get(): AuthApiPaths {
     return new AuthApiPathBuilder();

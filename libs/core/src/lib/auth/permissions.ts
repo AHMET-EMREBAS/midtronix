@@ -2,13 +2,12 @@ import { CustomDecorator } from '@nestjs/common';
 import { createMetadata } from '../metadata';
 import { ResourceActions } from '@mdtx/common';
 
-
 // Is public, permission, role, scope, resoucename
 
 export const PublicMetadata = createMetadata('IsPublic');
 export const ResourceNameMeta = createMetadata('ResourceName');
 export const RoleMeta = createMetadata('RequiredRole');
-export const PermissionMeta = createMetadata('RequiredPermission');
+export const PermissionMeta = createMetadata<string>('RequiredPermission');
 export const ScopeMeta = createMetadata('RequiredScope');
 export const AppMeta = createMetadata('RequiredApp');
 
@@ -29,6 +28,25 @@ export function createPermissionString(
   resourceName: string
 ) {
   return `${action}:${resourceName}`;
+}
+
+export type PermissionObject = {
+  action: ResourceActions;
+  resourceName: string;
+};
+
+export function parsePermissionString(
+  permission: string
+): PermissionObject | null {
+  if (permission && permission.includes(':')) {
+    const [action, resourceName] = permission.split(':');
+    return {
+      action,
+      resourceName,
+    } as PermissionObject;
+  }
+
+  return null;
 }
 
 export type ResourcePermissions = {

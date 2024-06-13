@@ -11,7 +11,12 @@ export class SupplierViewMetadata
   implements EntityMetadata<ISupplierView>
 {
   supplierId(): PropertyMetadata<ISupplierView> {
-    return { name: 'supplierId', label: 'Supplier Id', suffixIcon: 'numbers' };
+    return {
+      name: 'supplierId',
+      label: 'Supplier Id',
+      suffixIcon: 'numbers',
+      order: 200,
+    };
   }
 
   override propertyNames(): KeyOf<ISupplierView>[] {

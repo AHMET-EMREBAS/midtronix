@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService, AuthTokenStore } from '@mdtx/material/core';
+import { AuthService } from '@mdtx/material/core';
 
 @Component({
   selector: 'mdtx-forgot-password',

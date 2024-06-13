@@ -10,6 +10,8 @@ import { PriceLevel } from './price-level.entity';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'priceLevelId')
       .addSelect('main.name', 'name')
+      .addSelect('main.description', 'description')
+      .addSelect('main.taxrate', 'taxrate')
       .addSelect('main.notes', 'notes')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')

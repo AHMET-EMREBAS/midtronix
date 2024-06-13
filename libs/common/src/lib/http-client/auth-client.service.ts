@@ -10,6 +10,7 @@ import {
   IUpdatePasswordDto,
   IUpdatePasswordResponse,
 } from '../auth';
+import { IMessageResponse } from '../response';
 
 export class AuthHttpClient {
   readonly apiPaths!: AuthApiPaths;
@@ -73,6 +74,15 @@ export class AuthHttpClient {
     const res = await axios.post<any, AxiosResponse<ILoginResponse>>(
       this.__path(this.apiPaths.LoginWithSSOPath),
       body,
+      this.__config()
+    );
+    return this.parseResult(res);
+  }
+
+  async hasSession() {
+    const res = await axios.post<any, AxiosResponse<IMessageResponse>>(
+      this.__path(this.apiPaths.HasSessionPath),
+      {},
       this.__config()
     );
     return this.parseResult(res);

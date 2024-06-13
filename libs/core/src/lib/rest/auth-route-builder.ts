@@ -20,6 +20,11 @@ import {
 import { ValidationPipe } from '../dto';
 import { ApiVersion, AuthEnums } from '@mdtx/common';
 import { AuthApiPathBuilder, AuthApiPaths } from '@mdtx/utils';
+import {
+  HasPermissionResponse,
+  HasSessionResponse,
+  MessageResponse,
+} from '../response';
 
 export class AuthRouteBuilder {
   protected readonly AP: AuthApiPaths;
@@ -100,6 +105,26 @@ export class AuthRouteBuilder {
       ApiOperation({ summary: 'Update password by Single Sign-On' }),
       Post(this.AP.UpdatePasswordPath),
       ApiOkResponse({ description: 'success', type: UpdatePasswordResult }),
+      ApiBearerAuth(AuthEnums.BEARER),
+      this.CommonResponses()
+    );
+  }
+
+  HasSession() {
+    return applyDecorators(
+      ApiOperation({ summary: 'Has session' }),
+      Post(this.AP.HasSessionPath),
+      ApiOkResponse({ description: 'seccess', type: HasSessionResponse }),
+      ApiBearerAuth(AuthEnums.BEARER),
+      this.CommonResponses()
+    );
+  }
+
+  HasPermission() {
+    return applyDecorators(
+      ApiOperation({ summary: 'Has Permission' }),
+      Post(this.AP.HasPermissionPath),
+      ApiOkResponse({ description: 'seccess', type: HasPermissionResponse }),
       ApiBearerAuth(AuthEnums.BEARER),
       this.CommonResponses()
     );

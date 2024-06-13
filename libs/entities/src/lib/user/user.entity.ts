@@ -3,8 +3,8 @@ import {
   BaseEntity,
   UniqueColumn,
   Entity,
-  StringColumn,
   ManyRelation,
+  HashedColumn,
 } from '@mdtx/core';
 import { Role } from '../role';
 
@@ -13,7 +13,7 @@ export class User extends BaseEntity implements IUser {
   @UniqueColumn()
   username!: string;
 
-  @StringColumn()
+  @HashedColumn({ required: true })
   password!: string;
 
   @ManyRelation(Role)

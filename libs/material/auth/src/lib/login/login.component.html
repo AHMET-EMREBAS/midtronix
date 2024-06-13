@@ -10,30 +10,12 @@
     inputName="password"
     label="Password"
     [inputControl]="password"
-    prefixIcon="email"
+    prefixIcon="password"
   ></mdtx-input-password>
 
   <div class="actions">
     <button type="button" mat-raised-button color="primary" (click)="login()">
       Login
-    </button>
-
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      [routerLink]="['../', 'forgot-password']"
-    >
-      Forgot Password
-    </button>
-
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      [routerLink]="['../', 'login-with-sso']"
-    >
-      Login With SSO
     </button>
   </div>
 </form>

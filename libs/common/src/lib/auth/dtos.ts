@@ -13,7 +13,6 @@ export interface ILoginWithSSODto {
   sso: string;
 }
 
-
 export interface ILoginDto {
   username: string;
   password: string;

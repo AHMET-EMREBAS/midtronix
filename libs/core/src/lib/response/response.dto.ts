@@ -92,3 +92,13 @@ export class InternalServerErrorResponse extends MessageResponse {
   })
   override message!: string;
 }
+
+export class HasPermissionResponse {
+  @Property({ type: 'string', example: 'true/false' })
+  hasPermission!: boolean;
+}
+
+export class HasSessionResponse {
+  @Property({ type: 'string', example: 'true/false' })
+  hasSession!: boolean;
+}

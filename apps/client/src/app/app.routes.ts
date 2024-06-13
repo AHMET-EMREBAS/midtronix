@@ -24,7 +24,7 @@ import { AuthRoute, LoginComponent } from '@mdtx/material/auth';
 export const appRoutes: Route[] = [
   AuthRoute,
   {
-    path: 'inventory',
+    path: 'app',
     loadComponent: () => AppLayoutComponent,
     providers: [
       SidenavLeftTopProvider.provide([

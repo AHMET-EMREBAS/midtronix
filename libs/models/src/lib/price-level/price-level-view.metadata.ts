@@ -23,20 +23,25 @@ export class PriceLevelViewMetadata
     return {
       name: 'priceLevelId',
       label: 'PriceLevel Id',
-      order: 203,
+      order: 200,
     };
   }
 
-  
   override propertyNames(): KeyOf<IPriceLevelView>[] {
     return [
       this.name().name,
+      this.description().name,
       this.priceLevelId().name,
       ...super.propertyNames(),
     ];
   }
 
   override columns(): PropertyMetadata<IPriceLevelView>[] {
-    return [this.name(), this.priceLevelId(), ...super.columns()];
+    return [
+      this.name(),
+      this.description(),
+      this.priceLevelId(),
+      ...super.columns(),
+    ];
   }
 }

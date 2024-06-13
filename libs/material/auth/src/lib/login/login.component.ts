@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService, AuthTokenStore } from '@mdtx/material/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'mdtx-login',
@@ -53,7 +53,8 @@ export class LoginComponent {
 
   constructor(
     protected readonly authService: AuthService,
-    protected readonly snackbar: MatSnackBar
+    protected readonly snackbar: MatSnackBar,
+    protected readonly router: Router
   ) {}
 
   async login() {
@@ -70,6 +71,7 @@ export class LoginComponent {
           verticalPosition: 'top',
           panelClass: 'success-snackbar',
         });
+        this.router.navigate(['app']);
       } catch (err) {
         this.snackbar.open('Wrong password or User not found!', undefined, {
           horizontalPosition: 'center',

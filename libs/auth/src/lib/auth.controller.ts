@@ -1,7 +1,10 @@
 import {
   AdvanceLogger,
   AuthRouteBuilder,
+  HasPermissionResponse,
+  HasSessionResponse,
   PublicResource,
+  UserDetail,
   UserId,
   ValidationPipe,
 } from '@mdtx/core';
@@ -12,9 +15,14 @@ import {
   ApiNotFoundResponse,
   ApiOperation,
 } from '@nestjs/swagger';
-import { ForgotPasswordDto, LoginDto, LoginWithSSODto } from './dto';
+import {
+  ForgotPasswordDto,
+  HasPermissionDto,
+  LoginDto,
+  LoginWithSSODto,
+} from './dto';
 import { Response } from 'express';
-import { AuthEnums } from '@mdtx/common';
+import { AuthCredentials, AuthEnums, ResourceActions } from '@mdtx/common';
 import { UpdatePasswordDto } from './dto/update-password.dto';
 export function Login() {
   return applyDecorators(
@@ -79,7 +87,37 @@ export class AuthController {
     @UserId() userId: number,
     @Body(ValidationPipe) body: UpdatePasswordDto
   ) {
+    console.log(body);
     this.logger.debug(this.updatePassword.name, { userId, body });
     return this.service.updatePassword(userId, body);
+  }
+
+  @R.HasSession()
+  hasSession(): HasSessionResponse {
+    return { hasSession: true };
+  }
+
+  @R.HasPermission()
+  hasPermission(
+    @Body(ValidationPipe) body: HasPermissionDto,
+    @UserDetail() userDetail: AuthCredentials
+  ): HasPermissionResponse {
+    for (const role of userDetail.roles) {
+      if (role.name === 'Admin') {
+        return { hasPermission: true };
+      }
+
+      if (body.action === ResourceActions.READ) {
+        if (role.name === 'Analist') {
+          return { hasPermission: true };
+        }
+      }
+      for (const permission of role.permissions) {
+        if (permission.name === body.permission) {
+          return { hasPermission: true };
+        }
+      }
+    }
+    return { hasPermission: false };
   }
 }

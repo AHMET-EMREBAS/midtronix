@@ -41,7 +41,7 @@ export class LoginWithSsoComponent {
     new ValidatorBuilder('username').email().build()
   );
 
-  sso = new FormControl('');
+  sso = new FormControl('', []);
 
   loginFormGroup = new FormGroup({
     username: this.username,

@@ -11,6 +11,7 @@
     [formControl]="inputControl"
     [attr.data-testid]="testid()"
     (input)="inputEvent.emit(inputControl.value)"
+    [placeholder]="label || inputName | titlecase"
   />
 
   <!-- Text suffix -->

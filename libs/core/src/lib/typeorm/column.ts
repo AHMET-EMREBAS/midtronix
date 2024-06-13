@@ -1,7 +1,7 @@
 import { applyDecorators } from '@nestjs/common';
 import { Column as __Column } from 'typeorm';
 import { ApiPropertyOptions, Property } from '../property';
-
+import { hashSync, genSaltSync } from 'bcrypt';
 export type ApiColumnOptions = Partial<ApiPropertyOptions>;
 
 export function IntegerColumn(options?: ApiColumnOptions) {
@@ -50,5 +50,23 @@ export function UniqueColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'string', description: 'Unique test value', ...options }),
     __Column({ type: 'varchar', unique: true })
+  );
+}
+
+export function HashedColumn(options?: ApiColumnOptions) {
+  return applyDecorators(
+    Property({ type: 'string', description: 'Hashed column', ...options }),
+    __Column({
+      type: 'varchar',
+      nullable: true,
+      transformer: {
+        to(value) {
+          return hashSync(value, genSaltSync(8));
+        },
+        from(value) {
+          return value;
+        },
+      },
+    })
   );
 }
