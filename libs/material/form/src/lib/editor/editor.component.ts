@@ -126,9 +126,15 @@ export class EditorComponent implements OnInit, OnDestroy {
 
     this.sub = this.service.entityActions$.subscribe((event) => {
       console.log(event.type);
-      if (event.type.endsWith('success')) {
+      if (
+        event.type.endsWith('add-one/success') ||
+        event.type.endsWith('update-one/success')
+      ) {
         this.successHandler();
-      } else {
+      } else if (
+        event.type.endsWith('add-one/error') ||
+        event.type.endsWith('update-one/error')
+      ) {
         this.failiureHandler(event.payload);
       }
     });
@@ -137,7 +143,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.sub?.unsubscribe();
   }
 
   submitForm() {

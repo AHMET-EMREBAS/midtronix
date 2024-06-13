@@ -10,8 +10,11 @@
     [routerLink]="[item.route]"
     #routerLinkActive="routerLinkActive"
     routerLinkActive
+    (click)="handle(item)"
   >
-    <span matListItemTitle  [class.bold]="routerLinkActive.isActive">{{ item.label }}</span>
+    <span matListItemTitle [class.bold]="routerLinkActive.isActive">{{
+      item.label
+    }}</span>
     <!-- <span matListItemLine>{{ item.label }}</span> -->
     <span matListItemIcon>
       <mat-icon
@@ -31,6 +34,7 @@
     [routerLink]="[item.route]"
     #routerLinkActive="routerLinkActive"
     routerLinkActive
+    (click)="handle(item)"
   >
     <mat-icon [class.fill]="routerLinkActive.isActive">
       {{ item.icon }}

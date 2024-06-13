@@ -2,6 +2,7 @@ import { Component, Inject, Input, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   Navlist,
+  NavlistItem,
   ViewportDirective,
   createValueProvider,
 } from '@mdtx/material/core';
@@ -36,5 +37,12 @@ export class NavlistComponent {
 
   constructor(@Optional() @Inject(NavlistProvider.token()) items?: Navlist) {
     if (items) this.items = items;
+  }
+
+  handle(item: NavlistItem) {
+    console.log('Is Handler working ? ');
+    if (item.handler) {
+      item.handler(item);
+    }
   }
 }

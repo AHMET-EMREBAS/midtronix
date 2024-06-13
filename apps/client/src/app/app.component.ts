@@ -36,14 +36,13 @@ export class AppComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.categoryService.saveAllToLocalStore();
-    this.supplierService.saveAllToLocalStore();
-    this.priceLevelService.saveAllToLocalStore();
-    this.permissionService.saveAllToLocalStore();
-    this.roleService.saveAllToLocalStore();
-
     try {
       await this.authService.hasSession();
+      this.categoryService.saveAllToLocalStore();
+      this.supplierService.saveAllToLocalStore();
+      this.priceLevelService.saveAllToLocalStore();
+      this.permissionService.saveAllToLocalStore();
+      this.roleService.saveAllToLocalStore();
       this.router.navigate(['app']);
     } catch (err) {
       this.router.navigate(['auth', 'login']);

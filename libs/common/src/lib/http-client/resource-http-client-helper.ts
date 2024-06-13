@@ -9,7 +9,6 @@ export class ResourceHttpClientHelper {
   ) {}
 
   path(path: string) {
-    console.log("IS PATH WORKING ? .......................")
     return `${this.prefix}/${path}`;
   }
 

@@ -23,10 +23,10 @@ export class ResourceHttpClient<
     this.helper = new ResourceHttpClientHelper(prefix, this.apiPaths);
   }
 
-  protected config(): AxiosRequestConfig | undefined {
-    return this.axiosConfig;
+  protected config(): AxiosRequestConfig {
+    return this.axiosConfig || {};
   }
-  
+
   protected parseResult<T>(res: AxiosResponse<T>) {
     return res.data;
   }

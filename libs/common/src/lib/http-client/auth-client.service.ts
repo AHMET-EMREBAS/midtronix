@@ -22,68 +22,68 @@ export class AuthHttpClient {
     this.apiPaths = AuthApiPathBuilder.get();
   }
 
-  __config() {
-    return this.axiosConfig;
+  protected config(): AxiosRequestConfig {
+    return this.axiosConfig || {};
   }
 
   protected parseResult<T>(res: AxiosResponse<T>) {
     return res.data;
   }
 
-  __path(path: string) {
+  protected path(path: string) {
     return `${this.prefix}/${path}`;
   }
 
   async login(body: ILoginDto) {
     const res = await axios.post<ILoginDto, AxiosResponse<ILoginResponse>>(
-      this.__path(this.apiPaths.LoginPath),
+      this.path(this.apiPaths.LoginPath),
       body,
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }
 
   async logout() {
     const res = await axios.post<any, AxiosResponse<ILogoutResponse>>(
-      this.__path(this.apiPaths.LogoutPath),
+      this.path(this.apiPaths.LogoutPath),
       undefined,
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }
 
   async forgotPassword(body: IForgotPasswordDto) {
     const res = await axios.post<any, AxiosResponse<IForgotPasswordResponse>>(
-      this.__path(this.apiPaths.ForgotPasswordPath),
+      this.path(this.apiPaths.ForgotPasswordPath),
       body,
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }
 
   async updatePassword(body: IUpdatePasswordDto) {
     const res = await axios.post<any, AxiosResponse<IUpdatePasswordResponse>>(
-      this.__path(this.apiPaths.UpdatePasswordPath),
+      this.path(this.apiPaths.UpdatePasswordPath),
       body,
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }
 
   async loginWithSSO(body: ILoginWithSSODto) {
     const res = await axios.post<any, AxiosResponse<ILoginResponse>>(
-      this.__path(this.apiPaths.LoginWithSSOPath),
+      this.path(this.apiPaths.LoginWithSSOPath),
       body,
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }
 
   async hasSession() {
     const res = await axios.post<any, AxiosResponse<IMessageResponse>>(
-      this.__path(this.apiPaths.HasSessionPath),
+      this.path(this.apiPaths.HasSessionPath),
       {},
-      this.__config()
+      this.config()
     );
     return this.parseResult(res);
   }

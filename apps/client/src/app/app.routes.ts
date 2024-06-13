@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 import {
   AppLayoutComponent,
   SidenavLeftTopProvider,
+  ToolbarRightProvider,
 } from '@mdtx/material/layout';
 import {
   CategoryRoute,
@@ -21,12 +22,24 @@ import {
   DepartmentRoute,
 } from '@mdtx/resource-clients';
 import { AuthRoute, LoginComponent } from '@mdtx/material/auth';
+import { AuthTokenStore } from '@mdtx/material/core';
 export const appRoutes: Route[] = [
   AuthRoute,
   {
     path: 'app',
     loadComponent: () => AppLayoutComponent,
     providers: [
+      ToolbarRightProvider.provide([
+        {
+          icon: 'logout',
+          label: 'logout',
+          route: '/auth/login',
+          handler() {
+            console.log('Removeing TOken ');
+            AuthTokenStore.remove();
+          },
+        },
+      ]),
       SidenavLeftTopProvider.provide([
         {
           route: 'product',

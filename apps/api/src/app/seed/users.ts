@@ -4,4 +4,9 @@ export const Users = [
     password: '!Password123.',
     roles: [{ id: 1 }],
   },
+  {
+    username: 'analist@midtronix.com',
+    password: '!Password123.',
+    roles: [{ id: 2 }],
+  },
 ];
