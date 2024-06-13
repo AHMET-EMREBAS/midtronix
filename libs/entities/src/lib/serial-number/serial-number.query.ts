@@ -38,7 +38,7 @@ export class SerialNumberWhereQueryDto
 
 @Exclude()
 export class SerialNumberQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<SerialNumber>(['serialNumber', 'status'])
+  @SearchProperty<SerialNumber>([ 'serialNumber', 'status'])
   search!: SerialNumberWhereQueryDto;
 
   @WhereProperty(SerialNumberWhereQueryDto)
