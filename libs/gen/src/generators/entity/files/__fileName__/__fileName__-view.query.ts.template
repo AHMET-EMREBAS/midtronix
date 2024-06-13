@@ -14,7 +14,7 @@ import { I<%- className %>View } from '@mdtx/models';
 import { <%- className %>View } from './<%- fileName %>.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
 
-import { <%- className %>ViewMetadataInstance } from './product.meta';
+import { <%- className %>ViewMetadataInstance } from './<%- fileName %>.meta';
 
 @Exclude()
 export class <%- className %>ViewWhereQueryDto

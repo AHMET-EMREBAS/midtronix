@@ -13,7 +13,7 @@ import { FindOperator } from 'typeorm';
 import { IPhoneView } from '@mdtx/models';
 import { PhoneView } from './phone.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { PhoneMetadataInstance } from './phone.metata';
+import { PhoneViewMetadataInstance } from './phone.metata';
 
 @Exclude()
 export class PhoneViewWhereQueryDto
@@ -33,12 +33,12 @@ export class PhoneViewWhereQueryDto
 
 @Exclude()
 export class PhoneViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'phoneId'])
+  @SearchProperty<IPhoneView>(['phone'])
   search!: PhoneViewWhereQueryDto;
 
   @WhereProperty(PhoneViewWhereQueryDto)
   where!: PhoneViewWhereQueryDto;
 
-  @OrderProperty(PhoneMetadataInstance.propertyNames())
+  @OrderProperty(PhoneViewMetadataInstance.propertyNames())
   order: any;
 }

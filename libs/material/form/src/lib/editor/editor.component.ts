@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -65,7 +71,7 @@ import { InputPasswordComponent } from '../input-password/input-password.compone
     `,
   ],
 })
-export class EditorComponent implements OnInit, OnDestroy {
+export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
   editorStore: LocalStore;
   submitted = false;
   formFields!: PropertyMetadata<any>[];
@@ -101,6 +107,10 @@ export class EditorComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.title.setTitle(`${this.submitLabel} ${this.entityName}`);
+  }
+
+  async ngAfterViewInit() {
     const id = this.route.snapshot.paramMap.get('id');
     const localStoreValue = this.editorStore.obj();
 
@@ -110,9 +120,16 @@ export class EditorComponent implements OnInit, OnDestroy {
       this.entityId = id;
       this.isUpdateForm = true;
       const value = await firstValueFrom(this.service.getByKey(id));
-      this.setFormValue(value);
+
+      console.log('Found Value : ', value);
+
+      setTimeout(() => {
+        this.setFormValue(value);
+      }, 1000);
     } else if (localStoreValue) {
-      this.setFormValue(localStoreValue);
+      setTimeout(() => {
+        this.setFormValue(localStoreValue);
+      }, 1000);
     }
 
     this.formFields = this.metadata.formFieldsWithController().map((e) => {
@@ -138,8 +155,6 @@ export class EditorComponent implements OnInit, OnDestroy {
         this.failiureHandler(event.payload);
       }
     });
-
-    this.title.setTitle(`${this.submitLabel} ${this.entityName}`);
   }
 
   ngOnDestroy(): void {

@@ -1,3 +1,4 @@
-import { PhoneMetadata } from '@mdtx/models';
+import { PhoneMetadata, PhoneViewMetadata } from '@mdtx/models';
 
 export const PhoneMetadataInstance = new PhoneMetadata();
+export const PhoneViewMetadataInstance = new PhoneViewMetadata();

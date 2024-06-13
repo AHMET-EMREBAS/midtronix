@@ -13,7 +13,8 @@ import { FindOperator } from 'typeorm';
 import { ICategoryView } from '@mdtx/models';
 import { CategoryView } from './category.view';
 import { AllPropertyType, IBaseEntity } from '@mdtx/common';
-import { CategoryMetadataInstance } from './category.metata';
+
+import { CategoryViewMetadataInstance } from './category.meta';
 
 @Exclude()
 export class CategoryViewWhereQueryDto
@@ -33,12 +34,12 @@ export class CategoryViewWhereQueryDto
 
 @Exclude()
 export class CategoryViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty(['name', 'notes', 'categoryId'])
+  @SearchProperty<CategoryView>(['name', 'categoryId'])
   search!: CategoryViewWhereQueryDto;
 
   @WhereProperty(CategoryViewWhereQueryDto)
   where!: CategoryViewWhereQueryDto;
 
-  @OrderProperty(CategoryMetadataInstance.propertyNames())
+  @OrderProperty(CategoryViewMetadataInstance.propertyNames())
   order: any;
 }
