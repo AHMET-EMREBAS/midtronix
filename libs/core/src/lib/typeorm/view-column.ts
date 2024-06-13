@@ -13,31 +13,13 @@ export function ViewColumn(options?: ApiPropertyOptions) {
 export function ViewNumberColumn(options?: ApiOperationOptions) {
   return applyDecorators(
     Property({ type: 'number', ...options }),
-    __ViewColumn({
-      transformer: {
-        from(value) {
-          return value ? parseFloat(value) : value;
-        },
-        to(value) {
-          return value;
-        },
-      },
-    })
+    __ViewColumn()
   );
 }
 
 export function ViewBooleanColumn(options?: ApiOperationOptions) {
   return applyDecorators(
     Property({ type: 'boolean', ...options }),
-    __ViewColumn({
-      transformer: {
-        from(value) {
-          return value == 1;
-        },
-        to(value) {
-          return value;
-        },
-      },
-    })
+    __ViewColumn()
   );
 }

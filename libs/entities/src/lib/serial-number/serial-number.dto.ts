@@ -23,9 +23,6 @@ export class CreateSerialNumberDto
 
   @Property({ type: 'object', target: IDDto })
   product!: IProduct;
-
-  @Property({ type: 'string', format: 'name', required: true })
-  name!: string;
 }
 
 @Exclude()

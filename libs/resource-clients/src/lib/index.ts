@@ -10,6 +10,7 @@ export * from './price-level';
 export * from './product';
 export * from './role';
 export * from './sample';
+export * from './serial-number';
 export * from './store';
 export * from './supplier';
 export * from './user';

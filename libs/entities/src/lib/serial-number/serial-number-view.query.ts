@@ -46,7 +46,13 @@ export class SerialNumberViewWhereQueryDto
 
 @Exclude()
 export class SerialNumberViewQueryDto extends BasePaginatorQueryDto {
-  @SearchProperty<SerialNumberView>(['name', 'status', 'productId', 'eid'])
+  @SearchProperty<SerialNumberView>([
+    'name',
+    'serialNumber',
+    'status',
+    'productId',
+    'eid',
+  ])
   search!: SerialNumberViewWhereQueryDto;
 
   @WhereProperty(SerialNumberViewWhereQueryDto)

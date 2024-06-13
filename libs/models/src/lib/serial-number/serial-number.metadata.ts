@@ -16,7 +16,7 @@ export class SerialNumberMetadata
       label: 'Serialnumber',
       type: 'string',
       inputType: 'text',
-      prefixIcon: 'serial',
+      prefixIcon: 'confirmation_number',
       required: true,
       order: 211,
     };
@@ -28,6 +28,7 @@ export class SerialNumberMetadata
       label: 'Product',
       type: 'object',
       inputType: 'select-one-entity',
+      entityName: 'Product',
       mapValue(value) {
         return value.product.name;
       },
@@ -44,20 +45,33 @@ export class SerialNumberMetadata
       inputType: 'select-one-enum',
       enum: ['in stock', 'returned', 'sold'] as SerialNumberStatus[],
       prefixIcon: 'status',
-      required: true,
       order: 213,
     };
   }
 
   override propertyNames(): KeyOf<ISerialNumber>[] {
-    return [this.name().name, this.status().name, ...super.propertyNames()];
+    return [
+      this.serialNumber().name,
+      this.status().name,
+      ...super.propertyNames(),
+    ];
   }
 
   override columns(): PropertyMetadata<ISerialNumber>[] {
-    return [this.name(), this.status(), this.product(), ...super.columns()];
+    return [
+      this.serialNumber(),
+      this.status(),
+      this.product(),
+      ...super.columns(),
+    ];
   }
 
   protected override formFields() {
-    return [this.name(), this.status(), this.product(), ...super.formFields()];
+    return [
+      this.serialNumber(),
+      this.status(),
+      this.product(),
+      ...super.formFields(),
+    ];
   }
 }

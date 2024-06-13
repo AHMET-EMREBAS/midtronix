@@ -11,11 +11,11 @@ import {
   provideFormGroup,
 } from '@mdtx/material/core';
 import { FormBuilder } from '@angular/forms';
-import { ProductMetadata, ProductViewMetadata } from '@mdtx/models';
+import { SerialNumberMetadata, SerialNumberViewMetadata } from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
 import { CollectionBaseService } from '@mdtx/material/core';
-import { IProduct, IProductView } from '@mdtx/models';
+import { ISerialNumber, ISerialNumberView } from '@mdtx/models';
 import { EntityCollectionServiceElementsFactory } from '@ngrx/data';
 import {
   ContentCenterLeftProvider,
@@ -23,59 +23,66 @@ import {
 } from '@mdtx/material/layout';
 
 @Injectable()
-export class ProductService extends CollectionBaseService<IProduct> {
+export class SerialNumberService extends CollectionBaseService<ISerialNumber> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('Product', factory, DefaultResourceHttpClientFactoryInstance);
+    super('SerialNumber', factory, DefaultResourceHttpClientFactoryInstance);
   }
 }
 
 @Injectable()
-export class ProductViewService extends CollectionBaseService<IProductView> {
+export class SerialNumberViewService extends CollectionBaseService<ISerialNumberView> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
-    super('ProductView', factory, DefaultResourceHttpClientFactoryInstance);
+    super(
+      'SerialNumberView',
+      factory,
+      DefaultResourceHttpClientFactoryInstance
+    );
   }
 }
 
-export const __ProductMetadata = new ProductMetadata();
-export const __ProductViewMetadata = new ProductViewMetadata();
+export const __SerialNumberMetadata = new SerialNumberMetadata();
+export const __SerialNumberViewMetadata = new SerialNumberViewMetadata();
 
-export const __ProductFormGroup = __ProductMetadata
+export const __SerialNumberFormGroup = __SerialNumberMetadata
   .formFieldsWithController()
   .map((e) => ({ [e.name]: e.control }))
   .reduce((p, c) => ({ ...p, ...c }));
 
-export const ProductFormGroup = new FormBuilder().group(__ProductFormGroup);
+export const SerialNumberFormGroup = new FormBuilder().group(
+  __SerialNumberFormGroup
+);
 
-
-export const ProductSubRoutes: Routes = [
-  { title: 'Product', path: '', loadComponent: () => AdvanceTableComponent },
+export const SerialNumberSubRoutes: Routes = [
   {
-    title: 'Save Product',
+    title: 'SerialNumber View',
+    path: '',
+    loadComponent: () => AdvanceTableComponent,
+  },
+  {
+    title: 'New SerialNumber',
     path: 'editor',
     loadComponent: () => EditorComponent,
   },
   {
-    title: 'Edit Product',
+    title: 'Edit SerialNumber',
     path: 'editor/:id',
     loadComponent: () => EditorComponent,
   },
   {
-    title: 'View Products',
+    title: 'SerialNumber View Table',
     path: 'view',
     loadComponent: () => AdvanceTableComponent,
     providers: [
-      provideEntityMetadata(__ProductViewMetadata),
-      provideCollectionService(ProductViewService),
+      provideEntityMetadata(__SerialNumberViewMetadata),
+      provideCollectionService(SerialNumberViewService),
       provideActionButtonHandler((id: any) => ['../', 'editor', id]),
     ],
   },
 ];
 
-
-
-export const ProductRoute: Route = {
-  path: 'product',
-  title: 'Product',
+export const SerialNumberRoute: Route = {
+  path: 'serial-number',
+  title: 'SerialNumber',
   loadComponent: () => ModuleLayoutComponent,
   providers: [
     ContentCenterLeftProvider.provide([
@@ -83,9 +90,9 @@ export const ProductRoute: Route = {
       { label: 'View', icon: 'table_view', route: 'view' },
       { label: 'Add', icon: 'add', route: 'editor' },
     ]),
-    provideCollectionService(ProductService),
-    provideEntityMetadata(__ProductMetadata),
-    provideFormGroup(ProductFormGroup),
+    provideCollectionService(SerialNumberService),
+    provideEntityMetadata(__SerialNumberMetadata),
+    provideFormGroup(SerialNumberFormGroup),
   ],
-  children: [...ProductSubRoutes],
+  children: [...SerialNumberSubRoutes],
 };

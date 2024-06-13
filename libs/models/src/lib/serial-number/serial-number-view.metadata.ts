@@ -18,7 +18,6 @@ export class SerialNumberViewMetadata
     };
   }
 
-  
   eid(): PropertyMetadata<ISerialNumberView> {
     return {
       name: 'eid',
@@ -49,6 +48,7 @@ export class SerialNumberViewMetadata
       this.name().name,
       this.eid().name,
       this.serialNumber().name,
+      this.status().name,
       this.productId().name,
       ...super.propertyNames(),
     ];
@@ -59,6 +59,7 @@ export class SerialNumberViewMetadata
       this.name(),
       this.serialNumber(),
       this.productId(),
+      this.status(),
       this.eid(),
       ...super.columns(),
     ];

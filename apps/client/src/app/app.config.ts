@@ -112,6 +112,10 @@ export const appConfig: ApplicationConfig = {
           MessageView: 'MessageViews',
           Notification: 'Notifications',
           NotificationView: 'NotificationViews',
+
+          //
+          SerialNumber: 'SerialNumbers',
+          SerialNumberView: 'SerialNumberViews',
         },
         entityMetadata: {
           Product: {},
@@ -190,6 +194,11 @@ export const appConfig: ApplicationConfig = {
           MessageView: {},
           Notification: {},
           NotificationView: {},
+
+          //
+
+          SerialNumber: {},
+          SerialNumberView: {},
         },
       },
       withEffects()

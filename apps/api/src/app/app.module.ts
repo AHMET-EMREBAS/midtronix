@@ -29,12 +29,12 @@ import {
   RoleService,
   UserService,
   ProductService,
+  SerialNumberModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
 import { AuthGuard, AuthModule } from '@mdtx/auth';
-import { MockUserService } from './mock-user.service';
 import { AppController } from './app.controller';
 import {
   Categories,
@@ -91,6 +91,7 @@ import { APP_GUARD } from '@nestjs/core';
     PhoneModule,
     CustomerModule,
     PermissionModule,
+    SerialNumberModule,
   ],
   providers: [
     AppEventService,

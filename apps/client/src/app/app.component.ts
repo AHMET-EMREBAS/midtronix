@@ -10,6 +10,7 @@ import {
   CategoryService,
   PermissionService,
   PriceLevelService,
+  ProductService,
   RoleService,
   SupplierService,
 } from '@mdtx/resource-clients';
@@ -27,12 +28,14 @@ import { Subscription } from 'rxjs';
     PriceLevelService,
     PermissionService,
     RoleService,
+    ProductService,
     AuthService,
   ],
 })
 export class AppComponent implements OnInit, OnDestroy {
   sub!: Subscription;
   constructor(
+    protected readonly productService: ProductService,
     protected readonly categoryService: CategoryService,
     protected readonly supplierService: SupplierService,
     protected readonly priceLevelService: PriceLevelService,
@@ -45,6 +48,8 @@ export class AppComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     try {
       await this.authService.hasSession();
+
+      this.productService.saveAllToLocalStore();
       this.categoryService.saveAllToLocalStore();
       this.supplierService.saveAllToLocalStore();
       this.priceLevelService.saveAllToLocalStore();

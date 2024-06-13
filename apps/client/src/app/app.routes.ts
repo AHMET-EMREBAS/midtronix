@@ -2,11 +2,9 @@ import { Route } from '@angular/router';
 import {
   AppLayoutComponent,
   SidenavLeftTopProvider,
-  ToolbarRightProvider,
 } from '@mdtx/material/layout';
 import {
   CategoryRoute,
-  SampleRoute,
   SupplierRoute,
   StoreRoute,
   PriceLevelRoute,
@@ -20,33 +18,28 @@ import {
   PermissionRoute,
   AddressRoute,
   DepartmentRoute,
+  SerialNumberRoute,
 } from '@mdtx/resource-clients';
-import { AuthRoute, LoginComponent } from '@mdtx/material/auth';
-import { AuthTokenStore } from '@mdtx/material/core';
+
+import { AuthRoute } from '@mdtx/material/auth';
+
 export const appRoutes: Route[] = [
   AuthRoute,
   {
     path: 'app',
     loadComponent: () => AppLayoutComponent,
     providers: [
-      ToolbarRightProvider.provide([
-        {
-          icon: 'logout',
-          label: 'logout',
-          route: '/auth/login',
-          handler() {
-            console.log('Removeing TOken ');
-            AuthTokenStore.remove();
-          },
-        },
-      ]),
       SidenavLeftTopProvider.provide([
         {
           route: 'product',
           label: 'Product',
           icon: 'inventory',
         },
-
+        {
+          route: 'serial-number',
+          label: 'Serial Number',
+          icon: 'confirmation_number',
+        },
         { divider: true },
         {
           route: 'category',
@@ -106,6 +99,7 @@ export const appRoutes: Route[] = [
     ],
     children: [
       ProductRoute,
+      SerialNumberRoute,
       CategoryRoute,
       DepartmentRoute,
       //
