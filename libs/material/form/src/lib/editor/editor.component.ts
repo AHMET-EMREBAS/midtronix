@@ -106,9 +106,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  async ngOnInit() {
-    this.title.setTitle(`${this.submitLabel} ${this.entityName}`);
-  }
+  async ngOnInit() {}
 
   async ngAfterViewInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -155,6 +153,10 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
         this.failiureHandler(event.payload);
       }
     });
+
+    this.title.setTitle(
+      this.title.getTitle() + ' ' + (this.entityId ? `#${this.entityId}` : '')
+    );
   }
 
   ngOnDestroy(): void {

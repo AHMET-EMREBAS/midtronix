@@ -47,9 +47,17 @@ export const __ProductFormGroup = __ProductMetadata
 export const ProductFormGroup = new FormBuilder().group(__ProductFormGroup);
 
 export const ProductSubRoutes: Routes = [
-  { path: '', loadComponent: () => AdvanceTableComponent },
-  { path: 'editor', loadComponent: () => EditorComponent },
-  { path: 'editor/:id', loadComponent: () => EditorComponent },
+  { title: 'Product', path: '', loadComponent: () => AdvanceTableComponent },
+  {
+    title: 'Save Product',
+    path: 'editor',
+    loadComponent: () => EditorComponent,
+  },
+  {
+    title: 'Edit Product',
+    path: 'editor/:id',
+    loadComponent: () => EditorComponent,
+  },
   {
     path: 'view',
     loadComponent: () => AdvanceTableComponent,
