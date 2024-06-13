@@ -14,16 +14,16 @@ export class CreateProductDto
   @Property({ type: 'string' })
   description!: string;
 
-  @Property({ type: 'string', required: true, minLength: 8, maxLength: 13 })
+  @Property({ type: 'string', minLength: 8, maxLength: 13 })
   upc!: string;
 
-  @Property({ type: 'number', required: true, minimum: 0 })
+  @Property({ type: 'number', minimum: 0 })
   price!: number;
 
-  @Property({ type: 'number', required: true, lessThan: 'price' })
+  @Property({ type: 'number', lessThan: 'price' })
   cost!: number;
 
-  @Property({ type: 'integer', required: true, minimum: 0 })
+  @Property({ type: 'integer', minimum: 0 })
   quantity!: number;
 
   @Property({ type: 'string' })

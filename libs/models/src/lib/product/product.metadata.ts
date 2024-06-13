@@ -40,7 +40,6 @@ export class ProductMetadata
       type: 'number',
       inputType: 'number',
       prefixIcon: 'money',
-      required: true,
       min: 0,
       order: 211,
     };
@@ -66,7 +65,6 @@ export class ProductMetadata
       type: 'number',
       inputType: 'number',
       prefixIcon: 'numbers',
-      required: true,
       min: 0,
       order: 221,
     };
@@ -109,7 +107,7 @@ export class ProductMetadata
       label: 'Serial Number',
       type: 'boolean',
       inputType: 'checkbox',
-      order: 301,
+      order: 401,
     };
   }
 

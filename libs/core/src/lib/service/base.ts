@@ -10,7 +10,9 @@ import {
   IntegerColumn,
   StringColumn,
   UniqueColumn,
+  ViewBooleanColumn,
   ViewColumn,
+  ViewNumberColumn,
 } from '../typeorm';
 import { Property } from '../property';
 
@@ -52,12 +54,12 @@ export class BaseEntity implements IBaseEntity {
 }
 
 export class BaseView implements IBaseView {
-  @ViewColumn() id!: string;
-  @ViewColumn() createdAt!: string;
-  @ViewColumn() updatedAt!: string;
-  @ViewColumn() deletedAt!: string;
-  @ViewColumn() createdBy!: string;
-  @ViewColumn() updatedBy!: string;
-  @ViewColumn() active!: string;
+  @ViewNumberColumn() id!: number;
+  @ViewColumn() createdAt!: Date;
+  @ViewColumn() updatedAt!: Date;
+  @ViewColumn() deletedAt!: Date;
+  @ViewNumberColumn() createdBy!: number;
+  @ViewNumberColumn() updatedBy!: number;
+  @ViewBooleanColumn() active!: boolean;
   @ViewColumn() notes!: string;
 }

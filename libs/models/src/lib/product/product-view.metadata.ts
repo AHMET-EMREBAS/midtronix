@@ -79,7 +79,7 @@ export class ProductViewMetadata
     return {
       name: 'serialNumberRequired',
       label: 'Serial',
-      order: 301,
+      order: 401,
     };
   }
   override propertyNames(): KeyOf<IProductView>[] {

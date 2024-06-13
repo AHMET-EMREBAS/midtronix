@@ -1,4 +1,4 @@
-import { AllPropertyType, IID } from '@mdtx/common';
+import { IBaseView } from '@mdtx/common';
 import { Type } from '@nestjs/common';
 import { RestRouteBuilder } from '../rest';
 import { BasePaginatorQueryDto } from '../dto';
@@ -6,7 +6,7 @@ import { AuthDto } from '../auth';
 import { BasicViewController } from './basic-view.controller';
 
 export function CreateBasicViewController<
-  T extends AllPropertyType<IID, any>,
+  T extends IBaseView,
   Q extends BasePaginatorQueryDto
 >(
   RRB: RestRouteBuilder,

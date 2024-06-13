@@ -1,10 +1,10 @@
-import { AllPropertyType, IBaseQueryDto, IID } from '@mdtx/common';
+import { IBaseQueryDto, IBaseView } from '@mdtx/common';
 import { BaseViewEntityService } from '../service';
 import { AdvanceLogger } from '../logger';
 import { AuthDto } from '../auth';
 
 export class BasicViewController<
-  T extends AllPropertyType<IID, string>,
+  T extends IBaseView,
   Query extends IBaseQueryDto
 > {
   protected readonly logger!: AdvanceLogger;

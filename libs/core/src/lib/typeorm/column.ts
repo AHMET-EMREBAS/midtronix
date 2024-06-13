@@ -60,7 +60,7 @@ export function BooleanColumn(options?: ApiColumnOptions) {
 export function UniqueColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'string', description: 'Unique test value', ...options }),
-    __Column({ type: 'varchar', unique: true })
+    __Column({ type: 'varchar', unique: true, nullable: true })
   );
 }
 

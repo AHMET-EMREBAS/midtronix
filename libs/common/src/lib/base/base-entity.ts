@@ -20,7 +20,7 @@ export interface IBaseEntity extends IID, ITimestamp, IEntityMonitor {
   notes: string;
 }
 
-export type IBaseView = StringifyType<IBaseEntity>;
+export type IBaseView = IBaseEntity;
 
 export type OmitForCreateDto<T> = Omit<
   T,
