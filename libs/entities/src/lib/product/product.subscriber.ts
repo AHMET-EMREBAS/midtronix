@@ -5,6 +5,7 @@ import {
 } from 'typeorm';
 import { Product } from './product.entity';
 import { Sku } from '../sku';
+import { SerialNumber } from '../serial-number';
 
 @EventSubscriber()
 export class ProductSubscriber implements EntitySubscriberInterface<Product> {
@@ -15,7 +16,6 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
   async afterInsert(event: InsertEvent<Product>): Promise<any> {
     const entity = event.entity;
     const skuRepo = event.manager.getRepository(Sku);
-
     {
       const {
         name,
@@ -23,9 +23,9 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
         notes,
         createdBy,
         updatedBy,
-
+        serialNumberRequired,
         upc,
-        id,
+        id: productId,
         quantity,
         price,
         cost,
@@ -39,8 +39,23 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
         notes,
         createdBy,
         updatedBy,
-        product: { id },
+        product: { id: productId },
       });
+
+      const serialNumberRepo = event.manager.getRepository(SerialNumber);
+
+      if (serialNumberRequired) {
+        const serailBase = upc;
+        for (let i = 1; i <= quantity; i++) {
+          await serialNumberRepo.save({
+            serialNumber: `${serailBase}-${i}`,
+            product: { id: productId },
+            status: 'in stock',
+            createdBy,
+            updatedBy,
+          });
+        }
+      }
     }
   }
 }

@@ -6,14 +6,12 @@ export interface IProduct extends IBaseEntity {
   name: string;
 
   serialNumberRequired: boolean;
+  autoGenerateSerial: boolean;
 
   brand: string;
 
   description: string;
 
-  /**
-   * Allways optional
-   */
   upc: string;
 
   price: number;
@@ -21,6 +19,8 @@ export interface IProduct extends IBaseEntity {
   cost: number;
 
   quantity: number;
+
   supplier: ISupplier;
+
   category: ICategory;
 }

@@ -8,6 +8,9 @@ import { Sku } from './sku.entity';
 import { Price } from '../price';
 import { PriceLevel } from '../price-level';
 import { ISku } from '@mdtx/models';
+import { Store } from '../store';
+import { Quantity } from '../quantity';
+import { SerialNumber } from '../serial-number';
 
 @EventSubscriber()
 export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
@@ -18,11 +21,15 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
   async afterInsert(event: InsertEvent<Sku>) {
     const priceRepo = event.manager.getRepository(Price);
     const priceLevelRepo = event.manager.getRepository(PriceLevel);
+    const storeRepo = event.manager.getRepository(Store);
+    const quantityRepo = event.manager.getRepository(Quantity);
+
+    const stores = await storeRepo.find();
 
     const priceLevels = await priceLevelRepo.find();
-    const { id, updatedBy, createdBy } = event.entity;
+    const { id, updatedBy, createdBy, name, product } = event.entity;
 
-    const data: DeepPartial<Price>[] = priceLevels.map((pl) => {
+    const priceData: DeepPartial<Price>[] = priceLevels.map((pl) => {
       return {
         price: 999.99,
         cost: 99.99,
@@ -35,6 +42,20 @@ export class SkuSubscriber implements EntitySubscriberInterface<Sku> {
       };
     });
 
-    await priceRepo.save(data);
+    const quantityData: DeepPartial<Quantity>[] = stores.map((str) => {
+      return {
+        quantity: 0,
+        store: { id: str.id },
+        sku: { id },
+        active: true,
+        notes: `Default quantity for ${name}`,
+        createdBy,
+        updatedBy,
+      };
+    });
+
+    await priceRepo.save(priceData);
+
+    await quantityRepo.save(quantityData);
   }
 }

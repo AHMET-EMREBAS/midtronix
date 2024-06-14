@@ -33,6 +33,7 @@ import {
   SkuModule,
   AttributeModule,
   PriceModule,
+  QuantityModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -98,6 +99,7 @@ import { ProductSubscriber, SkuSubscriber, User } from '@mdtx/entities';
     SkuModule,
     AttributeModule,
     PriceModule,
+    QuantityModule,
   ],
   providers: [
     AppEventService,

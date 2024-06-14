@@ -30,7 +30,7 @@ export class SerialNumberWhereQueryDto
   serialNumber!: FindOperator<string>;
 
   @Exclude()
-  sku!: FindOperator<string>;
+  product!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
   name!: FindOperator<string>;

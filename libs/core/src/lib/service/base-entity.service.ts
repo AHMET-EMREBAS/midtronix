@@ -115,7 +115,7 @@ export class BaseEntityService<T extends IID = IID> extends BaseService<T> {
 
     if (updatedEntity) {
       try {
-        await this.repo.save({ id, ...updatedEntity });
+        await this.repo.save({ id: id, ...updatedEntity });
         this.emit(this.updateOne.name, { updatedEntity, ...entity });
         return { ...updatedEntity, ...entity };
       } catch (err) {

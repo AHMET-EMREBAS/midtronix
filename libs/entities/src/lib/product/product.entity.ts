@@ -13,13 +13,18 @@ import { Category } from '../category';
 
 @Entity()
 export class Product extends BaseEntity implements IProduct {
+  @BooleanColumn() autoGenerateSerial!: boolean;
+
   @UniqueColumn() name!: string;
+
   @UniqueColumn() upc!: string;
 
   @StringColumn() description!: string;
 
   @NumberColumn() price!: number;
+
   @NumberColumn() cost!: number;
+
   @NumberColumn() quantity!: number;
 
   @StringColumn() brand!: string;
@@ -27,5 +32,6 @@ export class Product extends BaseEntity implements IProduct {
   @BooleanColumn() serialNumberRequired!: boolean;
 
   @OneRelation(Supplier) supplier!: ISupplier;
+  
   @OneRelation(Category) category!: ICategory;
 }

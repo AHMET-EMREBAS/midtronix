@@ -8,6 +8,9 @@ export class CreateProductDto
   extends BaseCreateDto<CreateProductDto>
   implements ICreateProductDto
 {
+  @Property({ type: 'boolean' })
+  autoGenerateSerial!: boolean;
+
   @Property({ type: 'string', format: 'name', required: true })
   name!: string;
 

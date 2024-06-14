@@ -10,14 +10,14 @@ export class SerialNumberViewMetadata
   extends BaseViewMetadata<ISerialNumberView>
   implements EntityMetadata<ISerialNumberView>
 {
-  sku(): PropertyMetadata<ISerialNumberView> {
+  upc(): PropertyMetadata<ISerialNumberView> {
     return {
-      name: 'sku',
+      name: 'upc',
       label: 'Sku',
       order: 201,
     };
   }
-  
+
   status(): PropertyMetadata<ISerialNumberView> {
     return {
       name: 'status',
@@ -43,9 +43,9 @@ export class SerialNumberViewMetadata
     };
   }
 
-  skuId(): PropertyMetadata<ISerialNumberView> {
+  productId(): PropertyMetadata<ISerialNumberView> {
     return {
-      name: 'skuId',
+      name: 'productId',
       label: 'Product Id',
       order: 212,
     };
@@ -57,7 +57,8 @@ export class SerialNumberViewMetadata
       this.eid().name,
       this.serialNumber().name,
       this.status().name,
-      this.skuId().name,
+      this.productId().name,
+      this.upc().name,
       ...super.propertyNames(),
     ];
   }
@@ -66,9 +67,10 @@ export class SerialNumberViewMetadata
     return [
       this.name(),
       this.serialNumber(),
-      this.skuId(),
+      this.productId(),
       this.status(),
       this.eid(),
+      this.upc(),
       ...super.columns(),
     ];
   }

@@ -111,6 +111,16 @@ export class ProductMetadata
     };
   }
 
+  autoGenerateSerial(): PropertyMetadata<IProduct> {
+    return {
+      name: 'autoGenerateSerial',
+      label: 'Auto Generate Serial',
+      type: 'boolean',
+      inputType: 'checkbox',
+      order: 402,
+    };
+  }
+
   override propertyNames(): KeyOf<IProduct>[] {
     return [
       this.name().name,
@@ -123,6 +133,7 @@ export class ProductMetadata
       this.quantity().name,
       this.description().name,
       this.serialNumberRequired().name,
+      this.autoGenerateSerial().name,
       ...super.propertyNames(),
     ];
   }
@@ -139,6 +150,7 @@ export class ProductMetadata
       this.quantity(),
       this.description(),
       this.serialNumberRequired(),
+      this.autoGenerateSerial(),
       ...super.columns(),
     ];
   }
@@ -155,6 +167,7 @@ export class ProductMetadata
       this.quantity(),
       this.description(),
       this.serialNumberRequired(),
+      this.autoGenerateSerial(),
       ...super.formFields(),
     ];
   }

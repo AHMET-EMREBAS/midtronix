@@ -2,6 +2,10 @@
 import { IBaseView } from '@mdtx/common';
 
 export interface IQuantityView extends IBaseView {
-  name: string;
   eid: number;
+  quantity: string;
+  storeId: number;
+  storeName: string;
+  skuId: number;
+  sku: string;
 }

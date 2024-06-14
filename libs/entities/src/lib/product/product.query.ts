@@ -22,6 +22,9 @@ export class ProductWhereQueryDto
     AllPropertyType<Omit<IProduct, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  autoGenerateSerial!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   serialNumberRequired!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' }) brand!: FindOperator<string>;

@@ -1,4 +1,8 @@
-import { ICreateSerialNumberDto, ISku, SerialNumberStatus } from '@mdtx/models';
+import {
+  ICreateSerialNumberDto,
+  IProduct,
+  SerialNumberStatus,
+} from '@mdtx/models';
 import { BaseCreateDto, IDDto, Property } from '@mdtx/core';
 import { Exclude } from 'class-transformer';
 import { PartialType } from '@nestjs/swagger';
@@ -18,7 +22,7 @@ export class CreateSerialNumberDto
   serialNumber!: string;
 
   @Property({ type: 'object', target: IDDto })
-  sku!: ISku;
+  product!: IProduct;
 }
 
 @Exclude()

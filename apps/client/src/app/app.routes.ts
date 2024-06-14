@@ -21,6 +21,7 @@ import {
   SerialNumberRoute,
   SkuRoute,
   PriceRoute,
+  QuantityRoute,
 } from '@mdtx/resource-clients';
 
 import { AuthRoute } from '@mdtx/material/auth';
@@ -124,6 +125,7 @@ export const appRoutes: Route[] = [
       SerialNumberRoute,
       CategoryRoute,
       DepartmentRoute,
+      QuantityRoute,
       //
       SupplierRoute,
       ManufacturerRoute,
