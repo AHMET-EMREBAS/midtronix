@@ -20,7 +20,16 @@ export function ViewNumberColumn(options?: ApiOperationOptions) {
 export function ViewBooleanColumn(options?: ApiOperationOptions) {
   return applyDecorators(
     Property({ type: 'boolean', ...options }),
-    __ViewColumn()
+    __ViewColumn({
+      transformer: {
+        from(value) {
+          return value;
+        },
+        to(value) {
+          return value;
+        },
+      },
+    })
   );
 }
 

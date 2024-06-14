@@ -11,6 +11,7 @@ import { Product } from '../product';
       .select('ROW_NUMBER() OVER ()', 'id')
       .addSelect('main.id', 'eid')
       .addSelect('main.name', 'name')
+      .addSelect('main.sku', 'sku')
       .addSelect('main.description', 'description')
       .addSelect('main.notes', 'notes')
       .addSelect('product.id', 'productId')

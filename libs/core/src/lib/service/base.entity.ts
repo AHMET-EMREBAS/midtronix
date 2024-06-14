@@ -47,13 +47,9 @@ export class BaseEntity implements IBaseEntity {
 
   @StringColumn()
   notes!: string;
-
-  @JSONColumn()
-  attributes: Attirubutes | undefined;
 }
 
 export class BaseView implements IBaseView {
-  
   @ViewNumberColumn() id!: number;
   @ViewColumn() createdAt!: Date;
   @ViewColumn() updatedAt!: Date;
