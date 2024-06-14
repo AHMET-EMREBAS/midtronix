@@ -2,9 +2,13 @@
 import {
   AfterViewInit,
   Component,
+  EventEmitter,
   Inject,
+  Input,
   OnDestroy,
   OnInit,
+  Optional,
+  Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -83,11 +87,15 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
   sub!: Subscription;
   messagePrefix = 'Created';
 
+  @Input() metadata!: ClientEntityMetadata<any>;
+  @Output() submitEvent = new EventEmitter();
+
   constructor(
     public readonly formGroup: FormGroup,
     protected readonly service: CollectionBaseService,
+    @Optional()
     @Inject(getEntityMetadataToken())
-    protected readonly metadata: ClientEntityMetadata<any>,
+    protected readonly _metadata: ClientEntityMetadata<any>,
     protected readonly route: ActivatedRoute,
     protected readonly router: Router,
     protected readonly snackbar: MatSnackBar,
@@ -106,7 +114,15 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    if (!this.metadata) {
+      if (!this._metadata) {
+        throw new Error('Metdatadata is required!');
+      } else {
+        this.metadata = this._metadata;
+      }
+    }
+  }
 
   async ngAfterViewInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -200,8 +216,12 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   successHandler() {
-    if (!this.isUpdateForm) this.formGroup.reset();
-    if (!this.isUpdateForm) this.editorStore.remove();
+    this.submitEvent.emit(this.formGroup.value);
+
+    if (!this.isUpdateForm) {
+      this.formGroup.reset();
+      this.editorStore.remove();
+    }
 
     this.snackbar.open(`${this.messagePrefix} ${this.entityName}`, undefined, {
       panelClass: 'success-snackbar',
