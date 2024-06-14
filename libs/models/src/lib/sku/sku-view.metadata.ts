@@ -10,6 +10,14 @@ export class SkuViewMetadata
   extends BaseViewMetadata<ISkuView>
   implements EntityMetadata<ISkuView>
 {
+  serialNumberRequired(): PropertyMetadata<ISkuView> {
+    return {
+      name: 'serialNumberRequired',
+      label: 'Serial Number Required',
+      type: 'boolean',
+      order: 251,
+    };
+  }
   productId(): PropertyMetadata<ISkuView> {
     return {
       name: 'productId',

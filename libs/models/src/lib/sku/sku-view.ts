@@ -9,4 +9,5 @@ export interface ISkuView extends IBaseView {
   productId: number;
   productName: string;
   productUpc: string;
+  serialNumberRequired: boolean;
 }

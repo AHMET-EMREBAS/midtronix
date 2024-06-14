@@ -23,6 +23,9 @@ export class SkuViewWhereQueryDto
     AllPropertyType<Omit<ISkuView, keyof IBaseEntity>, FindOperator<string>>
 {
   @QueryOperatorProperty({ type: 'string' })
+  serialNumberRequired!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   description!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })

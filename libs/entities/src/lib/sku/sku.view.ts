@@ -1,4 +1,10 @@
-import { BaseView, ViewColumn, ViewEntity, ViewNumberColumn } from '@mdtx/core';
+import {
+  BaseView,
+  ViewBooleanColumn,
+  ViewColumn,
+  ViewEntity,
+  ViewNumberColumn,
+} from '@mdtx/core';
 import { ISkuView } from '@mdtx/models';
 
 import { Sku } from './sku.entity';
@@ -17,6 +23,7 @@ import { Product } from '../product';
       .addSelect('product.id', 'productId')
       .addSelect('product.name', 'productName')
       .addSelect('product.upc', 'productUpc')
+      .addSelect('product.serialNumberRequired', 'serialNumberRequired')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')
@@ -28,6 +35,7 @@ import { Product } from '../product';
   },
 })
 export class SkuView extends BaseView implements ISkuView {
+  @ViewBooleanColumn() serialNumberRequired!: boolean;
   @ViewNumberColumn() productId!: number;
   @ViewColumn() productName!: string;
   @ViewColumn() productUpc!: string;

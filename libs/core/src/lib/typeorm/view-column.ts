@@ -23,7 +23,7 @@ export function ViewBooleanColumn(options?: ApiOperationOptions) {
     __ViewColumn({
       transformer: {
         from(value) {
-          return value;
+          return value == true ? true : false;
         },
         to(value) {
           return value;
