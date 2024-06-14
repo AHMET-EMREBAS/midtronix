@@ -20,7 +20,6 @@
       "@mdtx/common": ["libs/common/src/index.ts"],
       "@mdtx/core": ["libs/core/src/index.ts"],
       "@mdtx/entities": ["libs/entities/src/index.ts"],
-      "@mdtx/forms": ["libs/forms/src/index.ts"],
       "@mdtx/gen": ["libs/gen/src/index.ts"],
       "@mdtx/material": ["libs/material/src/index.ts"],
       "@mdtx/material/auth": ["libs/material/auth/src/index.ts"],

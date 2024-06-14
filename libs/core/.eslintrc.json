@@ -9,16 +9,7 @@
           "error",
           {
             "enforceBuildableLibDependency": false,
-            "allow": [
-              "@nestjs/core",
-              "@nestjs/common",
-              "@nestjs/testing",
-              "class-validator",
-              "class-transformer",
-              "typeorm",
-              "uuid",
-              "@nestjs/swagger"
-            ],
+            "allow": [],
             "depConstraints": [
               {
                 "sourceTag": "*",
