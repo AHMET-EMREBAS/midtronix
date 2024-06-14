@@ -21,7 +21,7 @@
     (opened)="handleOpendedEvent()"
     (optionSelected)="optionSelectedHandler($event)"
   >
-    @for (option of finterOptions$ | async ; track option) {
+    @for (option of filteredOptions$ | async ; track option) {
     <mat-option [value]="valueWith(option)">{{
       displayWith()(option)
     }}</mat-option>

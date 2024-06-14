@@ -13,7 +13,7 @@ export class SerialNumberMetadata
   serialNumber(): PropertyMetadata<ISerialNumber> {
     return {
       name: 'serialNumber',
-      label: 'Serialnumber',
+      label: 'Serial Number',
       type: 'string',
       inputType: 'text',
       prefixIcon: 'confirmation_number',
@@ -25,16 +25,16 @@ export class SerialNumberMetadata
   sku(): PropertyMetadata<ISerialNumber> {
     return {
       name: 'sku',
-      label: 'Product',
+      label: 'Sku',
       type: 'object',
       inputType: 'select-one-entity',
-      entityName: 'Product',
+      entityName: 'Sku',
       mapValue(value) {
         return value.sku.name;
       },
       prefixIcon: 'inventory2',
       required: true,
-      order: 212,
+      order: 201,
     };
   }
 

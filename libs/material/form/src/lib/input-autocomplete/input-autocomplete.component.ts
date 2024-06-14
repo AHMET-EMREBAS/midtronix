@@ -42,9 +42,13 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
 
   search$ = new BehaviorSubject<string>('');
 
-  finterOptions$ = this.search$.pipe(
+  filteredOptions$ = this.search$.pipe(
     debounceTime(1000),
     map((search) => {
+      console.log('TT : ');
+      console.log({ search });
+      console.log(this.options);
+      console.log('TT : ');
       const result = this.options?.filter((option) => {
         const stringValue = JSON.stringify(option).toLowerCase();
         return stringValue.includes(search);

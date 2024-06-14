@@ -16,6 +16,7 @@ export class SkuMetadata
       label: 'Product',
       type: 'object',
       inputType: 'select-one-entity',
+      entityName: 'Product',
       order: 200,
       prefixIcon: 'inventory2',
     };
