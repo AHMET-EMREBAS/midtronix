@@ -22,15 +22,15 @@ export class SerialNumberMetadata
     };
   }
 
-  product(): PropertyMetadata<ISerialNumber> {
+  sku(): PropertyMetadata<ISerialNumber> {
     return {
-      name: 'product',
+      name: 'sku',
       label: 'Product',
       type: 'object',
       inputType: 'select-one-entity',
       entityName: 'Product',
       mapValue(value) {
-        return value.product.name;
+        return value.sku.name;
       },
       prefixIcon: 'inventory2',
       required: true,
@@ -61,7 +61,7 @@ export class SerialNumberMetadata
     return [
       this.serialNumber(),
       this.status(),
-      this.product(),
+      this.sku(),
       ...super.columns(),
     ];
   }
@@ -70,7 +70,7 @@ export class SerialNumberMetadata
     return [
       this.serialNumber(),
       this.status(),
-      this.product(),
+      this.sku(),
       ...super.formFields(),
     ];
   }

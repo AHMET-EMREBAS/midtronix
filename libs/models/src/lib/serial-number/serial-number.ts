@@ -1,10 +1,10 @@
 import { IBaseEntity } from '@mdtx/common';
-import { IProduct } from '../product';
+import { ISku } from '../sku';
 
 export type SerialNumberStatus = 'in stock' | 'sold' | 'returned';
 
 export interface ISerialNumber extends IBaseEntity {
   serialNumber: string;
   status: SerialNumberStatus;
-  product: IProduct;
+  sku: ISku;
 }

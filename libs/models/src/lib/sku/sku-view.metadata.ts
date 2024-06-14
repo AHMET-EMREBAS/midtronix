@@ -43,15 +43,6 @@ export class SkuViewMetadata
     };
   }
 
-  attributes(): PropertyMetadata<ISkuView> {
-    return {
-      name: 'attributes',
-      label: 'Attributes',
-      prefixIcon: 'attributes',
-      order: 401,
-    };
-  }
-
   eid(): PropertyMetadata<ISkuView> {
     return { name: 'eid', label: 'Sku Id', suffixIcon: 'numbers', order: 245 };
   }
@@ -62,7 +53,6 @@ export class SkuViewMetadata
       this.description().name,
       this.sku().name,
       this.eid().name,
-      this.attributes().name,
       this.productId().name,
       this.productName().name,
       this.productUpc().name,
@@ -74,10 +64,9 @@ export class SkuViewMetadata
     return [
       this.name(),
       this.description(),
-      this.sku(),
       this.eid(),
-      this.attributes(),
       this.productId(),
+      this.sku(),
       this.productName(),
       this.productUpc(),
       ...super.columns(),

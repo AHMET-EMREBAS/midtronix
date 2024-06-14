@@ -14,5 +14,6 @@ export class Sku extends BaseEntity implements ISku {
   @UniqueColumn() sku!: string;
 
   @StringColumn() description!: string;
+
   @OwnerRelation(Product) product!: IProduct;
 }

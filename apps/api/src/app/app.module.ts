@@ -30,6 +30,8 @@ import {
   UserService,
   ProductService,
   SerialNumberModule,
+  SkuModule,
+  AttributeModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -92,14 +94,16 @@ import { APP_GUARD } from '@nestjs/core';
     CustomerModule,
     PermissionModule,
     SerialNumberModule,
+    SkuModule,
+    AttributeModule,
   ],
   providers: [
     AppEventService,
     EventEmitter2,
-    {
-      provide: APP_GUARD,
-      useClass: AuthGuard,
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: AuthGuard,
+    // },
   ],
   controllers: [AppController],
 })

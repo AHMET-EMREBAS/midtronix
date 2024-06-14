@@ -1,6 +1,6 @@
 import { CreateBasicViewController, RestRouteBuilder } from '@mdtx/core';
 import { <%- className %>View, <%- className %>ViewQueryDto } from '@mdtx/entities';
-import { <%- className %>ViewService } from './serial-number-view.service';
+import { <%- className %>ViewService } from './<%- fileName %>-view.service';
 import { ApiVersion } from '@mdtx/common';
 
 export const <%- className %>ViewRRB = RestRouteBuilder.get(

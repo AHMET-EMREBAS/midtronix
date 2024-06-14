@@ -4,7 +4,8 @@ import { SerialNumberStatus } from './serial-number';
 
 export interface ISerialNumberView extends IBaseView {
   eid: number;
-  productId: number;
+  skuId: number;
+  sku: string;
   name: string;
   status: SerialNumberStatus;
   serialNumber: string;

@@ -21,17 +21,6 @@ export class SkuMetadata
     };
   }
 
-  attributes(): PropertyMetadata<ISku> {
-    return {
-      name: 'attributes',
-      label: 'Attributes',
-      type: 'object',
-      inputType: 'attributes',
-      prefixIcon: 'attributes',
-      order: 401,
-    };
-  }
-
   sku(): PropertyMetadata<ISku> {
     return {
       name: 'sku',
@@ -49,7 +38,6 @@ export class SkuMetadata
       this.name().name,
       this.description().name,
       this.sku().name,
-      this.attributes().name,
       this.product().name,
       ...super.propertyNames(),
     ];
@@ -60,7 +48,6 @@ export class SkuMetadata
       this.name(),
       this.description(),
       this.sku(),
-      this.attributes(),
       this.product(),
       ...super.columns(),
     ];
@@ -71,7 +58,6 @@ export class SkuMetadata
       this.name(),
       this.description(),
       this.sku(),
-      this.attributes(),
       this.product(),
       ...super.formFields(),
     ];

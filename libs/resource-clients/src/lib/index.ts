@@ -1,4 +1,5 @@
 export * from './address';
+export * from './attribute';
 export * from './category';
 export * from './customer';
 export * from './department';
@@ -11,6 +12,7 @@ export * from './product';
 export * from './role';
 export * from './sample';
 export * from './serial-number';
+export * from './sku';
 export * from './store';
 export * from './supplier';
 export * from './user';

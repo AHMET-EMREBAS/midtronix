@@ -13,10 +13,9 @@ import { Product } from '../product';
       .addSelect('main.name', 'name')
       .addSelect('main.description', 'description')
       .addSelect('main.notes', 'notes')
-      .addSelect('main.attributes', 'attributes')
-      .addSelect('product.productId', 'productId')
-      .addSelect('product.productName', 'productName')
-      .addSelect('product.productUpc', 'productUpc')
+      .addSelect('product.id', 'productId')
+      .addSelect('product.name', 'productName')
+      .addSelect('product.upc', 'productUpc')
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')
@@ -24,7 +23,7 @@ import { Product } from '../product';
       .addSelect('main.createdBy', 'createdBy')
       .addSelect('main.updatedBy', 'updatedBy')
       .from(Sku, 'main')
-      .leftJoin(Product, 'product', 'product.id = sku.productId');
+      .leftJoin(Product, 'product', 'product.id = main.productId');
   },
 })
 export class SkuView extends BaseView implements ISkuView {
@@ -34,6 +33,5 @@ export class SkuView extends BaseView implements ISkuView {
   @ViewColumn() name!: string;
   @ViewNumberColumn() eid!: number;
   @ViewColumn() description!: string;
-  @ViewColumn() attributes!: Record<string, any>;
   @ViewColumn() sku!: string;
 }

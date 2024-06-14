@@ -1,4 +1,5 @@
 export * from './address';
+export * from './attribute';
 export * from './category';
 export * from './customer';
 export * from './department';

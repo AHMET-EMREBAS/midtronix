@@ -26,10 +26,13 @@ export class SerialNumberViewWhereQueryDto
     >
 {
   @QueryOperatorProperty({ type: 'string' })
+  sku!: FindOperator<string>;
+
+  @QueryOperatorProperty({ type: 'string' })
   eid!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
-  productId!: FindOperator<string>;
+  skuId!: FindOperator<string>;
 
   @QueryOperatorProperty({ type: 'string' })
   status!: FindOperator<string>;
@@ -48,9 +51,10 @@ export class SerialNumberViewWhereQueryDto
 export class SerialNumberViewQueryDto extends BasePaginatorQueryDto {
   @SearchProperty<SerialNumberView>([
     'name',
+    'sku',
     'serialNumber',
     'status',
-    'productId',
+    'skuId',
     'notes',
     'eid',
   ])

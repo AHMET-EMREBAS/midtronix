@@ -6,7 +6,7 @@ import {
   StringColumn,
   OneRelation,
 } from '@mdtx/core';
-import { Product } from '../product';
+import { Sku } from '../sku';
 
 @Entity()
 export class SerialNumber extends BaseEntity implements ISerialNumber {
@@ -14,5 +14,5 @@ export class SerialNumber extends BaseEntity implements ISerialNumber {
 
   @StringColumn() status!: SerialNumberStatus;
 
-  @OneRelation(Product) product!: Product;
+  @OneRelation(Sku) sku!: Sku;
 }
