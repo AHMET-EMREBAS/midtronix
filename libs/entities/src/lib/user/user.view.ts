@@ -3,6 +3,7 @@ import { IUserView } from '@mdtx/models';
 
 import { User } from './user.entity';
 import { Role } from '../role';
+import { Attirubutes } from '@mdtx/common';
 
 @ViewEntity({
   expression(ds) {
@@ -13,6 +14,7 @@ import { Role } from '../role';
       .addSelect('main.username', 'username')
       .addSelect('role.name', 'roles')
       .addSelect('main.notes', 'notes')
+      
       .addSelect('main.createdAt', 'createdAt')
       .addSelect('main.updatedAt', 'updatedAt')
       .addSelect('main.deletedAt', 'deletedAt')
@@ -28,4 +30,6 @@ export class UserView extends BaseView implements IUserView {
   @ViewColumn() userId!: string;
   @ViewColumn() username!: string;
   @ViewColumn() roles!: string;
+
+  @ViewColumn() attributes! : Attirubutes;
 }

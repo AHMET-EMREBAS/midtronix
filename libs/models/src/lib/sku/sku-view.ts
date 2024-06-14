@@ -2,6 +2,12 @@
 import { IBaseView } from '@mdtx/common';
 
 export interface ISkuView extends IBaseView {
-  name: string;
   eid: number;
+  name: string;
+  description: string;
+  attributes: Record<string, any>;
+  sku: string;
+  productId: number;
+  productName: string;
+  productUpc: string;
 }

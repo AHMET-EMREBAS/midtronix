@@ -1,7 +1,7 @@
 import { applyDecorators } from '@nestjs/common';
 import { ViewColumn as __ViewColumn } from 'typeorm';
 import { ApiPropertyOptions, Property } from '../property';
-import { ApiOperationOptions } from '@nestjs/swagger';
+import { ApiOperationOptions, ApiProperty } from '@nestjs/swagger';
 
 export function ViewColumn(options?: ApiPropertyOptions) {
   return applyDecorators(
@@ -21,5 +21,22 @@ export function ViewBooleanColumn(options?: ApiOperationOptions) {
   return applyDecorators(
     Property({ type: 'boolean', ...options }),
     __ViewColumn()
+  );
+}
+
+export function ViewJSONColumn(options?: ApiOperationOptions) {
+  return applyDecorators(
+    ApiProperty({ type: 'object', ...options }),
+    __ViewColumn({
+      transformer: {
+        from(value) {
+          return value ? JSON.parse(value) : value;
+        },
+
+        to(value) {
+          return value;
+        },
+      },
+    })
   );
 }

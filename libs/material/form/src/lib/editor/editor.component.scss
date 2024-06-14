@@ -24,31 +24,3 @@ form {
   width: 100%;
   flex-grow: 1;
 }
-// .error {
-//   background-color: crimson;
-//   color: white;
-// }
-
-// .success {
-//   background-color: green;
-//   color: white;
-// }
-
-@media screen and (max-width: 600px) {
-  form {
-    flex-direction: column !important;
-    width: 400px !important;
-    height: 84vh;
-    overflow-y: auto;
-
-    * {
-      flex-grow: 1;
-      width: 100%;
-    }
-
-    *:has(textarea) {
-      flex-grow: 1;
-      width: 100% !important;
-    }
-  }
-}

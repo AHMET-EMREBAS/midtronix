@@ -2,6 +2,7 @@ import { applyDecorators } from '@nestjs/common';
 import { Column as __Column } from 'typeorm';
 import { ApiPropertyOptions, Property } from '../property';
 import { hashSync, genSaltSync } from 'bcrypt';
+import { ApiProperty } from '@nestjs/swagger';
 export type ApiColumnOptions = Partial<ApiPropertyOptions>;
 
 export function IntegerColumn(options?: ApiColumnOptions) {
@@ -41,7 +42,7 @@ export function StringColumn(options?: ApiColumnOptions) {
 
 export function JSONColumn(options?: ApiColumnOptions) {
   return applyDecorators(
-    Property({ type: 'object', ...options }),
+    ApiProperty({ type: 'object', required: false, nullable: true,  }),
     __Column({
       type: 'varchar',
       nullable: true,

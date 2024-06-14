@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyOf } from './keysof';
 
+
+
+
 export type StatusClass =
   | 'success'
   | 'error'
@@ -29,7 +32,8 @@ export type InputType =
   | 'select-many-entity'
   | 'select-one-enum'
   | 'select-many-enum'
-  | 'chip-select';
+  | 'chip-select'
+  | 'attributes';
 
 export type StringFormat =
   | 'email'

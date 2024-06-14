@@ -8,6 +8,7 @@ export class CreateAddressDto
   extends BaseCreateDto<CreateAddressDto>
   implements ICreateAddressDto
 {
+   
   @Property({ type: 'string', required: true, minLength: 1 }) street!: string;
   @Property({ type: 'string', required: true, minLength: 1 }) city!: string;
   @Property({ type: 'string', required: true, minLength: 1 }) state!: string;

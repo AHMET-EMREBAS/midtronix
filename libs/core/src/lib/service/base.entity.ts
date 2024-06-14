@@ -53,6 +53,7 @@ export class BaseEntity implements IBaseEntity {
 }
 
 export class BaseView implements IBaseView {
+  
   @ViewNumberColumn() id!: number;
   @ViewColumn() createdAt!: Date;
   @ViewColumn() updatedAt!: Date;
