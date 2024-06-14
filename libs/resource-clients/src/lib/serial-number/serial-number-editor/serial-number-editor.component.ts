@@ -54,10 +54,16 @@ export class SerialNumberEditorComponent implements AfterViewInit {
     this.productControl.valueChanges
       .pipe(debounceTime(600))
       .subscribe(async (search) => {
-        const result = await firstValueFrom(
-          this.productService.findAll({ search: search, take: 10 })
-        );
-        this.productList.next(result);
+        if (typeof search === 'string') {
+          const result = await firstValueFrom(
+            this.productService.findAll({ search: search, take: 10 })
+          );
+          this.productList.next(result);
+        }
+
+        if (typeof search !== 'string') {
+          this.serialViewService.findAll({ search: search?.upc });
+        }
       });
   }
 

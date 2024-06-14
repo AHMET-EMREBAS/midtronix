@@ -24,10 +24,23 @@
       </button>
     </div>
 
-    <div class="row flex-wrap gap-1em p-1em">
-      @for(serial of serialNumbers | async; track serial){
-      <mat-chip color="primary">{{ serial.serialNumber }}</mat-chip>
-      }
+    <div class="col p-1em">
+      <fieldset *ngIf="serialNumbers | async as items">
+        <legend>Serial Numbers</legend>
+
+        <div class="row flex-wrap gap-1em p-1em">
+          @for(item of items; track item){
+          <mat-chip color="primary">{{ item.serialNumber }}</mat-chip>
+          }
+        </div>
+        <p
+          [class.error]="productControl.value?.quantity !== items.length"
+          [class.success]="productControl.value?.quantity === items.length"
+        >
+          There are <strong> {{ items.length }} </strong> serial numbers for
+          <strong> {{ productControl.value?.quantity }} </strong> products.
+        </p>
+      </fieldset>
     </div>
   </form>
 </div>
