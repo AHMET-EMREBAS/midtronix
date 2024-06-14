@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseEntity, IID } from './__base';
+import { ICart } from './cart/cart';
 import { ICustomer } from './customer';
 import { ISku } from './product';
 import { IUser } from './user';

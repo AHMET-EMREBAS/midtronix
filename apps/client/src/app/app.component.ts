@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
       const routeHistory = RouteHistoryStore.obj<string[]>() || ['app'];
       this.router.navigate(routeHistory);
     } catch (err) {
-      this.router.navigate(['auth', 'login']);
+      // this.router.navigate(['auth', 'login']);
     }
 
     this.sub = this.router.events.subscribe((events) => {
