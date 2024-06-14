@@ -67,6 +67,7 @@ export class SkuViewMetadata
       this.productId().name,
       this.productName().name,
       this.productUpc().name,
+      this.serialNumberRequired().name,
       ...super.propertyNames(),
     ];
   }
@@ -80,6 +81,7 @@ export class SkuViewMetadata
       this.sku(),
       this.productName(),
       this.productUpc(),
+      this.serialNumberRequired(),
       ...super.columns(),
     ];
   }
