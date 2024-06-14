@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { IBaseView } from '@mdtx/common';
 
-export interface I<%- className %>View extends IBaseView {
+export interface ISkuView extends IBaseView {
   name: string;
   eid: number;
 }

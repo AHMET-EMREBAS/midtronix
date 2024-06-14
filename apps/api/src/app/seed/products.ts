@@ -14,6 +14,7 @@ export const Products: ICreateProductDto[] = [
     quantity: 201,
     supplier: { id: 1 } as ISupplier,
     serialNumberRequired: true,
+    attributes: {},
   },
   {
     name: 'Other',
@@ -28,5 +29,6 @@ export const Products: ICreateProductDto[] = [
     quantity: 355,
     supplier: { id: 2 } as ISupplier,
     serialNumberRequired: true,
+    attributes: {},
   },
 ];

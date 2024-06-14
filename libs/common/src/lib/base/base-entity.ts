@@ -1,5 +1,3 @@
-import { StringifyType } from '../types';
-
 export interface IID {
   id: number;
 }
@@ -15,9 +13,12 @@ export interface IEntityMonitor {
   updatedBy: number;
 }
 
+export type Attirubutes = Record<string, any>;
+
 export interface IBaseEntity extends IID, ITimestamp, IEntityMonitor {
   active: boolean;
   notes: string;
+  attributes: Attirubutes;
 }
 
 export type IBaseView = IBaseEntity;

@@ -217,6 +217,14 @@ export class __BaseEntityMetadata<T extends IBaseEntity | IBaseView>
     };
   }
 
+  attributes(): PropertyMetadata<T> {
+    return {
+      name: 'attributes',
+      label: 'Attributes',
+      order: 602,
+    };
+  }
+
   firstColumn(): PropertyMetadata<any> {
     return {
       name: 'firstColumn',

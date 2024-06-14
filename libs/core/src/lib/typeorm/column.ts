@@ -39,6 +39,24 @@ export function StringColumn(options?: ApiColumnOptions) {
   );
 }
 
+export function JSONColumn(options?: ApiColumnOptions) {
+  return applyDecorators(
+    Property({ type: 'object', ...options }),
+    __Column({
+      type: 'varchar',
+      nullable: true,
+      transformer: {
+        from(value) {
+          return value ? JSON.parse(value) : value;
+        },
+        to(value) {
+          return value ? JSON.stringify(value) : value;
+        },
+      },
+    })
+  );
+}
+
 export function DateColumn(options?: ApiColumnOptions) {
   return applyDecorators(
     Property({ type: 'date', ...options }),

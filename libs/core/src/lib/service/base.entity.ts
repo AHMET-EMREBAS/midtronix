@@ -4,12 +4,12 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { IBaseEntity, IBaseView } from '@mdtx/common';
+import { Attirubutes, IBaseEntity, IBaseView } from '@mdtx/common';
 import {
   BooleanColumn,
   IntegerColumn,
+  JSONColumn,
   StringColumn,
-  UniqueColumn,
   ViewBooleanColumn,
   ViewColumn,
   ViewNumberColumn,
@@ -37,20 +37,19 @@ export class BaseEntity implements IBaseEntity {
   deletedAt!: Date;
 
   @IntegerColumn()
-  @Property({ type: 'number' })
   createdBy!: number;
 
   @IntegerColumn()
-  @Property({ type: 'number' })
   updatedBy!: number;
 
   @BooleanColumn({ default: true })
-  @Property({ type: 'boolean' })
   active!: boolean;
 
   @StringColumn()
-  @Property({ type: 'string' })
   notes!: string;
+
+  @JSONColumn()
+  attributes: Attirubutes | undefined;
 }
 
 export class BaseView implements IBaseView {
