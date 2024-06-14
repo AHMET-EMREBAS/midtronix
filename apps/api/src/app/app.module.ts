@@ -78,7 +78,7 @@ import { ProductSubscriber, SkuSubscriber, User } from '@mdtx/entities';
       // dropSchema: true,
       // logger: 'debug',
       // logging: isDevMode(true, false),
-      // type: 'postgres',
+      type: 'postgres',
       database: 'bmsv2',
       username: 'postgres',
       password: 'password',
