@@ -117,6 +117,7 @@ export class ProductMetadata
       label: 'Auto Generate Serial',
       type: 'boolean',
       inputType: 'checkbox',
+
       order: 402,
     };
   }

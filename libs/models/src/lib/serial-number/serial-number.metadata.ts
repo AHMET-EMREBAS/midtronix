@@ -25,10 +25,10 @@ export class SerialNumberMetadata
   product(): PropertyMetadata<ISerialNumber> {
     return {
       name: 'product',
-      label: 'Sku',
+      label: 'Product',
       type: 'object',
       inputType: 'select-one-entity',
-      entityName: 'Sku',
+      entityName: 'Product',
       mapValue(value) {
         return value.product.name;
       },

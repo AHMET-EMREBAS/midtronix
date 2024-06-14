@@ -1,0 +1,33 @@
+<div class="gap-1em col p-1em">
+  <mdtx-input-autocomplete
+    *ngIf="productList | async as list"
+    [options]="list"
+    [inputControl]="productControl"
+    label="Select Product"
+    prefixIcon="search"
+  ></mdtx-input-autocomplete>
+
+  <form class="col">
+    <mdtx-input-text
+      label="Serial Number"
+      [inputControl]="serialControl"
+    ></mdtx-input-text>
+
+    <div class="actions col">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        (click)="addSerialNumber()"
+      >
+        Add
+      </button>
+    </div>
+
+    <div class="row flex-wrap gap-1em p-1em">
+      @for(serial of serialNumbers | async; track serial){
+      <mat-chip color="primary">{{ serial.serialNumber }}</mat-chip>
+      }
+    </div>
+  </form>
+</div>

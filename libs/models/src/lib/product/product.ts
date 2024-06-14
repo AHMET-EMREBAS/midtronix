@@ -5,9 +5,6 @@ import { ICategory } from '../category';
 export interface IProduct extends IBaseEntity {
   name: string;
 
-  serialNumberRequired: boolean;
-  autoGenerateSerial: boolean;
-
   brand: string;
 
   description: string;
@@ -23,4 +20,8 @@ export interface IProduct extends IBaseEntity {
   supplier: ISupplier;
 
   category: ICategory;
+
+  serialNumberRequired: boolean;
+
+  autoGenerateSerial: boolean;
 }

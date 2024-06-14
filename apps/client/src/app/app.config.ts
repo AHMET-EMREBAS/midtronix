@@ -116,6 +116,9 @@ export const appConfig: ApplicationConfig = {
           //
           SerialNumber: 'SerialNumbers',
           SerialNumberView: 'SerialNumberViews',
+
+          // 
+          
         },
         entityMetadata: {
           Product: {},

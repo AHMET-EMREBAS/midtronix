@@ -11,7 +11,13 @@ import {
   provideFormGroup,
 } from '@mdtx/material/core';
 import { FormBuilder } from '@angular/forms';
-import { SerialNumberMetadata, SerialNumberViewMetadata } from '@mdtx/models';
+import {
+  ICreateSerialNumberDto,
+  IQuerySerialNumberViewDto,
+  IUpdateSerialNumberDto,
+  SerialNumberMetadata,
+  SerialNumberViewMetadata,
+} from '@mdtx/models';
 
 import { Injectable } from '@angular/core';
 import { CollectionBaseService } from '@mdtx/material/core';
@@ -21,9 +27,14 @@ import {
   ContentCenterLeftProvider,
   ModuleLayoutComponent,
 } from '@mdtx/material/layout';
+import { SerialNumberEditorComponent } from './serial-number-editor/serial-number-editor.component';
 
 @Injectable()
-export class SerialNumberService extends CollectionBaseService<ISerialNumber> {
+export class SerialNumberService extends CollectionBaseService<
+  ISerialNumber,
+  ICreateSerialNumberDto,
+  IUpdateSerialNumberDto
+> {
   constructor(factory: EntityCollectionServiceElementsFactory) {
     super('SerialNumber', factory, DefaultResourceHttpClientFactoryInstance);
   }
@@ -61,7 +72,8 @@ export const SerialNumberSubRoutes: Routes = [
   {
     title: 'New SerialNumber',
     path: 'editor',
-    loadComponent: () => EditorComponent,
+    loadComponent: () => SerialNumberEditorComponent,
+    providers: [SerialNumberService, SerialNumberViewService],
   },
   {
     title: 'Edit SerialNumber',

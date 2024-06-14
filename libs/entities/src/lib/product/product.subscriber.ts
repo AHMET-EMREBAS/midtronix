@@ -24,6 +24,7 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
         createdBy,
         updatedBy,
         serialNumberRequired,
+        autoGenerateSerial,
         upc,
         id: productId,
         quantity,
@@ -44,7 +45,7 @@ export class ProductSubscriber implements EntitySubscriberInterface<Product> {
 
       const serialNumberRepo = event.manager.getRepository(SerialNumber);
 
-      if (serialNumberRequired) {
+      if (serialNumberRequired && autoGenerateSerial) {
         const serailBase = upc;
         for (let i = 1; i <= quantity; i++) {
           await serialNumberRepo.save({
