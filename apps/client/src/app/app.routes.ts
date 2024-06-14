@@ -20,6 +20,7 @@ import {
   DepartmentRoute,
   SerialNumberRoute,
   SkuRoute,
+  PriceRoute,
 } from '@mdtx/resource-clients';
 
 import { AuthRoute } from '@mdtx/material/auth';
@@ -41,10 +42,23 @@ export const appRoutes: Route[] = [
           label: 'Sku',
           icon: 'inventory2',
         },
+
         {
           route: 'serial-number',
           label: 'Serial Number',
           icon: 'confirmation_number',
+        },
+
+        { divider: true },
+        {
+          route: 'price',
+          label: 'Price',
+          icon: 'money',
+        },
+        {
+          route: 'quantity',
+          label: 'Quantity',
+          icon: 'numbers',
         },
 
         { divider: true },
@@ -127,6 +141,7 @@ export const appRoutes: Route[] = [
       PhoneRoute,
       //
       CustomerRoute,
+      PriceRoute,
     ],
   },
 ];

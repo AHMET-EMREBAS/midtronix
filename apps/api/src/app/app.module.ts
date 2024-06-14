@@ -32,6 +32,7 @@ import {
   SerialNumberModule,
   SkuModule,
   AttributeModule,
+  PriceModule,
 } from '@mdtx/resources';
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
@@ -96,6 +97,7 @@ import { APP_GUARD } from '@nestjs/core';
     SerialNumberModule,
     SkuModule,
     AttributeModule,
+    PriceModule,
   ],
   providers: [
     AppEventService,

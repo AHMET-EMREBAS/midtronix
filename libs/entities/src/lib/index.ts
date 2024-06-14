@@ -7,6 +7,7 @@ export * from './email';
 export * from './manufacturer';
 export * from './permission';
 export * from './phone';
+export * from './price';
 export * from './price-level';
 export * from './product';
 export * from './role';
