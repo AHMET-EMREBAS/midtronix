@@ -13,6 +13,7 @@
   <!-- TExt input -->
   } @else if(input.inputType ==='text'){
   <mdtx-input-text
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -22,6 +23,7 @@
   } @else if(input.inputType ==='textarea') {
 
   <mdtx-input-textarea
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -31,6 +33,7 @@
   } @else if(input.inputType ==='number'){
 
   <mdtx-input-number
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -42,6 +45,7 @@
   @if(input.enum){
 
   <mdtx-input-autocomplete
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -55,6 +59,7 @@
   } @else if(input.inputType ==='select-one-entity'){
 
   <mdtx-input-autocomplete
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -64,6 +69,7 @@
   } @else if(input.inputType ==='select-many-entity'){
 
   <mdtx-input-select
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -74,6 +80,7 @@
   } @else if(input.inputType ==='chip-select'){
 
   <mdtx-input-chip-select
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"
@@ -85,6 +92,7 @@
   } @else if(input.inputType ==='password'){
 
   <mdtx-input-password
+    [disabled]="input.disabled"
     [inputName]="input.name || 'Not Set'"
     [label]="input.label || 'Not set'"
     [inputControl]="input.control"

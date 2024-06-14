@@ -45,7 +45,6 @@ export class PriceViewWhereQueryDto
 @Exclude()
 export class PriceViewQueryDto extends BasePaginatorQueryDto {
   @SearchProperty<PriceView>([
-    'name',
     'eid',
     'cost',
     'price',

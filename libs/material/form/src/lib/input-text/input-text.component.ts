@@ -20,4 +20,5 @@ export class InputTextComponent
   @Input() maxLength?: number;
   @Input() textSuffix?: string;
   @Input() textPrefix?: string;
+  
 }

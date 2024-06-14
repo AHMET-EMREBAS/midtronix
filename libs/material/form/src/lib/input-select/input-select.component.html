@@ -1,9 +1,10 @@
 <mat-form-field>
-  <mat-label> {{ label || inputName | titlecase }}</mat-label>
+  <mat-label> {{ label || inputName | titlecase }} {{ !!disabled }}</mat-label>
   <mat-select
     [formControl]="inputControl"
     [multiple]="multiple"
     [attr.data-testid]="testid()"
+    [disabled]="!!disabled"
   >
     @for (o of options; track o) {
     <mat-option [value]="o">{{ displayWith()(o) }}</mat-option>

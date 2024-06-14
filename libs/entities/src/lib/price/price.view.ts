@@ -42,6 +42,5 @@ export class PriceView extends BaseView implements IPriceView {
   @ViewColumn() skuName!: string;
   @ViewColumn() priceLevelName!: string;
 
-  @ViewColumn() name!: string;
   @ViewNumberColumn() eid!: number;
 }

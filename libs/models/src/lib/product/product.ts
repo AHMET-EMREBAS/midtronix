@@ -8,7 +8,7 @@ export interface IProduct extends IBaseEntity {
   serialNumberRequired: boolean;
 
   brand: string;
-  
+
   description: string;
 
   /**
@@ -17,6 +17,7 @@ export interface IProduct extends IBaseEntity {
   upc: string;
 
   price: number;
+
   cost: number;
 
   quantity: number;

@@ -88,6 +88,10 @@ export class InputAutocompleteComponent<T extends IInputOption = IInputOption>
     if (this.defaultValue) {
       this.inputControl.setValue(this.defaultValue);
     }
+
+    if (this.disabled) {
+      this.inputControl.disable();
+    }
   }
 
   displayWith() {

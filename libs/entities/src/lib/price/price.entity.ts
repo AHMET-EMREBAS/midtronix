@@ -7,6 +7,6 @@ import { Sku } from '../sku';
 export class Price extends BaseEntity implements IPrice {
   @NumberColumn() cost!: number;
   @NumberColumn() price!: number;
-  @OwnerRelation(PriceLevel) priceLevel!: PriceLevel;
-  @OwnerRelation(Sku) sku!: Sku;
+  @OwnerRelation(PriceLevel, { eager: true }) priceLevel!: PriceLevel;
+  @OwnerRelation(Sku, { eager: true }) sku!: Sku;
 }

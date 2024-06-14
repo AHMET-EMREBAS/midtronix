@@ -10,6 +10,7 @@ export class PriceMetadata
   extends BaseEntityMetadata<IPrice>
   implements EntityMetadata<IPrice>
 {
+  
   cost(): PropertyMetadata<IPrice> {
     return {
       name: 'cost',
@@ -21,6 +22,7 @@ export class PriceMetadata
       order: 202,
     };
   }
+
   price(): PropertyMetadata<IPrice> {
     return {
       name: 'price',
@@ -32,6 +34,7 @@ export class PriceMetadata
       order: 203,
     };
   }
+
   priceLevel(): PropertyMetadata<IPrice> {
     return {
       name: 'priceLevel',
@@ -41,7 +44,10 @@ export class PriceMetadata
       entityName: 'PriceLevel',
       prefixIcon: 'layers',
       required: true,
-      order: 204,
+      order: 200,
+      mapValue(value) {
+        return value.priceLevel?.name;
+      },
     };
   }
 
@@ -55,6 +61,9 @@ export class PriceMetadata
       prefixIcon: 'money',
       required: true,
       order: 200,
+      mapValue(value) {
+        return value.sku?.sku;
+      },
     };
   }
 

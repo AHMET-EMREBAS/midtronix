@@ -51,8 +51,7 @@ import {
   Products,
 } from './seed';
 import { Roles } from './seed/roles';
-import { User } from '@mdtx/entities';
-import { APP_GUARD } from '@nestjs/core';
+import { ProductSubscriber, SkuSubscriber, User } from '@mdtx/entities';
 
 @Module({
   imports: [
@@ -72,6 +71,7 @@ import { APP_GUARD } from '@nestjs/core';
       // password: 'password',
       type: 'better-sqlite3',
       database: 'tmp/database/dev.sqlite',
+      subscribers: [ProductSubscriber, SkuSubscriber],
       autoLoadEntities: true,
       synchronize: true,
       dropSchema: true,

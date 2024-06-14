@@ -13,38 +13,41 @@ export class SkuViewMetadata
   productId(): PropertyMetadata<ISkuView> {
     return {
       name: 'productId',
+      label: 'Product Id',
       type: 'string',
-      order: 301,
+      order: 201,
     };
   }
 
   productName(): PropertyMetadata<ISkuView> {
     return {
       name: 'productName',
+      label: 'Product Name',
       type: 'string',
-      order: 302,
+      order: 202,
     };
   }
 
   productUpc(): PropertyMetadata<ISkuView> {
     return {
       name: 'productUpc',
+      label: 'UPC',
       type: 'string',
-      order: 303,
+      order: 203,
     };
   }
 
   sku(): PropertyMetadata<ISkuView> {
     return {
       name: 'sku',
-      label: 'Sku',
+      label: 'SKU',
       type: 'string',
-      order: 201,
+      order: 200,
     };
   }
 
   eid(): PropertyMetadata<ISkuView> {
-    return { name: 'eid', label: 'Sku Id', suffixIcon: 'numbers', order: 245 };
+    return { name: 'eid', label: 'Sku Id', suffixIcon: 'numbers', order: 199 };
   }
 
   override propertyNames(): KeyOf<ISkuView>[] {

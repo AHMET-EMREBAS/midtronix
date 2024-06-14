@@ -17,8 +17,11 @@ export class SkuMetadata
       type: 'object',
       inputType: 'select-one-entity',
       entityName: 'Product',
-      order: 200,
       prefixIcon: 'inventory2',
+      mapValue(value) {
+        return value.product.upc;
+      },
+      order: 200,
     };
   }
 

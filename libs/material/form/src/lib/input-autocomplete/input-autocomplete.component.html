@@ -1,6 +1,7 @@
 <!-- {{ options | json }} -->
 <mat-form-field class="example-full-width">
-  <mat-label> {{ label || inputName | titlecase }}</mat-label>
+  <mat-label> {{ label || inputName | titlecase }} {{ !!disabled }}</mat-label>
+
   <input
     type="text"
     #mdtxInput="mdtxInput"

@@ -11,31 +11,31 @@ export class PriceViewMetadata
   implements EntityMetadata<IPriceView>
 {
   cost(): PropertyMetadata<IPriceView> {
-    return { name: 'cost', label: 'Cost' };
+    return { name: 'cost', label: 'Cost', order: 211 };
   }
 
   price(): PropertyMetadata<IPriceView> {
-    return { name: 'price', label: 'Price' };
-  }
-
-  sku(): PropertyMetadata<IPriceView> {
-    return { name: 'sku', label: 'Sku' };
+    return { name: 'price', label: 'Price', order: 212 };
   }
 
   skuId(): PropertyMetadata<IPriceView> {
-    return { name: 'skuId', label: 'Skuid' };
+    return { name: 'skuId', label: 'Skuid', order: 203 };
   }
 
-  priceLevelId(): PropertyMetadata<IPriceView> {
-    return { name: 'priceLevelId', label: 'Pricelevelid' };
+  sku(): PropertyMetadata<IPriceView> {
+    return { name: 'sku', label: 'Sku', order: 204 };
   }
 
   skuName(): PropertyMetadata<IPriceView> {
-    return { name: 'skuName', label: 'Skuname' };
+    return { name: 'skuName', label: 'Skuname', order: 205 };
+  }
+
+  priceLevelId(): PropertyMetadata<IPriceView> {
+    return { name: 'priceLevelId', label: 'Pricelevelid', order: 207 };
   }
 
   priceLevelName(): PropertyMetadata<IPriceView> {
-    return { name: 'priceLevelName', label: 'Pricelevelname' };
+    return { name: 'priceLevelName', label: 'Pricelevelname', order: 208 };
   }
 
   eid(): PropertyMetadata<IPriceView> {
@@ -43,13 +43,12 @@ export class PriceViewMetadata
       name: 'eid',
       label: 'Price Id',
       suffixIcon: 'numbers',
-      order: 245,
+      order: 200,
     };
   }
 
   override propertyNames(): KeyOf<IPriceView>[] {
     return [
-      this.name().name,
       this.eid().name,
       this.cost().name,
       this.price().name,
@@ -64,7 +63,6 @@ export class PriceViewMetadata
 
   override columns(): PropertyMetadata<IPriceView>[] {
     return [
-      this.name(),
       this.eid(),
       this.cost(),
       this.price(),

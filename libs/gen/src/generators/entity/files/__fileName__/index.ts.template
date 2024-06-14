@@ -1,4 +1,4 @@
-// @index(['./*.{dto,query,entity,view,meta}.ts',], f => `export * from '${f.path}'`)
+// @index(['./*.{dto,query,entity,view,meta,subscriber}.ts',], f => `export * from '${f.path}'`)
 export * from './<%- fileName %>.dto'
 export * from './<%- fileName %>.meta'
 export * from './<%- fileName %>.entity'

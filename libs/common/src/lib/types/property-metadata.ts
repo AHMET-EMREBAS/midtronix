@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyOf } from './keysof';
 
-
-
-
 export type StatusClass =
   | 'success'
   | 'error'
@@ -80,4 +77,5 @@ export type PropertyMetadata<T, FormControl = any> = {
   enum?: string[];
   entityName?: string;
   labelKey?: KeyOf<T>;
+  disabled?: boolean;
 };

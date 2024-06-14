@@ -24,7 +24,7 @@ export class InputBaseComponent implements OnInit, AfterViewInit {
   @Input() serverSideError = '';
   @Input() prefixIcon?: Icon;
   @Input() defaultValue?: any;
-
+  @Input() disabled?: boolean;
   @Output() inputEvent = new EventEmitter();
 
   $valueChange!: Observable<any>;
