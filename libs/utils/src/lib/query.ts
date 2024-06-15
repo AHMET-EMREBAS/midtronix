@@ -151,6 +151,11 @@ export type QueryInput = {
   or?: QueryInput;
 };
 
+/**
+ *
+ * @param query
+ * @returns "operator:value"
+ */
 export function createQueryValue(
   query: Pick<QueryInput, 'operator' | 'value'>
 ) {

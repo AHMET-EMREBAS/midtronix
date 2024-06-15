@@ -68,7 +68,11 @@ export async function bootNestApplication(appModule: Type, appName: string) {
   const app = await createApp(HTTPS === 'true');
 
   app.setGlobalPrefix(GLOBAL_PREFIX);
-  app.use(helmet());
+  // app.use(
+  //   helmet({
+  //     contentSecurityPolicy: false,
+  //   })
+  // );
   app.enableCors({ origin: '*' });
 
   app.use(favicon(join(__dirname, 'public', 'favicon.ico')));

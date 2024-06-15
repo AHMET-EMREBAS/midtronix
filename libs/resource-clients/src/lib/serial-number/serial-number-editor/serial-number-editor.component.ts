@@ -20,6 +20,7 @@ import {
 } from '../serial-number.routes';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatChipsModule } from '@angular/material/chips';
+import { QueryOperator, createQuery, createQueryValue } from '@mdtx/utils';
 
 @Component({
   selector: 'mdtx-serial-number-editor',
@@ -89,7 +90,12 @@ export class SerialNumberEditorComponent implements AfterViewInit {
           duration: 3000,
         });
 
-        this.serialViewService.findAll({ search: product.upc });
+        this.serialViewService.findAll({
+          upc: createQueryValue({
+            operator: QueryOperator.EQUAL,
+            value: product.upc,
+          }),
+        });
       } catch (err) {
         this.snackbar.open((err as any).message, undefined, {
           panelClass: 'error-snackbar',

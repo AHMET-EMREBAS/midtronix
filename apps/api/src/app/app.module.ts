@@ -87,7 +87,7 @@ import { ProductSubscriber, SkuSubscriber, User } from '@mdtx/entities';
       subscribers: [ProductSubscriber, SkuSubscriber],
       autoLoadEntities: true,
       logger: 'debug',
-      logging: true, 
+      logging: true,
     }),
     AuthModule.configure([User], UserService),
     SampleModule,
@@ -144,7 +144,13 @@ export class AppModule implements OnModuleInit {
       }
     });
 
-    Roles.forEach(async (e) => this.roleService.saveOne({ name: e }));
+    Roles.forEach(async (e) => {
+      try {
+        await this.roleService.saveOne({ name: e });
+      } catch (err) {
+        //
+      }
+    });
 
     Categories.forEach(async (e) => {
       try {
@@ -208,28 +214,5 @@ export class AppModule implements OnModuleInit {
         console.log(err);
       }
     });
-
-    // letasync  i = 1;
-    // setTimeout(async () => {
-    //   awaitawait  this.service.saveOne({ name: 'sample 1' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'sample 2' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'sample 3' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'sample 4' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'other 5' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'other 6' });
-    // }, i++ * 1000);
-    // setTimeout(async () => {
-    //   await this.service.saveOne({ name: 'other 7' });
-    // }, i++ * 1000);
   }
 }
