@@ -38,7 +38,7 @@ import {
 import { EventEmitter2, EventEmitterModule } from '@nestjs/event-emitter';
 import { AppEventService } from './app-event.service';
 import { ConfigModule } from '@nestjs/config';
-import { AuthGuard, AuthModule } from '@mdtx/auth';
+import { AuthModule } from '@mdtx/auth';
 import { AppController } from './app.controller';
 import {
   Categories,
@@ -79,7 +79,7 @@ import { ProductSubscriber, SkuSubscriber, User } from '@mdtx/entities';
       // logger: 'debug',
       // logging: isDevMode(true, false),
       type: 'postgres',
-      database: 'bmsv2',
+      database: 'testdb',
       username: 'postgres',
       password: 'password',
       // type: 'better-sqlite3',
